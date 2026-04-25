@@ -1,0 +1,19 @@
+{
+  "document": "Canonical Responsibility & Obligation Matrix V2.1",
+  "counts": {
+    "responsibility_families": 8,
+    "top_level_responsibilities": 49,
+    "sub_responsibilities": 12,
+    "top_level_obligations": 49,
+    "sub_obligations": 12,
+    "covered_gaps": "7/7"
+  },
+  "files": [
+    "Canonical_Responsibility_Obligation_Matrix_V2_1.md",
+    "responsibilities_v2_1.csv",
+    "obligations_v2_1.csv",
+    "sub_responsibilities_v2_1.csv",
+    "responsibility_obligation_links_v2_1.csv",
+    "coverage_register_v2_1.csv"
+  ]
+}

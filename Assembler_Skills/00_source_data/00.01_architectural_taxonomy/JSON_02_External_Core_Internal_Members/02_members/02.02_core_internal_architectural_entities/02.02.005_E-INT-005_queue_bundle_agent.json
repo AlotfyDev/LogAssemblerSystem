@@ -1,0 +1,26 @@
+{
+  "0.1.document_id": "ASM-TAX-MEMBER-E-INT-005",
+  "0.2.bundle_id": "JSON-BUNDLE-02",
+  "0.3.member_id": "E-INT-005",
+  "0.4.member_name": "Queue Bundle Agent",
+  "1.1.layer_id": "L-002",
+  "1.2.layer_member_order": 5,
+  "1.3.member_section": "core_internal_architectural_entities",
+  "1.4.family_or_plane": "Queue orchestration actor",
+  "1.5.role": "Orchestrates queue bundles and waiting-list discipline",
+  "2.1.canonical_note": "Operates on Queue Bundle and may update writing/delivery availability lists.",
+  "2.2.trace_source": "Unified Assembler Architectural Taxonomy — L-001/L-002 members",
+  "2.3.trace_policy": "This member file may be extended by later batches using 5.x+ sections without rewriting 0.x-4.x.",
+  "3.1.relation_slots": {
+    "incoming_relations": [],
+    "outgoing_relations": [],
+    "policy_relations": [],
+    "contract_relations": []
+  },
+  "4.1.growth_hooks": {
+    "batch3_responsibilities": [],
+    "batch4_delegation_enablement": [],
+    "batch5_component_mapping": [],
+    "implementation_bridge": []
+  }
+}

@@ -1,0 +1,13 @@
+sub_responsibility_id,parent_responsibility_id,sub_responsibility,meaning,sub_obligation_id,sub_obligation
+RSP-CAN-025.1,RSP-CAN-025,Readiness / Not-Ready Flag,registry or delivery path is not ready,OBL-CAN-025.1,"Readiness / Not-Ready Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-025.2,RSP-CAN-025,Delivery Success Flag,delivery completed successfully,OBL-CAN-025.2,"Delivery Success Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-025.3,RSP-CAN-025,Delivery Failure Flag,delivery attempt failed,OBL-CAN-025.3,"Delivery Failure Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-025.4,RSP-CAN-025,Refusal Flag,receiver explicitly refused/rejected,OBL-CAN-025.4,"Refusal Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-025.5,RSP-CAN-025,Backpressure Flag,receiver-side capacity/backpressure detected,OBL-CAN-025.5,"Backpressure Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-025.6,RSP-CAN-025,Local Reset Required Flag,local post-delivery reset sequence required,OBL-CAN-025.6,"Local Reset Required Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-025.7,RSP-CAN-025,Queue Requalification Required Flag,affected queue-container must be requalified,OBL-CAN-025.7,"Queue Requalification Required Flag must be updated as delivery-cycle state, not as a detailed report."
+RSP-CAN-048.1,RSP-CAN-048,Delivery Attempt Report,detailed account of delivery attempt,OBL-CAN-048.1,Delivery Attempt Report must remain a diagnostic/reporting artifact distinct from delivery-cycle flags.
+RSP-CAN-048.2,RSP-CAN-048,Failure Diagnostic Report,reasons and context for failure,OBL-CAN-048.2,Failure Diagnostic Report must remain a diagnostic/reporting artifact distinct from delivery-cycle flags.
+RSP-CAN-048.3,RSP-CAN-048,Refusal Diagnostic Report,receiving-side refusal details,OBL-CAN-048.3,Refusal Diagnostic Report must remain a diagnostic/reporting artifact distinct from delivery-cycle flags.
+RSP-CAN-048.4,RSP-CAN-048,Backpressure Report,capacity/backpressure details,OBL-CAN-048.4,Backpressure Report must remain a diagnostic/reporting artifact distinct from delivery-cycle flags.
+RSP-CAN-048.5,RSP-CAN-048,Post-Delivery Reset Report,local reset/moderation/requalification details,OBL-CAN-048.5,Post-Delivery Reset Report must remain a diagnostic/reporting artifact distinct from delivery-cycle flags.

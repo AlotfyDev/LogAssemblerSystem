@@ -1,0 +1,1424 @@
+{
+  "document_id": "02.07_entity_enablement_index",
+  "document_type": "entity_enablement_index",
+  "release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "package_id": "02_entity_enablement_indexes",
+  "package_path": "02_entity_enablement_indexes/",
+  "file_path": "02_entity_enablement_indexes/02.07_entity_enablement_index.json",
+  "status": "draft_for_structured_local_installation",
+  "schema_basis": {
+    "reference_schema": "01_reference_markdown/01.06_REFERENCE_SCHEMA.md",
+    "entity_index_source": "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+    "enablement_family_source": "02_entity_enablement_indexes/02.02_enablement_families_index.csv",
+    "surface_index_source": "02_entity_enablement_indexes/02.03_surfaces_index.csv",
+    "governed_object_source": "02_entity_enablement_indexes/02.04_governed_objects_index.csv",
+    "policy_consuming_source": "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv"
+  },
+  "0.1_purpose": {
+    "summary": "Provide the canonical JSON index that joins delegated entities to the enablement families they require.",
+    "role": "This file is the machine-readable crosswalk between entities, enablements, surfaces, responsibilities, obligations, governed objects, gaps, contracts, and doctrines.",
+    "downstream_use": [
+      "responsibility delegation matrix",
+      "obligation delegation matrix",
+      "trace coverage registers",
+      "rollup indexes",
+      "future PostgreSQL derivation"
+    ]
+  },
+  "0.2_index_rules": {
+    "join_grain": "one entity record with nested enablement memberships",
+    "canonical_entity_key": "entity_id",
+    "canonical_enablement_key": "enablement_family_id",
+    "array_policy": "All multi-value relations are represented as arrays, not delimited strings.",
+    "governed_object_policy": "Governed objects must remain in governed_object_ids and must not be promoted into delegated entity roles unless a later taxonomy revision explicitly promotes them.",
+    "classification_policy": "Classification-only layers may appear for analysis but must not carry enablement as primary responsibility carriers.",
+    "metadata_injector_policy": "Metadata Injector must not be assigned EN-FAM-002."
+  },
+  "1.0_counts": {
+    "indexed_entity_records": 15,
+    "indexed_concrete_internal_delegated_entities": 13,
+    "indexed_system_accountability_records": 1,
+    "indexed_classification_only_records": 1,
+    "indexed_enablement_families": 9,
+    "policy_consuming_components": 7,
+    "policy_hosting_exclusions": 1,
+    "new_or_promoted_delegation_entities": 4
+  },
+  "2.0_entities": [
+    {
+      "entity_id": "E-INT-001",
+      "entity_name": "Assembler Subsystem",
+      "entity_class": "core_internal_subsystem",
+      "delegation_status": "system_accountability_owner",
+      "actor_status": "actor",
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-MANAGERIAL",
+        "SURF-CONSUMING",
+        "SURF-BOUNDARY",
+        "SURF-CONTRACTUAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "system_accountability_boundary_guard",
+          "responsibility_ids": [
+            "ALL_ASSEMBLER_SIDE_RESPONSIBILITIES"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-032",
+            "OBL-CAN-033"
+          ],
+          "capability_surfaces": [
+            "system accountability",
+            "boundary preservation",
+            "delegation governance"
+          ],
+          "must_not_do": [
+            "carry all narrow operational responsibilities directly",
+            "replace mature delegated entities"
+          ]
+        }
+      ],
+      "governed_object_ids": [],
+      "gap_ids": [
+        "G-001",
+        "G-002",
+        "G-003",
+        "G-004",
+        "G-005",
+        "G-006",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-002",
+        "DOC-003",
+        "DOC-004",
+        "DOC-005",
+        "DOC-006",
+        "DOC-007"
+      ],
+      "notes": "Assembler Subsystem remains accountable while execution is delegated to narrower mature carriers."
+    },
+    {
+      "entity_id": "E-INT-002",
+      "entity_name": "Dispatcher",
+      "entity_class": "core_internal_boundary_actor",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-MANAGERIAL",
+        "SURF-BOUNDARY",
+        "SURF-OBSERVABILITY"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "dispatch_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-020",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-020",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "local dispatch mechanism hosting surface",
+            "Policy Object interpretation boundary",
+            "safe substitution compatibility"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-003",
+          "enablement_family_name": "Envelope Handling Enablement",
+          "usage_role": "final_envelope_handoff_actor",
+          "responsibility_ids": [
+            "RSP-CAN-023",
+            "RSP-CAN-030"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-023",
+            "OBL-CAN-030"
+          ],
+          "capability_surfaces": [
+            "dispatcher handoff surface",
+            "envelope identity preservation",
+            "lifecycle transfer marking"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-005",
+          "enablement_family_name": "Registry Boundary Enablement",
+          "usage_role": "registry_readiness_and_handoff_gate",
+          "responsibility_ids": [
+            "RSP-CAN-021",
+            "RSP-CAN-022",
+            "RSP-CAN-023",
+            "RSP-CAN-026",
+            "RSP-CAN-030",
+            "RSP-CAN-034"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-021",
+            "OBL-CAN-022",
+            "OBL-CAN-023",
+            "OBL-CAN-026",
+            "OBL-CAN-030",
+            "OBL-CAN-034"
+          ],
+          "capability_surfaces": [
+            "registry readiness observation",
+            "capacity/backpressure gate",
+            "handoff eligibility verification",
+            "registry internal non-ownership guard"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-006",
+          "enablement_family_name": "Feedback / Reporting Enablement",
+          "usage_role": "delivery_flags_and_feedback_reports",
+          "responsibility_ids": [
+            "RSP-CAN-025",
+            "RSP-CAN-048"
+          ],
+          "sub_responsibility_ids": [
+            "RSP-CAN-025.1",
+            "RSP-CAN-025.2",
+            "RSP-CAN-025.3",
+            "RSP-CAN-025.4",
+            "RSP-CAN-025.5",
+            "RSP-CAN-025.6",
+            "RSP-CAN-025.7",
+            "RSP-CAN-048.1",
+            "RSP-CAN-048.2",
+            "RSP-CAN-048.3",
+            "RSP-CAN-048.4",
+            "RSP-CAN-048.5"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-025",
+            "OBL-CAN-048"
+          ],
+          "capability_surfaces": [
+            "delivery-cycle flag update surface",
+            "detailed dispatcher feedback report surface",
+            "flag/report separation guard"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "dispatcher_boundary_law_enforcement",
+          "responsibility_ids": [
+            "RSP-CAN-026",
+            "RSP-CAN-034"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-026",
+            "OBL-CAN-034"
+          ],
+          "capability_surfaces": [
+            "dispatcher boundary enforcement",
+            "lifecycle transfer non-ownership guard"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-012",
+        "BCO-013",
+        "BCO-014",
+        "GOV-001",
+        "GOV-003",
+        "GOV-004"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-003",
+        "G-006"
+      ],
+      "contract_trace_ids": [
+        "CC-REG-001",
+        "CC-REG-002",
+        "CC-REG-003",
+        "CC-ENV-002"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-006"
+      ],
+      "must_not_do": [
+        "own registry internals",
+        "conflate Delivery-Cycle Flag Set with Dispatcher Feedback Report",
+        "retain lifecycle authority after valid handoff"
+      ],
+      "notes": "Dispatcher remains the final assembler-side actor. Registry / Delivery Port is the outbound contract surface."
+    },
+    {
+      "entity_id": "E-INT-003",
+      "entity_name": "Writing / Feeding Round Manager",
+      "entity_class": "core_internal_round_manager",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "writing_round_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-020",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-020",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "writing/feed mechanism host surface",
+            "policy-conforming progression"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-003",
+          "enablement_family_name": "Envelope Handling Enablement",
+          "usage_role": "writing_feed_envelope_progression",
+          "responsibility_ids": [
+            "RSP-CAN-029"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-029"
+          ],
+          "capability_surfaces": [
+            "envelope movement surface",
+            "envelope identity preservation"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-004",
+          "enablement_family_name": "Queue Runtime Enablement",
+          "usage_role": "writing_waiting_list_and_queue_container_identifier_management",
+          "responsibility_ids": [
+            "RSP-CAN-019",
+            "RSP-CAN-044",
+            "RSP-CAN-046"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-019",
+            "OBL-CAN-044",
+            "OBL-CAN-046"
+          ],
+          "capability_surfaces": [
+            "writable readiness tracking",
+            "writing waiting-list maintenance",
+            "queue-container identifier management"
+          ],
+          "must_not_do": [
+            "store envelopes in waiting list"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-009",
+        "BCO-011",
+        "BCO-012",
+        "BCO-005"
+      ],
+      "gap_ids": [
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-004",
+        "DOC-007"
+      ],
+      "notes": "Writing / Feeding Round Manager is distinct from Dispatching / Delivery Round Manager."
+    },
+    {
+      "entity_id": "E-INT-004",
+      "entity_name": "Dispatching / Delivery Round Manager",
+      "entity_class": "core_internal_round_manager",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "delivery_round_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-020",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-020",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "delivery progression mechanism host surface",
+            "policy-conforming delivery progression"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-003",
+          "enablement_family_name": "Envelope Handling Enablement",
+          "usage_role": "dispatch_delivery_envelope_progression",
+          "responsibility_ids": [
+            "RSP-CAN-029"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-029"
+          ],
+          "capability_surfaces": [
+            "envelope movement surface",
+            "round progression identity preservation"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-004",
+          "enablement_family_name": "Queue Runtime Enablement",
+          "usage_role": "delivery_waiting_list_and_requalification_path",
+          "responsibility_ids": [
+            "RSP-CAN-045",
+            "RSP-CAN-046",
+            "RSP-CAN-047"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-045",
+            "OBL-CAN-046",
+            "OBL-CAN-047"
+          ],
+          "capability_surfaces": [
+            "delivery waiting-list maintenance",
+            "queue-container identifier management",
+            "requalified ID return path"
+          ],
+          "must_not_do": [
+            "store envelopes in waiting list"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-010",
+        "BCO-011",
+        "BCO-012",
+        "BCO-013",
+        "BCO-014"
+      ],
+      "gap_ids": [
+        "G-003",
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-004",
+        "DOC-007"
+      ],
+      "notes": "Delivery Round Manager supports delivery completion context, but Dispatcher owns flags and reports."
+    },
+    {
+      "entity_id": "E-INT-005",
+      "entity_name": "Queue Bundle Agent",
+      "entity_class": "core_internal_queue_orchestration_actor",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-MANAGERIAL",
+        "SURF-ADMINISTRATIVE"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "queue_bundle_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-020",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-020",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "queue bundle orchestration mechanism host",
+            "policy-conforming queue ordering"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-004",
+          "enablement_family_name": "Queue Runtime Enablement",
+          "usage_role": "bundle_orchestration_and_operational_realization",
+          "responsibility_ids": [
+            "RSP-CAN-017",
+            "RSP-CAN-018",
+            "RSP-CAN-038"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-017",
+            "OBL-CAN-018",
+            "OBL-CAN-038"
+          ],
+          "capability_surfaces": [
+            "queue bundle orchestration",
+            "operational directive realization",
+            "bundle availability support"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "queue_container_terminology_guard",
+          "responsibility_ids": [
+            "RSP-CAN-037",
+            "RSP-CAN-049"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-037",
+            "OBL-CAN-049"
+          ],
+          "capability_surfaces": [
+            "Queue-as-Container terminology guard",
+            "false runtime-container prevention"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-004",
+        "BCO-005",
+        "BCO-009",
+        "BCO-010",
+        "BCO-011",
+        "GOV-007"
+      ],
+      "gap_ids": [
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-004",
+        "DOC-007"
+      ],
+      "must_not_do": [
+        "replace Single Queue Moderator",
+        "create runtime container above Queue Container"
+      ],
+      "notes": "Queue Bundle Agent works at bundle level."
+    },
+    {
+      "entity_id": "E-INT-006",
+      "entity_name": "Single Queue Moderator",
+      "entity_class": "core_internal_queue_moderation_actor",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "single_queue_moderation_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "single queue moderation mechanism host",
+            "moderation and requalification semantics"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-004",
+          "enablement_family_name": "Queue Runtime Enablement",
+          "usage_role": "single_queue_container_slot_occupancy_lifecycle",
+          "responsibility_ids": [
+            "RSP-CAN-039",
+            "RSP-CAN-040",
+            "RSP-CAN-041",
+            "RSP-CAN-042",
+            "RSP-CAN-043",
+            "RSP-CAN-047"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-039",
+            "OBL-CAN-040",
+            "OBL-CAN-041",
+            "OBL-CAN-042",
+            "OBL-CAN-043",
+            "OBL-CAN-047"
+          ],
+          "capability_surfaces": [
+            "single queue-container moderation",
+            "slot maintenance",
+            "envelope-slot occupancy binding",
+            "slot lifecycle state transitions",
+            "waiting-discipline restoration",
+            "queue-container ID requalification"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "occupancy_lifecycle_and_queue_container_guard",
+          "responsibility_ids": [
+            "RSP-CAN-031",
+            "RSP-CAN-037",
+            "RSP-CAN-049"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-031",
+            "OBL-CAN-037",
+            "OBL-CAN-049"
+          ],
+          "capability_surfaces": [
+            "occupancy vs lifecycle separation guard",
+            "Queue-as-Container terminology guard"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-005",
+        "BCO-006",
+        "BCO-007",
+        "BCO-008",
+        "BCO-011"
+      ],
+      "gap_ids": [
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-004",
+        "DOC-007"
+      ],
+      "must_not_do": [
+        "replace Queue Bundle Agent",
+        "own envelope lifecycle after registry handoff"
+      ],
+      "notes": "Single Queue Moderator operates on one Queue Container."
+    },
+    {
+      "entity_id": "E-INT-007",
+      "entity_name": "Metadata Injector",
+      "entity_class": "core_internal_preparation_component",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_hosting_excluded",
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-009",
+          "enablement_family_name": "Metadata / Timestamp Preparation Enablement",
+          "usage_role": "schema_directive_metadata_application",
+          "responsibility_ids": [
+            "RSP-CAN-013",
+            "RSP-CAN-014",
+            "RSP-CAN-015",
+            "RSP-CAN-016",
+            "RSP-CAN-027"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-013",
+            "OBL-CAN-014",
+            "OBL-CAN-015",
+            "OBL-CAN-016",
+            "OBL-CAN-027"
+          ],
+          "capability_surfaces": [
+            "metadata directive intake compatibility",
+            "metadata schema adherence",
+            "metadata field application",
+            "metadata-to-envelope composition"
+          ],
+          "must_not_do": [
+            "host Policy Object mechanisms",
+            "use EN-FAM-002"
+          ]
+        }
+      ],
+      "excluded_enablement_family_ids": [
+        "EN-FAM-002"
+      ],
+      "governed_object_ids": [
+        "BCO-003",
+        "BCO-012"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-004",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-002",
+        "DOC-006"
+      ],
+      "notes": "Metadata Injector is schema/directive-governed, not policy-hosted."
+    },
+    {
+      "entity_id": "E-INT-008",
+      "entity_name": "Timestamp Stabilizer",
+      "entity_class": "core_internal_preparation_component",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-MANAGERIAL",
+        "SURF-CONTRACTUAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "timestamp_stabilization_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "timestamp mechanism host surface",
+            "policy-governed timestamp semantics"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-009",
+          "enablement_family_name": "Metadata / Timestamp Preparation Enablement",
+          "usage_role": "mandatory_ingress_timestamp_preparation",
+          "responsibility_ids": [
+            "RSP-CAN-005",
+            "RSP-CAN-027"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-005",
+            "OBL-CAN-027"
+          ],
+          "capability_surfaces": [
+            "timestamp stabilization",
+            "timestamp participation in all ingress families",
+            "hot-path timestamp participation without local validation"
+          ],
+          "must_not_do": [
+            "remain placeholder",
+            "be optional in hot-path"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-012",
+        "timestamp_value",
+        "envelope_timestamp_field"
+      ],
+      "gap_ids": [
+        "G-004",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-005",
+        "DOC-006"
+      ],
+      "notes": "Timestamp Stabilizer is mature and mandatory."
+    },
+    {
+      "entity_id": "E-INT-009",
+      "entity_name": "Validator",
+      "entity_class": "core_internal_validation_component",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "policy_consuming_component",
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-MANAGERIAL",
+        "SURF-CONTRACTUAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-002",
+          "enablement_family_name": "Mechanism Hosting Enablement",
+          "usage_role": "validation_policy_mechanism_host",
+          "responsibility_ids": [
+            "RSP-CAN-010",
+            "RSP-CAN-011",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-010",
+            "OBL-CAN-011",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "validation mechanism host surface",
+            "Policy Object interpretation boundary"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-009",
+          "enablement_family_name": "Metadata / Timestamp Preparation Enablement",
+          "usage_role": "validating_path_preparation",
+          "responsibility_ids": [
+            "RSP-CAN-004"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-004"
+          ],
+          "capability_surfaces": [
+            "validating-path preparation compatibility",
+            "validation candidate preparation"
+          ],
+          "must_not_do": [
+            "participate in hot-path externalized validation"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "validation_candidate_input",
+        "GOV-005",
+        "GOV-006"
+      ],
+      "gap_ids": [
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-005"
+      ],
+      "notes": "Validator participates only where validation authority is assembler-local."
+    },
+    {
+      "entity_id": "E-INT-010",
+      "entity_name": "PolicyAssigner",
+      "entity_class": "core_internal_policy_mediator",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "not_policy_consuming_mediator",
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-001",
+          "enablement_family_name": "Assignment Surface Enablement",
+          "usage_role": "policy_intake_assignment_and_safe_point_replacement",
+          "responsibility_ids": [
+            "RSP-CAN-007",
+            "RSP-CAN-008",
+            "RSP-CAN-009",
+            "RSP-CAN-012",
+            "RSP-CAN-036"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-007",
+            "OBL-CAN-008",
+            "OBL-CAN-009",
+            "OBL-CAN-012",
+            "OBL-CAN-036"
+          ],
+          "capability_surfaces": [
+            "policy bundle intake compatibility",
+            "Policy Object identity preservation",
+            "assignment-readiness tracking",
+            "safe-point replacement coordination"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-001",
+        "BCO-002"
+      ],
+      "gap_ids": [
+        "G-002"
+      ],
+      "doctrine_ids": [
+        "DOC-003",
+        "DOC-004"
+      ],
+      "must_not_do": [
+        "execute target component behavior",
+        "replace policy-consuming host components"
+      ],
+      "notes": "PolicyAssigner assigns Policy Objects; it does not host target mechanisms."
+    },
+    {
+      "entity_id": "E-INT-011",
+      "entity_name": "Envelope Assembler",
+      "entity_class": "core_internal_contract_side_composite",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "not_policy_consuming_contract_composite",
+      "surface_ids": [
+        "SURF-CONSUMING",
+        "SURF-CONTRACTUAL",
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-003",
+          "enablement_family_name": "Envelope Handling Enablement",
+          "usage_role": "envelope_construction",
+          "responsibility_ids": [
+            "RSP-CAN-006",
+            "RSP-CAN-027"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-006",
+            "OBL-CAN-027"
+          ],
+          "capability_surfaces": [
+            "envelope construction surface",
+            "raw-content-to-envelope conversion discipline"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-008",
+          "enablement_family_name": "Contract Template Enablement",
+          "usage_role": "typed_ingress_contract_template",
+          "responsibility_ids": [
+            "RSP-CAN-001",
+            "RSP-CAN-002",
+            "RSP-CAN-003",
+            "RSP-CAN-035"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-001",
+            "OBL-CAN-002",
+            "OBL-CAN-003",
+            "OBL-CAN-035"
+          ],
+          "capability_surfaces": [
+            "typed template admission",
+            "validating vs hot-path contract separation",
+            "no runtime COM-interface dependence"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-009",
+          "enablement_family_name": "Metadata / Timestamp Preparation Enablement",
+          "usage_role": "metadata_timestamp_composition_context",
+          "responsibility_ids": [
+            "RSP-CAN-005",
+            "RSP-CAN-015",
+            "RSP-CAN-027"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-005",
+            "OBL-CAN-015",
+            "OBL-CAN-027"
+          ],
+          "capability_surfaces": [
+            "metadata-to-envelope composition",
+            "timestamp-to-envelope composition",
+            "validating-path preparation compatibility"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-012",
+        "GOV-005",
+        "GOV-006"
+      ],
+      "gap_ids": [
+        "G-004",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-005",
+        "DOC-006"
+      ],
+      "must_not_do": [
+        "replace Assembler Ingress Port",
+        "bypass Metadata Injector",
+        "bypass Timestamp Stabilizer"
+      ],
+      "notes": "Envelope Assembler is the client-side composed contract object for ingress preparation."
+    },
+    {
+      "entity_id": "E-INT-012",
+      "entity_name": "Assembler Ingress Port",
+      "entity_class": "core_internal_boundary_port",
+      "delegation_status": "primary_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "not_policy_consuming",
+      "surface_ids": [
+        "SURF-CONSUMING",
+        "SURF-BOUNDARY",
+        "SURF-CONTRACTUAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-003",
+          "enablement_family_name": "Envelope Handling Enablement",
+          "usage_role": "envelope_receiving_and_slot_admission",
+          "responsibility_ids": [
+            "RSP-CAN-006",
+            "RSP-CAN-027",
+            "RSP-CAN-028"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-006",
+            "OBL-CAN-027",
+            "OBL-CAN-028"
+          ],
+          "capability_surfaces": [
+            "envelope receiving surface",
+            "envelope admission surface",
+            "handoff into runtime queue structures"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "consuming_boundary_discipline",
+          "responsibility_ids": [
+            "RSP-CAN-031",
+            "RSP-CAN-033"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-031",
+            "OBL-CAN-033"
+          ],
+          "capability_surfaces": [
+            "consuming boundary discipline",
+            "false actor prevention",
+            "occupancy/lifecycle distinction"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-008",
+          "enablement_family_name": "Contract Template Enablement",
+          "usage_role": "server_side_receiving_contract_shape",
+          "responsibility_ids": [
+            "RSP-CAN-035"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-035"
+          ],
+          "capability_surfaces": [
+            "contract-shape verification",
+            "slot targeting compatibility",
+            "typed/template receiving contract"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-012",
+        "BCO-005",
+        "BCO-006",
+        "GOV-006"
+      ],
+      "gap_ids": [
+        "G-006",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-002",
+        "DOC-005",
+        "DOC-006",
+        "DOC-007"
+      ],
+      "must_not_do": [
+        "assemble envelope",
+        "accept policy bundles",
+        "act as registry delivery boundary"
+      ],
+      "notes": "Assembler Ingress Port receives the already assembled Log Level Envelope."
+    },
+    {
+      "entity_id": "E-INT-013",
+      "entity_name": "Administrative / Ecosystem Port",
+      "entity_class": "core_internal_boundary_port",
+      "delegation_status": "primary_or_supporting_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "not_policy_consuming_port",
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-BOUNDARY",
+        "SURF-CONTRACTUAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-001",
+          "enablement_family_name": "Assignment Surface Enablement",
+          "usage_role": "policy_bundle_entry_support",
+          "responsibility_ids": [
+            "RSP-CAN-007",
+            "RSP-CAN-008",
+            "RSP-CAN-012"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-007",
+            "OBL-CAN-008",
+            "OBL-CAN-012"
+          ],
+          "capability_surfaces": [
+            "policy bundle receiving surface",
+            "assignment path support"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "administrative_boundary_separation",
+          "responsibility_ids": [
+            "RSP-CAN-016",
+            "RSP-CAN-033"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-016",
+            "OBL-CAN-033"
+          ],
+          "capability_surfaces": [
+            "administrative boundary separation",
+            "consuming/admin separation guard"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-008",
+          "enablement_family_name": "Contract Template Enablement",
+          "usage_role": "administrative_control_contract_surface",
+          "responsibility_ids": [
+            "RSP-CAN-013",
+            "RSP-CAN-017",
+            "RSP-CAN-035"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-013",
+            "OBL-CAN-017",
+            "OBL-CAN-035"
+          ],
+          "capability_surfaces": [
+            "administrative/control contract separation",
+            "contract-shape verification"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-009",
+          "enablement_family_name": "Metadata / Timestamp Preparation Enablement",
+          "usage_role": "metadata_directive_entry_support",
+          "responsibility_ids": [
+            "RSP-CAN-013",
+            "RSP-CAN-016"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-013",
+            "OBL-CAN-016"
+          ],
+          "capability_surfaces": [
+            "metadata directive intake compatibility",
+            "metadata authority preservation"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-001",
+        "BCO-002",
+        "BCO-003",
+        "GOV-007",
+        "GOV-008"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-005",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-002",
+        "DOC-003",
+        "DOC-004",
+        "DOC-005"
+      ],
+      "must_not_do": [
+        "receive normal content payloads",
+        "bypass PolicyAssigner",
+        "bypass Metadata Injector",
+        "bypass Queue Bundle Agent"
+      ],
+      "notes": "Administrative / Ecosystem Port separates administrative/control payloads from consuming content ingress."
+    },
+    {
+      "entity_id": "E-INT-014",
+      "entity_name": "Registry / Delivery Port",
+      "entity_class": "core_internal_boundary_port",
+      "delegation_status": "primary_or_supporting_delegated_entity",
+      "actor_status": "actor",
+      "policy_consuming_status": "not_policy_consuming_port",
+      "surface_ids": [
+        "SURF-BOUNDARY",
+        "SURF-CONTRACTUAL",
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [
+        {
+          "enablement_family_id": "EN-FAM-003",
+          "enablement_family_name": "Envelope Handling Enablement",
+          "usage_role": "outbound_envelope_handoff_surface",
+          "responsibility_ids": [
+            "RSP-CAN-023",
+            "RSP-CAN-030"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-023",
+            "OBL-CAN-030"
+          ],
+          "capability_surfaces": [
+            "envelope handoff contract surface",
+            "lifecycle transfer marking"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-005",
+          "enablement_family_name": "Registry Boundary Enablement",
+          "usage_role": "registry_readiness_receiver_admission_and_lifecycle_boundary",
+          "responsibility_ids": [
+            "RSP-CAN-021",
+            "RSP-CAN-022",
+            "RSP-CAN-024",
+            "RSP-CAN-026",
+            "RSP-CAN-030",
+            "RSP-CAN-034"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-021",
+            "OBL-CAN-022",
+            "OBL-CAN-024",
+            "OBL-CAN-026",
+            "OBL-CAN-030",
+            "OBL-CAN-034"
+          ],
+          "capability_surfaces": [
+            "registry readiness contract surface",
+            "receiver admission compatibility",
+            "lifecycle transfer discipline",
+            "registry internal non-ownership guard"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-007",
+          "enablement_family_name": "Boundary / Exclusion Enablement",
+          "usage_role": "outbound_boundary_non_ownership_guard",
+          "responsibility_ids": [
+            "RSP-CAN-026",
+            "RSP-CAN-033",
+            "RSP-CAN-034"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-026",
+            "OBL-CAN-033",
+            "OBL-CAN-034"
+          ],
+          "capability_surfaces": [
+            "boundary-sufficient access",
+            "post-handoff non-ownership guard"
+          ]
+        },
+        {
+          "enablement_family_id": "EN-FAM-008",
+          "enablement_family_name": "Contract Template Enablement",
+          "usage_role": "outbound_registry_contract_template",
+          "responsibility_ids": [
+            "RSP-CAN-024",
+            "RSP-CAN-035"
+          ],
+          "obligation_ids": [
+            "OBL-CAN-024",
+            "OBL-CAN-035"
+          ],
+          "capability_surfaces": [
+            "outbound registry contract execution",
+            "no runtime COM-interface dependence"
+          ]
+        }
+      ],
+      "governed_object_ids": [
+        "BCO-012",
+        "GOV-001",
+        "GOV-002",
+        "GOV-003",
+        "GOV-004"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-003",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-005",
+        "DOC-006"
+      ],
+      "must_not_do": [
+        "replace Dispatcher as actor",
+        "own registry internals",
+        "own registry-side lifecycle"
+      ],
+      "notes": "Registry / Delivery Port is the outbound contract surface used by Dispatcher."
+    },
+    {
+      "entity_id": "QUEUE-RUNTIME-LAYER",
+      "entity_name": "Queue Runtime Layer",
+      "entity_class": "logical_classification_layer",
+      "delegation_status": "classification_only",
+      "actor_status": "classification_only",
+      "surface_ids": [
+        "SURF-MANAGERIAL"
+      ],
+      "enablements": [],
+      "excluded_as_primary_delegated_entity": true,
+      "replacement_delegate_entity_ids": [
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-003",
+        "E-INT-004"
+      ],
+      "gap_ids": [
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-007"
+      ],
+      "must_not_do": [
+        "appear as primary_delegated_entity",
+        "replace Queue Bundle Agent",
+        "replace Single Queue Moderator",
+        "replace Round Managers"
+      ],
+      "notes": "Queue Runtime Layer is classification-only and carries no direct enablement as actor."
+    }
+  ],
+  "3.0_validation": {
+    "metadata_injector_exclusion": {
+      "entity_id": "E-INT-007",
+      "excluded_enablement_family_id": "EN-FAM-002",
+      "valid": true,
+      "rule": "Metadata Injector is schema/directive-governed and must not host Policy Object mechanisms."
+    },
+    "classification_only_guard": {
+      "entity_id": "QUEUE-RUNTIME-LAYER",
+      "must_not_be_primary_delegate": true,
+      "valid": true,
+      "replacement_delegate_entity_ids": [
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-003",
+        "E-INT-004"
+      ]
+    },
+    "governed_object_actor_guard": {
+      "guarded_governed_object_ids": [
+        "BCO-012",
+        "BCO-013",
+        "BCO-014",
+        "BCO-005",
+        "BCO-006",
+        "BCO-007",
+        "BCO-008",
+        "BCO-009",
+        "BCO-010",
+        "BCO-011"
+      ],
+      "rule": "These objects must not be treated as delegated actors."
+    },
+    "policy_consuming_count": {
+      "expected": 7,
+      "actual": 7,
+      "policy_consuming_entity_ids": [
+        "E-INT-002",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-008",
+        "E-INT-009"
+      ]
+    },
+    "new_or_promoted_delegation_entities": {
+      "expected": 4,
+      "actual": 4,
+      "entity_ids": [
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-013",
+        "E-INT-014"
+      ]
+    }
+  },
+  "4.0_query_examples": [
+    {
+      "query": "Which entities require EN-FAM-004?",
+      "expected_entity_ids": [
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006"
+      ]
+    },
+    {
+      "query": "Which entity is excluded from policy hosting?",
+      "expected_entity_ids": [
+        "E-INT-007"
+      ]
+    },
+    {
+      "query": "Which entities expose port/contract surfaces?",
+      "expected_entity_ids": [
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-013",
+        "E-INT-014"
+      ]
+    },
+    {
+      "query": "Which entity owns dispatcher feedback enablement?",
+      "expected_entity_ids": [
+        "E-INT-002"
+      ],
+      "expected_enablement_family_id": "EN-FAM-006"
+    },
+    {
+      "query": "Which classification layer must not be delegated?",
+      "expected_entity_ids": [
+        "QUEUE-RUNTIME-LAYER"
+      ]
+    }
+  ]
+}

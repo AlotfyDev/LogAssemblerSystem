@@ -1,0 +1,478 @@
+{
+  "source_data_manifest_id": "ASM-SKILLS-SOURCE-DATA-MANIFEST-V1",
+  "package_id": "08_assembler_skills",
+  "package_name": "Assembler Skills Architecture Pack",
+  "release_id": "assembler_skills_architecture_pack_v1",
+  "document_type": "source_data_manifest",
+  "file_path": "08_assembler_skills/00_source_data/00.00_SOURCE_DATA_MANIFEST.json",
+  "status": "draft_for_structured_local_installation",
+  "governing_decision": {
+    "decision_file": "08_assembler_skills/00_SOURCE_DATA_INTEGRATION_DECISION.md",
+    "decision_status": "binding_architectural_correction",
+    "decision_summary": "All canonical source dependencies required by package 08 must be vendored, snapshotted, or mirrored under 08_assembler_skills/00_source_data/."
+  },
+  "purpose": {
+    "summary": "Defines the vendored canonical source-data inventory required by the Assembler Skills package.",
+    "role": "Provides portable internal source roots for the Shared Canonical Kernel, Content Editor Skill, Query Expert Skill, CLI layer, adapters, and execution contracts.",
+    "non_goal": "Does not redefine canonical source semantics. It records local snapshot structure, origin metadata, refresh rules, and validation expectations."
+  },
+  "source_data_root": "08_assembler_skills/00_source_data/",
+  "alias_definitions": {
+    "SKILLS_ROOT": {
+      "resolves_to": "08_assembler_skills/",
+      "description": "Root of the Assembler Skills package."
+    },
+    "SOURCE_DATA_ROOT": {
+      "resolves_to": "08_assembler_skills/00_source_data/",
+      "description": "Root of all vendored canonical source data required by package 08."
+    },
+    "TAXONOMY_SOURCE_ROOT": {
+      "resolves_to": "08_assembler_skills/00_source_data/00.01_architectural_taxonomy/",
+      "description": "Vendored snapshot root for the Unified Assembler Architectural Taxonomy source group."
+    },
+    "RESPONSIBILITY_SOURCE_ROOT": {
+      "resolves_to": "08_assembler_skills/00_source_data/00.02_canonical_responsibilities/",
+      "description": "Vendored snapshot root for the Canonical Responsibility and Obligation Matrix source group."
+    },
+    "DELEGATION_SOURCE_ROOT": {
+      "resolves_to": "08_assembler_skills/00_source_data/00.03_delegation_enablement_matrix/",
+      "description": "Vendored snapshot root for the Canonical Delegation and Enablement Matrix V2 release source group."
+    }
+  },
+  "architecture_layer": {
+    "layer_id": "source_data_snapshot",
+    "layer_order": 0,
+    "layer_position": "before_shared_canonical_kernel",
+    "canonical_layer_chain": [
+      "Source Data Snapshot",
+      "Shared Canonical Kernel",
+      "Skill Core",
+      "Canonical CLI Layer",
+      "Environment Adapter Layer",
+      "Runtime Environment"
+    ],
+    "operating_law": "Source data is vendored. Kernel governs. Core reasons. CLI expresses. Adapter executes. Runtime hosts."
+  },
+  "source_groups": [
+    {
+      "source_group_id": "SRC-GRP-001",
+      "source_group_key": "architectural_taxonomy",
+      "source_group_name": "Unified Assembler Architectural Taxonomy",
+      "upstream_workspace_path": "00.01_Architectural_Taxonomy/",
+      "vendored_root": "08_assembler_skills/00_source_data/00.01_architectural_taxonomy/",
+      "source_specific_manifest": "08_assembler_skills/00_source_data/00.01_architectural_taxonomy/taxonomy_source_manifest.json",
+      "snapshot_role": "Provides canonical layers, members, contracts, doctrines, relations, graph inputs, and taxonomy indexes.",
+      "required_by": [
+        "shared_canonical_kernel",
+        "content_editor_skill",
+        "query_expert_skill",
+        "execution_contracts",
+        "future_ontology_expert_skill",
+        "future_graph_derivation"
+      ],
+      "required_for_query": true,
+      "required_for_editor": true,
+      "required_for_kernel": true,
+      "expected_local_structure": [
+        "00.00_Unified_Assembler_Architectural_Taxonomy.md",
+        "architectural_taxonomy_csv_indexes/",
+        "assembler_taxonomy_graphviz_files/",
+        "json_01_manifest_layers/",
+        "json_02_external_core_internal_members/",
+        "json_03_runtime_carrier_members/",
+        "json_04_contract_doctrine_relation_family_members/",
+        "json_05_relations_external_policy_envelope/",
+        "json_06_relations_runtime_wait_contracts_doctrine/",
+        "taxonomy_adds/"
+      ],
+      "normalization_policy": {
+        "case_policy": "lowercase_snake_case_for_vendored_directories",
+        "preserve_original_file_names_where_useful": true,
+        "record_upstream_names_in_source_file_map": true
+      },
+      "authority_note": "The vendored taxonomy snapshot is local evidence for skill operation; semantic authority remains the canonical taxonomy content represented by the snapshot."
+    },
+    {
+      "source_group_id": "SRC-GRP-002",
+      "source_group_key": "canonical_responsibilities",
+      "source_group_name": "Canonical Responsibility and Obligation Matrix V2.1",
+      "upstream_workspace_path": "00.02_Assembler_Canonical_Responsibilities/",
+      "vendored_root": "08_assembler_skills/00_source_data/00.02_canonical_responsibilities/",
+      "source_specific_manifest": "08_assembler_skills/00_source_data/00.02_canonical_responsibilities/responsibilities_source_manifest.json",
+      "snapshot_role": "Provides canonical responsibility IDs, obligation IDs, responsibility-obligation links, sub-responsibilities, and coverage register source data.",
+      "required_by": [
+        "shared_canonical_kernel",
+        "content_editor_skill",
+        "query_expert_skill",
+        "future_relational_derivation",
+        "future_ontology_expert_skill"
+      ],
+      "required_for_query": true,
+      "required_for_editor": true,
+      "required_for_kernel": true,
+      "expected_local_structure": [
+        "Canonical_Responsibility_Obligation_Matrix_V2_1.md",
+        "canonical_responsibility_v2_1_index.json",
+        "coverage_register_v2_1.csv",
+        "obligations_v2_1.csv",
+        "responsibilities_v2_1.csv",
+        "responsibility_obligation_links_v2_1.csv",
+        "sub_responsibilities_v2_1.csv"
+      ],
+      "normalization_policy": {
+        "case_policy": "preserve_canonical_file_names_for_source_identity",
+        "directory_policy": "lowercase_snake_case_for_vendored_group_root",
+        "record_upstream_names_in_source_file_map": true
+      },
+      "authority_note": "The responsibility source group is the source of registered responsibility and obligation identities; skills must not invent IDs outside its governed namespace."
+    },
+    {
+      "source_group_id": "SRC-GRP-003",
+      "source_group_key": "delegation_enablement_matrix",
+      "source_group_name": "Canonical Delegation and Enablement Matrix V2 Release",
+      "upstream_workspace_path": "00.03_Canonical_Delegation_Enablement_Matrix_V2/",
+      "vendored_root": "08_assembler_skills/00_source_data/00.03_delegation_enablement_matrix/",
+      "source_specific_manifest": "08_assembler_skills/00_source_data/00.03_delegation_enablement_matrix/delegation_source_manifest.json",
+      "snapshot_role": "Provides the canonical delegation, enablement, obligation delegation, trace coverage, rollup, join-key, and query-pattern substrate used directly by both skills.",
+      "required_by": [
+        "shared_canonical_kernel",
+        "content_editor_skill",
+        "query_expert_skill",
+        "canonical_cli_layer",
+        "environment_adapters",
+        "execution_contracts",
+        "future_postgresql_derivation",
+        "future_graph_derivation",
+        "future_ontology_expert_skill"
+      ],
+      "required_for_query": true,
+      "required_for_editor": true,
+      "required_for_kernel": true,
+      "expected_local_structure": [
+        "00_release_manifest/",
+        "01_reference_markdown/",
+        "02_entity_enablement_indexes/",
+        "03_delegation_matrix/",
+        "04_obligation_delegation/",
+        "05_trace_coverage_registers/",
+        "06_rollup_indexes/"
+      ],
+      "normalization_policy": {
+        "case_policy": "lowercase_snake_case_for_vendored_directories",
+        "preserve_canonical_file_names": true,
+        "record_upstream_names_in_source_file_map": true
+      },
+      "authority_note": "The delegation source group provides the main query and trace substrate for package 08. Its rollup files provide navigation and validation guidance only; they do not introduce new semantics."
+    }
+  ],
+  "vendored_source_policy": {
+    "policy_id": "VENDORED-SOURCE-DATA-POLICY-V1",
+    "summary": "Package 08 must operate from vendored source data under SOURCE_DATA_ROOT rather than hardcoded external workspace paths.",
+    "allowed_runtime_dependency_classes": [
+      "internal_source_data_path",
+      "approved_source_data_alias",
+      "manifest_recorded_origin_metadata"
+    ],
+    "forbidden_runtime_dependency_classes": [
+      "external_sibling_workspace_path",
+      "user_local_absolute_path",
+      "machine_specific_drive_letter_path",
+      "unrecorded_live_drive_path",
+      "adapter_selected_source_path",
+      "runtime_inferred_source_root"
+    ],
+    "allowed_origin_metadata": [
+      "upstream_workspace_path",
+      "upstream_folder_name",
+      "upstream_file_name",
+      "upstream_drive_url_if_available",
+      "upstream_revision_or_timestamp_if_available"
+    ],
+    "runtime_resolution_rule": "At runtime, all source reads must resolve through SOURCE_DATA_ROOT or a declared source-data alias.",
+    "editor_mutation_rule": "Mutating vendored source data requires explicit editor workflow, impact analysis, propagation plan, validation report, and refresh or patch record.",
+    "query_mutation_rule": "The Query Expert Skill must never mutate vendored source data."
+  },
+  "refresh_policy_ref": {
+    "file_path": "08_assembler_skills/00_source_data/00.03_SOURCE_DATA_REFRESH_POLICY.md",
+    "required": true,
+    "summary": "Defines allowed source-data refresh modes, required refresh records, staleness handling, validation after refresh, and adapter responsibilities."
+  },
+  "source_file_map_ref": {
+    "file_path": "08_assembler_skills/00_source_data/00.02_SOURCE_DATA_FILE_MAP.csv",
+    "required": true,
+    "row_grain": "one row = one vendored source file or source directory",
+    "summary": "Maps upstream source paths to normalized vendored source-data paths and records source role, required skill usage, refresh mode, and validation status."
+  },
+  "source_specific_manifest_refs": [
+    {
+      "source_group_id": "SRC-GRP-001",
+      "manifest_path": "08_assembler_skills/00_source_data/00.01_architectural_taxonomy/taxonomy_source_manifest.json",
+      "required": true
+    },
+    {
+      "source_group_id": "SRC-GRP-002",
+      "manifest_path": "08_assembler_skills/00_source_data/00.02_canonical_responsibilities/responsibilities_source_manifest.json",
+      "required": true
+    },
+    {
+      "source_group_id": "SRC-GRP-003",
+      "manifest_path": "08_assembler_skills/00_source_data/00.03_delegation_enablement_matrix/delegation_source_manifest.json",
+      "required": true
+    }
+  ],
+  "canonical_source_usage": {
+    "shared_canonical_kernel": {
+      "uses_source_groups": [
+        "architectural_taxonomy",
+        "canonical_responsibilities",
+        "delegation_enablement_matrix"
+      ],
+      "source_access_mode": "read_only_governance_reference",
+      "must_use_aliases": true
+    },
+    "content_editor_skill": {
+      "uses_source_groups": [
+        "architectural_taxonomy",
+        "canonical_responsibilities",
+        "delegation_enablement_matrix"
+      ],
+      "source_access_mode": "controlled_edit_or_patch_proposal",
+      "must_use_aliases": true,
+      "requires_refresh_policy_for_snapshot_updates": true
+    },
+    "query_expert_skill": {
+      "uses_source_groups": [
+        "architectural_taxonomy",
+        "canonical_responsibilities",
+        "delegation_enablement_matrix"
+      ],
+      "source_access_mode": "strict_read_only",
+      "must_use_aliases": true,
+      "primary_query_substrate": [
+        "${DELEGATION_SOURCE_ROOT}/06_rollup_indexes/06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json",
+        "${DELEGATION_SOURCE_ROOT}/06_rollup_indexes/06.02_JOIN_KEYS_REFERENCE.csv",
+        "${DELEGATION_SOURCE_ROOT}/06_rollup_indexes/06.03_QUERY_PATTERNS.md",
+        "${DELEGATION_SOURCE_ROOT}/06_rollup_indexes/06.04_CROSS_BUNDLE_FILE_MAP.csv",
+        "${DELEGATION_SOURCE_ROOT}/06_rollup_indexes/06.05_ROLLUP_SCHEMA.md"
+      ]
+    },
+    "canonical_cli_layer": {
+      "uses_source_groups": [
+        "delegation_enablement_matrix"
+      ],
+      "source_access_mode": "passes_source_data_context_to_commands",
+      "must_use_aliases": true
+    },
+    "environment_adapter_layer": {
+      "uses_source_groups": [
+        "all_declared_source_groups"
+      ],
+      "source_access_mode": "runtime_resolution_or_refresh_execution_only",
+      "must_use_aliases": true,
+      "must_not_decide_semantics": true
+    }
+  },
+  "expected_counts": {
+    "source_group_count": 3,
+    "source_data_control_file_count": 4,
+    "source_specific_manifest_count": 3,
+    "total_source_data_manifested_control_files": 7,
+    "vendored_source_file_count": "tracked_in_00.02_SOURCE_DATA_FILE_MAP.csv",
+    "package_08_corrected_minimum_specification_file_count": 59,
+    "delegation_release_top_level_responsibility_count": 49,
+    "delegation_release_top_level_obligation_count": 49,
+    "delegation_release_responsibility_family_count": 8,
+    "delegation_release_enablement_family_count": 9,
+    "delegation_release_core_gap_closure_count": 7,
+    "delegation_release_canonical_contract_family_count": 8,
+    "delegation_release_canonical_contract_count": 26
+  },
+  "validation_rules": [
+    {
+      "rule_id": "SRC-DATA-VAL-001",
+      "rule_name": "Source Data Root Exists",
+      "severity": "blocking",
+      "statement": "The directory 08_assembler_skills/00_source_data/ must exist before package 08 can be treated as portable."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-002",
+      "rule_name": "Required Source Groups Exist",
+      "severity": "blocking",
+      "statement": "All required source groups must exist under SOURCE_DATA_ROOT: architectural_taxonomy, canonical_responsibilities, and delegation_enablement_matrix."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-003",
+      "rule_name": "No External Runtime Dependency",
+      "severity": "blocking",
+      "statement": "Skill runtime operation must not depend on external sibling workspace paths."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-004",
+      "rule_name": "Alias Resolution Required",
+      "severity": "blocking",
+      "statement": "All skill source reads must resolve through SOURCE_DATA_ROOT or approved source-data aliases."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-005",
+      "rule_name": "Source-Specific Manifest Required",
+      "severity": "required",
+      "statement": "Every source group must have a source-specific manifest recording upstream origin, vendored root, included files, refresh policy, and known limitations."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-006",
+      "rule_name": "Source File Map Required",
+      "severity": "required",
+      "statement": "The source data file map must record every vendored source file or directory used by the skills."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-007",
+      "rule_name": "Refresh Trace Required",
+      "severity": "required",
+      "statement": "Every refresh from upstream source material must record source, changed files, reason, validation result, and operator or tool context."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-008",
+      "rule_name": "Query Skill Read-Only",
+      "severity": "blocking",
+      "statement": "The Query Expert Skill must not mutate source data."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-009",
+      "rule_name": "Editor Source Mutation Requires Propagation",
+      "severity": "blocking",
+      "statement": "Any editor operation that mutates or proposes mutation to source data must include impact analysis, propagation plan, validation checklist, and review output."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-010",
+      "rule_name": "Snapshot Does Not Redefine Canon",
+      "severity": "blocking",
+      "statement": "Vendored source data is local operating evidence and must not redefine canonical semantics."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-011",
+      "rule_name": "Rollup No-New-Semantics Preservation",
+      "severity": "blocking",
+      "statement": "The vendored rollup source must remain a navigation, validation, query guidance, and derivation-readiness layer only."
+    },
+    {
+      "rule_id": "SRC-DATA-VAL-012",
+      "rule_name": "Anti-Collapse Preservation",
+      "severity": "blocking",
+      "statement": "Source-data usage must preserve anti-collapse rules including Metadata Injector exclusion, Queue Runtime Layer classification, flag/report separation, Queue-as-Container, occupancy/lifecycle separation, Registry Port vs Dispatcher, and typed/template contract doctrine."
+    }
+  ],
+  "snapshot_status": {
+    "status": "planned_snapshot",
+    "snapshot_material_present": "to_be_verified_by_source_data_file_map",
+    "source_specific_manifests_present": "planned",
+    "refresh_policy_present": "planned",
+    "last_refresh": null,
+    "staleness_status": "unknown_until_file_map_and_source_specific_manifests_are_installed"
+  },
+  "adapter_requirements": {
+    "codex": {
+      "source_data_resolution": "repository_relative_path_under_SOURCE_DATA_ROOT",
+      "may_refresh": true,
+      "may_write": "editor_adapter_only",
+      "query_write_permission": false
+    },
+    "kilo_code": {
+      "source_data_resolution": "workspace_relative_path_under_SOURCE_DATA_ROOT",
+      "may_refresh": true,
+      "may_write": "editor_adapter_only",
+      "query_write_permission": false
+    },
+    "opencode": {
+      "source_data_resolution": "local_filesystem_relative_path_under_SOURCE_DATA_ROOT",
+      "may_refresh": true,
+      "may_write": "editor_adapter_only",
+      "query_write_permission": false
+    },
+    "github": {
+      "source_data_resolution": "repository_path_under_SOURCE_DATA_ROOT",
+      "may_refresh": true,
+      "may_write": "editor_adapter_only_through_branch_or_pull_request",
+      "query_write_permission": false
+    },
+    "google_drive": {
+      "source_data_resolution": "exported_or_snapshotted_drive_content_under_SOURCE_DATA_ROOT",
+      "may_refresh": true,
+      "may_write": "editor_adapter_only_with_explicit_refresh_or_patch_record",
+      "query_write_permission": false
+    },
+    "local_runtime": {
+      "source_data_resolution": "local_relative_path_under_SOURCE_DATA_ROOT",
+      "may_refresh": true,
+      "may_write": "editor_adapter_only",
+      "query_write_permission": false
+    }
+  },
+  "non_canonical_conditions": [
+    "A skill reads source data from external sibling workspace directories at runtime.",
+    "A source-data path is inferred by an adapter without a manifest record.",
+    "A query operation mutates vendored source files.",
+    "An editor operation mutates vendored source files without propagation and validation.",
+    "A source-data refresh overwrites files without a refresh record.",
+    "A vendored snapshot is treated as new semantic authority rather than local evidence.",
+    "A rollup file is treated as introducing new semantics.",
+    "A runtime adapter decides canonical meaning."
+  ],
+  "downstream_readiness": {
+    "query_engine_readiness": {
+      "status": "planned",
+      "requires": [
+        "00.02_SOURCE_DATA_FILE_MAP.csv",
+        "delegation_source_manifest.json",
+        "join_keys_reference",
+        "rollup_index",
+        "query_patterns"
+      ]
+    },
+    "editor_skill_readiness": {
+      "status": "planned",
+      "requires": [
+        "00.03_SOURCE_DATA_REFRESH_POLICY.md",
+        "source_specific_manifests",
+        "impact_analysis_protocol",
+        "propagation_rules",
+        "editor_validation_checklist"
+      ]
+    },
+    "postgresql_derivation_readiness": {
+      "status": "prepared_by_source_data_structure",
+      "requires": [
+        "stable IDs",
+        "join keys",
+        "source file map",
+        "rollup schema",
+        "trace coverage schema"
+      ]
+    },
+    "graph_derivation_readiness": {
+      "status": "prepared_by_source_data_structure",
+      "requires": [
+        "taxonomy graphviz files",
+        "trace coverage registers",
+        "rollup index",
+        "anti-collapse guards"
+      ]
+    },
+    "ontology_expert_skill_readiness": {
+      "status": "prepared_by_trace_and_source_data_governance",
+      "requires": [
+        "taxonomy source",
+        "new entities register",
+        "gap closure coverage",
+        "anti-collapse rules",
+        "query patterns"
+      ]
+    }
+  },
+  "notes": [
+    "This manifest records the portable source-data substrate for package 08.",
+    "It intentionally separates upstream origin metadata from runtime source resolution.",
+    "Runtime operation must use SOURCE_DATA_ROOT aliases.",
+    "External workspace paths may be recorded for provenance but must not be required for normal skill operation.",
+    "The next expected files are 00.01_SOURCE_DATA_README.md, 00.02_SOURCE_DATA_FILE_MAP.csv, and 00.03_SOURCE_DATA_REFRESH_POLICY.md."
+  ]
+}

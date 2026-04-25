@@ -1,0 +1,658 @@
+{
+  "package_id": "03_delegation_matrix",
+  "package_name": "Delegation Matrix Package",
+  "release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "package_path": "03_delegation_matrix/",
+  "package_status": "draft_for_structured_local_installation",
+  "package_sequence": 3,
+  "package_role": "Defines the responsibility-to-entity delegation matrix for the Canonical Delegation & Enablement Matrix V2 release.",
+  "0.1_purpose": {
+    "summary": "Provide the canonical queryable matrix that maps every top-level responsibility to its primary delegated entity, supporting entities, governed objects, enablement families, surface types, obligations, and trace IDs.",
+    "mapping_law": "Responsibility / Obligation → Primary Delegated Entity → Supporting Entities → Governed Objects → Enablement Family → Surface Type → Trace",
+    "primary_question_answered": "Given a canonical responsibility, which architectural entity carries it, what objects does it govern, what enablement does it require, and how can the assignment be traced?"
+  },
+  "0.2_source_basis": {
+    "reference_markdown": [
+      "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+      "01_reference_markdown/01.02_canonical_assignment_principles.md",
+      "01_reference_markdown/01.03_corrected_delegation_entities.md",
+      "01_reference_markdown/01.04_enablement_families_reference.md",
+      "01_reference_markdown/01.05_gap_closure_delegation_coverage.md",
+      "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+    ],
+    "entity_enablement_indexes": [
+      "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+      "02_entity_enablement_indexes/02.02_enablement_families_index.csv",
+      "02_entity_enablement_indexes/02.03_surfaces_index.csv",
+      "02_entity_enablement_indexes/02.04_governed_objects_index.csv",
+      "02_entity_enablement_indexes/02.05_ports_and_contract_surfaces_index.csv",
+      "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+      "02_entity_enablement_indexes/02.07_entity_enablement_index.json",
+      "02_entity_enablement_indexes/02.08_ENTITY_ENABLEMENT_SCHEMA.md"
+    ],
+    "upstream_architectural_sources": [
+      "Canonical Contract Matrix V2",
+      "Unified Assembler Architectural Taxonomy",
+      "Canonical Responsibility & Obligation Matrix V2.1",
+      "Gap Closure Roadmap V1",
+      "Legacy Batch 4 Delegation / Enablement Pack",
+      "Corrected Delegation & Enablement Matrix Draft"
+    ]
+  },
+  "0.3_package_files": [
+    {
+      "file_id": "03.00",
+      "file_name": "03.00_PACKAGE_MANIFEST.json",
+      "file_path": "03_delegation_matrix/03.00_PACKAGE_MANIFEST.json",
+      "format": "json",
+      "status": "current_file",
+      "role": "Package-level manifest, file inventory, validation rules, counts, and downstream usage notes.",
+      "primary_key": "package_id"
+    },
+    {
+      "file_id": "03.01",
+      "file_name": "03.01_delegation_matrix_v2.csv",
+      "file_path": "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+      "format": "csv",
+      "status": "planned",
+      "role": "Flat canonical responsibility-to-delegation matrix.",
+      "primary_key": "delegation_id",
+      "secondary_keys": [
+        "responsibility_id",
+        "responsibility_family_id",
+        "primary_delegated_entity_ids",
+        "enablement_family_ids"
+      ]
+    },
+    {
+      "file_id": "03.02",
+      "file_name": "03.02_delegation_matrix_by_family_v2.csv",
+      "file_path": "03_delegation_matrix/03.02_delegation_matrix_by_family_v2.csv",
+      "format": "csv",
+      "status": "planned",
+      "role": "Family-grouped view of delegation rows for responsibility-family analysis.",
+      "primary_key": "family_row_id",
+      "secondary_keys": [
+        "responsibility_family_id",
+        "responsibility_id",
+        "primary_delegated_entity_ids"
+      ]
+    },
+    {
+      "file_id": "03.03",
+      "file_name": "03.03_delegation_entity_load_summary.csv",
+      "file_path": "03_delegation_matrix/03.03_delegation_entity_load_summary.csv",
+      "format": "csv",
+      "status": "planned",
+      "role": "Summary of responsibility load per delegated entity, including primary and supporting counts.",
+      "primary_key": "entity_id",
+      "secondary_keys": [
+        "entity_name",
+        "primary_responsibility_count",
+        "supporting_responsibility_count",
+        "enablement_family_ids"
+      ]
+    },
+    {
+      "file_id": "03.04",
+      "file_name": "03.04_delegation_matrix_index.json",
+      "file_path": "03_delegation_matrix/03.04_delegation_matrix_index.json",
+      "format": "json",
+      "status": "planned",
+      "role": "Nested JSON index of responsibility families, delegation rows, entity load, governed object usage, and trace coverage.",
+      "primary_key": "document_id"
+    },
+    {
+      "file_id": "03.05",
+      "file_name": "03.05_DELEGATION_MATRIX_SCHEMA.md",
+      "file_path": "03_delegation_matrix/03.05_DELEGATION_MATRIX_SCHEMA.md",
+      "format": "markdown",
+      "status": "planned",
+      "role": "Human-readable schema documentation for delegation matrix files.",
+      "primary_key": "document_title"
+    }
+  ],
+  "1.0_scope": {
+    "in_scope": [
+      "top-level responsibility delegation",
+      "responsibility-family grouping",
+      "primary delegated entity mapping",
+      "supporting entity mapping",
+      "governed object mapping",
+      "enablement family mapping",
+      "surface type mapping",
+      "obligation trace mapping",
+      "contract trace mapping",
+      "gap trace mapping",
+      "doctrine trace mapping",
+      "entity load summary",
+      "query-ready CSV indexes",
+      "nested JSON delegation index"
+    ],
+    "out_of_scope": [
+      "final implementation package boundaries",
+      "final class definitions",
+      "method signatures",
+      "runtime scheduling algorithms",
+      "database physical schema",
+      "PostgreSQL table creation",
+      "component-to-code mapping",
+      "capability candidate implementation"
+    ]
+  },
+  "2.0_canonical_counts": {
+    "responsibility_family_count": 8,
+    "top_level_responsibility_count": 49,
+    "delivery_cycle_flag_sub_responsibility_count": 7,
+    "dispatcher_feedback_report_sub_responsibility_count": 5,
+    "enablement_family_count": 9,
+    "core_gap_closure_count": 7,
+    "new_or_promoted_delegation_entity_count": 4,
+    "new_or_promoted_governed_artifact_count": 3,
+    "policy_consuming_component_count": 7,
+    "policy_hosting_exclusion_count": 1,
+    "classification_only_runtime_layer_count": 1
+  },
+  "3.0_responsibility_family_index": [
+    {
+      "responsibility_family_id": "RSP-FAM-001",
+      "family_name": "Ingress Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-001",
+        "RSP-CAN-006"
+      ],
+      "primary_delegation_focus": [
+        "Envelope Assembler",
+        "Validator",
+        "Timestamp Stabilizer",
+        "Assembler Ingress Port"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-008",
+        "EN-FAM-009"
+      ],
+      "primary_gap_ids": [
+        "G-004",
+        "G-007"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-002",
+      "family_name": "Policy Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-007",
+        "RSP-CAN-012"
+      ],
+      "primary_delegation_focus": [
+        "Administrative / Ecosystem Port",
+        "PolicyAssigner",
+        "policy-consuming components"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-001",
+        "EN-FAM-002",
+        "EN-FAM-007",
+        "EN-FAM-008"
+      ],
+      "primary_gap_ids": [
+        "G-002"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-003",
+      "family_name": "Metadata / Preparation Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-013",
+        "RSP-CAN-016"
+      ],
+      "primary_delegation_focus": [
+        "Administrative / Ecosystem Port",
+        "Metadata Injector",
+        "Envelope Assembler",
+        "Timestamp Stabilizer"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-007",
+        "EN-FAM-008",
+        "EN-FAM-009"
+      ],
+      "primary_gap_ids": [
+        "G-002",
+        "G-004",
+        "G-007"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-004",
+      "family_name": "Operational / Scaling Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-017",
+        "RSP-CAN-020"
+      ],
+      "primary_delegation_focus": [
+        "Administrative / Ecosystem Port",
+        "Queue Bundle Agent",
+        "Writing / Feeding Round Manager",
+        "Dispatching / Delivery Round Manager",
+        "PolicyAssigner"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-002",
+        "EN-FAM-004",
+        "EN-FAM-008"
+      ],
+      "primary_gap_ids": [
+        "G-005",
+        "G-006"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-005",
+      "family_name": "Registry / Dispatcher Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-021",
+        "RSP-CAN-026"
+      ],
+      "primary_delegation_focus": [
+        "Dispatcher",
+        "Registry / Delivery Port",
+        "Log Level Records Registry"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-005",
+        "EN-FAM-006",
+        "EN-FAM-007",
+        "EN-FAM-008"
+      ],
+      "primary_gap_ids": [
+        "G-001",
+        "G-003",
+        "G-006"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-006",
+      "family_name": "Envelope Carrier Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-027",
+        "RSP-CAN-031"
+      ],
+      "primary_delegation_focus": [
+        "Envelope Assembler",
+        "Assembler Ingress Port",
+        "Writing / Feeding Round Manager",
+        "Dispatching / Delivery Round Manager",
+        "Dispatcher",
+        "Single Queue Moderator"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-004",
+        "EN-FAM-005",
+        "EN-FAM-007",
+        "EN-FAM-009"
+      ],
+      "primary_gap_ids": [
+        "G-004",
+        "G-006",
+        "G-007"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-007",
+      "family_name": "Boundary / Exclusion Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-032",
+        "RSP-CAN-037"
+      ],
+      "primary_delegation_focus": [
+        "Assembler Subsystem",
+        "Assembler Ingress Port",
+        "Administrative / Ecosystem Port",
+        "Registry / Delivery Port",
+        "Dispatcher",
+        "PolicyAssigner",
+        "Queue Bundle Agent",
+        "Single Queue Moderator"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-001",
+        "EN-FAM-002",
+        "EN-FAM-004",
+        "EN-FAM-007",
+        "EN-FAM-008"
+      ],
+      "primary_gap_ids": [
+        "G-001",
+        "G-002",
+        "G-005",
+        "G-006",
+        "G-007"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-008",
+      "family_name": "Runtime State Responsibility Delegation",
+      "responsibility_id_range": [
+        "RSP-CAN-038",
+        "RSP-CAN-049"
+      ],
+      "primary_delegation_focus": [
+        "Queue Bundle Agent",
+        "Single Queue Moderator",
+        "Writing / Feeding Round Manager",
+        "Dispatching / Delivery Round Manager",
+        "Dispatcher"
+      ],
+      "primary_enablement_family_ids": [
+        "EN-FAM-002",
+        "EN-FAM-004",
+        "EN-FAM-006",
+        "EN-FAM-007"
+      ],
+      "primary_gap_ids": [
+        "G-003",
+        "G-005",
+        "G-006"
+      ]
+    }
+  ],
+  "4.0_schema_expectations": {
+    "03.01_delegation_matrix_v2.csv": {
+      "grain": "one row per top-level canonical responsibility",
+      "expected_row_count": 49,
+      "required_primary_key": "delegation_id",
+      "required_columns": [
+        "delegation_id",
+        "responsibility_id",
+        "responsibility_family_id",
+        "responsibility_statement",
+        "primary_delegated_entity_ids",
+        "primary_delegated_entity_names",
+        "supporting_entity_ids",
+        "supporting_entity_names",
+        "governed_object_ids",
+        "governed_object_names",
+        "surface_ids",
+        "surface_names",
+        "enablement_family_ids",
+        "enablement_family_names",
+        "obligation_ids",
+        "contract_trace_ids",
+        "gap_trace_ids",
+        "doctrine_trace_ids",
+        "taxonomy_layer_ids",
+        "assignment_confidence",
+        "anti_collapse_notes",
+        "notes"
+      ]
+    },
+    "03.02_delegation_matrix_by_family_v2.csv": {
+      "grain": "one row per responsibility under family grouping",
+      "expected_row_count": 49,
+      "required_primary_key": "family_row_id",
+      "required_columns": [
+        "family_row_id",
+        "responsibility_family_id",
+        "family_name",
+        "family_sequence",
+        "responsibility_id",
+        "responsibility_sequence",
+        "responsibility_statement",
+        "primary_delegated_entity_ids",
+        "supporting_entity_ids",
+        "governed_object_ids",
+        "enablement_family_ids",
+        "surface_ids",
+        "gap_trace_ids",
+        "family_notes"
+      ]
+    },
+    "03.03_delegation_entity_load_summary.csv": {
+      "grain": "one row per entity appearing as primary or supporting delegation carrier",
+      "expected_minimum_row_count": 14,
+      "required_primary_key": "entity_id",
+      "required_columns": [
+        "entity_id",
+        "entity_name",
+        "entity_class",
+        "delegation_status",
+        "primary_responsibility_count",
+        "primary_responsibility_ids",
+        "supporting_responsibility_count",
+        "supporting_responsibility_ids",
+        "total_responsibility_touch_count",
+        "enablement_family_ids",
+        "surface_ids",
+        "governed_object_ids",
+        "gap_trace_ids",
+        "load_notes"
+      ]
+    },
+    "03.04_delegation_matrix_index.json": {
+      "grain": "nested delegation index grouped by responsibility family and entity load",
+      "required_root_fields": [
+        "document_id",
+        "document_type",
+        "release_id",
+        "package_id",
+        "counts",
+        "responsibility_families",
+        "delegation_rows",
+        "entity_load_index",
+        "validation",
+        "query_examples"
+      ]
+    },
+    "03.05_DELEGATION_MATRIX_SCHEMA.md": {
+      "grain": "human-readable schema documentation",
+      "required_sections": [
+        "Document Purpose",
+        "Package Scope",
+        "Canonical Files",
+        "CSV Schema Rules",
+        "Delegation Matrix Schema",
+        "Family Matrix Schema",
+        "Entity Load Summary Schema",
+        "JSON Index Schema",
+        "Validation Rules",
+        "Query Families",
+        "Downstream Derivation Guidance"
+      ]
+    }
+  },
+  "5.0_join_key_policy": {
+    "primary_join_keys": [
+      "delegation_id",
+      "responsibility_id",
+      "responsibility_family_id",
+      "entity_id",
+      "governed_object_id",
+      "enablement_family_id",
+      "surface_id",
+      "obligation_id",
+      "contract_id",
+      "gap_id",
+      "doctrine_id",
+      "taxonomy_layer_id"
+    ],
+    "csv_multivalue_rule": "Use semicolon-separated canonical IDs for multi-value CSV fields.",
+    "json_multivalue_rule": "Use arrays for all multi-value JSON fields.",
+    "natural_language_key_rule": "Natural-language names are descriptive only and must not be used as primary join keys."
+  },
+  "6.0_validation_rules": {
+    "responsibility_coverage": [
+      {
+        "rule_id": "VAL-03-001",
+        "rule": "Every top-level responsibility from RSP-CAN-001 through RSP-CAN-049 must appear exactly once in 03.01_delegation_matrix_v2.csv."
+      },
+      {
+        "rule_id": "VAL-03-002",
+        "rule": "Every responsibility must have at least one primary delegated entity."
+      },
+      {
+        "rule_id": "VAL-03-003",
+        "rule": "Every responsibility must have at least one enablement family."
+      },
+      {
+        "rule_id": "VAL-03-004",
+        "rule": "Every responsibility must have at least one surface classification."
+      },
+      {
+        "rule_id": "VAL-03-005",
+        "rule": "Every responsibility must map to at least one obligation ID."
+      }
+    ],
+    "entity_assignment": [
+      {
+        "rule_id": "VAL-03-006",
+        "rule": "E-INT-001 Assembler Subsystem may appear as accountability owner but must not absorb narrow operational delegation where a mature entity exists."
+      },
+      {
+        "rule_id": "VAL-03-007",
+        "rule": "QUEUE-RUNTIME-LAYER must not appear as primary delegated entity."
+      },
+      {
+        "rule_id": "VAL-03-008",
+        "rule": "Governed objects such as BCO-012, BCO-013, BCO-014, BCO-005, BCO-006, BCO-007, BCO-008, BCO-009, BCO-010, and BCO-011 must not be promoted to actor status."
+      }
+    ],
+    "policy_and_metadata": [
+      {
+        "rule_id": "VAL-03-009",
+        "rule": "Metadata Injector must not be assigned policy-hosting responsibilities or EN-FAM-002."
+      },
+      {
+        "rule_id": "VAL-03-010",
+        "rule": "Policy Object must remain a semantic governor and must not become behavior executor."
+      },
+      {
+        "rule_id": "VAL-03-011",
+        "rule": "PolicyAssigner must mediate policy assignment but must not replace policy-consuming host components."
+      }
+    ],
+    "ports_and_boundaries": [
+      {
+        "rule_id": "VAL-03-012",
+        "rule": "Envelope Assembler must not replace Assembler Ingress Port."
+      },
+      {
+        "rule_id": "VAL-03-013",
+        "rule": "Administrative / Ecosystem Port must not receive normal log content payloads."
+      },
+      {
+        "rule_id": "VAL-03-014",
+        "rule": "Registry / Delivery Port must not replace Dispatcher as actor."
+      },
+      {
+        "rule_id": "VAL-03-015",
+        "rule": "Dispatcher must remain the final assembler-side handoff actor."
+      }
+    ],
+    "runtime_state": [
+      {
+        "rule_id": "VAL-03-016",
+        "rule": "Queue equals Container; no separate runtime container may be introduced above Queue Container."
+      },
+      {
+        "rule_id": "VAL-03-017",
+        "rule": "Writing and delivery waiting lists must store Queue Container Identifiers, not envelopes."
+      },
+      {
+        "rule_id": "VAL-03-018",
+        "rule": "Envelope Slot Occupancy must remain a binding/state object and must not imply envelope lifecycle ownership."
+      }
+    ],
+    "feedback_reporting": [
+      {
+        "rule_id": "VAL-03-019",
+        "rule": "Delivery-Cycle Flag Set must remain distinct from Dispatcher Feedback Report."
+      },
+      {
+        "rule_id": "VAL-03-020",
+        "rule": "RSP-CAN-025 and RSP-CAN-048 must both delegate to Dispatcher but govern different artifacts."
+      }
+    ]
+  },
+  "7.0_downstream_usage": {
+    "used_by_packages": [
+      "04_obligation_delegation",
+      "05_trace_coverage_registers",
+      "06_rollup_indexes",
+      "07_packages"
+    ],
+    "supports_future_derivations": [
+      "capability candidate extraction",
+      "component responsibility load analysis",
+      "trace coverage validation",
+      "PostgreSQL logical derivation",
+      "graph regeneration",
+      "CLI query taxonomy",
+      "documentation consistency checks"
+    ]
+  },
+  "8.0_query_examples": [
+    {
+      "query_id": "Q-03-001",
+      "query": "Find the primary delegated entity for RSP-CAN-025.",
+      "expected_join_path": "03.01.responsibility_id → primary_delegated_entity_ids"
+    },
+    {
+      "query_id": "Q-03-002",
+      "query": "List all responsibilities carried by Dispatcher.",
+      "expected_join_path": "03.01.primary_delegated_entity_ids contains E-INT-002 OR supporting_entity_ids contains E-INT-002"
+    },
+    {
+      "query_id": "Q-03-003",
+      "query": "Find all responsibilities requiring EN-FAM-004.",
+      "expected_join_path": "03.01.enablement_family_ids contains EN-FAM-004"
+    },
+    {
+      "query_id": "Q-03-004",
+      "query": "Find all responsibilities covering G-006.",
+      "expected_join_path": "03.01.gap_trace_ids contains G-006"
+    },
+    {
+      "query_id": "Q-03-005",
+      "query": "Find all responsibilities in RSP-FAM-008.",
+      "expected_join_path": "03.02.responsibility_family_id = RSP-FAM-008"
+    },
+    {
+      "query_id": "Q-03-006",
+      "query": "Find all delegated responsibilities involving Log Level Envelope.",
+      "expected_join_path": "03.01.governed_object_ids contains BCO-012"
+    },
+    {
+      "query_id": "Q-03-007",
+      "query": "Verify that Queue Runtime Layer is not a primary delegate.",
+      "expected_join_path": "03.01.primary_delegated_entity_ids must not contain QUEUE-RUNTIME-LAYER"
+    },
+    {
+      "query_id": "Q-03-008",
+      "query": "Find the responsibility load of Envelope Assembler.",
+      "expected_join_path": "03.03.entity_id = E-INT-011"
+    }
+  ],
+  "9.0_installation_notes": {
+    "installation_root": "canonical_delegation_enablement_matrix_v2_release/",
+    "install_path": "canonical_delegation_enablement_matrix_v2_release/03_delegation_matrix/",
+    "delivery_mode": "file_by_file",
+    "current_file": "03_delegation_matrix/03.00_PACKAGE_MANIFEST.json",
+    "next_expected_file": "03_delegation_matrix/03.01_delegation_matrix_v2.csv"
+  },
+  "10.0_final_canonical_statement": {
+    "statement": "The 03_delegation_matrix package is the canonical responsibility-to-entity assignment layer of the release. It must preserve the separation between accountability, primary delegation, support, governed objects, enablement, surfaces, and trace coverage.",
+    "non_canonical_if_violated": [
+      "a responsibility lacks a primary delegated entity",
+      "Queue Runtime Layer is used as a primary delegate",
+      "Metadata Injector is treated as policy-consuming",
+      "Registry / Delivery Port replaces Dispatcher as actor",
+      "Delivery-Cycle Flag Set is conflated with Dispatcher Feedback Report",
+      "Queue Container is split from Queue",
+      "governed carrier objects are promoted into actors without governance revision"
+    ]
+  }
+}

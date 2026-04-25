@@ -1,0 +1,87 @@
+{
+  "0.1.document_id": "ASM-TAX-JSON-MANIFEST-V1",
+  "0.2.document_name": "Assembler Taxonomy Modular JSON Manifest",
+  "0.3.purpose": "Index modular JSON bundles for the unified Assembler Architectural Taxonomy.",
+  "0.4.packaging_rule": "Small specialized JSON files; filenames include numeric ordering and semantic slug.",
+  "1.1.source_reference": "Unified Assembler Architectural Taxonomy — Layers, Members, and Relations",
+  "1.2.generation_scope": [
+    "manifest",
+    "layers"
+  ],
+  "2.1.bundle_sequence": [
+    {
+      "bundle_id": "JSON-BUNDLE-01",
+      "name": "manifest_and_layers",
+      "status": "generated",
+      "contents": [
+        "00_manifest",
+        "01_layers"
+      ]
+    },
+    {
+      "bundle_id": "JSON-BUNDLE-02",
+      "name": "external_and_internal_members",
+      "status": "planned"
+    },
+    {
+      "bundle_id": "JSON-BUNDLE-03",
+      "name": "runtime_and_carrier_members",
+      "status": "planned"
+    },
+    {
+      "bundle_id": "JSON-BUNDLE-04",
+      "name": "contract_doctrine_relation_family_members",
+      "status": "planned"
+    },
+    {
+      "bundle_id": "JSON-BUNDLE-05",
+      "name": "relations_external_policy_carrier",
+      "status": "planned"
+    },
+    {
+      "bundle_id": "JSON-BUNDLE-06",
+      "name": "relations_runtime_wait_contract_doctrine",
+      "status": "planned"
+    }
+  ],
+  "3.1.layer_count": 7,
+  "3.2.layers": [
+    {
+      "layer_id": "L-001",
+      "name": "External Architectural Entities",
+      "member_count": 7
+    },
+    {
+      "layer_id": "L-002",
+      "name": "Core Internal Architectural Entities",
+      "member_count": 10
+    },
+    {
+      "layer_id": "L-003",
+      "name": "Runtime / State Entities",
+      "member_count": 10
+    },
+    {
+      "layer_id": "L-004",
+      "name": "Boundary / Carrier / Runtime Objects",
+      "member_count": 11
+    },
+    {
+      "layer_id": "L-005",
+      "name": "Contract / Template Families",
+      "member_count": 8
+    },
+    {
+      "layer_id": "L-006",
+      "name": "Doctrine / Constitutional Rules",
+      "member_count": 7
+    },
+    {
+      "layer_id": "L-007",
+      "name": "Relation Families",
+      "member_count": 8
+    }
+  ],
+  "4.1.trace_policy": "Every file preserves hierarchical numbering keys for local traceability and future batch growth.",
+  "4.2.growth_policy": "Later batches may add sections 5.x and above to any member file without renumbering prior sections."
+}

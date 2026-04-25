@@ -1,0 +1,36 @@
+digraph policy_contract_graph {
+graph [rankdir=LR, labelloc="t", fontsize=20, fontname="Arial", label="Assembler Taxonomy — Policy and Contract Graph"];
+node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+edge [fontname="Arial", fontsize=9];
+"BCO-001" [label="BCO-001\nAssemblerPolicyBundle", fillcolor="#EADCF8"];
+"BCO-002" [label="BCO-002\nPolicy Object", fillcolor="#EADCF8"];
+"E-INT-010" [label="E-INT-010\nPolicyAssigner", fillcolor="#FFE2CC"];
+"E-INT-002" [label="E-INT-002\nDispatcher", fillcolor="#FFE2CC"];
+"E-INT-003" [label="E-INT-003\nWriting / Feeding Round Manager", fillcolor="#FFE2CC"];
+"E-INT-004" [label="E-INT-004\nDispatching / Delivery Round Manager", fillcolor="#FFE2CC"];
+"E-INT-005" [label="E-INT-005\nQueue Bundle Agent", fillcolor="#FFE2CC"];
+"E-INT-006" [label="E-INT-006\nSingle Queue Moderator", fillcolor="#FFE2CC"];
+"E-INT-008" [label="E-INT-008\nTimestamp Stabilizer", fillcolor="#FFE2CC"];
+"E-INT-009" [label="E-INT-009\nValidator", fillcolor="#FFE2CC"];
+"CT-FAM-001" [label="CT-FAM-001\nIngress Contract Family", fillcolor="#FFFFFF"];
+"CT-FAM-002" [label="CT-FAM-002\nPolicy / Ecosystem Contract Family", fillcolor="#FFFFFF"];
+"CT-FAM-008" [label="CT-FAM-008\nRuntime State Contract Family", fillcolor="#FFFFFF"];
+"DOC-003" [label="DOC-003\nPolicy Object Doctrine", fillcolor="#F5F5F5"];
+"DOC-004" [label="DOC-004\nComponent-as-Host Doctrine", fillcolor="#F5F5F5"];
+"DOC-005" [label="DOC-005\nTemplate Contract Doctrine", fillcolor="#F5F5F5"];
+"DOC-007" [label="DOC-007\nQueue-as-Container Doctrine", fillcolor="#F5F5F5"];
+"BCO-001" -> "E-INT-010" [label="R-POL-001"];
+"E-INT-010" -> "BCO-002" [label="R-POL-002"];
+"BCO-002" -> "E-INT-002" [label="R-POL-003"];
+"BCO-002" -> "E-INT-008" [label="R-POL-004"];
+"BCO-002" -> "E-INT-009" [label="R-POL-005"];
+"BCO-002" -> "E-INT-005" [label="R-POL-006"];
+"BCO-002" -> "E-INT-006" [label="R-POL-007"];
+"BCO-002" -> "E-INT-003" [label="R-POL-008"];
+"BCO-002" -> "E-INT-004" [label="R-POL-009"];
+"DOC-003" -> "BCO-002" [label="R-DOC-003"];
+"DOC-004" -> "E-INT-002" [label="R-DOC-004"];
+"DOC-005" -> "CT-FAM-001" [label="R-DOC-005"];
+"DOC-005" -> "CT-FAM-002" [label="R-DOC-005"];
+"DOC-007" -> "CT-FAM-008" [label="R-DOC-007"];
+}

@@ -1,0 +1,8 @@
+layer_id,layer_order,layer_name,layer_type,purpose,member_count,parent_id,hierarchy_path,query_tags
+L-001,1,External Architectural Entities,entities,Parties outside the Assembler boundary,7,,01/L-001,entities
+L-002,2,Core Internal Architectural Entities,entities,Main internal actors/components,10,,02/L-002,entities
+L-003,3,Runtime / State Entities,runtime_state,"Queue, slot, occupancy, lifecycle, waiting-list structures",10,,03/L-003,runtime_state
+L-004,4,Boundary / Carrier / Runtime Objects,carriers,"Objects that carry policy, content, envelope, queue, slot, and locator state",11,,04/L-004,carriers
+L-005,5,Contract / Template Families,contracts,Canonical contract families derived from Batch 2 + closures,8,,05/L-005,contracts
+L-006,6,Doctrine / Constitutional Rules,doctrine,Cross-cutting architecture laws,7,,06/L-006,doctrine
+L-007,7,Relation Families,relations,Groupings of relation types used in the graph,8,,07/L-007,relations

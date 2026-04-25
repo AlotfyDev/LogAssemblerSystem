@@ -1,0 +1,50 @@
+responsibility_id,family_id,responsibility,source_contracts,raw_anchor,delegation_candidate,coverage_basis
+RSP-CAN-001,RSP-FAM-001,Accept typed content through ingress template,CC-IN-001A/B,RSP-001,Assembler ingress boundary,content ingress
+RSP-CAN-002,RSP-FAM-001,Differentiate validating vs hot-path ingress,CC-IN-001A/B,RSP-001,Validator + ingress layer,ingress split
+RSP-CAN-003,RSP-FAM-001,Preserve externalized validation path,CC-IN-001B,RSP-001/RSP-010,Assembler boundary,hot-path no-validation
+RSP-CAN-004,RSP-FAM-001,Invoke validator only for validating ingress,CC-IN-001A,RSP-001,Validator,validator placement
+RSP-CAN-005,RSP-FAM-001,Keep timestamp stabilization mandatory across all ingress families,CC-ENV-001,RSP-001/RSP-006,Timestamp Stabilizer,G-004 covered by mature component
+RSP-CAN-006,RSP-FAM-001,Convert accepted typed content toward envelope realization,CC-IN-002,RSP-001/RSP-006,Assembler preparation layer,content-to-envelope
+RSP-CAN-007,RSP-FAM-002,Receive ecosystem policy bundle,CC-POL-001,RSP-002,PolicyAssigner / boundary intake,policy provisioning
+RSP-CAN-008,RSP-FAM-002,Intake policy objects and track assignment readiness,CC-POL-002,RSP-002,PolicyAssigner,policy object state
+RSP-CAN-009,RSP-FAM-002,Assign Policy Objects to policy-consuming components,CC-POL-003,RSP-002,PolicyAssigner,assignment mediator
+RSP-CAN-010,RSP-FAM-002,Ensure components expose administrative assignment surfaces,CC-POL-003/004,RSP-002/RSP-010,Policy-consuming components,three-surface law
+RSP-CAN-011,RSP-FAM-002,Ensure components host policy-defined mechanism semantics,CC-POL-004,RSP-002,Policy-consuming components,component-as-host doctrine
+RSP-CAN-012,RSP-FAM-002,Replace policies only at safe points,CC-POL-005,RSP-002/RSP-004,PolicyAssigner + host components,replacement lifecycle
+RSP-CAN-013,RSP-FAM-003,Receive metadata directive from administrative source,CC-META-001,RSP-005,Metadata Injector,metadata directive
+RSP-CAN-014,RSP-FAM-003,Apply metadata through injector-governed path,CC-META-001/002,RSP-005,Metadata Injector,metadata application path
+RSP-CAN-015,RSP-FAM-003,Compose metadata into Log Envelope,CC-META-002 / CC-ENV-001,RSP-005/RSP-006,Metadata Injector,envelope carrier doctrine
+RSP-CAN-016,RSP-FAM-003,Preserve metadata authority path,CC-META-001,RSP-005/RSP-010,Metadata Injector + boundary,admin/consumer separation
+RSP-CAN-017,RSP-FAM-004,Consume operational directives as administrative control,CC-OPS-001,RSP-002/RSP-003,Queue Bundle Agent,scaling/ops input
+RSP-CAN-018,RSP-FAM-004,Realize pause/drain/scale/activate over queue structures,CC-OPS-001/002,RSP-003/RSP-004,Queue Bundle Agent + Round Managers,operational realization
+RSP-CAN-019,RSP-FAM-004,Maintain writable readiness or explicit degradation,CC-OPS-002,RSP-003,Queue Bundle Agent + Writing Round Manager,write readiness
+RSP-CAN-020,RSP-FAM-004,Preserve policy-conforming queue order,CC-OPS-002 / CC-STATE-001,RSP-004,Queue Bundle Agent,queue ordering
+RSP-CAN-021,RSP-FAM-005,Observe registry readiness before handoff,CC-REG-001,RSP-008,Dispatcher,readiness gating
+RSP-CAN-022,RSP-FAM-005,Gate envelope handoff by readiness/capacity,CC-REG-001,RSP-008,Dispatcher,backpressure reserve
+RSP-CAN-023,RSP-FAM-005,Handoff envelopes only through Dispatcher boundary,CC-REG-002,RSP-007,Dispatcher,dispatcher edge
+RSP-CAN-024,RSP-FAM-005,Use receiving-side admission access without owning registry internals,CC-REG-003,RSP-006/RSP-007,Dispatcher,registry boundary closure
+RSP-CAN-025,RSP-FAM-005,Update delivery-cycle flags after delivery round completion,G-003 / CC-REG-002,RSP-007/RSP-009,Dispatcher,delivery-cycle flags distinct from reports
+RSP-CAN-026,RSP-FAM-005,Avoid registry lifecycle ownership after handoff,CC-ENV-002,RSP-006/RSP-010,Dispatcher + boundary,lifecycle boundary
+RSP-CAN-027,RSP-FAM-006,"Assemble content, metadata, and timestamp into Log Envelope",CC-ENV-001,RSP-001/RSP-005/RSP-006,Assembler preparation layer,envelope assembly
+RSP-CAN-028,RSP-FAM-006,Preserve Log Envelope as authoritative runtime carrier,CC-ENV-001/002,RSP-006,Assembler Subsystem,envelope doctrine
+RSP-CAN-029,RSP-FAM-006,Move envelope through writing/feeding to dispatch progression,CC-ENV-001 / R-CAR,RSP-003/RSP-007,Writing + Delivery Round Managers,envelope movement
+RSP-CAN-030,RSP-FAM-006,Transfer envelope lifecycle authority after handoff,CC-ENV-002,RSP-006/RSP-007,Dispatcher,lifecycle transfer
+RSP-CAN-031,RSP-FAM-006,Preserve distinction between envelope occupancy and lifecycle ownership,CC-STATE-003 / CC-ENV-002,RSP-006/RSP-009,Moderator + queue state layer,slot/envelope closure
+RSP-CAN-032,RSP-FAM-007,Keep read/query outside assembler authority,CC-EX-001,RSP-010,Assembler boundary,read/query exclusion
+RSP-CAN-033,RSP-FAM-007,Preserve consuming/admin/managerial boundary separation,DOC-002 / CT families,RSP-010,Assembler Subsystem,three-plane separation
+RSP-CAN-034,RSP-FAM-007,Enforce Dispatcher Boundary Law,DOC-001,RSP-006/RSP-007/RSP-010,Dispatcher + boundary,dispatcher boundary
+RSP-CAN-035,RSP-FAM-007,Preserve template contract doctrine,DOC-005,RSP-001/RSP-010,Contract layer / API boundary,no COM interface
+RSP-CAN-036,RSP-FAM-007,Preserve Policy Object doctrine across component contracts,DOC-003/DOC-004,RSP-002/RSP-010,PolicyAssigner + hosts,policy doctrine
+RSP-CAN-037,RSP-FAM-007,Preserve Queue-as-Container doctrine,DOC-007,RSP-004/RSP-009,Queue runtime layer,queue correction
+RSP-CAN-038,RSP-FAM-008,Orchestrate queue bundles,CC-STATE-001,RSP-004,Queue Bundle Agent,queue bundle
+RSP-CAN-039,RSP-FAM-008,Moderate one queue-container,CC-STATE-002,RSP-009,Single Queue Moderator,moderation
+RSP-CAN-040,RSP-FAM-008,Maintain queue-container slots,CC-STATE-003/004,RSP-004/RSP-009,Single Queue Moderator + Queue Container,slots
+RSP-CAN-041,RSP-FAM-008,Maintain envelope-slot occupancy binding,CC-STATE-003,RSP-006/RSP-009,Single Queue Moderator,occupancy
+RSP-CAN-042,RSP-FAM-008,Maintain slot lifecycle and requalification state,CC-STATE-004,RSP-009,Single Queue Moderator,slot lifecycle
+RSP-CAN-043,RSP-FAM-008,Restore waiting discipline after delivery,CC-STATE-005,RSP-009,Single Queue Moderator + Queue Bundle Agent,post-delivery recovery
+RSP-CAN-044,RSP-FAM-008,Maintain writing round waiting list,CC-STATE-006,RSP-003/RSP-004,Writing / Feeding Round Manager,writing waiting list
+RSP-CAN-045,RSP-FAM-008,Maintain delivery round waiting list,CC-STATE-007,RSP-007/RSP-009,Dispatching / Delivery Round Manager,delivery waiting list
+RSP-CAN-046,RSP-FAM-008,Maintain queue-container identifiers / locators,CC-STATE-008,RSP-003/RSP-004/RSP-009,Round Managers + Queue Bundle Agent,locator model
+RSP-CAN-047,RSP-FAM-008,Requalify queue-container ID after moderation,R-WAIT-006 / CC-STATE-007,RSP-009,Single Queue Moderator + Delivery Round Manager,return to delivery waiting list
+RSP-CAN-048,RSP-FAM-005,Produce or expose detailed dispatcher feedback reports where required,G-003 / reporting closure,RSP-007/RSP-009,Dispatcher,detailed reports distinct from flags
+RSP-CAN-049,RSP-FAM-008,Preserve queue-container terminology when applying ownership and occupancy rules,G-006 / DOC-007 / CC-STATE-003/004,RSP-004/RSP-006/RSP-009,Queue runtime layer + Moderator + Agent,queue-container terminology correction

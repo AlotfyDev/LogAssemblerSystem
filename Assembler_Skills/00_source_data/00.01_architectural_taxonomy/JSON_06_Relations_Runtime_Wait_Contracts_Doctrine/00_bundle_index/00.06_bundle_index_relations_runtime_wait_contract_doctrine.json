@@ -1,0 +1,62 @@
+{
+  "0.1.document_id": "ASM-TAX-JSON-BUNDLE-06-INDEX",
+  "0.2.bundle_id": "JSON-BUNDLE-06",
+  "0.3.bundle_name": "Relations: Runtime, Waiting, Contract, Doctrine",
+  "1.1.includes_relation_families": [
+    "REL-FAM-004",
+    "REL-FAM-005",
+    "REL-FAM-006",
+    "REL-FAM-008"
+  ],
+  "1.2.file_strategy": "One JSON file per relation.",
+  "2.1.counts": {
+    "runtime_state_relations": 10,
+    "round_waiting_list_relations": 8,
+    "contract_derivation_relations": 8,
+    "doctrine_application_relations": 7,
+    "total_relation_files": 33
+  },
+  "3.1.runtime_relation_ids": [
+    "R-STATE-001",
+    "R-STATE-002",
+    "R-STATE-003",
+    "R-STATE-004",
+    "R-STATE-005",
+    "R-STATE-006",
+    "R-STATE-007",
+    "R-STATE-008",
+    "R-STATE-009",
+    "R-STATE-010"
+  ],
+  "3.2.waiting_relation_ids": [
+    "R-WAIT-001",
+    "R-WAIT-002",
+    "R-WAIT-003",
+    "R-WAIT-004",
+    "R-WAIT-005",
+    "R-WAIT-006",
+    "R-WAIT-007",
+    "R-WAIT-008"
+  ],
+  "3.3.contract_derivation_relation_ids": [
+    "R-CON-001",
+    "R-CON-002",
+    "R-CON-003",
+    "R-CON-004",
+    "R-CON-005",
+    "R-CON-006",
+    "R-CON-007",
+    "R-CON-008"
+  ],
+  "3.4.doctrine_application_relation_ids": [
+    "R-DOC-001",
+    "R-DOC-002",
+    "R-DOC-003",
+    "R-DOC-004",
+    "R-DOC-005",
+    "R-DOC-006",
+    "R-DOC-007"
+  ],
+  "4.1.next_bundle": "Graph image package or additional canonical contract files as needed.",
+  "4.2.growth_policy": "Later batches add trace slots without collapsing the relation repository."
+}

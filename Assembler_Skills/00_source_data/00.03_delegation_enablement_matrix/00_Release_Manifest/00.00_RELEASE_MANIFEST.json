@@ -1,0 +1,234 @@
+{
+  "0.1_document_id": "ASM-DELEGATION-ENABLEMENT-V2-RELEASE-MANIFEST",
+  "0.2_release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "0.3_release_title": "Canonical Delegation & Enablement Matrix V2 Release",
+  "0.4_release_status": "draft_for_structured_local_installation",
+  "0.5_release_scope": {
+    "primary_scope": "Upgrade Batch 4 delegation and enablement mapping from the old delegation pack into a corrected, taxonomy-aware, closure-covered canonical release.",
+    "included_transform": "Responsibility / Obligation -> Delegated Entity -> Supporting Entities -> Governed Objects -> Enablement Family -> Surface Type -> Trace",
+    "excluded_scope": [
+      "Final implementation/package mapping",
+      "Class-level design",
+      "Runtime code generation",
+      "Database schema derivation"
+    ]
+  },
+  "0.6_source_basis": {
+    "canonical_contract_matrix": "Canonical Contract Matrix V2",
+    "taxonomy_basis": "Unified Assembler Architectural Taxonomy",
+    "responsibility_basis": "Canonical Responsibility & Obligation Matrix V2.1",
+    "gap_closure_basis": "Gap Closure Roadmap V1 and related closure discussions",
+    "batch4_legacy_basis": "batch4_delegation_enablement_pack",
+    "corrected_delegation_basis": "Corrected Delegation & Enablement Matrix Draft"
+  },
+  "1.1_release_directory": "canonical_delegation_enablement_matrix_v2_release",
+  "1.2_expected_top_level_directories": [
+    "00_release_manifest",
+    "01_reference_markdown",
+    "02_entity_enablement_indexes",
+    "03_delegation_matrix",
+    "04_obligation_delegation",
+    "05_trace_coverage_registers",
+    "06_rollup_indexes",
+    "07_packages"
+  ],
+  "2.1_file_groups": [
+    {
+      "group_id": "FG-00",
+      "directory": "00_release_manifest",
+      "purpose": "Release-level entry point, counts, and query guide.",
+      "files": [
+        {
+          "file_id": "FG-00-F001",
+          "path": "00_release_manifest/00.00_RELEASE_MANIFEST.json",
+          "type": "json",
+          "status": "current_file",
+          "purpose": "Machine-readable release manifest."
+        },
+        {
+          "file_id": "FG-00-F002",
+          "path": "00_release_manifest/00.01_RELEASE_README.md",
+          "type": "markdown",
+          "status": "planned",
+          "purpose": "Human-readable release overview."
+        },
+        {
+          "file_id": "FG-00-F003",
+          "path": "00_release_manifest/00.02_RELEASE_COUNT_SUMMARY.csv",
+          "type": "csv",
+          "status": "planned",
+          "purpose": "Release-level count summary."
+        },
+        {
+          "file_id": "FG-00-F004",
+          "path": "00_release_manifest/00.03_RELEASE_QUERY_GUIDE.md",
+          "type": "markdown",
+          "status": "planned",
+          "purpose": "Query and join guide for the release."
+        }
+      ]
+    },
+    {
+      "group_id": "FG-01",
+      "directory": "01_reference_markdown",
+      "purpose": "Reference narrative and formal doctrine for the corrected delegation model.",
+      "files": [
+        "01_reference_markdown/01.00_PACKAGE_MANIFEST.json",
+        "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01_reference_markdown/01.02_canonical_assignment_principles.md",
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "01_reference_markdown/01.04_enablement_families_reference.md",
+        "01_reference_markdown/01.05_gap_closure_delegation_coverage.md",
+        "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+      ]
+    },
+    {
+      "group_id": "FG-02",
+      "directory": "02_entity_enablement_indexes",
+      "purpose": "Queryable indexes for delegated entities, enablement families, surfaces, ports, and governed objects.",
+      "files": [
+        "02_entity_enablement_indexes/02.00_PACKAGE_MANIFEST.json",
+        "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+        "02_entity_enablement_indexes/02.02_enablement_families_index.csv",
+        "02_entity_enablement_indexes/02.03_surfaces_index.csv",
+        "02_entity_enablement_indexes/02.04_governed_objects_index.csv",
+        "02_entity_enablement_indexes/02.05_ports_and_contract_surfaces_index.csv",
+        "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+        "02_entity_enablement_indexes/02.07_entity_enablement_index.json",
+        "02_entity_enablement_indexes/02.08_ENTITY_ENABLEMENT_SCHEMA.md"
+      ]
+    },
+    {
+      "group_id": "FG-03",
+      "directory": "03_delegation_matrix",
+      "purpose": "Responsibility-to-entity delegation matrix and entity load summaries.",
+      "files": [
+        "03_delegation_matrix/03.00_PACKAGE_MANIFEST.json",
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "03_delegation_matrix/03.02_delegation_matrix_by_family_v2.csv",
+        "03_delegation_matrix/03.03_delegation_entity_load_summary.csv",
+        "03_delegation_matrix/03.04_delegation_matrix_index.json",
+        "03_delegation_matrix/03.05_DELEGATION_MATRIX_SCHEMA.md"
+      ]
+    },
+    {
+      "group_id": "FG-04",
+      "directory": "04_obligation_delegation",
+      "purpose": "Obligation-to-entity delegation, sub-responsibilities, delivery flags, and dispatcher reports.",
+      "files": [
+        "04_obligation_delegation/04.00_PACKAGE_MANIFEST.json",
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.02_sub_responsibility_delegation_v2.csv",
+        "04_obligation_delegation/04.03_delivery_cycle_flags_delegation.csv",
+        "04_obligation_delegation/04.04_dispatcher_feedback_reports_delegation.csv",
+        "04_obligation_delegation/04.05_obligation_delegation_index.json",
+        "04_obligation_delegation/04.06_OBLIGATION_DELEGATION_SCHEMA.md"
+      ]
+    },
+    {
+      "group_id": "FG-05",
+      "directory": "05_trace_coverage_registers",
+      "purpose": "Traceability between contracts, responsibilities, obligations, entities, gaps, closures, and taxonomy updates.",
+      "files": [
+        "05_trace_coverage_registers/05.00_PACKAGE_MANIFEST.json",
+        "05_trace_coverage_registers/05.01_delegation_trace_v2.csv",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+        "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv",
+        "05_trace_coverage_registers/05.05_new_entities_register.csv",
+        "05_trace_coverage_registers/05.06_trace_coverage_index.json",
+        "05_trace_coverage_registers/05.07_TRACE_COVERAGE_SCHEMA.md"
+      ]
+    },
+    {
+      "group_id": "FG-06",
+      "directory": "06_rollup_indexes",
+      "purpose": "Cross-bundle rollup index, join keys, query patterns, and file map.",
+      "files": [
+        "06_rollup_indexes/06.00_PACKAGE_MANIFEST.json",
+        "06_rollup_indexes/06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json",
+        "06_rollup_indexes/06.02_JOIN_KEYS_REFERENCE.csv",
+        "06_rollup_indexes/06.03_QUERY_PATTERNS.md",
+        "06_rollup_indexes/06.04_CROSS_BUNDLE_FILE_MAP.csv",
+        "06_rollup_indexes/06.05_ROLLUP_SCHEMA.md"
+      ]
+    },
+    {
+      "group_id": "FG-07",
+      "directory": "07_packages",
+      "purpose": "Optional packaging layer. Files are delivered individually first; package artifacts may be created later if needed.",
+      "packaging_policy": "Do not require a single large ZIP. Prefer file-by-file delivery and optional micro-packs only when safe."
+    }
+  ],
+  "3.1_core_corrections_integrated": [
+    {
+      "correction_id": "CORR-001",
+      "statement": "Metadata Injector is schema/directive-governed and must not be treated as a Policy Object host."
+    },
+    {
+      "correction_id": "CORR-002",
+      "statement": "Envelope Assembler is introduced as a client-side composed contract object that composes Validator, Metadata Injector, Timestamp Stabilizer, and envelope assembly routine."
+    },
+    {
+      "correction_id": "CORR-003",
+      "statement": "Assembler Ingress Port is introduced as the server-side receiving contract port for Log Level Envelope admission into queue-container slots."
+    },
+    {
+      "correction_id": "CORR-004",
+      "statement": "Administrative / Ecosystem Port is introduced for policy bundles, metadata directives, operational directives, and ecosystem control payloads."
+    },
+    {
+      "correction_id": "CORR-005",
+      "statement": "Registry / Delivery Port is introduced as the outbound registry-facing contract surface used by the Dispatcher."
+    },
+    {
+      "correction_id": "CORR-006",
+      "statement": "Queue Runtime Layer is classification only, not a delegated entity; runtime responsibilities are assigned to Queue Bundle Agent, Single Queue Moderator, and Round Managers."
+    },
+    {
+      "correction_id": "CORR-007",
+      "statement": "Delivery-cycle flags and detailed dispatcher feedback reports are separate artifacts and require separate enablements."
+    },
+    {
+      "correction_id": "CORR-008",
+      "statement": "Timestamp Stabilizer is no longer a placeholder; it is a mature component participating in all ingress families."
+    },
+    {
+      "correction_id": "CORR-009",
+      "statement": "Queue equals Container; no separate runtime container is introduced above Queue Container."
+    }
+  ],
+  "4.1_canonical_join_keys": [
+    "release_id",
+    "file_id",
+    "responsibility_id",
+    "obligation_id",
+    "sub_responsibility_id",
+    "responsibility_family_id",
+    "entity_id",
+    "entity_name",
+    "governed_object_id",
+    "enablement_family_id",
+    "surface_id",
+    "contract_id",
+    "gap_id",
+    "delegation_id",
+    "taxonomy_trace_id"
+  ],
+  "5.1_expected_counts": {
+    "top_level_responsibilities": 49,
+    "responsibility_families": 8,
+    "delivery_cycle_flag_sub_responsibilities": 7,
+    "dispatcher_feedback_report_sub_responsibilities": 5,
+    "enablement_families": 9,
+    "core_gap_closures_covered": 7,
+    "new_or_promoted_delegation_entities": 4,
+    "new_or_promoted_governed_artifacts": 3
+  },
+  "6.1_delivery_mode": {
+    "mode": "file_by_file",
+    "reason": "Avoid large ZIP generation failures and preserve review quality.",
+    "installation_instruction": "Place each delivered file under the path shown in its FILE header."
+  },
+  "7.1_next_file": "00_release_manifest/00.01_RELEASE_README.md"
+}

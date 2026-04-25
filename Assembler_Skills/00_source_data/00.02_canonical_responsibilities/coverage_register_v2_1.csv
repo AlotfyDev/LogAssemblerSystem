@@ -1,0 +1,8 @@
+gap_id,gap_name,covered_by,status
+G-001,Registry Abstraction,"RSP-CAN-021..026, RSP-CAN-034",covered
+G-002,Policy Source Granularity,"RSP-CAN-007..012, RSP-CAN-036",covered
+G-003,Dispatcher Feedback Surface,RSP-CAN-025 + RSP-CAN-025.1..025.7; RSP-CAN-048 + RSP-CAN-048.1..048.5,covered with split
+G-004,Timestamp Slot Semantics Placeholder,"RSP-CAN-005, RSP-CAN-027 via E-INT-008 Timestamp Stabilizer",covered; no new responsibility
+G-005,Moderator vs Agent Coordination,"RSP-CAN-038,039,043,047",covered
+G-006,Container vs Envelope Slot Ownership,"RSP-CAN-031,040..042,049",covered with queue-container correction
+G-007,Validating Assembler Path,RSP-CAN-002..004,covered

@@ -1,0 +1,597 @@
+{
+  "package_id": "06_rollup_indexes",
+  "package_name": "Rollup Indexes Package",
+  "release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "package_path": "06_rollup_indexes/",
+  "package_status": "draft_for_structured_local_installation",
+  "package_sequence": 6,
+  "document_type": "package_manifest",
+  "0.1_purpose": {
+    "summary": "Defines the rollup indexes, join-key reference, query patterns, cross-bundle file map, and rollup schema for the Canonical Delegation & Enablement Matrix V2 release.",
+    "role": "This package provides the cross-package navigation and query layer that connects reference Markdown, entity enablement indexes, delegation matrices, obligation delegation, and trace coverage registers into one coherent queryable release.",
+    "governing_mapping_law": "Responsibility / Obligation -> Primary Delegated Entity -> Supporting Entities -> Governed Objects -> Enablement Family -> Surface Type -> Trace",
+    "governing_trace_law": "External Relation -> Contract -> Responsibility -> Obligation -> Delegation -> Enablement -> Trace Coverage -> Ontology Candidate"
+  },
+  "0.2_scope": {
+    "in_scope": [
+      "release-level rollup index",
+      "cross-package join keys",
+      "query pattern documentation",
+      "cross-bundle file map",
+      "rollup schema documentation",
+      "navigation between package 01 through package 05",
+      "downstream relational and graph derivation readiness"
+    ],
+    "out_of_scope": [
+      "final PostgreSQL DDL",
+      "runtime implementation",
+      "class hierarchy",
+      "generated diagrams",
+      "deployment topology",
+      "final ontology",
+      "final expert skill definition"
+    ]
+  },
+  "0.3_source_basis": {
+    "release_manifest": [
+      "00_release_manifest/00.00_RELEASE_MANIFEST.json",
+      "00_release_manifest/00.01_RELEASE_README.md",
+      "00_release_manifest/00.02_RELEASE_COUNT_SUMMARY.csv",
+      "00_release_manifest/00.03_RELEASE_QUERY_GUIDE.md"
+    ],
+    "reference_markdown_package": [
+      "01_reference_markdown/01.00_PACKAGE_MANIFEST.json",
+      "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+      "01_reference_markdown/01.02_canonical_assignment_principles.md",
+      "01_reference_markdown/01.03_corrected_delegation_entities.md",
+      "01_reference_markdown/01.04_enablement_families_reference.md",
+      "01_reference_markdown/01.05_gap_closure_delegation_coverage.md",
+      "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+    ],
+    "entity_enablement_package": [
+      "02_entity_enablement_indexes/02.00_PACKAGE_MANIFEST.json",
+      "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+      "02_entity_enablement_indexes/02.02_enablement_families_index.csv",
+      "02_entity_enablement_indexes/02.03_surfaces_index.csv",
+      "02_entity_enablement_indexes/02.04_governed_objects_index.csv",
+      "02_entity_enablement_indexes/02.05_ports_and_contract_surfaces_index.csv",
+      "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+      "02_entity_enablement_indexes/02.07_entity_enablement_index.json",
+      "02_entity_enablement_indexes/02.08_ENTITY_ENABLEMENT_SCHEMA.md"
+    ],
+    "delegation_matrix_package": [
+      "03_delegation_matrix/03.00_PACKAGE_MANIFEST.json",
+      "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+      "03_delegation_matrix/03.02_delegation_matrix_by_family_v2.csv",
+      "03_delegation_matrix/03.03_delegation_entity_load_summary.csv",
+      "03_delegation_matrix/03.04_delegation_matrix_index.json",
+      "03_delegation_matrix/03.05_DELEGATION_MATRIX_SCHEMA.md"
+    ],
+    "obligation_delegation_package": [
+      "04_obligation_delegation/04.00_PACKAGE_MANIFEST.json",
+      "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+      "04_obligation_delegation/04.02_sub_responsibility_delegation_v2.csv",
+      "04_obligation_delegation/04.03_delivery_cycle_flags_delegation.csv",
+      "04_obligation_delegation/04.04_dispatcher_feedback_reports_delegation.csv",
+      "04_obligation_delegation/04.05_obligation_delegation_index.json",
+      "04_obligation_delegation/04.06_OBLIGATION_DELEGATION_SCHEMA.md"
+    ],
+    "trace_coverage_package": [
+      "05_trace_coverage_registers/05.00_PACKAGE_MANIFEST.json",
+      "05_trace_coverage_registers/05.01_delegation_trace_v2.csv",
+      "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+      "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv",
+      "05_trace_coverage_registers/05.04_taxonomy_update_register.csv",
+      "05_trace_coverage_registers/05.05_new_entities_register.csv",
+      "05_trace_coverage_registers/05.06_trace_coverage_index.json",
+      "05_trace_coverage_registers/05.07_TRACE_COVERAGE_SCHEMA.md"
+    ]
+  },
+  "1.0_file_inventory": [
+    {
+      "file_id": "06.00",
+      "file_path": "06_rollup_indexes/06.00_PACKAGE_MANIFEST.json",
+      "format": "json",
+      "document_type": "package_manifest",
+      "role": "Defines the package identity, file inventory, counts, source basis, validation rules, and downstream usage expectations."
+    },
+    {
+      "file_id": "06.01",
+      "file_path": "06_rollup_indexes/06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json",
+      "format": "json",
+      "document_type": "rollup_index",
+      "role": "Provides the main machine-readable cross-package rollup for delegation, enablement, obligation, trace coverage, gaps, contracts, entities, surfaces, and ontology seed readiness."
+    },
+    {
+      "file_id": "06.02",
+      "file_path": "06_rollup_indexes/06.02_JOIN_KEYS_REFERENCE.csv",
+      "format": "csv",
+      "document_type": "join_keys_reference",
+      "role": "Defines canonical join keys, key namespaces, source files, target files, cardinality expectations, and validation notes."
+    },
+    {
+      "file_id": "06.03",
+      "file_path": "06_rollup_indexes/06.03_QUERY_PATTERNS.md",
+      "format": "markdown",
+      "document_type": "query_patterns_reference",
+      "role": "Documents query families, recommended lookup paths, examples, and anti-collapse query checks."
+    },
+    {
+      "file_id": "06.04",
+      "file_path": "06_rollup_indexes/06.04_CROSS_BUNDLE_FILE_MAP.csv",
+      "format": "csv",
+      "document_type": "cross_bundle_file_map",
+      "role": "Maps every relevant release file to package, format, role, row grain, key fields, dependencies, and downstream derivation use."
+    },
+    {
+      "file_id": "06.05",
+      "file_path": "06_rollup_indexes/06.05_ROLLUP_SCHEMA.md",
+      "format": "markdown",
+      "document_type": "rollup_schema",
+      "role": "Human-readable schema reference for the rollup indexes package."
+    }
+  ],
+  "2.0_counts": {
+    "planned_total_file_count": 6,
+    "planned_json_file_count": 2,
+    "planned_csv_file_count": 2,
+    "planned_markdown_file_count": 2,
+    "referenced_upstream_package_count": 5,
+    "referenced_upstream_file_count": 34,
+    "core_join_key_family_count": 15,
+    "supported_query_family_count": 12,
+    "canonical_responsibility_count": 49,
+    "canonical_obligation_count": 49,
+    "responsibility_family_count": 8,
+    "enablement_family_count": 9,
+    "core_gap_count": 7,
+    "canonical_contract_count": 26,
+    "new_or_promoted_delegated_entity_count": 4,
+    "new_or_promoted_governed_artifact_count": 3,
+    "special_sub_responsibility_count": 12
+  },
+  "3.0_rollup_package_role": {
+    "3.1_primary_role": "The rollup package is the query navigation layer of the release.",
+    "3.2_position_in_release": "It is downstream of packages 01 through 05 and upstream of final packaging, optional bundle release, PostgreSQL derivation, graph derivation, and ontology expert-skill work.",
+    "3.3_query_function": [
+      "resolve a responsibility to its delegated entity, obligation, governed objects, enablement, surfaces, contracts, and gaps",
+      "resolve an obligation to enforcing entity and anti-collapse rule",
+      "resolve a gap to covering responsibilities and preserving obligations",
+      "resolve a contract to derived responsibilities and entities",
+      "resolve an entity to responsibility load and required enablements",
+      "resolve governed artifacts to actor/non-actor status",
+      "resolve taxonomy updates to new entities, new artifacts, and corrected classifications",
+      "resolve anti-collapse rules across files"
+    ]
+  },
+  "4.0_core_join_key_families": [
+    {
+      "join_key": "responsibility_id",
+      "namespace": "RSP-CAN-###",
+      "primary_files": [
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ],
+      "purpose": "Join responsibility rows across delegation, obligation, trace, contract, and gap coverage packages."
+    },
+    {
+      "join_key": "obligation_id",
+      "namespace": "OBL-CAN-###",
+      "primary_files": [
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ],
+      "purpose": "Join responsibility-preserving obligations to enforcing entities and trace records."
+    },
+    {
+      "join_key": "sub_responsibility_id",
+      "namespace": "RSP-CAN-###.#",
+      "primary_files": [
+        "04.02_sub_responsibility_delegation_v2.csv",
+        "04.03_delivery_cycle_flags_delegation.csv",
+        "04.04_dispatcher_feedback_reports_delegation.csv"
+      ],
+      "purpose": "Join delivery-cycle flag and dispatcher feedback report expansions."
+    },
+    {
+      "join_key": "responsibility_family_id",
+      "namespace": "RSP-FAM-###",
+      "primary_files": [
+        "03.02_delegation_matrix_by_family_v2.csv",
+        "03.04_delegation_matrix_index.json",
+        "05.06_trace_coverage_index.json"
+      ],
+      "purpose": "Group responsibilities by canonical architectural family."
+    },
+    {
+      "join_key": "entity_id",
+      "namespace": "E-INT-### / E-EXT-### / semantic",
+      "primary_files": [
+        "02.01_delegation_entities_index.csv",
+        "03.03_delegation_entity_load_summary.csv",
+        "05.05_new_entities_register.csv"
+      ],
+      "purpose": "Resolve delegated entities, external counterparties, classification-only layers, and entity load."
+    },
+    {
+      "join_key": "governed_object_id",
+      "namespace": "BCO-### / GOV-### / semantic",
+      "primary_files": [
+        "02.04_governed_objects_index.csv",
+        "05.05_new_entities_register.csv",
+        "05.01_delegation_trace_v2.csv"
+      ],
+      "purpose": "Resolve governed objects, carrier artifacts, runtime state objects, and actor/non-actor guards."
+    },
+    {
+      "join_key": "enablement_family_id",
+      "namespace": "EN-FAM-###",
+      "primary_files": [
+        "02.02_enablement_families_index.csv",
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ],
+      "purpose": "Resolve capability surfaces required by responsibilities and obligations."
+    },
+    {
+      "join_key": "surface_id",
+      "namespace": "SURF-*",
+      "primary_files": [
+        "02.03_surfaces_index.csv",
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ],
+      "purpose": "Resolve administrative, managerial, consuming, boundary, contractual, observability, and cross-surface classifications."
+    },
+    {
+      "join_key": "contract_id",
+      "namespace": "CC-*",
+      "primary_files": [
+        "05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05.06_trace_coverage_index.json"
+      ],
+      "purpose": "Resolve canonical contracts to derived responsibilities, obligations, entities, objects, gaps, and doctrines."
+    },
+    {
+      "join_key": "contract_family_id",
+      "namespace": "CT-FAM-###",
+      "primary_files": [
+        "05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05.06_trace_coverage_index.json"
+      ],
+      "purpose": "Group canonical contracts by contract family."
+    },
+    {
+      "join_key": "gap_id",
+      "namespace": "G-###",
+      "primary_files": [
+        "05.02_gap_closure_coverage_v2.csv",
+        "05.06_trace_coverage_index.json"
+      ],
+      "purpose": "Resolve gap closures to responsibilities, obligations, entities, objects, contracts, and anti-regression rules."
+    },
+    {
+      "join_key": "doctrine_id",
+      "namespace": "DOC-###",
+      "primary_files": [
+        "05.01_delegation_trace_v2.csv",
+        "05.02_gap_closure_coverage_v2.csv",
+        "05.03_contract_to_responsibility_to_entity_trace.csv"
+      ],
+      "purpose": "Resolve doctrine-preserving traces and anti-collapse rules."
+    },
+    {
+      "join_key": "taxonomy_update_id",
+      "namespace": "TAX-UPD-###",
+      "primary_files": [
+        "05.04_taxonomy_update_register.csv",
+        "05.06_trace_coverage_index.json"
+      ],
+      "purpose": "Resolve taxonomy promotions, corrections, splits, and ontology seed candidates."
+    },
+    {
+      "join_key": "delegation_id",
+      "namespace": "DEL-RSP-CAN-###",
+      "primary_files": [
+        "03.01_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ],
+      "purpose": "Join delegation matrix rows to trace register rows."
+    },
+    {
+      "join_key": "trace_id",
+      "namespace": "TRACE-###",
+      "primary_files": [
+        "05.01_delegation_trace_v2.csv",
+        "05.06_trace_coverage_index.json"
+      ],
+      "purpose": "Resolve responsibility trace records and trace quality."
+    }
+  ],
+  "5.0_supported_query_families": [
+    {
+      "query_family_id": "QF-001",
+      "query_family_name": "Responsibility-to-Entity Trace",
+      "example": "Given RSP-CAN-027, show delegated entity, supporting entities, governed object, enablement, surface, obligation, contracts, gaps, and doctrines.",
+      "primary_files": [
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ]
+    },
+    {
+      "query_family_id": "QF-002",
+      "query_family_name": "Obligation Enforcement Trace",
+      "example": "Given OBL-CAN-025, show enforcing entity, governed object, anti-collapse rule, and linked sub-responsibilities.",
+      "primary_files": [
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "04.02_sub_responsibility_delegation_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ]
+    },
+    {
+      "query_family_id": "QF-003",
+      "query_family_name": "Entity Responsibility Load",
+      "example": "Which responsibilities are delegated to Dispatcher?",
+      "primary_files": [
+        "02.01_delegation_entities_index.csv",
+        "03.03_delegation_entity_load_summary.csv",
+        "03.01_delegation_matrix_v2.csv"
+      ]
+    },
+    {
+      "query_family_id": "QF-004",
+      "query_family_name": "Enablement Usage Trace",
+      "example": "Which responsibilities require EN-FAM-004 Queue Runtime Enablement?",
+      "primary_files": [
+        "02.02_enablement_families_index.csv",
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ]
+    },
+    {
+      "query_family_id": "QF-005",
+      "query_family_name": "Gap Closure Coverage",
+      "example": "What closes G-006 and which responsibilities preserve the closure?",
+      "primary_files": [
+        "01.05_gap_closure_delegation_coverage.md",
+        "05.02_gap_closure_coverage_v2.csv",
+        "05.06_trace_coverage_index.json"
+      ]
+    },
+    {
+      "query_family_id": "QF-006",
+      "query_family_name": "Contract Derivation Trace",
+      "example": "Which responsibilities derive from CC-REG-002?",
+      "primary_files": [
+        "05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05.06_trace_coverage_index.json"
+      ]
+    },
+    {
+      "query_family_id": "QF-007",
+      "query_family_name": "Policy-Consuming Component Guard",
+      "example": "Is Metadata Injector a policy-consuming component?",
+      "primary_files": [
+        "02.06_policy_consuming_components_index.csv",
+        "05.04_taxonomy_update_register.csv",
+        "05.06_trace_coverage_index.json"
+      ]
+    },
+    {
+      "query_family_id": "QF-008",
+      "query_family_name": "Queue Runtime Layer Guard",
+      "example": "Why is Queue Runtime Layer classification-only?",
+      "primary_files": [
+        "02.01_delegation_entities_index.csv",
+        "05.04_taxonomy_update_register.csv",
+        "05.06_trace_coverage_index.json"
+      ]
+    },
+    {
+      "query_family_id": "QF-009",
+      "query_family_name": "Flag vs Report Separation",
+      "example": "How are delivery-cycle flags separated from dispatcher feedback reports?",
+      "primary_files": [
+        "04.03_delivery_cycle_flags_delegation.csv",
+        "04.04_dispatcher_feedback_reports_delegation.csv",
+        "05.02_gap_closure_coverage_v2.csv",
+        "05.05_new_entities_register.csv"
+      ]
+    },
+    {
+      "query_family_id": "QF-010",
+      "query_family_name": "Governed Object Actor Guard",
+      "example": "Is Log Level Envelope an actor or governed carrier?",
+      "primary_files": [
+        "02.04_governed_objects_index.csv",
+        "05.05_new_entities_register.csv",
+        "05.06_trace_coverage_index.json"
+      ]
+    },
+    {
+      "query_family_id": "QF-011",
+      "query_family_name": "Taxonomy Update and Ontology Seed Lookup",
+      "example": "Which taxonomy updates introduced ontology seed candidates?",
+      "primary_files": [
+        "05.04_taxonomy_update_register.csv",
+        "05.05_new_entities_register.csv",
+        "05.06_trace_coverage_index.json"
+      ]
+    },
+    {
+      "query_family_id": "QF-012",
+      "query_family_name": "Cross-Package Validation",
+      "example": "Do all responsibilities have aligned obligations, delegated entities, governed objects, enablements, surfaces, contracts, and trace rows?",
+      "primary_files": [
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv",
+        "06.02_JOIN_KEYS_REFERENCE.csv"
+      ]
+    }
+  ],
+  "6.0_package_dependencies": {
+    "depends_on": [
+      "00_release_manifest",
+      "01_reference_markdown",
+      "02_entity_enablement_indexes",
+      "03_delegation_matrix",
+      "04_obligation_delegation",
+      "05_trace_coverage_registers"
+    ],
+    "supports": [
+      "07_packages",
+      "future_postgresql_derivation_pack",
+      "future_graph_derivation_pack",
+      "future_assembler_system_ontology_expert_skill"
+    ],
+    "dependency_rule": "Rollup indexes must not introduce new canonical semantics. They must summarize, index, join, and validate semantics already defined in packages 01 through 05."
+  },
+  "7.0_validation_rules": [
+    {
+      "rule_id": "ROLLUP-VAL-001",
+      "rule_name": "No New Semantics Rule",
+      "severity": "blocking",
+      "statement": "The rollup package must not introduce new responsibilities, obligations, entities, governed objects, enablement families, surfaces, contracts, gaps, or doctrines."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-002",
+      "rule_name": "Responsibility Coverage Rule",
+      "severity": "blocking",
+      "statement": "All RSP-CAN-001 through RSP-CAN-049 must be reachable through the rollup index."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-003",
+      "rule_name": "Obligation Alignment Rule",
+      "severity": "blocking",
+      "statement": "All OBL-CAN-001 through OBL-CAN-049 must be reachable and numerically aligned with their corresponding RSP-CAN responsibility."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-004",
+      "rule_name": "Gap Closure Reachability Rule",
+      "severity": "blocking",
+      "statement": "All G-001 through G-007 must be reachable from the rollup index, with covering responsibilities and preserving obligations."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-005",
+      "rule_name": "Join Key Fidelity Rule",
+      "severity": "blocking",
+      "statement": "Join keys must preserve exact canonical casing, prefix grammar, and semicolon-separated CSV multi-value behavior."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-006",
+      "rule_name": "Flag / Report Separation Rule",
+      "severity": "blocking",
+      "statement": "BCO-013 Delivery-Cycle Flag Set and BCO-014 Dispatcher Feedback Report must remain separately queryable."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-007",
+      "rule_name": "Queue Runtime Layer Guard",
+      "severity": "blocking",
+      "statement": "QUEUE-RUNTIME-LAYER must remain classification-only and must not appear as a primary delegated entity."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-008",
+      "rule_name": "Metadata Injector Policy Guard",
+      "severity": "blocking",
+      "statement": "E-INT-007 Metadata Injector must remain schema/directive-governed and must not be treated as a policy host."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-009",
+      "rule_name": "Governed Object Actor Guard",
+      "severity": "blocking",
+      "statement": "BCO-012, BCO-013, and BCO-014 must remain governed artifacts, not primary delegated actors."
+    },
+    {
+      "rule_id": "ROLLUP-VAL-010",
+      "rule_name": "Contract Template Doctrine Guard",
+      "severity": "blocking",
+      "statement": "Contract references must preserve typed/template contract doctrine and must not be converted into runtime COM-interface semantics."
+    }
+  ],
+  "8.0_downstream_derivation_guidance": {
+    "relational_derivation": {
+      "recommended_tables": [
+        "rollup_index_documents",
+        "rollup_join_keys",
+        "rollup_query_patterns",
+        "rollup_cross_bundle_files",
+        "rollup_validation_rules",
+        "responsibility_rollups",
+        "obligation_rollups",
+        "entity_rollups",
+        "governed_object_rollups",
+        "enablement_rollups",
+        "surface_rollups",
+        "contract_rollups",
+        "gap_rollups",
+        "taxonomy_update_rollups"
+      ],
+      "primary_key_candidates": {
+        "rollup_index_documents": "document_id",
+        "rollup_join_keys": "join_key_id",
+        "rollup_query_patterns": "query_family_id",
+        "rollup_cross_bundle_files": "file_path",
+        "rollup_validation_rules": "rule_id"
+      }
+    },
+    "graph_derivation": {
+      "recommended_node_types": [
+        "Release",
+        "Package",
+        "File",
+        "Responsibility",
+        "Obligation",
+        "Entity",
+        "GovernedObject",
+        "EnablementFamily",
+        "Surface",
+        "Contract",
+        "Gap",
+        "Doctrine",
+        "TaxonomyUpdate",
+        "QueryFamily"
+      ],
+      "recommended_edge_types": [
+        "PACKAGE_CONTAINS_FILE",
+        "FILE_DEFINES_KEY",
+        "RESPONSIBILITY_HAS_OBLIGATION",
+        "RESPONSIBILITY_DELEGATED_TO_ENTITY",
+        "OBLIGATION_ENFORCED_BY_ENTITY",
+        "RESPONSIBILITY_GOVERNS_OBJECT",
+        "RESPONSIBILITY_REQUIRES_ENABLEMENT",
+        "RESPONSIBILITY_EXPOSES_SURFACE",
+        "RESPONSIBILITY_TRACES_TO_CONTRACT",
+        "RESPONSIBILITY_COVERS_GAP",
+        "GAP_CLOSED_BY_RESPONSIBILITY",
+        "CONTRACT_DERIVES_RESPONSIBILITY",
+        "TAXONOMY_UPDATE_INTRODUCES_SUBJECT",
+        "QUERY_FAMILY_USES_FILE",
+        "JOIN_KEY_CONNECTS_FILE"
+      ]
+    },
+    "ontology_skill_readiness": {
+      "status": "rollup_ready_after_all_06_files_are_installed",
+      "future_skill_name_candidate": "Assembler System Ontology Expert Skill",
+      "expected_capability": "Answer traceability, delegation, obligation, gap closure, and anti-collapse questions from stable rollup indexes."
+    }
+  },
+  "9.0_final_canonical_statement": {
+    "statement": "The 06_rollup_indexes package is the release-level query and navigation layer. It does not introduce new architecture; it consolidates and indexes the architecture already defined by the reference Markdown, entity enablement indexes, delegation matrix, obligation delegation package, and trace coverage registers.",
+    "non_canonical_if": [
+      "it introduces a new responsibility not present in packages 01 through 05",
+      "it changes an obligation or delegated entity assignment without upstream correction",
+      "it treats QUEUE-RUNTIME-LAYER as a primary delegated entity",
+      "it treats Metadata Injector as a policy-consuming component",
+      "it conflates Delivery-Cycle Flag Set with Dispatcher Feedback Report",
+      "it promotes Log Level Envelope, Delivery-Cycle Flag Set, or Dispatcher Feedback Report into primary actors",
+      "it treats contract templates as runtime COM interfaces",
+      "it hides or removes gap closure traceability"
+    ]
+  }
+}

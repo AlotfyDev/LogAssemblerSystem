@@ -1,0 +1,12 @@
+{
+  "0.1.document_id": "ASM-TAX-LAYER-L-004",
+  "0.2.layer_id": "L-004",
+  "0.3.layer_name": "Boundary / Carrier / Runtime Objects",
+  "1.1.purpose": "Objects that carry policy, content, envelope, queue, slot, and locator state",
+  "1.2.member_count": 11,
+  "2.1.numbering_rule": "0.x metadata; 1.x identity/purpose; 2.x counting/trace; 3.x member references; 4.x growth hooks.",
+  "2.2.trace_role": "Layer-level index file; member details live in separate files.",
+  "3.1.member_reference_strategy": "One JSON file per member in later bundles.",
+  "3.2.expected_member_count": 11,
+  "4.1.future_growth": "Add member references and batch-derived augmentations without merging into a giant file."
+}

@@ -1,0 +1,2566 @@
+{
+  "document_id": "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX",
+  "document_type": "delegation_enablement_rollup_index",
+  "release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "package_id": "06_rollup_indexes",
+  "package_path": "06_rollup_indexes/",
+  "file_path": "06_rollup_indexes/06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json",
+  "status": "draft_for_structured_local_installation",
+  "0.1_purpose": {
+    "summary": "Cross-package machine-readable rollup for the Canonical Delegation & Enablement Matrix V2 release.",
+    "role": "Provides a consolidated navigation index from responsibility and obligation IDs to delegated entities, governed objects, enablement families, surface types, contracts, gaps, doctrines, taxonomy updates, and downstream ontology seed candidates.",
+    "non_semantic_rule": "This rollup index must not introduce new canonical semantics. It may only aggregate, normalize, cross-reference, and validate semantics already defined in packages 01 through 05.",
+    "governing_mapping_law": "Responsibility / Obligation -> Primary Delegated Entity -> Supporting Entities -> Governed Objects -> Enablement Family -> Surface Type -> Trace",
+    "governing_trace_law": "External Relation -> Contract -> Responsibility -> Obligation -> Delegation -> Enablement -> Trace Coverage -> Ontology Candidate"
+  },
+  "0.2_source_basis": {
+    "reference_schema": "01_reference_markdown/01.06_REFERENCE_SCHEMA.md",
+    "entity_enablement_index": "02_entity_enablement_indexes/02.07_entity_enablement_index.json",
+    "entity_enablement_schema": "02_entity_enablement_indexes/02.08_ENTITY_ENABLEMENT_SCHEMA.md",
+    "delegation_matrix_index": "03_delegation_matrix/03.04_delegation_matrix_index.json",
+    "delegation_matrix_schema": "03_delegation_matrix/03.05_DELEGATION_MATRIX_SCHEMA.md",
+    "obligation_delegation_index": "04_obligation_delegation/04.05_obligation_delegation_index.json",
+    "obligation_delegation_schema": "04_obligation_delegation/04.06_OBLIGATION_DELEGATION_SCHEMA.md",
+    "trace_coverage_index": "05_trace_coverage_registers/05.06_trace_coverage_index.json",
+    "trace_coverage_schema": "05_trace_coverage_registers/05.07_TRACE_COVERAGE_SCHEMA.md",
+    "rollup_manifest": "06_rollup_indexes/06.00_PACKAGE_MANIFEST.json"
+  },
+  "1.0_release_rollup_counts": {
+    "responsibility_family_count": 8,
+    "top_level_responsibility_count": 49,
+    "top_level_obligation_count": 49,
+    "enablement_family_count": 9,
+    "base_surface_count": 6,
+    "derived_surface_count": 1,
+    "core_gap_count": 7,
+    "contract_family_count": 8,
+    "canonical_contract_count": 26,
+    "new_or_promoted_delegated_entity_count": 4,
+    "new_or_promoted_governed_artifact_count": 3,
+    "delivery_cycle_flag_sub_responsibility_count": 7,
+    "dispatcher_feedback_report_sub_responsibility_count": 5,
+    "total_special_sub_responsibility_count": 12,
+    "taxonomy_update_count": 16,
+    "trace_register_row_count": 49,
+    "gap_closure_coverage_row_count": 7,
+    "contract_trace_row_count": 26,
+    "new_entities_register_row_count": 7
+  },
+  "2.0_rollup_axes": {
+    "primary_query_axes": [
+      "responsibility_id",
+      "obligation_id",
+      "sub_responsibility_id",
+      "responsibility_family_id",
+      "entity_id",
+      "governed_object_id",
+      "enablement_family_id",
+      "surface_id",
+      "contract_id",
+      "contract_family_id",
+      "gap_id",
+      "doctrine_id",
+      "taxonomy_update_id",
+      "delegation_id",
+      "trace_id"
+    ],
+    "primary_rollup_paths": [
+      "responsibility_to_delegation",
+      "responsibility_to_obligation",
+      "responsibility_to_entity",
+      "responsibility_to_governed_object",
+      "responsibility_to_enablement",
+      "responsibility_to_surface",
+      "responsibility_to_contract",
+      "responsibility_to_gap",
+      "obligation_to_enforcing_entity",
+      "entity_to_responsibility_load",
+      "gap_to_covering_responsibilities",
+      "contract_to_derived_responsibilities",
+      "taxonomy_update_to_subject",
+      "governed_object_to_actor_guard",
+      "anti_collapse_rule_lookup"
+    ]
+  },
+  "3.0_family_rollups": [
+    {
+      "responsibility_family_id": "RSP-FAM-001",
+      "family_name": "Ingress Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-001..RSP-CAN-006",
+      "obligation_range": "OBL-CAN-001..OBL-CAN-006",
+      "responsibility_ids": [
+        "RSP-CAN-001",
+        "RSP-CAN-002",
+        "RSP-CAN-003",
+        "RSP-CAN-004",
+        "RSP-CAN-005",
+        "RSP-CAN-006"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-001",
+        "OBL-CAN-002",
+        "OBL-CAN-003",
+        "OBL-CAN-004",
+        "OBL-CAN-005",
+        "OBL-CAN-006"
+      ],
+      "primary_entity_ids": [
+        "E-INT-011",
+        "E-INT-009",
+        "E-INT-008"
+      ],
+      "primary_entity_names": [
+        "Envelope Assembler",
+        "Validator",
+        "Timestamp Stabilizer"
+      ],
+      "supporting_entity_ids": [
+        "E-EXT-001",
+        "E-INT-007",
+        "E-INT-012"
+      ],
+      "governed_object_ids": [
+        "GOV-005",
+        "GOV-006",
+        "validation_candidate_input",
+        "timestamp_value",
+        "envelope_timestamp_field",
+        "BCO-012"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-008",
+        "EN-FAM-009"
+      ],
+      "surface_ids": [
+        "SURF-CONSUMING",
+        "SURF-CONTRACTUAL",
+        "SURF-MANAGERIAL",
+        "SURF-ADMINISTRATIVE"
+      ],
+      "contract_ids": [
+        "CC-IN-001A",
+        "CC-IN-001B",
+        "CC-IN-002",
+        "CC-ENV-001"
+      ],
+      "gap_ids": [
+        "G-004",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-005",
+        "DOC-006"
+      ],
+      "summary": "Covers typed ingress, validating versus hot-path separation, validation placement, mandatory timestamp stabilization, and Log Level Envelope realization.",
+      "primary_source_files": [
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "05_trace_coverage_registers/05.01_delegation_trace_v2.csv",
+        "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-002",
+      "family_name": "Policy Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-007..RSP-CAN-012",
+      "obligation_range": "OBL-CAN-007..OBL-CAN-012",
+      "responsibility_ids": [
+        "RSP-CAN-007",
+        "RSP-CAN-008",
+        "RSP-CAN-009",
+        "RSP-CAN-010",
+        "RSP-CAN-011",
+        "RSP-CAN-012"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-007",
+        "OBL-CAN-008",
+        "OBL-CAN-009",
+        "OBL-CAN-010",
+        "OBL-CAN-011",
+        "OBL-CAN-012"
+      ],
+      "primary_entity_ids": [
+        "E-INT-013",
+        "E-INT-010",
+        "policy-consuming components"
+      ],
+      "primary_entity_names": [
+        "Administrative / Ecosystem Port",
+        "PolicyAssigner",
+        "Policy-consuming Components"
+      ],
+      "supporting_entity_ids": [
+        "E-EXT-002",
+        "E-EXT-003",
+        "E-INT-002",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-008",
+        "E-INT-009"
+      ],
+      "governed_object_ids": [
+        "BCO-001",
+        "BCO-002",
+        "GOV-008",
+        "mechanism_semantics",
+        "replacement_eligible_policy_object"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-001",
+        "EN-FAM-002",
+        "EN-FAM-007",
+        "EN-FAM-008"
+      ],
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-MANAGERIAL",
+        "SURF-CONTRACTUAL",
+        "SURF-BOUNDARY"
+      ],
+      "contract_ids": [
+        "CC-POL-001",
+        "CC-POL-002",
+        "CC-POL-003",
+        "CC-POL-004",
+        "CC-POL-005"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-005"
+      ],
+      "doctrine_ids": [
+        "DOC-002",
+        "DOC-003",
+        "DOC-004"
+      ],
+      "summary": "Covers policy bundle intake, Policy Object identity, assignment mediation, component mechanism hosting, and safe-point replacement.",
+      "primary_source_files": [
+        "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-003",
+      "family_name": "Metadata / Preparation Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-013..RSP-CAN-016",
+      "obligation_range": "OBL-CAN-013..OBL-CAN-016",
+      "responsibility_ids": [
+        "RSP-CAN-013",
+        "RSP-CAN-014",
+        "RSP-CAN-015",
+        "RSP-CAN-016"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-013",
+        "OBL-CAN-014",
+        "OBL-CAN-015",
+        "OBL-CAN-016"
+      ],
+      "primary_entity_ids": [
+        "E-INT-013",
+        "E-INT-007"
+      ],
+      "primary_entity_names": [
+        "Administrative / Ecosystem Port",
+        "Metadata Injector"
+      ],
+      "supporting_entity_ids": [
+        "E-EXT-004",
+        "E-INT-011",
+        "E-INT-008"
+      ],
+      "governed_object_ids": [
+        "BCO-003",
+        "GOV-008",
+        "metadata_schema",
+        "metadata_fields",
+        "BCO-012"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-007",
+        "EN-FAM-008",
+        "EN-FAM-009",
+        "EN-FAM-003"
+      ],
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-CONTRACTUAL",
+        "SURF-MANAGERIAL",
+        "SURF-BOUNDARY"
+      ],
+      "contract_ids": [
+        "CC-META-001",
+        "CC-META-002",
+        "CC-ENV-001"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-004",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-002",
+        "DOC-006"
+      ],
+      "summary": "Covers metadata directive intake, schema/directive-governed injection, metadata authority path preservation, and metadata-to-envelope composition.",
+      "primary_source_files": [
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-004",
+      "family_name": "Operational / Scaling Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-017..RSP-CAN-020",
+      "obligation_range": "OBL-CAN-017..OBL-CAN-020",
+      "responsibility_ids": [
+        "RSP-CAN-017",
+        "RSP-CAN-018",
+        "RSP-CAN-019",
+        "RSP-CAN-020"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-017",
+        "OBL-CAN-018",
+        "OBL-CAN-019",
+        "OBL-CAN-020"
+      ],
+      "primary_entity_ids": [
+        "E-INT-013",
+        "E-INT-005",
+        "E-INT-003"
+      ],
+      "primary_entity_names": [
+        "Administrative / Ecosystem Port",
+        "Queue Bundle Agent",
+        "Writing / Feeding Round Manager"
+      ],
+      "supporting_entity_ids": [
+        "E-EXT-005",
+        "E-INT-004",
+        "E-INT-006",
+        "E-INT-010"
+      ],
+      "governed_object_ids": [
+        "GOV-007",
+        "BCO-004",
+        "BCO-005",
+        "BCO-009",
+        "BCO-011",
+        "BCO-002"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-004",
+        "EN-FAM-002",
+        "EN-FAM-008",
+        "EN-FAM-001"
+      ],
+      "surface_ids": [
+        "SURF-ADMINISTRATIVE",
+        "SURF-MANAGERIAL",
+        "SURF-CONTRACTUAL"
+      ],
+      "contract_ids": [
+        "CC-OPS-001",
+        "CC-OPS-002",
+        "CC-STATE-001",
+        "CC-STATE-006",
+        "CC-STATE-008",
+        "CC-POL-004"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-002",
+        "DOC-003",
+        "DOC-004",
+        "DOC-007"
+      ],
+      "summary": "Covers operational directive intake, pause/drain/scale/activate realization, writable degradation visibility, and policy-conforming queue order.",
+      "primary_source_files": [
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "05_trace_coverage_registers/05.01_delegation_trace_v2.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-005",
+      "family_name": "Registry / Dispatcher Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-021..RSP-CAN-026",
+      "obligation_range": "OBL-CAN-021..OBL-CAN-026",
+      "responsibility_ids": [
+        "RSP-CAN-021",
+        "RSP-CAN-022",
+        "RSP-CAN-023",
+        "RSP-CAN-024",
+        "RSP-CAN-025",
+        "RSP-CAN-026"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-021",
+        "OBL-CAN-022",
+        "OBL-CAN-023",
+        "OBL-CAN-024",
+        "OBL-CAN-025",
+        "OBL-CAN-026"
+      ],
+      "primary_entity_ids": [
+        "E-INT-002",
+        "E-INT-014"
+      ],
+      "primary_entity_names": [
+        "Dispatcher",
+        "Registry / Delivery Port"
+      ],
+      "supporting_entity_ids": [
+        "E-EXT-006",
+        "E-INT-004",
+        "E-INT-006"
+      ],
+      "governed_object_ids": [
+        "GOV-001",
+        "GOV-002",
+        "GOV-003",
+        "GOV-004",
+        "BCO-012",
+        "BCO-013"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-005",
+        "EN-FAM-006",
+        "EN-FAM-007",
+        "EN-FAM-008"
+      ],
+      "surface_ids": [
+        "SURF-MANAGERIAL",
+        "SURF-BOUNDARY",
+        "SURF-CONTRACTUAL",
+        "SURF-OBSERVABILITY"
+      ],
+      "contract_ids": [
+        "CC-REG-001",
+        "CC-REG-002",
+        "CC-REG-003",
+        "CC-ENV-002",
+        "CT-FAM-005"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-003",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-006",
+        "DOC-007"
+      ],
+      "summary": "Covers registry readiness, envelope handoff gating, Dispatcher boundary, receiving admission, delivery-cycle flags, and lifecycle non-ownership after handoff.",
+      "primary_source_files": [
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.03_delivery_cycle_flags_delegation.csv",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+        "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-006",
+      "family_name": "Envelope Carrier Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-027..RSP-CAN-031",
+      "obligation_range": "OBL-CAN-027..OBL-CAN-031",
+      "responsibility_ids": [
+        "RSP-CAN-027",
+        "RSP-CAN-028",
+        "RSP-CAN-029",
+        "RSP-CAN-030",
+        "RSP-CAN-031"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-027",
+        "OBL-CAN-028",
+        "OBL-CAN-029",
+        "OBL-CAN-030",
+        "OBL-CAN-031"
+      ],
+      "primary_entity_ids": [
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-002",
+        "E-INT-014",
+        "E-INT-006"
+      ],
+      "primary_entity_names": [
+        "Envelope Assembler",
+        "Assembler Ingress Port",
+        "Writing / Feeding Round Manager",
+        "Dispatching / Delivery Round Manager",
+        "Dispatcher",
+        "Registry / Delivery Port",
+        "Single Queue Moderator"
+      ],
+      "supporting_entity_ids": [
+        "E-INT-007",
+        "E-INT-008",
+        "E-INT-005"
+      ],
+      "governed_object_ids": [
+        "BCO-012",
+        "metadata_fields",
+        "timestamp_value",
+        "envelope_timestamp_field",
+        "BCO-005",
+        "BCO-006",
+        "BCO-007",
+        "GOV-003"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-003",
+        "EN-FAM-004",
+        "EN-FAM-005",
+        "EN-FAM-007",
+        "EN-FAM-009"
+      ],
+      "surface_ids": [
+        "SURF-MANAGERIAL",
+        "SURF-CONSUMING",
+        "SURF-BOUNDARY",
+        "SURF-CONTRACTUAL"
+      ],
+      "contract_ids": [
+        "CC-ENV-001",
+        "CC-ENV-002",
+        "CC-IN-002",
+        "CC-META-002",
+        "CC-REG-002",
+        "CC-STATE-002",
+        "CC-STATE-003"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-004",
+        "G-005",
+        "G-006",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-006",
+        "DOC-007"
+      ],
+      "summary": "Covers Log Level Envelope construction, admission, identity preservation, movement, lifecycle transfer, and distinction between occupancy binding and lifecycle ownership.",
+      "primary_source_files": [
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05_trace_coverage_registers/05.05_new_entities_register.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-007",
+      "family_name": "Boundary / Exclusion Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-032..RSP-CAN-037",
+      "obligation_range": "OBL-CAN-032..OBL-CAN-037",
+      "responsibility_ids": [
+        "RSP-CAN-032",
+        "RSP-CAN-033",
+        "RSP-CAN-034",
+        "RSP-CAN-035",
+        "RSP-CAN-036",
+        "RSP-CAN-037"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-032",
+        "OBL-CAN-033",
+        "OBL-CAN-034",
+        "OBL-CAN-035",
+        "OBL-CAN-036",
+        "OBL-CAN-037"
+      ],
+      "primary_entity_ids": [
+        "E-INT-001",
+        "E-INT-013",
+        "E-INT-012",
+        "E-INT-002",
+        "E-INT-014",
+        "E-INT-011",
+        "E-INT-010",
+        "E-INT-006"
+      ],
+      "primary_entity_names": [
+        "Assembler Subsystem",
+        "Administrative / Ecosystem Port",
+        "Assembler Ingress Port",
+        "Dispatcher",
+        "Registry / Delivery Port",
+        "Envelope Assembler",
+        "PolicyAssigner",
+        "Single Queue Moderator"
+      ],
+      "supporting_entity_ids": [
+        "E-EXT-007",
+        "E-INT-005",
+        "policy-consuming components"
+      ],
+      "governed_object_ids": [
+        "GOV-009",
+        "GOV-008",
+        "GOV-004",
+        "GOV-005",
+        "GOV-006",
+        "BCO-002",
+        "BCO-005"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-007",
+        "EN-FAM-008",
+        "EN-FAM-001",
+        "EN-FAM-002",
+        "EN-FAM-004"
+      ],
+      "surface_ids": [
+        "SURF-BOUNDARY",
+        "SURF-ADMINISTRATIVE",
+        "SURF-CONSUMING",
+        "SURF-MANAGERIAL",
+        "SURF-CONTRACTUAL",
+        "SURF-CROSS-SURFACE"
+      ],
+      "contract_ids": [
+        "CC-EX-001",
+        "CC-IN-001A",
+        "CC-IN-001B",
+        "CC-POL-001",
+        "CC-POL-003",
+        "CC-POL-004",
+        "CC-REG-002",
+        "CC-REG-003",
+        "CC-STATE-002",
+        "CC-STATE-004"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-002",
+        "G-006",
+        "G-007"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-002",
+        "DOC-003",
+        "DOC-005",
+        "DOC-007"
+      ],
+      "summary": "Covers non-authority exclusion, surface separation, Dispatcher Boundary Law, template contract doctrine, Policy Object doctrine, and Queue-as-Container doctrine.",
+      "primary_source_files": [
+        "01_reference_markdown/01.02_canonical_assignment_principles.md",
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    },
+    {
+      "responsibility_family_id": "RSP-FAM-008",
+      "family_name": "Runtime State Responsibility Delegation",
+      "responsibility_range": "RSP-CAN-038..RSP-CAN-049",
+      "obligation_range": "OBL-CAN-038..OBL-CAN-049",
+      "responsibility_ids": [
+        "RSP-CAN-038",
+        "RSP-CAN-039",
+        "RSP-CAN-040",
+        "RSP-CAN-041",
+        "RSP-CAN-042",
+        "RSP-CAN-043",
+        "RSP-CAN-044",
+        "RSP-CAN-045",
+        "RSP-CAN-046",
+        "RSP-CAN-047",
+        "RSP-CAN-048",
+        "RSP-CAN-049"
+      ],
+      "obligation_ids": [
+        "OBL-CAN-038",
+        "OBL-CAN-039",
+        "OBL-CAN-040",
+        "OBL-CAN-041",
+        "OBL-CAN-042",
+        "OBL-CAN-043",
+        "OBL-CAN-044",
+        "OBL-CAN-045",
+        "OBL-CAN-046",
+        "OBL-CAN-047",
+        "OBL-CAN-048",
+        "OBL-CAN-049"
+      ],
+      "primary_entity_ids": [
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-002"
+      ],
+      "primary_entity_names": [
+        "Queue Bundle Agent",
+        "Single Queue Moderator",
+        "Writing / Feeding Round Manager",
+        "Dispatching / Delivery Round Manager",
+        "Dispatcher"
+      ],
+      "supporting_entity_ids": [
+        "E-INT-014",
+        "OPTIONAL-DIAGNOSTIC-CONSUMER"
+      ],
+      "governed_object_ids": [
+        "BCO-004",
+        "BCO-005",
+        "BCO-006",
+        "BCO-007",
+        "BCO-008",
+        "BCO-009",
+        "BCO-010",
+        "BCO-011",
+        "BCO-012",
+        "BCO-014"
+      ],
+      "enablement_family_ids": [
+        "EN-FAM-004",
+        "EN-FAM-006",
+        "EN-FAM-007"
+      ],
+      "surface_ids": [
+        "SURF-MANAGERIAL",
+        "SURF-BOUNDARY",
+        "SURF-OBSERVABILITY"
+      ],
+      "contract_ids": [
+        "CC-STATE-001",
+        "CC-STATE-002",
+        "CC-STATE-003",
+        "CC-STATE-004",
+        "CC-STATE-005",
+        "CC-STATE-006",
+        "CC-STATE-007",
+        "CC-STATE-008",
+        "CC-REG-002",
+        "CT-FAM-005"
+      ],
+      "gap_ids": [
+        "G-003",
+        "G-005",
+        "G-006"
+      ],
+      "doctrine_ids": [
+        "DOC-001",
+        "DOC-006",
+        "DOC-007"
+      ],
+      "summary": "Covers queue-bundle orchestration, single queue-container moderation, slots, occupancy binding, slot lifecycle, waiting lists, queue-container identifiers, requalification, dispatcher feedback reports, and queue-container terminology preservation.",
+      "primary_source_files": [
+        "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+        "03_delegation_matrix/03.02_delegation_matrix_by_family_v2.csv",
+        "04_obligation_delegation/04.02_sub_responsibility_delegation_v2.csv",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv"
+      ]
+    }
+  ],
+  "4.0_entity_rollups": {
+    "4.1_new_or_promoted_delegated_entities": [
+      {
+        "entity_id": "E-INT-011",
+        "entity_name": "Envelope Assembler",
+        "canonical_class": "client_side_contract_composite",
+        "delegation_status": "primary_delegation_allowed",
+        "primary_responsibility_ids": [
+          "RSP-CAN-001",
+          "RSP-CAN-002",
+          "RSP-CAN-003",
+          "RSP-CAN-006",
+          "RSP-CAN-027",
+          "RSP-CAN-035"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-004",
+          "RSP-CAN-005",
+          "RSP-CAN-014",
+          "RSP-CAN-015"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-003",
+          "EN-FAM-008",
+          "EN-FAM-009"
+        ],
+        "surface_ids": [
+          "SURF-CONSUMING",
+          "SURF-CONTRACTUAL",
+          "SURF-MANAGERIAL"
+        ],
+        "governed_object_ids": [
+          "BCO-012",
+          "GOV-005",
+          "GOV-006",
+          "metadata_fields",
+          "timestamp_value",
+          "envelope_timestamp_field"
+        ],
+        "contract_ids": [
+          "CC-IN-001A",
+          "CC-IN-001B",
+          "CC-IN-002",
+          "CC-ENV-001",
+          "CC-META-002"
+        ],
+        "gap_ids": [
+          "G-004",
+          "G-007"
+        ],
+        "actor_guard": "actor_like_composite_not_raw_api_not_queue_runtime_object"
+      },
+      {
+        "entity_id": "E-INT-012",
+        "entity_name": "Assembler Ingress Port",
+        "canonical_class": "server_side_ingress_port",
+        "delegation_status": "primary_delegation_allowed",
+        "primary_responsibility_ids": [
+          "RSP-CAN-006",
+          "RSP-CAN-028",
+          "RSP-CAN-033",
+          "RSP-CAN-035",
+          "RSP-CAN-040",
+          "RSP-CAN-041"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-027",
+          "RSP-CAN-031"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-003",
+          "EN-FAM-007",
+          "EN-FAM-008"
+        ],
+        "surface_ids": [
+          "SURF-CONSUMING",
+          "SURF-BOUNDARY",
+          "SURF-CONTRACTUAL"
+        ],
+        "governed_object_ids": [
+          "BCO-012",
+          "BCO-005",
+          "BCO-006",
+          "BCO-007",
+          "GOV-005",
+          "GOV-006"
+        ],
+        "contract_ids": [
+          "CC-IN-002",
+          "CC-ENV-001",
+          "CC-STATE-003"
+        ],
+        "gap_ids": [
+          "G-006",
+          "G-007"
+        ],
+        "actor_guard": "server_side_receiving_port_not_envelope_assembler_not_registry_delivery_boundary"
+      },
+      {
+        "entity_id": "E-INT-013",
+        "entity_name": "Administrative / Ecosystem Port",
+        "canonical_class": "administrative_ecosystem_port",
+        "delegation_status": "primary_delegation_allowed",
+        "primary_responsibility_ids": [
+          "RSP-CAN-007",
+          "RSP-CAN-013",
+          "RSP-CAN-016",
+          "RSP-CAN-017",
+          "RSP-CAN-033",
+          "RSP-CAN-035"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-008",
+          "RSP-CAN-012",
+          "RSP-CAN-020"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-001",
+          "EN-FAM-007",
+          "EN-FAM-008",
+          "EN-FAM-009"
+        ],
+        "surface_ids": [
+          "SURF-ADMINISTRATIVE",
+          "SURF-BOUNDARY",
+          "SURF-CONTRACTUAL"
+        ],
+        "governed_object_ids": [
+          "BCO-001",
+          "BCO-003",
+          "GOV-007",
+          "GOV-008",
+          "GOV-009"
+        ],
+        "contract_ids": [
+          "CC-POL-001",
+          "CC-META-001",
+          "CC-OPS-001"
+        ],
+        "gap_ids": [
+          "G-002",
+          "G-005",
+          "G-007"
+        ],
+        "actor_guard": "administrative_control_port_not_consuming_content_ingress_not_managerial_executor"
+      },
+      {
+        "entity_id": "E-INT-014",
+        "entity_name": "Registry / Delivery Port",
+        "canonical_class": "registry_delivery_port",
+        "delegation_status": "primary_delegation_allowed_as_port_surface",
+        "primary_responsibility_ids": [
+          "RSP-CAN-021",
+          "RSP-CAN-022",
+          "RSP-CAN-024",
+          "RSP-CAN-026",
+          "RSP-CAN-030",
+          "RSP-CAN-034"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-023",
+          "RSP-CAN-025",
+          "RSP-CAN-048"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-003",
+          "EN-FAM-005",
+          "EN-FAM-007",
+          "EN-FAM-008"
+        ],
+        "surface_ids": [
+          "SURF-BOUNDARY",
+          "SURF-CONTRACTUAL",
+          "SURF-MANAGERIAL"
+        ],
+        "governed_object_ids": [
+          "GOV-001",
+          "GOV-002",
+          "GOV-003",
+          "GOV-004",
+          "BCO-012",
+          "BCO-013",
+          "BCO-014"
+        ],
+        "contract_ids": [
+          "CC-REG-001",
+          "CC-REG-002",
+          "CC-REG-003",
+          "CC-ENV-002"
+        ],
+        "gap_ids": [
+          "G-001",
+          "G-003",
+          "G-006"
+        ],
+        "actor_guard": "registry_delivery_port_is_contract_surface_not_dispatcher_replacement"
+      }
+    ],
+    "4.2_core_runtime_entities": [
+      {
+        "entity_id": "E-INT-005",
+        "entity_name": "Queue Bundle Agent",
+        "rollup_role": "bundle_level_runtime_orchestrator",
+        "primary_responsibility_ids": [
+          "RSP-CAN-018",
+          "RSP-CAN-020",
+          "RSP-CAN-038"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-043",
+          "RSP-CAN-047"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-004",
+          "EN-FAM-002"
+        ],
+        "gap_ids": [
+          "G-005",
+          "G-006"
+        ]
+      },
+      {
+        "entity_id": "E-INT-006",
+        "entity_name": "Single Queue Moderator",
+        "rollup_role": "single_queue_container_moderator",
+        "primary_responsibility_ids": [
+          "RSP-CAN-039",
+          "RSP-CAN-040",
+          "RSP-CAN-041",
+          "RSP-CAN-042",
+          "RSP-CAN-043",
+          "RSP-CAN-047",
+          "RSP-CAN-049"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-031",
+          "RSP-CAN-044",
+          "RSP-CAN-045"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-004",
+          "EN-FAM-002",
+          "EN-FAM-007"
+        ],
+        "gap_ids": [
+          "G-005",
+          "G-006"
+        ]
+      },
+      {
+        "entity_id": "E-INT-003",
+        "entity_name": "Writing / Feeding Round Manager",
+        "rollup_role": "writing_round_waiting_list_and_feed_progression_manager",
+        "primary_responsibility_ids": [
+          "RSP-CAN-019",
+          "RSP-CAN-029",
+          "RSP-CAN-044",
+          "RSP-CAN-046"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-018",
+          "RSP-CAN-020",
+          "RSP-CAN-047"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-004",
+          "EN-FAM-002",
+          "EN-FAM-003"
+        ],
+        "gap_ids": [
+          "G-005",
+          "G-006"
+        ]
+      },
+      {
+        "entity_id": "E-INT-004",
+        "entity_name": "Dispatching / Delivery Round Manager",
+        "rollup_role": "delivery_round_waiting_list_and_dispatch_progression_manager",
+        "primary_responsibility_ids": [
+          "RSP-CAN-029",
+          "RSP-CAN-043",
+          "RSP-CAN-045",
+          "RSP-CAN-046"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-018",
+          "RSP-CAN-025",
+          "RSP-CAN-047",
+          "RSP-CAN-048"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-004",
+          "EN-FAM-002",
+          "EN-FAM-003",
+          "EN-FAM-006"
+        ],
+        "gap_ids": [
+          "G-003",
+          "G-005",
+          "G-006"
+        ]
+      },
+      {
+        "entity_id": "E-INT-002",
+        "entity_name": "Dispatcher",
+        "rollup_role": "final_assembler_side_boundary_and_feedback_actor",
+        "primary_responsibility_ids": [
+          "RSP-CAN-021",
+          "RSP-CAN-022",
+          "RSP-CAN-023",
+          "RSP-CAN-025",
+          "RSP-CAN-026",
+          "RSP-CAN-030",
+          "RSP-CAN-034",
+          "RSP-CAN-048"
+        ],
+        "supporting_responsibility_ids": [
+          "RSP-CAN-024"
+        ],
+        "enablement_family_ids": [
+          "EN-FAM-003",
+          "EN-FAM-005",
+          "EN-FAM-006",
+          "EN-FAM-007",
+          "EN-FAM-002"
+        ],
+        "gap_ids": [
+          "G-001",
+          "G-003",
+          "G-006"
+        ]
+      }
+    ],
+    "4.3_guarded_non_delegates": [
+      {
+        "subject_id": "QUEUE-RUNTIME-LAYER",
+        "subject_name": "Queue Runtime Layer",
+        "status": "classification_only",
+        "forbidden_role": "primary_delegated_entity",
+        "replacement_delegates": [
+          "E-INT-005",
+          "E-INT-006",
+          "E-INT-003",
+          "E-INT-004"
+        ],
+        "guard_source": "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      },
+      {
+        "subject_id": "BCO-012",
+        "subject_name": "Log Level Envelope",
+        "status": "governed_artifact_not_actor",
+        "forbidden_role": "primary_delegated_entity",
+        "governing_entities": [
+          "E-INT-011",
+          "E-INT-012",
+          "E-INT-003",
+          "E-INT-004",
+          "E-INT-002",
+          "E-INT-014",
+          "E-INT-006"
+        ],
+        "guard_source": "05_trace_coverage_registers/05.05_new_entities_register.csv"
+      },
+      {
+        "subject_id": "BCO-013",
+        "subject_name": "Delivery-Cycle Flag Set",
+        "status": "governed_artifact_not_actor",
+        "forbidden_role": "primary_delegated_entity",
+        "governing_entities": [
+          "E-INT-002"
+        ],
+        "guard_source": "05_trace_coverage_registers/05.05_new_entities_register.csv"
+      },
+      {
+        "subject_id": "BCO-014",
+        "subject_name": "Dispatcher Feedback Report",
+        "status": "governed_artifact_not_actor",
+        "forbidden_role": "primary_delegated_entity",
+        "governing_entities": [
+          "E-INT-002"
+        ],
+        "guard_source": "05_trace_coverage_registers/05.05_new_entities_register.csv"
+      }
+    ]
+  },
+  "5.0_enablement_rollups": [
+    {
+      "enablement_family_id": "EN-FAM-001",
+      "enablement_family_name": "Assignment Surface Enablement",
+      "primary_plane": "Administrative",
+      "used_by_entity_ids": [
+        "E-INT-010",
+        "E-INT-013",
+        "policy-consuming components"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-007",
+        "RSP-CAN-008",
+        "RSP-CAN-009",
+        "RSP-CAN-010",
+        "RSP-CAN-012",
+        "RSP-CAN-036"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-007",
+        "OBL-CAN-008",
+        "OBL-CAN-009",
+        "OBL-CAN-010",
+        "OBL-CAN-012",
+        "OBL-CAN-036"
+      ],
+      "gap_ids": [
+        "G-002"
+      ],
+      "anti_collapse_rule": "Assignment surface must not collapse into content ingress, mechanism execution, metadata injection, or queue runtime behavior."
+    },
+    {
+      "enablement_family_id": "EN-FAM-002",
+      "enablement_family_name": "Mechanism Hosting Enablement",
+      "primary_plane": "Managerial / Policy",
+      "used_by_entity_ids": [
+        "E-INT-002",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-008",
+        "E-INT-009"
+      ],
+      "excluded_entity_ids": [
+        "E-INT-007"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-010",
+        "RSP-CAN-011",
+        "RSP-CAN-020",
+        "RSP-CAN-036"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-010",
+        "OBL-CAN-011",
+        "OBL-CAN-020",
+        "OBL-CAN-036"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-005"
+      ],
+      "anti_collapse_rule": "Policy Object governs mechanism semantics; component hosts mechanism locally; Metadata Injector is excluded."
+    },
+    {
+      "enablement_family_id": "EN-FAM-003",
+      "enablement_family_name": "Envelope Handling Enablement",
+      "primary_plane": "Managerial / Boundary",
+      "used_by_entity_ids": [
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-002",
+        "E-INT-014"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-006",
+        "RSP-CAN-023",
+        "RSP-CAN-027",
+        "RSP-CAN-028",
+        "RSP-CAN-029",
+        "RSP-CAN-030"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-006",
+        "OBL-CAN-023",
+        "OBL-CAN-027",
+        "OBL-CAN-028",
+        "OBL-CAN-029",
+        "OBL-CAN-030"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-004",
+        "G-006",
+        "G-007"
+      ],
+      "anti_collapse_rule": "Log Level Envelope remains runtime carrier; raw content, queue-container identity, and occupancy binding must not replace envelope identity."
+    },
+    {
+      "enablement_family_id": "EN-FAM-004",
+      "enablement_family_name": "Queue Runtime Enablement",
+      "primary_plane": "Managerial / Runtime",
+      "used_by_entity_ids": [
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-003",
+        "E-INT-004"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-017",
+        "RSP-CAN-018",
+        "RSP-CAN-019",
+        "RSP-CAN-020",
+        "RSP-CAN-031",
+        "RSP-CAN-037",
+        "RSP-CAN-038",
+        "RSP-CAN-039",
+        "RSP-CAN-040",
+        "RSP-CAN-041",
+        "RSP-CAN-042",
+        "RSP-CAN-043",
+        "RSP-CAN-044",
+        "RSP-CAN-045",
+        "RSP-CAN-046",
+        "RSP-CAN-047",
+        "RSP-CAN-049"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-017",
+        "OBL-CAN-018",
+        "OBL-CAN-019",
+        "OBL-CAN-020",
+        "OBL-CAN-031",
+        "OBL-CAN-037",
+        "OBL-CAN-038",
+        "OBL-CAN-039",
+        "OBL-CAN-040",
+        "OBL-CAN-041",
+        "OBL-CAN-042",
+        "OBL-CAN-043",
+        "OBL-CAN-044",
+        "OBL-CAN-045",
+        "OBL-CAN-046",
+        "OBL-CAN-047",
+        "OBL-CAN-049"
+      ],
+      "gap_ids": [
+        "G-005",
+        "G-006"
+      ],
+      "anti_collapse_rule": "Queue equals Container; Queue Runtime Layer is classification-only; waiting lists store Queue Container Identifiers."
+    },
+    {
+      "enablement_family_id": "EN-FAM-005",
+      "enablement_family_name": "Registry Boundary Enablement",
+      "primary_plane": "Boundary / Registry",
+      "used_by_entity_ids": [
+        "E-INT-002",
+        "E-INT-014"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-021",
+        "RSP-CAN-022",
+        "RSP-CAN-024",
+        "RSP-CAN-026",
+        "RSP-CAN-030",
+        "RSP-CAN-034"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-021",
+        "OBL-CAN-022",
+        "OBL-CAN-024",
+        "OBL-CAN-026",
+        "OBL-CAN-030",
+        "OBL-CAN-034"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-006"
+      ],
+      "anti_collapse_rule": "Registry / Delivery Port is boundary contract surface; Dispatcher remains final assembler-side handoff actor."
+    },
+    {
+      "enablement_family_id": "EN-FAM-006",
+      "enablement_family_name": "Feedback / Reporting Enablement",
+      "primary_plane": "Managerial / Observability",
+      "used_by_entity_ids": [
+        "E-INT-002",
+        "E-INT-004",
+        "E-INT-006",
+        "OPTIONAL-DIAGNOSTIC-CONSUMER"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-025",
+        "RSP-CAN-048"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-025",
+        "OBL-CAN-048"
+      ],
+      "sub_responsibility_ids": [
+        "RSP-CAN-025.1",
+        "RSP-CAN-025.2",
+        "RSP-CAN-025.3",
+        "RSP-CAN-025.4",
+        "RSP-CAN-025.5",
+        "RSP-CAN-025.6",
+        "RSP-CAN-025.7",
+        "RSP-CAN-048.1",
+        "RSP-CAN-048.2",
+        "RSP-CAN-048.3",
+        "RSP-CAN-048.4",
+        "RSP-CAN-048.5"
+      ],
+      "gap_ids": [
+        "G-003"
+      ],
+      "anti_collapse_rule": "Delivery-Cycle Flag Set and Dispatcher Feedback Report must remain separately queryable artifacts."
+    },
+    {
+      "enablement_family_id": "EN-FAM-007",
+      "enablement_family_name": "Boundary / Exclusion Enablement",
+      "primary_plane": "Boundary / Constitutional",
+      "used_by_entity_ids": [
+        "E-INT-001",
+        "E-INT-002",
+        "E-INT-012",
+        "E-INT-013",
+        "E-INT-014"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-023",
+        "RSP-CAN-026",
+        "RSP-CAN-031",
+        "RSP-CAN-032",
+        "RSP-CAN-033",
+        "RSP-CAN-034",
+        "RSP-CAN-037",
+        "RSP-CAN-049"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-023",
+        "OBL-CAN-026",
+        "OBL-CAN-031",
+        "OBL-CAN-032",
+        "OBL-CAN-033",
+        "OBL-CAN-034",
+        "OBL-CAN-037",
+        "OBL-CAN-049"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-006",
+        "G-007"
+      ],
+      "anti_collapse_rule": "Boundary, exclusion, and authority edges must remain explicit and must not be erased by managerial convenience."
+    },
+    {
+      "enablement_family_id": "EN-FAM-008",
+      "enablement_family_name": "Contract Template Enablement",
+      "primary_plane": "Contractual",
+      "used_by_entity_ids": [
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-013",
+        "E-INT-014"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-001",
+        "RSP-CAN-002",
+        "RSP-CAN-003",
+        "RSP-CAN-007",
+        "RSP-CAN-013",
+        "RSP-CAN-017",
+        "RSP-CAN-024",
+        "RSP-CAN-033",
+        "RSP-CAN-035"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-001",
+        "OBL-CAN-002",
+        "OBL-CAN-003",
+        "OBL-CAN-007",
+        "OBL-CAN-013",
+        "OBL-CAN-017",
+        "OBL-CAN-024",
+        "OBL-CAN-033",
+        "OBL-CAN-035"
+      ],
+      "gap_ids": [
+        "G-001",
+        "G-002",
+        "G-007"
+      ],
+      "anti_collapse_rule": "Typed/template contracts are canonical contract laws, not runtime COM interfaces."
+    },
+    {
+      "enablement_family_id": "EN-FAM-009",
+      "enablement_family_name": "Metadata / Timestamp Preparation Enablement",
+      "primary_plane": "Preparation / Ingress",
+      "used_by_entity_ids": [
+        "E-INT-007",
+        "E-INT-008",
+        "E-INT-011"
+      ],
+      "enabled_responsibility_ids": [
+        "RSP-CAN-002",
+        "RSP-CAN-005",
+        "RSP-CAN-013",
+        "RSP-CAN-014",
+        "RSP-CAN-015",
+        "RSP-CAN-016",
+        "RSP-CAN-027"
+      ],
+      "preserved_obligation_ids": [
+        "OBL-CAN-002",
+        "OBL-CAN-005",
+        "OBL-CAN-013",
+        "OBL-CAN-014",
+        "OBL-CAN-015",
+        "OBL-CAN-016",
+        "OBL-CAN-027"
+      ],
+      "gap_ids": [
+        "G-002",
+        "G-004",
+        "G-007"
+      ],
+      "anti_collapse_rule": "Metadata Injector is schema/directive-governed; Timestamp Stabilizer is mandatory and mature; neither requires a placeholder timing slot."
+    }
+  ],
+  "6.0_gap_rollups": [
+    {
+      "gap_id": "G-001",
+      "gap_name": "Registry Abstraction",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-021",
+        "RSP-CAN-022",
+        "RSP-CAN-023",
+        "RSP-CAN-024",
+        "RSP-CAN-026",
+        "RSP-CAN-030",
+        "RSP-CAN-032",
+        "RSP-CAN-033",
+        "RSP-CAN-034",
+        "RSP-CAN-035"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-021",
+        "OBL-CAN-022",
+        "OBL-CAN-023",
+        "OBL-CAN-024",
+        "OBL-CAN-026",
+        "OBL-CAN-030",
+        "OBL-CAN-032",
+        "OBL-CAN-033",
+        "OBL-CAN-034",
+        "OBL-CAN-035"
+      ],
+      "primary_entity_ids": [
+        "E-INT-002",
+        "E-INT-014"
+      ],
+      "critical_object_ids": [
+        "GOV-001",
+        "GOV-002",
+        "GOV-003",
+        "GOV-004",
+        "BCO-012"
+      ],
+      "contract_ids": [
+        "CC-REG-001",
+        "CC-REG-002",
+        "CC-REG-003",
+        "CC-ENV-002"
+      ],
+      "anti_regression_rule": "Registry / Delivery Port may expose the contract surface, but Dispatcher remains the outbound actor and assembler lifecycle authority ends after valid handoff."
+    },
+    {
+      "gap_id": "G-002",
+      "gap_name": "Policy Source Granularity",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-007",
+        "RSP-CAN-008",
+        "RSP-CAN-009",
+        "RSP-CAN-010",
+        "RSP-CAN-011",
+        "RSP-CAN-012",
+        "RSP-CAN-013",
+        "RSP-CAN-014",
+        "RSP-CAN-016",
+        "RSP-CAN-020",
+        "RSP-CAN-033",
+        "RSP-CAN-036"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-007",
+        "OBL-CAN-008",
+        "OBL-CAN-009",
+        "OBL-CAN-010",
+        "OBL-CAN-011",
+        "OBL-CAN-012",
+        "OBL-CAN-013",
+        "OBL-CAN-014",
+        "OBL-CAN-016",
+        "OBL-CAN-020",
+        "OBL-CAN-033",
+        "OBL-CAN-036"
+      ],
+      "primary_entity_ids": [
+        "E-INT-010",
+        "E-INT-013",
+        "policy-consuming components"
+      ],
+      "critical_object_ids": [
+        "BCO-001",
+        "BCO-002",
+        "BCO-003",
+        "GOV-008",
+        "mechanism_semantics",
+        "metadata_schema",
+        "metadata_fields"
+      ],
+      "contract_ids": [
+        "CC-POL-001",
+        "CC-POL-002",
+        "CC-POL-003",
+        "CC-POL-004",
+        "CC-POL-005",
+        "CC-META-001",
+        "CC-OPS-002"
+      ],
+      "anti_regression_rule": "PolicyAssigner assigns; Policy Object governs semantics; host components realize mechanisms locally; Metadata Injector remains schema/directive-governed and is not a policy host."
+    },
+    {
+      "gap_id": "G-003",
+      "gap_name": "Dispatcher Feedback Surface",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-025",
+        "RSP-CAN-048"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-025",
+        "OBL-CAN-048"
+      ],
+      "sub_responsibility_ids": [
+        "RSP-CAN-025.1",
+        "RSP-CAN-025.2",
+        "RSP-CAN-025.3",
+        "RSP-CAN-025.4",
+        "RSP-CAN-025.5",
+        "RSP-CAN-025.6",
+        "RSP-CAN-025.7",
+        "RSP-CAN-048.1",
+        "RSP-CAN-048.2",
+        "RSP-CAN-048.3",
+        "RSP-CAN-048.4",
+        "RSP-CAN-048.5"
+      ],
+      "primary_entity_ids": [
+        "E-INT-002"
+      ],
+      "critical_object_ids": [
+        "BCO-013",
+        "BCO-014"
+      ],
+      "contract_ids": [
+        "CC-REG-002",
+        "CT-FAM-005"
+      ],
+      "anti_regression_rule": "BCO-013 Delivery-Cycle Flag Set is compact state; BCO-014 Dispatcher Feedback Report is detailed diagnostic/reporting artifact; they must not collapse."
+    },
+    {
+      "gap_id": "G-004",
+      "gap_name": "Timestamp Placeholder",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-002",
+        "RSP-CAN-005",
+        "RSP-CAN-006",
+        "RSP-CAN-015",
+        "RSP-CAN-027"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-002",
+        "OBL-CAN-005",
+        "OBL-CAN-006",
+        "OBL-CAN-015",
+        "OBL-CAN-027"
+      ],
+      "primary_entity_ids": [
+        "E-INT-008",
+        "E-INT-011"
+      ],
+      "critical_object_ids": [
+        "timestamp_value",
+        "envelope_timestamp_field",
+        "BCO-012",
+        "metadata_fields"
+      ],
+      "contract_ids": [
+        "CC-IN-001A",
+        "CC-IN-001B",
+        "CC-IN-002",
+        "CC-ENV-001",
+        "CC-META-002"
+      ],
+      "anti_regression_rule": "Timestamp Stabilizer is a mature mandatory component; no placeholder timing-slot semantics may remain where stabilized timestamp is required."
+    },
+    {
+      "gap_id": "G-005",
+      "gap_name": "Moderator vs Agent Coordination",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-017",
+        "RSP-CAN-018",
+        "RSP-CAN-019",
+        "RSP-CAN-020",
+        "RSP-CAN-029",
+        "RSP-CAN-038",
+        "RSP-CAN-039",
+        "RSP-CAN-042",
+        "RSP-CAN-043",
+        "RSP-CAN-044",
+        "RSP-CAN-045",
+        "RSP-CAN-046",
+        "RSP-CAN-047"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-017",
+        "OBL-CAN-018",
+        "OBL-CAN-019",
+        "OBL-CAN-020",
+        "OBL-CAN-029",
+        "OBL-CAN-038",
+        "OBL-CAN-039",
+        "OBL-CAN-042",
+        "OBL-CAN-043",
+        "OBL-CAN-044",
+        "OBL-CAN-045",
+        "OBL-CAN-046",
+        "OBL-CAN-047"
+      ],
+      "primary_entity_ids": [
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006"
+      ],
+      "critical_object_ids": [
+        "BCO-004",
+        "BCO-005",
+        "BCO-008",
+        "BCO-009",
+        "BCO-010",
+        "BCO-011"
+      ],
+      "contract_ids": [
+        "CC-OPS-001",
+        "CC-OPS-002",
+        "CC-STATE-001",
+        "CC-STATE-002",
+        "CC-STATE-004",
+        "CC-STATE-005",
+        "CC-STATE-006",
+        "CC-STATE-007",
+        "CC-STATE-008"
+      ],
+      "anti_regression_rule": "Queue Bundle Agent orchestrates bundles; Single Queue Moderator moderates one queue-container; round managers own round waiting discipline; Queue Runtime Layer remains classification-only."
+    },
+    {
+      "gap_id": "G-006",
+      "gap_name": "Container vs Envelope Slot Ownership",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-018",
+        "RSP-CAN-019",
+        "RSP-CAN-020",
+        "RSP-CAN-023",
+        "RSP-CAN-026",
+        "RSP-CAN-028",
+        "RSP-CAN-029",
+        "RSP-CAN-030",
+        "RSP-CAN-031",
+        "RSP-CAN-037",
+        "RSP-CAN-038",
+        "RSP-CAN-039",
+        "RSP-CAN-040",
+        "RSP-CAN-041",
+        "RSP-CAN-042",
+        "RSP-CAN-043",
+        "RSP-CAN-044",
+        "RSP-CAN-045",
+        "RSP-CAN-046",
+        "RSP-CAN-047",
+        "RSP-CAN-049"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-018",
+        "OBL-CAN-019",
+        "OBL-CAN-020",
+        "OBL-CAN-023",
+        "OBL-CAN-026",
+        "OBL-CAN-028",
+        "OBL-CAN-029",
+        "OBL-CAN-030",
+        "OBL-CAN-031",
+        "OBL-CAN-037",
+        "OBL-CAN-038",
+        "OBL-CAN-039",
+        "OBL-CAN-040",
+        "OBL-CAN-041",
+        "OBL-CAN-042",
+        "OBL-CAN-043",
+        "OBL-CAN-044",
+        "OBL-CAN-045",
+        "OBL-CAN-046",
+        "OBL-CAN-047",
+        "OBL-CAN-049"
+      ],
+      "primary_entity_ids": [
+        "E-INT-002",
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-012",
+        "E-INT-014"
+      ],
+      "critical_object_ids": [
+        "BCO-005",
+        "BCO-006",
+        "BCO-007",
+        "BCO-008",
+        "BCO-009",
+        "BCO-010",
+        "BCO-011",
+        "BCO-012"
+      ],
+      "contract_ids": [
+        "CC-ENV-001",
+        "CC-ENV-002",
+        "CC-REG-002",
+        "CC-STATE-001",
+        "CC-STATE-002",
+        "CC-STATE-003",
+        "CC-STATE-004",
+        "CC-STATE-005",
+        "CC-STATE-006",
+        "CC-STATE-007",
+        "CC-STATE-008"
+      ],
+      "anti_regression_rule": "Queue equals Container; waiting lists store Queue Container Identifiers; Envelope Slot Occupancy is binding/state only; Log Level Envelope lifecycle transfers only at valid handoff."
+    },
+    {
+      "gap_id": "G-007",
+      "gap_name": "Validating Assembler Path",
+      "coverage_status": "covered",
+      "coverage_level": "full",
+      "covering_responsibility_ids": [
+        "RSP-CAN-001",
+        "RSP-CAN-002",
+        "RSP-CAN-003",
+        "RSP-CAN-004",
+        "RSP-CAN-006",
+        "RSP-CAN-013",
+        "RSP-CAN-014",
+        "RSP-CAN-015",
+        "RSP-CAN-016",
+        "RSP-CAN-027",
+        "RSP-CAN-028",
+        "RSP-CAN-033",
+        "RSP-CAN-035"
+      ],
+      "preserving_obligation_ids": [
+        "OBL-CAN-001",
+        "OBL-CAN-002",
+        "OBL-CAN-003",
+        "OBL-CAN-004",
+        "OBL-CAN-006",
+        "OBL-CAN-013",
+        "OBL-CAN-014",
+        "OBL-CAN-015",
+        "OBL-CAN-016",
+        "OBL-CAN-027",
+        "OBL-CAN-028",
+        "OBL-CAN-033",
+        "OBL-CAN-035"
+      ],
+      "primary_entity_ids": [
+        "E-INT-007",
+        "E-INT-008",
+        "E-INT-009",
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-013"
+      ],
+      "critical_object_ids": [
+        "GOV-005",
+        "GOV-006",
+        "BCO-012",
+        "validation_candidate_input"
+      ],
+      "contract_ids": [
+        "CC-IN-001A",
+        "CC-IN-001B",
+        "CC-IN-002",
+        "CC-META-001",
+        "CC-META-002",
+        "CC-ENV-001"
+      ],
+      "anti_regression_rule": "Envelope Assembler is the client-side composed contract object; Validator participates only in validating ingress; hot-path must not silently reintroduce validation."
+    }
+  ],
+  "7.0_contract_rollups": [
+    {
+      "contract_family_id": "CT-FAM-001",
+      "family_name": "Ingress Contract Family",
+      "contract_ids": [
+        "CC-IN-001A",
+        "CC-IN-001B",
+        "CC-IN-002"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-001",
+        "RSP-CAN-002",
+        "RSP-CAN-003",
+        "RSP-CAN-004",
+        "RSP-CAN-006",
+        "RSP-CAN-027",
+        "RSP-CAN-028",
+        "RSP-CAN-035"
+      ],
+      "primary_entity_ids": [
+        "E-INT-011",
+        "E-INT-009",
+        "E-INT-008",
+        "E-INT-012"
+      ],
+      "covered_gap_ids": [
+        "G-004",
+        "G-006",
+        "G-007"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-002",
+      "family_name": "Policy Contract Family",
+      "contract_ids": [
+        "CC-POL-001",
+        "CC-POL-002",
+        "CC-POL-003",
+        "CC-POL-004",
+        "CC-POL-005"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-007",
+        "RSP-CAN-008",
+        "RSP-CAN-009",
+        "RSP-CAN-010",
+        "RSP-CAN-011",
+        "RSP-CAN-012",
+        "RSP-CAN-020",
+        "RSP-CAN-036"
+      ],
+      "primary_entity_ids": [
+        "E-INT-010",
+        "E-INT-013",
+        "policy-consuming components"
+      ],
+      "covered_gap_ids": [
+        "G-002",
+        "G-005",
+        "G-006"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-003",
+      "family_name": "Metadata Contract Family",
+      "contract_ids": [
+        "CC-META-001",
+        "CC-META-002"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-013",
+        "RSP-CAN-014",
+        "RSP-CAN-015",
+        "RSP-CAN-016",
+        "RSP-CAN-027"
+      ],
+      "primary_entity_ids": [
+        "E-INT-007",
+        "E-INT-011",
+        "E-INT-013"
+      ],
+      "covered_gap_ids": [
+        "G-002",
+        "G-004",
+        "G-007"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-004",
+      "family_name": "Operational Contract Family",
+      "contract_ids": [
+        "CC-OPS-001",
+        "CC-OPS-002"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-017",
+        "RSP-CAN-018",
+        "RSP-CAN-020"
+      ],
+      "primary_entity_ids": [
+        "E-INT-005",
+        "E-INT-013"
+      ],
+      "covered_gap_ids": [
+        "G-002",
+        "G-005",
+        "G-006"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-005",
+      "family_name": "Registry / Delivery Contract Family",
+      "contract_ids": [
+        "CC-REG-001",
+        "CC-REG-002",
+        "CC-REG-003"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-021",
+        "RSP-CAN-022",
+        "RSP-CAN-023",
+        "RSP-CAN-024",
+        "RSP-CAN-025",
+        "RSP-CAN-026",
+        "RSP-CAN-030",
+        "RSP-CAN-034",
+        "RSP-CAN-035",
+        "RSP-CAN-048"
+      ],
+      "primary_entity_ids": [
+        "E-INT-002",
+        "E-INT-014"
+      ],
+      "covered_gap_ids": [
+        "G-001",
+        "G-003",
+        "G-006",
+        "G-007"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-006",
+      "family_name": "Envelope Contract Family",
+      "contract_ids": [
+        "CC-ENV-001",
+        "CC-ENV-002"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-005",
+        "RSP-CAN-006",
+        "RSP-CAN-015",
+        "RSP-CAN-026",
+        "RSP-CAN-027",
+        "RSP-CAN-028",
+        "RSP-CAN-029",
+        "RSP-CAN-030",
+        "RSP-CAN-031"
+      ],
+      "primary_entity_ids": [
+        "E-INT-002",
+        "E-INT-006",
+        "E-INT-007",
+        "E-INT-008",
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-014"
+      ],
+      "covered_gap_ids": [
+        "G-001",
+        "G-004",
+        "G-006",
+        "G-007"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-007",
+      "family_name": "Boundary / Exclusion Contract Family",
+      "contract_ids": [
+        "CC-EX-001"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-032"
+      ],
+      "primary_entity_ids": [
+        "E-INT-001"
+      ],
+      "covered_gap_ids": [
+        "G-001"
+      ]
+    },
+    {
+      "contract_family_id": "CT-FAM-008",
+      "family_name": "Runtime State Contract Family",
+      "contract_ids": [
+        "CC-STATE-001",
+        "CC-STATE-002",
+        "CC-STATE-003",
+        "CC-STATE-004",
+        "CC-STATE-005",
+        "CC-STATE-006",
+        "CC-STATE-007",
+        "CC-STATE-008"
+      ],
+      "derived_responsibility_ids": [
+        "RSP-CAN-018",
+        "RSP-CAN-019",
+        "RSP-CAN-029",
+        "RSP-CAN-031",
+        "RSP-CAN-037",
+        "RSP-CAN-038",
+        "RSP-CAN-039",
+        "RSP-CAN-040",
+        "RSP-CAN-041",
+        "RSP-CAN-042",
+        "RSP-CAN-043",
+        "RSP-CAN-044",
+        "RSP-CAN-045",
+        "RSP-CAN-046",
+        "RSP-CAN-047",
+        "RSP-CAN-049"
+      ],
+      "primary_entity_ids": [
+        "E-INT-003",
+        "E-INT-004",
+        "E-INT-005",
+        "E-INT-006"
+      ],
+      "covered_gap_ids": [
+        "G-005",
+        "G-006"
+      ]
+    }
+  ],
+  "8.0_taxonomy_update_rollups": {
+    "new_delegated_entity_updates": [
+      "TAX-UPD-001",
+      "TAX-UPD-002",
+      "TAX-UPD-003",
+      "TAX-UPD-004"
+    ],
+    "new_governed_artifact_updates": [
+      "TAX-UPD-005",
+      "TAX-UPD-006",
+      "TAX-UPD-007"
+    ],
+    "classification_and_guard_updates": [
+      "TAX-UPD-008",
+      "TAX-UPD-009",
+      "TAX-UPD-010",
+      "TAX-UPD-011",
+      "TAX-UPD-012"
+    ],
+    "surface_and_contract_updates": [
+      "TAX-UPD-013",
+      "TAX-UPD-014",
+      "TAX-UPD-015"
+    ],
+    "ontology_seed_update": [
+      "TAX-UPD-016"
+    ],
+    "ontology_seed_subjects": [
+      "E-INT-011",
+      "E-INT-012",
+      "E-INT-013",
+      "E-INT-014",
+      "BCO-012",
+      "BCO-013",
+      "BCO-014",
+      "E-INT-007",
+      "QUEUE-AS-CONTAINER",
+      "BCO-011",
+      "BCO-007",
+      "DISPATCHER-FEEDBACK-SPLIT",
+      "CONTRACT-SURFACE-PORTS",
+      "RESPONSIBILITY-OBLIGATION-TRACE"
+    ]
+  },
+  "9.0_anti_collapse_guards": [
+    {
+      "guard_id": "GUARD-001",
+      "guard_name": "Metadata Injector Policy Exclusion",
+      "blocked_collapse": "Metadata Injector as policy-consuming component",
+      "canonical_rule": "Metadata Injector is schema/directive-governed and must use metadata/timestamp preparation semantics, not policy mechanism hosting.",
+      "subject_ids": [
+        "E-INT-007",
+        "EN-FAM-009"
+      ],
+      "forbidden_ids": [
+        "EN-FAM-002"
+      ],
+      "source_files": [
+        "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-002",
+      "guard_name": "Queue Runtime Layer Classification Guard",
+      "blocked_collapse": "Queue Runtime Layer as primary delegated entity",
+      "canonical_rule": "Queue Runtime Layer is classification-only; actual responsibility carriers are Queue Bundle Agent, Single Queue Moderator, and round managers.",
+      "subject_ids": [
+        "QUEUE-RUNTIME-LAYER"
+      ],
+      "replacement_entity_ids": [
+        "E-INT-005",
+        "E-INT-006",
+        "E-INT-003",
+        "E-INT-004"
+      ],
+      "source_files": [
+        "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-003",
+      "guard_name": "Delivery Flags vs Feedback Reports",
+      "blocked_collapse": "Delivery-Cycle Flag Set as Dispatcher Feedback Report or vice versa",
+      "canonical_rule": "BCO-013 is compact delivery-cycle state; BCO-014 is detailed diagnostic/reporting artifact.",
+      "subject_ids": [
+        "BCO-013",
+        "BCO-014"
+      ],
+      "source_files": [
+        "04_obligation_delegation/04.03_delivery_cycle_flags_delegation.csv",
+        "04_obligation_delegation/04.04_dispatcher_feedback_reports_delegation.csv",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+        "05_trace_coverage_registers/05.05_new_entities_register.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-004",
+      "guard_name": "Queue Equals Container",
+      "blocked_collapse": "Separate runtime container above Queue Container",
+      "canonical_rule": "Queue equals Container; no separate runtime container may be introduced above Queue Container.",
+      "subject_ids": [
+        "QUEUE-AS-CONTAINER",
+        "BCO-005"
+      ],
+      "source_files": [
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-005",
+      "guard_name": "Waiting List Locator Discipline",
+      "blocked_collapse": "Waiting lists storing Log Level Envelopes",
+      "canonical_rule": "Writing and delivery waiting lists store Queue Container Identifiers, not Log Level Envelopes.",
+      "subject_ids": [
+        "BCO-009",
+        "BCO-010",
+        "BCO-011"
+      ],
+      "forbidden_ids": [
+        "BCO-012"
+      ],
+      "source_files": [
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-006",
+      "guard_name": "Envelope Occupancy vs Lifecycle",
+      "blocked_collapse": "Envelope Slot Occupancy as Log Level Envelope lifecycle owner",
+      "canonical_rule": "Envelope Slot Occupancy is binding/state only; lifecycle authority transfers only at valid dispatcher-registry handoff.",
+      "subject_ids": [
+        "BCO-007",
+        "BCO-012",
+        "GOV-003"
+      ],
+      "source_files": [
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+        "05_trace_coverage_registers/05.05_new_entities_register.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-007",
+      "guard_name": "Registry Port Does Not Replace Dispatcher",
+      "blocked_collapse": "Registry / Delivery Port as final handoff actor replacing Dispatcher",
+      "canonical_rule": "Dispatcher remains the final assembler-side outbound actor; Registry / Delivery Port is the registry-facing contract surface.",
+      "subject_ids": [
+        "E-INT-002",
+        "E-INT-014"
+      ],
+      "source_files": [
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv"
+      ]
+    },
+    {
+      "guard_id": "GUARD-008",
+      "guard_name": "Contract Template Doctrine Guard",
+      "blocked_collapse": "Typed/template contract as runtime COM interface",
+      "canonical_rule": "Contracts remain static/canonical typed/template laws and must not become runtime COM-interface semantics.",
+      "subject_ids": [
+        "GOV-005",
+        "GOV-006",
+        "CONTRACT-SURFACE-PORTS"
+      ],
+      "source_files": [
+        "01_reference_markdown/01.02_canonical_assignment_principles.md",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv"
+      ]
+    }
+  ],
+  "10.0_query_index": [
+    {
+      "query_id": "Q-ROLLUP-001",
+      "query_family": "Responsibility-to-Entity Trace",
+      "input_key": "responsibility_id",
+      "example_input": "RSP-CAN-027",
+      "expected_output": [
+        "responsibility statement",
+        "obligation ID",
+        "primary delegated entity",
+        "supporting entities",
+        "governed objects",
+        "enablement families",
+        "surfaces",
+        "contract traces",
+        "gap traces",
+        "doctrine traces"
+      ],
+      "primary_lookup_files": [
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "05.01_delegation_trace_v2.csv",
+        "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json"
+      ]
+    },
+    {
+      "query_id": "Q-ROLLUP-002",
+      "query_family": "Obligation Enforcement Trace",
+      "input_key": "obligation_id",
+      "example_input": "OBL-CAN-025",
+      "expected_output": [
+        "parent responsibility",
+        "enforcing entity",
+        "governed object",
+        "enablement family",
+        "surface",
+        "anti-collapse rule",
+        "sub-responsibilities if any"
+      ],
+      "primary_lookup_files": [
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "04.02_sub_responsibility_delegation_v2.csv",
+        "05.01_delegation_trace_v2.csv"
+      ]
+    },
+    {
+      "query_id": "Q-ROLLUP-003",
+      "query_family": "Entity Responsibility Load",
+      "input_key": "entity_id",
+      "example_input": "E-INT-002",
+      "expected_output": [
+        "primary responsibilities",
+        "supporting responsibilities",
+        "obligations enforced",
+        "governed objects",
+        "enablement families",
+        "gap coverage"
+      ],
+      "primary_lookup_files": [
+        "02.01_delegation_entities_index.csv",
+        "03.03_delegation_entity_load_summary.csv",
+        "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json"
+      ]
+    },
+    {
+      "query_id": "Q-ROLLUP-004",
+      "query_family": "Enablement Usage Trace",
+      "input_key": "enablement_family_id",
+      "example_input": "EN-FAM-004",
+      "expected_output": [
+        "used-by entities",
+        "enabled responsibilities",
+        "preserved obligations",
+        "covered gaps",
+        "anti-collapse rule"
+      ],
+      "primary_lookup_files": [
+        "02.02_enablement_families_index.csv",
+        "03.01_delegation_matrix_v2.csv",
+        "04.01_obligation_delegation_matrix_v2.csv",
+        "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json"
+      ]
+    },
+    {
+      "query_id": "Q-ROLLUP-005",
+      "query_family": "Gap Closure Trace",
+      "input_key": "gap_id",
+      "example_input": "G-006",
+      "expected_output": [
+        "closure status",
+        "covering responsibilities",
+        "preserving obligations",
+        "delegated entities",
+        "critical objects",
+        "contracts",
+        "anti-regression rule"
+      ],
+      "primary_lookup_files": [
+        "05.02_gap_closure_coverage_v2.csv",
+        "05.06_trace_coverage_index.json",
+        "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json"
+      ]
+    },
+    {
+      "query_id": "Q-ROLLUP-006",
+      "query_family": "Contract Derivation Trace",
+      "input_key": "contract_id",
+      "example_input": "CC-REG-002",
+      "expected_output": [
+        "contract family",
+        "derived responsibilities",
+        "derived obligations",
+        "primary entities",
+        "governed objects",
+        "gap coverage"
+      ],
+      "primary_lookup_files": [
+        "05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05.06_trace_coverage_index.json",
+        "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json"
+      ]
+    },
+    {
+      "query_id": "Q-ROLLUP-007",
+      "query_family": "Anti-Collapse Guard Lookup",
+      "input_key": "guard_id_or_subject_id",
+      "example_input": "E-INT-007",
+      "expected_output": [
+        "blocked collapse",
+        "canonical rule",
+        "subject IDs",
+        "forbidden IDs if applicable",
+        "source files"
+      ],
+      "primary_lookup_files": [
+        "05.04_taxonomy_update_register.csv",
+        "06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json"
+      ]
+    }
+  ],
+  "11.0_validation": {
+    "11.1_coverage_reachability": {
+      "responsibilities_reachable": true,
+      "obligations_reachable": true,
+      "responsibility_families_reachable": true,
+      "enablements_reachable": true,
+      "surfaces_reachable": true,
+      "core_gaps_reachable": true,
+      "contracts_reachable": true,
+      "taxonomy_updates_reachable": true,
+      "status": "valid"
+    },
+    "11.2_blocking_guards": {
+      "metadata_injector_policy_guard": "valid",
+      "queue_runtime_layer_guard": "valid",
+      "flag_report_separation_guard": "valid",
+      "queue_equals_container_guard": "valid",
+      "waiting_list_locator_guard": "valid",
+      "occupancy_lifecycle_guard": "valid",
+      "registry_port_dispatcher_guard": "valid",
+      "contract_template_doctrine_guard": "valid"
+    },
+    "11.3_non_semantic_rollup_rule": {
+      "status": "valid",
+      "rule": "No new canonical responsibilities, obligations, entities, governed objects, enablements, surfaces, contracts, gaps, or doctrines are introduced by this file."
+    }
+  },
+  "12.0_downstream_derivation": {
+    "postgresql_readiness": {
+      "recommended_tables": [
+        "rollup_family_index",
+        "rollup_entity_index",
+        "rollup_enablement_index",
+        "rollup_gap_index",
+        "rollup_contract_index",
+        "rollup_taxonomy_update_index",
+        "rollup_guard_index",
+        "rollup_query_index"
+      ],
+      "recommended_join_tables": [
+        "rollup_family_responsibilities",
+        "rollup_family_obligations",
+        "rollup_family_entities",
+        "rollup_family_governed_objects",
+        "rollup_family_enablements",
+        "rollup_family_surfaces",
+        "rollup_family_contracts",
+        "rollup_family_gaps",
+        "rollup_entity_responsibilities",
+        "rollup_enablement_responsibilities",
+        "rollup_gap_responsibilities",
+        "rollup_contract_responsibilities"
+      ],
+      "jsonb_candidate_fields": [
+        "summary",
+        "anti_collapse_rule",
+        "anti_regression_rule",
+        "expected_output",
+        "primary_lookup_files",
+        "source_files"
+      ]
+    },
+    "graph_readiness": {
+      "recommended_node_types": [
+        "ResponsibilityFamily",
+        "Responsibility",
+        "Obligation",
+        "Entity",
+        "GovernedObject",
+        "EnablementFamily",
+        "Surface",
+        "Contract",
+        "ContractFamily",
+        "Gap",
+        "Doctrine",
+        "TaxonomyUpdate",
+        "AntiCollapseGuard",
+        "QueryPattern"
+      ],
+      "recommended_edge_types": [
+        "FAMILY_HAS_RESPONSIBILITY",
+        "RESPONSIBILITY_HAS_OBLIGATION",
+        "RESPONSIBILITY_DELEGATED_TO_ENTITY",
+        "RESPONSIBILITY_GOVERNS_OBJECT",
+        "RESPONSIBILITY_REQUIRES_ENABLEMENT",
+        "RESPONSIBILITY_EXPOSES_SURFACE",
+        "RESPONSIBILITY_TRACES_TO_CONTRACT",
+        "RESPONSIBILITY_COVERS_GAP",
+        "CONTRACT_DERIVES_RESPONSIBILITY",
+        "GAP_COVERED_BY_RESPONSIBILITY",
+        "ENTITY_REQUIRES_ENABLEMENT",
+        "GUARD_BLOCKS_COLLAPSE",
+        "TAXONOMY_UPDATE_INTRODUCES_SUBJECT",
+        "QUERY_PATTERN_USES_JOIN_KEY"
+      ]
+    },
+    "ontology_skill_readiness": {
+      "status": "rollup_ready",
+      "future_skill_name_candidate": "Assembler System Ontology Expert Skill",
+      "seed_classes": [
+        "Responsibility",
+        "Obligation",
+        "DelegatedEntity",
+        "GovernedObject",
+        "EnablementFamily",
+        "Surface",
+        "Contract",
+        "GapClosure",
+        "DoctrineRule",
+        "TaxonomyUpdate",
+        "AntiCollapseGuard"
+      ]
+    }
+  },
+  "13.0_final_canonical_statement": {
+    "statement": "This rollup index is the canonical cross-package navigation artifact for the Canonical Delegation & Enablement Matrix V2 release. It consolidates responsibility, obligation, delegation, enablement, contract, gap, taxonomy, and anti-collapse traceability without introducing new architecture.",
+    "non_canonical_if": [
+      "a responsibility appears here that is not present in packages 01 through 05",
+      "an obligation appears here without aligned responsibility",
+      "a new delegated entity appears here without upstream registration",
+      "a governed object is promoted into an actor without upstream taxonomy update",
+      "Metadata Injector is treated as policy-consuming",
+      "Queue Runtime Layer is treated as a primary delegated entity",
+      "Delivery-Cycle Flag Set and Dispatcher Feedback Report are conflated",
+      "Log Level Envelope is treated as Queue Container Identifier",
+      "Envelope Slot Occupancy is treated as lifecycle ownership",
+      "Registry / Delivery Port replaces Dispatcher",
+      "typed/template contracts are converted into runtime COM interfaces"
+    ]
+  }
+}

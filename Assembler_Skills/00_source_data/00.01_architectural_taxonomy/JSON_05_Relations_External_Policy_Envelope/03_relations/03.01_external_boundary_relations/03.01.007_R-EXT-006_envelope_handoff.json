@@ -1,0 +1,23 @@
+{
+  "0.1.document_id": "ASM-TAX-RELATION-R-EXT-006",
+  "0.2.bundle_id": "JSON-BUNDLE-05",
+  "0.3.relation_id": "R-EXT-006",
+  "0.4.relation_section": "external_boundary_relations",
+  "1.1.source_id": "E-INT-002",
+  "1.2.target_id": "E-EXT-006",
+  "1.3.relation_meaning": "envelope handoff",
+  "1.4.relation_family_id": "REL-FAM-001",
+  "1.5.relation_family_name": "External Boundary Relations",
+  "1.6.family_order": 7,
+  "2.1.trace_source": "Unified Assembler Architectural Taxonomy — Relation Set sections 10.1, 10.2, 10.3",
+  "2.2.trace_policy": "Small relation file; may be augmented by later batches with obligations, responsibilities, delegation, and implementation projections.",
+  "3.1.contract_trace_slots": [],
+  "3.2.responsibility_trace_slots": [],
+  "3.3.implementation_trace_slots": [],
+  "4.1.growth_hooks": {
+    "batch3_responsibilities": [],
+    "batch4_delegation_enablement": [],
+    "batch5_component_mapping": [],
+    "implementation_bridge": []
+  }
+}

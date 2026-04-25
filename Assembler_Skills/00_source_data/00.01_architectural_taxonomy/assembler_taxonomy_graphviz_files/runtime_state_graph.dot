@@ -1,0 +1,38 @@
+digraph runtime_state_graph {
+graph [rankdir=LR, labelloc="t", fontsize=20, fontname="Arial", label="Assembler Taxonomy — Runtime State Graph"];
+node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+edge [fontname="Arial", fontsize=9];
+"E-INT-003" [label="E-INT-003\nWriting / Feeding Round Manager", fillcolor="#FFE2CC"];
+"E-INT-004" [label="E-INT-004\nDispatching / Delivery Round Manager", fillcolor="#FFE2CC"];
+"E-INT-005" [label="E-INT-005\nQueue Bundle Agent", fillcolor="#FFE2CC"];
+"E-INT-006" [label="E-INT-006\nSingle Queue Moderator", fillcolor="#FFE2CC"];
+"BCO-003" [label="BCO-003\nLog Envelope", fillcolor="#EADCF8"];
+"E-RT-001" [label="E-RT-001\nQueue Bundle", fillcolor="#E8F5E9"];
+"E-RT-002" [label="E-RT-002\nQueue Container\nQueue = Container", fillcolor="#E8F5E9"];
+"E-RT-003" [label="E-RT-003\nSingle Queue Container", fillcolor="#E8F5E9"];
+"E-RT-004" [label="E-RT-004\nPending / Waiting Queue Container", fillcolor="#E8F5E9"];
+"E-RT-005" [label="E-RT-005\nSlot", fillcolor="#E8F5E9"];
+"E-RT-006" [label="E-RT-006\nEnvelope Slot Occupancy", fillcolor="#E8F5E9"];
+"E-RT-007" [label="E-RT-007\nSlot Lifecycle State", fillcolor="#E8F5E9"];
+"E-RT-008" [label="E-RT-008\nWriting Round Manager Waiting List", fillcolor="#E8F5E9"];
+"E-RT-009" [label="E-RT-009\nDelivery Round Manager Waiting List", fillcolor="#E8F5E9"];
+"E-RT-010" [label="E-RT-010\nQueue Container Identifier", fillcolor="#E8F5E9"];
+"E-RT-001" -> "E-RT-002" [label="R-STATE-001"];
+"E-RT-002" -> "E-RT-005" [label="R-STATE-002"];
+"E-RT-005" -> "E-RT-006" [label="R-STATE-003"];
+"BCO-003" -> "E-RT-006" [label="R-STATE-004"];
+"E-RT-007" -> "E-RT-005" [label="R-STATE-005"];
+"E-INT-006" -> "E-RT-003" [label="R-STATE-006"];
+"E-INT-005" -> "E-RT-001" [label="R-STATE-007"];
+"E-INT-004" -> "E-INT-006" [label="R-STATE-008"];
+"E-RT-002" -> "E-RT-004" [label="R-STATE-009"];
+"E-INT-005" -> "E-RT-004" [label="R-STATE-010"];
+"E-INT-003" -> "E-RT-008" [label="R-WAIT-001"];
+"E-INT-004" -> "E-RT-009" [label="R-WAIT-002"];
+"E-RT-008" -> "E-RT-010" [label="R-WAIT-003"];
+"E-RT-009" -> "E-RT-010" [label="R-WAIT-004"];
+"E-RT-010" -> "E-RT-002" [label="R-WAIT-005"];
+"E-INT-006" -> "E-RT-009" [label="R-WAIT-006"];
+"E-INT-005" -> "E-RT-008" [label="R-WAIT-007"];
+"E-INT-005" -> "E-RT-009" [label="R-WAIT-008"];
+}

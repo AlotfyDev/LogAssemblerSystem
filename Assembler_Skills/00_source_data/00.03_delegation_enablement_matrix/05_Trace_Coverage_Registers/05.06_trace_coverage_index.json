@@ -1,0 +1,1077 @@
+{
+  "document_id": "05.06_trace_coverage_index",
+  "document_type": "trace_coverage_index",
+  "release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "package_id": "05_trace_coverage_registers",
+  "package_path": "05_trace_coverage_registers/",
+  "file_path": "05_trace_coverage_registers/05.06_trace_coverage_index.json",
+  "status": "draft_for_structured_local_installation",
+  "0.1_purpose": {
+    "summary": "Machine-readable rollup for trace coverage across delegation, obligation, gap closure, contract trace, taxonomy update, and new entity registers.",
+    "role": "Provides a queryable index that proves coverage from responsibilities and obligations to entities, governed objects, enablements, surfaces, contracts, gaps, doctrines, taxonomy updates, and ontology seed candidates.",
+    "governing_trace_law": "External Relation -> Contract -> Responsibility -> Obligation -> Delegation -> Enablement -> Trace Coverage -> Ontology Candidate"
+  },
+  "0.2_source_basis": {
+    "package_manifest": "05_trace_coverage_registers/05.00_PACKAGE_MANIFEST.json",
+    "delegation_trace": "05_trace_coverage_registers/05.01_delegation_trace_v2.csv",
+    "gap_closure_coverage": "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+    "contract_trace": "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv",
+    "taxonomy_update_register": "05_trace_coverage_registers/05.04_taxonomy_update_register.csv",
+    "new_entities_register": "05_trace_coverage_registers/05.05_new_entities_register.csv",
+    "upstream_delegation_matrix": "03_delegation_matrix/03.04_delegation_matrix_index.json",
+    "upstream_obligation_index": "04_obligation_delegation/04.05_obligation_delegation_index.json",
+    "upstream_entity_enablement_index": "02_entity_enablement_indexes/02.07_entity_enablement_index.json"
+  },
+  "1.0_counts": {
+    "trace_register_row_count": 49,
+    "gap_closure_coverage_row_count": 7,
+    "contract_trace_row_count": 26,
+    "taxonomy_update_row_count": 16,
+    "new_entities_register_row_count": 7,
+    "top_level_responsibility_count": 49,
+    "top_level_obligation_count": 49,
+    "responsibility_family_count": 8,
+    "core_gap_count": 7,
+    "contract_family_count": 8,
+    "canonical_contract_count": 26,
+    "new_or_promoted_delegated_entity_count": 4,
+    "new_or_promoted_governed_artifact_count": 3,
+    "special_sub_responsibility_count": 12,
+    "delivery_cycle_flag_sub_responsibility_count": 7,
+    "dispatcher_feedback_report_sub_responsibility_count": 5
+  },
+  "2.0_trace_registers": {
+    "2.1_delegation_trace": {
+      "file_path": "05_trace_coverage_registers/05.01_delegation_trace_v2.csv",
+      "row_grain": "one row per top-level responsibility trace record",
+      "primary_key": "trace_id",
+      "row_count": 49,
+      "coverage_status": "covered",
+      "trace_quality": "strong",
+      "responsibility_id_range": {
+        "first": "RSP-CAN-001",
+        "last": "RSP-CAN-049"
+      },
+      "obligation_id_range": {
+        "first": "OBL-CAN-001",
+        "last": "OBL-CAN-049"
+      },
+      "primary_join_keys": [
+        "trace_id",
+        "delegation_id",
+        "responsibility_id",
+        "obligation_id",
+        "responsibility_family_id",
+        "primary_delegated_entity_ids",
+        "governed_object_ids",
+        "enablement_family_ids",
+        "surface_ids",
+        "contract_trace_ids",
+        "gap_trace_ids",
+        "doctrine_trace_ids",
+        "taxonomy_layer_ids"
+      ]
+    },
+    "2.2_family_trace_rollup": [
+      {
+        "responsibility_family_id": "RSP-FAM-001",
+        "family_name": "Ingress Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-001",
+          "TRACE-002",
+          "TRACE-003",
+          "TRACE-004",
+          "TRACE-005",
+          "TRACE-006"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-001",
+          "RSP-CAN-002",
+          "RSP-CAN-003",
+          "RSP-CAN-004",
+          "RSP-CAN-005",
+          "RSP-CAN-006"
+        ],
+        "gap_trace_ids": [
+          "G-004",
+          "G-007"
+        ],
+        "contract_trace_ids": [
+          "CC-IN-001A",
+          "CC-IN-001B",
+          "CC-IN-002",
+          "CC-ENV-001"
+        ],
+        "primary_entity_ids": [
+          "E-INT-011",
+          "E-INT-009",
+          "E-INT-008"
+        ],
+        "summary": "Ingress trace covers typed content admission, validating vs hot-path variant selection, validator scope, mandatory timestamp stabilization, and Log Level Envelope realization."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-002",
+        "family_name": "Policy Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-007",
+          "TRACE-008",
+          "TRACE-009",
+          "TRACE-010",
+          "TRACE-011",
+          "TRACE-012"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-007",
+          "RSP-CAN-008",
+          "RSP-CAN-009",
+          "RSP-CAN-010",
+          "RSP-CAN-011",
+          "RSP-CAN-012"
+        ],
+        "gap_trace_ids": [
+          "G-002",
+          "G-005"
+        ],
+        "contract_trace_ids": [
+          "CC-POL-001",
+          "CC-POL-002",
+          "CC-POL-003",
+          "CC-POL-004",
+          "CC-POL-005"
+        ],
+        "primary_entity_ids": [
+          "E-INT-010",
+          "E-INT-013",
+          "policy-consuming components"
+        ],
+        "summary": "Policy trace covers administrative intake, Policy Object identity, PolicyAssigner mediation, assignment surfaces, mechanism hosting, and safe-point replacement."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-003",
+        "family_name": "Metadata / Preparation Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-013",
+          "TRACE-014",
+          "TRACE-015",
+          "TRACE-016"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-013",
+          "RSP-CAN-014",
+          "RSP-CAN-015",
+          "RSP-CAN-016"
+        ],
+        "gap_trace_ids": [
+          "G-002",
+          "G-004",
+          "G-007"
+        ],
+        "contract_trace_ids": [
+          "CC-META-001",
+          "CC-META-002",
+          "CC-ENV-001"
+        ],
+        "primary_entity_ids": [
+          "E-INT-013",
+          "E-INT-007"
+        ],
+        "summary": "Metadata trace covers administrative metadata directives, Metadata Injector path preservation, schema/directive governance, and envelope composition."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-004",
+        "family_name": "Operational / Scaling Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-017",
+          "TRACE-018",
+          "TRACE-019",
+          "TRACE-020"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-017",
+          "RSP-CAN-018",
+          "RSP-CAN-019",
+          "RSP-CAN-020"
+        ],
+        "gap_trace_ids": [
+          "G-002",
+          "G-005",
+          "G-006"
+        ],
+        "contract_trace_ids": [
+          "CC-OPS-001",
+          "CC-OPS-002",
+          "CC-STATE-001",
+          "CC-STATE-006",
+          "CC-STATE-008",
+          "CC-POL-004"
+        ],
+        "primary_entity_ids": [
+          "E-INT-013",
+          "E-INT-005",
+          "E-INT-003"
+        ],
+        "summary": "Operational trace covers operational directive intake, queue runtime realization, writable unavailability, and policy-conforming queue ordering."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-005",
+        "family_name": "Registry / Dispatcher Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-021",
+          "TRACE-022",
+          "TRACE-023",
+          "TRACE-024",
+          "TRACE-025",
+          "TRACE-026"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-021",
+          "RSP-CAN-022",
+          "RSP-CAN-023",
+          "RSP-CAN-024",
+          "RSP-CAN-025",
+          "RSP-CAN-026"
+        ],
+        "gap_trace_ids": [
+          "G-001",
+          "G-003",
+          "G-006"
+        ],
+        "contract_trace_ids": [
+          "CC-REG-001",
+          "CC-REG-002",
+          "CC-REG-003",
+          "CC-ENV-002",
+          "CT-FAM-005"
+        ],
+        "primary_entity_ids": [
+          "E-INT-002",
+          "E-INT-014"
+        ],
+        "summary": "Registry/Dispatcher trace covers readiness gating, dispatcher boundary, registry access, delivery-cycle flags, and lifecycle non-ownership after handoff."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-006",
+        "family_name": "Envelope Carrier Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-027",
+          "TRACE-028",
+          "TRACE-029",
+          "TRACE-030",
+          "TRACE-031"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-027",
+          "RSP-CAN-028",
+          "RSP-CAN-029",
+          "RSP-CAN-030",
+          "RSP-CAN-031"
+        ],
+        "gap_trace_ids": [
+          "G-001",
+          "G-004",
+          "G-005",
+          "G-006",
+          "G-007"
+        ],
+        "contract_trace_ids": [
+          "CC-ENV-001",
+          "CC-ENV-002",
+          "CC-IN-002",
+          "CC-META-002",
+          "CC-REG-002",
+          "CC-STATE-002",
+          "CC-STATE-003"
+        ],
+        "primary_entity_ids": [
+          "E-INT-011",
+          "E-INT-012",
+          "E-INT-003",
+          "E-INT-004",
+          "E-INT-002",
+          "E-INT-014",
+          "E-INT-006"
+        ],
+        "summary": "Envelope carrier trace covers carrier integrity, runtime carrier authority, identity preservation, lifecycle transfer, and occupancy/lifecycle separation."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-007",
+        "family_name": "Boundary / Exclusion Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-032",
+          "TRACE-033",
+          "TRACE-034",
+          "TRACE-035",
+          "TRACE-036",
+          "TRACE-037"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-032",
+          "RSP-CAN-033",
+          "RSP-CAN-034",
+          "RSP-CAN-035",
+          "RSP-CAN-036",
+          "RSP-CAN-037"
+        ],
+        "gap_trace_ids": [
+          "G-001",
+          "G-002",
+          "G-006",
+          "G-007"
+        ],
+        "contract_trace_ids": [
+          "CC-EX-001",
+          "CC-IN-001A",
+          "CC-IN-001B",
+          "CC-POL-001",
+          "CC-POL-003",
+          "CC-POL-004",
+          "CC-REG-002",
+          "CC-REG-003",
+          "CC-STATE-002",
+          "CC-STATE-004"
+        ],
+        "primary_entity_ids": [
+          "E-INT-001",
+          "E-INT-002",
+          "E-INT-010",
+          "E-INT-011",
+          "E-INT-012",
+          "E-INT-013",
+          "E-INT-014",
+          "E-INT-005",
+          "E-INT-006"
+        ],
+        "summary": "Boundary/exclusion trace covers read/query exclusion, surface separation, Dispatcher Boundary Law, contract-template doctrine, Policy Object doctrine, and Queue-as-Container doctrine."
+      },
+      {
+        "responsibility_family_id": "RSP-FAM-008",
+        "family_name": "Runtime State Responsibility Delegation",
+        "trace_ids": [
+          "TRACE-038",
+          "TRACE-039",
+          "TRACE-040",
+          "TRACE-041",
+          "TRACE-042",
+          "TRACE-043",
+          "TRACE-044",
+          "TRACE-045",
+          "TRACE-046",
+          "TRACE-047",
+          "TRACE-048",
+          "TRACE-049"
+        ],
+        "responsibility_ids": [
+          "RSP-CAN-038",
+          "RSP-CAN-039",
+          "RSP-CAN-040",
+          "RSP-CAN-041",
+          "RSP-CAN-042",
+          "RSP-CAN-043",
+          "RSP-CAN-044",
+          "RSP-CAN-045",
+          "RSP-CAN-046",
+          "RSP-CAN-047",
+          "RSP-CAN-048",
+          "RSP-CAN-049"
+        ],
+        "gap_trace_ids": [
+          "G-003",
+          "G-005",
+          "G-006"
+        ],
+        "contract_trace_ids": [
+          "CC-STATE-001",
+          "CC-STATE-002",
+          "CC-STATE-003",
+          "CC-STATE-004",
+          "CC-STATE-005",
+          "CC-STATE-006",
+          "CC-STATE-007",
+          "CC-STATE-008",
+          "CC-REG-002",
+          "CT-FAM-005"
+        ],
+        "primary_entity_ids": [
+          "E-INT-002",
+          "E-INT-003",
+          "E-INT-004",
+          "E-INT-005",
+          "E-INT-006"
+        ],
+        "summary": "Runtime state trace covers queue-bundle orchestration, single queue-container moderation, slot containment, occupancy binding, slot lifecycle, waiting-list locator discipline, requalification routing, dispatcher feedback reports, and terminology guard."
+      }
+    ]
+  },
+  "3.0_gap_closure_coverage": {
+    "file_path": "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+    "row_grain": "one row per core gap closure",
+    "row_count": 7,
+    "coverage_status": "covered",
+    "coverage_level": "full",
+    "gap_ids": [
+      "G-001",
+      "G-002",
+      "G-003",
+      "G-004",
+      "G-005",
+      "G-006",
+      "G-007"
+    ],
+    "gap_rollups": [
+      {
+        "gap_id": "G-001",
+        "gap_name": "Registry Abstraction",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-002",
+          "E-INT-014"
+        ],
+        "critical_objects": [
+          "GOV-001",
+          "GOV-002",
+          "GOV-003",
+          "GOV-004",
+          "BCO-012"
+        ],
+        "anti_regression_rule": "Registry / Delivery Port exposes the contract surface, but Dispatcher remains the outbound actor and assembler lifecycle authority ends after valid handoff."
+      },
+      {
+        "gap_id": "G-002",
+        "gap_name": "Policy Source Granularity",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-010",
+          "E-INT-013",
+          "policy-consuming components"
+        ],
+        "critical_objects": [
+          "BCO-001",
+          "BCO-002",
+          "GOV-008"
+        ],
+        "anti_regression_rule": "PolicyAssigner assigns; Policy Object governs semantics; host components realize mechanisms locally; Metadata Injector remains schema/directive-governed."
+      },
+      {
+        "gap_id": "G-003",
+        "gap_name": "Dispatcher Feedback Surface",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-002"
+        ],
+        "critical_objects": [
+          "BCO-013",
+          "BCO-014"
+        ],
+        "anti_regression_rule": "BCO-013 is compact state; BCO-014 is detailed diagnostic/reporting; they must never collapse."
+      },
+      {
+        "gap_id": "G-004",
+        "gap_name": "Timestamp Placeholder",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-008",
+          "E-INT-011"
+        ],
+        "critical_objects": [
+          "timestamp_value",
+          "envelope_timestamp_field",
+          "BCO-012"
+        ],
+        "anti_regression_rule": "Timestamp Stabilizer is a mature mandatory component, not a placeholder or optional timing slot."
+      },
+      {
+        "gap_id": "G-005",
+        "gap_name": "Moderator vs Agent Coordination",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-003",
+          "E-INT-004",
+          "E-INT-005",
+          "E-INT-006"
+        ],
+        "critical_objects": [
+          "BCO-004",
+          "BCO-005",
+          "BCO-008",
+          "BCO-009",
+          "BCO-010",
+          "BCO-011"
+        ],
+        "anti_regression_rule": "Queue Bundle Agent orchestrates bundles; Single Queue Moderator moderates one queue-container; round managers own round waiting discipline."
+      },
+      {
+        "gap_id": "G-006",
+        "gap_name": "Container vs Envelope Slot Ownership",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-002",
+          "E-INT-003",
+          "E-INT-004",
+          "E-INT-005",
+          "E-INT-006",
+          "E-INT-012",
+          "E-INT-014"
+        ],
+        "critical_objects": [
+          "BCO-005",
+          "BCO-006",
+          "BCO-007",
+          "BCO-008",
+          "BCO-009",
+          "BCO-010",
+          "BCO-011",
+          "BCO-012"
+        ],
+        "anti_regression_rule": "Queue equals Container; waiting lists store Queue Container Identifiers; Envelope Slot Occupancy is binding/state only; Log Level Envelope lifecycle transfers only at valid handoff."
+      },
+      {
+        "gap_id": "G-007",
+        "gap_name": "Validating Assembler Path",
+        "coverage_status": "covered",
+        "coverage_level": "full",
+        "primary_entities": [
+          "E-INT-007",
+          "E-INT-008",
+          "E-INT-009",
+          "E-INT-011",
+          "E-INT-012",
+          "E-INT-013"
+        ],
+        "critical_objects": [
+          "GOV-005",
+          "GOV-006",
+          "BCO-012",
+          "validation_candidate_input"
+        ],
+        "anti_regression_rule": "Envelope Assembler is the client-side composed contract object; Validator participates only in validating ingress; hot-path must not silently reintroduce validation."
+      }
+    ]
+  },
+  "4.0_contract_trace_index": {
+    "file_path": "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv",
+    "row_grain": "one row per canonical contract trace cluster",
+    "row_count": 26,
+    "contract_family_count": 8,
+    "contract_families": [
+      {
+        "contract_family_id": "CT-FAM-001",
+        "family_name": "Ingress Contract Family",
+        "contract_ids": [
+          "CC-IN-001A",
+          "CC-IN-001B",
+          "CC-IN-002"
+        ],
+        "primary_entities": [
+          "E-INT-011",
+          "E-INT-009",
+          "E-INT-008",
+          "E-INT-012"
+        ],
+        "covered_gaps": [
+          "G-004",
+          "G-006",
+          "G-007"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-002",
+        "family_name": "Policy Contract Family",
+        "contract_ids": [
+          "CC-POL-001",
+          "CC-POL-002",
+          "CC-POL-003",
+          "CC-POL-004",
+          "CC-POL-005"
+        ],
+        "primary_entities": [
+          "E-INT-010",
+          "E-INT-013",
+          "policy-consuming components"
+        ],
+        "covered_gaps": [
+          "G-002",
+          "G-005",
+          "G-006"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-003",
+        "family_name": "Metadata Contract Family",
+        "contract_ids": [
+          "CC-META-001",
+          "CC-META-002"
+        ],
+        "primary_entities": [
+          "E-INT-007",
+          "E-INT-011",
+          "E-INT-013"
+        ],
+        "covered_gaps": [
+          "G-002",
+          "G-004",
+          "G-007"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-004",
+        "family_name": "Operational Contract Family",
+        "contract_ids": [
+          "CC-OPS-001",
+          "CC-OPS-002"
+        ],
+        "primary_entities": [
+          "E-INT-005",
+          "E-INT-013"
+        ],
+        "covered_gaps": [
+          "G-002",
+          "G-005",
+          "G-006"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-005",
+        "family_name": "Registry / Delivery Contract Family",
+        "contract_ids": [
+          "CC-REG-001",
+          "CC-REG-002",
+          "CC-REG-003"
+        ],
+        "primary_entities": [
+          "E-INT-002",
+          "E-INT-014"
+        ],
+        "covered_gaps": [
+          "G-001",
+          "G-003",
+          "G-006",
+          "G-007"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-006",
+        "family_name": "Envelope Contract Family",
+        "contract_ids": [
+          "CC-ENV-001",
+          "CC-ENV-002"
+        ],
+        "primary_entities": [
+          "E-INT-002",
+          "E-INT-006",
+          "E-INT-007",
+          "E-INT-008",
+          "E-INT-011",
+          "E-INT-012",
+          "E-INT-014"
+        ],
+        "covered_gaps": [
+          "G-001",
+          "G-004",
+          "G-006",
+          "G-007"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-007",
+        "family_name": "Boundary / Exclusion Contract Family",
+        "contract_ids": [
+          "CC-EX-001"
+        ],
+        "primary_entities": [
+          "E-INT-001"
+        ],
+        "covered_gaps": [
+          "G-001"
+        ]
+      },
+      {
+        "contract_family_id": "CT-FAM-008",
+        "family_name": "Runtime State Contract Family",
+        "contract_ids": [
+          "CC-STATE-001",
+          "CC-STATE-002",
+          "CC-STATE-003",
+          "CC-STATE-004",
+          "CC-STATE-005",
+          "CC-STATE-006",
+          "CC-STATE-007",
+          "CC-STATE-008"
+        ],
+        "primary_entities": [
+          "E-INT-003",
+          "E-INT-004",
+          "E-INT-005",
+          "E-INT-006"
+        ],
+        "covered_gaps": [
+          "G-005",
+          "G-006"
+        ]
+      }
+    ]
+  },
+  "5.0_taxonomy_update_register": {
+    "file_path": "05_trace_coverage_registers/05.04_taxonomy_update_register.csv",
+    "row_grain": "one row per taxonomy update",
+    "row_count": 16,
+    "update_categories": [
+      "new_delegated_entity",
+      "new_governed_artifact",
+      "classification_correction",
+      "policy_hosting_exclusion",
+      "runtime_terminology_correction",
+      "surface_split",
+      "contract_surface_decomposition",
+      "ontology_seed_candidate"
+    ],
+    "mandatory_subjects": [
+      "E-INT-011",
+      "E-INT-012",
+      "E-INT-013",
+      "E-INT-014",
+      "BCO-012",
+      "BCO-013",
+      "BCO-014",
+      "QUEUE-RUNTIME-LAYER",
+      "E-INT-007",
+      "QUEUE-AS-CONTAINER",
+      "BCO-011",
+      "BCO-007",
+      "SURF-OBSERVABILITY",
+      "DISPATCHER-FEEDBACK-SPLIT",
+      "CONTRACT-SURFACE-PORTS",
+      "RESPONSIBILITY-OBLIGATION-TRACE"
+    ],
+    "ontology_seed_subjects": [
+      "E-INT-011",
+      "E-INT-012",
+      "E-INT-013",
+      "E-INT-014",
+      "BCO-012",
+      "BCO-013",
+      "BCO-014",
+      "E-INT-007",
+      "QUEUE-AS-CONTAINER",
+      "BCO-011",
+      "BCO-007",
+      "DISPATCHER-FEEDBACK-SPLIT",
+      "CONTRACT-SURFACE-PORTS",
+      "RESPONSIBILITY-OBLIGATION-TRACE"
+    ],
+    "critical_corrections": [
+      {
+        "subject_id": "QUEUE-RUNTIME-LAYER",
+        "correction": "classification_only",
+        "anti_collapse_rule": "must never appear as primary delegated entity or primary enforcing entity"
+      },
+      {
+        "subject_id": "E-INT-007",
+        "correction": "policy_hosting_exclusion",
+        "anti_collapse_rule": "must not be assigned EN-FAM-002 and must not become policy-consuming component"
+      },
+      {
+        "subject_id": "DISPATCHER-FEEDBACK-SPLIT",
+        "correction": "surface_split",
+        "anti_collapse_rule": "BCO-013 and BCO-014 must remain distinct governed objects"
+      },
+      {
+        "subject_id": "CONTRACT-SURFACE-PORTS",
+        "correction": "contract_surface_decomposition",
+        "anti_collapse_rule": "contract surfaces are typed/template and port-based, not runtime COM interfaces"
+      }
+    ]
+  },
+  "6.0_new_entities_register": {
+    "file_path": "05_trace_coverage_registers/05.05_new_entities_register.csv",
+    "row_grain": "one row per new or promoted entity/artifact",
+    "row_count": 7,
+    "delegated_entities": [
+      {
+        "entity_id": "E-INT-011",
+        "entity_name": "Envelope Assembler",
+        "canonical_class": "client_side_contract_composite",
+        "delegation_status": "primary_delegation_allowed",
+        "ontology_seed_status": "ontology_seed_candidate"
+      },
+      {
+        "entity_id": "E-INT-012",
+        "entity_name": "Assembler Ingress Port",
+        "canonical_class": "server_side_ingress_port",
+        "delegation_status": "primary_delegation_allowed",
+        "ontology_seed_status": "ontology_seed_candidate"
+      },
+      {
+        "entity_id": "E-INT-013",
+        "entity_name": "Administrative / Ecosystem Port",
+        "canonical_class": "administrative_ecosystem_port",
+        "delegation_status": "primary_delegation_allowed",
+        "ontology_seed_status": "ontology_seed_candidate"
+      },
+      {
+        "entity_id": "E-INT-014",
+        "entity_name": "Registry / Delivery Port",
+        "canonical_class": "registry_delivery_port",
+        "delegation_status": "primary_delegation_allowed_as_port_surface",
+        "ontology_seed_status": "ontology_seed_candidate"
+      }
+    ],
+    "governed_artifacts": [
+      {
+        "object_id": "BCO-012",
+        "object_name": "Log Level Envelope",
+        "canonical_class": "major_carrier_object",
+        "delegation_status": "not_primary_delegate",
+        "ontology_seed_status": "ontology_seed_candidate"
+      },
+      {
+        "object_id": "BCO-013",
+        "object_name": "Delivery-Cycle Flag Set",
+        "canonical_class": "runtime_state_artifact",
+        "delegation_status": "not_primary_delegate",
+        "ontology_seed_status": "ontology_seed_candidate"
+      },
+      {
+        "object_id": "BCO-014",
+        "object_name": "Dispatcher Feedback Report",
+        "canonical_class": "diagnostic_report_artifact",
+        "delegation_status": "not_primary_delegate",
+        "ontology_seed_status": "ontology_seed_candidate"
+      }
+    ]
+  },
+  "7.0_validation": {
+    "7.1_trace_row_coverage": {
+      "expected": 49,
+      "actual": 49,
+      "status": "valid",
+      "rule": "Every RSP-CAN-001 through RSP-CAN-049 appears in the trace register."
+    },
+    "7.2_obligation_alignment": {
+      "expected": 49,
+      "actual": 49,
+      "status": "valid",
+      "rule": "Every trace row includes an aligned OBL-CAN obligation."
+    },
+    "7.3_gap_closure_coverage": {
+      "expected": 7,
+      "actual": 7,
+      "status": "valid",
+      "rule": "Every G-001 through G-007 has one gap closure coverage row."
+    },
+    "7.4_contract_trace_coverage": {
+      "expected": 26,
+      "actual": 26,
+      "status": "valid",
+      "rule": "All canonical contract trace clusters are represented."
+    },
+    "7.5_new_entity_register_coverage": {
+      "expected": 7,
+      "actual": 7,
+      "status": "valid",
+      "required_ids": [
+        "E-INT-011",
+        "E-INT-012",
+        "E-INT-013",
+        "E-INT-014",
+        "BCO-012",
+        "BCO-013",
+        "BCO-014"
+      ]
+    },
+    "7.6_taxonomy_update_coverage": {
+      "expected_minimum": 10,
+      "actual": 16,
+      "status": "valid"
+    },
+    "7.7_flag_report_separation": {
+      "status": "valid",
+      "flag_object_id": "BCO-013",
+      "report_object_id": "BCO-014",
+      "rule": "Delivery-Cycle Flag Set and Dispatcher Feedback Report are separately registered and trace-covered."
+    },
+    "7.8_queue_runtime_layer_guard": {
+      "status": "valid",
+      "subject_id": "QUEUE-RUNTIME-LAYER",
+      "allowed_role": "classification_only",
+      "forbidden_role": "primary_delegated_entity"
+    },
+    "7.9_metadata_injector_policy_guard": {
+      "status": "valid",
+      "subject_id": "E-INT-007",
+      "forbidden_enablement": "EN-FAM-002",
+      "allowed_enablement": "EN-FAM-009"
+    },
+    "7.10_waiting_list_locator_guard": {
+      "status": "valid",
+      "waiting_list_objects": [
+        "BCO-009",
+        "BCO-010"
+      ],
+      "stored_locator_object": "BCO-011",
+      "forbidden_stored_object": "BCO-012"
+    },
+    "7.11_occupancy_lifecycle_guard": {
+      "status": "valid",
+      "occupancy_object": "BCO-007",
+      "carrier_object": "BCO-012",
+      "rule": "Envelope Slot Occupancy is binding/state only and does not own Log Level Envelope lifecycle."
+    }
+  },
+  "8.0_query_examples": [
+    {
+      "query_id": "Q-05-001",
+      "query": "Which responsibilities cover G-006?",
+      "answer_path": "3.0_gap_closure_coverage.gap_rollups[gap_id=G-006] plus 05.02.covering_responsibility_ids"
+    },
+    {
+      "query_id": "Q-05-002",
+      "query": "Which contracts lead to Envelope Assembler responsibilities?",
+      "answer_path": "4.0_contract_trace_index.contract_families and 05.03 where primary_delegated_entity_ids contains E-INT-011"
+    },
+    {
+      "query_id": "Q-05-003",
+      "query": "Which taxonomy updates created new delegated entities?",
+      "answer_path": "5.0_taxonomy_update_register where update_category = new_delegated_entity"
+    },
+    {
+      "query_id": "Q-05-004",
+      "query": "Which new artifacts are not primary delegated entities?",
+      "answer_path": "6.0_new_entities_register.governed_artifacts"
+    },
+    {
+      "query_id": "Q-05-005",
+      "query": "Is Metadata Injector a policy host?",
+      "answer_path": "5.0_taxonomy_update_register.critical_corrections[subject_id=E-INT-007] and 7.9_metadata_injector_policy_guard"
+    },
+    {
+      "query_id": "Q-05-006",
+      "query": "Why is Queue Runtime Layer not delegated?",
+      "answer_path": "5.0_taxonomy_update_register.critical_corrections[subject_id=QUEUE-RUNTIME-LAYER] and 7.8_queue_runtime_layer_guard"
+    },
+    {
+      "query_id": "Q-05-007",
+      "query": "How are delivery-cycle flags separated from dispatcher feedback reports?",
+      "answer_path": "3.0_gap_closure_coverage.gap_rollups[gap_id=G-003], 5.0 taxonomy update DISPATCHER-FEEDBACK-SPLIT, and 7.7_flag_report_separation"
+    },
+    {
+      "query_id": "Q-05-008",
+      "query": "What are the ontology seed subjects?",
+      "answer_path": "5.0_taxonomy_update_register.ontology_seed_subjects and 6.0_new_entities_register"
+    }
+  ],
+  "9.0_ontology_seed_guidance": {
+    "future_skill_name_candidate": "Assembler System Ontology Expert Skill",
+    "readiness_status": "seed_ready_after_schema_reference_completion",
+    "ontology_seed_classes": [
+      "Responsibility",
+      "Obligation",
+      "Delegated Entity",
+      "Governed Object",
+      "Enablement Family",
+      "Surface",
+      "Contract",
+      "Gap Closure",
+      "Doctrine Rule",
+      "Taxonomy Update"
+    ],
+    "candidate_relations": [
+      "responsibility_has_obligation",
+      "responsibility_delegated_to_entity",
+      "obligation_enforced_by_entity",
+      "entity_governs_object",
+      "responsibility_requires_enablement",
+      "entity_exposes_surface",
+      "responsibility_traces_to_contract",
+      "responsibility_covers_gap",
+      "obligation_preserves_doctrine",
+      "taxonomy_update_introduces_entity",
+      "gap_closure_prevents_collapse",
+      "contract_derives_responsibility",
+      "governed_artifact_is_not_actor",
+      "classification_layer_is_not_delegate"
+    ],
+    "high_value_skill_questions": [
+      "Explain why Metadata Injector is not a policy host.",
+      "Trace G-006 from closure to responsibilities, obligations, entities, objects, contracts, and doctrine.",
+      "Show all contracts that derive Envelope Assembler responsibilities.",
+      "Explain the separation between Delivery-Cycle Flag Set and Dispatcher Feedback Report.",
+      "List all ontology seed entities introduced by the corrected delegation release.",
+      "Explain why Queue Runtime Layer is classification-only.",
+      "Trace Log Level Envelope lifecycle boundary and occupancy separation."
+    ]
+  },
+  "10.0_downstream_derivation": {
+    "recommended_relational_tables": [
+      "trace_register_rows",
+      "trace_responsibilities",
+      "trace_obligations",
+      "trace_entities",
+      "trace_governed_objects",
+      "trace_enablements",
+      "trace_surfaces",
+      "trace_contracts",
+      "trace_gaps",
+      "trace_doctrines",
+      "gap_closure_coverage_rows",
+      "contract_trace_rows",
+      "taxonomy_update_rows",
+      "new_entity_register_rows",
+      "ontology_seed_subjects",
+      "ontology_seed_relations"
+    ],
+    "recommended_primary_keys": {
+      "trace_register_rows": "trace_id",
+      "gap_closure_coverage_rows": "gap_coverage_id",
+      "contract_trace_rows": "contract_trace_row_id",
+      "taxonomy_update_rows": "taxonomy_update_id",
+      "new_entity_register_rows": "new_entity_register_id"
+    },
+    "normalization_priority": [
+      "responsibility_id",
+      "obligation_id",
+      "sub_responsibility_id",
+      "responsibility_family_id",
+      "entity_id",
+      "governed_object_id",
+      "enablement_family_id",
+      "surface_id",
+      "contract_id",
+      "contract_family_id",
+      "gap_id",
+      "doctrine_id",
+      "taxonomy_layer_id",
+      "taxonomy_update_id"
+    ],
+    "jsonb_candidate_fields": [
+      "summary",
+      "anti_regression_rule",
+      "anti_collapse_rule",
+      "reason_for_update",
+      "must_provide",
+      "must_not_do",
+      "notes",
+      "ontology_seed_guidance"
+    ]
+  },
+  "11.0_final_canonical_statement": {
+    "statement": "The trace coverage index is the canonical machine-readable rollup for package 05. It proves that the responsibility and obligation model is trace-covered across contracts, entities, governed objects, enablements, surfaces, gaps, doctrines, taxonomy updates, and ontology seed candidates.",
+    "non_canonical_if": [
+      "a responsibility trace row is missing",
+      "a gap closure lacks mapped responsibilities, obligations, entities, governed objects, enablements, and surfaces",
+      "a canonical contract is not represented in the contract trace index",
+      "Delivery-Cycle Flag Set and Dispatcher Feedback Report are conflated",
+      "Queue Runtime Layer appears as a primary delegated entity",
+      "Metadata Injector is assigned policy mechanism hosting",
+      "waiting lists store Log Level Envelopes instead of Queue Container Identifiers",
+      "Envelope Slot Occupancy is treated as Log Level Envelope lifecycle ownership",
+      "Registry / Delivery Port replaces Dispatcher as outbound actor",
+      "contracts are treated as runtime COM interfaces rather than typed/template laws"
+    ]
+  }
+}

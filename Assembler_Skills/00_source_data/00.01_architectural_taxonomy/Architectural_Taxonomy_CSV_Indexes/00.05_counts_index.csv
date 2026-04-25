@@ -1,0 +1,5 @@
+metric_id,category,count_value,source_file
+COUNT-001,layers,7,00.01_layers_index.csv
+COUNT-002,members,61,00.02_members_index.csv
+COUNT-003,relations,59,00.03_relations_index.csv
+COUNT-004,contracts,26,00.04_contracts_index.csv

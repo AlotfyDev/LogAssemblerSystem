@@ -1,0 +1,22 @@
+{
+  "0.1.document_id": "ASM-TAX-MEMBER-E-RT-002",
+  "0.2.bundle_id": "JSON-BUNDLE-03",
+  "0.3.member_id": "E-RT-002",
+  "0.4.member_name": "Queue Container",
+  "1.1.layer_id": "L-003",
+  "1.2.layer_member_order": 2,
+  "1.3.member_section": "runtime_state_entities",
+  "1.4.type_or_nature": "Queue-as-container structure",
+  "1.5.role": "A queue that contains slots",
+  "2.1.canonical_note": "A queue that contains slots",
+  "2.2.trace_source": "Unified Assembler Architectural Taxonomy — L-003/L-004 members",
+  "2.3.trace_policy": "This member file is specialized and may be augmented by later batches using 5.x+ sections.",
+  "3.1.structural_relations": [],
+  "3.2.ownership_occupancy_notes": [],
+  "4.1.growth_hooks": {
+    "batch3_responsibilities": [],
+    "batch4_delegation_enablement": [],
+    "batch5_component_mapping": [],
+    "implementation_bridge": []
+  }
+}

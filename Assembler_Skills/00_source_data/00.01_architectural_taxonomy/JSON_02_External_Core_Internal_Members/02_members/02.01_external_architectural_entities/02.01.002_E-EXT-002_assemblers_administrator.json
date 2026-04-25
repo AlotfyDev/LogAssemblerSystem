@@ -1,0 +1,26 @@
+{
+  "0.1.document_id": "ASM-TAX-MEMBER-E-EXT-002",
+  "0.2.bundle_id": "JSON-BUNDLE-02",
+  "0.3.member_id": "E-EXT-002",
+  "0.4.member_name": "Assemblers Administrator",
+  "1.1.layer_id": "L-001",
+  "1.2.layer_member_order": 2,
+  "1.3.member_section": "external_architectural_entities",
+  "1.4.family_or_plane": "Administrative",
+  "1.5.role": "Governance/control source",
+  "2.1.canonical_note": "External administrative governance/control party.",
+  "2.2.trace_source": "Unified Assembler Architectural Taxonomy — L-001/L-002 members",
+  "2.3.trace_policy": "This member file may be extended by later batches using 5.x+ sections without rewriting 0.x-4.x.",
+  "3.1.relation_slots": {
+    "incoming_relations": [],
+    "outgoing_relations": [],
+    "policy_relations": [],
+    "contract_relations": []
+  },
+  "4.1.growth_hooks": {
+    "batch3_responsibilities": [],
+    "batch4_delegation_enablement": [],
+    "batch5_component_mapping": [],
+    "implementation_bridge": []
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "0.1_document_id": "ASM-DELEGATION-ENABLEMENT-V2-REFERENCE-PACKAGE-MANIFEST",
+  "0.2_release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "0.3_package_id": "01_reference_markdown",
+  "0.4_package_title": "Reference Markdown Package",
+  "0.5_package_status": "draft_for_structured_local_installation",
+  "0.6_package_purpose": {
+    "primary_purpose": "Provide the formal human-readable reference layer for the Canonical Delegation & Enablement Matrix V2 release.",
+    "role_in_release": "Acts as the narrative and doctrinal source for the CSV, JSON, trace, and rollup files generated in later folders.",
+    "scope": [
+      "canonical assignment principles",
+      "corrected delegation entities",
+      "enablement family definitions",
+      "textual delegation matrix",
+      "gap/closure delegation coverage",
+      "reference schema for this package"
+    ]
+  },
+  "1.1_source_basis": {
+    "contract_basis": "Canonical Contract Matrix V2",
+    "taxonomy_basis": "Unified Assembler Architectural Taxonomy",
+    "delegation_basis": "Corrected Delegation & Enablement Matrix V2 Draft",
+    "release_manifest_basis": "00_release_manifest/00.00_RELEASE_MANIFEST.json",
+    "release_readme_basis": "00_release_manifest/00.01_RELEASE_README.md",
+    "release_query_basis": "00_release_manifest/00.03_RELEASE_QUERY_GUIDE.md"
+  },
+  "1.2_architectural_basis_summary": {
+    "contract_matrix_note": "Canonical Contract Matrix V2 expands raw Batch 2 contracts into structured ingress, policy, metadata, operational, registry, envelope, and exclusion contract families.",
+    "taxonomy_note": "Unified Assembler Architectural Taxonomy defines external entities, internal entities, runtime/state entities, boundary/carrier objects, contract/template families, doctrine rules, and relation families.",
+    "delegation_note": "Corrected Delegation & Enablement Matrix V2 introduces Envelope Assembler, Assembler Ingress Port, Administrative / Ecosystem Port, and Registry / Delivery Port, and assigns queue runtime responsibility to concrete actors rather than a logical layer."
+  },
+  "2.1_package_directory": "01_reference_markdown",
+  "2.2_files": [
+    {
+      "file_id": "REF-F001",
+      "path": "01_reference_markdown/01.00_PACKAGE_MANIFEST.json",
+      "type": "json",
+      "status": "current_file",
+      "purpose": "Machine-readable manifest for the reference markdown package.",
+      "depends_on": [
+        "00_release_manifest/00.00_RELEASE_MANIFEST.json",
+        "00_release_manifest/00.01_RELEASE_README.md"
+      ]
+    },
+    {
+      "file_id": "REF-F002",
+      "path": "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+      "type": "markdown",
+      "status": "planned",
+      "purpose": "Primary reference narrative containing the corrected textual delegation and enablement matrix.",
+      "expected_sections": [
+        "Purpose and scope",
+        "Canonical assignment principles",
+        "Corrected delegation entities",
+        "Enablement families",
+        "Delegation matrix by responsibility families",
+        "Entity load summary",
+        "Gap/closure coverage",
+        "Taxonomy update notes"
+      ]
+    },
+    {
+      "file_id": "REF-F003",
+      "path": "01_reference_markdown/01.02_canonical_assignment_principles.md",
+      "type": "markdown",
+      "status": "planned",
+      "purpose": "Formal principles governing responsibility, obligation, delegation, governed object, enablement, and surface classification.",
+      "expected_sections": [
+        "Responsibility definition",
+        "Obligation definition",
+        "System accountability vs delegated entity",
+        "Primary delegated entity vs supporting entity",
+        "Governed object rule",
+        "Enablement rule",
+        "Surface type rule",
+        "Assignment decision rules"
+      ]
+    },
+    {
+      "file_id": "REF-F004",
+      "path": "01_reference_markdown/01.03_corrected_delegation_entities.md",
+      "type": "markdown",
+      "status": "planned",
+      "purpose": "Detailed reference for new or promoted delegation entities and governed artifacts.",
+      "expected_entities": [
+        "E-INT-011 Envelope Assembler",
+        "E-INT-012 Assembler Ingress Port",
+        "E-INT-013 Administrative / Ecosystem Port",
+        "E-INT-014 Registry / Delivery Port",
+        "BCO-012 Log Level Envelope",
+        "BCO-013 Delivery-Cycle Flag Set",
+        "BCO-014 Dispatcher Feedback Report"
+      ]
+    },
+    {
+      "file_id": "REF-F005",
+      "path": "01_reference_markdown/01.04_enablement_families_reference.md",
+      "type": "markdown",
+      "status": "planned",
+      "purpose": "Reference definitions for EN-FAM-001 through EN-FAM-009.",
+      "expected_enablement_families": [
+        "EN-FAM-001 Assignment Surface Enablement",
+        "EN-FAM-002 Mechanism Hosting Enablement",
+        "EN-FAM-003 Envelope Handling Enablement",
+        "EN-FAM-004 Queue Runtime Enablement",
+        "EN-FAM-005 Registry Boundary Enablement",
+        "EN-FAM-006 Feedback / Reporting Enablement",
+        "EN-FAM-007 Boundary / Exclusion Enablement",
+        "EN-FAM-008 Contract Template Enablement",
+        "EN-FAM-009 Metadata / Timestamp Preparation Enablement"
+      ]
+    },
+    {
+      "file_id": "REF-F006",
+      "path": "01_reference_markdown/01.05_gap_closure_delegation_coverage.md",
+      "type": "markdown",
+      "status": "planned",
+      "purpose": "Human-readable coverage explanation for G-001 through G-007 after corrected delegation.",
+      "expected_gap_coverage": [
+        "G-001 Registry Abstraction",
+        "G-002 Policy Source Granularity",
+        "G-003 Dispatcher Feedback Surface",
+        "G-004 Timestamp Placeholder",
+        "G-005 Moderator vs Agent Coordination",
+        "G-006 Container vs Envelope Slot Ownership",
+        "G-007 Validating Assembler Path"
+      ]
+    },
+    {
+      "file_id": "REF-F007",
+      "path": "01_reference_markdown/01.06_REFERENCE_SCHEMA.md",
+      "type": "markdown",
+      "status": "planned",
+      "purpose": "Schema and formatting guide for reference markdown files in this package.",
+      "expected_sections": [
+        "Heading convention",
+        "Numbering convention",
+        "Canonical ID formatting",
+        "Tables and trace references",
+        "Relationship to downstream CSV/JSON files"
+      ]
+    }
+  ],
+  "3.1_reference_package_counts": {
+    "planned_files": 7,
+    "json_files": 1,
+    "markdown_files": 6,
+    "primary_reference_files": 1,
+    "supporting_reference_files": 5,
+    "schema_files": 1
+  },
+  "4.1_core_corrections_represented": [
+    {
+      "correction_id": "CORR-001",
+      "label": "Metadata Injector not policy host",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.02_canonical_assignment_principles.md",
+        "01.03_corrected_delegation_entities.md",
+        "01.04_enablement_families_reference.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-002",
+      "label": "Envelope Assembler introduced",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.03_corrected_delegation_entities.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-003",
+      "label": "Assembler Ingress Port introduced",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.03_corrected_delegation_entities.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-004",
+      "label": "Administrative / Ecosystem Port introduced",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.03_corrected_delegation_entities.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-005",
+      "label": "Registry / Delivery Port introduced",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.03_corrected_delegation_entities.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-006",
+      "label": "Queue Runtime Layer not delegated entity",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.02_canonical_assignment_principles.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-007",
+      "label": "Delivery-cycle flags distinct from detailed dispatcher feedback reports",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.02_canonical_assignment_principles.md",
+        "01.03_corrected_delegation_entities.md",
+        "01.04_enablement_families_reference.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-008",
+      "label": "Timestamp Stabilizer mature component, not placeholder",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.03_corrected_delegation_entities.md",
+        "01.05_gap_closure_delegation_coverage.md"
+      ]
+    },
+    {
+      "correction_id": "CORR-009",
+      "label": "Queue equals Container",
+      "represented_in_files": [
+        "01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01.02_canonical_assignment_principles.md",
+        "01.05_gap_closure_delegation_coverage.md"
+      ]
+    }
+  ],
+  "5.1_downstream_consumers": [
+    {
+      "consumer_directory": "02_entity_enablement_indexes",
+      "consumes": [
+        "corrected delegation entities",
+        "enablement family definitions",
+        "surface definitions",
+        "governed object distinctions"
+      ]
+    },
+    {
+      "consumer_directory": "03_delegation_matrix",
+      "consumes": [
+        "responsibility-to-entity assignment principles",
+        "corrected delegation entities",
+        "enablement family definitions"
+      ]
+    },
+    {
+      "consumer_directory": "04_obligation_delegation",
+      "consumes": [
+        "obligation definitions",
+        "delivery flag and report separation",
+        "governed object distinctions"
+      ]
+    },
+    {
+      "consumer_directory": "05_trace_coverage_registers",
+      "consumes": [
+        "gap/closure coverage narrative",
+        "taxonomy update notes",
+        "contract and taxonomy trace assumptions"
+      ]
+    },
+    {
+      "consumer_directory": "06_rollup_indexes",
+      "consumes": [
+        "file map",
+        "canonical IDs",
+        "query keys",
+        "counts"
+      ]
+    }
+  ],
+  "6.1_canonical_ids_declared_or_referenced": {
+    "new_entity_ids": [
+      "E-INT-011",
+      "E-INT-012",
+      "E-INT-013",
+      "E-INT-014"
+    ],
+    "new_governed_artifact_ids": [
+      "BCO-012",
+      "BCO-013",
+      "BCO-014"
+    ],
+    "enablement_family_ids": [
+      "EN-FAM-001",
+      "EN-FAM-002",
+      "EN-FAM-003",
+      "EN-FAM-004",
+      "EN-FAM-005",
+      "EN-FAM-006",
+      "EN-FAM-007",
+      "EN-FAM-008",
+      "EN-FAM-009"
+    ],
+    "responsibility_family_ids": [
+      "RSP-FAM-001",
+      "RSP-FAM-002",
+      "RSP-FAM-003",
+      "RSP-FAM-004",
+      "RSP-FAM-005",
+      "RSP-FAM-006",
+      "RSP-FAM-007",
+      "RSP-FAM-008"
+    ],
+    "gap_ids": [
+      "G-001",
+      "G-002",
+      "G-003",
+      "G-004",
+      "G-005",
+      "G-006",
+      "G-007"
+    ]
+  },
+  "7.1_quality_rules": [
+    "Do not treat Metadata Injector as a policy-consuming component.",
+    "Do not treat Queue Runtime Layer as a delegated entity.",
+    "Do not collapse delivery-cycle flags into detailed dispatcher feedback reports.",
+    "Do not introduce a separate runtime container above Queue Container.",
+    "Do not treat Log Level Envelope, Policy Object, Queue Container, Slot, or related state objects as actors unless explicitly promoted in a later taxonomy revision.",
+    "Preserve the distinction between primary delegated entity, supporting entity, and governed object.",
+    "Preserve system accountability at the Assembler Subsystem level while delegating execution to the narrowest mature architectural carrier.",
+    "Preserve typed/template contract doctrine instead of runtime COM interface semantics."
+  ],
+  "8.1_installation_instruction": "Place this file under canonical_delegation_enablement_matrix_v2_release/01_reference_markdown/01.00_PACKAGE_MANIFEST.json.",
+  "8.2_next_file": "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md"
+}

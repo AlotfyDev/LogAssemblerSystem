@@ -1,0 +1,38 @@
+{
+  "0.1.document_id": "ASM-TAX-JSON-BUNDLE-02-INDEX",
+  "0.2.bundle_id": "JSON-BUNDLE-02",
+  "0.3.bundle_name": "External & Core Internal Members",
+  "1.1.includes_layers": [
+    "L-001",
+    "L-002"
+  ],
+  "1.2.file_strategy": "One JSON file per member; filenames include numeric path, canonical ID, and semantic slug.",
+  "2.1.counts": {
+    "external_architectural_entities": 7,
+    "core_internal_architectural_entities": 10,
+    "total_member_files": 17
+  },
+  "3.1.external_member_ids": [
+    "E-EXT-001",
+    "E-EXT-002",
+    "E-EXT-003",
+    "E-EXT-004",
+    "E-EXT-005",
+    "E-EXT-006",
+    "E-EXT-007"
+  ],
+  "3.2.core_internal_member_ids": [
+    "E-INT-001",
+    "E-INT-002",
+    "E-INT-003",
+    "E-INT-004",
+    "E-INT-005",
+    "E-INT-006",
+    "E-INT-007",
+    "E-INT-008",
+    "E-INT-009",
+    "E-INT-010"
+  ],
+  "4.1.next_bundle": "JSON-BUNDLE-03 Runtime & Carrier Members",
+  "4.2.growth_policy": "Later bundles may reference these member files by member_id without duplicating their full content."
+}

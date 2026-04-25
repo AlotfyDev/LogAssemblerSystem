@@ -1,0 +1,953 @@
+{
+  "package_id": "08_assembler_skills",
+  "package_name": "Assembler Skills Architecture Pack",
+  "release_id": "assembler_skills_architecture_pack_v1",
+  "release_version": "V1",
+  "package_path": "08_assembler_skills/",
+  "package_status": "draft_for_structured_local_installation",
+  "document_type": "package_manifest",
+  "created_for": "Assembler System canonical content editing and knowledge-base querying skill architecture",
+  "0.1_purpose": {
+    "summary": "Defines the release package for two portable Assembler System skills: a Canonical Content Editor Skill and a Rollup Query Expert Skill.",
+    "primary_goal": "Separate skill intelligence from runtime integration by defining Shared Canonical Kernel, Skill Core, Canonical CLI Layer, Environment Adapter Layer, and Execution Contracts.",
+    "core_architecture_law": "Core decides. CLI expresses. Adapter executes. Runtime hosts.",
+    "semantic_authority_law": "The skills must not redefine the Assembler System canon. They must rely on the canonical release files from packages 00 through 06 as their semantic evidence base.",
+    "portability_law": "Skill cores must remain portable across Codex, Kilo Code, OpenCode, GitHub, Google Drive, Local Runtime, and future environments through adapter contracts."
+  },
+  "0.2_scope": {
+    "in_scope": [
+      "vendored canonical source data under 00_source_data",
+      "source data manifests and refresh policy",
+      "portable internal source path aliases",
+      "shared canonical kernel for both skills",
+      "content editor skill core",
+      "content editor canonical CLI layer",
+      "query expert skill core",
+      "query expert canonical CLI layer",
+      "execution contracts between core, CLI, adapters, and runtimes",
+      "environment adapter specifications",
+      "capability matrix for target environments",
+      "validation baseline for skill outputs",
+      "portable architecture for future integration expansion"
+    ],
+    "out_of_scope": [
+      "implementation code for a production CLI",
+      "actual runtime installation scripts",
+      "final Python package or npm package",
+      "runtime deployment topology",
+      "new Assembler System responsibilities or obligations",
+      "new Assembler System canonical entities",
+      "changes to packages 00 through 06",
+      "final ontology engine implementation",
+      "final database implementation",
+      "actual Codex, Kilo Code, or OpenCode plugin packaging",
+      "hardcoded dependency on external sibling workspace folders",
+      "runtime assumption that upstream source folders exist outside 08_assembler_skills"
+    ]
+  },
+  "0.3_source_basis": {
+    "canonical_delegation_enablement_release": {
+      "release_manifest": [
+        "00_release_manifest/00.00_RELEASE_MANIFEST.json",
+        "00_release_manifest/00.01_RELEASE_README.md",
+        "00_release_manifest/00.02_RELEASE_COUNT_SUMMARY.csv",
+        "00_release_manifest/00.03_RELEASE_QUERY_GUIDE.md"
+      ],
+      "reference_markdown": [
+        "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+        "01_reference_markdown/01.02_canonical_assignment_principles.md",
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "01_reference_markdown/01.04_enablement_families_reference.md",
+        "01_reference_markdown/01.05_gap_closure_delegation_coverage.md",
+        "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+      ],
+      "entity_enablement_indexes": [
+        "02_entity_enablement_indexes/02.01_delegation_entities_index.csv",
+        "02_entity_enablement_indexes/02.02_enablement_families_index.csv",
+        "02_entity_enablement_indexes/02.03_surfaces_index.csv",
+        "02_entity_enablement_indexes/02.04_governed_objects_index.csv",
+        "02_entity_enablement_indexes/02.05_ports_and_contract_surfaces_index.csv",
+        "02_entity_enablement_indexes/02.06_policy_consuming_components_index.csv",
+        "02_entity_enablement_indexes/02.07_entity_enablement_index.json",
+        "02_entity_enablement_indexes/02.08_ENTITY_ENABLEMENT_SCHEMA.md"
+      ],
+      "delegation_matrix": [
+        "03_delegation_matrix/03.01_delegation_matrix_v2.csv",
+        "03_delegation_matrix/03.02_delegation_matrix_by_family_v2.csv",
+        "03_delegation_matrix/03.03_delegation_entity_load_summary.csv",
+        "03_delegation_matrix/03.04_delegation_matrix_index.json",
+        "03_delegation_matrix/03.05_DELEGATION_MATRIX_SCHEMA.md"
+      ],
+      "obligation_delegation": [
+        "04_obligation_delegation/04.01_obligation_delegation_matrix_v2.csv",
+        "04_obligation_delegation/04.02_sub_responsibility_delegation_v2.csv",
+        "04_obligation_delegation/04.03_delivery_cycle_flags_delegation.csv",
+        "04_obligation_delegation/04.04_dispatcher_feedback_reports_delegation.csv",
+        "04_obligation_delegation/04.05_obligation_delegation_index.json",
+        "04_obligation_delegation/04.06_OBLIGATION_DELEGATION_SCHEMA.md"
+      ],
+      "trace_coverage": [
+        "05_trace_coverage_registers/05.01_delegation_trace_v2.csv",
+        "05_trace_coverage_registers/05.02_gap_closure_coverage_v2.csv",
+        "05_trace_coverage_registers/05.03_contract_to_responsibility_to_entity_trace.csv",
+        "05_trace_coverage_registers/05.04_taxonomy_update_register.csv",
+        "05_trace_coverage_registers/05.05_new_entities_register.csv",
+        "05_trace_coverage_registers/05.06_trace_coverage_index.json",
+        "05_trace_coverage_registers/05.07_TRACE_COVERAGE_SCHEMA.md"
+      ],
+      "rollup_indexes": [
+        "06_rollup_indexes/06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json",
+        "06_rollup_indexes/06.02_JOIN_KEYS_REFERENCE.csv",
+        "06_rollup_indexes/06.03_QUERY_PATTERNS.md",
+        "06_rollup_indexes/06.04_CROSS_BUNDLE_FILE_MAP.csv",
+        "06_rollup_indexes/06.05_ROLLUP_SCHEMA.md"
+      ]
+    },
+    "source_priority": [
+      "Reference Markdown and schemas define human-readable canonical intent.",
+      "CSV indexes and matrices define flat queryable records.",
+      "JSON indexes define machine-readable rollups.",
+      "Package 06 defines the query/navigation gateway.",
+      "Package 08 defines skill behavior and integration architecture only.",
+      "All source dependencies resolve through vendored 00_source_data/ paths."
+    ]
+  },
+  "1.0_architecture_layers": {
+    "1.0_source_data_snapshot": {
+      "role": "Vendored canonical source data used by the skills package.",
+      "authority": "Provides local source evidence copied or snapshotted from upstream canonical Assembler packages.",
+      "path": "08_assembler_skills/00_source_data/",
+      "must_not_do": "Must not depend on external workspace-relative paths at runtime."
+    },
+    "1.1_shared_canonical_kernel": {
+      "role": "Common governance substrate used by both skills.",
+      "authority": "Defines ID grammar, source priority, validation baseline, and canonical distinctions.",
+      "must_not_do": "Must not perform editing or querying as an operational actor by itself."
+    },
+    "1.2_skill_core": {
+      "role": "Environment-independent reasoning layer for each skill.",
+      "content_editor_core": "Classifies canonical changes, performs impact analysis, generates patch plans, and validates propagation.",
+      "query_expert_core": "Routes queries, performs trace/join reasoning, validates evidence, and returns guarded answers.",
+      "must_not_do": "Must not contain environment-specific filesystem, repository, Drive, or terminal behavior."
+    },
+    "1.3_canonical_cli_layer": {
+      "role": "Canonical operational interface between skill cores and runtime adapters.",
+      "core_rule": "The CLI layer is not an adapter. It is the shared command grammar and command I/O model.",
+      "examples": [
+        "assembler-edit propose-change change_request.md",
+        "assembler-edit validate-patch patch.json",
+        "assembler-query responsibility RSP-CAN-027",
+        "assembler-query gap G-006",
+        "assembler-query validate all"
+      ]
+    },
+    "1.4_environment_adapter_layer": {
+      "role": "Runtime binding layer that translates canonical CLI command objects into environment-specific actions.",
+      "supported_initial_environments": [
+        "Codex",
+        "Kilo Code",
+        "OpenCode",
+        "GitHub",
+        "Google Drive",
+        "Local Runtime"
+      ],
+      "must_not_do": "Adapters must not make canonical semantic decisions."
+    },
+    "1.5_runtime_environment": {
+      "role": "External execution host such as repository, workspace, Drive folder, local filesystem, or coding agent environment.",
+      "must_not_do": "Runtime environment must not be treated as a semantic authority."
+    }
+  },
+  "2.0_skill_definitions": {
+    "2.1_content_editor_skill": {
+      "skill_id": "assembler_canonical_content_editor_skill",
+      "skill_name": "Assembler Canonical Content Editor Skill",
+      "mode": "authoring_and_release_maintenance",
+      "authority": "May propose and generate canonical content updates only through impact analysis, propagation rules, validation, and review outputs.",
+      "primary_functions": [
+        "classify canonical change requests",
+        "identify affected files",
+        "generate patch plans",
+        "generate updated Markdown, CSV, and JSON content",
+        "update manifests and counts when required",
+        "preserve canonical ID grammar",
+        "enforce anti-collapse rules",
+        "produce release delta summaries",
+        "produce validation notes"
+      ],
+      "core_constraint": "No direct edit without propagation.",
+      "must_not_do": [
+        "silently modify a canonical file without updating dependent indexes",
+        "introduce an ID without registering it in the appropriate index",
+        "promote governed artifacts into actors without explicit taxonomy update",
+        "treat adapters as semantic authorities"
+      ]
+    },
+    "2.2_query_expert_skill": {
+      "skill_id": "assembler_rollup_query_expert_skill",
+      "skill_name": "Assembler Rollup Query Expert Skill",
+      "mode": "read_only_query_and_trace_explanation",
+      "authority": "May query, trace, explain, validate, and navigate canonical records. Must not introduce new semantics.",
+      "primary_functions": [
+        "classify query intent",
+        "route to the correct query family",
+        "select join keys",
+        "retrieve evidence paths",
+        "join responsibility, obligation, entity, enablement, surface, contract, gap, doctrine, and taxonomy records",
+        "answer with evidence",
+        "emit anti-collapse warnings",
+        "validate query coverage"
+      ],
+      "core_constraint": "No new semantics. Only query, trace, explain, validate, and navigate.",
+      "must_not_do": [
+        "edit source files",
+        "invent missing responsibility assignments",
+        "infer new canonical entities",
+        "collapse guarded distinctions",
+        "answer without evidence when evidence is required"
+      ]
+    }
+  },
+  "3.0_file_inventory": [
+    {
+      "file_id": "08.SOURCE_DECISION",
+      "file_path": "08_assembler_skills/00_SOURCE_DATA_INTEGRATION_DECISION.md",
+      "format": "markdown",
+      "document_type": "source_data_integration_decision",
+      "role": "Binding architectural correction requiring vendored source data and forbidding hardcoded external workspace paths."
+    },
+    {
+      "file_id": "08.00",
+      "file_path": "08_assembler_skills/00_PACKAGE_MANIFEST.json",
+      "format": "json",
+      "document_type": "package_manifest",
+      "role": "Defines the package identity, source basis, planned file inventory, architecture layers, counts, validation rules, and release sequence."
+    },
+    {
+      "file_id": "08.01",
+      "file_path": "08_assembler_skills/01_SKILLS_RELEASE_README.md",
+      "format": "markdown",
+      "document_type": "release_readme",
+      "role": "Human-readable overview of the two-skill release and its relationship to the canonical Assembler System knowledge base."
+    },
+    {
+      "file_id": "08.02",
+      "file_path": "08_assembler_skills/02_SKILLS_ARCHITECTURE_OVERVIEW.md",
+      "format": "markdown",
+      "document_type": "architecture_overview",
+      "role": "Explains the shared kernel, skill cores, CLI layer, adapter layer, and runtime environment separation."
+    },
+    {
+      "file_id": "08.03",
+      "file_path": "08_assembler_skills/03_SKILLS_FILE_MAP.csv",
+      "format": "csv",
+      "document_type": "skills_file_map",
+      "role": "Maps every planned skill file to its role, layer, dependencies, validation usage, and downstream implementation usage."
+    },
+    {
+      "file_id": "08.04",
+      "file_path": "08_assembler_skills/04_SKILLS_SCHEMA.md",
+      "format": "markdown",
+      "document_type": "skills_schema",
+      "role": "Defines schema rules for all files in the skills architecture pack."
+    },
+    {
+      "file_id": "08.SOURCE.00",
+      "file_path": "08_assembler_skills/00_source_data/00.00_SOURCE_DATA_MANIFEST.json",
+      "format": "json",
+      "document_type": "source_data_manifest",
+      "role": "Defines the source data inventory, aliases, refresh policy, and vendored file tracking."
+    },
+    {
+      "file_id": "08.SOURCE.01",
+      "file_path": "08_assembler_skills/00_source_data/00.01_SOURCE_DATA_README.md",
+      "format": "markdown",
+      "document_type": "source_data_readme",
+      "role": "Human-readable overview of vendored source data structure and refresh policy."
+    },
+    {
+      "file_id": "08.SOURCE.02",
+      "file_path": "08_assembler_skills/00_source_data/00.02_SOURCE_DATA_FILE_MAP.csv",
+      "format": "csv",
+      "document_type": "source_data_file_map",
+      "role": "Maps every vendored source file to its upstream origin, local path, and refresh metadata."
+    },
+    {
+      "file_id": "08.SOURCE.03",
+      "file_path": "08_assembler_skills/00_source_data/00.03_SOURCE_DATA_REFRESH_POLICY.md",
+      "format": "markdown",
+      "document_type": "source_data_refresh_policy",
+      "role": "Defines controlled refresh procedures for updating vendored source data from upstream."
+    },
+    {
+      "file_id": "08.SOURCE.TAXONOMY",
+      "file_path": "08_assembler_skills/00_source_data/00.01_architectural_taxonomy/taxonomy_source_manifest.json",
+      "format": "json",
+      "document_type": "source_specific_manifest",
+      "role": "Tracks vendored taxonomy source files, upstream origin, and local normalization."
+    },
+    {
+      "file_id": "08.SOURCE.RESPONSIBILITIES",
+      "file_path": "08_assembler_skills/00_source_data/00.02_canonical_responsibilities/responsibilities_source_manifest.json",
+      "format": "json",
+      "document_type": "source_specific_manifest",
+      "role": "Tracks vendored responsibility source files, upstream origin, and local normalization."
+    },
+    {
+      "file_id": "08.SOURCE.DELEGATION",
+      "file_path": "08_assembler_skills/00_source_data/00.03_delegation_enablement_matrix/delegation_source_manifest.json",
+      "format": "json",
+      "document_type": "source_specific_manifest",
+      "role": "Tracks vendored delegation matrix source files, upstream origin, and local normalization."
+    },
+    {
+      "file_id": "08.KERNEL.01",
+      "file_path": "08_assembler_skills/00_shared_canonical_kernel/00.01_CANONICAL_KERNEL.md",
+      "format": "markdown",
+      "document_type": "shared_kernel",
+      "role": "Defines shared canonical concepts used by both skills."
+    },
+    {
+      "file_id": "08.KERNEL.02",
+      "file_path": "08_assembler_skills/00_shared_canonical_kernel/00.02_ID_GRAMMAR_AND_JOIN_KEYS.md",
+      "format": "markdown",
+      "document_type": "id_grammar_and_join_keys",
+      "role": "Defines canonical ID patterns and join-key expectations used by both skills."
+    },
+    {
+      "file_id": "08.KERNEL.03",
+      "file_path": "08_assembler_skills/00_shared_canonical_kernel/00.03_SOURCE_PRIORITY_AND_AUTHORITY.md",
+      "format": "markdown",
+      "document_type": "source_priority_and_authority",
+      "role": "Defines source priority, semantic authority, and package precedence."
+    },
+    {
+      "file_id": "08.KERNEL.04",
+      "file_path": "08_assembler_skills/00_shared_canonical_kernel/00.04_ANTI_COLLAPSE_RULES.md",
+      "format": "markdown",
+      "document_type": "anti_collapse_rules",
+      "role": "Defines critical semantic distinctions that both skills must preserve."
+    },
+    {
+      "file_id": "08.KERNEL.05",
+      "file_path": "08_assembler_skills/00_shared_canonical_kernel/00.05_VALIDATION_BASELINE.md",
+      "format": "markdown",
+      "document_type": "validation_baseline",
+      "role": "Defines shared validation expectations for editor and query skill outputs."
+    },
+    {
+      "file_id": "08.EDITOR.00",
+      "file_path": "08_assembler_skills/01_content_editor_skill/01.00_CONTENT_EDITOR_SKILL_MANIFEST.json",
+      "format": "json",
+      "document_type": "skill_manifest",
+      "role": "Defines the content editor skill package, scope, core files, CLI files, integrations, and validation posture."
+    },
+    {
+      "file_id": "08.EDITOR.CORE.01",
+      "file_path": "08_assembler_skills/01_content_editor_skill/core/01.01_CONTENT_EDITOR_CORE_SPEC.md",
+      "format": "markdown",
+      "document_type": "editor_core_spec",
+      "role": "Defines the editor skill core behavior independent of runtime environments."
+    },
+    {
+      "file_id": "08.EDITOR.CORE.02",
+      "file_path": "08_assembler_skills/01_content_editor_skill/core/01.02_CHANGE_CLASSIFICATION.md",
+      "format": "markdown",
+      "document_type": "change_classification",
+      "role": "Defines how the editor classifies canonical change requests."
+    },
+    {
+      "file_id": "08.EDITOR.CORE.03",
+      "file_path": "08_assembler_skills/01_content_editor_skill/core/01.03_IMPACT_ANALYSIS_PROTOCOL.md",
+      "format": "markdown",
+      "document_type": "impact_analysis_protocol",
+      "role": "Defines how changes are mapped to affected files and downstream propagation requirements."
+    },
+    {
+      "file_id": "08.EDITOR.CORE.04",
+      "file_path": "08_assembler_skills/01_content_editor_skill/core/01.04_PATCH_GENERATION_PROTOCOL.md",
+      "format": "markdown",
+      "document_type": "patch_generation_protocol",
+      "role": "Defines patch generation, patch shape, and review bundle expectations."
+    },
+    {
+      "file_id": "08.EDITOR.CORE.05",
+      "file_path": "08_assembler_skills/01_content_editor_skill/core/01.05_PROPAGATION_RULES.md",
+      "format": "markdown",
+      "document_type": "propagation_rules",
+      "role": "Defines how edits propagate across reference Markdown, indexes, matrices, traces, rollups, schemas, and manifests."
+    },
+    {
+      "file_id": "08.EDITOR.CORE.06",
+      "file_path": "08_assembler_skills/01_content_editor_skill/core/01.06_EDITOR_VALIDATION_CHECKLIST.md",
+      "format": "markdown",
+      "document_type": "editor_validation_checklist",
+      "role": "Defines validation checks before an editor-produced patch can be considered review-ready."
+    },
+    {
+      "file_id": "08.EDITOR.CLI.01",
+      "file_path": "08_assembler_skills/01_content_editor_skill/cli/01.07_EDITOR_CLI_SPEC.md",
+      "format": "markdown",
+      "document_type": "editor_cli_spec",
+      "role": "Defines the canonical CLI interface for editor operations."
+    },
+    {
+      "file_id": "08.EDITOR.CLI.02",
+      "file_path": "08_assembler_skills/01_content_editor_skill/cli/01.08_EDITOR_COMMANDS.md",
+      "format": "markdown",
+      "document_type": "editor_commands",
+      "role": "Defines supported editor commands and command semantics."
+    },
+    {
+      "file_id": "08.EDITOR.CLI.03",
+      "file_path": "08_assembler_skills/01_content_editor_skill/cli/01.09_EDITOR_COMMAND_IO_SCHEMA.md",
+      "format": "markdown",
+      "document_type": "editor_command_io_schema",
+      "role": "Defines command input and output payloads for editor CLI operations."
+    },
+    {
+      "file_id": "08.EDITOR.CLI.04",
+      "file_path": "08_assembler_skills/01_content_editor_skill/cli/01.10_EDITOR_CLI_EXAMPLES.md",
+      "format": "markdown",
+      "document_type": "editor_cli_examples",
+      "role": "Provides example editor CLI invocations and expected output shapes."
+    },
+    {
+      "file_id": "08.EDITOR.ADAPTER.CODEX",
+      "file_path": "08_assembler_skills/01_content_editor_skill/integrations/codex/CODEX_EDITOR_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "editor_adapter_spec",
+      "role": "Defines how Codex executes editor CLI commands without owning canonical semantics."
+    },
+    {
+      "file_id": "08.EDITOR.ADAPTER.KILO",
+      "file_path": "08_assembler_skills/01_content_editor_skill/integrations/kilo_code/KILO_CODE_EDITOR_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "editor_adapter_spec",
+      "role": "Defines how Kilo Code executes editor CLI commands without owning canonical semantics."
+    },
+    {
+      "file_id": "08.EDITOR.ADAPTER.OPENCODE",
+      "file_path": "08_assembler_skills/01_content_editor_skill/integrations/opencode/OPENCODE_EDITOR_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "editor_adapter_spec",
+      "role": "Defines how OpenCode executes editor CLI commands without owning canonical semantics."
+    },
+    {
+      "file_id": "08.EDITOR.ADAPTER.GITHUB",
+      "file_path": "08_assembler_skills/01_content_editor_skill/integrations/github/GITHUB_EDITOR_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "editor_adapter_spec",
+      "role": "Defines how GitHub repository operations execute editor CLI commands through branches, commits, and pull requests."
+    },
+    {
+      "file_id": "08.EDITOR.ADAPTER.GDRIVE",
+      "file_path": "08_assembler_skills/01_content_editor_skill/integrations/google_drive/GOOGLE_DRIVE_EDITOR_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "editor_adapter_spec",
+      "role": "Defines how Google Drive-backed files execute editor CLI commands through document, sheet, and file abstractions."
+    },
+    {
+      "file_id": "08.EDITOR.ADAPTER.LOCAL",
+      "file_path": "08_assembler_skills/01_content_editor_skill/integrations/local_runtime/LOCAL_EDITOR_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "editor_adapter_spec",
+      "role": "Defines how a local filesystem runtime executes editor CLI commands."
+    },
+    {
+      "file_id": "08.QUERY.00",
+      "file_path": "08_assembler_skills/02_query_expert_skill/02.00_QUERY_EXPERT_SKILL_MANIFEST.json",
+      "format": "json",
+      "document_type": "skill_manifest",
+      "role": "Defines the query expert skill package, scope, core files, CLI files, integrations, and validation posture."
+    },
+    {
+      "file_id": "08.QUERY.CORE.01",
+      "file_path": "08_assembler_skills/02_query_expert_skill/core/02.01_QUERY_EXPERT_CORE_SPEC.md",
+      "format": "markdown",
+      "document_type": "query_core_spec",
+      "role": "Defines the query expert skill core behavior independent of runtime environments."
+    },
+    {
+      "file_id": "08.QUERY.CORE.02",
+      "file_path": "08_assembler_skills/02_query_expert_skill/core/02.02_QUERY_ROUTING_PROTOCOL.md",
+      "format": "markdown",
+      "document_type": "query_routing_protocol",
+      "role": "Defines query classification and routing to query families."
+    },
+    {
+      "file_id": "08.QUERY.CORE.03",
+      "file_path": "08_assembler_skills/02_query_expert_skill/core/02.03_JOIN_AND_TRACE_PROTOCOL.md",
+      "format": "markdown",
+      "document_type": "join_and_trace_protocol",
+      "role": "Defines join-key usage and trace assembly behavior."
+    },
+    {
+      "file_id": "08.QUERY.CORE.04",
+      "file_path": "08_assembler_skills/02_query_expert_skill/core/02.04_EVIDENCE_OUTPUT_PROTOCOL.md",
+      "format": "markdown",
+      "document_type": "evidence_output_protocol",
+      "role": "Defines answer evidence, source path, confidence, and trace output structure."
+    },
+    {
+      "file_id": "08.QUERY.CORE.05",
+      "file_path": "08_assembler_skills/02_query_expert_skill/core/02.05_ANSWER_GUARDS.md",
+      "format": "markdown",
+      "document_type": "answer_guards",
+      "role": "Defines guarded answer patterns and invalid answer patterns."
+    },
+    {
+      "file_id": "08.QUERY.CORE.06",
+      "file_path": "08_assembler_skills/02_query_expert_skill/core/02.06_QUERY_VALIDATION_CHECKLIST.md",
+      "format": "markdown",
+      "document_type": "query_validation_checklist",
+      "role": "Defines validation checks before query answers are considered canonical."
+    },
+    {
+      "file_id": "08.QUERY.CLI.01",
+      "file_path": "08_assembler_skills/02_query_expert_skill/cli/02.07_QUERY_CLI_SPEC.md",
+      "format": "markdown",
+      "document_type": "query_cli_spec",
+      "role": "Defines the canonical CLI interface for query operations."
+    },
+    {
+      "file_id": "08.QUERY.CLI.02",
+      "file_path": "08_assembler_skills/02_query_expert_skill/cli/02.08_QUERY_COMMANDS.md",
+      "format": "markdown",
+      "document_type": "query_commands",
+      "role": "Defines supported query commands and command semantics."
+    },
+    {
+      "file_id": "08.QUERY.CLI.03",
+      "file_path": "08_assembler_skills/02_query_expert_skill/cli/02.09_QUERY_COMMAND_IO_SCHEMA.md",
+      "format": "markdown",
+      "document_type": "query_command_io_schema",
+      "role": "Defines command input and output payloads for query CLI operations."
+    },
+    {
+      "file_id": "08.QUERY.CLI.04",
+      "file_path": "08_assembler_skills/02_query_expert_skill/cli/02.10_QUERY_CLI_EXAMPLES.md",
+      "format": "markdown",
+      "document_type": "query_cli_examples",
+      "role": "Provides example query CLI invocations and expected answer shapes."
+    },
+    {
+      "file_id": "08.QUERY.ADAPTER.CODEX",
+      "file_path": "08_assembler_skills/02_query_expert_skill/integrations/codex/CODEX_QUERY_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "query_adapter_spec",
+      "role": "Defines how Codex executes query CLI commands without owning canonical semantics."
+    },
+    {
+      "file_id": "08.QUERY.ADAPTER.KILO",
+      "file_path": "08_assembler_skills/02_query_expert_skill/integrations/kilo_code/KILO_CODE_QUERY_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "query_adapter_spec",
+      "role": "Defines how Kilo Code executes query CLI commands without owning canonical semantics."
+    },
+    {
+      "file_id": "08.QUERY.ADAPTER.OPENCODE",
+      "file_path": "08_assembler_skills/02_query_expert_skill/integrations/opencode/OPENCODE_QUERY_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "query_adapter_spec",
+      "role": "Defines how OpenCode executes query CLI commands without owning canonical semantics."
+    },
+    {
+      "file_id": "08.QUERY.ADAPTER.GITHUB",
+      "file_path": "08_assembler_skills/02_query_expert_skill/integrations/github/GITHUB_QUERY_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "query_adapter_spec",
+      "role": "Defines how GitHub-backed repositories execute query CLI commands through repository file access."
+    },
+    {
+      "file_id": "08.QUERY.ADAPTER.GDRIVE",
+      "file_path": "08_assembler_skills/02_query_expert_skill/integrations/google_drive/GOOGLE_DRIVE_QUERY_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "query_adapter_spec",
+      "role": "Defines how Google Drive-backed files execute query CLI commands through document, sheet, and file abstractions."
+    },
+    {
+      "file_id": "08.QUERY.ADAPTER.LOCAL",
+      "file_path": "08_assembler_skills/02_query_expert_skill/integrations/local_runtime/LOCAL_QUERY_ADAPTER.md",
+      "format": "markdown",
+      "document_type": "query_adapter_spec",
+      "role": "Defines how a local filesystem runtime executes query CLI commands."
+    },
+    {
+      "file_id": "08.CONTRACTS.01",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.01_CORE_TO_CLI_CONTRACT.md",
+      "format": "markdown",
+      "document_type": "core_to_cli_contract",
+      "role": "Defines how skill cores emit canonical command objects and receive CLI execution results."
+    },
+    {
+      "file_id": "08.CONTRACTS.02",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.02_CLI_COMMAND_GRAMMAR.md",
+      "format": "markdown",
+      "document_type": "cli_command_grammar",
+      "role": "Defines shared command grammar across editor and query skills."
+    },
+    {
+      "file_id": "08.CONTRACTS.03",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.03_CLI_TO_ADAPTER_CONTRACT.md",
+      "format": "markdown",
+      "document_type": "cli_to_adapter_contract",
+      "role": "Defines how canonical CLI command objects are handed to environment adapters."
+    },
+    {
+      "file_id": "08.CONTRACTS.04",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.04_ADAPTER_CAPABILITY_MATRIX.csv",
+      "format": "csv",
+      "document_type": "adapter_capability_matrix",
+      "role": "Maps target environments to read, write, patch, search, validation, diff, PR, and export capabilities."
+    },
+    {
+      "file_id": "08.CONTRACTS.05",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.05_ADAPTER_LIFECYCLE.md",
+      "format": "markdown",
+      "document_type": "adapter_lifecycle",
+      "role": "Defines adapter initialization, capability declaration, command execution, error reporting, and shutdown behavior."
+    },
+    {
+      "file_id": "08.CONTRACTS.06",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.06_ERROR_AND_LIMITATION_MODEL.md",
+      "format": "markdown",
+      "document_type": "error_and_limitation_model",
+      "role": "Defines standard errors, unsupported capability responses, partial execution reporting, and limitation disclosure."
+    },
+    {
+      "file_id": "08.CONTRACTS.07",
+      "file_path": "08_assembler_skills/03_execution_contracts/03.07_INTEGRATION_VALIDATION_PROTOCOL.md",
+      "format": "markdown",
+      "document_type": "integration_validation_protocol",
+      "role": "Defines how to validate that a runtime adapter preserves CLI contracts and does not assume semantic authority."
+    }
+  ],
+  "4.0_counts": {
+    "planned_total_file_count": 57,
+    "planned_top_level_files_count": 6,
+    "planned_source_data_file_count": 7,
+    "planned_shared_kernel_file_count": 5,
+    "planned_content_editor_skill_files_count": 17,
+    "planned_query_expert_skill_files_count": 17,
+    "planned_execution_contract_files_count": 7,
+    "planned_json_file_count": 6,
+    "planned_csv_file_count": 3,
+    "planned_markdown_file_count": 48,
+    "skill_count": 2,
+    "shared_kernel_count": 1,
+    "cli_layer_count": 2,
+    "adapter_environment_count": 6,
+    "editor_adapter_spec_count": 6,
+    "query_adapter_spec_count": 6,
+    "execution_contract_count": 7,
+    "source_data_snapshot_count": 1
+  },
+  "5.0_delivery_phases": [
+    {
+      "phase_id": "PHASE-08-000",
+      "phase_name": "Source Data Integration Decision",
+      "files": [
+        "08_assembler_skills/00_SOURCE_DATA_INTEGRATION_DECISION.md"
+      ],
+      "goal": "Establish binding architectural correction for vendored source data."
+    },
+    {
+      "phase_id": "PHASE-08-001",
+      "phase_name": "Foundation Package",
+      "files": [
+        "08_assembler_skills/00_PACKAGE_MANIFEST.json",
+        "08_assembler_skills/01_SKILLS_RELEASE_README.md",
+        "08_assembler_skills/02_SKILLS_ARCHITECTURE_OVERVIEW.md",
+        "08_assembler_skills/03_SKILLS_FILE_MAP.csv",
+        "08_assembler_skills/04_SKILLS_SCHEMA.md"
+      ],
+      "goal": "Establish release scope, architecture, file inventory, schema, and packaging rules."
+    },
+    {
+      "phase_id": "PHASE-08-002A",
+      "phase_name": "Source Data Control Files",
+      "files": [
+        "08_assembler_skills/00_source_data/00.00_SOURCE_DATA_MANIFEST.json",
+        "08_assembler_skills/00_source_data/00.01_SOURCE_DATA_README.md",
+        "08_assembler_skills/00_source_data/00.02_SOURCE_DATA_FILE_MAP.csv",
+        "08_assembler_skills/00_source_data/00.03_SOURCE_DATA_REFRESH_POLICY.md"
+      ],
+      "goal": "Define source data inventory, aliases, refresh policy, and file tracking."
+    },
+    {
+      "phase_id": "PHASE-08-002B",
+      "phase_name": "Source-Specific Manifests",
+      "files": [
+        "08_assembler_skills/00_source_data/00.01_architectural_taxonomy/taxonomy_source_manifest.json",
+        "08_assembler_skills/00_source_data/00.02_canonical_responsibilities/responsibilities_source_manifest.json",
+        "08_assembler_skills/00_source_data/00.03_delegation_enablement_matrix/delegation_source_manifest.json"
+      ],
+      "goal": "Track vendored source files by upstream origin and local normalization."
+    },
+    {
+      "phase_id": "PHASE-08-003",
+      "phase_name": "Shared Canonical Kernel",
+      "files": [
+        "08_assembler_skills/00_shared_canonical_kernel/00.01_CANONICAL_KERNEL.md",
+        "08_assembler_skills/00_shared_canonical_kernel/00.02_ID_GRAMMAR_AND_JOIN_KEYS.md",
+        "08_assembler_skills/00_shared_canonical_kernel/00.03_SOURCE_PRIORITY_AND_AUTHORITY.md",
+        "08_assembler_skills/00_shared_canonical_kernel/00.04_ANTI_COLLAPSE_RULES.md",
+        "08_assembler_skills/00_shared_canonical_kernel/00.05_VALIDATION_BASELINE.md"
+      ],
+      "goal": "Define shared laws used by both skill cores."
+    },
+    {
+      "phase_id": "PHASE-08-004",
+      "phase_name": "Content Editor Skill Core",
+      "files": [
+        "08_assembler_skills/01_content_editor_skill/01.00_CONTENT_EDITOR_SKILL_MANIFEST.json",
+        "08_assembler_skills/01_content_editor_skill/core/01.01_CONTENT_EDITOR_CORE_SPEC.md",
+        "08_assembler_skills/01_content_editor_skill/core/01.02_CHANGE_CLASSIFICATION.md",
+        "08_assembler_skills/01_content_editor_skill/core/01.03_IMPACT_ANALYSIS_PROTOCOL.md",
+        "08_assembler_skills/01_content_editor_skill/core/01.04_PATCH_GENERATION_PROTOCOL.md",
+        "08_assembler_skills/01_content_editor_skill/core/01.05_PROPAGATION_RULES.md",
+        "08_assembler_skills/01_content_editor_skill/core/01.06_EDITOR_VALIDATION_CHECKLIST.md"
+      ],
+      "goal": "Define the environment-independent core for safe canonical content editing."
+    },
+    {
+      "phase_id": "PHASE-08-005",
+      "phase_name": "Content Editor CLI",
+      "files": [
+        "08_assembler_skills/01_content_editor_skill/cli/01.07_EDITOR_CLI_SPEC.md",
+        "08_assembler_skills/01_content_editor_skill/cli/01.08_EDITOR_COMMANDS.md",
+        "08_assembler_skills/01_content_editor_skill/cli/01.09_EDITOR_COMMAND_IO_SCHEMA.md",
+        "08_assembler_skills/01_content_editor_skill/cli/01.10_EDITOR_CLI_EXAMPLES.md"
+      ],
+      "goal": "Define the canonical operational interface for editor commands."
+    },
+    {
+      "phase_id": "PHASE-08-006",
+      "phase_name": "Query Expert Skill Core",
+      "files": [
+        "08_assembler_skills/02_query_expert_skill/02.00_QUERY_EXPERT_SKILL_MANIFEST.json",
+        "08_assembler_skills/02_query_expert_skill/core/02.01_QUERY_EXPERT_CORE_SPEC.md",
+        "08_assembler_skills/02_query_expert_skill/core/02.02_QUERY_ROUTING_PROTOCOL.md",
+        "08_assembler_skills/02_query_expert_skill/core/02.03_JOIN_AND_TRACE_PROTOCOL.md",
+        "08_assembler_skills/02_query_expert_skill/core/02.04_EVIDENCE_OUTPUT_PROTOCOL.md",
+        "08_assembler_skills/02_query_expert_skill/core/02.05_ANSWER_GUARDS.md",
+        "08_assembler_skills/02_query_expert_skill/core/02.06_QUERY_VALIDATION_CHECKLIST.md"
+      ],
+      "goal": "Define the read-only query and trace reasoning core."
+    },
+    {
+      "phase_id": "PHASE-08-007",
+      "phase_name": "Query Expert CLI",
+      "files": [
+        "08_assembler_skills/02_query_expert_skill/cli/02.07_QUERY_CLI_SPEC.md",
+        "08_assembler_skills/02_query_expert_skill/cli/02.08_QUERY_COMMANDS.md",
+        "08_assembler_skills/02_query_expert_skill/cli/02.09_QUERY_COMMAND_IO_SCHEMA.md",
+        "08_assembler_skills/02_query_expert_skill/cli/02.10_QUERY_CLI_EXAMPLES.md"
+      ],
+      "goal": "Define the canonical operational interface for query commands."
+    },
+    {
+      "phase_id": "PHASE-08-008",
+      "phase_name": "Execution Contracts",
+      "files": [
+        "08_assembler_skills/03_execution_contracts/03.01_CORE_TO_CLI_CONTRACT.md",
+        "08_assembler_skills/03_execution_contracts/03.02_CLI_COMMAND_GRAMMAR.md",
+        "08_assembler_skills/03_execution_contracts/03.03_CLI_TO_ADAPTER_CONTRACT.md",
+        "08_assembler_skills/03_execution_contracts/03.04_ADAPTER_CAPABILITY_MATRIX.csv",
+        "08_assembler_skills/03_execution_contracts/03.05_ADAPTER_LIFECYCLE.md",
+        "08_assembler_skills/03_execution_contracts/03.06_ERROR_AND_LIMITATION_MODEL.md",
+        "08_assembler_skills/03_execution_contracts/03.07_INTEGRATION_VALIDATION_PROTOCOL.md"
+      ],
+      "goal": "Define contracts and validation rules between cores, CLI layers, adapters, and runtimes."
+    },
+    {
+      "phase_id": "PHASE-08-009",
+      "phase_name": "Environment Adapter Specs",
+      "files": [
+        "08_assembler_skills/01_content_editor_skill/integrations/codex/CODEX_EDITOR_ADAPTER.md",
+        "08_assembler_skills/01_content_editor_skill/integrations/kilo_code/KILO_CODE_EDITOR_ADAPTER.md",
+        "08_assembler_skills/01_content_editor_skill/integrations/opencode/OPENCODE_EDITOR_ADAPTER.md",
+        "08_assembler_skills/01_content_editor_skill/integrations/github/GITHUB_EDITOR_ADAPTER.md",
+        "08_assembler_skills/01_content_editor_skill/integrations/google_drive/GOOGLE_DRIVE_EDITOR_ADAPTER.md",
+        "08_assembler_skills/01_content_editor_skill/integrations/local_runtime/LOCAL_EDITOR_ADAPTER.md",
+        "08_assembler_skills/02_query_expert_skill/integrations/codex/CODEX_QUERY_ADAPTER.md",
+        "08_assembler_skills/02_query_expert_skill/integrations/kilo_code/KILO_CODE_QUERY_ADAPTER.md",
+        "08_assembler_skills/02_query_expert_skill/integrations/opencode/OPENCODE_QUERY_ADAPTER.md",
+        "08_assembler_skills/02_query_expert_skill/integrations/github/GITHUB_QUERY_ADAPTER.md",
+        "08_assembler_skills/02_query_expert_skill/integrations/google_drive/GOOGLE_DRIVE_QUERY_ADAPTER.md",
+        "08_assembler_skills/02_query_expert_skill/integrations/local_runtime/LOCAL_QUERY_ADAPTER.md"
+      ],
+      "goal": "Define environment-specific execution bindings without semantic authority."
+    }
+  ],
+  "6.0_validation_rules": [
+    {
+      "rule_id": "SKILL-VAL-001",
+      "rule_name": "No Canon Redefinition",
+      "severity": "blocking",
+      "statement": "Package 08 must not redefine Assembler System responsibilities, obligations, entities, governed objects, enablements, contracts, gaps, or doctrines."
+    },
+    {
+      "rule_id": "SKILL-VAL-002",
+      "rule_name": "Core / CLI / Adapter Separation",
+      "severity": "blocking",
+      "statement": "Skill cores, CLI layers, adapters, and runtime environments must remain separate architectural layers."
+    },
+    {
+      "rule_id": "SKILL-VAL-003",
+      "rule_name": "CLI Is Not Adapter",
+      "severity": "blocking",
+      "statement": "The CLI layer is the canonical operational interface before adapters, not one adapter among many."
+    },
+    {
+      "rule_id": "SKILL-VAL-004",
+      "rule_name": "Adapter No-Semantic-Authority Rule",
+      "severity": "blocking",
+      "statement": "Adapters may read, write, patch, search, validate, or report depending on capability, but they must not decide canonical semantics."
+    },
+    {
+      "rule_id": "SKILL-VAL-005",
+      "rule_name": "Editor Propagation Rule",
+      "severity": "blocking",
+      "statement": "The Content Editor Skill must not emit a canonical edit without impact analysis and propagation requirements."
+    },
+    {
+      "rule_id": "SKILL-VAL-006",
+      "rule_name": "Query Read-Only Rule",
+      "severity": "blocking",
+      "statement": "The Query Expert Skill must remain read-only and must not generate canonical edits."
+    },
+    {
+      "rule_id": "SKILL-VAL-007",
+      "rule_name": "Evidence Required Rule",
+      "severity": "blocking",
+      "statement": "The Query Expert Skill must produce source/evidence paths for canonical answers when evidence is required."
+    },
+    {
+      "rule_id": "SKILL-VAL-008",
+      "rule_name": "Anti-Collapse Preservation Rule",
+      "severity": "blocking",
+      "statement": "Both skills must preserve all anti-collapse rules inherited from packages 01 through 06."
+    },
+    {
+      "rule_id": "SKILL-VAL-009",
+      "rule_name": "Portable Core Rule",
+      "severity": "blocking",
+      "statement": "Skill cores must not contain Codex, Kilo Code, OpenCode, GitHub, Google Drive, or Local Runtime assumptions."
+    },
+    {
+      "rule_id": "SKILL-VAL-010",
+      "rule_name": "Runtime Capability Declaration Rule",
+      "severity": "required",
+      "statement": "Every adapter must declare supported capabilities before executing commands."
+    },
+    {
+      "rule_id": "SKILL-VAL-011",
+      "rule_name": "Vendored Source Data Rule",
+      "severity": "blocking",
+      "statement": "All skill source dependencies must resolve through 08_assembler_skills/00_source_data/ or approved source-data aliases."
+    },
+    {
+      "rule_id": "SKILL-VAL-012",
+      "rule_name": "No Hardcoded External Workspace Path Rule",
+      "severity": "blocking",
+      "statement": "Package 08 files must not require external sibling workspace folders at runtime."
+    }
+  ],
+  "7.0_environment_targets": [
+    {
+      "environment_id": "codex",
+      "environment_name": "Codex",
+      "expected_role": "repository-aware coding and patch execution environment",
+      "adapter_scope": "branching, diff generation, file edits, validation command execution, review-ready patch outputs"
+    },
+    {
+      "environment_id": "kilo_code",
+      "environment_name": "Kilo Code",
+      "expected_role": "workspace-aware coding assistant environment",
+      "adapter_scope": "workspace discovery, file patching, local validation, structured edit sessions"
+    },
+    {
+      "environment_id": "opencode",
+      "environment_name": "OpenCode",
+      "expected_role": "terminal and local workspace-oriented agent environment",
+      "adapter_scope": "filesystem access, shell execution, validation scripts, local diff and packaging"
+    },
+    {
+      "environment_id": "github",
+      "environment_name": "GitHub",
+      "expected_role": "repository and pull request integration environment",
+      "adapter_scope": "repository file fetch/update, branch creation, commit generation, pull request creation, issue or review comment reporting"
+    },
+    {
+      "environment_id": "google_drive",
+      "environment_name": "Google Drive",
+      "expected_role": "Drive-backed document, sheet, and file source environment",
+      "adapter_scope": "Drive file search, document/sheet fetch, content export, structured update where supported"
+    },
+    {
+      "environment_id": "local_runtime",
+      "environment_name": "Local Runtime",
+      "expected_role": "plain filesystem and CLI execution environment",
+      "adapter_scope": "local file reads/writes, command execution, validation reports, artifact exports"
+    }
+  ],
+  "8.0_downstream_derivation": {
+    "implementation_targets": [
+      "local CLI prototype",
+      "repository-integrated editor workflow",
+      "read-only query CLI",
+      "adapter capability test harness",
+      "ontology expert skill prompt pack",
+      "future PostgreSQL-backed query engine",
+      "future graph-backed query engine"
+    ],
+    "recommended_core_modules": [
+      "canonical_kernel",
+      "editor_core",
+      "query_core",
+      "cli_command_model",
+      "adapter_contracts",
+      "validation_engine"
+    ],
+    "recommended_data_dependencies": [
+      "06_rollup_indexes/06.01_DELEGATION_ENABLEMENT_ROLLUP_INDEX.json",
+      "06_rollup_indexes/06.02_JOIN_KEYS_REFERENCE.csv",
+      "06_rollup_indexes/06.03_QUERY_PATTERNS.md",
+      "06_rollup_indexes/06.04_CROSS_BUNDLE_FILE_MAP.csv",
+      "05_trace_coverage_registers/05.06_trace_coverage_index.json"
+    ]
+  },
+  "9.0_final_canonical_statement": {
+    "statement": "The 08_assembler_skills package defines a portable two-skill architecture for maintaining and querying the Assembler System canon. It introduces no new Assembler System semantics. It defines how editor and query skill cores use vendored source data, a shared canonical kernel, expose canonical CLI commands, and delegate execution to environment adapters without allowing adapters or runtimes to become semantic authorities.",
+    "canonical_layer_order": [
+      "Source Data Snapshot",
+      "Shared Canonical Kernel",
+      "Skill Core",
+      "Canonical CLI Layer",
+      "Environment Adapter Layer",
+      "Runtime Environment"
+    ],
+    "canonical_operating_law": "Source data is vendored. Kernel governs. Core reasons. CLI expresses. Adapter executes. Runtime hosts.",
+    "non_canonical_if": [
+      "a skill core depends directly on a runtime-specific API",
+      "an adapter decides canonical semantics",
+      "the CLI layer is treated as one adapter among many",
+      "the query skill edits files",
+      "the editor skill emits edits without propagation analysis",
+      "anti-collapse rules from the canonical release are weakened",
+      "package 08 redefines package 00 through 06 semantics",
+      "evidence-required query answers omit source paths",
+      "runtime capability limitations are hidden",
+      "it requires external sibling workspace paths at runtime",
+      "it omits 00_source_data/ while claiming portable operation",
+      "it treats a live runtime folder as semantic authority without snapshot policy",
+      "it allows adapters to rewrite source references without manifest trace",
+      "it allows query skill to read outside source-data aliases by default",
+      "it allows editor skill to mutate source data without propagation and validation",
+      "it treats vendored source data as implementation code rather than canonical evidence",
+      "it fails to record source-data refreshes"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "0.1.document_id": "ASM-TAX-JSON-BUNDLE-05-INDEX",
+  "0.2.bundle_id": "JSON-BUNDLE-05",
+  "0.3.bundle_name": "Relations: External, Policy, Envelope",
+  "1.1.includes_relation_families": [
+    "REL-FAM-001",
+    "REL-FAM-002",
+    "REL-FAM-003"
+  ],
+  "1.2.file_strategy": "One JSON file per relation.",
+  "2.1.counts": {
+    "external_boundary_relations": 8,
+    "policy_provisioning_assignment_relations": 9,
+    "envelope_realization_movement_relations": 9,
+    "total_relation_files": 26
+  },
+  "3.1.external_relation_ids": [
+    "R-EXT-001",
+    "R-EXT-002A",
+    "R-EXT-002B",
+    "R-EXT-003",
+    "R-EXT-004",
+    "R-EXT-005",
+    "R-EXT-006",
+    "R-EXT-007"
+  ],
+  "3.2.policy_relation_ids": [
+    "R-POL-001",
+    "R-POL-002",
+    "R-POL-003",
+    "R-POL-004",
+    "R-POL-005",
+    "R-POL-006",
+    "R-POL-007",
+    "R-POL-008",
+    "R-POL-009"
+  ],
+  "3.3.envelope_relation_ids": [
+    "R-CAR-001A",
+    "R-CAR-001B",
+    "R-CAR-002",
+    "R-CAR-003",
+    "R-CAR-004",
+    "R-CAR-005",
+    "R-CAR-006",
+    "R-CAR-007",
+    "R-CAR-008"
+  ],
+  "4.1.next_bundle": "JSON-BUNDLE-06 Relations: Runtime, Waiting, Contract, Doctrine",
+  "4.2.growth_policy": "Later bundles and batches may add trace slots without collapsing these relation files."
+}

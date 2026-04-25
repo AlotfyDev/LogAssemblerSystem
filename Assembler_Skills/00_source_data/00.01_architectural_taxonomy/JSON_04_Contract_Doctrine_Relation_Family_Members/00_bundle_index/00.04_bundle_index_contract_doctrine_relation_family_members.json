@@ -1,0 +1,48 @@
+{
+  "0.1.document_id": "ASM-TAX-JSON-BUNDLE-04-INDEX",
+  "0.2.bundle_id": "JSON-BUNDLE-04",
+  "0.3.bundle_name": "Contract, Doctrine, and Relation Family Members",
+  "1.1.includes_layers": [
+    "L-005",
+    "L-006",
+    "L-007"
+  ],
+  "1.2.file_strategy": "One JSON file per contract family, doctrine rule, and relation family.",
+  "2.1.counts": {
+    "contract_template_families": 8,
+    "doctrine_constitutional_rules": 7,
+    "relation_families": 8,
+    "total_member_files": 23
+  },
+  "3.1.contract_family_ids": [
+    "CT-FAM-001",
+    "CT-FAM-002",
+    "CT-FAM-003",
+    "CT-FAM-004",
+    "CT-FAM-005",
+    "CT-FAM-006",
+    "CT-FAM-007",
+    "CT-FAM-008"
+  ],
+  "3.2.doctrine_rule_ids": [
+    "DOC-001",
+    "DOC-002",
+    "DOC-003",
+    "DOC-004",
+    "DOC-005",
+    "DOC-006",
+    "DOC-007"
+  ],
+  "3.3.relation_family_ids": [
+    "REL-FAM-001",
+    "REL-FAM-002",
+    "REL-FAM-003",
+    "REL-FAM-004",
+    "REL-FAM-005",
+    "REL-FAM-006",
+    "REL-FAM-007",
+    "REL-FAM-008"
+  ],
+  "4.1.next_bundle": "JSON-BUNDLE-05 Relations: External, Policy, Envelope",
+  "4.2.growth_policy": "Later bundles reference these family files by canonical IDs."
+}

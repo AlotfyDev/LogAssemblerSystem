@@ -1,0 +1,563 @@
+{
+  "manifest_id": "02.00_PACKAGE_MANIFEST",
+  "manifest_type": "package_manifest",
+  "release_id": "canonical_delegation_enablement_matrix_v2_release",
+  "release_title": "Canonical Delegation & Enablement Matrix V2 Release",
+  "package_id": "02_entity_enablement_indexes",
+  "package_title": "Entity and Enablement Indexes",
+  "package_path": "02_entity_enablement_indexes/",
+  "package_status": "draft_for_structured_local_installation",
+  "delivery_mode": "file_by_file",
+  "schema_basis": {
+    "reference_schema": "01_reference_markdown/01.06_REFERENCE_SCHEMA.md",
+    "primary_reference_matrix": "01_reference_markdown/01.01_Canonical_Delegation_Enablement_Matrix_V2.md",
+    "assignment_principles": "01_reference_markdown/01.02_canonical_assignment_principles.md",
+    "corrected_entities_reference": "01_reference_markdown/01.03_corrected_delegation_entities.md",
+    "enablement_families_reference": "01_reference_markdown/01.04_enablement_families_reference.md",
+    "gap_closure_coverage_reference": "01_reference_markdown/01.05_gap_closure_delegation_coverage.md"
+  },
+  "package_purpose": {
+    "summary": "This package contains the canonical indexes for delegated entities, governed objects, enablement families, surface types, ports, corrected entity roles, and policy-consuming component classifications.",
+    "architectural_role": "It provides reusable lookup and join indexes required by the responsibility delegation matrix, obligation delegation files, trace coverage registers, rollup indexes, and future PostgreSQL derivation.",
+    "not_a_final_implementation_layer": true
+  },
+  "source_alignment": {
+    "release_mapping_law": "Responsibility / Obligation -> Primary Delegated Entity -> Supporting Entities -> Governed Objects -> Enablement Family -> Surface Type -> Trace",
+    "join_key_law": "All index files in this package must preserve canonical IDs suitable for CSV, JSON, graph, and relational derivation.",
+    "accountability_law": "Assembler Subsystem may remain accountable while execution is delegated to narrower mature architectural carriers.",
+    "actor_object_law": "Governed objects must not be promoted into actors unless explicitly revised by taxonomy governance.",
+    "enablement_law": "Enablement is an architectural capability surface, not final code or final method shape."
+  },
+  "canonical_join_keys_used": [
+    "entity_id",
+    "entity_name",
+    "entity_class",
+    "delegation_status",
+    "governed_object_id",
+    "enablement_family_id",
+    "surface_id",
+    "responsibility_id",
+    "obligation_id",
+    "gap_id",
+    "contract_id",
+    "taxonomy_trace_id",
+    "doctrine_id"
+  ],
+  "expected_package_counts": {
+    "canonical_enablement_families": 9,
+    "canonical_surface_types": 6,
+    "new_or_promoted_delegation_entities": 4,
+    "new_or_promoted_governed_artifacts": 3,
+    "policy_consuming_components": 7,
+    "policy_hosting_exclusions": 1,
+    "classification_only_runtime_layers": 1,
+    "core_internal_corrected_ports_or_contract_objects": 4
+  },
+  "canonical_enablement_families": [
+    {
+      "enablement_family_id": "EN-FAM-001",
+      "name": "Assignment Surface Enablement",
+      "primary_plane": "Administrative"
+    },
+    {
+      "enablement_family_id": "EN-FAM-002",
+      "name": "Mechanism Hosting Enablement",
+      "primary_plane": "Managerial / Policy"
+    },
+    {
+      "enablement_family_id": "EN-FAM-003",
+      "name": "Envelope Handling Enablement",
+      "primary_plane": "Managerial / Boundary"
+    },
+    {
+      "enablement_family_id": "EN-FAM-004",
+      "name": "Queue Runtime Enablement",
+      "primary_plane": "Managerial / Runtime"
+    },
+    {
+      "enablement_family_id": "EN-FAM-005",
+      "name": "Registry Boundary Enablement",
+      "primary_plane": "Boundary / Registry"
+    },
+    {
+      "enablement_family_id": "EN-FAM-006",
+      "name": "Feedback / Reporting Enablement",
+      "primary_plane": "Managerial / Observability"
+    },
+    {
+      "enablement_family_id": "EN-FAM-007",
+      "name": "Boundary / Exclusion Enablement",
+      "primary_plane": "Boundary / Constitutional"
+    },
+    {
+      "enablement_family_id": "EN-FAM-008",
+      "name": "Contract Template Enablement",
+      "primary_plane": "Contractual"
+    },
+    {
+      "enablement_family_id": "EN-FAM-009",
+      "name": "Metadata / Timestamp Preparation Enablement",
+      "primary_plane": "Preparation / Ingress"
+    }
+  ],
+  "canonical_surface_types": [
+    {
+      "surface_id": "SURF-ADMINISTRATIVE",
+      "surface_name": "Administrative"
+    },
+    {
+      "surface_id": "SURF-MANAGERIAL",
+      "surface_name": "Managerial"
+    },
+    {
+      "surface_id": "SURF-CONSUMING",
+      "surface_name": "Consuming"
+    },
+    {
+      "surface_id": "SURF-BOUNDARY",
+      "surface_name": "Boundary"
+    },
+    {
+      "surface_id": "SURF-CONTRACTUAL",
+      "surface_name": "Contractual"
+    },
+    {
+      "surface_id": "SURF-OBSERVABILITY",
+      "surface_name": "Observability"
+    }
+  ],
+  "core_new_or_promoted_entities": [
+    {
+      "entity_id": "E-INT-011",
+      "entity_name": "Envelope Assembler",
+      "role": "Client-side composed ingress-preparation contract object"
+    },
+    {
+      "entity_id": "E-INT-012",
+      "entity_name": "Assembler Ingress Port",
+      "role": "Server-side receiving contract port"
+    },
+    {
+      "entity_id": "E-INT-013",
+      "entity_name": "Administrative / Ecosystem Port",
+      "role": "Administrative/control contract port"
+    },
+    {
+      "entity_id": "E-INT-014",
+      "entity_name": "Registry / Delivery Port",
+      "role": "Outbound registry-facing contract port"
+    }
+  ],
+  "core_new_or_promoted_governed_artifacts": [
+    {
+      "governed_object_id": "BCO-012",
+      "object_name": "Log Level Envelope",
+      "role": "Ingress payload and authoritative runtime carrier"
+    },
+    {
+      "governed_object_id": "BCO-013",
+      "object_name": "Delivery-Cycle Flag Set",
+      "role": "Dispatcher state artifact"
+    },
+    {
+      "governed_object_id": "BCO-014",
+      "object_name": "Dispatcher Feedback Report",
+      "role": "Diagnostic/reporting artifact"
+    }
+  ],
+  "planned_files": [
+    {
+      "file_id": "02.01",
+      "path": "02_entity_enablement_indexes/02.01_entity_index.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Flat canonical index of all relevant delegated entities, supporting entities, external entities, runtime entities, and classification-only layers used by this release.",
+      "primary_keys": [
+        "entity_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "entity_name",
+        "entity_class",
+        "delegation_status",
+        "taxonomy_trace_id"
+      ],
+      "depends_on": [
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+      ]
+    },
+    {
+      "file_id": "02.02",
+      "path": "02_entity_enablement_indexes/02.02_entity_index.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the canonical entity index with array-native fields for surfaces, enablements, responsibilities, and guard rules.",
+      "primary_keys": [
+        "entity_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "surface_id",
+        "enablement_family_id",
+        "responsibility_id",
+        "taxonomy_trace_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.01_entity_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.03",
+      "path": "02_entity_enablement_indexes/02.03_enablement_family_index.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Flat canonical index of the nine enablement families, their primary planes, purposes, used-by entities, enabled responsibilities, obligations preserved, and anti-collapse rules.",
+      "primary_keys": [
+        "enablement_family_id"
+      ],
+      "required_join_keys": [
+        "enablement_family_id",
+        "entity_id",
+        "responsibility_id",
+        "obligation_id"
+      ],
+      "depends_on": [
+        "01_reference_markdown/01.04_enablement_families_reference.md",
+        "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+      ]
+    },
+    {
+      "file_id": "02.04",
+      "path": "02_entity_enablement_indexes/02.04_enablement_family_index.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the enablement family index with nested arrays for used-by entities, responsibility coverage, required capability surfaces, obligations, and anti-collapse rules.",
+      "primary_keys": [
+        "enablement_family_id"
+      ],
+      "required_join_keys": [
+        "enablement_family_id",
+        "entity_id",
+        "responsibility_id",
+        "obligation_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.03_enablement_family_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.05",
+      "path": "02_entity_enablement_indexes/02.05_surface_type_index.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Canonical surface type index covering Administrative, Managerial, Consuming, Boundary, Contractual, and Observability surfaces.",
+      "primary_keys": [
+        "surface_id"
+      ],
+      "required_join_keys": [
+        "surface_id",
+        "surface_name"
+      ],
+      "depends_on": [
+        "01_reference_markdown/01.02_canonical_assignment_principles.md",
+        "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+      ]
+    },
+    {
+      "file_id": "02.06",
+      "path": "02_entity_enablement_indexes/02.06_surface_type_index.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the canonical surface type index with semantic definitions and downstream usage notes.",
+      "primary_keys": [
+        "surface_id"
+      ],
+      "required_join_keys": [
+        "surface_id",
+        "surface_name"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.05_surface_type_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.07",
+      "path": "02_entity_enablement_indexes/02.07_governed_object_index.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Canonical index of governed objects and artifacts, including carrier objects, state artifacts, diagnostic artifacts, queue/slot objects, and actor-status guards.",
+      "primary_keys": [
+        "governed_object_id"
+      ],
+      "required_join_keys": [
+        "governed_object_id",
+        "object_name",
+        "actor_status",
+        "enablement_family_id",
+        "responsibility_id"
+      ],
+      "depends_on": [
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "01_reference_markdown/01.06_REFERENCE_SCHEMA.md"
+      ]
+    },
+    {
+      "file_id": "02.08",
+      "path": "02_entity_enablement_indexes/02.08_governed_object_index.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the governed object index with explicit actor guards, preservation rules, and must-not-do rules.",
+      "primary_keys": [
+        "governed_object_id"
+      ],
+      "required_join_keys": [
+        "governed_object_id",
+        "responsibility_id",
+        "enablement_family_id",
+        "surface_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.07_governed_object_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.09",
+      "path": "02_entity_enablement_indexes/02.09_port_contract_surface_index.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Dedicated index of the four corrected port/contract-side surfaces: Envelope Assembler, Assembler Ingress Port, Administrative / Ecosystem Port, and Registry / Delivery Port.",
+      "primary_keys": [
+        "entity_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "surface_id",
+        "enablement_family_id",
+        "contract_id"
+      ],
+      "depends_on": [
+        "01_reference_markdown/01.03_corrected_delegation_entities.md",
+        "01_reference_markdown/01.04_enablement_families_reference.md"
+      ]
+    },
+    {
+      "file_id": "02.10",
+      "path": "02_entity_enablement_indexes/02.10_port_contract_surface_index.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the port/contract surface index with direction, payload classes, responsibilities, enablements, and must-not-do constraints.",
+      "primary_keys": [
+        "entity_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "surface_id",
+        "enablement_family_id",
+        "contract_id",
+        "responsibility_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.09_port_contract_surface_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.11",
+      "path": "02_entity_enablement_indexes/02.11_policy_consuming_components_index.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Canonical index of policy-consuming components and explicit exclusions, especially the Metadata Injector exclusion from policy hosting.",
+      "primary_keys": [
+        "entity_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "enablement_family_id",
+        "responsibility_id",
+        "obligation_id"
+      ],
+      "depends_on": [
+        "01_reference_markdown/01.02_canonical_assignment_principles.md",
+        "01_reference_markdown/01.04_enablement_families_reference.md"
+      ]
+    },
+    {
+      "file_id": "02.12",
+      "path": "02_entity_enablement_indexes/02.12_policy_consuming_components_index.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the policy-consuming component index, preserving included components, excluded components, and mechanism-hosting rules.",
+      "primary_keys": [
+        "entity_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "enablement_family_id",
+        "responsibility_id",
+        "obligation_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.11_policy_consuming_components_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.13",
+      "path": "02_entity_enablement_indexes/02.13_entity_enablement_crosswalk.csv",
+      "format": "csv",
+      "status": "planned",
+      "purpose": "Many-to-many crosswalk between entities and enablement families, including usage role, responsibility context, and exclusion/guard notes.",
+      "primary_keys": [
+        "entity_id",
+        "enablement_family_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "enablement_family_id",
+        "responsibility_id",
+        "obligation_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.01_entity_index.csv",
+        "02_entity_enablement_indexes/02.03_enablement_family_index.csv"
+      ]
+    },
+    {
+      "file_id": "02.14",
+      "path": "02_entity_enablement_indexes/02.14_entity_enablement_crosswalk.json",
+      "format": "json",
+      "status": "planned",
+      "purpose": "JSON equivalent of the entity-enablements many-to-many crosswalk.",
+      "primary_keys": [
+        "entity_id",
+        "enablement_family_id"
+      ],
+      "required_join_keys": [
+        "entity_id",
+        "enablement_family_id",
+        "responsibility_id",
+        "obligation_id"
+      ],
+      "depends_on": [
+        "02_entity_enablement_indexes/02.13_entity_enablement_crosswalk.csv"
+      ]
+    }
+  ],
+  "validation_rules": {
+    "id_stability": [
+      "All IDs must remain stable across CSV and JSON representations.",
+      "Display names may change only if canonical IDs remain unchanged."
+    ],
+    "count_validation": [
+      "The package must preserve exactly 9 canonical enablement families.",
+      "The package must preserve exactly 6 canonical surface types.",
+      "The package must preserve exactly 4 new or promoted delegated entities.",
+      "The package must preserve exactly 3 new or promoted governed artifacts."
+    ],
+    "actor_object_validation": [
+      "Governed artifacts with actor_status=not_actor must not appear as primary delegated entities.",
+      "Log Level Envelope, Delivery-Cycle Flag Set, and Dispatcher Feedback Report must remain governed artifacts unless explicitly promoted by a later taxonomy revision."
+    ],
+    "classification_validation": [
+      "Queue Runtime Layer must not appear as a primary delegated entity.",
+      "Queue Runtime Layer may appear only as a classification-only reference."
+    ],
+    "policy_host_validation": [
+      "Metadata Injector must not be assigned EN-FAM-002.",
+      "Metadata Injector must remain schema/directive-governed.",
+      "Policy-consuming component count must remain 7 unless revised by governance."
+    ],
+    "surface_validation": [
+      "Each entity index row must include at least one applicable surface or an explicit classification-only status.",
+      "Each enablement family must include a primary plane."
+    ],
+    "derivation_validation": [
+      "CSV and JSON pairs must preserve equivalent records.",
+      "Array fields in JSON must not be collapsed into lossy strings.",
+      "CSV multi-value fields may use semicolon-separated canonical IDs."
+    ]
+  },
+  "package_query_support": [
+    {
+      "query_family": "entity_lookup",
+      "examples": [
+        "Which responsibilities are carried by Dispatcher?",
+        "Which entities are classification-only?",
+        "Which port exposes outbound registry contract execution?"
+      ]
+    },
+    {
+      "query_family": "enablement_lookup",
+      "examples": [
+        "Which entities require EN-FAM-004?",
+        "Which responsibilities depend on Feedback / Reporting Enablement?",
+        "Which enablement families protect boundary exclusions?"
+      ]
+    },
+    {
+      "query_family": "surface_lookup",
+      "examples": [
+        "Which entities expose Administrative surfaces?",
+        "Which responsibilities use Observability?"
+      ]
+    },
+    {
+      "query_family": "governed_object_lookup",
+      "examples": [
+        "Which objects are governed artifacts and not actors?",
+        "Which responsibilities govern Log Level Envelope?"
+      ]
+    },
+    {
+      "query_family": "policy_host_lookup",
+      "examples": [
+        "Which components are policy-consuming?",
+        "Why is Metadata Injector excluded from policy hosting?"
+      ]
+    }
+  ],
+  "downstream_consumers": [
+    {
+      "package_path": "03_delegation_matrix/",
+      "usage": "Uses entity, governed object, surface, and enablement indexes for responsibility delegation rows."
+    },
+    {
+      "package_path": "04_obligation_delegation/",
+      "usage": "Uses entity and governed object indexes for obligation-to-entity and sub-responsibility mappings."
+    },
+    {
+      "package_path": "05_trace_coverage_registers/",
+      "usage": "Uses entity and enablement indexes to prove gap, contract, and doctrine coverage."
+    },
+    {
+      "package_path": "06_rollup_indexes/",
+      "usage": "Uses all index files for cross-bundle joins, query patterns, and package-wide count validation."
+    },
+    {
+      "package_path": "future_postgresql_derivation/",
+      "usage": "May derive normalized tables, lookup tables, and many-to-many crosswalk tables from these indexes."
+    }
+  ],
+  "non_goals": [
+    "This package does not define final implementation packages.",
+    "This package does not define code classes or methods.",
+    "This package does not define final PostgreSQL physical tables.",
+    "This package does not define runtime algorithms.",
+    "This package does not replace the canonical reference Markdown files."
+  ],
+  "freeze_state": {
+    "current_state": "soft_frozen_package_manifest",
+    "allowed_changes_without_migration": [
+      "Adding planned downstream file notes",
+      "Adding explanatory descriptions",
+      "Adding validation notes that do not alter canonical IDs"
+    ],
+    "requires_migration_note": [
+      "Renaming canonical IDs",
+      "Changing expected counts",
+      "Removing planned files",
+      "Changing entity classification",
+      "Changing enablement family membership",
+      "Promoting governed objects into actors"
+    ]
+  }
+}

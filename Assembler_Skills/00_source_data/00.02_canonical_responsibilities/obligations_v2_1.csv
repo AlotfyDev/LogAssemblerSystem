@@ -1,0 +1,50 @@
+obligation_id,attached_to,obligation
+OBL-CAN-001,RSP-CAN-001,Must satisfy: accept typed content through ingress template.
+OBL-CAN-002,RSP-CAN-002,Must satisfy: differentiate validating vs hot-path ingress.
+OBL-CAN-003,RSP-CAN-003,Must satisfy: preserve externalized validation path.
+OBL-CAN-004,RSP-CAN-004,Must satisfy: invoke validator only for validating ingress.
+OBL-CAN-005,RSP-CAN-005,Must satisfy: keep timestamp stabilization mandatory across all ingress families.
+OBL-CAN-006,RSP-CAN-006,Must satisfy: convert accepted typed content toward envelope realization.
+OBL-CAN-007,RSP-CAN-007,Must satisfy: receive ecosystem policy bundle.
+OBL-CAN-008,RSP-CAN-008,Must satisfy: intake policy objects and track assignment readiness.
+OBL-CAN-009,RSP-CAN-009,Must satisfy: assign policy objects to policy-consuming components.
+OBL-CAN-010,RSP-CAN-010,Must satisfy: ensure components expose administrative assignment surfaces.
+OBL-CAN-011,RSP-CAN-011,Must satisfy: ensure components host policy-defined mechanism semantics.
+OBL-CAN-012,RSP-CAN-012,Must satisfy: replace policies only at safe points.
+OBL-CAN-013,RSP-CAN-013,Must satisfy: receive metadata directive from administrative source.
+OBL-CAN-014,RSP-CAN-014,Must satisfy: apply metadata through injector-governed path.
+OBL-CAN-015,RSP-CAN-015,Must satisfy: compose metadata into log envelope.
+OBL-CAN-016,RSP-CAN-016,Must satisfy: preserve metadata authority path.
+OBL-CAN-017,RSP-CAN-017,Must satisfy: consume operational directives as administrative control.
+OBL-CAN-018,RSP-CAN-018,Must satisfy: realize pause/drain/scale/activate over queue structures.
+OBL-CAN-019,RSP-CAN-019,Must satisfy: maintain writable readiness or explicit degradation.
+OBL-CAN-020,RSP-CAN-020,Must satisfy: preserve policy-conforming queue order.
+OBL-CAN-021,RSP-CAN-021,Must satisfy: observe registry readiness before handoff.
+OBL-CAN-022,RSP-CAN-022,Must satisfy: gate envelope handoff by readiness/capacity.
+OBL-CAN-023,RSP-CAN-023,Must satisfy: handoff envelopes only through dispatcher boundary.
+OBL-CAN-024,RSP-CAN-024,Must satisfy: use receiving-side admission access without owning registry internals.
+OBL-CAN-025,RSP-CAN-025,Must satisfy: update delivery-cycle flags after delivery round completion.
+OBL-CAN-026,RSP-CAN-026,Must satisfy: avoid registry lifecycle ownership after handoff.
+OBL-CAN-027,RSP-CAN-027,"Must satisfy: assemble content, metadata, and timestamp into log envelope."
+OBL-CAN-028,RSP-CAN-028,Must satisfy: preserve log envelope as authoritative runtime carrier.
+OBL-CAN-029,RSP-CAN-029,Must satisfy: move envelope through writing/feeding to dispatch progression.
+OBL-CAN-030,RSP-CAN-030,Must satisfy: transfer envelope lifecycle authority after handoff.
+OBL-CAN-031,RSP-CAN-031,Must satisfy: preserve distinction between envelope occupancy and lifecycle ownership.
+OBL-CAN-032,RSP-CAN-032,Must satisfy: keep read/query outside assembler authority.
+OBL-CAN-033,RSP-CAN-033,Must satisfy: preserve consuming/admin/managerial boundary separation.
+OBL-CAN-034,RSP-CAN-034,Must satisfy: enforce dispatcher boundary law.
+OBL-CAN-035,RSP-CAN-035,Must satisfy: preserve template contract doctrine.
+OBL-CAN-036,RSP-CAN-036,Must satisfy: preserve policy object doctrine across component contracts.
+OBL-CAN-037,RSP-CAN-037,Must satisfy: preserve queue-as-container doctrine.
+OBL-CAN-038,RSP-CAN-038,Must satisfy: orchestrate queue bundles.
+OBL-CAN-039,RSP-CAN-039,Must satisfy: moderate one queue-container.
+OBL-CAN-040,RSP-CAN-040,Must satisfy: maintain queue-container slots.
+OBL-CAN-041,RSP-CAN-041,Must satisfy: maintain envelope-slot occupancy binding.
+OBL-CAN-042,RSP-CAN-042,Must satisfy: maintain slot lifecycle and requalification state.
+OBL-CAN-043,RSP-CAN-043,Must satisfy: restore waiting discipline after delivery.
+OBL-CAN-044,RSP-CAN-044,Must satisfy: maintain writing round waiting list.
+OBL-CAN-045,RSP-CAN-045,Must satisfy: maintain delivery round waiting list.
+OBL-CAN-046,RSP-CAN-046,Must satisfy: maintain queue-container identifiers / locators.
+OBL-CAN-047,RSP-CAN-047,Must satisfy: requalify queue-container id after moderation.
+OBL-CAN-048,RSP-CAN-048,Must satisfy: produce or expose detailed dispatcher feedback reports where required.
+OBL-CAN-049,RSP-CAN-049,Must satisfy: preserve queue-container terminology when applying ownership and occupancy rules.

@@ -1,0 +1,42 @@
+{
+  "0.1.document_id": "ASM-TAX-JSON-BUNDLE-03-INDEX",
+  "0.2.bundle_id": "JSON-BUNDLE-03",
+  "0.3.bundle_name": "Runtime & Carrier Members",
+  "1.1.includes_layers": [
+    "L-003",
+    "L-004"
+  ],
+  "1.2.file_strategy": "One JSON file per runtime/state entity and carrier object.",
+  "2.1.counts": {
+    "runtime_state_entities": 10,
+    "boundary_carrier_runtime_objects": 11,
+    "total_member_files": 21
+  },
+  "3.1.runtime_member_ids": [
+    "E-RT-001",
+    "E-RT-002",
+    "E-RT-003",
+    "E-RT-004",
+    "E-RT-005",
+    "E-RT-006",
+    "E-RT-007",
+    "E-RT-008",
+    "E-RT-009",
+    "E-RT-010"
+  ],
+  "3.2.carrier_member_ids": [
+    "BCO-001",
+    "BCO-002",
+    "BCO-003",
+    "BCO-004",
+    "BCO-005",
+    "BCO-006",
+    "BCO-007",
+    "BCO-008",
+    "BCO-009",
+    "BCO-010",
+    "BCO-011"
+  ],
+  "4.1.core_correction": "Queue equals Container; no separate Runtime Container exists above Queue.",
+  "4.2.next_bundle": "JSON-BUNDLE-04 Contract, Doctrine, and Relation Family Members"
+}
