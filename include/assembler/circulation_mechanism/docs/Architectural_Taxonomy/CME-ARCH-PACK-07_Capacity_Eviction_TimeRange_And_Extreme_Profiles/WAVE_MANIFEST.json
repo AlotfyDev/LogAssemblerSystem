@@ -1,0 +1,24 @@
+{
+  "package_id": "CME-ARCH-PACK-07",
+  "package_name": "Capacity, Eviction, Time Range, And Extreme Profiles",
+  "status": "Architecture Specification Draft",
+  "documents": [
+    "CME-ARCH-016_Capacity_Profile_Extreme_Default_And_Scaling_Model.md",
+    "CME-ARCH-017_Eviction_By_Container_Time_Range_Model.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-016_capacity_profile_map.mmd",
+    "diagrams/CME-ARCH-016_scaling_safe_points.mmd",
+    "diagrams/CME-ARCH-017_eviction_decision_flow.mmd"
+  ],
+  "created_utc": "2026-05-08T12:34:49.678455+00:00",
+  "implementation_direction": "C++17 header-only-first; architecture before headers",
+  "core_rules": [
+    "Capacity is profile-defined, not hot-path discovered.",
+    "All active containers must share uniform capacity and slot layout.",
+    "Extreme default profile is preferred for pre-bridge operation.",
+    "Eviction is exceptional and safe-point guarded.",
+    "Time range is ordering metadata only.",
+    "Capacity pressure must not turn pre-bridge CME into a broker or retry engine."
+  ]
+}

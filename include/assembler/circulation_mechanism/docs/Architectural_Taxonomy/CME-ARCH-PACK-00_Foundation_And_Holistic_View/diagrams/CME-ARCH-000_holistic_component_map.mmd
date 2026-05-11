@@ -1,0 +1,28 @@
+flowchart TB
+    BA[SlotsContainerBundleAgent]
+    REG[TContainerRegistry]
+    MOD[SlotsContainerModerator]
+    TC[TContainer]
+    TS[TSlot]
+    RM[RoundManager]
+    IW[TIngressWaitingList]
+    DW[TDispatchWaitingList]
+    RP[ReferencePrecalculator]
+    ING[Ingress]
+    DSP[Dispatcher]
+
+    BA -->|creates/scales| REG
+    BA -->|default empty profile| MOD
+    REG -->|indexed containers| MOD
+    MOD -->|state/readiness view| RM
+    RM -->|ingress-eligible index| IW
+    RM -->|dispatch-eligible index| DW
+    IW --> RP
+    DW --> RP
+    REG --> RP
+    TC --> TS
+    REG --> TC
+    RP -->|TIngressAccessRef| ING
+    RP -->|TDispatchAccessRef| DSP
+    ING -->|places envelope| TS
+    DSP -->|exposes envelope| OUT[Output Boundary]

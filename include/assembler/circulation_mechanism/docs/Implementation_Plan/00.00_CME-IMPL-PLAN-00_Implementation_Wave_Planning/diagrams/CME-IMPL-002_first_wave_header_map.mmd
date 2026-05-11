@@ -1,0 +1,19 @@
+flowchart LR
+    A[CME-W01] --> B[ids/]
+    A --> C[state/]
+    A --> D[diagnostics/]
+
+    B --> B1[TContainerId.hpp]
+    B --> B2[TContainerRegistryIndex.hpp]
+    B --> B3[TSlotIndex.hpp]
+    B --> B4[TRoundId.hpp]
+
+    C --> C1[TSlotState.hpp]
+    C --> C2[TContainerState.hpp]
+    C --> C3[TRoundState.hpp]
+    C --> C4[TReferenceValidityState.hpp]
+    C --> C5[TSafePointState.hpp]
+    C --> C6[TDispatchExposureState.hpp]
+
+    D --> D1[TDiagnosticSeverity.hpp]
+    D --> D2[TDiagnosticCategory.hpp]

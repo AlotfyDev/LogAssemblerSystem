@@ -1,0 +1,9 @@
+﻿column_name,data_type,description
+parent_component_key,string,Normalized parent component key
+target_subcomponent_key,string,Subcomponent/profile/policy/report/guard key
+target_subcomponent_status,enum,"existing_subcomponent, new_subcomponent_required, needs_review"
+target_artifact_kind,enum,"subcomponent, policy, profile, report, view, guard, external_contract, deferred_profile"
+recommended_action,enum,"create_new_subcomponent, update_existing_subcomponent, create_policy_subcomponent, create_profile_subcomponent, create_report_subcomponent, create_guard_subcomponent, review"
+creation_priority_group,enum,"1-create-new-subcomponents, 2-update-existing, 3-review"
+gapfill_score,number,Computed planning score for component prioritization
+sequence_band,enum,"A-foundational, B-core, C-support, D-deferred-review"

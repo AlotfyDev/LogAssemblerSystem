@@ -1,0 +1,21 @@
+flowchart TD
+    A[Architecture Packs Complete] --> B{Identity and Boundaries Ready?}
+    B -- No --> X[Block]
+    B -- Yes --> C{Component Ownership Ready?}
+    C -- No --> X
+    C -- Yes --> D{State and References Ready?}
+    D -- No --> X
+    D -- Yes --> E{Safe Points and Release Ready?}
+    E -- No --> X
+    E -- Yes --> F{Diagnostics and Views Ready?}
+    F -- No --> X
+    F -- Yes --> G{Capacity and Eviction Classified?}
+    G -- No --> Y[Ready with Notes / Defer]
+    G -- Yes --> H[Header Candidate Inventory Ready]
+
+    H --> I[Implementation Wave Planning]
+    I --> J[Foundational Types]
+    J --> K[Compile-only Skeletons]
+    K --> L[State / Registry / Container]
+    L --> M[References / Ingress / Dispatcher]
+    M --> N[Diagnostics / Profiles]

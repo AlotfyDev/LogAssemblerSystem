@@ -1,0 +1,12 @@
+{
+  "subcomponent_rows_enriched": 33,
+  "rows_may_reveal_new_gaps": 33,
+  "unique_parent_components": 17,
+  "files": [
+    "cme_proposed_subcomponents_with_dependency_fields.csv",
+    "cme_subcomponent_dependency_schema.csv",
+    "cme_intra_component_dependency_edge_schema.csv",
+    "README.md",
+    "manifest.json"
+  ]
+}

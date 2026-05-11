@@ -1,0 +1,22 @@
+﻿component_key,component_name,is_dependent,depends_on_count,depends_on_components,is_dependency,depended_on_by_count,depended_on_by_components,strong_dependency_out_count,strong_dependency_in_count,primary_role
+bundle_agent,Bundle Agent,true,8,capacity|container|container_registry|ids|reports|safe_point|state|views,false,0,,6,0,actor
+capacity,Capacity,true,3,ids|reports|views,true,6,bundle_agent|container|container_registry|eviction|moderator|read_side_circulation_profile,1,3,profile_or_boundary
+communication_binding,Communication Binding,true,6,dispatcher|ids|ingress|reports|state|views,true,3,dispatcher|ingress|read_side_circulation_profile,2,3,profile_or_boundary
+container,Container,true,6,capacity|ids|reports|slot|state|views,true,9,bundle_agent|container_registry|eviction|moderator|read_side_circulation_profile|reference_precalculator|release_recycle|round_manager|waiting_list,4,7,runtime_core
+container_registry,Container Registry,true,6,capacity|container|ids|reports|state|views,true,7,bundle_agent|eviction|moderator|read_side_circulation_profile|reference_precalculator|round_manager|waiting_list,3,5,runtime_core
+diagnostics,Diagnostics,true,4,ids|reports|state|views,true,1,read_side_circulation_profile,2,0,foundation_dependency
+dispatcher,Dispatcher,true,9,communication_binding|ids|reference_precalculator|release_recycle|reports|safe_point|slot|state|views,true,2,communication_binding|read_side_circulation_profile,4,0,runtime_core
+eviction,Eviction,true,10,capacity|container|container_registry|ids|reference_precalculator|reports|safe_point|state|views|waiting_list,true,1,read_side_circulation_profile,6,0,profile_or_boundary
+ids,IDs,false,0,,true,17,bundle_agent|capacity|communication_binding|container|container_registry|diagnostics|dispatcher|eviction|ingress|moderator|read_side_circulation_profile|reference_precalculator|release_recycle|round_manager|safe_point|slot|waiting_list,0,17,foundation_dependency
+ingress,Ingress,true,7,communication_binding|ids|reference_precalculator|reports|slot|state|views,true,1,communication_binding,5,0,runtime_core
+moderator,Moderator,true,9,capacity|container|container_registry|ids|release_recycle|reports|safe_point|state|views,false,0,,5,0,actor
+reference_precalculator,ReferencePrecalculator,true,10,container|container_registry|ids|reports|round_manager|safe_point|slot|state|views|waiting_list,true,4,dispatcher|eviction|ingress|release_recycle,6,3,runtime_core
+release_recycle,Release / Recycle,true,8,container|ids|reference_precalculator|reports|safe_point|slot|state|views,true,3,dispatcher|moderator|read_side_circulation_profile,5,1,profile_or_boundary
+reports,Reports,false,0,,true,17,bundle_agent|capacity|communication_binding|container|container_registry|diagnostics|dispatcher|eviction|ingress|moderator|read_side_circulation_profile|reference_precalculator|release_recycle|round_manager|safe_point|slot|waiting_list,0,0,foundation_dependency
+round_manager,Round Manager,true,8,container|container_registry|ids|reports|safe_point|state|views|waiting_list,true,2,read_side_circulation_profile|reference_precalculator,4,0,runtime_core
+safe_point,Safe Point,true,4,ids|reports|state|views,true,7,bundle_agent|dispatcher|eviction|moderator|reference_precalculator|release_recycle|round_manager,2,4,profile_or_boundary
+slot,Slot,true,4,ids|reports|state|views,true,5,container|dispatcher|ingress|reference_precalculator|release_recycle,2,4,runtime_core
+state,State,false,0,,true,16,bundle_agent|communication_binding|container|container_registry|diagnostics|dispatcher|eviction|ingress|moderator|read_side_circulation_profile|reference_precalculator|release_recycle|round_manager|safe_point|slot|waiting_list,0,16,foundation_dependency
+views,Views,false,0,,true,17,bundle_agent|capacity|communication_binding|container|container_registry|diagnostics|dispatcher|eviction|ingress|moderator|read_side_circulation_profile|reference_precalculator|release_recycle|round_manager|safe_point|slot|waiting_list,0,0,foundation_dependency
+waiting_list,Waiting List,true,6,container|container_registry|ids|reports|state|views,true,4,eviction|read_side_circulation_profile|reference_precalculator|round_manager,3,3,runtime_core
+read_side_circulation_profile,ReadSide Circulation Profile,true,14,capacity|communication_binding|container|container_registry|diagnostics|dispatcher|eviction|ids|release_recycle|reports|round_manager|state|views|waiting_list,false,0,,6,0,profile_or_boundary

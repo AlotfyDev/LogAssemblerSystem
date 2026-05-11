@@ -1,0 +1,77 @@
+dedup_gap_id,gap_name,first_seen_wave_id,first_seen_wave_name,occurrence_count,scope_classification,priority
+CME-DGAP-001,container storage,CME-W01,Foundational Identity And State Types,3,in_pre_bridge_scope,P1-core
+CME-DGAP-002,slot storage,CME-W01,Foundational Identity And State Types,1,in_pre_bridge_scope,P1-core
+CME-DGAP-003,registry behavior,CME-W01,Foundational Identity And State Types,1,in_pre_bridge_scope,P1-core
+CME-DGAP-004,waiting lists,CME-W01,Foundational Identity And State Types,2,in_pre_bridge_scope,P2-core-support
+CME-DGAP-005,round management,CME-W01,Foundational Identity And State Types,2,in_pre_bridge_scope,P2-core-support
+CME-DGAP-006,reference calculation,CME-W01,Foundational Identity And State Types,8,in_pre_bridge_scope,P1-core
+CME-DGAP-007,ingress placement,CME-W01,Foundational Identity And State Types,9,in_pre_bridge_scope,P1-core
+CME-DGAP-008,dispatch exposure,CME-W01,Foundational Identity And State Types,10,in_pre_bridge_scope,P1-core
+CME-DGAP-009,safe-point algorithms,CME-W01,Foundational Identity And State Types,2,in_pre_bridge_scope,P1-core
+CME-DGAP-010,eviction,CME-W01,Foundational Identity And State Types,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-011,bridge bindings,CME-W01,Foundational Identity And State Types,5,review_gated,P2-review
+CME-DGAP-012,read-side profile,CME-W01,Foundational Identity And State Types,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-013,component-specific views,CME-W02,Views Reports And Diagnostics Primitives,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-014,component-specific reports,CME-W02,Views Reports And Diagnostics Primitives,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-015,diagnostic storage,CME-W02,Views Reports And Diagnostics Primitives,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-016,logging,CME-W02,Views Reports And Diagnostics Primitives,1,deferred_extension,P3-review
+CME-DGAP-017,telemetry export,CME-W02,Views Reports And Diagnostics Primitives,1,deferred_extension,P3-review
+CME-DGAP-018,recovery behavior,CME-W02,Views Reports And Diagnostics Primitives,1,review_gated,P2-review
+CME-DGAP-019,container registry,CME-W03,Capacity Profiles And Container Shape,2,in_pre_bridge_scope,P1-core
+CME-DGAP-020,actual horizontal scaling,CME-W03,Capacity Profiles And Container Shape,2,in_pre_bridge_scope,P2-core-support
+CME-DGAP-021,actual vertical scaling,CME-W03,Capacity Profiles And Container Shape,2,in_pre_bridge_scope,P2-core-support
+CME-DGAP-022,safe-point execution,CME-W03,Capacity Profiles And Container Shape,2,in_pre_bridge_scope,P1-core
+CME-DGAP-023,eviction execution,CME-W03,Capacity Profiles And Container Shape,4,in_pre_bridge_scope,P2-core-support
+CME-DGAP-024,reference supply,CME-W03,Capacity Profiles And Container Shape,1,in_pre_bridge_scope,P1-core
+CME-DGAP-025,bridge drain handling,CME-W03,Capacity Profiles And Container Shape,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-026,read-side backpressure,CME-W03,Capacity Profiles And Container Shape,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-027,slot storage array,CME-W04,Slot And Container Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-028,actual envelope payload storage,CME-W04,Slot And Container Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-029,ingress placement algorithm,CME-W04,Slot And Container Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-030,container reset,CME-W04,Slot And Container Skeleton,2,in_pre_bridge_scope,P2-core-support
+CME-DGAP-031,dynamic scaling,CME-W05,Container Registry Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-032,registry rebuild algorithm,CME-W05,Container Registry Skeleton,5,in_pre_bridge_scope,P1-core
+CME-DGAP-033,container creation semantics,CME-W05,Container Registry Skeleton,1,needs_review,P3-review
+CME-DGAP-034,bundle topology authority,CME-W05,Container Registry Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-035,container reset algorithm,CME-W06,Bundle Agent And Moderator Skeleton,2,in_pre_bridge_scope,P2-core-support
+CME-DGAP-036,waiting-list admission,CME-W06,Bundle Agent And Moderator Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-037,bridge handoff,CME-W07,Waiting Lists And Round Manager Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-038,envelope storage in waiting lists,CME-W07,Waiting Lists And Round Manager Skeleton,1,must_not_implement_as_stated,P0-guard
+CME-DGAP-039,dynamic scheduling,CME-W07,Waiting Lists And Round Manager Skeleton,1,review_gated,P2-review
+CME-DGAP-040,ReferencePrecalculator algorithm,CME-W08,Reference Handles And Validity Model,1,in_pre_bridge_scope,P1-core
+CME-DGAP-041,container/slot locating,CME-W08,Reference Handles And Validity Model,2,in_pre_bridge_scope,P1-core
+CME-DGAP-042,bridge protocol,CME-W08,Reference Handles And Validity Model,3,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-043,copy/move semantics,CME-W08,Reference Handles And Validity Model,3,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-044,actual locating algorithm,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-045,actual reference pool,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-046,waiting-list consumption,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-047,container registry resolution,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-048,slot selection,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-049,TIngressAccessRef production,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-050,TDispatchAccessRef production,CME-W09,ReferencePrecalculator Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-051,actual slot mutation,CME-W10,Ingress Placement Skeleton,1,needs_review,P3-review
+CME-DGAP-052,payload storage,CME-W10,Ingress Placement Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-053,Log API envelope assembly,CME-W10,Ingress Placement Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-054,payload parsing,CME-W10,Ingress Placement Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-055,dispatch behavior,CME-W10,Ingress Placement Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-056,read-side lifecycle,CME-W10,Ingress Placement Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-057,receiver lifecycle,CME-W11,Dispatcher And Passive Exposure Skeleton,2,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-058,push dispatch execution,CME-W11,Dispatcher And Passive Exposure Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-059,container scan,CME-W11,Dispatcher And Passive Exposure Skeleton,1,needs_review,P3-review
+CME-DGAP-060,dispatch release/recycle,CME-W11,Dispatcher And Passive Exposure Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-061,persistence,CME-W11,Dispatcher And Passive Exposure Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-062,read-side retry,CME-W11,Dispatcher And Passive Exposure Skeleton,3,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-063,actual recycle algorithm,CME-W12,Safe Point And Release Recycle Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-064,reference invalidation execution,CME-W12,Safe Point And Release Recycle Skeleton,2,in_pre_bridge_scope,P1-core
+CME-DGAP-065,container mutation,CME-W12,Safe Point And Release Recycle Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-066,bridge acknowledgement,CME-W12,Safe Point And Release Recycle Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-067,registry mutation,CME-W13,Eviction And Time Range Skeleton,1,in_pre_bridge_scope,P1-core
+CME-DGAP-068,waiting-list rebuild,CME-W13,Eviction And Time Range Skeleton,1,in_pre_bridge_scope,P2-core-support
+CME-DGAP-069,bridge recovery,CME-W13,Eviction And Time Range Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-070,persistence deletion,CME-W13,Eviction And Time Range Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-071,actual adapter invocation,CME-W14,Communication Binding Integration Skeleton,1,needs_review,P3-review
+CME-DGAP-072,Log API runtime,CME-W14,Communication Binding Integration Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-073,Bridge Orchestrator runtime,CME-W14,Communication Binding Integration Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-074,bridge sessions/protocols,CME-W14,Communication Binding Integration Skeleton,1,out_of_pre_bridge_cme_core,P3-deferred
+CME-DGAP-075,payload movement,CME-W14,Communication Binding Integration Skeleton,1,needs_review,P3-review
+CME-DGAP-076,mutable container exposure,CME-W14,Communication Binding Integration Skeleton,1,needs_review,P3-review

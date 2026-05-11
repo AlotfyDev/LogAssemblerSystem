@@ -1,0 +1,8 @@
+dedup_gap_id,gap_name,first_seen_wave_id,occurrence_count,priority,mapping_rationale
+CME-DGAP-012,read-side profile,CME-W01,1,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.
+CME-DGAP-026,read-side backpressure,CME-W03,1,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.
+CME-DGAP-056,read-side lifecycle,CME-W10,1,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.
+CME-DGAP-057,receiver lifecycle,CME-W11,2,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.
+CME-DGAP-061,persistence,CME-W11,1,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.
+CME-DGAP-062,read-side retry,CME-W11,3,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.
+CME-DGAP-070,persistence deletion,CME-W13,1,P3-deferred,Post-bridge/read-side or downstream pressure/lifecycle concern belongs to ReadSide_Circulation_Profile inside the broader circulation mechanism family.

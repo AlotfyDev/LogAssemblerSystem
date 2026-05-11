@@ -1,0 +1,50 @@
+{
+  "package_id": "CME-DISPATCHER-PROD-W01",
+  "package_name": "Production Exposure Execution Contract",
+  "created_utc": "2026-05-10T15:48:47.253909+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "dispatch exposure",
+    "dispatch behavior",
+    "payload movement out of engine through approved dispatch ref",
+    "push dispatch profile descriptor",
+    "copy/move output contract boundary"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_dispatcher.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatchExecutionStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatchExposureStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatcher.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatcherId.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatcherStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/boundary/TDispatchBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/boundary/TDispatchBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/boundary/TDispatchBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/profiles/TDispatchProfileKind.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/profiles/TPassivePullDispatchProfile.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/profiles/TPushDispatchProfile.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TBoundaryAssumptionBrokenReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TDispatchExposureReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TDispatchReportId.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TPassiveExposureReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TPushDispatchAttemptReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatchBoundaryView.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatchExposureView.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatchReadyView.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatcherView.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/ids/TRoundId.hpp",
+    "include/assembler/circulation_mechanism/ids/TSlotIndex.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefDirection.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefId.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefKind.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefScope.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TDispatchAccessRef.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TSlotAccessRef.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceValidityState.hpp"
+  ],
+  "tests": [
+    "tests/cme_dispatcher_negative_compliance_test.cpp",
+    "tests/cme_dispatcher_production_exposure_execution_test.cpp"
+  ]
+}

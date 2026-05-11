@@ -1,0 +1,5 @@
+﻿column_name,data_type,description
+dedup_gap_id,string,Stable unique gap id
+source_origin,string,previous/new/dependency_review_true_gap
+added_in_update,boolean,true if added in this update
+overlap_status,string,new_unique_from_dependency_review for new dependency review gaps

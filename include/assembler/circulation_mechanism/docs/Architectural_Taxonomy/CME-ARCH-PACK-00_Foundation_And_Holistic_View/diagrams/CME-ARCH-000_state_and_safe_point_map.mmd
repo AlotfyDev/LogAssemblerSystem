@@ -1,0 +1,25 @@
+flowchart TB
+    SLOT[TSlotState]
+    CONT[TContainerState]
+    ROUND[TRoundState]
+    REF[TReferenceSupplyState]
+    EXP[TDispatchExposureState]
+    BA[TBundleAgentState]
+    MOD[TModeratorState]
+
+    SP[Safe Point Model]
+
+    SLOT --> SP
+    CONT --> SP
+    ROUND --> SP
+    REF --> SP
+    EXP --> SP
+    BA --> SP
+    MOD --> SP
+
+    SP --> RESET[Container Reset]
+    SP --> VSCALE[Vertical Scaling]
+    SP --> REBUILD[Registry Rebuild]
+    SP --> INVALIDATE[Reference Invalidation]
+    SP --> EVICT[Eviction]
+    SP --> RELEASE[Release / Recycle]

@@ -1,0 +1,12 @@
+﻿subcomponent_key,subcomponent_name,status,purpose,depends_on,first_wave_candidate
+admission,admission,candidate,post-bridge admission into read-side circulation,Communication_Binding|Dispatcher,RSCP-W01
+receiver_context,receiver_context,candidate,receiver/addon context and lifecycle descriptors,addons|receiver contracts,RSCP-W01
+failed_dispatch,failed_dispatch,candidate,failed-dispatch list/profile,Waiting List|Round_Manager|Diagnostics,RSCP-W02
+retry,retry,candidate,read-side retry profile,failed_dispatch|receiver_acknowledgement,RSCP-W02
+delayed_release,delayed_release,candidate,release delay based on receiver/ack/profile,Release_Recycle|receiver_context,RSCP-W03
+backpressure,backpressure,candidate,receiver-side pressure profile,Capacity|receiver_context,RSCP-W03
+receiver_acknowledgement,receiver_acknowledgement,candidate,receiver acknowledgement profile,receiver_context|boundary_contracts,RSCP-W02
+post_bridge_capacity,post_bridge_capacity,candidate,capacity profile for read-side circulation,Capacity|Container|Container_Registry,RSCP-W03
+diagnostics,diagnostics,candidate,read-side diagnostics and reports,Diagnostics|Reports|Views,RSCP-W04
+boundary_contracts,boundary_contracts,candidate,contracts with bridge/addons/persistence boundaries,Communication_Binding|addons,RSCP-W01
+views,views,candidate,read-side projections,Views,RSCP-W04

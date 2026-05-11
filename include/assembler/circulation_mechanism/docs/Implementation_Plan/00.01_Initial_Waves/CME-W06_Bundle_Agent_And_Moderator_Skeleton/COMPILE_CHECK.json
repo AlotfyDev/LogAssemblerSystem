@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-W01_Foundational_Identity_And_State_Types/include -I /mnt/data/CME-W03_Capacity_Profiles_And_Container_Shape/include -I /mnt/data/CME-W04_Slot_And_Container_Skeleton/include -I /mnt/data/CME-W05_Container_Registry_Skeleton/include -I /mnt/data/CME-W06_Bundle_Agent_And_Moderator_Skeleton/include /mnt/data/CME-W06_Bundle_Agent_And_Moderator_Skeleton/tests/cme_w06_bundle_agent_moderator_smoke_test.cpp -o /mnt/data/CME-W06_Bundle_Agent_And_Moderator_Skeleton/tests/cme_w06_bundle_agent_moderator_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}

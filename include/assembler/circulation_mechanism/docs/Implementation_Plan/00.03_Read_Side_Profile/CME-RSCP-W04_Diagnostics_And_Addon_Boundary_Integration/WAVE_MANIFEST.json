@@ -1,0 +1,40 @@
+{
+  "wave_id": "CME-RSCP-W04",
+  "wave_name": "Diagnostics And Addon Boundary Integration",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-09T14:00:12.030312+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticRecord.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticSeverity.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/read_side_circulation_profile_w04.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationIssueKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationReport.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationReportId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TAddonBoundaryView.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TReadSideDiagnosticView.hpp"
+  ],
+  "tests": [
+    "tests/cme_rscp_w04_diagnostics_addon_boundary_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-RSCP-W01_ReadSide_Profile_Identity_And_Boundary_Contracts",
+    "CME-RSCP-W02_Failed_Dispatch_And_Retry_Profile",
+    "CME-RSCP-W03_Backpressure_And_Delayed_Release_Profile"
+  ],
+  "excluded": [
+    "addon runtime behavior",
+    "database persistence",
+    "telemetry export",
+    "file sink behavior",
+    "diagnostic sink execution",
+    "bridge runtime",
+    "receiver implementation",
+    "failed-dispatch recovery"
+  ]
+}

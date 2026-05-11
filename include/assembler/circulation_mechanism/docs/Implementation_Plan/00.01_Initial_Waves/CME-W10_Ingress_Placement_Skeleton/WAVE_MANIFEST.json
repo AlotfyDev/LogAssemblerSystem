@@ -1,0 +1,41 @@
+{
+  "wave_id": "CME-W10",
+  "wave_name": "Ingress Placement Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T15:12:22.615358+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w10.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngress.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressId.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressPayloadEnvelopeRef.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressPlacementStatus.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressState.hpp",
+    "include/assembler/circulation_mechanism/ingress/boundary/TIngressBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/ingress/boundary/TIngressBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/ingress/boundary/TIngressBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/ingress/policies/TIngressAccessPolicy.hpp",
+    "include/assembler/circulation_mechanism/ingress/reports/TIngressBoundaryReport.hpp",
+    "include/assembler/circulation_mechanism/ingress/reports/TIngressPlacementReport.hpp",
+    "include/assembler/circulation_mechanism/ingress/reports/TIngressReportId.hpp",
+    "include/assembler/circulation_mechanism/ingress/views/TIngressAdmissionView.hpp",
+    "include/assembler/circulation_mechanism/ingress/views/TIngressPlacementView.hpp",
+    "include/assembler/circulation_mechanism/ingress/views/TIngressView.hpp"
+  ],
+  "tests": [
+    "tests/cme_w10_ingress_placement_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W08_Reference_Handles_And_Validity_Model",
+    "CME-W09_ReferencePrecalculator_Skeleton"
+  ],
+  "excluded": [
+    "actual slot mutation",
+    "payload storage",
+    "Log API envelope assembly",
+    "reference calculation",
+    "container/slot locating",
+    "dispatch behavior",
+    "bridge bindings"
+  ]
+}

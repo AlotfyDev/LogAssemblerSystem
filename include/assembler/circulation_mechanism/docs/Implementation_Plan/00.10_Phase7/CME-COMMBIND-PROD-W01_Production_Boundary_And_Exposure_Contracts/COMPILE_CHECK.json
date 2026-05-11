@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_communication_binding_boundary_exposure_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/include /mnt/data/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/tests/cme_communication_binding_boundary_exposure_contract_test.cpp -o /mnt/data/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/tests/cme_communication_binding_boundary_exposure_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_communication_binding_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/include /mnt/data/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/tests/cme_communication_binding_negative_compliance_test.cpp -o /mnt/data/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/CME-COMMBIND-PROD-W01_Production_Boundary_And_Exposure_Contracts/tests/cme_communication_binding_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

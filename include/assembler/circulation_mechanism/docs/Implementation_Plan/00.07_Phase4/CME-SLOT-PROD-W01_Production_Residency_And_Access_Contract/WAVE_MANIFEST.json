@@ -1,0 +1,35 @@
+{
+  "package_id": "CME-SLOT-PROD-W01",
+  "package_name": "Production Residency And Access Contract",
+  "created_utc": "2026-05-10T00:21:58.131706+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "slot storage",
+    "actual slot mutation",
+    "actual envelope payload storage / residency"
+  ],
+  "delivered_capabilities": [
+    "fixed-capacity payload residency",
+    "state-guarded slot mutation",
+    "dispatch exposure state progression",
+    "release/recycle to empty",
+    "read-only views",
+    "transition reports",
+    "negative compliance"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_slot.hpp",
+    "include/assembler/circulation_mechanism/ids/TSlotIndex.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlot.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotAccessResult.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotAccessStatus.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotOccupancyView.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotTransitionReport.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotView.hpp",
+    "include/assembler/circulation_mechanism/state/TSlotState.hpp"
+  ],
+  "tests": [
+    "tests/cme_slot_negative_compliance_test.cpp",
+    "tests/cme_slot_production_residency_contract_test.cpp"
+  ]
+}

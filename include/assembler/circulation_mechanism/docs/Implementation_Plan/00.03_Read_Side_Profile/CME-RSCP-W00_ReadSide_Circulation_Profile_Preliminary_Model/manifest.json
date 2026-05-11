@@ -1,0 +1,16 @@
+{
+  "wave_id": "CME-RSCP-W00",
+  "component_id": "CME-COMP-021",
+  "component_name": "ReadSide_Circulation_Profile",
+  "status": "Preliminary Architecture Wave",
+  "created_utc": "2026-05-09T13:14:53.943442+00:00",
+  "next_recommended_wave": "CME-RSCP-W01_ReadSide_Profile_Identity_And_Boundary_Contracts",
+  "files": [
+    "README.md",
+    "csv/CME-RSCP-W00_Candidate_Subcomponents.csv",
+    "csv/CME-RSCP-W00_Dependency_Matrix.csv",
+    "csv/CME-RSCP-W00_Gap_Coverage.csv",
+    "docs/CME-RSCP-W00_Deferred_Decisions.md",
+    "docs/CME-RSCP-W00_ReadSide_Circulation_Profile_Preliminary_Model.md"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "package_id": "CME-CONTAINER-REGISTRY-PROD-W01",
+  "package_name": "Production Indexed Storage Contract",
+  "created_utc": "2026-05-10T00:55:59.568450+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "registry behavior",
+    "container registry",
+    "registry rebuild",
+    "registry mutation",
+    "container registry resolution",
+    "container scan as diagnostic inspection"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_container_registry.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistry.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryCapacityView.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryGenerationView.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryInvariantReport.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryOperationResult.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryOperationStatus.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryState.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryView.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerStorageKind.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TRegistryProfileSwitchReport.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp"
+  ],
+  "tests": [
+    "tests/cme_container_registry_negative_compliance_test.cpp",
+    "tests/cme_container_registry_production_indexed_storage_test.cpp"
+  ]
+}

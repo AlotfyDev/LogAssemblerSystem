@@ -1,0 +1,42 @@
+{
+  "package_id": "CME-RSCP-PROD-W03",
+  "package_name": "Backpressure And Delayed Release Profile",
+  "created_utc": "2026-05-10T19:53:40.448028+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "read-side backpressure",
+    "post-bridge capacity values",
+    "backpressure decision layer",
+    "delayed release decision layer",
+    "persistence completion trigger contract",
+    "receiver acknowledgement trigger contract"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/backpressure/TBackpressureDecisionKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/backpressure/TReadSideBackpressureMode.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/backpressure/TReadSideBackpressureProfile.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/backpressure/TReadSideBackpressureProfileId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/backpressure/TReadSideBackpressureState.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseDecisionKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseProfile.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseProfileId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseRecord.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseRecordId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseState.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/delayed_release/TDelayedReleaseTriggerKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/post_bridge_capacity/TPostBridgeCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/post_bridge_capacity/TPostBridgeCapacityProfileId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/post_bridge_capacity/TPostBridgeCapacityStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/read_side_circulation_profile_w03.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideCapacityIssueKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideCapacityReport.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideCapacityReportId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TDelayedReleaseView.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TPostBridgeCapacityView.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TReadSideBackpressureView.hpp"
+  ],
+  "tests": [
+    "tests/cme_rscp_w03_backpressure_delayed_release_contract_test.cpp",
+    "tests/cme_rscp_w03_backpressure_negative_compliance_test.cpp"
+  ]
+}

@@ -1,0 +1,17 @@
+flowchart TD
+    CL0["CL-00 IDs / State"]
+    CL1["CL-01 Views / Reports / Diagnostics"]
+    CL2["CL-02 Capacity / Safe_Point"]
+    CL3["CL-03 Slot / Container / Registry"]
+    CL4["CL-04 BundleAgent / Moderator / WaitingList / RoundManager"]
+    CL5["CL-05 ReferencePrecalculator / Ingress / Dispatcher"]
+    CL6["CL-06 ReleaseRecycle / Eviction / CommunicationBinding"]
+    CL7["CL-07 ReadSide_Circulation_Profile"]
+
+    CL0 --> CL1
+    CL1 --> CL2
+    CL2 --> CL3
+    CL3 --> CL4
+    CL4 --> CL5
+    CL5 --> CL6
+    CL6 --> CL7

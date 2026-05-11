@@ -1,0 +1,26 @@
+{
+  "package_id": "CME-ARCH-PACK-04",
+  "package_name": "State Machines, Safe Points, Release, And Recycling",
+  "status": "Architecture Specification Draft",
+  "documents": [
+    "CME-ARCH-009_State_Model_And_Transition_Ownership.md",
+    "CME-ARCH-010_Safe_Point_Model_And_Profile_Switching.md",
+    "CME-ARCH-011_Release_Recycle_Reset_And_Reentry_Model.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-009_slot_state_machine.mmd",
+    "diagrams/CME-ARCH-009_container_state_machine.mmd",
+    "diagrams/CME-ARCH-009_round_state_machine.mmd",
+    "diagrams/CME-ARCH-010_safe_point_sources.mmd",
+    "diagrams/CME-ARCH-011_release_recycle_flow.mmd"
+  ],
+  "created_utc": "2026-05-08T12:10:34.916000+00:00",
+  "implementation_direction": "C++17 header-only-first; architecture before headers",
+  "core_rules": [
+    "State belongs to the narrowest component that owns behavior affected by that state.",
+    "Safe points are local and profile-driven.",
+    "Reset, eviction, vertical scaling, registry rebuild, and reference invalidation require safe points.",
+    "Release/recycle/reset/reentry are state transitions.",
+    "Container reset uses the default empty container profile supplied by BundleAgent."
+  ]
+}

@@ -1,0 +1,18 @@
+flowchart TD
+    A[TCirculationCapacityProfile] --> B[TUniformContainerCapacityProfile]
+    A --> C[THorizontalScalingProfile]
+    A --> D[TVerticalScalingProfile]
+    A --> E[TExtremeDefaultProfile]
+    A --> F[TIngressCapacityProfile]
+    A --> G[TDispatchCapacityProfile]
+    A --> H[TWaitingListCapacityProfile]
+    A --> I[TReferenceSupplyCapacityProfile]
+
+    B --> J[All active TContainers share slot layout]
+    C --> K[Container count in TContainerRegistry]
+    D --> L[Slots per container / family-wide capacity]
+    E --> M[Pre-sized upper-bound default]
+    F --> N[Ingress waiting list + refs]
+    G --> O[Dispatch waiting list + exposure]
+    H --> P[Waiting list bounds]
+    I --> Q[Continuous next-ref supply depth]

@@ -1,0 +1,45 @@
+flowchart TD
+    CME["circulation_mechanism"]
+    subgraph Actors
+        BA["SlotsContainerBundleAgent"]
+        MOD["SlotsContainerModerator"]
+        RM["RoundManager"]
+        RPC["ReferencePrecalculator"]
+        ING["Ingress"]
+        DISP["Dispatcher"]
+    end
+    subgraph Registry
+        REG["TContainerRegistry"]
+        IDX["TContainerRegistryIndex"]
+    end
+    subgraph DataStructures
+        CONT["TContainer"]
+        SLOT["TSlot"]
+        IWL["TIngressWaitingList"]
+        DWL["TDispatchWaitingList"]
+    end
+    subgraph States
+        CST["TContainerState"]
+        SST["TSlotState"]
+        RST["TRoundState"]
+        RV["TAccessReferenceValidity"]
+    end
+    BA --> REG
+    REG --> CONT
+    CONT --> SLOT
+    MOD --> CONT
+    MOD --> CST
+    RM --> IWL
+    RM --> DWL
+    IWL --> IDX
+    DWL --> IDX
+    IDX --> REG
+    REG --> RPC
+    RPC --> ING
+    RPC --> DISP
+    ING --> SLOT
+    DISP --> SLOT
+    CONT --> CST
+    SLOT --> SST
+    RM --> RST
+    RPC --> RV

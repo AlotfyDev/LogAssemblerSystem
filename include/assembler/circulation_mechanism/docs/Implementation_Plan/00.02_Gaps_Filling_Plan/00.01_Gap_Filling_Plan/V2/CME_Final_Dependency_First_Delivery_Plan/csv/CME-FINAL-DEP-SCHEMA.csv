@@ -1,0 +1,11 @@
+﻿column_name,data_type,description
+final_phase_id,string,New final dependency-first phase id
+final_delivery_order,integer,Topological component order
+cluster_id,string,Dependency-first cluster id
+parent_component_key,string,Component key
+estimated_component_wave_count,integer,Estimated vertical waves for this component
+depends_on_components,string,Pipe-delimited component dependencies
+depended_on_by_components,string,Pipe-delimited dependents
+final_wave_order,integer,Global final wave order
+final_wave_id,string,New final wave id scoped by final phase
+cluster_acceptance_gate,string,Gate before dependent cluster starts

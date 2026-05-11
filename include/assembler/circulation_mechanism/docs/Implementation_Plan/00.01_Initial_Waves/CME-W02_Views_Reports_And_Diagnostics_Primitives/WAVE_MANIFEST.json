@@ -1,0 +1,39 @@
+{
+  "wave_id": "CME-W02",
+  "wave_name": "Views Reports And Diagnostics Primitives",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T13:58:58.062432+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w02.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticCollector.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticIssue.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticIssueId.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticIssueKind.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticSeverity.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TInvariantViolationReport.hpp",
+    "include/assembler/circulation_mechanism/reports/TOperationalReport.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportDescriptor.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportId.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportKind.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportStatus.hpp",
+    "include/assembler/circulation_mechanism/views/TReadOnlyViewDescriptor.hpp",
+    "include/assembler/circulation_mechanism/views/TViewId.hpp",
+    "include/assembler/circulation_mechanism/views/TViewScope.hpp",
+    "include/assembler/circulation_mechanism/views/TViewStability.hpp",
+    "include/assembler/circulation_mechanism/views/TViewVisibility.hpp"
+  ],
+  "tests": [
+    "tests/cme_w02_views_reports_diagnostics_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types"
+  ],
+  "excluded": [
+    "component-specific reports",
+    "diagnostic storage",
+    "telemetry export",
+    "runtime recovery",
+    "container storage",
+    "reference calculation"
+  ]
+}

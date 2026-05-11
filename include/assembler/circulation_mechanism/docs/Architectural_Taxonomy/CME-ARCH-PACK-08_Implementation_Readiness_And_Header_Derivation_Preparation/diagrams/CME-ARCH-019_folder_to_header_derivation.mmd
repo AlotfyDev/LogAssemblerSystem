@@ -1,0 +1,21 @@
+flowchart LR
+    A[Architecture Ownership] --> B[Component Folder]
+    B --> C[Local Subfolder Role]
+    C --> D[Candidate Header]
+    D --> E[Later C++ Declaration]
+
+    B --> B1[bundle_agent/]
+    B --> B2[container_registry/]
+    B --> B3[container/]
+    B --> B4[slot/]
+    B --> B5[reference_precalculator/]
+    B --> B6[dispatcher/]
+
+    C --> C1[state/]
+    C --> C2[views/]
+    C --> C3[reports/]
+    C --> C4[handles/]
+    C --> C5[policies/]
+    C --> C6[tests/]
+
+    E -. forbidden reverse .-> A

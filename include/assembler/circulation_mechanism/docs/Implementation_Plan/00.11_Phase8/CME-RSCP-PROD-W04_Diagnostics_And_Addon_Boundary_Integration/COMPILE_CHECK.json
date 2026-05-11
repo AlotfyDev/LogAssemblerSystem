@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_rscp_w04_diagnostics_addon_integration_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/include /mnt/data/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/tests/cme_rscp_w04_diagnostics_addon_integration_contract_test.cpp -o /mnt/data/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/tests/cme_rscp_w04_diagnostics_addon_integration_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_rscp_w04_diagnostics_addon_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/include /mnt/data/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/tests/cme_rscp_w04_diagnostics_addon_negative_compliance_test.cpp -o /mnt/data/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/CME-RSCP-PROD-W04_Diagnostics_And_Addon_Boundary_Integration/tests/cme_rscp_w04_diagnostics_addon_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

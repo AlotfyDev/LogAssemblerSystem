@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-RSCP-W04_Diagnostics_And_Addon_Boundary_Integration/include /mnt/data/CME-RSCP-W04_Diagnostics_And_Addon_Boundary_Integration/tests/cme_rscp_w04_diagnostics_addon_boundary_smoke_test.cpp -o /mnt/data/CME-RSCP-W04_Diagnostics_And_Addon_Boundary_Integration/tests/cme_rscp_w04_diagnostics_addon_boundary_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}

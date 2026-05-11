@@ -1,0 +1,36 @@
+{
+  "package_id": "CME-RSCP-PROD-W04",
+  "package_name": "Diagnostics And Addon Boundary Integration",
+  "created_utc": "2026-05-10T20:11:05.744820+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "addon implementation as boundary descriptor",
+    "addon runtime behavior as non-owned boundary concern",
+    "database persistence boundary",
+    "telemetry export boundary",
+    "file sink boundary",
+    "diagnostic sink boundary",
+    "failed-dispatch recovery diagnostics"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/addon_boundary/TAddonBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticRecord.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/diagnostics/TReadSideDiagnosticSeverity.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/read_side_circulation_profile_w04.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationDecisionKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationIssueKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationReport.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideIntegrationReportId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TAddonBoundaryView.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TReadSideDiagnosticView.hpp"
+  ],
+  "tests": [
+    "tests/cme_rscp_w04_diagnostics_addon_integration_contract_test.cpp",
+    "tests/cme_rscp_w04_diagnostics_addon_negative_compliance_test.cpp"
+  ]
+}

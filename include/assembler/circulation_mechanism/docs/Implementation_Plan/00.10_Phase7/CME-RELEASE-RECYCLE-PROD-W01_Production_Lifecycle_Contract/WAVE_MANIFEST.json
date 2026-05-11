@@ -1,0 +1,41 @@
+{
+  "package_id": "CME-RELEASE-RECYCLE-PROD-W01",
+  "package_name": "Production Lifecycle Contract",
+  "created_utc": "2026-05-10T16:32:40.675596+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "dispatch release/recycle",
+    "reset eligibility",
+    "recycle eligibility",
+    "reference release precondition"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_release_recycle.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerId.hpp",
+    "include/assembler/circulation_mechanism/ids/TReferenceId.hpp",
+    "include/assembler/circulation_mechanism/ids/TRoundId.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/TRecycleState.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/TReleaseKind.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/TReleaseRecycleId.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/TReleaseRecycleRecord.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/TReleaseRecycleStatus.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/policies/TRecyclePolicy.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/reports/TExposureReleaseReport.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/reports/TRecycleReport.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/reports/TReferenceReleaseReport.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/reports/TReleaseRecycleReportId.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/reports/TResetAppliedReport.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/views/TReentryEligibilityView.hpp",
+    "include/assembler/circulation_mechanism/release_recycle/views/TReleaseRecycleView.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TDispatchExposureState.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceValidityState.hpp",
+    "include/assembler/circulation_mechanism/state/TReleaseRecycleStateHelpers.hpp",
+    "include/assembler/circulation_mechanism/state/TRoundState.hpp",
+    "include/assembler/circulation_mechanism/state/TSafePointState.hpp"
+  ],
+  "tests": [
+    "tests/cme_release_recycle_lifecycle_contract_test.cpp",
+    "tests/cme_release_recycle_negative_compliance_test.cpp"
+  ]
+}

@@ -1,0 +1,8 @@
+﻿gap_key,gap_name,current_decision,preliminary_owner,next_action
+read_side_profile,read-side profile,in_scope_for_component,ReadSide_Circulation_Profile,define profile identity and boundaries
+read_side_backpressure,read-side backpressure,in_scope_for_component,backpressure/,"model profile, not pre-bridge backpressure"
+read_side_lifecycle,read-side lifecycle,in_scope_for_component,receiver_context/,define lifecycle states later
+receiver_lifecycle,receiver lifecycle,in_scope_for_component_but_receiver_contract_dependent,receiver_context/,needs receiver/addon contract
+read_side_retry,read-side retry,in_scope_for_component,retry/,define retry profile in later wave
+persistence,persistence,boundary_dependent,boundary_contracts/,"track as add-on/persistence boundary, not CME persistence"
+persistence_deletion,persistence deletion,boundary_dependent,boundary_contracts/,must not be pre-bridge deletion behavior

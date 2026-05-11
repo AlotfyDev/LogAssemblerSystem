@@ -1,0 +1,19 @@
+{
+  "package_id": "CME-CAPDELIV-DEP-00",
+  "created_utc": "2026-05-09T15:56:07.727604+00:00",
+  "cluster_count": 8,
+  "component_count": 21,
+  "cluster_dependency_edges": 10,
+  "files": [
+    "README.md",
+    "csv/CME-CAPDELIV-DEP-001_Component_Dependency_Cluster_Map.csv",
+    "csv/CME-CAPDELIV-DEP-002_Topological_Component_Order.csv",
+    "csv/CME-CAPDELIV-DEP-003_Cluster_Delivery_Roadmap.csv",
+    "csv/CME-CAPDELIV-DEP-004_Component_Cluster_Membership.csv",
+    "csv/CME-CAPDELIV-DEP-005_Cluster_Dependency_Edges.csv",
+    "csv/CME-CAPDELIV-DEP-SCHEMA.csv",
+    "diagrams/CME-CAPDELIV-DEP-000_dependency_first_cluster_flow.mmd",
+    "docs/CME-CAPDELIV-DEP-000_Method.md",
+    "docs/CME-CAPDELIV-DEP-003_Cluster_Delivery_Roadmap.md"
+  ]
+}

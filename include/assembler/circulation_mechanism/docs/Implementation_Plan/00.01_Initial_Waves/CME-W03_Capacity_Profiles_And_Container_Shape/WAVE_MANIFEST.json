@@ -1,0 +1,39 @@
+{
+  "wave_id": "CME-W03",
+  "wave_name": "Capacity Profiles And Container Shape",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T14:11:33.565546+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/capacity/TCapacityGenerationId.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityIssueKind.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileId.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileKind.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileReport.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileStatus.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCirculationCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TDispatchCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TExtremeDefaultProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/THorizontalScalingProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TIngressCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TScalingDirectionKind.hpp",
+    "include/assembler/circulation_mechanism/capacity/TUniformCapacityInvariantReport.hpp",
+    "include/assembler/circulation_mechanism/capacity/TUniformContainerCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TVerticalScalingProfile.hpp",
+    "include/assembler/circulation_mechanism/circulation_mechanism_w03.hpp"
+  ],
+  "tests": [
+    "tests/cme_w03_capacity_profiles_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W02_Views_Reports_And_Diagnostics_Primitives"
+  ],
+  "excluded": [
+    "container storage",
+    "registry behavior",
+    "scaling execution",
+    "safe-point algorithms",
+    "eviction execution",
+    "reference calculation"
+  ]
+}

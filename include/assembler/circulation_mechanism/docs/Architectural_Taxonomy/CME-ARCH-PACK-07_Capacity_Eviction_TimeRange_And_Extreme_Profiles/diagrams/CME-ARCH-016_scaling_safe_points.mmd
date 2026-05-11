@@ -1,0 +1,17 @@
+flowchart TD
+    A[Scaling Request] --> B{Horizontal or Vertical?}
+
+    B -- Horizontal --> C[Add/remove TContainers]
+    C --> D{Affects active refs/rounds?}
+    D -- No --> E[Apply registry/topology update]
+    D -- Yes --> F[Wait for safe point]
+
+    B -- Vertical --> G[Prepare new uniform capacity profile]
+    G --> H[Prepare new default empty container profile]
+    H --> I[Invalidate old layout-bound refs]
+    I --> J{All affected containers out of active rounds?}
+    J -- No --> K[Wait for round completion]
+    J -- Yes --> L[Claim profile-switch safe point]
+    L --> M[Apply family-wide profile switch]
+    M --> N[Moderator resets/reinitializes containers]
+    N --> O[Emit scaling/profile reports]

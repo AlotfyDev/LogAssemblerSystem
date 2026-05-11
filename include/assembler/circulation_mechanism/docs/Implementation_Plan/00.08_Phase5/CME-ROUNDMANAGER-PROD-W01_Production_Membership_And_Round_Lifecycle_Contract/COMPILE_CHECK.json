@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_round_manager_membership_lifecycle_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/include /mnt/data/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/tests/cme_round_manager_membership_lifecycle_contract_test.cpp -o /mnt/data/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/tests/cme_round_manager_membership_lifecycle_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_round_manager_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/include /mnt/data/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/tests/cme_round_manager_negative_compliance_test.cpp -o /mnt/data/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/CME-ROUNDMANAGER-PROD-W01_Production_Membership_And_Round_Lifecycle_Contract/tests/cme_round_manager_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-RSCP-W01_ReadSide_Profile_Identity_And_Boundary_Contracts/include /mnt/data/CME-RSCP-W01_ReadSide_Profile_Identity_And_Boundary_Contracts/tests/cme_rscp_w01_read_side_profile_smoke_test.cpp -o /mnt/data/CME-RSCP-W01_ReadSide_Profile_Identity_And_Boundary_Contracts/tests/cme_rscp_w01_read_side_profile_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}

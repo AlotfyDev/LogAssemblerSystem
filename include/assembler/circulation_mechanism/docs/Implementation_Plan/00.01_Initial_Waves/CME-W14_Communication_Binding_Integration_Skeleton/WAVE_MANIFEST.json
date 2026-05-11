@@ -1,0 +1,45 @@
+{
+  "wave_id": "CME-W14",
+  "wave_name": "Communication Binding Integration Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T15:32:15.180645+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w14.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TBindingCompatibilityStatus.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCirculationCommunicationBindingDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingCompatibility.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingCompatibilityPolicy.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingKind.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingStatus.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/dispatch_output/TBridgeFacingDispatchAdapterDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/dispatch_output/TDispatchOutputAdapterId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/dispatch_output/TDispatchOutputBindingView.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/ingress/TEnvelopePlacementPortDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/ingress/TEnvelopePlacementPortId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/ingress/TIngressBindingView.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/reports/TCommunicationBindingIssueKind.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/reports/TCommunicationBindingReport.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/reports/TCommunicationBindingReportId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/views/TCirculationCommunicationBindingView.hpp"
+  ],
+  "tests": [
+    "tests/cme_w14_communication_binding_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W10_Ingress_Placement_Skeleton",
+    "CME-W11_Dispatcher_And_Passive_Exposure_Skeleton"
+  ],
+  "excluded": [
+    "actual adapter invocation",
+    "Log API runtime",
+    "Bridge Orchestrator runtime",
+    "bridge sessions/protocols",
+    "payload movement",
+    "ingress placement",
+    "dispatch exposure",
+    "mutable container exposure",
+    "receiver lifecycle"
+  ]
+}

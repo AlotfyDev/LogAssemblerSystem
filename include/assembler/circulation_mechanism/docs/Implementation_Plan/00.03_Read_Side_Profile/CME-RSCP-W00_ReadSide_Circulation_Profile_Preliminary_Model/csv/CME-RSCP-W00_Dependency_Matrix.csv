@@ -1,0 +1,14 @@
+﻿dependency_id,required_component,dependency_type,needed_for,can_settle_now,blocking_level,notes
+RSCP-DEP-001,Communication_Binding,boundary_contract,bridge-to-read-side admission boundary,partial,high,Need bridge-facing boundary contracts before final admission semantics.
+RSCP-DEP-002,Dispatcher,output_exposure,source of post-bridge material,partial,medium,Pre-bridge exposure semantics are known; bridge consumption details remain deferred.
+RSCP-DEP-003,Capacity,profile_model,post-bridge capacity/backpressure defaults,partial,medium,Can model profile shape now; exact values depend on receiver/addon profile.
+RSCP-DEP-004,Container,data_structure,read-side residency containers,partial,medium,Likely reuse container family; read-side profile may differ.
+RSCP-DEP-005,Container_Registry,registry,post-bridge container indexing,partial,medium,Registry concept reusable; profile-specific behavior deferred.
+RSCP-DEP-006,Waiting List,eligibility_list,failed-dispatch/retry/delay lists,partial,high,New list kinds likely needed.
+RSCP-DEP-007,Round_Manager,round_model,receiver-facing rounds,partial,medium,May reuse round mechanics with different profiles.
+RSCP-DEP-008,Reference_Precalculator,reference_model,post-bridge refs,partial,medium,Need decide whether refs are reused or specialized.
+RSCP-DEP-009,Release_Recycle,lifecycle,delayed release / ack release,partial,high,Release triggers depend on receiver/addon contracts.
+RSCP-DEP-010,Diagnostics,observability,receiver delay/retry diagnostics,yes,low,Diagnostics model exists; needs read-side categories.
+RSCP-DEP-011,Reports,evidence,read-side reports,yes,low,Report principles exist.
+RSCP-DEP-012,Views,read_only_projection,read-side profile views,yes,low,View principles exist.
+RSCP-DEP-013,Eviction,capacity_policy,read-side pressure/eviction,partial,medium,Read-side eviction semantics may differ from pre-bridge.

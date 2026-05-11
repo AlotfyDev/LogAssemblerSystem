@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-W02_Views_Reports_And_Diagnostics_Primitives/include /mnt/data/CME-W02_Views_Reports_And_Diagnostics_Primitives/tests/cme_w02_views_reports_diagnostics_smoke_test.cpp -o /mnt/data/CME-W02_Views_Reports_And_Diagnostics_Primitives/tests/cme_w02_views_reports_diagnostics_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}

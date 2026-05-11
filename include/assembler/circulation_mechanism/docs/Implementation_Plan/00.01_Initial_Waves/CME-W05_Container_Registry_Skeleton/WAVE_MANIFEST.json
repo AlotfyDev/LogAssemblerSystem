@@ -1,0 +1,33 @@
+{
+  "wave_id": "CME-W05",
+  "wave_name": "Container Registry Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T14:27:24.815484+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w05.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistry.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryCapacityView.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryGenerationView.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryInvariantReport.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryState.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerRegistryView.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TContainerStorageKind.hpp",
+    "include/assembler/circulation_mechanism/container_registry/TRegistryProfileSwitchReport.hpp"
+  ],
+  "tests": [
+    "tests/cme_w05_container_registry_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W04_Slot_And_Container_Skeleton"
+  ],
+  "excluded": [
+    "dynamic scaling",
+    "registry rebuild algorithm",
+    "waiting lists",
+    "reference calculation",
+    "ingress placement",
+    "dispatch exposure",
+    "bridge binding implementation"
+  ]
+}

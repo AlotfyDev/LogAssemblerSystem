@@ -1,0 +1,23 @@
+{
+  "package_id": "CME-ARCH-PACK-03",
+  "package_name": "Reference Precalculation, Validity, And Access Separation",
+  "status": "Architecture Specification Draft",
+  "documents": [
+    "CME-ARCH-007_Reference_Precalculation_And_Next_Ref_Supply_Model.md",
+    "CME-ARCH-008_Reference_Validity_Scope_And_Invalidation_Model.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-007_reference_precalculation_flow.mmd",
+    "diagrams/CME-ARCH-007_next_ref_consumer_view.mmd",
+    "diagrams/CME-ARCH-008_reference_validity_state_machine.mmd"
+  ],
+  "created_utc": "2026-05-08T11:59:35.264784+00:00",
+  "implementation_direction": "C++17 header-only-first; architecture before headers",
+  "core_rules": [
+    "ReferencePrecalculator owns locating/reference calculation.",
+    "Ingress and Dispatcher own access execution.",
+    "Ingress refs and dispatch refs are direction-specific.",
+    "References are scoped by registry/container/slot/round/direction/safe-point/profile.",
+    "Stale reference use is diagnostic-visible."
+  ]
+}

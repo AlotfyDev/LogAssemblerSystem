@@ -1,0 +1,22 @@
+flowchart TD
+    A[Engine State / Event] --> B{Observation Need}
+
+    B -->|Current condition| V[View]
+    B -->|Action or transition evidence| R[Report]
+    B -->|Abnormal condition| D[Diagnostic Report]
+
+    V --> V1[Read-only projection]
+    V --> V2[No mutation authority]
+    V --> V3[Scope-bound]
+
+    R --> R1[Immutable evidence]
+    R --> R2[Transition/action trace]
+    R --> R3[Does not expand authority]
+
+    D --> D1[Classified condition]
+    D --> D2[Severity]
+    D --> D3[Owner / recovery hint]
+
+    V1 --> C[Diagnostics / Tests / Approved Consumers]
+    R1 --> C
+    D1 --> C

@@ -1,0 +1,10 @@
+﻿column_name,data_type,description
+intra_dependency_edge_id,string,Unique edge id
+parent_component_key,string,Parent component scope
+source_subcomponent_key,string,Dependent subcomponent within parent
+target_subcomponent_key,string,Dependency subcomponent within same parent
+dependency_type,enum/string,"state, view, report, policy, handle, runtime_use, compile_time"
+dependency_strength,enum,"strong, medium, weak"
+is_new_gap_candidate,boolean,true if missing dependency target reveals a new gap
+new_gap_candidate_key,string,Potential new gap key if discovered
+rationale,string,Why this edge exists

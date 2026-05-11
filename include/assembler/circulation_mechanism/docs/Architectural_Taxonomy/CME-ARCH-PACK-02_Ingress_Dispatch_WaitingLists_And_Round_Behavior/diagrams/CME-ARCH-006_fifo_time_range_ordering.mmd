@@ -1,0 +1,16 @@
+flowchart TD
+    A[Container becomes dispatch eligible] --> B[RoundManager evaluates state/readiness]
+    B --> C{Eligible?}
+    C -- No --> R[Reject / diagnostic report]
+    C -- Yes --> D[Register container registry index]
+    D --> E[TDispatchWaitingList FIFO order]
+    E --> F{Time range policy enabled?}
+    F -- No --> G[Maintain FIFO]
+    F -- Yes --> H[Apply time range ordering / tie-break]
+    G --> I[ReferencePrecalculator consumes ordered indices]
+    H --> I
+    I --> J[Prepare TDispatchAccessRef]
+    J --> K[Dispatcher exposes payload]
+    E --> L{Max boundary reached?}
+    L -- Yes --> M[Select eviction candidate by oldest time range]
+    L -- No --> I

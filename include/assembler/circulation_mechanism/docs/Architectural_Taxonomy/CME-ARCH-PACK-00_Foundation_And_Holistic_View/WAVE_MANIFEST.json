@@ -1,0 +1,20 @@
+{
+  "package_id": "CME-ARCH-PACK-00",
+  "package_name": "Foundation And Holistic Architecture View",
+  "domain": "circulation_mechanism",
+  "status": "Architecture Draft V1",
+  "created_utc": "2026-05-08T11:31:30Z",
+  "files": [
+    "README.md",
+    "CME-ARCH-000_Holistic_Foundation_And_System_View.md",
+    "TRACEABILITY_NOTES.md",
+    "DEFERRED_DECISIONS.md",
+    "diagrams/CME-ARCH-000_context_boundary_map.mmd",
+    "diagrams/CME-ARCH-000_holistic_component_map.mmd",
+    "diagrams/CME-ARCH-000_two_cycle_payload_direction.mmd",
+    "diagrams/CME-ARCH-000_reference_precalculation_pipeline.mmd",
+    "diagrams/CME-ARCH-000_state_and_safe_point_map.mmd",
+    "diagrams/CME-ARCH-000_pre_bridge_vs_read_side_profile.mmd"
+  ],
+  "next_pack": "CME-ARCH-PACK-01_Core_Actors_Registries_Containers_And_Slot_Model"
+}

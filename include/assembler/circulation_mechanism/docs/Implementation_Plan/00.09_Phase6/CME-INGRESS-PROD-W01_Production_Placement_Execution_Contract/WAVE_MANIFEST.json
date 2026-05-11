@@ -1,0 +1,43 @@
+{
+  "package_id": "CME-INGRESS-PROD-W01",
+  "package_name": "Production Placement Execution Contract",
+  "created_utc": "2026-05-10T15:24:20.605136+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "ingress placement",
+    "ingress placement algorithm",
+    "payload movement into engine through approved ref"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_ingress.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/ids/TRoundId.hpp",
+    "include/assembler/circulation_mechanism/ids/TSlotIndex.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngress.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressId.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressPayloadEnvelopeRef.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressPlacementStatus.hpp",
+    "include/assembler/circulation_mechanism/ingress/TIngressState.hpp",
+    "include/assembler/circulation_mechanism/ingress/boundary/TIngressBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/ingress/boundary/TIngressBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/ingress/boundary/TIngressBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/ingress/policies/TIngressAccessPolicy.hpp",
+    "include/assembler/circulation_mechanism/ingress/reports/TIngressBoundaryReport.hpp",
+    "include/assembler/circulation_mechanism/ingress/reports/TIngressPlacementReport.hpp",
+    "include/assembler/circulation_mechanism/ingress/reports/TIngressReportId.hpp",
+    "include/assembler/circulation_mechanism/ingress/views/TIngressAdmissionView.hpp",
+    "include/assembler/circulation_mechanism/ingress/views/TIngressPlacementView.hpp",
+    "include/assembler/circulation_mechanism/ingress/views/TIngressView.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefDirection.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefId.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefKind.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefScope.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TIngressAccessRef.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TSlotAccessRef.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceValidityState.hpp"
+  ],
+  "tests": [
+    "tests/cme_ingress_negative_compliance_test.cpp",
+    "tests/cme_ingress_production_placement_execution_test.cpp"
+  ]
+}

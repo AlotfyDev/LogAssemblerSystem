@@ -1,0 +1,20 @@
+,parent_component_key,parent_component_id,parent_component_name,mapped_gap_count,p0_guard_count,p1_core_count,p2_review_count,p3_deferred_count,gap_keys
+2,communication_binding,CME-COMP-003,Communication Binding,12,0,0,1,11,bridge_bindings|bridge_drain_handling|bridge_handoff|bridge_protocol|log_api_envelope_assembly|payload_parsing|bridge_acknowledgement|bridge_recovery|actual_adapter_invocation|log_api_runtime|bridge_orchestrator_runtime|bridge_sessions_protocols
+10,reference_precalculator,CME-COMP-012,ReferencePrecalculator,10,0,10,0,0,reference_calculation|reference_supply|reference_precalculator_algorithm|container_slot_locating|reference_locating_algorithm|reference_pool|slot_selection|ingress_access_ref_production|dispatch_access_ref_production|reference_invalidation_execution
+9,read_side_circulation_profile,CME-COMP-021,ReadSide_Circulation_Profile,7,0,0,0,7,read_side_profile|read_side_backpressure|read_side_lifecycle|receiver_lifecycle|persistence|read_side_retry|persistence_deletion
+18,waiting_list,CME-COMP-020,Waiting List,5,1,0,4,0,waiting_lists|waiting_list_admission|envelope_storage_in_waiting_lists|waiting_list_consumption|waiting_list_rebuild
+6,dispatcher,CME-COMP-007,Dispatcher,5,0,4,0,1,dispatch_exposure|copy_move_semantics|dispatch_behavior|push_dispatch_execution|dispatch_release_recycle
+4,container_registry,CME-COMP-005,Container Registry,5,0,5,0,0,registry_behavior|container_registry|registry_rebuild|container_registry_resolution|registry_mutation
+5,diagnostics,CME-COMP-006,Diagnostics,4,0,0,2,2,diagnostic_storage|logging|telemetry_export|recovery_behavior
+15,slot,CME-COMP-017,Slot,4,0,3,0,1,slot_storage_array|actual_envelope_payload_storage|actual_slot_mutation|payload_storage
+16,unmapped,,UNMAPPED,4,0,1,0,3,slot_storage|container_scan|payload_movement|mutable_container_exposure
+3,container,CME-COMP-004,Container,3,0,1,1,1,container_storage|container_creation_semantics|container_mutation
+1,capacity,CME-COMP-002,Capacity,3,0,0,3,0,horizontal_scaling|vertical_scaling|dynamic_scaling
+11,release_recycle,CME-COMP-013,Release / Recycle,3,0,0,3,0,container_reset|container_reset_algorithm|container_recycle_algorithm
+13,round_manager,CME-COMP-015,Round Manager,2,0,0,2,0,round_management|dynamic_scheduling
+7,eviction,CME-COMP-008,Eviction,2,0,0,2,0,eviction|eviction_execution
+8,ingress,CME-COMP-010,Ingress,2,0,2,0,0,ingress_placement|ingress_placement_algorithm
+14,safe_point,CME-COMP-016,Safe Point,2,0,2,0,0,safe_point_algorithm|safe_point_execution
+0,bundle_agent,CME-COMP-001,Bundle Agent,1,0,0,1,0,bundle_topology_authority
+12,reports,CME-COMP-014,Reports,1,0,0,1,0,component_specific_reports
+17,views,CME-COMP-019,Views,1,0,0,1,0,component_specific_views

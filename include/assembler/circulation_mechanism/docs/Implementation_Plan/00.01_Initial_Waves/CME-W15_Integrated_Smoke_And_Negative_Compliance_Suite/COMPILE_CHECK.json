@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "source": "tests/cme_w15_integrated_compile_smoke_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-W01_Foundational_Identity_And_State_Types/include -I /mnt/data/CME-W02_Views_Reports_And_Diagnostics_Primitives/include -I /mnt/data/CME-W03_Capacity_Profiles_And_Container_Shape/include -I /mnt/data/CME-W04_Slot_And_Container_Skeleton/include -I /mnt/data/CME-W05_Container_Registry_Skeleton/include -I /mnt/data/CME-W06_Bundle_Agent_And_Moderator_Skeleton/include -I /mnt/data/CME-W07_Waiting_Lists_And_Round_Manager_Skeleton/include -I /mnt/data/CME-W08_Reference_Handles_And_Validity_Model/include -I /mnt/data/CME-W09_ReferencePrecalculator_Skeleton/include -I /mnt/data/CME-W10_Ingress_Placement_Skeleton/include -I /mnt/data/CME-W11_Dispatcher_And_Passive_Exposure_Skeleton/include -I /mnt/data/CME-W12_Safe_Point_And_Release_Recycle_Skeleton/include -I /mnt/data/CME-W13_Eviction_And_Time_Range_Skeleton/include -I /mnt/data/CME-W14_Communication_Binding_Integration_Skeleton/include /mnt/data/CME-W15_Integrated_Smoke_And_Negative_Compliance_Suite/tests/cme_w15_integrated_compile_smoke_test.cpp -o /mnt/data/CME-W15_Integrated_Smoke_And_Negative_Compliance_Suite/tests/cme_w15_integrated_compile_smoke_test",
+      "status": "passed",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "test_run_returncode": 0,
+      "test_run_stdout": "",
+      "test_run_stderr": ""
+    },
+    {
+      "source": "tests/cme_w15_anti_collapse_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-W01_Foundational_Identity_And_State_Types/include -I /mnt/data/CME-W02_Views_Reports_And_Diagnostics_Primitives/include -I /mnt/data/CME-W03_Capacity_Profiles_And_Container_Shape/include -I /mnt/data/CME-W04_Slot_And_Container_Skeleton/include -I /mnt/data/CME-W05_Container_Registry_Skeleton/include -I /mnt/data/CME-W06_Bundle_Agent_And_Moderator_Skeleton/include -I /mnt/data/CME-W07_Waiting_Lists_And_Round_Manager_Skeleton/include -I /mnt/data/CME-W08_Reference_Handles_And_Validity_Model/include -I /mnt/data/CME-W09_ReferencePrecalculator_Skeleton/include -I /mnt/data/CME-W10_Ingress_Placement_Skeleton/include -I /mnt/data/CME-W11_Dispatcher_And_Passive_Exposure_Skeleton/include -I /mnt/data/CME-W12_Safe_Point_And_Release_Recycle_Skeleton/include -I /mnt/data/CME-W13_Eviction_And_Time_Range_Skeleton/include -I /mnt/data/CME-W14_Communication_Binding_Integration_Skeleton/include /mnt/data/CME-W15_Integrated_Smoke_And_Negative_Compliance_Suite/tests/cme_w15_anti_collapse_compliance_test.cpp -o /mnt/data/CME-W15_Integrated_Smoke_And_Negative_Compliance_Suite/tests/cme_w15_anti_collapse_compliance_test",
+      "status": "passed",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "test_run_returncode": 0,
+      "test_run_stdout": "",
+      "test_run_stderr": ""
+    }
+  ]
+}

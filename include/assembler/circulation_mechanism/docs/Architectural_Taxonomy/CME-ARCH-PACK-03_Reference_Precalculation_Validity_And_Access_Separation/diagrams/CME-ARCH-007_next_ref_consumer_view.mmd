@@ -1,0 +1,27 @@
+flowchart LR
+    subgraph Consumers
+        P[Log API / Envelope Provider Plugin Adapter]
+        B[Bridge-Facing Adapter]
+    end
+
+    subgraph CME[Circulation Mechanism Engine]
+        RP[ReferencePrecalculator]
+        IR[TIngressAccessRef supply]
+        DR[TDispatchAccessRef supply]
+        ING[Ingress]
+        DIS[Dispatcher]
+    end
+
+    P -->|next ingress ref| IR
+    IR --> ING
+    ING -->|place envelope| S1[(Slot)]
+
+    RP --> IR
+    RP --> DR
+
+    B -->|next dispatch ref / pull view| DR
+    DR --> DIS
+    DIS -->|passive exposure| B
+
+    P -. does not know .-> X1[container / slot / registry topology]
+    B -. does not know .-> X2[container / slot / registry topology]

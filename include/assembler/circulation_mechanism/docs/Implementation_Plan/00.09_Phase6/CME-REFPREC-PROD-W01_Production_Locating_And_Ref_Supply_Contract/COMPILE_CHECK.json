@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_reference_precalculator_locating_ref_supply_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/include /mnt/data/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/tests/cme_reference_precalculator_locating_ref_supply_test.cpp -o /mnt/data/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/tests/cme_reference_precalculator_locating_ref_supply_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_reference_precalculator_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/include /mnt/data/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/tests/cme_reference_precalculator_negative_compliance_test.cpp -o /mnt/data/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/CME-REFPREC-PROD-W01_Production_Locating_And_Ref_Supply_Contract/tests/cme_reference_precalculator_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

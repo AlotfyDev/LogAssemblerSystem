@@ -1,0 +1,19 @@
+{
+  "package_id": "CME-FINAL-DEP-GAP-CLOSURE-MAP",
+  "created_utc": "2026-05-09T17:36:35.455841+00:00",
+  "wave_rows": 80,
+  "phase_rows": 21,
+  "gap_trace_rows": 97,
+  "directly_targeted_gaps": 76,
+  "enabled_only_gaps": 20,
+  "not_mapped_to_wave": 1,
+  "files": [
+    "README.md",
+    "csv/CME-FINAL-GAPCLOSE-001_Wave_Gap_Closure_Map.csv",
+    "csv/CME-FINAL-GAPCLOSE-002_Phase_Gap_Closure_Summary.csv",
+    "csv/CME-FINAL-GAPCLOSE-003_Gap_To_Wave_Trace.csv",
+    "csv/CME-FINAL-GAPCLOSE-SCHEMA.csv",
+    "docs/CME-FINAL-GAPCLOSE-000_Method.md",
+    "docs/CME-FINAL-GAPCLOSE-001_Phase_1_Closure_Notes.md"
+  ]
+}

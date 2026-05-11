@@ -1,0 +1,22 @@
+﻿column_name,data_type,description
+subcomponent_dependency_row_id,string,Unique row id for the subcomponent dependency schema update
+proposed_subcomponent_id,string,ID from proposed new subcomponents matrix
+parent_component_key,string,Parent component key
+parent_component_name,string,Parent component display name
+parent_component_scope,string,Explicit parent scope for dependency reasoning
+target_subcomponent_key,string,Subcomponent key
+target_subcomponent_name,string,Subcomponent display name
+subcomponent_scope,string,Explicit intra-parent subcomponent scope
+target_artifact_kind,enum,"subcomponent, profile, policy, report, view, guard, external_contract"
+gap_count,integer,How many gaps led to this proposed subcomponent
+gap_keys,string,Pipe-delimited gap keys
+proposed_dependency_internal,string,Pipe-delimited proposed dependencies inside the same parent component
+proposed_dependent_internal,string,Pipe-delimited proposed dependents inside the same parent component
+proposed_dependency_parent_components,string,Pipe-delimited parent components this subcomponent inherits dependency on from parent-level analysis
+proposed_dependent_parent_components,string,Pipe-delimited parent components that depend on this parent component
+dependency_confidence,enum,"preliminary, reviewed, accepted, rejected"
+dependency_analysis_status,enum,"requires_intra_component_review, accepted, blocked, deferred"
+may_reveal_new_gaps,boolean,true if dependency analysis may reveal new gaps
+new_gap_detection_notes,string,How to detect missing gaps during dependency review
+candidate_path,string,Candidate owner path
+rationale,string,Reason for subcomponent creation

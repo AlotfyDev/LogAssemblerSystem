@@ -1,0 +1,20 @@
+{
+  "package_id": "CME-IMPL-PLAN-00",
+  "package_name": "Implementation Wave Planning",
+  "status": "Implementation Planning Draft",
+  "documents": [
+    "CME-IMPL-000_Implementation_Wave_Planning_Roadmap.md",
+    "CME-IMPL-001_Wave_Sequencing_And_Dependency_Model.md",
+    "CME-IMPL-002_First_Waves_Header_Skeleton_Plan.md",
+    "CME-IMPL-003_Test_And_Compliance_Derivation_Plan.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-IMPL-000_wave_dependency_map.mmd",
+    "diagrams/CME-IMPL-001_layered_wave_stack.mmd",
+    "diagrams/CME-IMPL-002_first_wave_header_map.mmd",
+    "diagrams/CME-IMPL-003_test_gate_flow.mmd"
+  ],
+  "created_utc": "2026-05-08T12:45:34.380021+00:00",
+  "implementation_direction": "C++17 header-only-first; implementation planning only; no code implementation",
+  "recommended_first_wave": "CME-W01_Foundational_Identity_And_State_Types"
+}

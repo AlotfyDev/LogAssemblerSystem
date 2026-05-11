@@ -1,0 +1,24 @@
+{
+  "package_id": "CME-ARCH-PACK-08",
+  "package_name": "Implementation Readiness And Header Derivation Preparation",
+  "status": "Architecture-to-Implementation Readiness Draft",
+  "documents": [
+    "CME-ARCH-018_Component_Specification_Index.md",
+    "CME-ARCH-019_Header_Derivation_Candidate_Map.md",
+    "CME-ARCH-020_Implementation_Readiness_Gate.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-018_component_to_spec_map.mmd",
+    "diagrams/CME-ARCH-019_folder_to_header_derivation.mmd",
+    "diagrams/CME-ARCH-020_readiness_gate_flow.mmd"
+  ],
+  "created_utc": "2026-05-08T12:41:12.369357+00:00",
+  "implementation_direction": "C++17 header-only-first; candidate headers only; no code implementation",
+  "core_rules": [
+    "Headers derive from component ownership.",
+    "State files remain local by default.",
+    "Views and reports are approved cross-component observation surfaces.",
+    "Implementation may begin only after readiness gates are accepted.",
+    "Deferred decisions must not be silently implemented."
+  ]
+}

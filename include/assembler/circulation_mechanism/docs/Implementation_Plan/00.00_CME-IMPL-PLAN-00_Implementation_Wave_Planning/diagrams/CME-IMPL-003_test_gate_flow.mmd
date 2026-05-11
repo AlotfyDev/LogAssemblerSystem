@@ -1,0 +1,14 @@
+flowchart TD
+    A[Wave Candidate] --> B{Smoke Test Exists?}
+    B -- No --> X[Block Wave]
+    B -- Yes --> C{Architecture Boundary Test Exists?}
+    C -- No --> Y[Ready With Note]
+    C -- Yes --> D{Forbidden Collapse Protected?}
+    D -- No --> X
+    D -- Yes --> E{Dependencies From Earlier Waves Only?}
+    E -- No --> X
+    E -- Yes --> F[Wave May Proceed]
+    F --> G[Compile]
+    G --> H{Pass?}
+    H -- No --> X
+    H -- Yes --> I[Wave Accepted As Skeleton]

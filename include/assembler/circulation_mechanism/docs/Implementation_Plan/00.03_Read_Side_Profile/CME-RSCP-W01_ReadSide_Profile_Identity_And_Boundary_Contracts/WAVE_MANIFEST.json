@@ -1,0 +1,43 @@
+{
+  "wave_id": "CME-RSCP-W01",
+  "wave_name": "ReadSide Profile Identity And Boundary Contracts",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-09T13:19:04.225035+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideCirculationProfile.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideProfileId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideProfileStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionMode.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeBoundaryContractDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeBoundaryContractId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeBoundaryContractStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeTransferSemantic.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/read_side_circulation_profile_w01.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverContextDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverContextId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverContextKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverLifecycleExpectation.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideProfileIssueKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideProfileReadinessReport.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideProfileReportId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TReadSideProfileView.hpp"
+  ],
+  "tests": [
+    "tests/cme_rscp_w01_read_side_profile_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-RSCP-W00_ReadSide_Circulation_Profile_Preliminary_Model"
+  ],
+  "excluded": [
+    "failed-dispatch list",
+    "retry algorithm",
+    "backpressure algorithm",
+    "receiver acknowledgement execution",
+    "persistence adapter",
+    "bridge protocol",
+    "addon implementation"
+  ]
+}

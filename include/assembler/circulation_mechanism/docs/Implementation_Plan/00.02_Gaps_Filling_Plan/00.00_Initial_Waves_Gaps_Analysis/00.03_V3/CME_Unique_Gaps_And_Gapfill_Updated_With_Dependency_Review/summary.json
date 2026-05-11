@@ -1,0 +1,11 @@
+{
+  "previous_updated_unique_gap_count": 94,
+  "true_dependency_review_gap_count": 3,
+  "new_gaps_added": 3,
+  "updated_unique_gap_total": 97,
+  "new_gap_keys_added": [
+    "exposure_contracts",
+    "ordering_policy",
+    "reference_release"
+  ]
+}

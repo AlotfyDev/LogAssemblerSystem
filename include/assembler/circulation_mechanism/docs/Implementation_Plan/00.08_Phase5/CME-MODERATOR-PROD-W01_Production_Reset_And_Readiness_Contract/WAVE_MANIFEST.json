@@ -1,0 +1,31 @@
+{
+  "package_id": "CME-MODERATOR-PROD-W01",
+  "package_name": "Production Reset And Readiness Contract",
+  "created_utc": "2026-05-10T12:30:07.058992+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "container reset algorithm planning/guard",
+    "moderator readiness surface"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileId.hpp",
+    "include/assembler/circulation_mechanism/circulation_mechanism_moderator.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerId.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/moderator/TContainerResetPlan.hpp",
+    "include/assembler/circulation_mechanism/moderator/TContainerResetReport.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModeratedContainerView.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModerationStatus.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModeratorId.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModeratorReadinessView.hpp",
+    "include/assembler/circulation_mechanism/moderator/TSlotsContainerModerator.hpp",
+    "include/assembler/circulation_mechanism/moderator/TSlotsContainerModeratorConfig.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointState.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TModeratorState.hpp"
+  ],
+  "tests": [
+    "tests/cme_moderator_negative_compliance_test.cpp",
+    "tests/cme_moderator_reset_readiness_contract_test.cpp"
+  ]
+}

@@ -1,0 +1,7 @@
+﻿column_name,data_type,description
+closure_map_id,string,Unique wave closure mapping id
+final_wave_id,string,Final dependency-first wave id
+gap_closure_type,enum,"direct_gap_closure, dependency_enabler_closure, anti_collapse_guard_or_deferred_scope_registration, compliance_gate_closure"
+direct_gap_ids,string,Pipe-delimited dedup gap ids directly targeted by this wave
+enabled_gap_ids,string,Pipe-delimited dedup gap ids enabled by this wave through dependencies
+closure_evidence,string,Expected artifact evidence for closure

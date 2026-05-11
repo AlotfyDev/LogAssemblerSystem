@@ -1,0 +1,18 @@
+{
+  "package_id": "CME-CAPABILITY-DELIVERY-PLAN-21-PHASES",
+  "created_utc": "2026-05-09T12:57:58.562125+00:00",
+  "phase_count": 21,
+  "total_estimated_waves": 80,
+  "new_subcomponent_proposals": 41,
+  "components_with_no_mapped_gaps": 3,
+  "components_with_new_subcomponents": 18,
+  "files": [
+    "README.md",
+    "csv/CME-CAPDELIV-000_Summary.json",
+    "csv/CME-CAPDELIV-001_21_Component_Phases.csv",
+    "csv/CME-CAPDELIV-002_Waves_By_Component.csv",
+    "csv/CME-CAPDELIV-003_New_Subcomponents_By_Phase.csv",
+    "docs/CME-CAPDELIV-000_21_Phase_Method_And_Overview.md",
+    "docs/CME-CAPDELIV-004_Component_Phase_Details.md"
+  ]
+}

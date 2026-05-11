@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_ids_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-IDS-PROD-W01_Production_Identity_Contract/CME-IDS-PROD-W01_Production_Identity_Contract/include /mnt/data/CME-IDS-PROD-W01_Production_Identity_Contract/CME-IDS-PROD-W01_Production_Identity_Contract/tests/cme_ids_negative_compliance_test.cpp -o /mnt/data/CME-IDS-PROD-W01_Production_Identity_Contract/CME-IDS-PROD-W01_Production_Identity_Contract/tests/cme_ids_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_ids_production_identity_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-IDS-PROD-W01_Production_Identity_Contract/CME-IDS-PROD-W01_Production_Identity_Contract/include /mnt/data/CME-IDS-PROD-W01_Production_Identity_Contract/CME-IDS-PROD-W01_Production_Identity_Contract/tests/cme_ids_production_identity_contract_test.cpp -o /mnt/data/CME-IDS-PROD-W01_Production_Identity_Contract/CME-IDS-PROD-W01_Production_Identity_Contract/tests/cme_ids_production_identity_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

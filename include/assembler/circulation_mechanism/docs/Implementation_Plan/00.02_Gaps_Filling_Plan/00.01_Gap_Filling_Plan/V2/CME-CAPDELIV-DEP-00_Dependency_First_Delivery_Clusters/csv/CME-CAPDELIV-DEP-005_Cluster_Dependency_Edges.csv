@@ -1,0 +1,11 @@
+﻿cluster_dependency_id,source_cluster_id,source_cluster_name,target_cluster_id,target_cluster_name,dependency_type,rationale
+CME-CLDEP-001,CME-CL-01,Observation / Evidence Foundations,CME-CL-00,Vocabulary / Identity Foundations,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-002,CME-CL-02,Capacity / Safety Foundations,CME-CL-00,Vocabulary / Identity Foundations,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-003,CME-CL-02,Capacity / Safety Foundations,CME-CL-01,Observation / Evidence Foundations,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-004,CME-CL-03,Residency Structures,CME-CL-00,Vocabulary / Identity Foundations,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-005,CME-CL-03,Residency Structures,CME-CL-01,Observation / Evidence Foundations,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-006,CME-CL-03,Residency Structures,CME-CL-02,Capacity / Safety Foundations,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-007,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",CME-CL-03,Residency Structures,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-008,CME-CL-05,Reference And Movement Execution,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-009,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",CME-CL-05,Reference And Movement Execution,cluster_order,Delivery cluster depends on prior foundational cluster.
+CME-CLDEP-010,CME-CL-07,Post-Bridge / Read-Side Circulation Profile,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",cluster_order,Delivery cluster depends on prior foundational cluster.

@@ -1,0 +1,23 @@
+{
+  "package_id": "CME-ARCH-PACK-06",
+  "package_name": "Diagnostics, Reports, Views, And Invariant Evidence",
+  "status": "Architecture Specification Draft",
+  "documents": [
+    "CME-ARCH-014_Views_Reports_And_Read_Only_Projection_Model.md",
+    "CME-ARCH-015_Diagnostics_Invariant_Violations_And_Operational_Reports.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-014_view_report_classification.mmd",
+    "diagrams/CME-ARCH-015_diagnostic_event_flow.mmd",
+    "diagrams/CME-ARCH-015_invariant_violation_matrix.mmd"
+  ],
+  "created_utc": "2026-05-08T12:20:00.745207+00:00",
+  "implementation_direction": "C++17 header-only-first; architecture before headers",
+  "core_rules": [
+    "Views are safe read-only projections.",
+    "Reports are evidence artifacts.",
+    "Diagnostics classify abnormal conditions and invariant breaks.",
+    "Reports do not imply downstream success.",
+    "Views must not expose mutable internals."
+  ]
+}

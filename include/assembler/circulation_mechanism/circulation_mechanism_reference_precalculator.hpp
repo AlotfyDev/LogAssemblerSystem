@@ -1,0 +1,32 @@
+#pragma once
+/*
+    circulation_mechanism_reference_precalculator.hpp
+    Delivery: CME-REFPREC-PROD-W01 — Production Locating And Ref Supply Contract
+*/
+#include "reference_precalculator/TReferencePrecalculatorId.hpp"
+#include "reference_precalculator/TReferencePrecalculationStatus.hpp"
+#include "reference_precalculator/TReferenceCandidate.hpp"
+#include "reference_precalculator/handles/TAccessRefId.hpp"
+#include "reference_precalculator/handles/TAccessRefDirection.hpp"
+#include "reference_precalculator/handles/TAccessRefKind.hpp"
+#include "reference_precalculator/handles/TAccessRefScope.hpp"
+#include "reference_precalculator/handles/TSlotAccessRef.hpp"
+#include "reference_precalculator/handles/TIngressAccessRef.hpp"
+#include "reference_precalculator/handles/TDispatchAccessRef.hpp"
+#include "reference_precalculator/handles/TRoundScopedRef.hpp"
+#include "reference_precalculator/handles/TNextRefToken.hpp"
+#include "reference_precalculator/policies/TReferenceSupplyPolicy.hpp"
+#include "reference_precalculator/reports/TReferenceReportId.hpp"
+#include "reference_precalculator/reports/TReferenceCandidateRejectionKind.hpp"
+#include "reference_precalculator/reports/TReferencePrecalculationReport.hpp"
+#include "reference_precalculator/reports/TReferenceSupplyInterruptionReport.hpp"
+#include "reference_precalculator/reports/TReferenceCandidateRejectionReport.hpp"
+#include "reference_precalculator/views/TReferenceSupplyView.hpp"
+#include "reference_precalculator/views/TIngressReferenceSupplyView.hpp"
+#include "reference_precalculator/views/TDispatchReferenceSupplyView.hpp"
+#include "reference_precalculator/validity/TReferenceValidityDecisionKind.hpp"
+#include "reference_precalculator/validity/TReferenceValidityPolicy.hpp"
+#include "reference_precalculator/validity/TStaleReferenceReport.hpp"
+#include "reference_precalculator/validity/TReferenceInvalidationReport.hpp"
+#include "reference_precalculator/validity/TReferenceDirectionMismatchReport.hpp"
+#include "reference_precalculator/TReferencePrecalculator.hpp"

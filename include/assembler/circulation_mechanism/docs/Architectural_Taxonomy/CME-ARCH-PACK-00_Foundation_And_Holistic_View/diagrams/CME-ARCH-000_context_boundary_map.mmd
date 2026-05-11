@@ -1,0 +1,16 @@
+flowchart LR
+    LAPI[Log-Level API\nEnvelope Provider Plugin Adapter]
+    CME[Circulation Mechanism Engine\nPre-Bridge Write-Side Profile]
+    BRIDGE[Bridge / Communication Context\nBridge-Facing Adapter]
+    READ[Read-Side Circulation / Receiver Side\nDelayed release / retry / absorption]
+    ADDONS[Addons / Final Receiver Surfaces\nDB / Thin C ABI / OTel / File Sink]
+
+    LAPI -->|Prepared Envelope| CME
+    CME -->|Passive Exposure / Dispatch Refs| BRIDGE
+    BRIDGE --> READ
+    READ --> ADDONS
+
+    LAPI -. owns .-> LP[Parsing / Validation / Metadata / Timestamp / Assembly]
+    CME -. owns .-> CP[Containers / Slots / Rounds / Waiting Lists / Refs]
+    BRIDGE -. owns .-> BP[Protocol / Session / Channel]
+    READ -. owns .-> RP[Receiver Delay / Retry / Failed Dispatch]

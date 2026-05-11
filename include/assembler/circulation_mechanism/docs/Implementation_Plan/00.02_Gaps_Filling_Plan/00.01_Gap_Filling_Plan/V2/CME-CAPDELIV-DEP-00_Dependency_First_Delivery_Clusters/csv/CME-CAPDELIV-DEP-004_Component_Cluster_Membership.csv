@@ -1,0 +1,22 @@
+﻿membership_id,component_key,component_name,cluster_id,cluster_name,cluster_order,delivery_order,reason
+CME-MEM-001,ids,IDs,CME-CL-00,Vocabulary / Identity Foundations,0,1,Assigned by dependency-first cluster model.
+CME-MEM-002,state,State,CME-CL-00,Vocabulary / Identity Foundations,0,2,Assigned by dependency-first cluster model.
+CME-MEM-003,reports,Reports,CME-CL-01,Observation / Evidence Foundations,1,3,Assigned by dependency-first cluster model.
+CME-MEM-004,views,Views,CME-CL-01,Observation / Evidence Foundations,1,4,Assigned by dependency-first cluster model.
+CME-MEM-005,diagnostics,Diagnostics,CME-CL-01,Observation / Evidence Foundations,1,5,Assigned by dependency-first cluster model.
+CME-MEM-006,safe_point,Safe Point,CME-CL-02,Capacity / Safety Foundations,2,6,Assigned by dependency-first cluster model.
+CME-MEM-007,capacity,Capacity,CME-CL-02,Capacity / Safety Foundations,2,7,Assigned by dependency-first cluster model.
+CME-MEM-008,container,Container,CME-CL-03,Residency Structures,3,8,Assigned by dependency-first cluster model.
+CME-MEM-009,container_registry,Container Registry,CME-CL-03,Residency Structures,3,9,Assigned by dependency-first cluster model.
+CME-MEM-010,slot,Slot,CME-CL-03,Residency Structures,3,10,Assigned by dependency-first cluster model.
+CME-MEM-011,waiting_list,Waiting List,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",4,11,Assigned by dependency-first cluster model.
+CME-MEM-012,round_manager,Round Manager,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",4,12,Assigned by dependency-first cluster model.
+CME-MEM-013,bundle_agent,Bundle Agent,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",4,13,Assigned by dependency-first cluster model.
+CME-MEM-014,moderator,Moderator,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",4,14,Assigned by dependency-first cluster model.
+CME-MEM-015,reference_precalculator,ReferencePrecalculator,CME-CL-05,Reference And Movement Execution,5,15,Assigned by dependency-first cluster model.
+CME-MEM-016,dispatcher,Dispatcher,CME-CL-05,Reference And Movement Execution,5,16,Assigned by dependency-first cluster model.
+CME-MEM-017,ingress,Ingress,CME-CL-05,Reference And Movement Execution,5,17,Assigned by dependency-first cluster model.
+CME-MEM-018,communication_binding,Communication Binding,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",6,18,Assigned by dependency-first cluster model.
+CME-MEM-019,release_recycle,Release / Recycle,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",6,19,Assigned by dependency-first cluster model.
+CME-MEM-020,eviction,Eviction,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",6,20,Assigned by dependency-first cluster model.
+CME-MEM-021,read_side_circulation_profile,ReadSide Circulation Profile,CME-CL-07,Post-Bridge / Read-Side Circulation Profile,7,21,Assigned by dependency-first cluster model.

@@ -1,0 +1,41 @@
+stateDiagram-v2
+    direction LR
+
+    state "TContainerState" as CS {
+        [*] --> default_empty
+        default_empty --> ingress_ready
+        ingress_ready --> ingress_round_member
+        ingress_round_member --> receiving
+        receiving --> filled_or_closed
+        filled_or_closed --> dispatch_candidate
+        dispatch_candidate --> dispatch_round_member
+        dispatch_round_member --> dispatch_exposed
+        dispatch_exposed --> dispatch_completed
+        dispatch_completed --> reset_pending
+        reset_pending --> under_moderation
+        under_moderation --> default_empty
+        dispatch_candidate --> evicted
+    }
+
+    state "TSlotState" as SS {
+        [*] --> empty
+        empty --> reserved_for_ingress
+        reserved_for_ingress --> occupied
+        occupied --> sealed
+        sealed --> dispatch_ready
+        dispatch_ready --> dispatch_exposed
+        dispatch_exposed --> released
+        released --> recyclable
+        recyclable --> empty
+        occupied --> faulted
+    }
+
+    note right of CS
+      Container state governs cycle eligibility.
+      It is not mechanically derived from slot states.
+    end note
+
+    note right of SS
+      Slot state governs local access and occupancy.
+      Occupancy is not envelope lifecycle ownership.
+    end note

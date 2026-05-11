@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_container_registry_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/include /mnt/data/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/tests/cme_container_registry_negative_compliance_test.cpp -o /mnt/data/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/tests/cme_container_registry_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_container_registry_production_indexed_storage_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/include /mnt/data/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/tests/cme_container_registry_production_indexed_storage_test.cpp -o /mnt/data/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/CME-CONTAINER-REGISTRY-PROD-W01_Production_Indexed_Storage_Contract/tests/cme_container_registry_production_indexed_storage_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

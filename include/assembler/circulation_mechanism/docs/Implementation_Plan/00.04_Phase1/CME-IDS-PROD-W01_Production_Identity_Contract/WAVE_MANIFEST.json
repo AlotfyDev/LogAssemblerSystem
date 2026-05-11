@@ -1,0 +1,30 @@
+{
+  "package_id": "CME-IDS-PROD-W01",
+  "package_name": "Production Identity Contract",
+  "created_utc": "2026-05-09T18:20:34.538653+00:00",
+  "gap_closure_type": "dependency_enabler_closure",
+  "direct_gap_ids": [],
+  "delivered_capabilities": [
+    "typed identity atoms",
+    "invalid value policy",
+    "raw/value_or factories",
+    "comparison operators",
+    "locator traits",
+    "std::hash specialization",
+    "negative compliance"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_ids.hpp",
+    "include/assembler/circulation_mechanism/ids/TBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerId.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/ids/TIdentityAtomTraits.hpp",
+    "include/assembler/circulation_mechanism/ids/TReferenceId.hpp",
+    "include/assembler/circulation_mechanism/ids/TRoundId.hpp",
+    "include/assembler/circulation_mechanism/ids/TSlotIndex.hpp"
+  ],
+  "tests": [
+    "tests/cme_ids_negative_compliance_test.cpp",
+    "tests/cme_ids_production_identity_contract_test.cpp"
+  ]
+}

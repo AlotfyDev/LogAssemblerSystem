@@ -1,0 +1,22 @@
+﻿parent_component_key,parent_component_name,old_phase_number,new_delivery_order,order_delta,cluster_id,cluster_name,reason
+ids,IDs,1,1,0,CME-CL-00,Vocabulary / Identity Foundations,Reordered by dependency-first topological component order.
+state,State,2,2,0,CME-CL-00,Vocabulary / Identity Foundations,Reordered by dependency-first topological component order.
+reports,Reports,4,3,-1,CME-CL-01,Observation / Evidence Foundations,Reordered by dependency-first topological component order.
+views,Views,3,4,1,CME-CL-01,Observation / Evidence Foundations,Reordered by dependency-first topological component order.
+diagnostics,Diagnostics,5,5,0,CME-CL-01,Observation / Evidence Foundations,Reordered by dependency-first topological component order.
+safe_point,Safe Point,17,6,-11,CME-CL-02,Capacity / Safety Foundations,Reordered by dependency-first topological component order.
+capacity,Capacity,6,7,1,CME-CL-02,Capacity / Safety Foundations,Reordered by dependency-first topological component order.
+container,Container,7,8,1,CME-CL-03,Residency Structures,Reordered by dependency-first topological component order.
+container_registry,Container Registry,9,9,0,CME-CL-03,Residency Structures,Reordered by dependency-first topological component order.
+slot,Slot,8,10,2,CME-CL-03,Residency Structures,Reordered by dependency-first topological component order.
+waiting_list,Waiting List,12,11,-1,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",Reordered by dependency-first topological component order.
+round_manager,Round Manager,13,12,-1,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",Reordered by dependency-first topological component order.
+bundle_agent,Bundle Agent,10,13,3,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",Reordered by dependency-first topological component order.
+moderator,Moderator,11,14,3,CME-CL-04,"Topology, Moderation, Waiting Lists, And Rounds",Reordered by dependency-first topological component order.
+reference_precalculator,ReferencePrecalculator,14,15,1,CME-CL-05,Reference And Movement Execution,Reordered by dependency-first topological component order.
+dispatcher,Dispatcher,16,16,0,CME-CL-05,Reference And Movement Execution,Reordered by dependency-first topological component order.
+ingress,Ingress,15,17,2,CME-CL-05,Reference And Movement Execution,Reordered by dependency-first topological component order.
+communication_binding,Communication Binding,20,18,-2,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",Reordered by dependency-first topological component order.
+release_recycle,Release / Recycle,18,19,1,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",Reordered by dependency-first topological component order.
+eviction,Eviction,19,20,1,CME-CL-06,"Lifecycle, Eviction, And Boundary Contracts",Reordered by dependency-first topological component order.
+read_side_circulation_profile,ReadSide Circulation Profile,21,21,0,CME-CL-07,Post-Bridge / Read-Side Circulation Profile,Reordered by dependency-first topological component order.

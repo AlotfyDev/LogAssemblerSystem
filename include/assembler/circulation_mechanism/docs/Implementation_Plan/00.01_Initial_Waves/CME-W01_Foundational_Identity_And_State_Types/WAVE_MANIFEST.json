@@ -1,0 +1,37 @@
+{
+  "wave_id": "CME-W01",
+  "wave_name": "Foundational Identity And State Types",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T13:42:42.852182+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w01.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticCategory.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticSeverity.hpp",
+    "include/assembler/circulation_mechanism/ids/TBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerId.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/ids/TReferenceId.hpp",
+    "include/assembler/circulation_mechanism/ids/TRoundId.hpp",
+    "include/assembler/circulation_mechanism/ids/TSlotIndex.hpp",
+    "include/assembler/circulation_mechanism/state/TBundleAgentState.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TDispatchExposureState.hpp",
+    "include/assembler/circulation_mechanism/state/TModeratorState.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceSupplyState.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceValidityState.hpp",
+    "include/assembler/circulation_mechanism/state/TRoundState.hpp",
+    "include/assembler/circulation_mechanism/state/TSafePointState.hpp",
+    "include/assembler/circulation_mechanism/state/TSlotState.hpp"
+  ],
+  "tests": [
+    "tests/cme_w01_foundational_types_smoke_test.cpp"
+  ],
+  "excluded": [
+    "container storage",
+    "reference calculation",
+    "round management",
+    "ingress placement",
+    "dispatch exposure",
+    "bridge binding implementation"
+  ]
+}

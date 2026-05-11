@@ -1,0 +1,11 @@
+flowchart TD
+    CL0["CME-CL-00<br/>Vocabulary / Identity<br/>IDs, State"]
+    CL1["CME-CL-01<br/>Observation / Evidence<br/>Views, Reports, Diagnostics"]
+    CL2["CME-CL-02<br/>Capacity / Safety<br/>Capacity, Safe_Point"]
+    CL3["CME-CL-03<br/>Residency Structures<br/>Slot, Container, Registry"]
+    CL4["CME-CL-04<br/>Coordination<br/>BundleAgent, Moderator, WaitingList, RoundManager"]
+    CL5["CME-CL-05<br/>Reference + Movement<br/>ReferencePrecalculator, Ingress, Dispatcher"]
+    CL6["CME-CL-06<br/>Lifecycle + Boundary<br/>ReleaseRecycle, Eviction, CommunicationBinding"]
+    CL7["CME-CL-07<br/>Read-Side Profile<br/>ReadSide_Circulation_Profile"]
+
+    CL0 --> CL1 --> CL2 --> CL3 --> CL4 --> CL5 --> CL6 --> CL7

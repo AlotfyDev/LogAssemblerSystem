@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_slot_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/include /mnt/data/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/tests/cme_slot_negative_compliance_test.cpp -o /mnt/data/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/tests/cme_slot_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_slot_production_residency_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/include /mnt/data/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/tests/cme_slot_production_residency_contract_test.cpp -o /mnt/data/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/CME-SLOT-PROD-W01_Production_Residency_And_Access_Contract/tests/cme_slot_production_residency_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

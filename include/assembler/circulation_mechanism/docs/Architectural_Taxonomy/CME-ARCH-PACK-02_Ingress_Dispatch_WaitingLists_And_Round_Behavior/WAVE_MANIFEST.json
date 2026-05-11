@@ -1,0 +1,26 @@
+{
+  "package_id": "CME-ARCH-PACK-02",
+  "package_name": "Ingress, Dispatch, Waiting Lists, And Round Behavior",
+  "status": "Architecture Specification Draft",
+  "documents": [
+    "CME-ARCH-004_Ingress_Cycle_And_Container_Providing_Model.md",
+    "CME-ARCH-005_Dispatch_Cycle_And_Output_Exposure_Model.md",
+    "CME-ARCH-006_Round_Manager_And_Waiting_List_Model.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-004_ingress_sequence.mmd",
+    "diagrams/CME-ARCH-005_dispatch_sequence.mmd",
+    "diagrams/CME-ARCH-006_round_waiting_list_stateflow.mmd",
+    "diagrams/CME-ARCH-006_fifo_time_range_ordering.mmd"
+  ],
+  "created_utc": "2026-05-08T11:53:57.943786Z",
+  "implementation_direction": "C++17 header-only-first; architecture before headers",
+  "core_rules": [
+    "Ingress moves payload outside-to-engine.",
+    "Dispatch moves payload engine-to-outside.",
+    "Waiting lists store eligible container registry indices, not envelopes.",
+    "RoundManager admits candidates based on state/readiness.",
+    "ReferencePrecalculator owns locating/reference calculation.",
+    "Passive pull is the default dispatch profile."
+  ]
+}

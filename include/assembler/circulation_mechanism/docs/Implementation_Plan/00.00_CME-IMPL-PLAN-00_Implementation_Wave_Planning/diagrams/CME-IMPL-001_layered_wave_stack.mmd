@@ -1,0 +1,12 @@
+flowchart TB
+    L1[Layer 1: IDs / Indices / States] --> L2[Layer 2: Views / Reports / Diagnostics]
+    L2 --> L3[Layer 3: Capacity / Profiles]
+    L3 --> L4[Layer 4: Slot / Container]
+    L4 --> L5[Layer 5: Registry]
+    L5 --> L6[Layer 6: BundleAgent / Moderator]
+    L6 --> L7[Layer 7: WaitingLists / RoundManager]
+    L7 --> L8[Layer 8: Reference Handles / Validity]
+    L8 --> L9[Layer 9: ReferencePrecalculator]
+    L9 --> L10[Layer 10: Ingress / Dispatcher]
+    L10 --> L11[Layer 11: SafePoint / Release / Eviction]
+    L11 --> L12[Layer 12: Bindings / Integration / Compliance]

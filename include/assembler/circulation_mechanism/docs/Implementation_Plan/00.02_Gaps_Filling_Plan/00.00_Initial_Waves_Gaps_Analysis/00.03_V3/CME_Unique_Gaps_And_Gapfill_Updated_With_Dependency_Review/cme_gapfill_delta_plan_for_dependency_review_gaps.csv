@@ -1,0 +1,4 @@
+﻿delta_plan_id,parent_component_key,parent_component_name,target_subcomponent_key,dedup_gap_id,gap_name,priority,recommended_action,candidate_path,integration_note
+CME-GAPFILL-DELTA-001,communication_binding,Communication Binding,exposure_contracts,CME-DGAP-095,exposure contracts,P2-derived-gap,create_new_subcomponent,communication_binding/exposure_contracts/,Append to create-new-subcomponents roadmap before component update waves.
+CME-GAPFILL-DELTA-002,waiting_list,Waiting List,review,CME-DGAP-096,ordering policy,P2-derived-gap,review,waiting_list/review/,Append to create-new-subcomponents roadmap before component update waves.
+CME-GAPFILL-DELTA-003,release_recycle,Release / Recycle,review,CME-DGAP-097,reference release,P2-derived-gap,review,release_recycle/review/,Append to create-new-subcomponents roadmap before component update waves.

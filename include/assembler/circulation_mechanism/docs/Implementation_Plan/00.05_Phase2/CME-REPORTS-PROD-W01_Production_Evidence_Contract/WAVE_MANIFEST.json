@@ -1,0 +1,34 @@
+{
+  "package_id": "CME-REPORTS-PROD-W01",
+  "package_name": "Production Evidence Contract",
+  "created_utc": "2026-05-09T22:13:10.562329+00:00",
+  "gap_closure_type": "dependency_enabler_closure",
+  "direct_gap_ids": [
+    "component-specific reports"
+  ],
+  "delivered_capabilities": [
+    "typed report identity",
+    "immutable report descriptor",
+    "report scope validation",
+    "evidence kind validation",
+    "downstream proof rejection",
+    "authority expansion rejection",
+    "negative compliance tests"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_reports.hpp",
+    "include/assembler/circulation_mechanism/reports/TOperationalReport.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportContractIssueKind.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportDescriptor.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportEvidenceKind.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportId.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportKind.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportScopeKind.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportStatus.hpp",
+    "include/assembler/circulation_mechanism/reports/TReportValidationResult.hpp"
+  ],
+  "tests": [
+    "tests/cme_reports_evidence_scope_compliance_test.cpp",
+    "tests/cme_reports_production_evidence_contract_test.cpp"
+  ]
+}

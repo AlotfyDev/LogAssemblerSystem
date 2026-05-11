@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_moderator_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/include /mnt/data/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/tests/cme_moderator_negative_compliance_test.cpp -o /mnt/data/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/tests/cme_moderator_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_moderator_reset_readiness_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/include /mnt/data/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/tests/cme_moderator_reset_readiness_contract_test.cpp -o /mnt/data/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/CME-MODERATOR-PROD-W01_Production_Reset_And_Readiness_Contract/tests/cme_moderator_reset_readiness_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

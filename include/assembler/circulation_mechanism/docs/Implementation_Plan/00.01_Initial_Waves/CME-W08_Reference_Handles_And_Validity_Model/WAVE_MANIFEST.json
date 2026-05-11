@@ -1,0 +1,38 @@
+{
+  "wave_id": "CME-W08",
+  "wave_name": "Reference Handles And Validity Model",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T15:02:12.813598+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w08.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefDirection.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefId.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefKind.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TAccessRefScope.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TDispatchAccessRef.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TIngressAccessRef.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TNextRefToken.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TRoundScopedRef.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/handles/TSlotAccessRef.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/validity/TReferenceDirectionMismatchReport.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/validity/TReferenceInvalidationReport.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/validity/TReferenceValidityDecisionKind.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/validity/TReferenceValidityPolicy.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/validity/TStaleReferenceReport.hpp"
+  ],
+  "tests": [
+    "tests/cme_w08_reference_handles_validity_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W07_Waiting_Lists_And_Round_Manager_Skeleton"
+  ],
+  "excluded": [
+    "reference calculation algorithm",
+    "container locating",
+    "slot access execution",
+    "ingress placement",
+    "dispatch exposure",
+    "bridge protocol"
+  ]
+}

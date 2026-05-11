@@ -1,0 +1,33 @@
+{
+  "package_id": "CME-CONTAINER-PROD-W01",
+  "package_name": "Production Residency And Shape Contract",
+  "created_utc": "2026-05-10T00:32:52.945921+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "container storage",
+    "container creation semantics",
+    "container mutation",
+    "container time range ownership"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_container.hpp",
+    "include/assembler/circulation_mechanism/container/TContainer.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerOperationResult.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerOperationStatus.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerSlotLayoutView.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerStateTransitionReport.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerStateView.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerTimeRange.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerTimeRangeView.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerView.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerId.hpp",
+    "include/assembler/circulation_mechanism/ids/TSlotIndex.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlot.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TSlotState.hpp"
+  ],
+  "tests": [
+    "tests/cme_container_negative_compliance_test.cpp",
+    "tests/cme_container_production_residency_shape_test.cpp"
+  ]
+}

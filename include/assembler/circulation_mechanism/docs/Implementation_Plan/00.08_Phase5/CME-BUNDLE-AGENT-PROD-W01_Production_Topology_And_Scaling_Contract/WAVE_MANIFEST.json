@@ -1,0 +1,34 @@
+{
+  "package_id": "CME-BUNDLE-AGENT-PROD-W01",
+  "package_name": "Production Topology And Scaling Contract",
+  "created_utc": "2026-05-10T12:09:42.884390+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "container creation semantics",
+    "bundle topology authority",
+    "actual horizontal scaling",
+    "actual vertical scaling",
+    "dynamic scaling as constrained topology/scaling plan"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleAgentId.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleScalingPlan.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleScalingReport.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleScalingStatus.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleTopologyView.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TContainerFamilyId.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TContainerFamilyShape.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TDefaultEmptyContainerProfileReport.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TSlotsContainerBundleAgent.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TSlotsContainerBundleAgentConfig.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileId.hpp",
+    "include/assembler/circulation_mechanism/capacity/TScalingDirectionKind.hpp",
+    "include/assembler/circulation_mechanism/circulation_mechanism_bundle_agent.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointState.hpp",
+    "include/assembler/circulation_mechanism/state/TBundleAgentState.hpp"
+  ],
+  "tests": [
+    "tests/cme_bundle_agent_negative_compliance_test.cpp",
+    "tests/cme_bundle_agent_topology_scaling_contract_test.cpp"
+  ]
+}

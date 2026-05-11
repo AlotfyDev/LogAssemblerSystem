@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-W03_Capacity_Profiles_And_Container_Shape/include /mnt/data/CME-W03_Capacity_Profiles_And_Container_Shape/tests/cme_w03_capacity_profiles_smoke_test.cpp -o /mnt/data/CME-W03_Capacity_Profiles_And_Container_Shape/tests/cme_w03_capacity_profiles_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}

@@ -1,0 +1,25 @@
+{
+  "wave_id": "CME-W15",
+  "wave_name": "Integrated Smoke And Negative Compliance Suite",
+  "status": "Integration / Compliance Skeleton",
+  "created_utc": "2026-05-08T15:47:25.629149+00:00",
+  "tests": [
+    "tests/cme_w15_integrated_compile_smoke_test.cpp",
+    "tests/cme_w15_anti_collapse_compliance_test.cpp"
+  ],
+  "docs": [
+    "docs/NEGATIVE_COMPLIANCE_CATALOG.md",
+    "docs/INTEGRATED_COVERAGE_MATRIX.md"
+  ],
+  "depends_on": [
+    "CME-W01 through CME-W14"
+  ],
+  "excluded": [
+    "production runtime behavior",
+    "bridge runtime",
+    "read-side retry",
+    "actual reference calculation",
+    "actual ingress/dispatch mutation algorithms"
+  ],
+  "coverage_note": "The integrated compile smoke test avoids including W04 and W13 aggregate headers together because both currently define a TContainerTimeRange skeleton. W13 remains covered by the anti-collapse compliance test and its own wave smoke test. This is tracked as a naming/ownership convergence decision."
+}

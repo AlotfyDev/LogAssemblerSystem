@@ -1,0 +1,39 @@
+{
+  "wave_id": "CME-W09",
+  "wave_name": "ReferencePrecalculator Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T15:07:00.997620+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w09.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/TReferencePrecalculationStatus.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/TReferencePrecalculator.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/TReferencePrecalculatorId.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/policies/TReferenceSupplyPolicy.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/reports/TReferenceCandidateRejectionKind.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/reports/TReferenceCandidateRejectionReport.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/reports/TReferencePrecalculationReport.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/reports/TReferenceReportId.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/reports/TReferenceSupplyInterruptionReport.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/views/TDispatchReferenceSupplyView.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/views/TIngressReferenceSupplyView.hpp",
+    "include/assembler/circulation_mechanism/reference_precalculator/views/TReferenceSupplyView.hpp"
+  ],
+  "tests": [
+    "tests/cme_w09_reference_precalculator_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W07_Waiting_Lists_And_Round_Manager_Skeleton",
+    "CME-W08_Reference_Handles_And_Validity_Model"
+  ],
+  "excluded": [
+    "actual locating algorithm",
+    "reference pool implementation",
+    "waiting-list consumption",
+    "container registry resolution",
+    "slot selection",
+    "ingress placement",
+    "dispatch exposure",
+    "bridge protocol"
+  ]
+}

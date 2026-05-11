@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph INGRESS[Ingress / Container-Providing Cycle]
+        A[Prepared Envelope Outside Engine]
+        B[TIngressAccessRef]
+        C[TSlot inside TContainer]
+        A -->|payload moves into engine| B --> C
+    end
+
+    subgraph DISPATCH[Dispatch Cycle]
+        D[TSlot / TContainer inside Engine]
+        E[TDispatchAccessRef]
+        F[Bridge-Facing Boundary]
+        D -->|payload moves out of engine| E --> F
+    end
+
+    INGRESS -. shared mechanics .- X[Registry + WaitingList + RoundManager + ReferencePrecalculator]
+    DISPATCH -. shared mechanics .- X

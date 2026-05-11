@@ -1,0 +1,20 @@
+sequenceDiagram
+    autonumber
+    participant RM as RoundManager
+    participant DWL as TDispatchWaitingList
+    participant RP as ReferencePrecalculator
+    participant DIS as Dispatcher
+    participant BF as Bridge-Facing Adapter
+    participant REG as TContainerRegistry
+    participant C as TContainer
+    participant S as TSlot
+
+    RM->>REG: inspect dispatch-ready container state
+    RM->>DWL: register dispatch-eligible container index
+    DWL->>RP: provide ordered dispatch candidate indices
+    RP->>REG: resolve container/slot data
+    RP-->>DIS: prepare / issue TDispatchAccessRef
+    DIS->>S: access dispatch-ready envelope through ref
+    DIS-->>BF: expose passive dispatch view/ref
+    BF-->>DIS: optional pull observation / consumption report
+    DIS-->>C: transition exposure/release state as profile allows

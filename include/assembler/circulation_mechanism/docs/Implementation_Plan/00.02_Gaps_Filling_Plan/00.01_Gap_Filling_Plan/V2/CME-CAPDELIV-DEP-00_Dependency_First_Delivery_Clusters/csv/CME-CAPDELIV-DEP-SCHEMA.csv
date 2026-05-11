@@ -1,0 +1,8 @@
+﻿column_name,data_type,description
+cluster_id,string,Delivery cluster id
+cluster_order,integer,Recommended delivery order
+components,string,Pipe-delimited component keys
+depends_on_clusters,string,Pipe-delimited cluster ids
+delivery_order,integer,Topological component delivery order
+depended_on_by_count,integer,How many components depend on this component
+depends_on_count,integer,How many components this component depends on

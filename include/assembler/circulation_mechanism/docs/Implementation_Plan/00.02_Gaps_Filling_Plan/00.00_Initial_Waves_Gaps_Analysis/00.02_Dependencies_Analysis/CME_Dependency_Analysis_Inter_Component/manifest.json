@@ -1,0 +1,15 @@
+{
+  "package_id": "CME-DEP-ANALYSIS-INTER-COMPONENT",
+  "created_utc": "2026-05-09T14:50:44.899663+00:00",
+  "component_count": 21,
+  "edge_count": 126,
+  "files": [
+    "README.md",
+    "csv/CME-DEP-001_Component_Dependency_Edges.csv",
+    "csv/CME-DEP-002_Component_Dependency_Matrix.csv",
+    "csv/CME-DEP-003_Component_Dependency_Summary.csv",
+    "csv/CME-DEP-004_Dependency_Classification_Schema.csv",
+    "docs/CME-DEP-000_Method.md",
+    "docs/CME-DEP-001_Findings.md"
+  ]
+}

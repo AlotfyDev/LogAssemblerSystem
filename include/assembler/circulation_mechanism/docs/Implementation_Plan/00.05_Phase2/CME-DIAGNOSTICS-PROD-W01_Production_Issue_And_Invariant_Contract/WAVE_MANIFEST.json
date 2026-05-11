@@ -1,0 +1,39 @@
+{
+  "package_id": "CME-DIAGNOSTICS-PROD-W01",
+  "package_name": "Production Issue And Invariant Contract",
+  "created_utc": "2026-05-09T22:26:33.438403+00:00",
+  "gap_closure_type": "dependency_enabler_closure",
+  "direct_gap_area": [
+    "diagnostic storage",
+    "logging",
+    "telemetry export",
+    "recovery behavior"
+  ],
+  "delivered_capabilities": [
+    "typed diagnostic issue identity",
+    "diagnostic category/kind/severity",
+    "resolution hints",
+    "immutable diagnostic issue",
+    "invariant violation report",
+    "diagnostic collector contract",
+    "classification helpers",
+    "negative compliance tests"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_diagnostics.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticCategory.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticClassifiers.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticCollector.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticIssue.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticIssueId.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticIssueKind.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticResolutionHint.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticSeverity.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TDiagnosticValidationResult.hpp",
+    "include/assembler/circulation_mechanism/diagnostics/TInvariantViolationReport.hpp"
+  ],
+  "tests": [
+    "tests/cme_diagnostics_negative_compliance_test.cpp",
+    "tests/cme_diagnostics_production_issue_contract_test.cpp"
+  ]
+}

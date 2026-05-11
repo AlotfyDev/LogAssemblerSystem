@@ -1,0 +1,15 @@
+flowchart LR
+    PB[Pre-Bridge Write-Side Profile\nSingle Producer / Single Dispatcher\nPre-sized capacity\nPassive exposure]
+    BR[Bridge Boundary\nProtocol / Session / Channel]
+    RS[Read-Side Circulation Profile\nReceiver delay\nRetry\nFailed dispatch\nReceiver ack]
+    ADD[Addons / Final Receiver]
+
+    PB --> BR --> RS --> ADD
+
+    PB -. excludes .-> X1[Receiver backpressure]
+    PB -. excludes .-> X2[Failed-dispatch retry list]
+    PB -. excludes .-> X3[Final receiver lifecycle]
+
+    RS -. may own .-> X1
+    RS -. may own .-> X2
+    RS -. may own .-> X3

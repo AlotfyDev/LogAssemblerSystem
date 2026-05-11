@@ -1,0 +1,36 @@
+flowchart LR
+    subgraph Invariants
+        I1[Uniform Capacity]
+        I2[Valid Registry Index]
+        I3[No Envelope In Waiting List]
+        I4[No Candidate In Closed Round]
+        I5[No Access Without Valid Ref]
+        I6[No Reset Outside Safe Point]
+        I7[No Mutable Internal Boundary Exposure]
+    end
+
+    subgraph Reports
+        R1[TBundleInvariantReport]
+        R2[TContainerRegistryInvariantReport]
+        R3[TWaitingListInvariantReport]
+        R4[TRoundInvariantReport]
+        R5[TStaleReferenceReport]
+        R6[TSafePointViolationReport]
+        R7[TMutableInternalExposureViolationReport]
+    end
+
+    I1 --> R1
+    I2 --> R2
+    I3 --> R3
+    I4 --> R4
+    I5 --> R5
+    I6 --> R6
+    I7 --> R7
+
+    R1 --> D[Diagnostics Surface]
+    R2 --> D
+    R3 --> D
+    R4 --> D
+    R5 --> D
+    R6 --> D
+    R7 --> D

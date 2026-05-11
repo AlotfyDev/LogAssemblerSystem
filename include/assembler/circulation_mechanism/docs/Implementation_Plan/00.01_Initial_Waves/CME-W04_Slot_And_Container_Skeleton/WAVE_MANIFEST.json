@@ -1,0 +1,37 @@
+{
+  "wave_id": "CME-W04",
+  "wave_name": "Slot And Container Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T14:18:24.299671+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w04.hpp",
+    "include/assembler/circulation_mechanism/container/TContainer.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerSlotLayoutView.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerStateTransitionReport.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerStateView.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerTimeRange.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerTimeRangeView.hpp",
+    "include/assembler/circulation_mechanism/container/TContainerView.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlot.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotOccupancyView.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotTransitionReport.hpp",
+    "include/assembler/circulation_mechanism/slot/TSlotView.hpp"
+  ],
+  "tests": [
+    "tests/cme_w04_slot_container_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W02_Views_Reports_And_Diagnostics_Primitives",
+    "CME-W03_Capacity_Profiles_And_Container_Shape"
+  ],
+  "excluded": [
+    "container registry",
+    "actual envelope storage",
+    "reference calculation",
+    "ingress placement",
+    "dispatch exposure",
+    "safe-point algorithms",
+    "eviction execution"
+  ]
+}

@@ -1,0 +1,25 @@
+flowchart LR
+    BA["BundleAgent\ncreates/scales"]
+    REG["TContainerRegistry\nowns indexed storage"]
+    IDX0["Index 0"]
+    IDX1["Index 1"]
+    IDXN["Index N"]
+    C0["TContainer[0]"]
+    C1["TContainer[1]"]
+    CN["TContainer[N]"]
+    IWL["TIngressWaitingList\nindices only"]
+    DWL["TDispatchWaitingList\nindices only"]
+    RPC["ReferencePrecalculator\nresolves index + state + slot layout"]
+    INGREF["TIngressAccessRef"]
+    DISREF["TDispatchAccessRef"]
+
+    BA --> REG
+    REG --> IDX0 --> C0
+    REG --> IDX1 --> C1
+    REG --> IDXN --> CN
+    IWL --> IDX0
+    DWL --> IDX1
+    IDX0 --> RPC
+    IDX1 --> RPC
+    RPC --> INGREF
+    RPC --> DISREF

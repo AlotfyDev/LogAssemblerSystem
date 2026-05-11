@@ -1,0 +1,9 @@
+*.hpp text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.cxx text eol=lf
+*.ipp text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.mmd text eol=lf

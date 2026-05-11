@@ -1,0 +1,14 @@
+stateDiagram-v2
+    [*] --> empty
+    empty --> reserved_for_ingress: ref prepared/reserved
+    reserved_for_ingress --> occupied: ingress places envelope
+    occupied --> sealed: container/round policy
+    sealed --> dispatch_ready: dispatch readiness
+    dispatch_ready --> dispatch_exposed: dispatcher exposes
+    dispatch_exposed --> released: exposure closed/consumed
+    released --> recyclable: release policy
+    recyclable --> empty: container reset
+    empty --> faulted: invariant violation
+    reserved_for_ingress --> faulted: invalid access
+    occupied --> faulted: illegal mutation
+    dispatch_exposed --> faulted: stale ref / invalid release

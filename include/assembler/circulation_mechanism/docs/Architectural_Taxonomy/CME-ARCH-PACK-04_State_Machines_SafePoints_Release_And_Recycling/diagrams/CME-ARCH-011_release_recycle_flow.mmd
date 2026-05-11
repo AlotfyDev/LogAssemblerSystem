@@ -1,0 +1,16 @@
+flowchart TD
+    A[Dispatch exposure active] --> B{Bridge consumed / exposure closed?}
+    B -- No --> C[Remain passive_exposed]
+    B -- Yes --> D[Exposure release]
+    D --> E[Dispatch completed]
+    E --> F[Container reset_pending]
+    F --> G{Safe point available?}
+    G -- No --> H[Wait / report pending]
+    G -- Yes --> I[Moderator claims reset]
+    I --> J[Apply default empty container profile]
+    J --> K[Clear slot states to empty]
+    K --> L[Clear container time range]
+    L --> M[Invalidate old references]
+    M --> N[Container default_empty]
+    N --> O[Container ingress_ready]
+    O --> P[RoundManager may admit to ingress waiting list]

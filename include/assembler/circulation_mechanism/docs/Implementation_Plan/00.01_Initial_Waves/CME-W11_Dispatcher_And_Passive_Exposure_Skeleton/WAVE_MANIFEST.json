@@ -1,0 +1,45 @@
+{
+  "wave_id": "CME-W11",
+  "wave_name": "Dispatcher And Passive Exposure Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T15:17:16.905318+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w11.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatchExposureStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatcher.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatcherId.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/TDispatcherStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/boundary/TDispatchBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/boundary/TDispatchBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/boundary/TDispatchBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/profiles/TDispatchProfileKind.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/profiles/TPassivePullDispatchProfile.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/profiles/TPushDispatchProfile.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TBoundaryAssumptionBrokenReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TDispatchExposureReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TDispatchReportId.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TPassiveExposureReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/reports/TPushDispatchAttemptReport.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatchBoundaryView.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatchExposureView.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatchReadyView.hpp",
+    "include/assembler/circulation_mechanism/dispatcher/views/TDispatcherView.hpp"
+  ],
+  "tests": [
+    "tests/cme_w11_dispatcher_passive_exposure_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W08_Reference_Handles_And_Validity_Model",
+    "CME-W09_ReferencePrecalculator_Skeleton"
+  ],
+  "excluded": [
+    "bridge protocol",
+    "receiver lifecycle",
+    "actual payload copy/move",
+    "push dispatch execution",
+    "reference calculation",
+    "container scan",
+    "dispatch release/recycle"
+  ]
+}

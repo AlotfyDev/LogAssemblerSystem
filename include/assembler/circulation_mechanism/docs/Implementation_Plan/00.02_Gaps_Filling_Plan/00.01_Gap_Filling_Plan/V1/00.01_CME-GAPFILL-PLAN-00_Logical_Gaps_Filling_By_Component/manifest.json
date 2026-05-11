@@ -1,0 +1,23 @@
+{
+  "package_id": "CME-GAPFILL-PLAN-00",
+  "created_utc": "2026-05-09T12:47:56.005983+00:00",
+  "component_priority_rows": 18,
+  "gap_detail_rows": 76,
+  "proposed_new_subcomponents": 41,
+  "existing_update_rows": 11,
+  "deferred_review_guard_rows": 27,
+  "files": [
+    "README.md",
+    "csv/CME-GAPFILL-001_Component_Gapfill_Priority_Map.csv",
+    "csv/CME-GAPFILL-002_Gapfill_By_Component_Detail.csv",
+    "csv/CME-GAPFILL-003_New_Subcomponents_Creation_Roadmap.csv",
+    "csv/CME-GAPFILL-004_Existing_Subcomponents_Update_Roadmap.csv",
+    "csv/CME-GAPFILL-005_Defer_Review_And_AntiCollapse_Register.csv",
+    "csv/CME-GAPFILL-SCHEMA.csv",
+    "docs/CME-GAPFILL-000_Index_And_Method.md",
+    "docs/CME-GAPFILL-002_Logical_Gaps_Filling_By_Component.md",
+    "docs/CME-GAPFILL-003_New_Subcomponents_Creation_Roadmap.md",
+    "docs/CME-GAPFILL-004_Existing_Subcomponents_Update_Roadmap.md",
+    "docs/CME-GAPFILL-005_Defer_Review_And_AntiCollapse_Register.md"
+  ]
+}

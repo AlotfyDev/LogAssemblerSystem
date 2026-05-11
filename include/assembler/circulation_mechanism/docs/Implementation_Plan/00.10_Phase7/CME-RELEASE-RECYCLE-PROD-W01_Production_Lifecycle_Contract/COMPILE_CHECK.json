@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_release_recycle_lifecycle_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/include /mnt/data/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/tests/cme_release_recycle_lifecycle_contract_test.cpp -o /mnt/data/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/tests/cme_release_recycle_lifecycle_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_release_recycle_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/include /mnt/data/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/tests/cme_release_recycle_negative_compliance_test.cpp -o /mnt/data/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/CME-RELEASE-RECYCLE-PROD-W01_Production_Lifecycle_Contract/tests/cme_release_recycle_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

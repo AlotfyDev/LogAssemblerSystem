@@ -1,0 +1,21 @@
+flowchart TD
+    BA["SlotsContainerBundleAgent"]
+    PROF["Uniform Capacity Profile"]
+    DEF["Default Empty Container Profile"]
+    REG["TContainerRegistry"]
+    C["Concrete TContainer"]
+    MOD["SlotsContainerModerator"]
+    CVIEW["TContainerStateView"]
+    RPT["TContainerResetReport"]
+
+    BA --> PROF
+    BA --> DEF
+    BA --> REG
+    REG --> C
+    DEF --> MOD
+    C --> MOD
+    MOD --> CVIEW
+    MOD --> RPT
+    MOD -->|"reset at safe point"| C
+    PROF -. "must match" .-> DEF
+    PROF -. "must match" .-> C

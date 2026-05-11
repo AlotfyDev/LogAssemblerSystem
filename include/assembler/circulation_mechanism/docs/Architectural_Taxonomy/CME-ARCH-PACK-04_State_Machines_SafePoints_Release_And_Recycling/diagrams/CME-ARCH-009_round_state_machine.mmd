@@ -1,0 +1,19 @@
+stateDiagram-v2
+    [*] --> idle
+    idle --> collecting_candidates
+    collecting_candidates --> open
+    open --> locked
+    locked --> draining
+    draining --> closing
+    closing --> closed
+    closed --> completed
+    completed --> [*]
+
+    open --> aborted
+    locked --> aborted
+    draining --> aborted
+    aborted --> [*]
+
+    open --> invariant_violation: illegal membership
+    closed --> invariant_violation: registration after closure
+    invariant_violation --> aborted

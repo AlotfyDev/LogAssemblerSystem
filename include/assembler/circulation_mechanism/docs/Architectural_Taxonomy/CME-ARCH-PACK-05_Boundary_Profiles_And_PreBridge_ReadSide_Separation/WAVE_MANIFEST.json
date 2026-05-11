@@ -1,0 +1,23 @@
+{
+  "package_id": "CME-ARCH-PACK-05",
+  "package_name": "Boundary Profiles And Pre-Bridge / Read-Side Separation",
+  "status": "Architecture Specification Draft",
+  "documents": [
+    "CME-ARCH-012_Dispatch_Output_Boundary_And_Passive_Pull_Profile.md",
+    "CME-ARCH-013_PreBridge_WriteSide_Profile_And_ReadSide_Profile_Separation.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-012_passive_pull_dispatch.mmd",
+    "diagrams/CME-ARCH-012_optional_push_dispatch.mmd",
+    "diagrams/CME-ARCH-013_prebridge_vs_readside_profiles.mmd"
+  ],
+  "created_utc": "2026-05-08T12:14:38.891819+00:00",
+  "implementation_direction": "C++17 header-only-first; architecture before headers",
+  "core_rules": [
+    "Dispatch output is exposure, not final delivery.",
+    "Passive pull is the default dispatch profile.",
+    "Push dispatch is optional and profile-bound.",
+    "Pre-bridge write-side profile does not own read-side receiver delay/retry.",
+    "Bridge-side contract owns copy/move semantics."
+  ]
+}

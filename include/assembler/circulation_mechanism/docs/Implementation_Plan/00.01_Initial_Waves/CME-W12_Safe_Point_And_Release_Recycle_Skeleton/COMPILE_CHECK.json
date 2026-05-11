@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-W01_Foundational_Identity_And_State_Types/include -I /mnt/data/CME-W04_Slot_And_Container_Skeleton/include -I /mnt/data/CME-W08_Reference_Handles_And_Validity_Model/include -I /mnt/data/CME-W11_Dispatcher_And_Passive_Exposure_Skeleton/include -I /mnt/data/CME-W12_Safe_Point_And_Release_Recycle_Skeleton/include /mnt/data/CME-W12_Safe_Point_And_Release_Recycle_Skeleton/tests/cme_w12_safe_point_release_recycle_smoke_test.cpp -o /mnt/data/CME-W12_Safe_Point_And_Release_Recycle_Skeleton/tests/cme_w12_safe_point_release_recycle_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}

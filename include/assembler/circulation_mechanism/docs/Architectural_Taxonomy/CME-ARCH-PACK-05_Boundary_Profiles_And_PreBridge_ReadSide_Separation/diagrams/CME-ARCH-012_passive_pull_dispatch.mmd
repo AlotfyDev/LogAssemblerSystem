@@ -1,0 +1,14 @@
+sequenceDiagram
+    autonumber
+    participant RP as ReferencePrecalculator
+    participant DIS as Dispatcher
+    participant EXP as Dispatch Exposure View
+    participant BF as Bridge-Facing Adapter
+    participant RS as Read-Side / Receiver Boundary
+
+    RP-->>DIS: TDispatchAccessRef
+    DIS->>EXP: create passive exposure
+    BF->>EXP: pull / observe exposed material
+    BF->>RS: transfer under bridge/read-side contract
+    BF-->>DIS: optional bridge pull observation
+    DIS->>DIS: transition exposure state / release policy

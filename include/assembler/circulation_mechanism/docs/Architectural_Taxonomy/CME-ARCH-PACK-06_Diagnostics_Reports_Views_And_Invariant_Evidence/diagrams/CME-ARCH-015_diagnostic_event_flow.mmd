@@ -1,0 +1,16 @@
+sequenceDiagram
+    autonumber
+    participant C as Component / Guard
+    participant V as Local View
+    participant D as Diagnostic Classifier
+    participant R as Diagnostic Report
+    participant S as Diagnostics Surface
+    participant T as Tests / Readiness Gate
+
+    C->>V: observe state / expected condition
+    C->>D: compare expected vs observed
+    D->>D: classify category + severity
+    D->>R: create report
+    R->>S: publish diagnostic evidence
+    R->>T: support validation / readiness
+    Note over R,S: Report does not mutate runtime behavior by itself.

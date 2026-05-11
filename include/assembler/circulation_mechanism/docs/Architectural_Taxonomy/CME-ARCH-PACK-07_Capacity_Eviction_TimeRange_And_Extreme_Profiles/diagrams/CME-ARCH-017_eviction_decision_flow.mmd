@@ -1,0 +1,22 @@
+flowchart TD
+    A[Capacity boundary reached] --> B{Eviction profile}
+    B -- NoEvictionPreBridgeProfile --> C[Emit ExtremeProfileInsufficientReport]
+    B -- DelegateToReadSideProfile --> D[Emit CapacityDelegatedToReadSideReport]
+    B -- FifoContainerEviction --> E[Select FIFO candidate]
+    B -- OldestTimeRangeEviction --> F[Select oldest TContainerTimeRange]
+    B -- EmergencyEvictionProfile --> G[Select emergency candidate]
+
+    E --> H[Validate candidate]
+    F --> H
+    G --> H
+
+    H --> I{Safe to evict?}
+    I -- No --> J[Emit TEvictionRejectedReport]
+    I -- Yes --> K{Active refs?}
+    K -- Yes --> L[Invalidate / wait / reject]
+    K -- No --> M{Active ingress / dispatch / round?}
+    M -- Yes --> J
+    M -- No --> N[Claim eviction safe point]
+    N --> O[Apply eviction]
+    O --> P[Update registry/waiting lists]
+    P --> Q[Emit TEvictionAppliedReport]

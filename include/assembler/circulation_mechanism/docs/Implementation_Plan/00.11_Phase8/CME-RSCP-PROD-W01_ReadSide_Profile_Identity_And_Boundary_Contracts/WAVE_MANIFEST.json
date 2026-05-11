@@ -1,0 +1,39 @@
+{
+  "package_id": "CME-RSCP-PROD-W01",
+  "package_name": "ReadSide Profile Identity And Boundary Contracts",
+  "created_utc": "2026-05-10T18:56:42.214020+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "read-side profile",
+    "receiver/addon contract",
+    "bridge pull/push semantics boundary foundation",
+    "copy/move/borrow transfer semantic descriptor"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideCirculationProfile.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideProfileId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideProfileStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/TReadSideProfileValidationResult.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionMode.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/admission/TReadSideAdmissionStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeBoundaryContractDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeBoundaryContractId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeBoundaryContractStatus.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/boundary_contracts/TPostBridgeTransferSemantic.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/read_side_circulation_profile_w01.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverContextDescriptor.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverContextId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverContextKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_context/TReceiverLifecycleExpectation.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideProfileIssueKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideProfileReadinessReport.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideProfileReportId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TReadSideProfileView.hpp"
+  ],
+  "tests": [
+    "tests/cme_rscp_w01_negative_compliance_test.cpp",
+    "tests/cme_rscp_w01_profile_boundary_contract_test.cpp"
+  ]
+}

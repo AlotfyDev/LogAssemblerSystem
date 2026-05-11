@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_waiting_list_anti_payload_storage_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/include /mnt/data/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/tests/cme_waiting_list_anti_payload_storage_test.cpp -o /mnt/data/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/tests/cme_waiting_list_anti_payload_storage_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_waiting_list_eligibility_ordering_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/include /mnt/data/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/tests/cme_waiting_list_eligibility_ordering_contract_test.cpp -o /mnt/data/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/CME-WAITING-LIST-PROD-W01_Production_Eligibility_And_Ordering_Contract/tests/cme_waiting_list_eligibility_ordering_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

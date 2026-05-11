@@ -1,0 +1,22 @@
+stateDiagram-v2
+    [*] --> prepared
+    prepared --> issued
+    issued --> consumed
+    issued --> expired
+    issued --> invalidated
+    issued --> blocked_by_state
+    blocked_by_state --> invalidated
+    expired --> stale_detected
+    invalidated --> stale_detected
+    consumed --> [*]
+    stale_detected --> [*]
+
+    note right of issued
+        Ref may be used only while:
+        direction valid
+        round valid
+        registry generation valid
+        container state compatible
+        slot state compatible
+        safe point not invalidating
+    end note

@@ -1,0 +1,30 @@
+{
+  "package_id": "CME-ROUNDMANAGER-PROD-W01",
+  "package_name": "Production Membership And Round Lifecycle Contract",
+  "created_utc": "2026-05-10T13:10:32.067902+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "round management",
+    "dynamic scheduling as round policy",
+    "waiting-list admission dependency"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_round_manager.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/ids/TRoundId.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundAdmissionDecisionKind.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundAdmissionReport.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundClosureReport.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundKind.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundLifecycleStatus.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundManager.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundMembershipView.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundView.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TRoundState.hpp"
+  ],
+  "tests": [
+    "tests/cme_round_manager_membership_lifecycle_contract_test.cpp",
+    "tests/cme_round_manager_negative_compliance_test.cpp"
+  ]
+}

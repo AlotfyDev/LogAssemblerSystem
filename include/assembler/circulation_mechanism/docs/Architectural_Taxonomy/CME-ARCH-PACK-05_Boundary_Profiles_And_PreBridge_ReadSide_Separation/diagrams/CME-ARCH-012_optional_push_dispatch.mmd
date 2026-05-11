@@ -1,0 +1,17 @@
+sequenceDiagram
+    autonumber
+    participant RP as ReferencePrecalculator
+    participant DIS as Dispatcher
+    participant AD as Output Adapter
+    participant BR as Bridge
+    participant RS as Read-Side / Receiver Boundary
+
+    RP-->>DIS: TDispatchAccessRef
+    DIS->>DIS: validate push dispatch profile
+    DIS->>AD: push dispatch attempt
+    AD->>BR: bridge-facing send/action
+    BR->>RS: bridge/read-side transfer
+    AD-->>DIS: push attempt result
+    DIS->>DIS: report push result / update exposure state
+
+    Note over DIS,RS: Push is optional profile-bound behavior, not CME core identity.

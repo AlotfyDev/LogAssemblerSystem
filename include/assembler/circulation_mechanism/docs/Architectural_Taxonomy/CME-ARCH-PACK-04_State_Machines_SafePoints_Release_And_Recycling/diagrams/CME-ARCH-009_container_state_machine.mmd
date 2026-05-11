@@ -1,0 +1,18 @@
+stateDiagram-v2
+    [*] --> default_empty
+    default_empty --> ingress_ready: moderator exposes readiness
+    ingress_ready --> ingress_round_member: RoundManager admits
+    ingress_round_member --> receiving: ingress round starts
+    receiving --> filled_or_closed: ingress closed/full
+    filled_or_closed --> dispatch_candidate: dispatch eligibility
+    dispatch_candidate --> dispatch_round_member: RoundManager admits
+    dispatch_round_member --> dispatch_exposed: Dispatcher exposes
+    dispatch_exposed --> dispatch_completed: exposure lifecycle complete
+    dispatch_completed --> reset_pending: release policy
+    reset_pending --> under_moderation: moderator claims reset
+    under_moderation --> default_empty: reset applied
+    default_empty --> inactive: bundle/profile
+    inactive --> default_empty: reactivated
+    dispatch_candidate --> evicted: eviction safe point
+    default_empty --> faulted: invariant violation
+    under_moderation --> faulted: reset failure

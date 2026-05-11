@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_dispatcher_negative_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/include /mnt/data/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/tests/cme_dispatcher_negative_compliance_test.cpp -o /mnt/data/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/tests/cme_dispatcher_negative_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_dispatcher_production_exposure_execution_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/include /mnt/data/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/tests/cme_dispatcher_production_exposure_execution_test.cpp -o /mnt/data/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/CME-DISPATCHER-PROD-W01_Production_Exposure_Execution_Contract/tests/cme_dispatcher_production_exposure_execution_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

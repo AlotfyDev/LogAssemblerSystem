@@ -1,0 +1,42 @@
+{
+  "wave_id": "CME-RSCP-W02",
+  "wave_name": "Failed Dispatch And Retry Profile",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-09T13:31:55.651851+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/failed_dispatch/TFailedDispatchId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/failed_dispatch/TFailedDispatchKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/failed_dispatch/TFailedDispatchRecord.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/failed_dispatch/TFailedDispatchState.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/read_side_circulation_profile_w02.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_acknowledgement/TReceiverAcknowledgementId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_acknowledgement/TReceiverAcknowledgementRecord.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/receiver_acknowledgement/TReceiverAcknowledgementState.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideRetryIssueKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideRetryReport.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/reports/TReadSideRetryReportId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/retry/TReadSideRetryProfile.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/retry/TRetryAttempt.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/retry/TRetryAttemptId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/retry/TRetryAttemptState.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/retry/TRetryPolicyKind.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/retry/TRetryProfileId.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TFailedDispatchView.hpp",
+    "include/assembler/circulation_mechanism/read_side_circulation_profile/views/TRetryProfileView.hpp"
+  ],
+  "tests": [
+    "tests/cme_rscp_w02_failed_dispatch_retry_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-RSCP-W01_ReadSide_Profile_Identity_And_Boundary_Contracts"
+  ],
+  "excluded": [
+    "retry algorithm",
+    "failed-dispatch waiting list",
+    "receiver acknowledgement execution",
+    "bridge recovery",
+    "persistence adapter",
+    "backpressure algorithm",
+    "delayed release algorithm"
+  ]
+}

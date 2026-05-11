@@ -1,0 +1,40 @@
+{
+  "wave_id": "CME-W07",
+  "wave_name": "Waiting Lists And Round Manager Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T14:37:18.350965+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_w07.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundAdmissionDecisionKind.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundAdmissionReport.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundClosureReport.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundKind.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundManager.hpp",
+    "include/assembler/circulation_mechanism/round_manager/TRoundView.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TDispatchWaitingList.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TDispatchWaitingListRegistrationReport.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TDispatchWaitingListView.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TIngressWaitingList.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TIngressWaitingListRegistrationReport.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TIngressWaitingListView.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TWaitingListEntry.hpp",
+    "include/assembler/circulation_mechanism/waiting_list/TWaitingListState.hpp"
+  ],
+  "tests": [
+    "tests/cme_w07_waiting_lists_round_manager_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W05_Container_Registry_Skeleton",
+    "CME-W06_Bundle_Agent_And_Moderator_Skeleton"
+  ],
+  "excluded": [
+    "reference calculation",
+    "ingress placement",
+    "dispatch exposure",
+    "container reset",
+    "registry rebuild",
+    "bridge handoff",
+    "envelope storage in waiting lists"
+  ]
+}

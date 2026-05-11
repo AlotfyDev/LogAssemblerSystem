@@ -1,0 +1,37 @@
+{
+  "package_id": "CME-CAPACITY-PROD-W01",
+  "package_name": "Production Profile And Scaling Contract",
+  "created_utc": "2026-05-09T23:33:16.700435+00:00",
+  "gap_closure_type": "direct_gap_closure + dependency_enabler_closure",
+  "delivered_capabilities": [
+    "capacity profile validation",
+    "uniform capacity invariant",
+    "ingress/dispatch capacity validation",
+    "scaling plan validation",
+    "extreme default profile validation",
+    "negative compliance"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/capacity/TCapacityGenerationId.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityIssueKind.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileId.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileKind.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileReport.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityProfileStatus.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCapacityValidationResult.hpp",
+    "include/assembler/circulation_mechanism/capacity/TCirculationCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TDispatchCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TExtremeDefaultProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/THorizontalScalingProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TIngressCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TScalingDirectionKind.hpp",
+    "include/assembler/circulation_mechanism/capacity/TUniformCapacityInvariantReport.hpp",
+    "include/assembler/circulation_mechanism/capacity/TUniformContainerCapacityProfile.hpp",
+    "include/assembler/circulation_mechanism/capacity/TVerticalScalingProfile.hpp",
+    "include/assembler/circulation_mechanism/circulation_mechanism_capacity.hpp"
+  ],
+  "tests": [
+    "tests/cme_capacity_negative_compliance_test.cpp",
+    "tests/cme_capacity_production_profile_contract_test.cpp"
+  ]
+}

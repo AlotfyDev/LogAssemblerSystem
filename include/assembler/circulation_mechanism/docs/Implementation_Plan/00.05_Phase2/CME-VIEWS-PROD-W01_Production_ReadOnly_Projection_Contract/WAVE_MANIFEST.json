@@ -1,0 +1,31 @@
+{
+  "package_id": "CME-VIEWS-PROD-W01",
+  "package_name": "Production Read-Only Projection Contract",
+  "created_utc": "2026-05-09T21:42:36.499511+00:00",
+  "gap_closure_type": "dependency_enabler_closure",
+  "direct_gap_ids": [
+    "component-specific views"
+  ],
+  "delivered_capabilities": [
+    "typed view identity",
+    "read-only non-aggregate descriptor",
+    "scope/stability/visibility validation",
+    "boundary-safe validation",
+    "diagnostic visibility classification",
+    "anti-mutation compliance tests"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_views.hpp",
+    "include/assembler/circulation_mechanism/views/TReadOnlyViewDescriptor.hpp",
+    "include/assembler/circulation_mechanism/views/TViewContractIssueKind.hpp",
+    "include/assembler/circulation_mechanism/views/TViewId.hpp",
+    "include/assembler/circulation_mechanism/views/TViewScope.hpp",
+    "include/assembler/circulation_mechanism/views/TViewStability.hpp",
+    "include/assembler/circulation_mechanism/views/TViewValidationResult.hpp",
+    "include/assembler/circulation_mechanism/views/TViewVisibility.hpp"
+  ],
+  "tests": [
+    "tests/cme_views_anti_mutation_compliance_test.cpp",
+    "tests/cme_views_production_readonly_contract_test.cpp"
+  ]
+}

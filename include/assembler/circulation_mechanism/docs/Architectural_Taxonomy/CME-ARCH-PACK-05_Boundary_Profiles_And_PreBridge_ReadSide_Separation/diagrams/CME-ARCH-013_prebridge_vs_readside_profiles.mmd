@@ -1,0 +1,27 @@
+flowchart LR
+    subgraph PB[Pre-Bridge Write-Side Circulation Profile]
+        A[Single Producer: Log API]
+        B[Ingress Cycle]
+        C[Container Registry + Slots]
+        D[Dispatch Cycle]
+        E[Passive Output Exposure]
+    end
+
+    subgraph BR[Bridge Boundary]
+        F[Bridge-Facing Adapter]
+        G[Bridge Orchestrator / Protocol / Session]
+    end
+
+    subgraph RS[Read-Side Circulation Profile]
+        H[Receiver-Side Admission]
+        I[Failed Dispatch / Retry optional]
+        J[Receiver Delay / Backpressure]
+        K[Add-on / End Receiver]
+    end
+
+    A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K
+
+    PB -. does not own .-> G
+    PB -. does not own .-> I
+    PB -. does not own .-> J
+    PB -. does not own .-> K

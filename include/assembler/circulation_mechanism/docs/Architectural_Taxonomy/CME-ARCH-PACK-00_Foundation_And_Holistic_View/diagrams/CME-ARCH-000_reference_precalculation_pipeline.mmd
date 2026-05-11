@@ -1,0 +1,19 @@
+flowchart TB
+    WL[Waiting Lists\ncontainer registry indices]
+    REG[TContainerRegistry]
+    CS[TContainerState]
+    SS[TSlotState]
+    RC[Round Context]
+    RP[ReferencePrecalculator]
+    IR[TIngressAccessRef]
+    DR[TDispatchAccessRef]
+    ING[Ingress Consumer]
+    DSP[Dispatcher / Bridge-Facing Consumer]
+
+    WL --> RP
+    REG --> RP
+    CS --> RP
+    SS --> RP
+    RC --> RP
+    RP --> IR --> ING
+    RP --> DR --> DSP

@@ -1,0 +1,12 @@
+﻿column_name,data_type,description
+dependency_edge_id,string,Unique edge id
+source_component_key,string,Dependent component
+target_component_key,string,Dependency component
+dependency_type,enum/string,"Kind of dependency: identity, state_vocabulary, storage, profile, etc."
+dependency_strength,enum,"strong, medium, weak"
+dependency_direction,string,source_depends_on_target
+scope,string,inter_component
+status,string,"accepted, proposed, review"
+rationale,string,Reason for dependency
+is_runtime_dependency,boolean,Whether dependency is runtime-use rather than only type/metadata
+is_compile_time_candidate,boolean,Whether likely compile-time include/type dependency candidate

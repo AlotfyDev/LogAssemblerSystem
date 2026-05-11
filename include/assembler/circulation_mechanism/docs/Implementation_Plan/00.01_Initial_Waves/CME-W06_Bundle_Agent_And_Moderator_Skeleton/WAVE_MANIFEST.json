@@ -1,0 +1,40 @@
+{
+  "wave_id": "CME-W06",
+  "wave_name": "Bundle Agent And Moderator Skeleton",
+  "status": "Implementation Skeleton",
+  "created_utc": "2026-05-08T14:31:43.605086+00:00",
+  "headers": [
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleAgentId.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleScalingReport.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TBundleTopologyView.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TContainerFamilyId.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TDefaultEmptyContainerProfileReport.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TSlotsContainerBundleAgent.hpp",
+    "include/assembler/circulation_mechanism/bundle_agent/TSlotsContainerBundleAgentConfig.hpp",
+    "include/assembler/circulation_mechanism/circulation_mechanism_w06.hpp",
+    "include/assembler/circulation_mechanism/moderator/TContainerResetReport.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModeratedContainerView.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModeratorId.hpp",
+    "include/assembler/circulation_mechanism/moderator/TModeratorReadinessView.hpp",
+    "include/assembler/circulation_mechanism/moderator/TSlotsContainerModerator.hpp",
+    "include/assembler/circulation_mechanism/moderator/TSlotsContainerModeratorConfig.hpp"
+  ],
+  "tests": [
+    "tests/cme_w06_bundle_agent_moderator_smoke_test.cpp"
+  ],
+  "depends_on": [
+    "CME-W01_Foundational_Identity_And_State_Types",
+    "CME-W03_Capacity_Profiles_And_Container_Shape",
+    "CME-W04_Slot_And_Container_Skeleton",
+    "CME-W05_Container_Registry_Skeleton"
+  ],
+  "excluded": [
+    "actual scaling execution",
+    "container reset algorithm",
+    "registry rebuild",
+    "waiting-list admission",
+    "reference calculation",
+    "ingress placement",
+    "dispatch exposure"
+  ]
+}

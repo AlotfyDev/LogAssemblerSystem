@@ -1,0 +1,20 @@
+sequenceDiagram
+    autonumber
+    participant LAPI as Log API Envelope Provider Plugin Adapter
+    participant RM as RoundManager
+    participant WL as TIngressWaitingList
+    participant RP as ReferencePrecalculator
+    participant ING as Ingress
+    participant REG as TContainerRegistry
+    participant C as TContainer
+    participant S as TSlot
+
+    RM->>REG: inspect container state/readiness views
+    RM->>WL: register eligible container registry index
+    WL->>RP: provide ordered ingress candidate indices
+    RP->>REG: resolve container data and slot state
+    RP-->>ING: prepare / issue TIngressAccessRef
+    LAPI-->>ING: provide prepared envelope
+    ING->>S: place envelope through valid ingress ref
+    S-->>C: update occupancy/state relation
+    C-->>RM: update readiness for next progression

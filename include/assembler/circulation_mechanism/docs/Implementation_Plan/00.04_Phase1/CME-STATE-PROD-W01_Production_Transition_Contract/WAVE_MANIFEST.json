@@ -1,0 +1,33 @@
+{
+  "package_id": "CME-STATE-PROD-W01",
+  "package_name": "Production Transition Contract",
+  "created_utc": "2026-05-09T18:33:13.058160+00:00",
+  "gap_closure_type": "dependency_enabler_closure",
+  "direct_gap_ids": [],
+  "delivered_capabilities": [
+    "state classification helpers",
+    "transition eligibility helpers",
+    "transition result carrier",
+    "transition validators",
+    "negative transition compliance"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_state.hpp",
+    "include/assembler/circulation_mechanism/state/TBundleAgentState.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TDispatchExposureState.hpp",
+    "include/assembler/circulation_mechanism/state/TModeratorState.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceSupplyState.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceValidityState.hpp",
+    "include/assembler/circulation_mechanism/state/TRoundState.hpp",
+    "include/assembler/circulation_mechanism/state/TSafePointState.hpp",
+    "include/assembler/circulation_mechanism/state/TSlotState.hpp",
+    "include/assembler/circulation_mechanism/state/TStateTransitionIssueKind.hpp",
+    "include/assembler/circulation_mechanism/state/TStateTransitionResult.hpp",
+    "include/assembler/circulation_mechanism/state/TStateTransitionValidator.hpp"
+  ],
+  "tests": [
+    "tests/cme_state_negative_transition_compliance_test.cpp",
+    "tests/cme_state_production_transition_contract_test.cpp"
+  ]
+}

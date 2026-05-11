@@ -1,0 +1,22 @@
+flowchart TD
+    A[RoundManager admits eligible container index] --> B{Which waiting list?}
+    B -- Ingress --> C[TIngressWaitingList]
+    B -- Dispatch --> D[TDispatchWaitingList]
+
+    C --> E[ReferencePrecalculator consumes ingress indices]
+    D --> F[ReferencePrecalculator consumes dispatch indices]
+
+    E --> G[Resolve TContainer via TContainerRegistry]
+    F --> H[Resolve TContainer via TContainerRegistry]
+
+    G --> I[Check container state + slot state + round context]
+    H --> J[Check container state + slot state + round context]
+
+    I --> K[Prepare TIngressAccessRef]
+    J --> L[Prepare TDispatchAccessRef]
+
+    K --> M[Ingress consumes next ref]
+    L --> N[Dispatcher consumes next ref]
+
+    M --> O[Envelope placed into slot]
+    N --> P[Dispatch exposure to bridge-facing side]

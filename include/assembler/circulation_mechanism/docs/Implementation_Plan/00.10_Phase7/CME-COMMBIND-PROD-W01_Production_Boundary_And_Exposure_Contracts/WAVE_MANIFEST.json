@@ -1,0 +1,46 @@
+{
+  "package_id": "CME-COMMBIND-PROD-W01",
+  "package_name": "Production Boundary And Exposure Contracts",
+  "created_utc": "2026-05-10T17:58:26.840190+00:00",
+  "gap_closure_type": "direct_gap_closure + anti_collapse_guard_closure",
+  "direct_gap_areas": [
+    "bridge bindings",
+    "bridge handoff boundary contract",
+    "actual adapter invocation as descriptor/contract",
+    "payload movement as exposure contract",
+    "mutable container exposure guard",
+    "bridge pull/push semantics",
+    "copy/move semantics external contract guard"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_communication_bindings.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TBindingCompatibilityStatus.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCirculationCommunicationBindingDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingCompatibility.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingCompatibilityPolicy.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingKind.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/TCommunicationBindingStatus.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/bridge_facing_boundary/TBridgeFacingBoundaryDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/bridge_facing_boundary/TBridgeFacingBoundaryId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/bridge_facing_boundary/TBridgeFacingBoundaryStatus.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/dispatch_output/TBridgeFacingDispatchAdapterDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/dispatch_output/TDispatchOutputAdapterId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/dispatch_output/TDispatchOutputBindingView.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/exposure_contracts/TExposureContractDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/exposure_contracts/TExposureContractId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/exposure_contracts/TExposureMaterialKind.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/exposure_contracts/TExposureMode.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/ingress/TEnvelopePlacementPortDescriptor.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/ingress/TEnvelopePlacementPortId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/ingress/TIngressBindingView.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/reports/TCommunicationBindingIssueKind.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/reports/TCommunicationBindingReport.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/reports/TCommunicationBindingReportId.hpp",
+    "include/assembler/circulation_mechanism/communication_bindings/views/TCirculationCommunicationBindingView.hpp"
+  ],
+  "tests": [
+    "tests/cme_communication_binding_boundary_exposure_contract_test.cpp",
+    "tests/cme_communication_binding_negative_compliance_test.cpp"
+  ]
+}

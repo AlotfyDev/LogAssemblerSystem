@@ -1,0 +1,49 @@
+{
+  "package_id": "CME-EVICTION-PROD-W01",
+  "package_name": "Production SafePoint Candidate Contract",
+  "created_utc": "2026-05-10T17:22:27.260528+00:00",
+  "gap_closure_type": "direct_gap_closure",
+  "direct_gap_areas": [
+    "eviction execution eligibility",
+    "safe-point candidate model",
+    "time range eviction",
+    "delegation profile"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_eviction.hpp",
+    "include/assembler/circulation_mechanism/eviction/TContainerTimeRange.hpp",
+    "include/assembler/circulation_mechanism/eviction/TEvictionCandidate.hpp",
+    "include/assembler/circulation_mechanism/eviction/TEvictionCandidateId.hpp",
+    "include/assembler/circulation_mechanism/eviction/TEvictionCandidateStatus.hpp",
+    "include/assembler/circulation_mechanism/eviction/TEvictionEvaluationStatus.hpp",
+    "include/assembler/circulation_mechanism/eviction/TEvictionPolicyKind.hpp",
+    "include/assembler/circulation_mechanism/eviction/TTimeRangeCompletenessStatus.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TDelegateToReadSideProfile.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TEmergencyEvictionProfile.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TEvictionPolicyProfile.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TEvictionPolicyProfileId.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TFifoContainerEviction.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TNoEvictionPreBridgeProfile.hpp",
+    "include/assembler/circulation_mechanism/eviction/policies/TOldestTimeRangeEviction.hpp",
+    "include/assembler/circulation_mechanism/eviction/reports/TCapacityDelegatedToReadSideReport.hpp",
+    "include/assembler/circulation_mechanism/eviction/reports/TEvictionAppliedReport.hpp",
+    "include/assembler/circulation_mechanism/eviction/reports/TEvictionRejectedReport.hpp",
+    "include/assembler/circulation_mechanism/eviction/reports/TEvictionReportId.hpp",
+    "include/assembler/circulation_mechanism/eviction/reports/TEvictionReportKind.hpp",
+    "include/assembler/circulation_mechanism/eviction/reports/TEvictionSelectionReport.hpp",
+    "include/assembler/circulation_mechanism/eviction/views/TContainerTimeRangeView.hpp",
+    "include/assembler/circulation_mechanism/eviction/views/TEvictionCandidateView.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerId.hpp",
+    "include/assembler/circulation_mechanism/ids/TContainerRegistryIndex.hpp",
+    "include/assembler/circulation_mechanism/state/TContainerState.hpp",
+    "include/assembler/circulation_mechanism/state/TDispatchExposureState.hpp",
+    "include/assembler/circulation_mechanism/state/TEvictionGuardStateHelpers.hpp",
+    "include/assembler/circulation_mechanism/state/TReferenceValidityState.hpp",
+    "include/assembler/circulation_mechanism/state/TRoundState.hpp",
+    "include/assembler/circulation_mechanism/state/TSafePointState.hpp"
+  ],
+  "tests": [
+    "tests/cme_eviction_candidate_policy_contract_test.cpp",
+    "tests/cme_eviction_negative_compliance_test.cpp"
+  ]
+}

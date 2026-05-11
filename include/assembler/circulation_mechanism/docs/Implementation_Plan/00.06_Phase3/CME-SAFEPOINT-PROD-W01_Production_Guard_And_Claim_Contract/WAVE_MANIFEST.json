@@ -1,0 +1,34 @@
+{
+  "package_id": "CME-SAFEPOINT-PROD-W01",
+  "package_name": "Production Guard And Claim Contract",
+  "created_utc": "2026-05-09T23:51:51.303678+00:00",
+  "gap_closure_type": "direct_gap_closure + dependency_enabler_closure",
+  "direct_gap_areas": [
+    "safe-point algorithms",
+    "safe-point execution"
+  ],
+  "delivered_capabilities": [
+    "safe point identity",
+    "safe point guard result",
+    "safe point claim artifact",
+    "claim validation",
+    "violation report",
+    "negative compliance tests"
+  ],
+  "headers": [
+    "include/assembler/circulation_mechanism/circulation_mechanism_safe_points.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointClaim.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointGuardResult.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointId.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointIssueKind.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointKind.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointPolicy.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointState.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointView.hpp",
+    "include/assembler/circulation_mechanism/safe_points/TSafePointViolationReport.hpp"
+  ],
+  "tests": [
+    "tests/cme_safe_point_negative_compliance_test.cpp",
+    "tests/cme_safe_point_production_guard_contract_test.cpp"
+  ]
+}

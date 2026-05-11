@@ -1,0 +1,26 @@
+{
+  "package_id": "CME-ARCH-PACK-01",
+  "title": "Core Actors, Registries, Containers, And Slot Model",
+  "status": "Architecture Specification Draft",
+  "created_utc": "2026-05-08T11:49:01.422131Z",
+  "documents": [
+    "CME-ARCH-001_Core_Taxonomy_And_Component_Ownership.md",
+    "CME-ARCH-002_Container_Family_Registry_And_Uniform_Capacity_Model.md",
+    "CME-ARCH-003_Slot_Container_State_And_Residency_Model.md"
+  ],
+  "diagrams": [
+    "diagrams/CME-ARCH-001_taxonomy_tree.mmd",
+    "diagrams/CME-ARCH-002_container_registry_indexing.mmd",
+    "diagrams/CME-ARCH-002_bundle_agent_moderator_registry.mmd",
+    "diagrams/CME-ARCH-003_container_slot_state_separation.mmd"
+  ],
+  "principles": [
+    "Component ownership before header derivation",
+    "Container registry owns active containers",
+    "Waiting lists carry indices, not envelopes",
+    "Container state and slot state are distinct",
+    "Uniform capacity enables move-semantics-oriented circulation",
+    "Views are read-only projections",
+    "Reports are action/transition/diagnostic evidence"
+  ]
+}

@@ -1,0 +1,27 @@
+new_input_sequence,gap_name_raw,normalized_gap_key,status,matched_existing_dedup_gap_id,matched_existing_gap_name,action
+1,bridge pull/push semantics,bridge_pull_push_semantics,new_unique_added,,,add_as_CME-DGAP-077
+2,bridge acknowledgement,bridge_acknowledgement,already_exists,CME-DGAP-066,bridge acknowledgement,do_not_add_duplicate
+3,copy/move/borrow semantics,copy_move_semantics,already_exists,CME-DGAP-043,copy/move semantics,do_not_add_duplicate
+4,receiver/addon contract,receiver_addon_contract,new_unique_added,,,add_as_CME-DGAP-078
+5,persistence completion semantics,persistence_completion,new_unique_added,,,add_as_CME-DGAP-079
+6,post-bridge capacity values,post_bridge_capacity,new_unique_added,,,add_as_CME-DGAP-080
+7,receiver-side retry rules,read_side_retry,already_exists,CME-DGAP-062,read-side retry,do_not_add_duplicate
+8,failed-dispatch list,failed_dispatch_waiting_list,new_unique_added,,,add_as_CME-DGAP-081
+9,retry algorithm,retry_algorithm,new_unique_added,,,add_as_CME-DGAP-082
+10,backpressure algorithm,backpressure_algorithm,new_unique_added,,,add_as_CME-DGAP-083
+11,receiver acknowledgement execution,receiver_acknowledgement_execution,new_unique_added,,,add_as_CME-DGAP-084
+12,persistence adapter,persistence_adapter,new_unique_added,,,add_as_CME-DGAP-085
+13,bridge protocol,bridge_protocol,already_exists,CME-DGAP-042,bridge protocol,do_not_add_duplicate
+14,addon implementation,addon_implementation,new_unique_added,,,add_as_CME-DGAP-086
+15,post-bridge container registry,post_bridge_container_registry,new_unique_added,,,add_as_CME-DGAP-087
+17,bridge recovery,bridge_recovery,already_exists,CME-DGAP-069,bridge recovery,do_not_add_duplicate
+18,delayed release algorithm,delayed_release_algorithm,new_unique_added,,,add_as_CME-DGAP-088
+19,retry execution,retry_execution,new_unique_added,,,add_as_CME-DGAP-089
+20,addon runtime behavior,addon_runtime_behavior,new_unique_added,,,add_as_CME-DGAP-090
+21,database persistence,persistence,already_exists,CME-DGAP-061,persistence,do_not_add_duplicate
+22,telemetry export,telemetry_export,already_exists,CME-DGAP-017,telemetry export,do_not_add_duplicate
+23,file sink behavior,file_sink_behavior,new_unique_added,,,add_as_CME-DGAP-091
+24,diagnostic sink execution,diagnostic_sink_execution,new_unique_added,,,add_as_CME-DGAP-092
+25,bridge runtime,bridge_orchestrator_runtime,already_exists,CME-DGAP-073,Bridge Orchestrator runtime,do_not_add_duplicate
+26,receiver implementation,receiver_implementation,new_unique_added,,,add_as_CME-DGAP-093
+27,failed-dispatch recovery,failed_dispatch_recovery,new_unique_added,,,add_as_CME-DGAP-094

@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests/cme_views_anti_mutation_compliance_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/include /mnt/data/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/tests/cme_views_anti_mutation_compliance_test.cpp -o /mnt/data/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/tests/cme_views_anti_mutation_compliance_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests/cme_views_production_readonly_contract_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/include /mnt/data/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/tests/cme_views_production_readonly_contract_test.cpp -o /mnt/data/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/CME-VIEWS-PROD-W01_Production_ReadOnly_Projection_Contract/tests/cme_views_production_readonly_contract_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "command": "g++ -std=c++17 -I /mnt/data/CME-W01_Foundational_Identity_And_State_Types/include /mnt/data/CME-W01_Foundational_Identity_And_State_Types/tests/cme_w01_foundational_types_smoke_test.cpp -o /mnt/data/CME-W01_Foundational_Identity_And_State_Types/tests/cme_w01_foundational_types_smoke_test",
+  "status": "passed",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "test_run_returncode": 0,
+  "test_run_stdout": "",
+  "test_run_stderr": ""
+}
