@@ -1,0 +1,45 @@
+#pragma once
+
+/*
+    LOGAPI-W01 — Configuration Surface And Default Profile
+
+    This header belongs to the Log Level API configuration surface.
+
+    Responsibility:
+        Provide configuration-time types that allow Log Level API to be prepared
+        before the consuming hot path receives content.
+
+    Boundary:
+        This file must not define concrete content schemas, concrete validators,
+        metadata field implementation, timestamp stabilization algorithms,
+        envelope assembly behavior, circulation handoff, or policy assignment.
+
+    Doctrine:
+        Configure first. Consume content only.
+        The hot path uses an already resolved active profile.
+*/
+
+#include <vector>
+
+#include "TLogApiActiveProfile.hpp"
+#include "TLogApiConfigurationIssue.hpp"
+
+namespace assembler::log_level_api::api_configurator {
+
+struct TLogApiConfigurationResult final {
+    TLogApiActiveProfile profile{};
+    std::vector<TLogApiConfigurationIssue> issues{};
+
+    [[nodiscard]] bool HasBlockingIssue() const noexcept {
+        for (const auto& issue : issues) {
+            if (issue.blocking) return true;
+        }
+        return false;
+    }
+
+    [[nodiscard]] bool IsAccepted() const noexcept {
+        return profile.IsReadyForConsumingPath() && !HasBlockingIssue();
+    }
+};
+
+} // namespace assembler::log_level_api::api_configurator
