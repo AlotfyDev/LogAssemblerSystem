@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T22:38:15Z",
-  "file_count": 3613,
+  "last_updated": "2026-05-12T22:41:26Z",
+  "file_count": 3614,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5443,6 +5443,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/visibility_compatibility/TVisibilityCompatibility.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/visibility_compatibility/TVisibilityCompatibility.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilityId.hpp",
+      "filename": "TAsccComposableCapabilityId.hpp",
+      "extension": "hpp",
+      "size_bytes": 1155,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilityId.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilityId.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/diagnostics/binding_views/.keep",
