@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:22:12Z",
-  "file_count": 3591,
+  "last_updated": "2026-05-12T17:29:08Z",
+  "file_count": 3592,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5853,6 +5853,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Zip_Header_Reality_Summary.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Zip_Header_Reality_Summary.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01C_Registry_Unification_Decision.md",
+      "filename": "ASCC-COMP-W01C_Registry_Unification_Decision.md",
+      "extension": "md",
+      "size_bytes": 4064,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01C_Registry_Unification_Decision.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01C_Registry_Unification_Decision.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01C_Remediation_Decision_Backlog.csv",
