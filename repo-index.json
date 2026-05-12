@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T16:37:03Z",
-  "file_count": 3578,
+  "last_updated": "2026-05-12T16:37:23Z",
+  "file_count": 3579,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5723,6 +5723,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/views/TDiagnosticView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/views/TDiagnosticView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Canonical_Path_Decisions.md",
+      "filename": "ASCC-COMP-W01_Canonical_Path_Decisions.md",
+      "extension": "md",
+      "size_bytes": 1185,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Canonical_Path_Decisions.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Canonical_Path_Decisions.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Empty_Header_List.csv",
