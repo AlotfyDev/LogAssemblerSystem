@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:41:21Z",
-  "file_count": 3595,
+  "last_updated": "2026-05-12T17:41:55Z",
+  "file_count": 3596,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -12213,6 +12213,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/docs/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/docs/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/registries/entries/TRegistryEntry.hpp",
+      "filename": "TRegistryEntry.hpp",
+      "extension": "hpp",
+      "size_bytes": 3513,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/entries/TRegistryEntry.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/entries/TRegistryEntry.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/registries/lookups/TRegistryLookupResult.hpp",
