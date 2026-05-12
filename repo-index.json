@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:45:39Z",
-  "file_count": 3599,
+  "last_updated": "2026-05-12T17:46:12Z",
+  "file_count": 3600,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -12473,6 +12473,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/session_registry/TSessionRegistry.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/session_registry/TSessionRegistry.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/registries/sets/TCommunicationContextRegistrySet.hpp",
+      "filename": "TCommunicationContextRegistrySet.hpp",
+      "extension": "hpp",
+      "size_bytes": 3107,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/sets/TCommunicationContextRegistrySet.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/sets/TCommunicationContextRegistrySet.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/registries/snapshots/TRegistrySnapshot.hpp",
