@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:50:25Z",
+  "last_updated": "2026-05-12T17:50:59Z",
   "file_count": 3600,
   "files": [
     {
@@ -12348,7 +12348,7 @@
       "path": "include/assembler/bridge_orchestrator/registries/optional_registries/typed/TBridgeRegistry.hpp",
       "filename": "TBridgeRegistry.hpp",
       "extension": "hpp",
-      "size_bytes": 3379,
+      "size_bytes": 253,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/optional_registries/typed/TBridgeRegistry.hpp",
