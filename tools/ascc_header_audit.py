@@ -47,14 +47,32 @@ from typing import Iterable, List, Dict
 
 INCLUDE_RE = re.compile(r'^\s*#\s*include\s*[<\"]([^>\"]+)[>\"]', re.MULTILINE)
 NAMESPACE_RE = re.compile(r'\bnamespace\s+([A-Za-z_][A-Za-z0-9_:]*)')
-CLASS_RE = re.compile(r'\b(class|struct)\s+([A-Za-z_][A-Za-z0-9_]*)\b')
-ENUM_RE = re.compile(r'\benum\s+(?:class\s+)?([A-Za-z_][A-Za-z0-9_]*)\b')
+
+# Declaration extraction is intentionally AST-lite, but it must not harvest
+# names from comments or from the `class` token inside `enum class`.
+CLASS_RE = re.compile(r'(?m)^\s*(?:template\s*<[^>]*>\s*)?(class|struct)\s+([A-Za-z_][A-Za-z0-9_]*)\b')
+ENUM_CLASS_RE = re.compile(r'(?m)^\s*enum\s+class\s+([A-Za-z_][A-Za-z0-9_]*)\b')
+ENUM_RE = re.compile(r'(?m)^\s*enum\s+(?!class\b)([A-Za-z_][A-Za-z0-9_]*)\b')
 TEMPLATE_RE = re.compile(r'\btemplate\s*<([^>]*)>')
 FUNCTION_RE = re.compile(
     r'(?m)^\s*(?:\[\[nodiscard\]\]\s*)?(?:static\s+)?(?:constexpr\s+)?'
     r'(?:auto|bool|void|std::[A-Za-z_][A-Za-z0-9_:<>]*|[A-Za-z_][A-Za-z0-9_:<>]*)\s+'
     r'([A-Za-z_][A-Za-z0-9_]*)\s*\([^;{}]*\)\s*(?:const\s*)?(?:noexcept\s*)?(?:\{|;)'
 )
+
+FALSE_DECLARATION_NAMES = {
+    "ID",
+    "Id",
+    "id",
+    "class",
+    "struct",
+    "enum",
+    "with",
+    "if",
+    "for",
+    "while",
+    "switch",
+}
 
 
 @dataclass
@@ -77,6 +95,20 @@ def read_text(path: Path) -> str:
         return path.read_text(encoding="utf-8")
     except UnicodeDecodeError:
         return path.read_text(encoding="utf-8", errors="replace")
+
+
+def strip_cpp_comments(text: str) -> str:
+    """Remove C/C++ comments while preserving line structure.
+
+    This prevents the AST-lite declaration regexes from collecting words from
+    documentation comments such as "ID", "with", or "class".
+    """
+    def replace_block(match: re.Match[str]) -> str:
+        return "\n" * match.group(0).count("\n")
+
+    text = re.sub(r'/\*.*?\*/', replace_block, text, flags=re.DOTALL)
+    text = re.sub(r'//.*', '', text)
+    return text
 
 
 def rel_posix(path: Path, root: Path) -> str:
@@ -216,35 +248,38 @@ def extract_includes(root: Path, records: Iterable[HeaderRecord]) -> List[Dict[s
     return rows
 
 
+def add_declaration(rows: List[Dict[str, str]], rec: HeaderRecord, kind: str, name: str, ns: str) -> None:
+    if name in FALSE_DECLARATION_NAMES:
+        return
+    rows.append({
+        "HeaderPath": rec.rel_path,
+        "RootFolder": rec.root_folder,
+        "DeclarationKind": kind,
+        "Name": name,
+        "NamespaceHints": ns,
+    })
+
+
 def extract_declarations(root: Path, records: Iterable[HeaderRecord]) -> List[Dict[str, str]]:
     rows: List[Dict[str, str]] = []
     for rec in records:
         if rec.empty:
             continue
-        text = read_text(root / rec.rel_path)
+        text = strip_cpp_comments(read_text(root / rec.rel_path))
         namespaces = sorted(set(NAMESPACE_RE.findall(text)))
         ns = ";".join(namespaces)
 
         for kind, name in CLASS_RE.findall(text):
-            rows.append({
-                "HeaderPath": rec.rel_path,
-                "RootFolder": rec.root_folder,
-                "DeclarationKind": kind,
-                "Name": name,
-                "NamespaceHints": ns,
-            })
+            add_declaration(rows, rec, kind, name, ns)
+
+        for name in ENUM_CLASS_RE.findall(text):
+            add_declaration(rows, rec, "enum_class", name, ns)
 
         for name in ENUM_RE.findall(text):
-            rows.append({
-                "HeaderPath": rec.rel_path,
-                "RootFolder": rec.root_folder,
-                "DeclarationKind": "enum",
-                "Name": name,
-                "NamespaceHints": ns,
-            })
+            add_declaration(rows, rec, "enum", name, ns)
 
         for name in sorted(set(FUNCTION_RE.findall(text))):
-            if name in {"if", "for", "while", "switch"}:
+            if name in FALSE_DECLARATION_NAMES:
                 continue
             rows.append({
                 "HeaderPath": rec.rel_path,
@@ -332,7 +367,7 @@ def main() -> int:
     duplicate_declarations = []
     by_name = defaultdict(list)
     for row in declarations:
-        if row["DeclarationKind"] in {"class", "struct", "enum"}:
+        if row["DeclarationKind"] in {"class", "struct", "enum", "enum_class"}:
             by_name[row["Name"]].append(row["HeaderPath"])
     for name, paths in sorted(by_name.items()):
         if len(set(paths)) > 1:
