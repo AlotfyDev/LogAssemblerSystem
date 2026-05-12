@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T18:12:22Z",
+  "last_updated": "2026-05-12T18:12:54Z",
   "file_count": 3603,
   "files": [
     {
@@ -12428,7 +12428,7 @@
       "path": "include/assembler/bridge_orchestrator/registries/plugin_adapter_registry/TPluginAdapterRegistry.hpp",
       "filename": "TPluginAdapterRegistry.hpp",
       "extension": "hpp",
-      "size_bytes": 0,
+      "size_bytes": 3374,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/plugin_adapter_registry/TPluginAdapterRegistry.hpp",
