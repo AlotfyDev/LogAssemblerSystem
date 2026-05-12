@@ -1,26 +1,26 @@
 #pragma once
 
-#include <array>
 #include <cstddef>
-#include <cstdint>
 #include <string_view>
 
-#include "assembler/communication_context/obligations/ports/views/TPortView.hpp"
-#include "assembler/communication_context/registries/snapshots/TRegistrySnapshot.hpp"
+#include "assembler/communication_context/obligations/ports/descriptors/TPortDescriptor.hpp"
+#include "assembler/communication_context/obligations/ports/ids/TPortId.hpp"
+#include "assembler/communication_context/registries/base/TBoundedRegistry.hpp"
 
 /**
  * @file TPortRegistry.hpp
- * @brief Core bounded registry for ASCC port views.
+ * @brief Core bounded registry for ASCC port descriptors.
  *
- * @section ascc_comp_w01_registry_unification Registry Unification
- * This registry stores bridge-visible `TPortView` values.  It does not store
- * or own concrete endpoint port objects.
+ * @section ascc_comp_w01_reg05 REG-05 Identity Normalization
+ * This registry now uses `TPortId` and `TBoundedRegistry`, preserving a single
+ * registry primitive across ASCC. It catalogs bridge-visible port descriptors;
+ * views remain projections derived from those descriptors.
  *
  * @section ascc_non_responsibilities Non-Responsibilities
- * This registry must not become a service locator, broker, scheduler,
- * dependency-injection container, endpoint invoker, pipeline composer, or owner
- * of endpoint lifecycle.  It only catalogs port views for ASCC
- * composition/evidence/diagnostic surfaces.
+ * This registry must not store or own concrete endpoint port instances. It
+ * must not become a service locator, broker, scheduler, dependency-injection
+ * container, endpoint invoker, pipeline composer, or owner of endpoint
+ * lifecycle.
  */
 
 namespace assembler::communication_context
@@ -28,70 +28,37 @@ namespace assembler::communication_context
     template <std::size_t Capacity>
     struct TPortRegistry final
     {
-        std::array<TPortView, Capacity> ports{};
-        std::size_t count{0u};
-        std::uint64_t rejected_insertions{0u};
-        std::string_view registry_name{"port_registry"};
-        TCorrelationToken correlation{TCorrelationToken::invalid()};
+        TBoundedRegistry<TPortId, TPortDescriptor, Capacity> registry{
+            TBoundedRegistry<TPortId, TPortDescriptor, Capacity>::make("port_registry")
+        };
 
         [[nodiscard]] constexpr bool is_valid() const noexcept
         {
-            return Capacity > 0u && !registry_name.empty() && count <= Capacity;
+            return registry.is_valid();
         }
 
-        [[nodiscard]] constexpr bool full() const noexcept
+        constexpr bool register_port(TPortDescriptor port) noexcept
         {
-            return count >= Capacity;
+            return registry.register_value(
+                port.port_id,
+                port,
+                port.descriptor_name);
         }
 
-        [[nodiscard]] constexpr const TPortView* find(
-            std::uint64_t port_id) const noexcept
+        [[nodiscard]] constexpr const TRegistryEntry<TPortId, TPortDescriptor>* find(
+            TPortId id) const noexcept
         {
-            if (port_id == 0u)
-            {
-                return nullptr;
-            }
-
-            for (std::size_t index = 0u; index < count; ++index)
-            {
-                if (ports[index].port_id == port_id)
-                {
-                    return &ports[index];
-                }
-            }
-
-            return nullptr;
+            return registry.find(id);
         }
 
-        [[nodiscard]] constexpr bool contains(std::uint64_t port_id) const noexcept
+        [[nodiscard]] constexpr bool contains(TPortId id) const noexcept
         {
-            return find(port_id) != nullptr;
-        }
-
-        constexpr bool register_port(TPortView port) noexcept
-        {
-            if (!is_valid()
-                || full()
-                || !port.is_valid()
-                || contains(port.port_id))
-            {
-                ++rejected_insertions;
-                return false;
-            }
-
-            ports[count] = port;
-            ++count;
-            return true;
+            return registry.contains(id);
         }
 
         [[nodiscard]] constexpr TRegistrySnapshot snapshot() const noexcept
         {
-            return TRegistrySnapshot::make(
-                registry_name,
-                count,
-                Capacity,
-                rejected_insertions,
-                correlation);
+            return registry.snapshot();
         }
 
         [[nodiscard]] static constexpr TPortRegistry make(
@@ -99,11 +66,9 @@ namespace assembler::communication_context
             TCorrelationToken token = TCorrelationToken::invalid()) noexcept
         {
             return TPortRegistry{
-                {},
-                0u,
-                0u,
-                name,
-                token
+                TBoundedRegistry<TPortId, TPortDescriptor, Capacity>::make(
+                    name,
+                    token)
             };
         }
     };
