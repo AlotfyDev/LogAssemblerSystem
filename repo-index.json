@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T22:54:22Z",
-  "file_count": 3627,
+  "last_updated": "2026-05-12T22:55:15Z",
+  "file_count": 3628,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5523,6 +5523,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/gaps/TAsccCoverageGap.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/gaps/TAsccCoverageGap.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/gaps/TAsccCoverageGapReport.hpp",
+      "filename": "TAsccCoverageGapReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 2254,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/gaps/TAsccCoverageGapReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/gaps/TAsccCoverageGapReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/composability/reports/TAsccComposabilityIssue.hpp",
