@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T22:50:24Z",
-  "file_count": 3623,
+  "last_updated": "2026-05-12T22:51:15Z",
+  "file_count": 3624,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5513,6 +5513,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/coverage/TAsccCoverageState.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/coverage/TAsccCoverageState.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/reports/TAsccComposabilitySeverity.hpp",
+      "filename": "TAsccComposabilitySeverity.hpp",
+      "extension": "hpp",
+      "size_bytes": 1659,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/reports/TAsccComposabilitySeverity.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/reports/TAsccComposabilitySeverity.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/composability/requirements/TAsccRequirement.hpp",
