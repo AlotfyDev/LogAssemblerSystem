@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T01:06:36Z",
+  "last_updated": "2026-05-12T16:34:39Z",
   "file_count": 3574,
   "files": [
     {
@@ -11308,7 +11308,7 @@
       "path": "include/assembler/bridge_orchestrator/obligations/ports/contracts/TPort.hpp",
       "filename": "TPort.hpp",
       "extension": "hpp",
-      "size_bytes": 0,
+      "size_bytes": 960,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/ports/contracts/TPort.hpp",
