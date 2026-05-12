@@ -204,6 +204,12 @@ namespace assembler::communication_context
                 return false;
             }
 
+            if (protocol_state.current_stage == TBridgeStage::session_opening)
+            {
+                status = TSessionStatus::active;
+                return true;
+            }
+
             const auto transitioned = protocol_state.apply_transition(
                 TBridgeTransition::make(
                     protocol_state.current_stage,
