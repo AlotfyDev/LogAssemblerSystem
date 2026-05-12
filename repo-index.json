@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T18:04:32Z",
+  "last_updated": "2026-05-12T18:12:22Z",
   "file_count": 3603,
   "files": [
     {
@@ -12408,7 +12408,7 @@
       "path": "include/assembler/bridge_orchestrator/registries/participant_registry/TParticipantRegistry.hpp",
       "filename": "TParticipantRegistry.hpp",
       "extension": "hpp",
-      "size_bytes": 0,
+      "size_bytes": 3458,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/participant_registry/TParticipantRegistry.hpp",
