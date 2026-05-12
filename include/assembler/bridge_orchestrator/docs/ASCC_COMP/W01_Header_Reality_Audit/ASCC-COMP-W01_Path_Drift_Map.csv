@@ -1,0 +1,4 @@
+DriftId,ObservedPath,ImplementedOrIncludedPath,Decision,Status,Notes
+ASCC-COMP-W01-DRIFT-001,include/assembler/bridge_orchestrator/obligations/ports/contracts/TPort.hpp,assembler/communication_context/obligations/ports/TPort.hpp,compatibility_forwarder,applied,Do not duplicate TPort type
+ASCC-COMP-W01-DRIFT-002,include/assembler/bridge_orchestrator/bridge_core/orchestration/TBridge.hpp,assembler/communication_context/bridge_core/TBridge.hpp,compatibility_forwarder,applied,Do not duplicate TBridge model core
+ASCC-COMP-W01-DRIFT-003,include/assembler/bridge_orchestrator/* includes,assembler/communication_context/*,canonical_root_decision_pending,open,W01 full audit must decide bridge_orchestrator physical root vs communication_context canonical root
