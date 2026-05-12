@@ -1,0 +1,70 @@
+name: ASCC Smoke Tests
+
+on:
+  push:
+    paths:
+      - 'include/assembler/bridge_orchestrator/**'
+      - '.github/workflows/ascc-smoke-tests.yml'
+  pull_request:
+    paths:
+      - 'include/assembler/bridge_orchestrator/**'
+      - '.github/workflows/ascc-smoke-tests.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-and-run:
+    name: Compile and run ASCC smoke tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++
+
+      - name: Prepare ASCC include-root compatibility alias
+        run: |
+          set -euo pipefail
+          mkdir -p include/assembler
+          if [ ! -e include/assembler/communication_context ]; then
+            ln -s bridge_orchestrator include/assembler/communication_context
+          fi
+          ls -la include/assembler
+
+      - name: Compile and run smoke tests
+        run: |
+          set -euo pipefail
+          mkdir -p build/ascc_smoke_tests logs/ascc_smoke_tests
+          : > logs/ascc_smoke_tests/summary.txt
+
+          mapfile -t tests < <(find include/assembler/bridge_orchestrator/tests/smoke-tests -maxdepth 1 -name '*.cpp' | sort)
+
+          if [ "${#tests[@]}" -eq 0 ]; then
+            echo "No ASCC smoke test sources found" | tee -a logs/ascc_smoke_tests/summary.txt
+            exit 1
+          fi
+
+          for src in "${tests[@]}"; do
+            name="$(basename "$src" .cpp)"
+            exe="build/ascc_smoke_tests/$name"
+            log="logs/ascc_smoke_tests/$name.log"
+
+            echo "==> Compiling $src" | tee -a logs/ascc_smoke_tests/summary.txt
+            g++ -std=c++17 -I include "$src" -o "$exe" > "$log" 2>&1
+
+            echo "==> Running $name" | tee -a logs/ascc_smoke_tests/summary.txt
+            "$exe" >> "$log" 2>&1
+
+            echo "PASS $name" | tee -a logs/ascc_smoke_tests/summary.txt
+          done
+
+      - name: Upload ASCC smoke-test logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ascc-smoke-test-logs
+          path: logs/ascc_smoke_tests
+          if-no-files-found: error
