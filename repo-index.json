@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:42:26Z",
+  "last_updated": "2026-05-12T17:43:19Z",
   "file_count": 3597,
   "files": [
     {
@@ -12178,7 +12178,7 @@
       "path": "include/assembler/bridge_orchestrator/registries/binding_registry/TBindingRegistry.hpp",
       "filename": "TBindingRegistry.hpp",
       "extension": "hpp",
-      "size_bytes": 0,
+      "size_bytes": 2320,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/binding_registry/TBindingRegistry.hpp",
