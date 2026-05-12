@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T19:02:59Z",
-  "file_count": 3607,
+  "last_updated": "2026-05-12T19:03:38Z",
+  "file_count": 3608,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11513,6 +11513,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/ports/contracts/TPort.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/ports/contracts/TPort.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/ports/descriptors/TPortDescriptor.hpp",
+      "filename": "TPortDescriptor.hpp",
+      "extension": "hpp",
+      "size_bytes": 1985,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/ports/descriptors/TPortDescriptor.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/ports/descriptors/TPortDescriptor.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/obligations/ports/detail/.keep",
