@@ -36,12 +36,13 @@ namespace assembler::communication_context
         [[nodiscard]] constexpr bool blocks_core_readiness() const noexcept
         {
             return is_core_requirement(requirement)
-                && blocks_core_readiness(state);
+                && assembler::communication_context::blocks_core_readiness(state);
         }
 
         [[nodiscard]] constexpr bool is_deferred() const noexcept
         {
-            return is_deferred(state) || is_deferred_requirement(requirement);
+            return assembler::communication_context::is_deferred(state)
+                || is_deferred_requirement(requirement);
         }
 
         [[nodiscard]] static constexpr TAsccCoverageItem make(
