@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:50:59Z",
+  "last_updated": "2026-05-12T17:51:24Z",
   "file_count": 3600,
   "files": [
     {
@@ -12298,7 +12298,7 @@
       "path": "include/assembler/bridge_orchestrator/registries/optional_registries/sets/TCommunicationContextRegistrySet.hpp",
       "filename": "TCommunicationContextRegistrySet.hpp",
       "extension": "hpp",
-      "size_bytes": 4246,
+      "size_bytes": 284,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/optional_registries/sets/TCommunicationContextRegistrySet.hpp",
