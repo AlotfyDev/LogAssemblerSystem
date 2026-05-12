@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T22:46:15Z",
-  "file_count": 3619,
+  "last_updated": "2026-05-12T22:47:13Z",
+  "file_count": 3620,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5503,6 +5503,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/requirements/TAsccRequirementKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/requirements/TAsccRequirementKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/requirements/TAsccRequirementSet.hpp",
+      "filename": "TAsccRequirementSet.hpp",
+      "extension": "hpp",
+      "size_bytes": 2630,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/requirements/TAsccRequirementSet.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/requirements/TAsccRequirementSet.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/diagnostics/binding_views/.keep",
