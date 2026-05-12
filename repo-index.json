@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T23:25:45Z",
-  "file_count": 3630,
+  "last_updated": "2026-05-12T23:27:05Z",
+  "file_count": 3631,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6113,6 +6113,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W02_Core_Composability_Capability_Model/ASCC-COMP-W02_Revised_Implementation_Map.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W02_Core_Composability_Capability_Model/ASCC-COMP-W02_Revised_Implementation_Map.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W02_Core_Composability_Capability_Model/README.md",
+      "filename": "README.md",
+      "extension": "md",
+      "size_bytes": 1019,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W02_Core_Composability_Capability_Model/README.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W02_Core_Composability_Capability_Model/README.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/holistic_docs/architecture/holistic_bridge_orchestrator_overview.md",
