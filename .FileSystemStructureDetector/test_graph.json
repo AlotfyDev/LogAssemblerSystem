@@ -1,0 +1,41 @@
+{
+  "nodes": {
+    "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector": {
+      "name": ".FileSystemStructureDetector",
+      "path": "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector",
+      "is_file": false,
+      "size_bytes": 0,
+      "extension": "",
+      "depth": 0,
+      "parent_path": null,
+      "children_paths": [
+        "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector\\generate_tree_csv.py"
+      ]
+    },
+    "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector\\generate_tree_csv.py": {
+      "name": "generate_tree_csv.py",
+      "path": "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector\\generate_tree_csv.py",
+      "is_file": true,
+      "size_bytes": 20890,
+      "extension": ".py",
+      "depth": 1,
+      "parent_path": "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector",
+      "children_paths": []
+    }
+  },
+  "indexes": {
+    "by_extension": {
+      ".py": [
+        "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector\\generate_tree_csv.py"
+      ]
+    },
+    "by_depth": {
+      "0": [
+        "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector"
+      ],
+      "1": [
+        "D:\\CppBridgeVSC\\Kilo-LogAssembler\\.FileSystemStructureDetector\\generate_tree_csv.py"
+      ]
+    }
+  }
+}
