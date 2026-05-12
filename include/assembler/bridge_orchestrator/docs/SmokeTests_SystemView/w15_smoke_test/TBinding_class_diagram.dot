@@ -1,0 +1,13 @@
+digraph TBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main binding class
+    Binding [label="{TBinding|+ is_compatible() const noexcept -> bool\l+ propose() static constexpr -> TBinding\l}", fillcolor=lightsalmon, style=filled];
+
+    // Title
+    label="TBinding Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBinding_class_diagram.dot

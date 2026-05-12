@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgray];
+
+    TBridgeCoreFrame [label="{TBridgeCoreFrame | + bridge_id : TBridgeId\l+ status : TBridgeStatus\l+ budget : TBridgeStepBudget\l+ consumed_steps : uint32_t\l+ protocol_frame : TBridgeProtocolFrame\l|+ is_valid() : bool\l}"];
+
+    TBridge [label="TBridge::frame()", fillcolor=lightcoral];
+    StateCapture [label="Execution state capture\n- Current budget state\n- Protocol frame\n- Bridge status", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreFrame [label="captures"];
+    TBridgeCoreFrame -> StateCapture [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreFrame_class_diagram.dot

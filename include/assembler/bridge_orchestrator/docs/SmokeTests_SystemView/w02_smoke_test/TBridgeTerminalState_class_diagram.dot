@@ -1,0 +1,30 @@
+digraph TBridgeTerminalState_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main enum
+    TBridgeTerminalState [label="{TBridgeTerminalState\n(enum class)|none\l success\l rejected\l failed\l deferred\l cancelled\l expired\l unsupported\l}"]
+
+    // Free functions
+    is_terminal_state [label="{is_terminal_state|\l+ operator(state: TBridgeTerminalState) : bool\l}", shape=record, fillcolor=lightyellow]
+    to_string [label="{to_string|\l+ operator(state: TBridgeTerminalState) : string_view\l}", shape=record, fillcolor=lightyellow]
+
+    // Dependencies
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    is_terminal_state -> TBridgeTerminalState [label="operates on", style=dashed]
+    to_string -> TBridgeTerminalState [label="operates on", style=dashed]
+    to_string -> std_string_view [label="returns", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        EnumLegend [label="Enum Class", shape=record, fillcolor=lightblue]
+        FunctionLegend [label="Free Function", shape=record, fillcolor=lightyellow]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

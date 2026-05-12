@@ -1,0 +1,23 @@
+digraph TFirstIntegrationSkeletonFactory_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main factory struct
+    Factory [label="{TFirstIntegrationSkeletonFactory|+ make_default() static constexpr -> TFirstIntegrationSkeleton\l+ from_config(TFirstIntegrationSkeletonConfig) static constexpr -> TFirstIntegrationSkeleton\l+ from_config_and_token(TFirstIntegrationSkeletonConfig, TCorrelationToken) static constexpr -> TFirstIntegrationSkeleton\l}", fillcolor=lightsalmon, style=filled];
+
+    // Created components
+    Skeleton [label="{TFirstIntegrationSkeleton|integration skeleton instance\lcreated with config and correlation\l}", fillcolor=lightblue];
+    Config [label="{TFirstIntegrationSkeletonConfig|configuration parameter\lpassed to skeleton constructor\l}", fillcolor=lightblue];
+    CorrelationToken [label="{TCorrelationToken|correlation token parameter\lused for tracking integration\l}", fillcolor=lightblue];
+
+    // Relationships
+    Factory -> Skeleton [label="creates"];
+    Factory -> Config [label="accepts"];
+    Factory -> CorrelationToken [label="accepts"];
+
+    // Title
+    label="TFirstIntegrationSkeletonFactory Class Structure";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonFactory_class_diagram.dot

@@ -1,0 +1,45 @@
+digraph TSessionSnapshot_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TSessionSnapshot [label="{TSessionSnapshot|+ session_id_: TSessionId\l+ status_: TSessionStatus\l+ binding_snapshot_: TBindingSnapshot\l+ captured_at_: timestamp\l+ events_: vector<TSessionEvent>\l+ performance_metrics_: TPerformanceMetrics\l|+ capture(session: TSession): TSessionSnapshot\l+ get_session_id(): TSessionId\l+ get_status(): TSessionStatus\l+ get_captured_at(): timestamp\l+ get_events(): vector<TSessionEvent>\l+ get_binding_snapshot(): TBindingSnapshot\l+ to_json(): std::string\l- capture_binding_state(session: TSession): TBindingSnapshot\l- collect_session_events(session: TSession): vector<TSessionEvent>}", fillcolor=lightyellow, style=filled];
+
+    // Supporting types
+    TSessionEvent [label="{TSessionEvent|+ event_type_: SessionEventType\l+ timestamp_: timestamp\l+ details_: std::string\l|+ create(type: SessionEventType, details: std::string): TSessionEvent}", fillcolor=lightblue, style=filled];
+
+    TBindingSnapshot [label="{TBindingSnapshot|+ binding_id_: TBindingId\l+ channel_info_: std::string\l+ adapter_info_: std::string\l+ compatibility_score_: double\l+ snapshot_time_: timestamp}", fillcolor=lightblue, style=filled];
+
+    TPerformanceMetrics [label="{TPerformanceMetrics|+ operation_count_: uint64_t\l+ total_duration_ms_: uint64_t\l+ average_latency_ms_: double\l+ error_count_: uint32_t\l+ last_operation_time_: timestamp}", fillcolor=lightblue, style=filled];
+
+    // Dependencies
+    TSessionId [label="{TSessionId|+ value_: uint64_t\l+ namespace_: std::string}", fillcolor=lightcyan, style=filled];
+
+    TSessionStatus [label="{TSessionStatus|CREATED\lOPEN\lACTIVATED\lCOMPLETED\lREJECTED}", fillcolor=lightcyan, style=filled];
+
+    TBindingId [label="{TBindingId|+ value_: uint64_t\l+ namespace_: std::string}", fillcolor=lightcyan, style=filled];
+
+    // Usage context
+    TSession [label="{TSession|+ snapshot_: TSessionSnapshot\l|+ capture_snapshot(): TSessionSnapshot\l+ get_snapshot(): TSessionSnapshot}", fillcolor=lightgreen, style=filled];
+
+    // Relationships
+    TSessionSnapshot -> TSessionId [label="contains"];
+    TSessionSnapshot -> TSessionStatus [label="contains"];
+    TSessionSnapshot -> TBindingSnapshot [label="contains"];
+    TSessionSnapshot -> TSessionEvent [label="contains"];
+    TSessionSnapshot -> TPerformanceMetrics [label="contains"];
+
+    TSession -> TSessionSnapshot [label="creates"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewClass [label="New W08 Component", fillcolor=lightyellow];
+        SupportType [label="Supporting Type", fillcolor=lightblue];
+        ReusedDep [label="Reused Dependency", fillcolor=lightcyan];
+        UserClass [label="Using Component", fillcolor=lightgreen];
+    }
+}

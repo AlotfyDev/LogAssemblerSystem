@@ -1,0 +1,49 @@
+digraph TBridgeCarrierResult_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage pattern (not directly in smoke test)
+    Start [label="Carrier Result Handling Pattern", shape=ellipse, fillcolor=green]
+
+    CreateSuccess [label="TBridgeCarrierResult::success(token)\nCreates carrier result with SUCCESS status,\nno error, and correlation token", fillcolor=yellow]
+
+    CheckSucceeded [label="result.succeeded()\nChecks status == success && !error.has_error()\nReturns true", fillcolor=lightgreen]
+
+    SuccessState [label="Carrier operation succeeded", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Carrier result processing completed", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    CreateRejected [label="TBridgeCarrierResult::reject(reason, token)\nCreates result with REJECTED status and error", fillcolor=lightgrey]
+    CreateFailed [label="TBridgeCarrierResult::fail(reason, token)\nCreates result with FAILED status and error", fillcolor=lightgrey]
+    CheckRejected [label="result.rejected()\n(status == rejected)", fillcolor=lightgrey]
+    CheckFailed [label="result.failed()\n(status == failed || error.has_error())", fillcolor=lightgrey]
+    RejectedState [label="Carrier operation rejected", shape=diamond, fillcolor=lightgrey]
+    FailedState [label="Carrier operation failed", shape=diamond, fillcolor=lightgrey]
+
+    // Flow (success path pattern)
+    Start -> CreateSuccess
+    CreateSuccess -> CheckSucceeded
+    CheckSucceeded -> SuccessState
+    SuccessState -> End
+
+    // Alternative flows (not taken in smoke test)
+    Start -> CreateRejected [style=dashed, color=grey]
+    Start -> CreateFailed [style=dashed, color=grey]
+    CreateRejected -> CheckRejected [style=dashed, color=grey]
+    CreateFailed -> CheckFailed [style=dashed, color=grey]
+    CheckRejected -> RejectedState [style=dashed, color=grey]
+    CheckFailed -> FailedState [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Result Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Status Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

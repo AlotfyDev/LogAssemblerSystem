@@ -1,0 +1,16 @@
+digraph TDiagnosticView_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticView Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateFromRecord [label="Create View from Record\nTDiagnosticView::from_record(explicit_error)\nCreates read-only projection of diagnostic record", fillcolor=yellow]
+
+    ValidateView [label="Validate View\nview.is_valid() && view.failed()\nChecks view validity and failure status", fillcolor=lightgreen]
+
+    End [label="View usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateFromRecord
+    CreateFromRecord -> ValidateView
+    ValidateView -> End
+}

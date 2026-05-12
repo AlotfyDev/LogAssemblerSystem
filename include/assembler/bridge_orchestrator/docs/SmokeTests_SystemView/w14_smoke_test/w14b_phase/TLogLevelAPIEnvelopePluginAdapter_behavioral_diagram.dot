@@ -1,0 +1,90 @@
+digraph TLogLevelAPIEnvelopePluginAdapter_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Construction
+    Construction [label="TLogLevelAPIEnvelopePluginAdapter::TLogLevelAPIEnvelopePluginAdapter(descriptor, config)\nInitialize with descriptor and config", fillcolor=lightblue];
+
+    // Readiness check
+    Readiness_Call [label="readiness()", fillcolor=lightblue];
+    Config_Validation [label="if (!config_.is_valid())", fillcolor=lavender];
+    Not_Ready_Config [label="return TReadinessView::not_ready(\"log_level_api_envelope_plugin_adapter_config_invalid\", descriptor_.correlation)", fillcolor=red];
+    Descriptor_Readiness_Check [label="TLogLevelAPIEnvelopePluginAdapterReadinessPolicy::descriptor_is_ready(descriptor_)", fillcolor=lavender];
+    Not_Ready_Descriptor [label="return TReadinessView::not_ready(\"log_level_envelope_descriptor_invalid\", descriptor_.correlation)", fillcolor=red];
+    Readiness_Capacity [label="TLogLevelAPIEnvelopePluginAdapterReadinessPolicy::readiness_capacity_hint(descriptor_)", fillcolor=lavender];
+    Ready_Result [label="return TReadinessView::ready(descriptor_.correlation, capacity_hint)", fillcolor=lightgreen];
+
+    // Placement request preparation
+    Prepare_Request_Call [label="prepare_placement_request()", fillcolor=lightblue];
+    Descriptor_Valid_Check [label="if (!descriptor_.is_valid())", fillcolor=lavender];
+    Invalid_Request [label="return TPlacementRequest{}", fillcolor=red];
+    Create_Placement_Request [label="TPlacementRequest::make(descriptor_.correlation, descriptor_.envelope_kind, descriptor_.payload_size_hint, descriptor_.requires_ordered_placement, destination_family)", fillcolor=lavender];
+    Determine_Destination [label="auto destination_family = descriptor_.requested_destination_family.empty() ? config_.requested_destination_family : descriptor_.requested_destination_family", fillcolor=lavender];
+    Return_Placement_Request [label="return placement_request", fillcolor=lightgreen];
+
+    // Handle acceptance
+    Accept_Handle_Call [label="accept_placement_handle(const TPlacementHandle& handle)", fillcolor=lightblue];
+    Handle_Validity_Check [label="if (!handle.is_valid())", fillcolor=lavender];
+    Invalid_Handle [label="return TBridgeResult::fail(TBridgeError::make(TBridgeErrorCode::handle_unavailable, \"placement handle is invalid\"), descriptor_.correlation)", fillcolor=red];
+    Correlation_Check [label="if (handle.correlation != descriptor_.correlation)", fillcolor=lavender];
+    Correlation_Mismatch [label="return TBridgeResult::reject(TBridgeError::make(TBridgeErrorCode::invalid_correlation, \"placement handle correlation does not match descriptor correlation\"), descriptor_.correlation)", fillcolor=red];
+    Accept_Handle [label="state_.accept_handle(handle)", fillcolor=lavender];
+    Handle_Accepted [label="return TBridgeResult::success(descriptor_.correlation)", fillcolor=lightgreen];
+
+    // Load signal emission
+    Emit_Signal_Call [label="emit_load_signal()", fillcolor=lightblue];
+    Has_Handle_Check [label="if (!state_.has_accepted_handle())", fillcolor=lavender];
+    No_Handle_Failed [label="return TLoadSignal::failed(descriptor_.correlation, TPlacementHandle::invalid(), \"placement handle has not been accepted\")", fillcolor=red];
+    Create_Load_Signal [label="auto signal = TLoadSignal::completed(descriptor_.correlation, state_.accepted_handle, descriptor_.payload_size_hint)", fillcolor=lavender];
+    Mark_Signal_Emitted [label="state_.mark_load_signal_emitted()", fillcolor=lavender];
+    Return_Load_Signal [label="return signal", fillcolor=lightgreen];
+
+    // Next destination request
+    Next_Dest_Call [label="next_destination_request()", fillcolor=lightblue];
+    Create_Next_Dest_Request [label="TNextDestinationRequest::make(descriptor_.correlation, state_.accepted_handle, reason, note)", fillcolor=lavender];
+    Determine_Reason [label="auto reason = state_.has_accepted_handle() ? TNextDestinationReason::continuous_flow_requested : TNextDestinationReason::retry_requested", fillcolor=lavender];
+    Determine_Note [label="auto note = state_.has_accepted_handle() ? \"continue_after_log_level_envelope_load\" : \"retry_after_missing_placement_handle\"", fillcolor=lavender];
+    Return_Next_Dest [label="return next_destination_request", fillcolor=lightgreen];
+
+    // Flow connections
+    Construction -> Readiness_Call [style=dashed, label="adapter ready"];
+
+    Readiness_Call -> Config_Validation;
+    Config_Validation -> Not_Ready_Config [label="config invalid"];
+    Config_Validation -> Descriptor_Readiness_Check [label="config valid"];
+
+    Descriptor_Readiness_Check -> Not_Ready_Descriptor [label="descriptor invalid"];
+    Descriptor_Readiness_Check -> Readiness_Capacity [label="descriptor ready"];
+
+    Readiness_Capacity -> Ready_Result;
+
+    Prepare_Request_Call -> Descriptor_Valid_Check;
+    Descriptor_Valid_Check -> Invalid_Request [label="descriptor invalid"];
+    Descriptor_Valid_Check -> Determine_Destination [label="descriptor valid"];
+
+    Determine_Destination -> Create_Placement_Request;
+    Create_Placement_Request -> Return_Placement_Request;
+
+    Accept_Handle_Call -> Handle_Validity_Check;
+    Handle_Validity_Check -> Invalid_Handle [label="handle invalid"];
+    Handle_Validity_Check -> Correlation_Check [label="handle valid"];
+
+    Correlation_Check -> Correlation_Mismatch [label="correlation mismatch"];
+    Correlation_Check -> Accept_Handle [label="correlation matches"];
+
+    Accept_Handle -> Handle_Accepted;
+
+    Emit_Signal_Call -> Has_Handle_Check;
+    Has_Handle_Check -> No_Handle_Failed [label="no handle"];
+    Has_Handle_Check -> Create_Load_Signal [label="has handle"];
+
+    Create_Load_Signal -> Mark_Signal_Emitted;
+    Mark_Signal_Emitted -> Return_Load_Signal;
+
+    Next_Dest_Call -> Determine_Reason;
+    Determine_Reason -> Determine_Note;
+    Determine_Note -> Create_Next_Dest_Request;
+    Create_Next_Dest_Request -> Return_Next_Dest;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TLogLevelAPIEnvelopePluginAdapter_behavioral_diagram.dot

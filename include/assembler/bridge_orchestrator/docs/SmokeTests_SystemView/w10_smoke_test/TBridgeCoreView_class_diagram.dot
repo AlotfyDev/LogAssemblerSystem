@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgray];
+
+    TBridgeCoreView [label="{TBridgeCoreView | + bridge_id : TBridgeId\l+ protocol_id : TBridgeProtocolId\l+ status : TBridgeStatus\l+ consumed_steps : uint32_t\l+ max_steps : uint32_t\l+ correlation : TCorrelationToken\l+ bridge_name : string_view\l|+ is_valid() : bool\l+ to_string() : string\l}"];
+
+    TBridge [label="TBridge::view()", fillcolor=lightcoral];
+    Observability [label="Bridge observability\n- Read-only view\n- Status monitoring\n- Progress tracking", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreView [label="exposes"];
+    TBridgeCoreView -> Observability [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreView_class_diagram.dot

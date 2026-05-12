@@ -1,0 +1,11 @@
+digraph TDiagnosticRecord_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    DiagnosticUsage [label="Diagnostic Usage", fillcolor=lightgray];
+
+    CreateInfo [label="TDiagnosticRecord::info(...)\nCreate informational diagnostic", fillcolor=lightcyan];
+
+    IncludeInReport [label="Include in boundary report\nTIntegrationBoundaryReport::make(..., diagnostic, ...)", fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TDiagnosticRecord_behavioral_diagram.dot

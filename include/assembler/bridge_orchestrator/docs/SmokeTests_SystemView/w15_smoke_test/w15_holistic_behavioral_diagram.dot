@@ -1,0 +1,209 @@
+digraph W15_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Start
+    Start [label="Start W15 Smoke Test", shape=ellipse, fillcolor=lightgreen];
+
+    // Configuration Phase
+    ConfigValidation [label="TFirstIntegrationSkeletonConfig::is_valid()\n- validate channel_id, binding_id, session_id\n- validate protocol_id, bridge_id\n- validate envelope_id, channel_name, etc."];
+    CorrelationCreate [label="TCorrelationToken::from_parts(15u, 1u)\n- create correlation token for W15"];
+
+    // Factory Creation Phase
+    SkeletonCreate [label="TFirstIntegrationSkeletonFactory::from_config_and_token()\n- create skeleton with config and correlation"];
+    AdapterCreate [label="TLogLevelAPIEnvelopePluginAdapterFactory::from_fields()\n- correlation_token\n- envelope_id: 'w15-log-level-envelope'\n- payload_size_hint: 256"];
+    PortCreate [label="TWriteSideEnvelopePlacementPortFactory::make_default()\n- create default port instance"];
+
+    // View Validation Phase
+    AdapterViewValidate [label="adapter.view().is_valid()\n- validate adapter view construction"];
+    PortViewValidate [label="port.view().is_valid()\n- validate port view construction"];
+
+    // Model Declaration Phase
+    ChannelDeclare [label="TFirstIntegrationSkeletonModelPlan::declare_channel()\n- create channel with single adapter single port profile\n- participant views from adapter and port"];
+    SurfacePairMake [label="TFirstIntegrationSkeletonModelPlan::make_surface_pair()\n- create obligation surface pair from adapter and port views"];
+    SurfacePairValidate [label="surface_pair.is_valid() && supports_primary_placement_flow()\n- validate surface pair compatibility"];
+    BindingDeclare [label="TFirstIntegrationSkeletonModelPlan::declare_binding()\n- propose binding with strict static one-to-one profile"];
+    BindingValidate [label="binding.is_compatible()\n- validate binding compatibility"];
+    SessionOpen [label="TFirstIntegrationSkeletonModelPlan::open_session()\n- open session with strict declaration policy"];
+    SessionValidate [label="session.is_open()\n- validate session is open"];
+    ProtocolDeclare [label="TFirstIntegrationSkeletonModelPlan::declare_protocol()\n- declare envelope placement protocol"];
+    ProtocolValidate [label="protocol.is_ready()\n- validate protocol readiness"];
+    BridgeDeclare [label="TFirstIntegrationSkeletonModelPlan::declare_bridge()\n- declare bridge with bounded model run"];
+    BridgeValidate [label="bridge.is_valid() && bridge.is_ready()\n- validate bridge declaration and readiness"];
+
+    // Model Execution Phase
+    BridgeModelRun [label="bridge.run_model_to_terminal()\n- execute bridge model to completion"];
+    BridgeModelValidate [label="bridge_model_result.completed()\n- validate model execution completed"];
+
+    // Carrier Flow Phase
+    AdapterReadiness [label="adapter.readiness().is_ready()\n- check adapter readiness for placement"];
+    PlacementRequestPrep [label="adapter.prepare_placement_request()\n- create placement request with envelope parameters"];
+    PlacementRequestValidate [label="placement_request.is_valid()\n- validate placement request"];
+    PortReadiness [label="port.readiness(placement_request).is_ready()\n- check port readiness for request"];
+    AdmissionExecute [label="port.admit(placement_request)\n- execute admission process"];
+    AdmissionValidate [label="admission.accepted()\n- validate admission acceptance"];
+    PlacementHandleGet [label="port.placement_handle(placement_request)\n- get placement handle from port"];
+    PlacementHandleValidate [label="placement_handle.is_valid()\n- validate placement handle"];
+    HandleAccept [label="adapter.accept_placement_handle(placement_handle)\n- adapter accepts placement handle"];
+    HandleAcceptValidate [label="adapter_handle_result.succeeded()\n- validate handle acceptance"];
+    LoadSignalEmit [label="adapter.emit_load_signal()\n- emit load signal after handle acceptance"];
+    LoadSignalValidate [label="load_signal.completed()\n- validate load signal completion"];
+    LoadSignalReceive [label="port.receive_load_signal(load_signal)\n- port receives and processes load signal"];
+    LoadSignalReceiveValidate [label="load_signal_result.succeeded()\n- validate load signal reception"];
+    NextDestinationRequest [label="adapter.next_destination_request()\n- request next destination routing"];
+    NextDestinationExecute [label="port.next_destination(next_destination_request)\n- execute next destination processing"];
+    NextDestinationValidate [label="next_destination_result.succeeded()\n- validate next destination acknowledgment"];
+
+    // Report Generation Phase
+    ReportGenerate [label="TFirstIntegrationSkeletonReport construction\n- collect all validation results\n- set success flags: model_succeeded(), flow_succeeded(), succeeded()"];
+
+    // End
+    End [label="End W15 Smoke Test\nReturn TFirstIntegrationSkeletonReport", shape=ellipse, fillcolor=lightcoral];
+
+    // Flow connections
+    Start -> ConfigValidation;
+    ConfigValidation -> CorrelationCreate [label="valid"];
+    ConfigValidation -> End [label="invalid"];
+
+    CorrelationCreate -> SkeletonCreate;
+    SkeletonCreate -> AdapterCreate;
+    SkeletonCreate -> PortCreate;
+
+    AdapterCreate -> AdapterViewValidate;
+    PortCreate -> PortViewValidate;
+
+    AdapterViewValidate -> PortViewValidate [label="both valid"];
+    PortViewValidate -> ChannelDeclare [label="both valid"];
+    PortViewValidate -> End [label="adapter invalid"];
+    AdapterViewValidate -> End [label="port invalid"];
+
+    ChannelDeclare -> SurfacePairMake;
+    SurfacePairMake -> SurfacePairValidate;
+    SurfacePairValidate -> BindingDeclare [label="valid"];
+    SurfacePairValidate -> End [label="invalid"];
+
+    BindingDeclare -> BindingValidate;
+    BindingValidate -> SessionOpen [label="compatible"];
+    BindingValidate -> End [label="incompatible"];
+
+    SessionOpen -> SessionValidate;
+    SessionValidate -> ProtocolDeclare [label="open"];
+    SessionValidate -> End [label="not open"];
+
+    ProtocolDeclare -> ProtocolValidate;
+    ProtocolValidate -> BridgeDeclare [label="ready"];
+    ProtocolValidate -> End [label="not ready"];
+
+    BridgeDeclare -> BridgeValidate;
+    BridgeValidate -> BridgeModelRun [label="declared and ready"];
+    BridgeValidate -> End [label="not declared/ready"];
+
+    BridgeModelRun -> BridgeModelValidate;
+    BridgeModelValidate -> AdapterReadiness [label="completed"];
+    BridgeModelValidate -> End [label="not completed"];
+
+    AdapterReadiness -> PlacementRequestPrep [label="ready"];
+    AdapterReadiness -> End [label="not ready"];
+
+    PlacementRequestPrep -> PlacementRequestValidate;
+    PlacementRequestValidate -> PortReadiness [label="valid"];
+    PlacementRequestValidate -> End [label="invalid"];
+
+    PortReadiness -> AdmissionExecute [label="ready"];
+    PortReadiness -> End [label="not ready"];
+
+    AdmissionExecute -> AdmissionValidate;
+    AdmissionValidate -> PlacementHandleGet [label="accepted"];
+    AdmissionValidate -> End [label="not accepted"];
+
+    PlacementHandleGet -> PlacementHandleValidate;
+    PlacementHandleValidate -> HandleAccept [label="valid"];
+    PlacementHandleValidate -> End [label="invalid"];
+
+    HandleAccept -> HandleAcceptValidate;
+    HandleAcceptValidate -> LoadSignalEmit [label="succeeded"];
+    HandleAcceptValidate -> End [label="failed"];
+
+    LoadSignalEmit -> LoadSignalValidate;
+    LoadSignalValidate -> LoadSignalReceive [label="completed"];
+    LoadSignalValidate -> End [label="not completed"];
+
+    LoadSignalReceive -> LoadSignalReceiveValidate;
+    LoadSignalReceiveValidate -> NextDestinationRequest [label="succeeded"];
+    LoadSignalReceiveValidate -> End [label="failed"];
+
+    NextDestinationRequest -> NextDestinationExecute;
+    NextDestinationExecute -> NextDestinationValidate;
+    NextDestinationValidate -> ReportGenerate [label="succeeded"];
+    NextDestinationValidate -> End [label="failed"];
+
+    ReportGenerate -> End;
+
+    // Layout hints for better organization
+    {rank=same; ConfigValidation; CorrelationCreate;}
+    {rank=same; SkeletonCreate; AdapterCreate; PortCreate;}
+    {rank=same; AdapterViewValidate; PortViewValidate;}
+    {rank=same; ChannelDeclare; SurfacePairMake; SurfacePairValidate;}
+    {rank=same; BindingDeclare; BindingValidate;}
+    {rank=same; SessionOpen; SessionValidate;}
+    {rank=same; ProtocolDeclare; ProtocolValidate;}
+    {rank=same; BridgeDeclare; BridgeValidate;}
+    {rank=same; BridgeModelRun; BridgeModelValidate;}
+    {rank=same; AdapterReadiness;}
+    {rank=same; PlacementRequestPrep; PlacementRequestValidate;}
+    {rank=same; PortReadiness;}
+    {rank=same; AdmissionExecute; AdmissionValidate;}
+    {rank=same; PlacementHandleGet; PlacementHandleValidate;}
+    {rank=same; HandleAccept; HandleAcceptValidate;}
+    {rank=same; LoadSignalEmit; LoadSignalValidate;}
+    {rank=same; LoadSignalReceive; LoadSignalReceiveValidate;}
+    {rank=same; NextDestinationRequest; NextDestinationExecute; NextDestinationValidate;}
+    {rank=same; ReportGenerate;}
+
+    // Color coding for phases
+    ConfigValidation [fillcolor=lightblue];
+    CorrelationCreate [fillcolor=lightblue];
+    SkeletonCreate [fillcolor=lightblue];
+    AdapterCreate [fillcolor=lightblue];
+    PortCreate [fillcolor=lightblue];
+
+    AdapterViewValidate [fillcolor=lightyellow];
+    PortViewValidate [fillcolor=lightyellow];
+
+    ChannelDeclare [fillcolor=lightsalmon];
+    SurfacePairMake [fillcolor=lightsalmon];
+    SurfacePairValidate [fillcolor=lightsalmon];
+    BindingDeclare [fillcolor=lightsalmon];
+    BindingValidate [fillcolor=lightsalmon];
+    SessionOpen [fillcolor=lightsalmon];
+    SessionValidate [fillcolor=lightsalmon];
+    ProtocolDeclare [fillcolor=lightsalmon];
+    ProtocolValidate [fillcolor=lightsalmon];
+    BridgeDeclare [fillcolor=lightsalmon];
+    BridgeValidate [fillcolor=lightsalmon];
+
+    BridgeModelRun [fillcolor=lightgreen];
+    BridgeModelValidate [fillcolor=lightgreen];
+
+    AdapterReadiness [fillcolor=palegreen];
+    PlacementRequestPrep [fillcolor=palegreen];
+    PlacementRequestValidate [fillcolor=palegreen];
+    PortReadiness [fillcolor=palegreen];
+    AdmissionExecute [fillcolor=palegreen];
+    AdmissionValidate [fillcolor=palegreen];
+    PlacementHandleGet [fillcolor=palegreen];
+    PlacementHandleValidate [fillcolor=palegreen];
+    HandleAccept [fillcolor=palegreen];
+    HandleAcceptValidate [fillcolor=palegreen];
+    LoadSignalEmit [fillcolor=palegreen];
+    LoadSignalValidate [fillcolor=palegreen];
+    LoadSignalReceive [fillcolor=palegreen];
+    LoadSignalReceiveValidate [fillcolor=palegreen];
+    NextDestinationRequest [fillcolor=palegreen];
+    NextDestinationExecute [fillcolor=palegreen];
+    NextDestinationValidate [fillcolor=palegreen];
+
+    ReportGenerate [fillcolor=lightgray];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\w15_holistic_behavioral_diagram.dot

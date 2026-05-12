@@ -1,0 +1,60 @@
+digraph TSessionResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Result creation patterns
+    CreateSuccess [label="Create Success Result\nTSessionResult::create_success()\n- Set success flag\n- Include session ID\n- Set appropriate status\n- Clear error messages", fillcolor=lightyellow];
+
+    CreateRejected [label="Create Rejected Result\nTSessionResult::create_rejected()\n- Set failure flag\n- Include error message\n- Set REJECTED status\n- Provide rejection details", fillcolor=lightyellow];
+
+    CreateWithView [label="Create With View\nTSessionResult::create_with_view()\n- Include TSessionView\n- Enable monitoring integration\n- Provide current session state\n- Support status queries", fillcolor=lightyellow];
+
+    CreateWithSnapshot [label="Create With Snapshot\nTSessionResult::create_with_snapshot()\n- Include TSessionSnapshot\n- Enable detailed analysis\n- Preserve historical state\n- Support debugging", fillcolor=lightyellow];
+
+    // Result inspection
+    CheckSuccess [label="Check Success\nresult.is_success()\n- Determine operation outcome\n- Guide error handling\n- Control flow decisions", fillcolor=lightyellow];
+
+    GetDetails [label="Get Result Details\n- Retrieve session ID\n- Get operation status\n- Access error messages\n- Extract operation details", fillcolor=lightyellow];
+
+    AccessData [label="Access Result Data\n- Check for view data\n- Check for snapshot data\n- Extract view or snapshot\n- Support different result types", fillcolor=lightyellow];
+
+    // Usage in session operations
+    ReturnFromOpen [label="Return from open()\n- Indicate session creation success/failure\n- Provide session identity\n- Include validation results", fillcolor=lightblue];
+
+    ReturnFromActivate [label="Return from activate()\n- Indicate activation success/failure\n- Provide current session state\n- Include activation details", fillcolor=lightblue];
+
+    ReturnFromComplete [label="Return from complete()\n- Indicate completion success\n- Provide final session state\n- Include completion metrics", fillcolor=lightblue];
+
+    ReturnFromReject [label="Return from reject()\n- Indicate rejection reason\n- Provide error details\n- Include rejection context", fillcolor=lightblue];
+
+    // Flow
+    CreateSuccess -> ReturnFromOpen [label="1. Success result from open()"];
+    CreateSuccess -> ReturnFromActivate [label="2. Success result from activate()"];
+    CreateSuccess -> ReturnFromComplete [label="3. Success result from complete()"];
+
+    CreateRejected -> ReturnFromOpen [label="4. Rejection result from open()"];
+    CreateRejected -> ReturnFromReject [label="5. Rejection result from reject()"];
+
+    CreateWithView -> ReturnFromActivate [label="6. View result from operations"];
+    CreateWithSnapshot -> ReturnFromComplete [label="7. Snapshot result from completion"];
+
+    ReturnFromOpen -> CheckSuccess [label="8. Client checks operation success"];
+    ReturnFromActivate -> CheckSuccess;
+    ReturnFromComplete -> CheckSuccess;
+    ReturnFromReject -> CheckSuccess;
+
+    CheckSuccess -> GetDetails [label="9. Get result details on success"];
+    CheckSuccess -> AccessData [label="10. Access view/snapshot data"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Session Operations";
+        bgcolor=white;
+
+        ResultOps [label="Result Operations", fillcolor=lightyellow];
+        SessionReturns [label="Session Method Returns", fillcolor=lightblue];
+        SuccessFlow [label="Success Path", style=solid, color=green];
+        FailureFlow [label="Failure Path", style=dashed, color=red];
+    }
+}

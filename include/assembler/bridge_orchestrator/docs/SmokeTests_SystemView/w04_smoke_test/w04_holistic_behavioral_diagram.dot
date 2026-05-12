@@ -1,0 +1,96 @@
+digraph w04_holistic_behavioral {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // Start
+    start [label="Channel Management\nInitiation", shape=circle, fillcolor=lightgreen];
+
+    // Participant Creation Phase
+    source_creation [label="Create Source Participant\n(content_provider role)"];
+    target_creation [label="Create Target Participant\n(host_provider/receiver_provider role)"];
+
+    // Profile and Policy Phase
+    profile_creation [label="Create Channel Profile\n(single_adapter_single_port)"];
+    policy_creation [label="Create Binding Policy\n(strict_static_one_to_one)"];
+
+    // Channel Declaration Phase
+    channel_declaration [label="Declare Channel\n(TChannel::declare)"];
+    identity_validation [label="Validate Channel Identity\n(channel_id != 0)"];
+    participant_validation [label="Validate Participants\n(source.is_valid() && target.is_valid())"];
+
+    // Compatibility Validation Phase
+    role_compatibility [label="Validate Role Compatibility\n(source=content_provider,\ntarget=host_provider/receiver_provider)"];
+    profile_policy_compat [label="Validate Profile-Policy Compatibility\n(binding_policy.is_compatible_with(profile))"];
+
+    // Overall Validation Phase
+    channel_validation [label="Overall Channel Validation\n(TChannel::is_valid())"];
+    status_setting [label="Set Channel Status\n(TChannelStatus::declared)"];
+
+    // Protocol Integration Phase
+    protocol_integration [label="Protocol State Integration\n(TBridgeStage references)"];
+    correlation_integration [label="Correlation Token Integration\n(TCorrelationToken association)"];
+
+    // End
+    end [label="Channel Ready for\nBridge Orchestration", shape=circle, fillcolor=lightblue];
+
+    // Flow connections
+    start -> source_creation;
+    start -> target_creation;
+
+    source_creation -> profile_creation;
+    target_creation -> profile_creation;
+
+    profile_creation -> policy_creation;
+    policy_creation -> channel_declaration;
+
+    channel_declaration -> identity_validation;
+    identity_validation -> participant_validation;
+    participant_validation -> role_compatibility;
+    role_compatibility -> profile_policy_compat;
+    profile_policy_compat -> channel_validation;
+    channel_validation -> status_setting;
+    status_setting -> protocol_integration;
+    protocol_integration -> correlation_integration;
+    correlation_integration -> end;
+
+    // Validation feedback loops
+    identity_validation -> channel_declaration [label="invalid", style=dashed, color=red];
+    participant_validation -> channel_declaration [label="invalid", style=dashed, color=red];
+    role_compatibility -> channel_declaration [label="incompatible", style=dashed, color=red];
+    profile_policy_compat -> channel_declaration [label="incompatible", style=dashed, color=red];
+    channel_validation -> channel_declaration [label="invalid", style=dashed, color=red];
+
+    // Component usage annotations
+    source_creation -> TParticipant [label="TParticipant::make()", style=invis];
+    target_creation -> TParticipant [label="TParticipant::make()", style=invis];
+    profile_creation -> TChannelProfile [label="TChannelProfile::make()", style=invis];
+    policy_creation -> TChannelBindingPolicy [label="strict_static_one_to_one()", style=invis];
+    channel_declaration -> TChannel [label="TChannel::declare()", style=invis];
+    identity_validation -> TChannel [label="has_valid_identity()", style=invis];
+    participant_validation -> TChannel [label="has_valid_participants()", style=invis];
+    role_compatibility -> TChannel [label="has_compatible_roles()", style=invis];
+    profile_policy_compat -> TChannelBindingPolicy [label="is_compatible_with()", style=invis];
+    channel_validation -> TChannel [label="is_valid()", style=invis];
+    protocol_integration -> TBridgeStage [label="channel_resolution stage", style=invis];
+    correlation_integration -> TCorrelationToken [label="channel correlation", style=invis];
+
+    // Invisible positioning nodes for components
+    TParticipant [shape=plaintext, label="TParticipant"];
+    TChannelProfile [shape=plaintext, label="TChannelProfile"];
+    TChannelBindingPolicy [shape=plaintext, label="TChannelBindingPolicy"];
+    TChannel [shape=plaintext, label="TChannel"];
+    TBridgeStage [shape=plaintext, label="TBridgeStage"];
+    TCorrelationToken [shape=plaintext, label="TCorrelationToken"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Behavioral Flow Legend";
+        color=white;
+        style=filled;
+
+        legend_creation [label="Creation Phase", shape=rectangle, fillcolor=lightyellow];
+        legend_validation [label="Validation Phase", shape=rectangle, fillcolor=lightcoral];
+        legend_integration [label="Integration Phase", shape=rectangle, fillcolor=lightblue];
+        legend_feedback [label="Validation Failure\n(Re-attempt)", shape=plaintext];
+    }
+}

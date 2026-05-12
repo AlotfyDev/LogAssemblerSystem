@@ -1,0 +1,28 @@
+digraph TCompatibilityMatrix_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgreen];
+
+    TCompatibilityMatrix [label="{TCompatibilityMatrix<Capacity> (W07)|issues : array<TCompatibilityIssue, Capacity>\nissue_count : size_t|+ capacity() : size_t\n+ full() : bool\n+ empty() : bool\n+ add(issue) : bool\n+ blocking_count() : size_t\n+ warning_count() : size_t\n+ has_blocking_issues() : bool\n+ has_warnings() : bool\n+ compatible() : bool\n+ first_issue() : const TCompatibilityIssue&|Fixed-capacity diagnostic matrix}"];
+
+    TCompatibilityIssue [label="{TCompatibilityIssue|severity : TCompatibilitySeverity\ncode : TCompatibilityIssueCode\ndescription : string_view\nblocking : bool|+ is_clean() : bool\n+ is_blocking_issue() : bool|Individual compatibility issue}" shape=record, fillcolor=lightyellow];
+
+    TCompatibilitySeverity [label="{TCompatibilitySeverity|unknown, info, warning, error, fatal|Issue severity levels}" shape=record, fillcolor=white];
+
+    // Relationships
+    TCompatibilityMatrix -> TCompatibilityIssue [label="contains array of"];
+    TCompatibilityIssue -> TCompatibilitySeverity [label="has severity"];
+
+    // Template parameter
+    Capacity [label="Capacity (template parameter)\nTypically 8 for W07 smoke test", shape=ellipse, fillcolor=lightblue];
+
+    TCompatibilityMatrix -> Capacity [label="parameterized by"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Template [label="Template Class", fillcolor=lightgreen];
+        Component [label="Component Type", fillcolor=lightyellow];
+        Enum [label="Enum Type", fillcolor=white];
+        Parameter [label="Template Parameter", shape=ellipse, fillcolor=lightblue];
+    }
+}

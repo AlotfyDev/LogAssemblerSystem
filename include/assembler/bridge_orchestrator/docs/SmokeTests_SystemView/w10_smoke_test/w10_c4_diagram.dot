@@ -1,0 +1,153 @@
+digraph G {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+    edge [color=blue];
+
+    // System Context
+    subgraph cluster_system {
+        label="W10 Bridge Core Management System";
+        color=blue;
+        style=dashed;
+
+        // Core Bridge Components
+        subgraph cluster_bridge_core {
+            label="Bridge Core Layer";
+            color=red;
+            style=solid;
+
+            TBridge [label="TBridge<T>\nMain Orchestrator", fillcolor=lightcoral];
+            TBridgeConfig [label="TBridgeConfig\nExecution Config", fillcolor=lightcoral];
+            TBridgeStatus [label="TBridgeStatus\nLifecycle Status", fillcolor=lightcoral];
+            TBridgeId [label="TBridgeId\nIdentity", fillcolor=lightcoral];
+            TBridgeStepBudget [label="TBridgeStepBudget\nExecution Budget", fillcolor=lightcoral];
+        }
+
+        // Protocol Integration
+        subgraph cluster_protocol {
+            label="Protocol Layer (W09)";
+            color=green;
+            style=solid;
+
+            TBridgeProtocol [label="TBridgeProtocol<T>\nProtocol Orchestrator", fillcolor=lightgreen];
+            TBridgeProtocolPlan [label="TBridgeProtocolPlan\nExecution Plan", fillcolor=lightgreen];
+            TBridgeProtocolId [label="TBridgeProtocolId\nProtocol Identity", fillcolor=lightgreen];
+        }
+
+        // Communication Stack
+        subgraph cluster_communication {
+            label="Communication Stack";
+            color=orange;
+            style=solid;
+
+            subgraph cluster_session {
+                label="Session Layer (W08)";
+                color=yellow;
+                style=dashed;
+
+                TSession [label="TSession\nSession Orchestrator", fillcolor=lightyellow];
+                TSessionOpenRequest [label="TSessionOpenRequest\nSession Request", fillcolor=lightyellow];
+                TSessionId [label="TSessionId\nSession Identity", fillcolor=lightyellow];
+                TSessionPolicy [label="TSessionPolicy\nSession Policy", fillcolor=lightyellow];
+            }
+
+            subgraph cluster_binding {
+                label="Binding Layer (W06)";
+                color=cyan;
+                style=dashed;
+
+                TBinding [label="TBinding\nChannel Binding", fillcolor=lightcyan];
+                TBindingId [label="TBindingId\nBinding Identity", fillcolor=lightcyan];
+                TBindingProfile [label="TBindingProfile\nBinding Profile", fillcolor=lightcyan];
+            }
+
+            subgraph cluster_channel {
+                label="Channel Layer (W04)";
+                color=magenta;
+                style=dashed;
+
+                TChannel [label="TChannel\nCommunication Channel", fillcolor=lavender];
+                TSingleAdapterSinglePortProfile [label="TSingleAdapterSinglePortProfile\nChannel Profile", fillcolor=lavender];
+                TChannelBindingPolicy [label="TChannelBindingPolicy\nBinding Policy", fillcolor=lavender];
+            }
+
+            subgraph cluster_participants {
+                label="Participant Layer (W03)";
+                color=purple;
+                style=dashed;
+
+                TParticipant [label="TParticipant\nSession Participant", fillcolor=thistle];
+                TParticipantRole [label="TParticipantRole\nParticipant Role", fillcolor=thistle];
+            }
+
+            subgraph cluster_plugin {
+                label="Plugin Layer (W05)";
+                color=brown;
+                style=dashed;
+
+                TPluginAdapterView [label="TPluginAdapterView\nAdapter View", fillcolor=tan];
+                TPortView [label="TPortView\nPort View", fillcolor=tan];
+                TObligationSurfacePair [label="TObligationSurfacePair\nObligation Pair", fillcolor=tan];
+                TPluginAdapterObligationProfile [label="TPluginAdapterObligationProfile\nAdapter Profile", fillcolor=tan];
+                TPortObligationProfile [label="TPortObligationProfile\nPort Profile", fillcolor=tan];
+            }
+        }
+
+        // Observability Components
+        subgraph cluster_observability {
+            label="Observability Layer";
+            color=gray;
+            style=solid;
+
+            TBridgeCoreView [label="TBridgeCoreView\nState View", fillcolor=lightgray];
+            TBridgeCoreSnapshot [label="TBridgeCoreSnapshot\nComplete Snapshot", fillcolor=lightgray];
+            TBridgeCoreStepReport [label="TBridgeCoreStepReport\nStep Report", fillcolor=lightgray];
+            TBridgeCoreTrace [label="TBridgeCoreTrace\nExecution Trace", fillcolor=lightgray];
+            TBridgeCoreFrame [label="TBridgeCoreFrame\nState Frame", fillcolor=lightgray];
+        }
+
+        // Error Handling
+        subgraph cluster_error_handling {
+            label="Error Handling";
+            color=red;
+            style=solid;
+
+            TBridgeCoreResult [label="TBridgeCoreResult\nOperation Result", fillcolor=mistyrose];
+            TBridgeCoreIssue [label="TBridgeCoreIssue\nIssue/Error Report", fillcolor=mistyrose];
+            TBridgeError [label="TBridgeError\nError Types", fillcolor=mistyrose];
+            TBridgeCorePolicy [label="TBridgeCorePolicy\nValidation Policy", fillcolor=mistyrose];
+        }
+    }
+
+    // Relationships
+    TBridge -> TBridgeProtocol [label="owns"];
+    TBridge -> TBridgeConfig [label="configures"];
+    TBridge -> TBridgeStatus [label="tracks"];
+    TBridge -> TBridgeId [label="identifies"];
+    TBridge -> TBridgeStepBudget [label="manages"];
+
+    TBridgeProtocol -> TSession [label="orchestrates"];
+    TSession -> TBinding [label="contains"];
+    TBinding -> TChannel [label="binds"];
+    TChannel -> TParticipant [label="connects"];
+
+    TBinding -> TObligationSurfacePair [label="links"];
+    TObligationSurfacePair -> TPluginAdapterView [label="adapter"];
+    TObligationSurfacePair -> TPortView [label="port"];
+
+    TBridge -> TBridgeCoreView [label="exposes"];
+    TBridge -> TBridgeCoreSnapshot [label="captures"];
+    TBridge -> TBridgeCoreStepReport [label="reports"];
+    TBridge -> TBridgeCoreTrace [label="traces"];
+    TBridge -> TBridgeCoreFrame [label="frames"];
+
+    TBridge -> TBridgeCoreResult [label="returns"];
+    TBridge -> TBridgeCoreIssue [label="issues"];
+
+    // Foundation dependencies
+    TCorrelationToken [label="TCorrelationToken\nFoundation (W01)", fillcolor=lightblue];
+    TBridge -> TCorrelationToken [label="correlates", style=dotted];
+    TSession -> TCorrelationToken [label="correlates", style=dotted];
+    TBinding -> TCorrelationToken [label="correlates", style=dotted];
+    TChannel -> TCorrelationToken [label="correlates", style=dotted];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\w10_c4_diagram.dot

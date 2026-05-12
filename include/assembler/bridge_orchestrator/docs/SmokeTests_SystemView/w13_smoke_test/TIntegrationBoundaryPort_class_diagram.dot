@@ -1,0 +1,63 @@
+digraph TIntegrationBoundaryPort_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main CRTP base
+    PortBase [label="{TIntegrationBoundaryPort<Derived>\n(CRTP Base Class)|• derived_type = Derived\n|+ boundary_view() : TIntegrationBoundaryPortView\l+ boundary_descriptor() : TIntegrationBoundaryDescriptor\l+ boundary_readiness(request) : TReadinessView\l+ accept_boundary_handoff(request) : TBoundaryHandoffResult\l+ complete_boundary_handoff(handle) : TBoundaryHandoffResult\l+ reject_boundary_handoff(request) : TBoundaryHandoffResult\l|- derived() : Derived&\l- derived() : const Derived&\l}", fillcolor=lightcyan];
+
+    // Traits for compile-time validation
+    Traits [label="{TIntegrationBoundaryPortTraits<Derived>\n(Compile-time Traits)|• has_view : bool constexpr\n• has_descriptor : bool constexpr\n• has_readiness : bool constexpr\n• has_accept_handoff : bool constexpr\n• has_complete_handoff : bool constexpr\n• has_reject_handoff : bool constexpr\n• satisfies_required_surface : bool constexpr\l}", fillcolor=orange];
+
+    // Required interface methods (enforced by static_assert)
+    RequiredMethods [label="{Required Derived Methods\n(Enforced by CRTP)|• boundary_view() const → TIntegrationBoundaryPortView\n• boundary_descriptor() const → TIntegrationBoundaryDescriptor\n• boundary_readiness(request) → TReadinessView\n• accept_boundary_handoff(request) → TBoundaryHandoffResult\n• complete_boundary_handoff(handle) → TBoundaryHandoffResult\n• reject_boundary_handoff(request) → TBoundaryHandoffResult\l}", shape=note, fillcolor=lightyellow];
+
+    // Return types
+    ViewType [label="{TIntegrationBoundaryPortView\n(Return Type)|• descriptor : TIntegrationBoundaryDescriptor\n• port_name : string_view\n• readiness_label : string_view\n• correlation : TCorrelationToken\l}", fillcolor=lightgreen];
+
+    DescriptorType [label="{TIntegrationBoundaryDescriptor\n(Return Type)|• kind : TIntegrationBoundaryKind\n• direction : TIntegrationBoundaryDirection\n• capability_mask : uint32_t\n• boundary_family : string_view\n• correlation : TCorrelationToken\l}", fillcolor=lightgreen];
+
+    ReadinessType [label="{TReadinessView\n(W01 Reused)|• state : TReadinessState\n• reason : string_view\n• correlation : TCorrelationToken\n• size_hint : uint64_t\l}", fillcolor=lightgray];
+
+    ResultType [label="{TBoundaryHandoffResult\n(Return Type)|• status : TBoundaryHandoffStatus\n• handle : TBoundaryHandoffHandle\n• bridge_result : TBridgeResult\n• note : string_view\l}", fillcolor=pink];
+
+    // Parameter types
+    RequestType [label="{TBoundaryHandoffRequest\n(Parameter Type)|• correlation : TCorrelationToken\n• target : TIntegrationBoundaryDescriptor\n• material_kind : string_view\n• material_size_hint : uint64_t\n• requires_ordered_handoff : bool\l}", fillcolor=lavender];
+
+    HandleType [label="{TBoundaryHandoffHandle\n(Parameter Type)|• id : uint64_t\n• material_kind : string_view\n• correlation : TCorrelationToken\n• note : string_view\l}", fillcolor=lavender];
+
+    // Relationships
+    PortBase -> Traits [label="validates with"];
+    PortBase -> RequiredMethods [label="enforces", style=dashed];
+
+    PortBase -> ViewType [label="returns"];
+    PortBase -> DescriptorType [label="returns"];
+    PortBase -> ReadinessType [label="returns"];
+    PortBase -> ResultType [label="returns"];
+
+    RequiredMethods -> ViewType [label="requires"];
+    RequiredMethods -> DescriptorType [label="requires"];
+    RequiredMethods -> ReadinessType [label="requires"];
+    RequiredMethods -> ResultType [label="requires"];
+
+    PortBase -> RequestType [label="accepts"];
+    PortBase -> HandleType [label="accepts"];
+
+    RequiredMethods -> RequestType [label="requires"];
+    RequiredMethods -> HandleType [label="requires"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendCRTP [label="CRTP Base", fillcolor=lightcyan];
+        LegendTraits [label="Traits", fillcolor=orange];
+        LegendMethods [label="Required Methods", shape=note, fillcolor=lightyellow];
+        LegendReturn [label="Return Types", fillcolor=lightgreen];
+        LegendParam [label="Parameter Types", fillcolor=lavender];
+        LegendReused [label="W01 Reused", fillcolor=lightgray];
+        LegendResult [label="Result Types", fillcolor=pink];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryPort_class_diagram.dot

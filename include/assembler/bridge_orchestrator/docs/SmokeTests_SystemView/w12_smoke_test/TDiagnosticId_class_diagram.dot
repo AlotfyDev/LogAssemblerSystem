@@ -1,0 +1,10 @@
+digraph TDiagnosticId_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticId [label="{TDiagnosticId|value : std::uint64_t\l|+ is_valid() : bool\l+ invalid() : TDiagnosticId\l+ from_value(value) : TDiagnosticId\l+ operator==() : bool\l+ operator!=() : bool\l}"]
+
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+
+    TDiagnosticId -> std_uint64_t [label="uses", style=dashed]
+}

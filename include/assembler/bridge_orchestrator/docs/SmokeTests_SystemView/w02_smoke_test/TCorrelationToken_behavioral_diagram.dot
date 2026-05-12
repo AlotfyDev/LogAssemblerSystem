@@ -1,0 +1,34 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateToken [label="Create Correlation Token\nTCorrelationToken::from_parts(10u, 20u)\nCreates token with high=10, low=20", fillcolor=lightgreen]
+
+    ValidateToken [label="Validate Token\nis_valid()\nReturns true (both parts non-zero)", fillcolor=lightgreen]
+
+    StartProtocol [label="Start Protocol State\nTBridgeProtocolState::start(token)\nUses token for protocol correlation tracking", fillcolor=orange]
+
+    CompleteProtocol [label="Complete Protocol\nTBridgeResult::success(token)\nUses token in success result", fillcolor=orange]
+
+    End [label="Token correlation completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateToken
+    CreateToken -> ValidateToken
+    ValidateToken -> StartProtocol
+    StartProtocol -> CompleteProtocol
+    CompleteProtocol -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ValidationLegend [label="Token Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Token Usage", shape=rectangle, fillcolor=orange]
+    }
+}

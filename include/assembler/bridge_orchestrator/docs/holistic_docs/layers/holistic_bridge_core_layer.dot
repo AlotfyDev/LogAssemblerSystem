@@ -1,0 +1,129 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Layer 10: Bridge Core Components
+    subgraph cluster_w10 {
+        label="W10 Bridge Core Layer\n(Protocol Orchestration Engine)";
+        style=filled;
+        fillcolor=lightcyan;
+
+        TBridge [label="{TBridge<T>|Template-based bridge orchestrator\nwith step count parameterization}"];
+        TBridgeId [label="{TBridgeId|Unique bridge identity primitives\nuint64_t-based opaque identifiers}"];
+        TBridgeConfig [label="{TBridgeConfig|Bridge execution configuration\nbudgets, modes, diagnostic flags}"];
+        TBridgeStatus [label="{TBridgeStatus|Bridge lifecycle status enumeration\nready → running → completed/exhausted/rejected}"];
+        TBridgeCoreResult [label="{TBridgeCoreResult|Bridge operation result types\nsuccess/failure/rejection/exhaustion}"];
+        TBridgeCoreView [label="{TBridgeCoreView|Bridge state read-only projections\nidentity, status, progress metrics}"];
+        TBridgeCoreSnapshot [label="{TBridgeCoreSnapshot|Complete bridge state snapshots\ncomprehensive diagnostic capture}"];
+        TBridgeCoreStepReport [label="{TBridgeCoreStepReport|Step execution reporting\nbefore/after frames with trace}"];
+        TBridgeCoreTrace [label="{TBridgeCoreTrace|Bridge execution tracing\nstep-by-step execution records}"];
+        TBridgeStepBudget [label="{TBridgeStepBudget|Execution budget management\nfinite consumption tracking}"];
+        TBridgeRunMode [label="{TBridgeRunMode|Execution mode control\nmanual/bounded/single-pass/diagnostic}"];
+
+        // Bridge Core Relationships
+        TBridge -> TBridgeId [label="owns"];
+        TBridge -> TBridgeConfig [label="configures"];
+        TBridge -> TBridgeStatus [label="tracks"];
+        TBridge -> TBridgeCoreResult [label="produces"];
+
+        TBridge -> TBridgeCoreView [label="projects"];
+        TBridge -> TBridgeCoreSnapshot [label="captures"];
+        TBridge -> TBridgeCoreStepReport [label="reports"];
+        TBridge -> TBridgeCoreTrace [label="traces"];
+
+        TBridgeConfig -> TBridgeStepBudget [label="contains"];
+        TBridgeConfig -> TBridgeRunMode [label="specifies"];
+
+        TBridgeCoreResult -> TBridgeStatus [label="reflects"];
+        TBridgeCoreSnapshot -> TBridgeCoreView [label="extends"];
+    }
+
+    // External Interfaces
+    subgraph cluster_external {
+        label="External Layer Interfaces";
+        style=filled;
+        fillcolor=lightyellow;
+
+        W09Protocol [label="{W09 Bridge Protocol|Protocol model and advancement}"];
+        W02ProtocolState [label="{W02 Protocol State|State management foundations}"];
+        W01Carriers [label="{W01 Carriers|Transport primitives and correlation}"];
+        W06Bindings [label="{W06 Bindings|Binding declarations and compatibility}"];
+        W12Diagnostics [label="{W12 Diagnostics|Bridge diagnostic systems}"];
+        W13Monitoring [label="{W13 Monitoring|Performance and health monitoring}"];
+
+        // W10 interfaces
+        W09Protocol -> TBridge [label="provides protocol"];
+        W02ProtocolState -> TBridge [label="provides state"];
+        W01Carriers -> TBridge [label="provides correlation"];
+        W06Bindings -> TBridge [label="enables from bindings"];
+        TBridge -> W12Diagnostics [label="feeds diagnostics"];
+        TBridge -> W13Monitoring [label="feeds monitoring"];
+    }
+
+    // Data Flow Patterns
+    subgraph cluster_flows {
+        label="Bridge Execution Flow";
+        style=filled;
+        fillcolor=lightgreen;
+
+        DeclarationFlow [label="{Declaration Flow|Protocol + Config → Bridge Declaration}"];
+        LifecycleFlow [label="{Lifecycle Flow|Ready → Running → Terminal Status}"];
+        OrchestrationFlow [label="{Orchestration Flow|Step Budget → Protocol Advancement → Results}"];
+        MonitoringFlow [label="{Monitoring Flow|Snapshots + Traces → Diagnostics + Monitoring}"];
+
+        DeclarationFlow -> TBridge [style=dotted];
+        LifecycleFlow -> TBridgeStatus [style=dotted];
+        OrchestrationFlow -> TBridgeCoreResult [style=dotted];
+        MonitoringFlow -> TBridgeCoreSnapshot [style=dotted];
+    }
+
+    // Usage from Smoke Tests
+    subgraph cluster_usage {
+        label="W10 Smoke Test Usage Patterns";
+        style=filled;
+        fillcolor=lightcoral;
+
+        BridgeDeclaration [label="{Bridge Declaration|TBridge<12>::declare(id, protocol, config)}"];
+        ValidationChecks [label="{Validation Checks|bridge.is_valid(), is_ready(), view().is_valid()}"];
+        SingleStep [label="{Single Step Execution|bridge.step_model_once() → running status}"];
+        BoundedRun [label="{Bounded Run Execution|bridge.run_model_to_terminal() → completed}"];
+        ExhaustionTest [label="{Exhaustion Test|budget exceeded → exhausted status}"];
+        SnapshotCapture [label="{Snapshot Capture|bridge.snapshot() with full state}"];
+        TraceGeneration [label="{Trace Generation|bridge.trace_current_step() for diagnostics}"];
+
+        BridgeDeclaration -> TBridge;
+        ValidationChecks -> TBridgeCoreView;
+        SingleStep -> TBridgeCoreResult;
+        BoundedRun -> TBridgeStatus;
+        ExhaustionTest -> TBridgeStepBudget;
+        SnapshotCapture -> TBridgeCoreSnapshot;
+        TraceGeneration -> TBridgeCoreTrace;
+    }
+
+    // Performance Characteristics
+    subgraph cluster_performance {
+        label="Performance Characteristics";
+        style=filled;
+        fillcolor=gold;
+
+        ZeroAllocation [label="{Zero-Allocation Design|No dynamic memory in hot paths\nStack-based orchestration}"];
+        ConstexprValidation [label="{constexpr Validation|Compile-time invariant checks\nZero runtime validation overhead}"];
+        DeterministicBudget [label="{Deterministic Budget|Predictable execution bounds\nProtection against infinite loops}"];
+        EndpointNeutral [label="{Endpoint-Neutral|Model-only advancement\nNo I/O or blocking operations}"];
+
+        ZeroAllocation -> TBridge;
+        ConstexprValidation -> TBridgeId;
+        DeterministicBudget -> TBridgeStepBudget;
+        EndpointNeutral -> TBridgeRunMode;
+    }
+
+    // Layer Boundaries
+    edge [style=dashed, color=red, constraint=false];
+    TBridge -> W09Protocol [label="W10→W09: protocol advancement"];
+    TBridgeCoreResult -> W02ProtocolState [label="W10→W02: state updates"];
+    TBridgeCoreTrace -> W12Diagnostics [label="W10→W12: execution traces"];
+    TBridgeCoreSnapshot -> W13Monitoring [label="W10→W13: monitoring data"];
+    W06Bindings -> TBridge [label="W06→W10: binding enablement"];
+    W01Carriers -> TBridge [label="W01→W10: correlation tokens"];
+}</content>
+<parameter name="filePath">include/assembler/communication_context/docs/holistic_docs/layers/holistic_bridge_core_layer.dot

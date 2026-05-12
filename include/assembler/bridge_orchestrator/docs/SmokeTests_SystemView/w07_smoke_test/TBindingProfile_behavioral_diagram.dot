@@ -1,0 +1,32 @@
+digraph TBindingProfile_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Key operations
+    create_strict_profile [label="strict_static_one_to_one()\nCreate strict 1:1 binding profile\nfor W07 compatibility evaluation", fillcolor=palegreen];
+
+    validate_profile [label="is_valid()\nCheck profile_version > 0 && kind != unknown", fillcolor=white];
+
+    check_strict_one_to_one [label="is_strict_one_to_one()\nCheck kind == strict_one_to_one &&\nchannel/surface requirements met", fillcolor=white];
+
+    // W07 usage
+    binding_proposal [label="Used in TBinding::propose()\nas default binding profile parameter", fillcolor=palegreen];
+
+    compatibility_evaluation [label="Profile constraints validated\nduring compatibility evaluation\n(require_* flags checked)", fillcolor=lightcyan];
+
+    // Flow
+    create_strict_profile -> validate_profile [label="enables"];
+    create_strict_profile -> check_strict_one_to_one [label="enables"];
+
+    create_strict_profile -> binding_proposal [label="used in"];
+    validate_profile -> compatibility_evaluation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Profile Creation", fillcolor=palegreen];
+        Validation [label="Validation Operation", fillcolor=white];
+        Binding [label="Binding Usage", fillcolor=palegreen];
+        Eval [label="Evaluation Usage", fillcolor=lightcyan];
+    }
+}

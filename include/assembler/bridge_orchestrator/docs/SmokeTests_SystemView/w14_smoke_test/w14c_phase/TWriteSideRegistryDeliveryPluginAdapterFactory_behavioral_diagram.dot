@@ -1,0 +1,30 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterFactory_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Factory usage patterns
+    FromDescriptor [label="from_descriptor() method:\n- Input: TWriteSideRegistryDeliveryMaterialDescriptor\n- Input: TWriteSideRegistryDeliveryPluginAdapterConfig (optional, uses defaults)\n- Output: fully configured TWriteSideRegistryDeliveryPluginAdapter"];
+
+    FromFields [label="from_fields() method:\n- Input: TCorrelationToken correlation\n- Input: std::string_view material_id\n- Input: std::uint64_t material_size_hint (default 0)\n- Input: bool ordered (default false)\n- Input: TWriteSideRegistryDeliveryPluginAdapterConfig (optional, uses defaults)\n- Internal: calls TWriteSideRegistryDeliveryMaterialDescriptor::default_log_level_envelope()\n- Output: fully configured TWriteSideRegistryDeliveryPluginAdapter"];
+
+    MaterialDescriptorCreation [label="TWriteSideRegistryDeliveryMaterialDescriptor::default_log_level_envelope():\n- sets material_kind to 'log_level_envelope'\n- creates registry boundary descriptor\n- validates correlation token and material_id"];
+
+    AdapterConstruction [label="TWriteSideRegistryDeliveryPluginAdapter construction:\n- stores descriptor and config\n- initializes empty state\n- ready for use in smoke test"];
+
+    // Flow connections
+    FromFields -> MaterialDescriptorCreation [label="calls"];
+    MaterialDescriptorCreation -> AdapterConstruction;
+
+    FromDescriptor -> AdapterConstruction [label="direct"];
+
+    // Styling
+    FromDescriptor [fillcolor=lightblue];
+    FromFields [fillcolor=lightgreen];
+    MaterialDescriptorCreation [fillcolor=lightyellow];
+    AdapterConstruction [fillcolor=lightsalmon];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterFactory Usage in W14C Smoke Test";
+    labelloc=t;
+}

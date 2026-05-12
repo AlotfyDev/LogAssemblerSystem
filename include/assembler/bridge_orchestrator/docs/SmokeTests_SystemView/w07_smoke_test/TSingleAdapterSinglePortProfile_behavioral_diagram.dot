@@ -1,0 +1,25 @@
+digraph TSingleAdapterSinglePortProfile_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Key operations
+    create_profile [label="make()\nCreate TChannelProfile with:\n- kind: single_adapter_single_port\n- direction: unidirectional\n- adapter_count: 1, port_count: 1\n- max_adapters: 1, max_ports: 1", fillcolor=white];
+
+    match_profile [label="matches(TChannelProfile)\nCheck if profile matches 1:1 preset criteria", fillcolor=white];
+
+    // W07 usage
+    channel_creation [label="Used in TChannel::declare()\nto create strict 1:1 channel topology for compatibility testing", fillcolor=palegreen];
+
+    // Flow
+    create_profile -> match_profile [label="enables validation"];
+
+    create_profile -> channel_creation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Profile Creation", fillcolor=white];
+        Matching [label="Profile Matching", fillcolor=white];
+        Usage [label="W07 Channel Usage", fillcolor=palegreen];
+    }
+}

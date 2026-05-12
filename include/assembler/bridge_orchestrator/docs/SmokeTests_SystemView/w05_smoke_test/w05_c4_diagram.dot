@@ -1,0 +1,29 @@
+digraph C4_Architecture_W05 {
+  rankdir=TB;
+  node [shape=box, style=filled, fillcolor=lightblue];
+
+  // Core Obligation Components
+  TPort [label="TPort\nCRTP Host-Side Port Facade", fillcolor=lightgreen];
+  TPluginAdapter [label="TPluginAdapter\nCRTP Content-Side Adapter Facade", fillcolor=lightgreen];
+  TObligationSurfacePair [label="TObligationSurfacePair\nCompatible Surface Pair", fillcolor=lightgreen];
+
+  // Reused Components
+  TCorrelationToken [label="TCorrelationToken\nCorrelation Primitive", fillcolor=lightyellow];
+  TParticipant [label="TParticipant\nParticipant Descriptor", fillcolor=lightyellow];
+  TParticipantView [label="TParticipantView\nParticipant View", fillcolor=lightyellow];
+
+  // Relationships
+  TObligationSurfacePair -> TPluginAdapter [label="pairs with"];
+  TObligationSurfacePair -> TPort [label="pairs with"];
+
+  TPort -> TCorrelationToken [label="uses"];
+  TPluginAdapter -> TCorrelationToken [label="uses"];
+
+  TPort -> TParticipantView [label="creates"];
+  TPluginAdapter -> TParticipantView [label="creates"];
+
+  TParticipantView -> TParticipant [label="wraps"];
+
+  // Legend
+  {rank=same; Legend [shape=none, label="Legend: Green=New in W05, Yellow=Reused"]}
+}

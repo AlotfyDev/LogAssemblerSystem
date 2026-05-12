@@ -1,0 +1,322 @@
+digraph BridgeOrchestratorArchitecture {
+    // Graph settings
+    rankdir=TB;
+    nodesep=0.5;
+    ranksep=1.0;
+    bgcolor="#f8f9fa";
+    fontname="Arial";
+    fontsize=10;
+
+    // Global node settings
+    node [
+        fontname="Arial",
+        fontsize=9,
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#ffffff",
+        color="#333333",
+        penwidth=1
+    ];
+
+    // Edge settings
+    edge [
+        fontname="Arial",
+        fontsize=8,
+        color="#666666",
+        penwidth=1,
+        arrowsize=0.7
+    ];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style="filled";
+        fillcolor="#e8f4f8";
+        color="#0066cc";
+
+        legend_bridge [label="Bridge\nOrchestration", fillcolor="#ff6b35", shape=ellipse];
+        legend_layer [label="Layer\nComponent", fillcolor="#ffffff"];
+        legend_external [label="External\nSystem", fillcolor="#ffeaa7", shape=hexagon];
+        legend_flow [label="Data Flow"];
+        legend_dependency [label="Dependency", style="dashed"];
+    }
+
+    // External Systems
+    subgraph cluster_external {
+        label="External Systems";
+        style="filled";
+        fillcolor="#fff3cd";
+        color="#856404";
+
+        LogLevelAPI [label="Log Level API\n(C#, Python, MQL5)", fillcolor="#ffeaa7", shape=hexagon];
+        WriteSide [label="Write Side\n(Log Processing)", fillcolor="#ffeaa7", shape=hexagon];
+        ReadSide [label="Read Side\n(Log Retrieval)", fillcolor="#ffeaa7", shape=hexagon];
+        EcosystemGovernance [label="Ecosystem\nGovernance", fillcolor="#ffeaa7", shape=hexagon];
+    }
+
+    // Bridge Orchestrator Core
+    BridgeOrchestrator [label="Bridge\nOrchestrator", fillcolor="#ff6b35", shape=ellipse, fontsize=12, penwidth=2];
+
+    // W01: Carrier Layer
+    subgraph cluster_w01 {
+        label="W01: Carrier Layer";
+        style="filled";
+        fillcolor="#e3f2fd";
+        color="#1976d2";
+
+        TCorrelationToken [label="TCorrelationToken"];
+        TPlacementHandle [label="TPlacementHandle"];
+        TDataCarrier [label="TDataCarrier"];
+    }
+
+    // W02: Protocol State Layer
+    subgraph cluster_w02 {
+        label="W02: Protocol State Layer";
+        style="filled";
+        fillcolor="#f3e5f5";
+        color="#7b1fa2";
+
+        TBridgeStage [label="TBridgeStage"];
+        TBridgeTerminalState [label="TBridgeTerminalState"];
+        TProtocolLifecycle [label="TProtocolLifecycle"];
+    }
+
+    // W03: Participant Layer
+    subgraph cluster_w03 {
+        label="W03: Participant Layer";
+        style="filled";
+        fillcolor="#e8f5e8";
+        color="#388e3c";
+
+        TParticipant [label="TParticipant"];
+        TParticipantRole [label="TParticipantRole"];
+        TParticipantRegistry [label="TParticipantRegistry"];
+    }
+
+    // W04: Channel Layer
+    subgraph cluster_w04 {
+        label="W04: Channel Layer";
+        style="filled";
+        fillcolor="#fff3e0";
+        color="#f57c00";
+
+        TChannel [label="TChannel"];
+        TChannelProfile [label="TChannelProfile"];
+        TChannelTopology [label="TChannelTopology"];
+    }
+
+    // W05: Obligation Layer
+    subgraph cluster_w05 {
+        label="W05: Obligation Layer";
+        style="filled";
+        fillcolor="#fce4ec";
+        color="#c2185b";
+
+        TPort [label="TPort"];
+        TPluginAdapter [label="TPluginAdapter"];
+        TObligationContract [label="TObligationContract"];
+    }
+
+    // W06: Binding Layer
+    subgraph cluster_w06 {
+        label="W06: Binding Layer";
+        style="filled";
+        fillcolor="#f1f8e9";
+        color="#689f38";
+
+        TBinding [label="TBinding"];
+        TBindingProfile [label="TBindingProfile"];
+        TBindingRegistry [label="TBindingRegistry"];
+    }
+
+    // W07: Compatibility Layer
+    subgraph cluster_w07 {
+        label="W07: Compatibility Layer";
+        style="filled";
+        fillcolor="#e0f2f1";
+        color="#00695c";
+
+        TCompatibilityEvaluator [label="TCompatibilityEvaluator"];
+        TCompatibilityMatrix [label="TCompatibilityMatrix"];
+        TValidationRules [label="TValidationRules"];
+    }
+
+    // W08: Session Layer
+    subgraph cluster_w08 {
+        label="W08: Session Layer";
+        style="filled";
+        fillcolor="#f9fbe7";
+        color="#afb42b";
+
+        TSession [label="TSession"];
+        TSessionPolicy [label="TSessionPolicy"];
+        TSessionContext [label="TSessionContext"];
+    }
+
+    // W09: Protocol Layer
+    subgraph cluster_w09 {
+        label="W09: Protocol Layer";
+        style="filled";
+        fillcolor="#efebe9";
+        color="#5d4037";
+
+        TBridgeProtocol [label="TBridgeProtocol"];
+        TBridgeProtocolPlan [label="TBridgeProtocolPlan"];
+        TProtocolExecutor [label="TProtocolExecutor"];
+    }
+
+    // W10: Bridge Core Layer
+    subgraph cluster_w10 {
+        label="W10: Bridge Core Layer";
+        style="filled";
+        fillcolor="#ffebee";
+        color="#d32f2f";
+
+        TBridge [label="TBridge", fillcolor="#ff6b35"];
+        TBridgeConfig [label="TBridgeConfig"];
+        TBridgeEngine [label="TBridgeEngine"];
+    }
+
+    // W11: Registry Layer
+    subgraph cluster_w11 {
+        label="W11: Registry Layer";
+        style="filled";
+        fillcolor="#f3e5f5";
+        color="#7b1fa2";
+
+        TRegistrySet [label="TRegistrySet"];
+        TBoundedRegistry [label="TBoundedRegistry"];
+        TComponentRegistry [label="TComponentRegistry"];
+    }
+
+    // W12: Diagnostics Layer
+    subgraph cluster_w12 {
+        label="W12: Diagnostics Layer";
+        style="filled";
+        fillcolor="#e8eaf6";
+        color="#303f9f";
+
+        TDiagnostics [label="TDiagnostics"];
+        TDiagnosticCollector [label="TDiagnosticCollector"];
+        THealthMonitor [label="THealthMonitor"];
+    }
+
+    // W13: Integration Boundary Layer
+    subgraph cluster_w13 {
+        label="W13: Integration Boundary Layer";
+        style="filled";
+        fillcolor="#fff8e1";
+        color="#f9a825";
+
+        TIntegrationBoundaryPort [label="TIntegrationBoundaryPort"];
+        TBoundaryAdapter [label="TBoundaryAdapter"];
+        TExternalInterface [label="TExternalInterface"];
+    }
+
+    // W14: Concrete Bindings Layer
+    subgraph cluster_w14 {
+        label="W14: Concrete Bindings Layer";
+        style="filled";
+        fillcolor="#e0f7fa";
+        color="#0097a7";
+
+        TLogLevelAPIEnvelopePluginAdapter [label="TLogLevelAPIEnvelopePluginAdapter"];
+        TConcreteBinding [label="TConcreteBinding"];
+        TImplementationAdapter [label="TImplementationAdapter"];
+    }
+
+    // W15: Integration Skeleton Layer
+    subgraph cluster_w15 {
+        label="W15: Integration Skeleton Layer";
+        style="filled";
+        fillcolor="#f8bbd9";
+        color="#ad1457";
+
+        TFirstIntegrationSkeleton [label="TFirstIntegrationSkeleton"];
+        TIntegrationTest [label="TIntegrationTest"];
+        TEndToEndValidator [label="TEndToEndValidator"];
+    }
+
+    // Layer Dependencies (Bottom-Up Flow)
+    TCorrelationToken -> TBridgeStage [style=dashed, label="state"];
+    TPlacementHandle -> TParticipant [style=dashed, label="identity"];
+    TDataCarrier -> TChannel [style=dashed, label="transport"];
+
+    TBridgeStage -> TParticipant [style=dashed, label="lifecycle"];
+    TBridgeTerminalState -> TChannelProfile [style=dashed, label="topology"];
+
+    TParticipant -> TPort [style=dashed, label="contract"];
+    TParticipantRole -> TBinding [style=dashed, label="interface"];
+
+    TChannel -> TObligationContract [style=dashed, label="enforce"];
+    TChannelProfile -> TCompatibilityEvaluator [style=dashed, label="validate"];
+
+    TPort -> TBindingProfile [style=dashed, label="profile"];
+    TPluginAdapter -> TCompatibilityMatrix [style=dashed, label="matrix"];
+
+    TBinding -> TSession [style=dashed, label="context"];
+    TBindingProfile -> TSessionPolicy [style=dashed, label="policy"];
+
+    TCompatibilityEvaluator -> TBridgeProtocol [style=dashed, label="execute"];
+    TCompatibilityMatrix -> TBridgeProtocolPlan [style=dashed, label="plan"];
+
+    TSession -> TBridge [style=dashed, label="orchestrate"];
+    TSessionPolicy -> TBridgeConfig [style=dashed, label="configure"];
+
+    TBridgeProtocol -> TRegistrySet [style=dashed, label="coordinate"];
+    TBridgeProtocolPlan -> TBoundedRegistry [style=dashed, label="bound"];
+
+    TBridge -> TDiagnostics [style=dashed, label="monitor"];
+    TBridgeConfig -> TDiagnosticCollector [style=dashed, label="collect"];
+
+    TRegistrySet -> TIntegrationBoundaryPort [style=dashed, label="expose"];
+    TBoundedRegistry -> TBoundaryAdapter [style=dashed, label="adapt"];
+
+    TDiagnostics -> TLogLevelAPIEnvelopePluginAdapter [style=dashed, label="implement"];
+    TDiagnosticCollector -> TConcreteBinding [style=dashed, label="bind"];
+
+    TIntegrationBoundaryPort -> TFirstIntegrationSkeleton [style=dashed, label="test"];
+    TBoundaryAdapter -> TIntegrationTest [style=dashed, label="validate"];
+
+    // Data Flow (Runtime Execution)
+    LogLevelAPI -> TLogLevelAPIEnvelopePluginAdapter [label="API Calls", color="#0066cc"];
+    TLogLevelAPIEnvelopePluginAdapter -> TBridge [label="Bridge Requests", color="#0066cc"];
+    TBridge -> TBridgeProtocol [label="Protocol Execution", color="#0066cc"];
+    TBridgeProtocol -> TSession [label="Session Context", color="#0066cc"];
+    TSession -> TBinding [label="Binding Resolution", color="#0066cc"];
+    TBinding -> TChannel [label="Channel Transport", color="#0066cc"];
+    TChannel -> WriteSide [label="Log Data", color="#0066cc"];
+
+    // Read Flow
+    ReadSide -> TIntegrationBoundaryPort [label="Query Requests", color="#28a745"];
+    TIntegrationBoundaryPort -> TRegistrySet [label="Component Lookup", color="#28a745"];
+    TRegistrySet -> TBridge [label="Orchestration", color="#28a745"];
+
+    // Governance Flow
+    EcosystemGovernance -> TCompatibilityEvaluator [label="Policy Enforcement", color="#dc3545"];
+    TCompatibilityEvaluator -> TBridgeConfig [label="Configuration Updates", color="#dc3545"];
+
+    // Bridge Orchestrator as Central Hub
+    BridgeOrchestrator -> TBridge [label="Core Engine", penwidth=3, color="#ff6b35"];
+    TBridge -> BridgeOrchestrator [label="Status/Results", penwidth=3, color="#ff6b35"];
+
+    // Cross-cutting concerns
+    THealthMonitor -> {TBridge, TSession, TChannel} [label="Health Checks", style=dotted, color="#6f42c1"];
+
+    // Ranking constraints for better layout
+    {rank=same; TCorrelationToken; TPlacementHandle; TDataCarrier}
+    {rank=same; TBridgeStage; TBridgeTerminalState; TProtocolLifecycle}
+    {rank=same; TParticipant; TParticipantRole; TParticipantRegistry}
+    {rank=same; TChannel; TChannelProfile; TChannelTopology}
+    {rank=same; TPort; TPluginAdapter; TObligationContract}
+    {rank=same; TBinding; TBindingProfile; TBindingRegistry}
+    {rank=same; TCompatibilityEvaluator; TCompatibilityMatrix; TValidationRules}
+    {rank=same; TSession; TSessionPolicy; TSessionContext}
+    {rank=same; TBridgeProtocol; TBridgeProtocolPlan; TProtocolExecutor}
+    {rank=same; TBridge; TBridgeConfig; TBridgeEngine}
+    {rank=same; TRegistrySet; TBoundedRegistry; TComponentRegistry}
+    {rank=same; TDiagnostics; TDiagnosticCollector; THealthMonitor}
+    {rank=same; TIntegrationBoundaryPort; TBoundaryAdapter; TExternalInterface}
+    {rank=same; TLogLevelAPIEnvelopePluginAdapter; TConcreteBinding; TImplementationAdapter}
+    {rank=same; TFirstIntegrationSkeleton; TIntegrationTest; TEndToEndValidator}
+}

@@ -1,0 +1,40 @@
+digraph PolicyObjectGraph {
+  graph [rankdir=LR, bgcolor="white", fontname="Arial", fontsize=12, labelloc="t", label="Policy Object Graph Structure V1 (Structural Layer Only)"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, color="#334155", fillcolor="#F8FAFC"];
+  edge [fontname="Arial", fontsize=10, color="#64748B"];
+
+  root [label="Policy Root Node", shape=ellipse, fillcolor="#DBEAFE", color="#2563EB", penwidth=1.5];
+  identity [label="Identity Structure\n(policy id, family, version,\nscope, source)", fillcolor="#EFF6FF"];
+  clause1 [label="Clause Node A\n(directive / constraint /\nparameter / fallback)", fillcolor="#F8FAFC"];
+  clause2 [label="Clause Node B", fillcolor="#F8FAFC"];
+  safep [label="Safe Point Structure\n(replacement boundaries /\neligibility anchors)", fillcolor="#FEF3C7", color="#D97706"];
+  lifecycle [label="Lifecycle / State Structure\n(state nodes / transition-bearing\nsubstructure)", fillcolor="#F3E8FF", color="#7C3AED"];
+  mech [label="Realization Mechanism\nBinding Node", fillcolor="#DCFCE7", color="#16A34A"];
+  target [label="Target-Kind Descriptor\n(optional)\n(dispatcher / moderator /\nqueue bundle agent / ...)", fillcolor="#ECFCCB", color="#65A30D"];
+  obs [label="Observation / Audit Structure\n(lightweight by default)", fillcolor="#F1F5F9"];
+  appl [label="Applicability Structure\n(optional / often dormant\nin execution-policy families)", fillcolor="#F8FAFC", style="rounded,dashed,filled", color="#94A3B8"];
+
+  root -> identity [label="recognizes / grounds"];
+  root -> clause1 [label="contains"];
+  root -> clause2 [label="contains"];
+  clause1 -> clause2 [label="precedence / dependency /\noverride / exclusion", style=dashed];
+  root -> safep [label="replacement structure"];
+  clause1 -> safep [label="participates in", style=dashed];
+  root -> lifecycle [label="lifecycle slot"];
+  root -> mech [label="binds"];
+  mech -> target [label="expects target kind", style=dashed];
+  root -> obs [label="auditability"];
+  root -> appl [label="applicability slot", style=dashed];
+
+  subgraph cluster_invariants {
+    label="Minimum Structural Invariants";
+    color="#CBD5E1";
+    style="rounded,dashed";
+    inv1 [label="1 Root", shape=note, fillcolor="#FFFFFF"];
+    inv2 [label="1 Identity-bearing structure", shape=note, fillcolor="#FFFFFF"];
+    inv3 [label=">=1 Clause nodes", shape=note, fillcolor="#FFFFFF"];
+    inv4 [label=">=1 Safe Point nodes", shape=note, fillcolor="#FFFFFF"];
+    inv5 [label="1 Mechanism Binding node", shape=note, fillcolor="#FFFFFF"];
+    inv6 [label="1 Observation/Audit structure", shape=note, fillcolor="#FFFFFF"];
+  }
+}

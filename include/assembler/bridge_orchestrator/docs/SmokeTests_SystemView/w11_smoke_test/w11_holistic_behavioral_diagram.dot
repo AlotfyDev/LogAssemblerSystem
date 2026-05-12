@@ -1,0 +1,93 @@
+digraph W11_Holistic_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Start
+    Start [label="Start\nW11 Registry Management Smoke Test", shape=ellipse, fillcolor=green]
+
+    // Registry Set Creation
+    CreateRegistrySet [label="Create Registry Set\nTCommunicationContextRegistrySet<4,4,4,4,4,12> registry_set{}", fillcolor=yellow]
+    ValidateRegistrySet [label="Validate Registry Set\nregistry_set.is_valid()\nReturns true", fillcolor=lightgreen]
+
+    // Component Creation (from W01-W10)
+    CreateCorrelation [label="Create Correlation Token\nTCorrelationToken::from_parts(1u, 2u)", fillcolor=yellow]
+    CreateParticipant [label="Create Participant\nTParticipant::make(...)", fillcolor=yellow]
+    CreateChannel [label="Create Channel\nTChannel::make(1u, participant, policy)", fillcolor=yellow]
+    CreateBinding [label="Create Binding\nTBinding::make(binding_id, channel, ...)", fillcolor=yellow]
+    CreateSession [label="Create Session\nTSession::make(session_id, binding, policy)", fillcolor=yellow]
+    CreateProtocol [label="Create Bridge Protocol\nTBridgeProtocol::make(protocol_id, plan)", fillcolor=yellow]
+    CreateBridge [label="Create Bridge\nTBridge::make(bridge_id, protocol, config)", fillcolor=yellow]
+
+    // Registry Registration Flow
+    RegisterChannel [label="Register Channel\nregistry_set.channels.register_channel(channel)\nReturns true", fillcolor=orange]
+    RegisterBinding [label="Register Binding\nregistry_set.bindings.register_binding(binding)\nReturns true", fillcolor=orange]
+    RegisterSession [label="Register Session\nregistry_set.sessions.register_session(session)\nReturns true", fillcolor=orange]
+    RegisterProtocol [label="Register Protocol\nregistry_set.protocols.register_protocol(protocol)\nReturns true", fillcolor=orange]
+    RegisterBridge [label="Register Bridge\nregistry_set.bridges.register_bridge(bridge)\nReturns true", fillcolor=orange]
+
+    // Registry Lookup and Validation
+    LookupChannel [label="Lookup Channel\nregistry_set.channels.contains(channel.channel_id)\nReturns true", fillcolor=lightcyan]
+    LookupBinding [label="Lookup Binding\nregistry_set.bindings.contains(binding.binding_id)\nReturns true", fillcolor=lightcyan]
+    LookupSession [label="Lookup Session\nregistry_set.sessions.contains(session.session_id)\nReturns true", fillcolor=lightcyan]
+    LookupProtocol [label="Lookup Protocol\nregistry_set.protocols.contains(protocol.protocol_id)\nReturns true", fillcolor=lightcyan]
+    LookupBridge [label="Lookup Bridge\nregistry_set.bridges.contains(bridge.bridge_id)\nReturns true", fillcolor=lightcyan]
+
+    // Duplicate Prevention Test
+    DuplicateChannel [label="Attempt Duplicate Channel\nregistry_set.channels.register_channel(channel)\nReturns false (duplicate)", fillcolor=red]
+    CheckRejected [label="Check Rejected Insertions\nregistry_set.channels.rejected_insertions == 1\nReturns true", fillcolor=lightgreen]
+
+    // Snapshot Generation
+    GenerateSnapshot [label="Generate Registry Snapshot\nregistry_set.channels.snapshot()\nReturns TRegistrySnapshot with count=1, rejected=1", fillcolor=purple]
+
+    // Aggregate Validation
+    CheckTotalCount [label="Check Total Registry Count\nregistry_set.total_count() == 5\nReturns true", fillcolor=lightgreen]
+    FinalValidation [label="Final Registry Set Validation\nregistry_set.is_valid()\nReturns true", fillcolor=lightgreen]
+
+    // End
+    End [label="End\nAll registry operations completed successfully", shape=ellipse, fillcolor=red]
+
+    // Flow connections
+    Start -> CreateRegistrySet
+    CreateRegistrySet -> ValidateRegistrySet
+    ValidateRegistrySet -> CreateCorrelation
+
+    CreateCorrelation -> CreateParticipant
+    CreateParticipant -> CreateChannel
+    CreateChannel -> CreateBinding
+    CreateBinding -> CreateSession
+    CreateSession -> CreateProtocol
+    CreateProtocol -> CreateBridge
+
+    CreateBridge -> RegisterChannel
+    RegisterChannel -> RegisterBinding
+    RegisterBinding -> RegisterSession
+    RegisterSession -> RegisterProtocol
+    RegisterProtocol -> RegisterBridge
+
+    RegisterBridge -> LookupChannel
+    LookupChannel -> LookupBinding
+    LookupBinding -> LookupSession
+    LookupSession -> LookupProtocol
+    LookupProtocol -> LookupBridge
+
+    LookupBridge -> DuplicateChannel
+    DuplicateChannel -> CheckRejected
+    CheckRejected -> GenerateSnapshot
+    GenerateSnapshot -> CheckTotalCount
+    CheckTotalCount -> FinalValidation
+    FinalValidation -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Component Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation Check", shape=rectangle, fillcolor=lightgreen]
+        RegistrationLegend [label="Registry Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Registry Lookup", shape=rectangle, fillcolor=lightcyan]
+        DuplicateLegend [label="Duplicate Prevention", shape=rectangle, fillcolor=red]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

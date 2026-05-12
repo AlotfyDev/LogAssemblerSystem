@@ -1,0 +1,121 @@
+digraph TMockPersistenceBoundaryPort_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Construction
+    Start [label="Create TMockPersistenceBoundaryPort", shape=ellipse, fillcolor=lightgreen];
+
+    Constructor [label="Constructor Call", fillcolor=lightyellow];
+
+    ConstructorCall [label="TMockPersistenceBoundaryPort port{\n    descriptor,  // TIntegrationBoundaryDescriptor\n    1300u        // first_handle (optional)\n};", fillcolor=lavender];
+
+    InitializeState [label="Initialize Internal State", fillcolor=lightblue];
+
+    StoreDescriptor [label="descriptor_ = descriptor;"];
+
+    SetHandleCounter [label="next_handle_ = first_handle;"];
+
+    // Method calls
+    MethodCalls [label="Method Calls in Smoke Test", fillcolor=pink];
+
+    BoundaryViewCall [label="port.boundary_view()\n→ Returns view with descriptor, \"mock_persistence_boundary_port\", \"ready\", correlation"];
+
+    BoundaryDescriptorCall [label="port.boundary_descriptor()\n→ Returns stored descriptor"];
+
+    BoundaryReadinessCall [label="port.boundary_readiness(request)\n→ Delegates to TIntegrationBoundaryPolicy::request_readiness(request)"];
+
+    AcceptHandoffCall [label="port.accept_boundary_handoff(request)\n→ Evaluates readiness, creates handle, returns accepted result"];
+
+    CompleteHandoffCall [label="port.complete_boundary_handoff(handle)\n→ Validates handle, returns completed result"];
+
+    RejectHandoffCall [label="port.reject_boundary_handoff(request)\n→ Returns rejected result with mock error"];
+
+    // Implementation details
+    ImplementationDetails [label="Implementation Details", fillcolor=orange];
+
+    ReadinessLogic [label="Readiness Logic\n• Delegates to policy evaluation\n• Returns ready/deferred/not_ready"];
+
+    AcceptLogic [label="Accept Logic\n• Check readiness.is_ready()\n• If not ready: return deferred\n• Create handle with next_handle_++\n• Return accepted result"];
+
+    CompleteLogic [label="Complete Logic\n• Check handle.is_valid()\n• If invalid: return failed\n• Return completed result"];
+
+    RejectLogic [label="Reject Logic\n• Create mock rejection error\n• Return rejected result"];
+
+    // Usage sequence
+    UsageSequence [label="Smoke Test Usage Sequence", fillcolor=lightcyan];
+
+    CreatePort [label="Create mock port"];
+
+    GetView [label="Get boundary view"];
+
+    CreateRequest [label="Create handoff request"];
+
+    CheckReadiness [label="Check boundary readiness"];
+
+    AcceptHandoff [label="Accept handoff"];
+
+    CompleteHandoff [label="Complete handoff"];
+
+    RejectHandoff [label="Reject handoff"];
+
+    // Flow connections
+    Start -> Constructor;
+    Constructor -> ConstructorCall;
+
+    ConstructorCall -> InitializeState;
+
+    InitializeState -> StoreDescriptor;
+    InitializeState -> SetHandleCounter;
+
+    StoreDescriptor -> MethodCalls;
+    SetHandleCounter -> MethodCalls;
+
+    MethodCalls -> BoundaryViewCall;
+    MethodCalls -> BoundaryDescriptorCall;
+    MethodCalls -> BoundaryReadinessCall;
+    MethodCalls -> AcceptHandoffCall;
+    MethodCalls -> CompleteHandoffCall;
+    MethodCalls -> RejectHandoffCall;
+
+    BoundaryReadinessCall -> ImplementationDetails;
+    AcceptHandoffCall -> ImplementationDetails;
+    CompleteHandoffCall -> ImplementationDetails;
+    RejectHandoffCall -> ImplementationDetails;
+
+    ImplementationDetails -> ReadinessLogic;
+    ImplementationDetails -> AcceptLogic;
+    ImplementationDetails -> CompleteLogic;
+    ImplementationDetails -> RejectLogic;
+
+    ReadinessLogic -> UsageSequence;
+    AcceptLogic -> UsageSequence;
+    CompleteLogic -> UsageSequence;
+    RejectLogic -> UsageSequence;
+
+    UsageSequence -> CreatePort;
+    CreatePort -> GetView;
+    GetView -> CreateRequest;
+    CreateRequest -> CheckReadiness;
+    CheckReadiness -> AcceptHandoff;
+    AcceptHandoff -> CompleteHandoff;
+    CompleteHandoff -> RejectHandoff;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendConstructor [label="Constructor", fillcolor=lightyellow];
+        LegendCall [label="Constructor Call", fillcolor=lavender];
+        LegendInit [label="Initialization", fillcolor=lightblue];
+        LegendState [label="State Setup"];
+        LegendMethods [label="Method Calls", fillcolor=pink];
+        LegendCallDetail [label="Method Details"];
+        LegendImpl [label="Implementation", fillcolor=orange];
+        LegendLogic [label="Logic Details"];
+        LegendUsage [label="Usage Sequence", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TMockPersistenceBoundaryPort_behavioral_diagram.dot

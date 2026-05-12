@@ -1,0 +1,30 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main struct
+    TCorrelationToken [label="{TCorrelationToken\nCorrelation token primitive|+ high: uint64_t\n+ low: uint64_t|+ is_valid() const noexcept -> bool\n+ invalid() static constexpr -> TCorrelationToken\n+ from_parts(uint64_t, uint64_t) static constexpr -> TCorrelationToken}"];
+
+    // Friend operators
+    equality_operator [label="{operator==\n(lhs, rhs) -> bool}"];
+    inequality_operator [label="{operator!=\n(lhs, rhs) -> bool}"];
+
+    // Hash specialization
+    hash_specialization [label="{std::hash<TCorrelationToken>\nHash function for unordered containers}"];
+
+    // Relationships
+    TCorrelationToken -> equality_operator [label="friend"];
+    TCorrelationToken -> inequality_operator [label="friend"];
+
+    // External relationship
+    hash_specialization -> TCorrelationToken [label="specializes for"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        primitive_struct [label="Primitive Struct", fillcolor=lightyellow];
+        friend_function [label="Friend Function"];
+        hash_spec [label="Hash Specialization"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TCorrelationToken_class_diagram.dot

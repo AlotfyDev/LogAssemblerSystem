@@ -1,0 +1,38 @@
+Component Name,Include Path,Category,Description
+TCommunicationContextRegistrySet,registries/optional_registries/sets/TCommunicationContextRegistrySet.hpp,Registry Set,Central coordination point for all communication context registries with template-based capacity management
+TOptionalRegistries,registries/TOptionalRegistries.hpp,Registry Aggregate,Aggregate include for W11 optional registries with availability marker
+TChannelRegistry,registries/optional_registries/typed/TChannelRegistry.hpp,Typed Registry,Bounded registry for channel declarations with duplicate prevention
+TBindingRegistry,registries/optional_registries/typed/TBindingRegistry.hpp,Typed Registry,Bounded registry for binding declarations using TBoundedRegistry
+TSessionRegistry,registries/optional_registries/typed/TSessionRegistry.hpp,Typed Registry,Bounded registry for session declarations
+TBridgeProtocolRegistry,registries/optional_registries/typed/TBridgeProtocolRegistry.hpp,Typed Registry,Bounded registry for bridge protocol declarations with plan capacity
+TBridgeRegistry,registries/optional_registries/typed/TBridgeRegistry.hpp,Typed Registry,Bounded registry for bridge declarations with plan capacity
+TBoundedRegistry,registries/optional_registries/base/TBoundedRegistry.hpp,Registry Base,Reusable bounded registry primitive for model values with duplicate prevention
+TRegistryEntry,registries/optional_registries/entries/TRegistryEntry.hpp,Registry Entry,Typed registry entry containing ID, value, and metadata
+TRegistryLookupResult,registries/optional_registries/lookups/TRegistryLookupResult.hpp,Registry Lookup,Result type for registry lookup operations
+TRegistrySnapshot,registries/optional_registries/snapshots/TRegistrySnapshot.hpp,Registry Snapshot,Diagnostic snapshot of registry state and statistics
+TRegistryEntryStatus,registries/optional_registries/status/TRegistryEntryStatus.hpp,Registry Status,Status information for registry entries
+TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,Correlation,Handles correlation tokens for tracking requests across the system (W01)
+TParticipant,participants/descriptors/TParticipant.hpp,Participant,Bridge-visible participant identity and metadata (W03)
+TParticipantRole,participants/roles/TParticipantRole.hpp,Participant Role,Bridge-visible participant-role vocabulary (W03)
+TParticipantView,participants/views/TParticipantView.hpp,Participant View,Abstract views of participant states (W03)
+TChannel,channels/topology/TChannel.hpp,Channel,Channel topology and routing configuration (W04)
+TSingleAdapterSinglePortProfile,channels/profiles/TSingleAdapterSinglePortProfile.hpp,Channel Profile,Single adapter/port channel configuration (W04)
+TChannelBindingPolicy,channels/policies/TChannelBindingPolicy.hpp,Channel Policy,Channel binding policies and constraints (W04)
+TPluginAdapterView,obligations/views/TPluginAdapterView.hpp,Plugin Adapter,Abstract views of plugin adapter states (W05)
+TPortView,obligations/views/TPortView.hpp,Port View,Abstract views of port states (W05)
+TPluginAdapterObligationProfile,obligations/profiles/TPluginAdapterObligationProfile.hpp,Adapter Profile,Plugin adapter obligation profiles (W05)
+TPortObligationProfile,obligations/profiles/TPortObligationProfile.hpp,Port Profile,Port obligation profiles (W05)
+TObligationSurfacePair,obligations/surface/TObligationSurfacePair.hpp,Obligation Surface,Paired obligation surface definitions (W05)
+TBinding,bindings/TBinding.hpp,Binding,Binding configuration and metadata (W06)
+TBindingId,bindings/ids/TBindingId.hpp,Binding ID,Unique identifier for bindings (W06)
+TBindingProfile,bindings/profiles/TBindingProfile.hpp,Binding Profile,Binding profile configurations (W06)
+TSession,sessions/TSession.hpp,Session,Session state and lifecycle management (W08)
+TSessionOpenRequest,sessions/requests/TSessionOpenRequest.hpp,Session Request,Session open request handling (W08)
+TSessionId,sessions/ids/TSessionId.hpp,Session ID,Unique identifier for sessions (W08)
+TSessionPolicy,sessions/policies/TSessionPolicy.hpp,Session Policy,Session policies and constraints (W08)
+TBridgeProtocol,protocols/TBridgeProtocol.hpp,Protocol,Bridge protocol definitions and metadata (W09)
+TBridgeProtocolId,protocols/ids/TBridgeProtocolId.hpp,Protocol ID,Unique identifier for bridge protocols (W09)
+TBridgeProtocolPlan,protocols/plans/TBridgeProtocolPlan.hpp,Protocol Plan,Bridge protocol execution plans (W09)
+TBridge,bridge_core/TBridge.hpp,Bridge,Bridge core functionality and orchestration (W10)
+TBridgeId,bridge_core/ids/TBridgeId.hpp,Bridge ID,Unique identifier for bridges (W10)
+TBridgeConfig,bridge_core/config/TBridgeConfig.hpp,Bridge Config,Bridge configuration settings (W10)

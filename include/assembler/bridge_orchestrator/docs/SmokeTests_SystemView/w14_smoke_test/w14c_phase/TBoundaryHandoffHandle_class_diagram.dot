@@ -1,0 +1,16 @@
+digraph TBoundaryHandoffHandle_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    BoundaryHandoffHandle [label="{TBoundaryHandoffHandle (W13)|boundary handoff acceptance handle\l+ correlation : TCorrelationToken\l+ is_valid() const\l+ invalid() static\l}", fillcolor=lightgreen, style=filled];
+
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|accepts boundary handoff handle\ltracks handoff lifecycle\l}", fillcolor=lightsalmon];
+    State [label="{TWriteSideRegistryDeliveryPluginAdapterState|stores accepted boundary handle\lmanages handoff state\l}", fillcolor=lightsalmon];
+
+    Adapter -> BoundaryHandoffHandle [label="accepts"];
+    State -> BoundaryHandoffHandle [label="stores"];
+
+    label="TBoundaryHandoffHandle (W13) Class Structure and W14C Usage";
+    labelloc=t;
+}

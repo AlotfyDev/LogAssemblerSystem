@@ -1,0 +1,41 @@
+digraph TLogLevelAPIEnvelopePluginAdapterBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Usage in W14a smoke test
+    smoke_test_include [label="Smoke Test Includes:\n#include \"TLogLevelAPIEnvelopePluginAdapterBinding.hpp\""];
+
+    availability_check [label="Static Assert:\nASCC_W14A_LOG_LEVEL_API_ENVELOPE_PLUGIN_ADAPTER_AVAILABLE"];
+
+    success [label="Assertion Passes", shape=ellipse, fillcolor=lightgreen];
+
+    // The binding provides access to concrete components
+    provides_adapter [label="Provides TLogLevelAPIEnvelopePluginAdapter"];
+    provides_factory [label="Provides TLogLevelAPIEnvelopePluginAdapterFactory"];
+    provides_config [label="Provides TLogLevelAPIEnvelopePluginAdapterConfig"];
+    provides_descriptor [label="Provides TLogLevelEnvelopeDescriptor"];
+
+    // Flow
+    smoke_test_include -> availability_check;
+    availability_check -> success [label="true"];
+
+    success -> provides_adapter;
+    success -> provides_factory;
+    success -> provides_config;
+    success -> provides_descriptor;
+
+    // Usage of provided components
+    adapter_usage [label="TLogLevelAPIEnvelopePluginAdapterFactory::from_fields()\nTLogLevelAPIEnvelopePluginAdapter operations", shape=note];
+
+    provides_adapter -> adapter_usage;
+    provides_factory -> adapter_usage;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        compile_time [label="Compile-time Operation", fillcolor=lightblue];
+        runtime [label="Runtime Usage", shape=note];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLogLevelAPIEnvelopePluginAdapterBinding_behavioral_diagram.dot

@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant Config as Configuration Phase
+    participant API as Public API
+    participant Parser as Dedicated Parser
+    participant Meta as Metadata Prep
+    participant Time as Timestamp Stabilizer
+    participant Asm as Envelope Assembler
+    participant Env as Final Envelope
+    participant Exp as Exposure View
+    participant Handoff as Handoff Contract
+    participant Circ as Circulation Boundary
+
+    Config->>Config: Resolve active profile, parser, metadata, timestamp, assembler, handoff target
+    API->>Parser: Content-only input
+    Parser->>Parser: Parse with configured dedicated parser
+    Parser-->>Asm: Parsed content ref/view
+    Meta-->>Asm: Prepared metadata block
+    Time-->>Asm: Stabilized timestamp
+    Asm->>Env: Compose final envelope
+    Env->>Exp: Build readiness/exposure view
+    Exp->>Handoff: Submit ready exposure
+    Handoff-->>Circ: Contract-ready admission candidate
+    Note over Circ: Circulation internals are out of LogAPI scope

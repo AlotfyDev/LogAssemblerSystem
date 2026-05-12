@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    TBridgeRunMode [label="{TBridgeRunMode | unknown\l manual_step\l bounded_model_run\l single_pass_model_run\l diagnostic_dry_run\l}"];
+
+    TBridgeConfig [label="Used by TBridgeConfig", fillcolor=lightcoral];
+    RunControl [label="Execution mode control\n- Manual vs automatic\n- Bounded vs unbounded\n- Diagnostic modes", shape=note, fillcolor=yellow];
+
+    TBridgeConfig -> TBridgeRunMode [label="defines"];
+    TBridgeRunMode -> RunControl [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeRunMode_class_diagram.dot

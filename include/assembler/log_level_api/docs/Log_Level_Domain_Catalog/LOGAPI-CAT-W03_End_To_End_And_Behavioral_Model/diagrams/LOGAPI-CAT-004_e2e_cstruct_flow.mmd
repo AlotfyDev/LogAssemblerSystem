@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Config
+    participant API
+    participant Parser as Dedicated C-Struct Parser
+    participant Meta
+    participant Time
+    participant Env
+    participant Handoff
+
+    Config->>Config: Resolve layout + parser
+    API->>Parser: C-style struct buffer
+    Parser->>Parser: Read explicit offsets/sizes
+    Parser-->>Env: Parsed C-struct field view
+    Meta-->>Env: Prepared metadata
+    Time-->>Env: Stabilized timestamp
+    Env->>Handoff: Ready exposure

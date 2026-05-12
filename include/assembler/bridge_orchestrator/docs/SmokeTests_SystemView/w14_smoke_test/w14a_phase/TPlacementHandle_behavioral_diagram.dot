@@ -1,0 +1,39 @@
+digraph TPlacementHandle_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    valid_handle_creation [label="TPlacementHandle::make(42u, token, \"write_side_envelope_slot\")\nCreates valid handle with correlation token"];
+
+    handle_acceptance [label="adapter.accept_placement_handle(handle)\nAdapter validates handle.is_valid() and correlation match"];
+
+    acceptance_success [label="accept_result.succeeded()\nHandle accepted, state updated"];
+
+    load_signal_emission [label="adapter.emit_load_signal()\nUses accepted handle in completed signal"];
+
+    wrong_handle_creation [label="TPlacementHandle::make(99u, wrong_token, \"wrong\")\nCreates handle with mismatched correlation"];
+
+    wrong_handle_rejection [label="adapter.accept_placement_handle(wrong_handle)\nRejects due to correlation != descriptor.correlation"];
+
+    rejection_validation [label="wrong_handle_result.rejected()\nProper rejection confirmed"];
+
+    success [label="Handle operations work correctly", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    valid_handle_creation -> handle_acceptance;
+    handle_acceptance -> acceptance_success;
+    acceptance_success -> load_signal_emission;
+    load_signal_emission -> wrong_handle_creation;
+    wrong_handle_creation -> wrong_handle_rejection;
+    wrong_handle_rejection -> rejection_validation;
+    rejection_validation -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        handle_operation [label="Handle Operation", fillcolor=lightyellow];
+        validation [label="Validation"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TPlacementHandle_behavioral_diagram.dot

@@ -1,0 +1,27 @@
+digraph TBridgeError_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TBridgeError [label="{TBridgeError|code : TBridgeErrorCode\l message : std::string_view\l|+ has_error() : bool\l+ none() : TBridgeError\l+ make(error_code, message) : TBridgeError\l}"]
+
+    // Enums and dependencies
+    TBridgeErrorCode [label="{TBridgeErrorCode|none\l invalid_correlation\l incompatible_carrier\l incompatible_binding\l protocol_violation\l admission_rejected\l admission_deferred\l handle_unavailable\l endpoint_error\l timeout\l internal_error\l}", shape=record, fillcolor=lightcyan]
+
+    // Primitive types
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey, style=invis]
+
+    // Relationships
+    TBridgeError -> TBridgeErrorCode [label="uses"]
+    TBridgeError -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        ErrorEnumLegend [label="Error Enum", shape=record, fillcolor=lightcyan]
+    }
+}

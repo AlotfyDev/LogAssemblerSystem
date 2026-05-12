@@ -1,0 +1,56 @@
+digraph TLogLevelAPIEnvelopePluginAdapter_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main adapter class
+    TLogLevelAPIEnvelopePluginAdapter [label="{TLogLevelAPIEnvelopePluginAdapter\nConcrete plugin adapter for Log Level API envelope placement|+ descriptor_: TLogLevelEnvelopeDescriptor\n+ config_: TLogLevelAPIEnvelopePluginAdapterConfig\n+ state_: TLogLevelAPIEnvelopePluginAdapterState|+ constructor(TLogLevelEnvelopeDescriptor, TLogLevelAPIEnvelopePluginAdapterConfig)\n+ descriptor() -> const TLogLevelEnvelopeDescriptor&\n+ config() -> const TLogLevelAPIEnvelopePluginAdapterConfig&\n+ state() -> const TLogLevelAPIEnvelopePluginAdapterState&\n+ view() -> TPluginAdapterView\n+ readiness() -> TReadinessView\n+ prepare_placement_request() -> TPlacementRequest\n+ accept_placement_handle(TPlacementHandle) -> TBridgeResult\n+ emit_load_signal() -> TLoadSignal\n+ next_destination_request() -> TNextDestinationRequest\n+ reset_state()}"];
+
+    // Inheritance
+    TPluginAdapter [label="{TPluginAdapter<TLogLevelAPIEnvelopePluginAdapter>\nCRTP base class}", fillcolor=lightyellow];
+
+    // Dependencies
+    TLogLevelEnvelopeDescriptor [label="{TLogLevelEnvelopeDescriptor\nEnvelope descriptor}"];
+
+    TLogLevelAPIEnvelopePluginAdapterConfig [label="{TLogLevelAPIEnvelopePluginAdapterConfig\nConfiguration}"];
+
+    TLogLevelAPIEnvelopePluginAdapterState [label="{TLogLevelAPIEnvelopePluginAdapterState\nState management}"];
+
+    TPluginAdapterView [label="{TPluginAdapterView\nAdapter view}", fillcolor=lightyellow];
+
+    TReadinessView [label="{TReadinessView\nReadiness view}", fillcolor=lightyellow];
+
+    TPlacementRequest [label="{TPlacementRequest\nPlacement request}", fillcolor=lightyellow];
+
+    TPlacementHandle [label="{TPlacementHandle\nPlacement handle}", fillcolor=lightyellow];
+
+    TBridgeResult [label="{TBridgeResult\nBridge result}", fillcolor=lightyellow];
+
+    TLoadSignal [label="{TLoadSignal\nLoad signal}", fillcolor=lightyellow];
+
+    TNextDestinationRequest [label="{TNextDestinationRequest\nNext destination request}", fillcolor=lightyellow];
+
+    // Relationships
+    TLogLevelAPIEnvelopePluginAdapter -> TPluginAdapter [label="inherits from"];
+
+    TLogLevelAPIEnvelopePluginAdapter -> TLogLevelEnvelopeDescriptor [label="contains"];
+    TLogLevelAPIEnvelopePluginAdapter -> TLogLevelAPIEnvelopePluginAdapterConfig [label="contains"];
+    TLogLevelAPIEnvelopePluginAdapter -> TLogLevelAPIEnvelopePluginAdapterState [label="contains"];
+
+    TLogLevelAPIEnvelopePluginAdapter -> TPluginAdapterView [label="returns"];
+    TLogLevelAPIEnvelopePluginAdapter -> TReadinessView [label="returns"];
+    TLogLevelAPIEnvelopePluginAdapter -> TPlacementRequest [label="returns"];
+    TLogLevelAPIEnvelopePluginAdapter -> TPlacementHandle [label="accepts"];
+    TLogLevelAPIEnvelopePluginAdapter -> TBridgeResult [label="returns"];
+    TLogLevelAPIEnvelopePluginAdapter -> TLoadSignal [label="returns"];
+    TLogLevelAPIEnvelopePluginAdapter -> TNextDestinationRequest [label="returns"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        adapter_class [label="Adapter Class", fillcolor=lightblue];
+        crtp_base [label="CRTP Base Class", fillcolor=lightyellow];
+        member [label="Member Object"];
+        parameter [label="Parameter/Return Type"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLogLevelAPIEnvelopePluginAdapter_class_diagram.dot

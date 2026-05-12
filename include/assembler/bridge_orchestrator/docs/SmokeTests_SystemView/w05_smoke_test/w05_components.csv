@@ -1,0 +1,7 @@
+Component Name,File Path,Description,Status
+TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,Bridge-visible correlation token primitive,reused
+TParticipant,participants/descriptors/TParticipant.hpp,Participant descriptor for communication context,reused
+TParticipantView,participants/views/TParticipantView.hpp,View abstraction over participant descriptors,reused
+TPort,obligations/ports/TPort.hpp,CRTP host-side port obligation facade,new
+TPluginAdapter,obligations/plugin_adapters/contracts/TPluginAdapter.hpp,CRTP content-side plugin-adapter obligation facade,new
+TObligationSurfacePair,obligations/surface_pairs/TObligationSurfacePair.hpp,Bridge-visible pair of compatible obligation surface views,new

@@ -1,0 +1,19 @@
+flowchart LR
+    F["Failure"] --> C{"Boundary?"}
+    C --> L["LogApiOwned"]
+    C --> U["UpstreamCallerInput"]
+    C --> CFG["ConfigurationSurface"]
+    C --> EXT["ExternalSchemaAddon"]
+    C --> CIR["CirculationBoundary"]
+    C --> POL["PolicyDeferred"]
+
+    L --> D["Diagnostics"]
+    U --> D
+    CFG --> D
+    EXT --> D
+    CIR --> D
+    POL --> D
+
+    D --> G["Diagnostic Gate"]
+    G --> COMP["Compliance Gate"]
+    COMP --> PROD["Production Readiness Gate"]

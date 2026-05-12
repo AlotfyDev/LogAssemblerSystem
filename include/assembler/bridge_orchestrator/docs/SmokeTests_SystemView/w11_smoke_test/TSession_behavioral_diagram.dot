@@ -1,0 +1,25 @@
+digraph TSession_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TSession Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateSession [label="Create Session\nTSession::make(session_id, binding, policy)\nCreates session with binding and policy", fillcolor=yellow]
+
+    ValidateSession [label="Validate Session\nsession.is_valid()\nChecks id, binding, policy validity\nReturns true", fillcolor=lightgreen]
+
+    RegisterInRegistry [label="Register in Session Registry\nsession_registry.register_session(session)\nSession stored in bounded registry\nReturns true", fillcolor=orange]
+
+    UseInProtocolSelection [label="Use in Protocol Selection\nSession state influences protocol choice\nLinks to bridge protocol usage", fillcolor=orange]
+
+    LookupOperations [label="Registry Lookup Operations\nsession_registry.contains(session.session_id)\nReturns true for active sessions", fillcolor=lightcyan]
+
+    End [label="Session established\nand registered", shape=ellipse, fillcolor=red]
+
+    Start -> CreateSession
+    CreateSession -> ValidateSession
+    ValidateSession -> RegisterInRegistry
+    RegisterInRegistry -> UseInProtocolSelection
+    UseInProtocolSelection -> LookupOperations
+    LookupOperations -> End
+}

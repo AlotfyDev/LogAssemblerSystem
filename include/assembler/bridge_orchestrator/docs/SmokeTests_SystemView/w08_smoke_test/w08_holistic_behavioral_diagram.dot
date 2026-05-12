@@ -1,0 +1,119 @@
+digraph W08_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Start
+    Start [label="Client Application\nInitiates Session", shape=ellipse, fillcolor=lightgreen];
+
+    // Binding Setup Phase
+    subgraph cluster_binding {
+        label="Phase 1: Binding Setup";
+        bgcolor=lightblue;
+
+        CreateBinding [label="Create Binding\n(TBinding::create())"];
+        ResolveChannel [label="Resolve Channel\n(TChannel::resolve())"];
+        CreateSurfacePair [label="Create Surface Pair\n(TObligationSurfacePair::create())"];
+        EvaluateCompatibility [label="Evaluate Compatibility\n(TCompatibilityEvaluator::evaluate())"];
+    }
+
+    // Session Creation Phase
+    subgraph cluster_session_creation {
+        label="Phase 2: Session Creation";
+        bgcolor=lightyellow;
+
+        CreateOpenRequest [label="Create Session Open Request\n(TSessionOpenRequest::create())"];
+        ValidateRequest [label="Validate Request\n(TSessionPolicy::validate())"];
+        GenerateSessionId [label="Generate Session ID\n(TSessionId::generate())"];
+
+        ValidPath [label="Valid Request", shape=diamond];
+        InvalidPath [label="Invalid Request", shape=diamond];
+    }
+
+    // Session Lifecycle Phase
+    subgraph cluster_lifecycle {
+        label="Phase 3: Session Lifecycle";
+        bgcolor=lightcyan;
+
+        OpenSession [label="Open Session\n(TSession::open())"];
+        ActivateSession [label="Activate Session\n(TSession::activate())"];
+        CompleteSession [label="Complete Session\n(TSession::complete())"];
+
+        // Monitoring
+        GenerateView [label="Generate Session View\n(TSessionView::create())"];
+        CreateSnapshot [label="Create Session Snapshot\n(TSessionSnapshot::capture())"];
+        TrackResult [label="Track Session Result\n(TSessionResult::record())"];
+    }
+
+    // Rejection Handling
+    subgraph cluster_rejection {
+        label="Rejection Path";
+        bgcolor=lightcoral;
+
+        RejectSession [label="Reject Session\n(TSession::reject())"];
+        SetTerminalStatus [label="Set Terminal Status\n(TSessionStatus::REJECTED)"];
+        GenerateRejectionResult [label="Generate Rejection Result\n(TSessionResult::createRejected())"];
+    }
+
+    // End States
+    SuccessfulCompletion [label="Session Completed Successfully\n(TSessionStatus::COMPLETED)", shape=ellipse, fillcolor=lightgreen];
+    RejectedCompletion [label="Session Rejected\n(TSessionStatus::REJECTED)", shape=ellipse, fillcolor=lightcoral];
+
+    // Flow Connections
+    Start -> CreateBinding;
+
+    // Binding Setup Flow
+    CreateBinding -> ResolveChannel;
+    ResolveChannel -> CreateSurfacePair;
+    CreateSurfacePair -> EvaluateCompatibility;
+
+    // Session Creation Flow
+    EvaluateCompatibility -> CreateOpenRequest;
+    CreateOpenRequest -> ValidateRequest;
+    ValidateRequest -> ValidPath;
+    ValidateRequest -> InvalidPath;
+
+    // Valid Path
+    ValidPath -> GenerateSessionId [label="Valid"];
+    GenerateSessionId -> OpenSession;
+
+    // Invalid Path
+    InvalidPath -> RejectSession [label="Invalid"];
+
+    // Session Lifecycle Flow
+    OpenSession -> ActivateSession;
+    ActivateSession -> CompleteSession;
+
+    // Parallel Monitoring
+    OpenSession -> GenerateView;
+    ActivateSession -> CreateSnapshot;
+    CompleteSession -> TrackResult;
+
+    // Rejection Flow
+    RejectSession -> SetTerminalStatus;
+    SetTerminalStatus -> GenerateRejectionResult;
+
+    // End States
+    CompleteSession -> SuccessfulCompletion;
+    TrackResult -> SuccessfulCompletion;
+    GenerateRejectionResult -> RejectedCompletion;
+
+    // State Transitions
+    OpenSession -> ActivateSession [label="state: OPEN → ACTIVATED"];
+    ActivateSession -> CompleteSession [label="state: ACTIVATED → COMPLETED"];
+
+    // Validation Points
+    EvaluateCompatibility -> ValidateRequest [label="compatibility\nvalidated"];
+    ValidateRequest -> GenerateSessionId [label="request\nvalidated"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Behavioral Patterns";
+        bgcolor=white;
+
+        Creation [label="Creation Pattern", fillcolor=lightblue];
+        Validation [label="Validation Pattern", fillcolor=lightyellow];
+        Lifecycle [label="Lifecycle Pattern", fillcolor=lightcyan];
+        Rejection [label="Rejection Pattern", fillcolor=lightcoral];
+    }
+}

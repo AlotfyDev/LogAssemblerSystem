@@ -1,0 +1,19 @@
+digraph TBridgeCoreResult_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TBridgeCoreResult Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateCompletedResult [label="Create Completed Result\nTBridgeCoreResult::completed(TBridgeId::from_value(1201u), 8u, token, \"completed message\")\nCreates successful bridge operation result", fillcolor=yellow]
+
+    CreateExhaustedResult [label="Create Exhausted Result\nTBridgeCoreResult::exhausted_budget(TBridgeId::from_value(1202u), 2u, token)\nCreates budget-exhausted bridge operation result", fillcolor=yellow]
+
+    UseInDiagnostics [label="Use in Diagnostics Building\nPassed to TBridgeDiagnosticBuilder::from_result()\nConverted to diagnostic records with appropriate severity", fillcolor=orange]
+
+    End [label="Result usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateCompletedResult
+    CreateCompletedResult -> CreateExhaustedResult
+    CreateExhaustedResult -> UseInDiagnostics
+    UseInDiagnostics -> End
+}

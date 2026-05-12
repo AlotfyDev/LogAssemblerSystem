@@ -1,0 +1,11 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightcoral];
+
+    TBridgeId [label="{TBridgeId | + value : uint32_t\l|+ from_value() : TBridgeId [static]\l+ is_valid() : bool\l+ invalid() : TBridgeId [static]\l+ to_string() : string\l}"];
+
+    BridgeOwnership [label="Owned by TBridge\n- Unique bridge identity\n- Validation and comparison", shape=note, fillcolor=yellow];
+
+    TBridgeId -> BridgeOwnership [label="identifies"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeId_class_diagram.dot

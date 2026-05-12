@@ -1,0 +1,13 @@
+Component,Layer,Category,Description,Status
+TBridgeProtocol,Layer3,Stateful,Core bridge protocol execution state machine,New in W09
+TBridgeProtocolId,Layer2,POD,Unique identifier for bridge protocols,New in W09
+TBridgeProtocolKind,Layer2,POD,Enumeration of bridge protocol types,New in W09
+TBridgeProtocolPlan,Layer2,POD,12-step envelope placement execution plan,New in W09
+TBridgeProtocolStatus,Layer2,POD,Current status and progress tracking,New in W09
+TBridgeSession,Layer3,Stateful,Session context for protocol execution,Updated in W09
+TEnvelopePlacement,Layer3,Stateful,Envelope placement execution logic,Updated in W09
+TBridgeProtocolManager,Layer4,Composition,Coordinates protocol lifecycle,New in W09
+TProtocolStepExecutor,Layer3,Stateful,Executes individual protocol steps,New in W09
+TBridgeProtocolFactory,Layer1,Toolbox,Creates protocol instances from sessions,New in W09
+TProtocolValidator,Layer1,Toolbox,Validates protocol state transitions,New in W09
+TStepAdvancementLogic,Layer1,Toolbox,Logic for advancing through protocol steps,New in W09

@@ -1,0 +1,86 @@
+digraph C4_W12_CommunicationContext {
+    rankdir=TB
+    node [shape=box, style=filled, fillcolor=lightblue]
+
+    // System Context
+    subgraph cluster_SystemContext {
+        label="System Context"
+        style=filled
+        fillcolor=lightgrey
+
+        ExternalSystems [label="External Systems\n(Monitoring/Telemetry)", shape=ellipse, fillcolor=lightgreen]
+        CommunicationContext [label="Communication Context System", shape=box, fillcolor=lightblue]
+    }
+
+    // Containers
+    subgraph cluster_Containers {
+        label="Containers"
+        style=filled
+        fillcolor=lightyellow
+
+        DiagnosticsLayer [label="Diagnostics Layer\n(Optional W12)", fillcolor=orange]
+        CommunicationContextCore [label="Communication Context Core\n(W01-W11 Components)", fillcolor=orange]
+    }
+
+    // Components within Diagnostics Layer
+    subgraph cluster_DiagnosticsLayer {
+        label="Diagnostics Layer Components"
+        style=filled
+        fillcolor=lightcyan
+
+        DiagnosticAggregate [label="Diagnostics Aggregate\n(TDiagnostics)", fillcolor=pink]
+        DiagnosticBuilders [label="Diagnostic Builders\n(TBridgeDiagnosticBuilder, TRegistryDiagnosticBuilder)", fillcolor=pink]
+        DiagnosticRecords [label="Diagnostic Records\n(TDiagnosticRecord, TDiagnosticId, TDiagnosticCategory)", fillcolor=pink]
+        DiagnosticCollector [label="Diagnostic Collector\n(TDiagnosticCollector)", fillcolor=pink]
+        DiagnosticPolicies [label="Diagnostic Policies\n(TDiagnosticPolicy, TDiagnosticSeverity)", fillcolor=pink]
+        DiagnosticViews [label="Diagnostic Views\n(TDiagnosticView)", fillcolor=pink]
+        DiagnosticReports [label="Diagnostic Reports\n(TDiagnosticReport, TDiagnosticSnapshot)", fillcolor=pink]
+    }
+
+    // Components within Communication Context Core
+    subgraph cluster_CoreComponents {
+        label="Core Components (W01-W11)"
+        style=filled
+        fillcolor=lightcyan
+
+        BridgeCore [label="Bridge Core\n(TBridgeCoreResult, TBridgeId)", fillcolor=pink]
+        Registries [label="Registries\n(TRegistrySnapshot)", fillcolor=pink]
+        Correlation [label="Correlation\n(TCorrelationToken)", fillcolor=pink]
+    }
+
+    // Relationships
+    ExternalSystems -> CommunicationContext [label="requests diagnostics"]
+    CommunicationContext -> DiagnosticsLayer [label="uses"]
+    CommunicationContext -> CommunicationContextCore [label="uses"]
+
+    DiagnosticsLayer -> DiagnosticAggregate
+    DiagnosticAggregate -> DiagnosticBuilders [label="includes"]
+    DiagnosticAggregate -> DiagnosticRecords [label="includes"]
+    DiagnosticAggregate -> DiagnosticCollector [label="includes"]
+    DiagnosticAggregate -> DiagnosticPolicies [label="includes"]
+    DiagnosticAggregate -> DiagnosticViews [label="includes"]
+    DiagnosticAggregate -> DiagnosticReports [label="includes"]
+
+    DiagnosticBuilders -> DiagnosticRecords [label="creates"]
+    DiagnosticCollector -> DiagnosticRecords [label="collects"]
+    DiagnosticCollector -> DiagnosticReports [label="uses"]
+    DiagnosticCollector -> DiagnosticPolicies [label="filters with"]
+    DiagnosticViews -> DiagnosticRecords [label="wraps"]
+    DiagnosticReports -> DiagnosticRecords [label="contains"]
+
+    // Diagnostics to Core relationships
+    DiagnosticBuilders -> BridgeCore [label="diagnoses"]
+    DiagnosticBuilders -> Registries [label="diagnoses"]
+    DiagnosticRecords -> Correlation [label="correlates"]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        SystemLegend [label="System", shape=box, fillcolor=lightblue]
+        ContainerLegend [label="Container", shape=box, fillcolor=orange]
+        ComponentLegend [label="Component", shape=box, fillcolor=pink]
+    }
+}

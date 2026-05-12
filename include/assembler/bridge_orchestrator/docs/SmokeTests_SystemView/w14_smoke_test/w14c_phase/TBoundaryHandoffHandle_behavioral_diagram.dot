@@ -1,0 +1,21 @@
+digraph TBoundaryHandoffHandle_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    HandoffAcceptance [label="accept_boundary_handoff_result() processing:\n- if result.accepted(): stores boundary handle\n- state.accept_boundary_handoff(result)\n- tracks handoff initiation"];
+
+    HandoffCompletion [label="Handoff completion tracking:\n- if result.completed(): stores boundary handle\n- state.complete_boundary_handoff(result)\n- marks handoff lifecycle complete"];
+
+    StateManagement [label="State management:\n- boundary handle stored for lifecycle tracking\n- enables completion detection\n- provides handoff context"];
+
+    HandoffAcceptance -> StateManagement;
+    HandoffCompletion -> StateManagement;
+
+    HandoffAcceptance [fillcolor=lightsalmon];
+    HandoffCompletion [fillcolor=lightsalmon];
+    StateManagement [fillcolor=lightgreen];
+
+    label="TBoundaryHandoffHandle Usage in W14C Smoke Test";
+    labelloc=t;
+}

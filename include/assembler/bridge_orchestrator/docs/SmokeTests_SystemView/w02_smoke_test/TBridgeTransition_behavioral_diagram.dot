@@ -1,0 +1,34 @@
+digraph TBridgeTransition_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateTransition [label="Create Transition\nTBridgeTransition::make(idle, session_opening, \"start\")\nCreates transition from idle to session_opening", fillcolor=yellow]
+
+    ValidateTransition [label="Validate Transition\ntransition.is_valid()\nReturns true (not a self-transition)", fillcolor=lightgreen]
+
+    CheckTerminal [label="Check Terminal Transition\ntransition.is_terminal_transition()\nReturns false (session_opening is not terminal)", fillcolor=lightgreen]
+
+    CheckSelf [label="Check Self Transition\ntransition.is_self_transition()\nReturns false (different stages)", fillcolor=lightgreen]
+
+    End [label="Transition validation completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateTransition
+    CreateTransition -> ValidateTransition
+    ValidateTransition -> CheckTerminal
+    CheckTerminal -> CheckSelf
+    CheckSelf -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Transition Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Transition Validation", shape=rectangle, fillcolor=lightgreen]
+    }
+}

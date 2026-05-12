@@ -1,0 +1,18 @@
+digraph TBridgeDiagnosticBuilder_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TBridgeDiagnosticBuilder [label="{TBridgeDiagnosticBuilder|+ from_result(id, result, subject) : TDiagnosticRecord\l+ from_snapshot(id, snapshot, subject) : TDiagnosticRecord\l+ from_trace(id, trace, subject) : TDiagnosticRecord\l}"]
+
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+    TBridgeCoreResult [label="TBridgeCoreResult", shape=record, fillcolor=lightyellow]
+    TBridgeCoreSnapshot [label="TBridgeCoreSnapshot", shape=record, fillcolor=lightyellow]
+    TBridgeCoreTrace [label="TBridgeCoreTrace", shape=record, fillcolor=lightyellow]
+    TDiagnosticId [label="TDiagnosticId", shape=record, fillcolor=lightyellow]
+
+    TBridgeDiagnosticBuilder -> TDiagnosticRecord [label="creates", style=dashed]
+    TBridgeDiagnosticBuilder -> TBridgeCoreResult [label="diagnoses", style=dashed]
+    TBridgeDiagnosticBuilder -> TBridgeCoreSnapshot [label="diagnoses", style=dashed]
+    TBridgeDiagnosticBuilder -> TBridgeCoreTrace [label="diagnoses", style=dashed]
+    TBridgeDiagnosticBuilder -> TDiagnosticId [label="uses", style=dashed]
+}

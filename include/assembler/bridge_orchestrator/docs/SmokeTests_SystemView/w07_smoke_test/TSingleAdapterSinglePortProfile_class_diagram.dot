@@ -1,0 +1,18 @@
+digraph TSingleAdapterSinglePortProfile_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    TSingleAdapterSinglePortProfile [label="{TSingleAdapterSinglePortProfile (W04 - Reused)|+ make() : TChannelProfile\n+ matches(profile) : bool|Canonical 1:1 channel profile preset}"];
+
+    TChannelProfile [label="{TChannelProfile (W04)|kind : TChannelProfileKind\ndirection : TChannelDirection\nadapter_count : uint32_t\nport_count : uint32_t\nmax_adapters : uint32_t\nmax_ports : uint32_t\nprofile_name : string_view|+ is_valid() : bool\n+ is_one_to_one() : bool\n+ make(...) : TChannelProfile|Channel profile definition}" shape=record, fillcolor=white];
+
+    // Relationships
+    TSingleAdapterSinglePortProfile -> TChannelProfile [label="creates"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W04", fillcolor=lightblue];
+        Component [label="Channel Profile", fillcolor=white];
+    }
+}

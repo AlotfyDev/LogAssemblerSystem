@@ -1,0 +1,23 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main correlation token struct
+    CorrelationToken [label="{TCorrelationToken|+ high : std::uint64_t\l+ low : std::uint64_t\l|+ is_valid() const noexcept -> bool\l+ invalid() static constexpr -> TCorrelationToken\l+ from_parts(uint64_t, uint64_t) static constexpr -> TCorrelationToken\l+ operator==(TCorrelationToken, TCorrelationToken) -> bool\l+ operator!=(TCorrelationToken, TCorrelationToken) -> bool\l}", fillcolor=lightsalmon, style=filled];
+
+    // Member types
+    Uint64 [label="{std::uint64_t|64-bit unsigned integer\lcorrelation token parts\l}", fillcolor=lightblue];
+
+    // Hash specialization
+    HashSpecialization [label="{std::hash<TCorrelationToken>|Standard library hash support\lFNV-1a hash implementation\l}", fillcolor=lightcyan];
+
+    // Relationships
+    CorrelationToken -> Uint64 [label="composed of"];
+    HashSpecialization -> CorrelationToken [label="specializes for"];
+
+    // Title
+    label="TCorrelationToken Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TCorrelationToken_class_diagram.dot

@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_readside_w01/cme_readside_engine_facade_injection_test.cpp,passed,0,0
+tests_readside_w01/cme_readside_engine_negative_independence_test.cpp,passed,0,0
+tests_readside_w01/cme_readside_full_aggregate_probe.cpp,passed,0,0

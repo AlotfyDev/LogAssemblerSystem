@@ -1,0 +1,18 @@
+digraph TBridgeProtocol_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TBridgeProtocol [label="{TBridgeProtocol<PlanCapacity>|protocol_id : TBridgeProtocolId\l plan : TBridgeProtocolPlan\l name : std::string_view\l metadata : TProtocolMetadata\l|+ is_valid() : bool\l+ make(id, plan, name, metadata) : TBridgeProtocol\l}"]
+
+    PlanCapacity [label="PlanCapacity", shape=ellipse, fillcolor=lightgrey]
+    TBridgeProtocolId [label="TBridgeProtocolId", shape=record, fillcolor=lightyellow]
+    TBridgeProtocolPlan [label="TBridgeProtocolPlan", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TProtocolMetadata [label="TProtocolMetadata", shape=record, fillcolor=lightyellow]
+
+    TBridgeProtocol -> PlanCapacity [label="parameterized by", style=dashed]
+    TBridgeProtocol -> TBridgeProtocolId [label="uses", style=dashed]
+    TBridgeProtocol -> TBridgeProtocolPlan [label="contains", style=dashed]
+    TBridgeProtocol -> std_string_view [label="uses", style=dashed]
+    TBridgeProtocol -> TProtocolMetadata [label="uses", style=dashed]
+}

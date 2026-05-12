@@ -1,0 +1,6 @@
+﻿source,status,compile_returncode,run_returncode,stdout_tail
+benchmarks/pre_bridge_throughput_benchmark.cpp,passed,0,0,"pre_bridge_ingress_dispatch_pair,iterations=50000,elapsed_ns=14221"
+benchmarks/read_side_retry_pressure_benchmark.cpp,passed,0,0,"read_side_retry_pressure,iterations=30000,elapsed_ns=55421"
+benchmarks/reference_supply_benchmark.cpp,passed,0,0,"reference_supply,iterations=50000,elapsed_ns=92183"
+benchmarks/registry_resolution_benchmark.cpp,passed,0,0,"registry_resolution,iterations=200000,elapsed_ns=389809"
+stress_tests/capacity_extreme_profile_stress.cpp,passed,0,0,

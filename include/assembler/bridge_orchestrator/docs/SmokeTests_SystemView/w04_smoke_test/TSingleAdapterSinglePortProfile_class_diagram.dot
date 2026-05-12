@@ -1,0 +1,38 @@
+digraph TSingleAdapterSinglePortProfile_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main struct
+    TSingleAdapterSinglePortProfile [label="{TSingleAdapterSinglePortProfile| |+ make() static constexpr\n+ matches(profile) static constexpr}"];
+
+    // Dependencies
+    TSingleAdapterSinglePortProfile -> TChannelProfile [label="creates"];
+
+    // Profile creation
+    make_method [label="{make()|return TChannelProfile::make(\nsingle_adapter_single_port,\nunidirectional,\n1, 1, 1, 1,\n\"single_adapter_single_port\")}"];
+
+    // Matching validation
+    matches_method [label="{matches(profile)|return profile.kind == single_adapter_single_port\n&& profile.direction == unidirectional\n&& profile.is_one_to_one()}"];
+
+    // Dependencies
+    make_method -> TChannelProfile [label="factory"];
+    matches_method -> TChannelProfile [label="validation"];
+
+    // Usage in W04
+    TSingleAdapterSinglePortProfile -> channel_profile_creation [label="canonical profile"];
+
+    // Invisible positioning
+    TChannelProfile [shape=plaintext, label="TChannelProfile"];
+    channel_profile_creation [shape=plaintext, label="Channel Profile Creation"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TSingleAdapterSinglePortProfile Structure";
+        color=white;
+        style=filled;
+
+        legend_factory [label="Factory Method", shape=rectangle, fillcolor=lightyellow];
+        legend_validation [label="Validation Method", shape=rectangle, fillcolor=lightblue];
+        legend_w04 [label="W04 Usage", shape=plaintext];
+    }
+}

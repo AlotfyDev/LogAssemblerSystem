@@ -1,0 +1,44 @@
+digraph TWriteSideRegistryDeliveryReadinessPolicy_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Readiness checking in smoke test
+    ReadinessCall [label="adapter.readiness() calls:\n- TWriteSideRegistryDeliveryReadinessPolicy::readiness()\n- passes descriptor and config\n- returns TReadinessView"];
+
+    ConfigValidation [label="Config validation:\n- config.is_valid() check\n- if invalid: return NOT_READY with reason\n- 'write_side_registry_delivery_plugin_adapter_config_invalid'"];
+
+    DescriptorValidation [label="Descriptor validation:\n- descriptor.is_valid() check\n- if invalid: return NOT_READY with reason\n- 'write_side_registry_delivery_material_descriptor_invalid'"];
+
+    OrderedDeliveryCheck [label="Ordered delivery compatibility:\n- if descriptor.requires_ordered_delivery && !config.allow_ordered_delivery\n- return DEFERRED with reason\n- 'write_side_registry_delivery_ordered_delivery_disabled'"];
+
+    BoundaryHandoffCheck [label="Boundary handoff support:\n- TIntegrationBoundaryPolicy::supports_outbound_handoff()\n- checks registry_boundary capabilities\n- if not supported: return NOT_READY\n- 'registry_delivery_boundary_does_not_support_outbound_handoff'"];
+
+    ReadyResult [label="Return READY result:\n- all validations passed\n- provides correlation token\n- includes material_size_hint"];
+
+    // Flow connections
+    ReadinessCall -> ConfigValidation;
+    ConfigValidation -> DescriptorValidation [label="config valid"];
+    ConfigValidation -> ReadyResult [label="config invalid"];
+
+    DescriptorValidation -> OrderedDeliveryCheck [label="descriptor valid"];
+    DescriptorValidation -> ReadyResult [label="descriptor invalid"];
+
+    OrderedDeliveryCheck -> BoundaryHandoffCheck [label="compatible"];
+    OrderedDeliveryCheck -> ReadyResult [label="incompatible"];
+
+    BoundaryHandoffCheck -> ReadyResult [label="supported"];
+    BoundaryHandoffCheck -> ReadyResult [label="not supported"];
+
+    // Styling by result type
+    ReadinessCall [fillcolor=lightblue];
+    ConfigValidation [fillcolor=lightyellow];
+    DescriptorValidation [fillcolor=lightyellow];
+    OrderedDeliveryCheck [fillcolor=lightcyan];
+    BoundaryHandoffCheck [fillcolor=lightsalmon];
+    ReadyResult [fillcolor=lightgreen];
+
+    // Title
+    label="TWriteSideRegistryDeliveryReadinessPolicy Usage in W14C Smoke Test";
+    labelloc=t;
+}

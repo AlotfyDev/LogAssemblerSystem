@@ -1,0 +1,25 @@
+digraph TBridge_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TBridge Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateBridge [label="Create Bridge\nTBridge<12>::make(bridge_id, protocol, config)\nCreates bridge with protocol and configuration", fillcolor=yellow]
+
+    ValidateBridge [label="Validate Bridge\nbridge.is_valid()\nChecks id, protocol, config validity\nReturns true", fillcolor=lightgreen]
+
+    RegisterInRegistry [label="Register in Bridge Registry\nbridge_registry.register_bridge(bridge)\nBridge stored with plan capacity\nReturns true", fillcolor=orange]
+
+    CompleteWorkflow [label="Complete Communication Workflow\nBridge orchestrates channel→binding→session→protocol flow\nFinal component in registry chain", fillcolor=purple]
+
+    LookupOperations [label="Registry Lookup Operations\nbridge_registry.contains(bridge.bridge_id)\nReturns true for registered bridges", fillcolor=lightcyan]
+
+    End [label="Bridge established\ncommunication context complete", shape=ellipse, fillcolor=red]
+
+    Start -> CreateBridge
+    CreateBridge -> ValidateBridge
+    ValidateBridge -> RegisterInRegistry
+    RegisterInRegistry -> CompleteWorkflow
+    CompleteWorkflow -> LookupOperations
+    LookupOperations -> End
+}

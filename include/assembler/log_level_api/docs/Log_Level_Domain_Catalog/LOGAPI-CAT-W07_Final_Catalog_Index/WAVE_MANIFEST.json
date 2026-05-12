@@ -1,0 +1,21 @@
+{
+  "wave": "LOGAPI-CAT-W07_Final_Catalog_Index",
+  "project": "Assembler System",
+  "domain": "log_level_api",
+  "catalog_pack": "LOGAPI-CAT",
+  "scope": "final catalog index, navigation by concern, wave map, diagram map",
+  "documents": [
+    "docs/LOGAPI-CAT-010_Log_Level_API_Catalog_Index.md"
+  ],
+  "diagrams": [
+    "diagrams/LOGAPI-CAT-010_catalog_navigation_map.mmd",
+    "diagrams/LOGAPI-CAT-010_implementation_wave_map.mmd"
+  ],
+  "boundaries": [
+    "catalog only",
+    "no implementation code",
+    "no circulation internals",
+    "no policy assignment runtime",
+    "no bridge orchestration"
+  ]
+}

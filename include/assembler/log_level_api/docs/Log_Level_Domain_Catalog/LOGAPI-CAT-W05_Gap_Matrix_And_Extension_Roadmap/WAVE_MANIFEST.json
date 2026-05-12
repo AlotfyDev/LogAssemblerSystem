@@ -1,0 +1,21 @@
+{
+  "wave": "LOGAPI-CAT-W05_Gap_Matrix_And_Extension_Roadmap",
+  "project": "Assembler System",
+  "domain": "log_level_api",
+  "catalog_pack": "LOGAPI-CAT",
+  "scope": "gap matrix, priorities, logical extensions, roadmap diagrams",
+  "documents": [
+    "docs/LOGAPI-CAT-008_Gap_Matrix_And_Logical_Extensions.md"
+  ],
+  "diagrams": [
+    "diagrams/LOGAPI-CAT-008_gap_priority_matrix.mmd",
+    "diagrams/LOGAPI-CAT-008_extension_roadmap.mmd"
+  ],
+  "boundaries": [
+    "catalog only",
+    "no implementation code",
+    "no circulation internals",
+    "no policy assignment runtime",
+    "no bridge orchestration"
+  ]
+}

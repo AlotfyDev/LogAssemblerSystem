@@ -1,0 +1,17 @@
+digraph TBindingProfile_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TBindingProfile [label="{TBindingProfile|kind : TBindingKind\nrequire_channel_valid : bool\nrequire_channel_declared : bool\nrequire_surface_pair_valid : bool\nrequire_primary_placement_flow : bool\nallow_session_materialization : bool\nallow_rebinding : bool\nprofile_version : uint32_t\nprofile_name : string_view|+ is_valid() : bool\n+ is_strict_one_to_one() : bool|+ strict_static_one_to_one() : TBindingProfile}"];
+
+    // Enum
+    TBindingKind [label="{TBindingKind|unknown\nstrict_one_to_one\none_adapter_to_many_ports\nmany_adapters_to_one_port\nmany_to_many\nobserver_only}" shape=Mrecord];
+
+    // Usage
+    TBinding_uses [label="{TBinding (uses)|profile : TBindingProfile|...}" shape=record];
+
+    // Relationship
+    TBindingProfile -> TBindingKind [label="has"];
+    TBinding_uses -> TBindingProfile [label="has as member"];
+}

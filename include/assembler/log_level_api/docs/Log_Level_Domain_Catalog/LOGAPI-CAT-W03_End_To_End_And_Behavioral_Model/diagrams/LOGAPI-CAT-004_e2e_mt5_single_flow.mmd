@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Config
+    participant API
+    participant Parser as Dedicated MT5 Structure Parser
+    participant Meta
+    participant Time
+    participant Env
+    participant Handoff
+
+    Config->>Config: Resolve MT5 schema + dedicated parser
+    API->>Parser: MT5 input view
+    Parser-->>Env: Parsed MT5 structure view
+    Meta-->>Env: Prepared metadata
+    Time-->>Env: Stabilized timestamp
+    Env->>Handoff: Handoff contract

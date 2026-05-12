@@ -1,0 +1,31 @@
+digraph TBridgeResult_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateSuccessResult [label="Create Success Result\nTBridgeResult::success(token)\nCreates result with success status and correlation token", fillcolor=orange]
+
+    CompleteProtocol [label="Complete Protocol State\nstate.complete(result)\nCompletes protocol with success result", fillcolor=orange]
+
+    CheckTerminal [label="Check Terminal State\nstate.is_terminal()\nReturns true after successful completion", fillcolor=lightgreen]
+
+    End [label="Result validation completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateSuccessResult
+    CreateSuccessResult -> CompleteProtocol
+    CompleteProtocol -> CheckTerminal
+    CheckTerminal -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ValidationLegend [label="Result Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Result Usage", shape=rectangle, fillcolor=orange]
+    }
+}

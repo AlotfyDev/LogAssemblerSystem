@@ -1,0 +1,28 @@
+digraph TNextDestinationRequest_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main struct
+    TNextDestinationRequest [label="{TNextDestinationRequest\nBridge-visible next-destination request carrier|+ correlation: TCorrelationToken\n+ current_handle: TPlacementHandle\n+ reason: TNextDestinationReason\n+ note: string_view|+ is_valid() const noexcept -> bool\n+ make(TCorrelationToken, TPlacementHandle, TNextDestinationReason, string_view) static constexpr -> TNextDestinationRequest}"];
+
+    // Enum
+    TNextDestinationReason [label="{TNextDestinationReason\nunknown, current_destination_completed, current_destination_rejected, current_destination_saturated, continuous_flow_requested, retry_requested}"];
+
+    // Dependencies
+    TCorrelationToken [label="{TCorrelationToken\nCorrelation token}", fillcolor=lightyellow];
+    TPlacementHandle [label="{TPlacementHandle\nPlacement handle}", fillcolor=lightyellow];
+
+    // Relationships
+    TNextDestinationRequest -> TNextDestinationReason [label="uses"];
+    TNextDestinationRequest -> TCorrelationToken [label="contains"];
+    TNextDestinationRequest -> TPlacementHandle [label="contains"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        carrier_struct [label="Carrier Struct", fillcolor=lightyellow];
+        enum_type [label="Enum Type"];
+        member [label="Member Object"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TNextDestinationRequest_class_diagram.dot

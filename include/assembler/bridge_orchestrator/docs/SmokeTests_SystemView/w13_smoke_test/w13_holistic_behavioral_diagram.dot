@@ -1,0 +1,181 @@
+digraph W13_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Start
+    Start [label="Start: W13 Integration Boundary Workflow", shape=ellipse, fillcolor=lightgreen];
+
+    // Boundary Descriptor Creation
+    subgraph cluster_Descriptor {
+        label="1. Boundary Descriptor Creation";
+        style=filled;
+        fillcolor=lightblue;
+
+        CreateDescriptor [label="Create TIntegrationBoundaryDescriptor\n(e.g., persistence(), telemetry(), etc.)"];
+        ValidateDescriptor [label="Validate descriptor.is_valid()"];
+        CheckCapabilities [label="Check descriptor.has(capability)"];
+    }
+
+    // Boundary Port Creation
+    subgraph cluster_Port {
+        label="2. Boundary Port Implementation";
+        style=filled;
+        fillcolor=lightcyan;
+
+        ImplementCRTP [label="Implement TIntegrationBoundaryPort<TDerived>\n(CRTP pattern)"];
+        ProvideView [label="Implement boundary_view()"];
+        ProvideDescriptor [label="Implement boundary_descriptor()"];
+        ProvideReadiness [label="Implement boundary_readiness(request)"];
+        ProvideAccept [label="Implement accept_boundary_handoff(request)"];
+        ProvideComplete [label="Implement complete_boundary_handoff(handle)"];
+        ProvideReject [label="Implement reject_boundary_handoff(request)"];
+        ValidateTraits [label="Validate TIntegrationBoundaryPortTraits"];
+    }
+
+    // Handoff Request Creation
+    subgraph cluster_Request {
+        label="3. Handoff Request Creation";
+        style=filled;
+        fillcolor=lavender;
+
+        CreateRequest [label="Create TBoundaryHandoffRequest::make()\n(correlation, target, material_kind, size_hint, ordered)"];
+        ValidateRequest [label="Validate request.is_valid()"];
+    }
+
+    // Policy Evaluation
+    subgraph cluster_Policy {
+        label="4. Policy Evaluation";
+        style=filled;
+        fillcolor=lightyellow;
+
+        EvaluateReadiness [label="TIntegrationBoundaryPolicy::request_readiness(request)"];
+        CheckCorrelation [label="Validate correlation.is_valid()"];
+        CheckTarget [label="Validate target.is_valid()"];
+        CheckHandoffCapability [label="Check target.has(accepts_handoff)"];
+        CheckMaterialKind [label="Validate !material_kind.empty()"];
+        CheckOrdering [label="Check ordering support if required"];
+
+        EvaluateReadiness -> CheckCorrelation;
+        EvaluateReadiness -> CheckTarget;
+        EvaluateReadiness -> CheckHandoffCapability;
+        EvaluateReadiness -> CheckMaterialKind;
+        EvaluateReadiness -> CheckOrdering;
+    }
+
+    // Readiness Decision
+    subgraph cluster_Readiness {
+        label="5. Readiness Decision";
+        style=filled;
+        fillcolor=orange;
+
+        Ready [label="TReadinessView::ready()\n(Proceed to accept)"];
+        Deferred [label="TReadinessView::deferred()\n(Defer ordered requests)"];
+        NotReady [label="TReadinessView::not_ready()\n(Fail with reason)"];
+
+        {rank=same; Ready Deferred NotReady}
+    }
+
+    // Handoff Operations
+    subgraph cluster_Handoff {
+        label="6. Handoff Operations";
+        style=filled;
+        fillcolor=pink;
+
+        AcceptHandoff [label="accept_boundary_handoff(request)\n→ TBoundaryHandoffResult::accepted(handle)"];
+        CreateHandle [label="Create TBoundaryHandoffHandle::make()\n(id, kind, correlation, note)"];
+        CompleteHandoff [label="complete_boundary_handoff(handle)\n→ TBoundaryHandoffResult::completed(handle)"];
+        RejectHandoff [label="reject_boundary_handoff(request)\n→ TBoundaryHandoffResult::rejected(error)"];
+    }
+
+    // Result Processing
+    subgraph cluster_Result {
+        label="7. Result Processing";
+        style=filled;
+        fillcolor=lightgray;
+
+        AcceptedResult [label="result.accepted() && handle.is_valid()\n(Successful handoff start)"];
+        CompletedResult [label="result.completed()\n(Successful handoff completion)"];
+        FailedResult [label="result.failed()\n(Operation failed)"];
+        DeferredResult [label="result.deferred()\n(Operation deferred)"];
+    }
+
+    // Report Creation
+    subgraph cluster_Report {
+        label="8. Report Creation";
+        style=filled;
+        fillcolor=lightgreen;
+
+        CreateDiagnostic [label="Create TDiagnosticRecord\n(id, category, operation, component, message, correlation)"];
+        CreateReport [label="TIntegrationBoundaryReport::make()\n(view, result, diagnostic, note)"];
+        ValidateReport [label="Validate report.is_valid() && !report.failed()"];
+    }
+
+    // End
+    End [label="End: Integration Boundary Operation Complete", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow connections
+    Start -> CreateDescriptor;
+
+    CreateDescriptor -> ValidateDescriptor;
+    ValidateDescriptor -> CheckCapabilities;
+    CheckCapabilities -> ImplementCRTP;
+
+    ImplementCRTP -> ProvideView;
+    ImplementCRTP -> ProvideDescriptor;
+    ImplementCRTP -> ProvideReadiness;
+    ImplementCRTP -> ProvideAccept;
+    ImplementCRTP -> ProvideComplete;
+    ImplementCRTP -> ProvideReject;
+    ProvideView -> ValidateTraits;
+    ProvideDescriptor -> ValidateTraits;
+    ProvideReadiness -> ValidateTraits;
+    ProvideAccept -> ValidateTraits;
+    ProvideComplete -> ValidateTraits;
+    ProvideReject -> ValidateTraits;
+
+    ValidateTraits -> CreateRequest;
+    CreateRequest -> ValidateRequest;
+    ValidateRequest -> EvaluateReadiness;
+
+    EvaluateReadiness -> Ready [label="is_ready()"];
+    EvaluateReadiness -> Deferred [label="is_deferred()"];
+    EvaluateReadiness -> NotReady [label="is_not_ready()"];
+
+    Ready -> AcceptHandoff;
+    AcceptHandoff -> CreateHandle;
+    CreateHandle -> AcceptedResult;
+
+    AcceptedResult -> CompleteHandoff;
+    CompleteHandoff -> CompletedResult;
+
+    NotReady -> FailedResult;
+    Deferred -> DeferredResult;
+
+    CompletedResult -> CreateDiagnostic;
+    FailedResult -> CreateDiagnostic;
+    DeferredResult -> CreateDiagnostic;
+
+    CreateDiagnostic -> CreateReport;
+    CreateReport -> ValidateReport;
+    ValidateReport -> End;
+
+    // Alternative rejection path
+    Ready -> RejectHandoff [label="optional"];
+    RejectHandoff -> FailedResult;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendNew [label="New W13 Components", fillcolor=lightblue];
+        LegendReused [label="Reused W01-W12 Components", fillcolor=lightgray];
+        LegendDecision [label="Decision Point", shape=diamond, fillcolor=yellow];
+        LegendProcess [label="Process Step", shape=rectangle, fillcolor=white];
+        LegendCRTP [label="CRTP Implementation", fillcolor=lightcyan];
+        LegendPolicy [label="Policy Evaluation", fillcolor=lightyellow];
+        LegendResult [label="Result Processing", fillcolor=lightgray];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\w13_holistic_behavioral_diagram.dot

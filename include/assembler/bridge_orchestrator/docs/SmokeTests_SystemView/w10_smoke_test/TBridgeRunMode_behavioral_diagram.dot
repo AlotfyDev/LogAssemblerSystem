@@ -1,0 +1,26 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    MODE_SELECTION [label="Select TBridgeRunMode"];
+    MANUAL_STEP [label="manual_step\n- Manual control\n- Single step at a time"];
+    BOUNDED_RUN [label="bounded_model_run\n- Automatic execution\n- Limited by step count"];
+    SINGLE_PASS [label="single_pass_model_run\n- One complete pass\n- Single execution"];
+    DIAGNOSTIC_DRY [label="diagnostic_dry_run\n- Diagnostic mode\n- Full tracing enabled"];
+
+    MODE_SELECTION -> MANUAL_STEP;
+    MODE_SELECTION -> BOUNDED_RUN;
+    MODE_SELECTION -> SINGLE_PASS;
+    MODE_SELECTION -> DIAGNOSTIC_DRY;
+
+    CONFIG_APPLICATION [label="Apply to TBridgeConfig"];
+    EXECUTION_CONTROL [label="Control execution behavior"];
+
+    MANUAL_STEP -> CONFIG_APPLICATION;
+    BOUNDED_RUN -> CONFIG_APPLICATION;
+    SINGLE_PASS -> CONFIG_APPLICATION;
+    DIAGNOSTIC_DRY -> CONFIG_APPLICATION;
+
+    CONFIG_APPLICATION -> EXECUTION_CONTROL;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeRunMode_behavioral_diagram.dot

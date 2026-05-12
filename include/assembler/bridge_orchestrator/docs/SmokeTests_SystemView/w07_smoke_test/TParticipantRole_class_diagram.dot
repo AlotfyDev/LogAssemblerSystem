@@ -1,0 +1,12 @@
+digraph TParticipantRole_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=white];
+
+    TParticipantRole [label="{TParticipantRole (W03 - Reused)|unknown,\ncontent_provider,\nhost_provider,\nreceiver_provider,\nregistry_provider,\npersistence_provider,\ntelemetry_provider,\nabi_boundary_provider,\ndiagnostic_observer,\nbridge_orchestrator,\ngovernance_provider|+ is_provider_role(role) : bool\n+ is_boundary_role(role) : bool\n+ is_observer_role(role) : bool\n+ participates_in_primary_exchange(role) : bool\n+ to_string(role) : string_view|Bridge-visible participant-role vocabulary}"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W03", fillcolor=white];
+    }
+}

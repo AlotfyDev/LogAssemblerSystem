@@ -1,0 +1,24 @@
+{
+  "wave": "LOGAPI-CAT-W01_Foundation_And_Holistic_View",
+  "project": "Assembler System",
+  "domain": "log_level_api",
+  "catalog_pack": "LOGAPI-CAT",
+  "scope": "catalog foundation, doctrine, holistic domain view, boundary and layer diagrams",
+  "documents": [
+    "docs/LOGAPI-CAT-000_Catalog_Roadmap_And_Doctrine.md",
+    "docs/LOGAPI-CAT-001_Domain_Holistic_View.md"
+  ],
+  "diagrams": [
+    "diagrams/LOGAPI-CAT-000_catalog_scope.mmd",
+    "diagrams/LOGAPI-CAT-000_domain_boundary.mmd",
+    "diagrams/LOGAPI-CAT-001_layer_map.mmd",
+    "diagrams/LOGAPI-CAT-001_end_to_end_overview.mmd"
+  ],
+  "boundaries": [
+    "catalog only",
+    "no implementation code",
+    "no circulation internals",
+    "no policy assignment runtime",
+    "no bridge orchestration"
+  ]
+}

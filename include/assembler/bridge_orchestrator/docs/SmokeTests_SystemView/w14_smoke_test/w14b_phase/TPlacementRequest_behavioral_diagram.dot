@@ -1,0 +1,42 @@
+digraph TPlacementRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Creation
+    Adapter_Prepare [label="adapter.prepare_placement_request()\nAdapter creates placement request from descriptor", fillcolor=lightblue];
+    Validate_Descriptor [label="if (!descriptor_.is_valid())", fillcolor=lavender];
+    Invalid_Request [label="return TPlacementRequest{}", fillcolor=red];
+    Extract_Parameters [label="Extract correlation, envelope_kind, payload_size_hint, requires_ordered_placement", fillcolor=lavender];
+    Determine_Destination [label="Determine destination_family from descriptor or config", fillcolor=lavender];
+    Create_Request [label="TPlacementRequest::make(correlation, kind, size_hint, ordered, destination)", fillcolor=lightgreen];
+
+    // Validation
+    Request_Validation [label="request.is_valid()\nValidate placement request", fillcolor=lavender];
+    Correlation_Check [label="correlation.is_valid()", fillcolor=lavender];
+    Valid_Result [label="Return true - request is valid", fillcolor=lightgreen];
+    Invalid_Result [label="Return false - request is invalid", fillcolor=red];
+
+    // Port processing
+    Port_Readiness [label="port.readiness(request)\nPort evaluates readiness", fillcolor=orange];
+    Port_Admission [label="port.admit(request)\nPort decides admission", fillcolor=orange];
+    Port_Handle [label="port.placement_handle(request)\nPort produces handle", fillcolor=orange];
+
+    // Flow connections
+    Adapter_Prepare -> Validate_Descriptor;
+    Validate_Descriptor -> Invalid_Request [label="descriptor invalid"];
+    Validate_Descriptor -> Extract_Parameters [label="descriptor valid"];
+
+    Extract_Parameters -> Determine_Destination;
+    Determine_Destination -> Create_Request;
+
+    Create_Request -> Request_Validation;
+    Request_Validation -> Correlation_Check;
+    Correlation_Check -> Valid_Result [label="correlation valid"];
+    Correlation_Check -> Invalid_Result [label="correlation invalid"];
+
+    Valid_Result -> Port_Readiness;
+    Port_Readiness -> Port_Admission;
+    Port_Admission -> Port_Handle;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TPlacementRequest_behavioral_diagram.dot

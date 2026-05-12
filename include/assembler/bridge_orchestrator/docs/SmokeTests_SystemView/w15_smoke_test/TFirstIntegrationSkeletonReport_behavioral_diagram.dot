@@ -1,0 +1,43 @@
+digraph TFirstIntegrationSkeletonReport_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage
+    ReportConstruction [label="Report Construction:\n- TFirstIntegrationSkeletonReport initialized with default values\n- all boolean flags start false\n- carrier results initialized to invalid/failed states"];
+
+    ModelValidationRecording [label="Model Validation Recording:\n- config_valid = config.is_valid()\n- adapter_view_valid = adapter.view().is_valid()\n- port_view_valid = port.view().is_valid()\n- channel_valid, surface_pair_valid, binding_compatible, etc.\n- records each validation step in model declaration"];
+
+    FlowValidationRecording [label="Flow Validation Recording:\n- adapter_ready = adapter.readiness().is_ready()\n- placement_request_valid, port_ready, admission_accepted\n- placement_handle_valid, adapter_accepted_handle\n- load_signal_completed, port_received_load_signal\n- next_destination_acknowledged\n- records carrier flow validation steps"];
+
+    CarrierResultStorage [label="Carrier Result Storage:\n- admission = port.admit(placement_request)\n- placement_handle = port.placement_handle(placement_request)\n- adapter_handle_result = adapter.accept_placement_handle()\n- load_signal_result = port.receive_load_signal()\n- next_destination_result = port.next_destination()\n- bridge_model_result = bridge.run_model_to_terminal()"];
+
+    SuccessFlagCalculation [label="Success Flag Calculation:\n- model_succeeded() = all model validation flags true\n- flow_succeeded() = all flow validation flags true\n- succeeded() = model_succeeded() && flow_succeeded()\n- failed() = !succeeded()"];
+
+    FailureNoteMarking [label="Failure Note Marking:\n- mark_failure(note) called when validation fails\n- stores first failure note for debugging\n- used to identify where integration failed"];
+
+    ReportReturn [label="Report Return:\n- complete report returned from skeleton.run()\n- used by smoke test to validate integration success\n- provides detailed failure information"];
+
+    // Flow connections
+    ReportConstruction -> ModelValidationRecording;
+    ModelValidationRecording -> FlowValidationRecording;
+    FlowValidationRecording -> CarrierResultStorage;
+    CarrierResultStorage -> SuccessFlagCalculation;
+    SuccessFlagCalculation -> FailureNoteMarking [label="failed"];
+    SuccessFlagCalculation -> ReportReturn [label="succeeded"];
+    FailureNoteMarking -> ReportReturn;
+
+    // Styling by phase
+    ReportConstruction [fillcolor=lightblue];
+    ModelValidationRecording [fillcolor=lightyellow];
+    FlowValidationRecording [fillcolor=lightsalmon];
+    CarrierResultStorage [fillcolor=lightgreen];
+    SuccessFlagCalculation [fillcolor=lightcyan];
+    FailureNoteMarking [fillcolor=lightcoral];
+    ReportReturn [fillcolor=lightgray];
+
+    // Title
+    label="TFirstIntegrationSkeletonReport Usage in W15 Smoke Test";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonReport_behavioral_diagram.dot

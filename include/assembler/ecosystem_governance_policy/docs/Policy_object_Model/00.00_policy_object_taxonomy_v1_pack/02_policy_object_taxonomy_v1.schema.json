@@ -1,0 +1,32 @@
+{
+  "document_id": "POLICY-OBJECT-TAXONOMY-V1",
+  "document_name": "Policy Object Taxonomy V1",
+  "scope": {
+    "1.1": "semantic closure only",
+    "1.2": "graph-founded mention only",
+    "1.3": "no structural graph deep dive yet"
+  },
+  "mandatory_semantic_elements": [
+    "policy_identity",
+    "policy_clauses",
+    "safe_replacement_semantics",
+    "lifecycle_state_slot",
+    "realization_mechanism_binding",
+    "observation_audit_slot"
+  ],
+  "dormant_but_structurally_present": [
+    "applicability_slot",
+    "clause_truth_evaluation"
+  ],
+  "non_conflations": [
+    "policy_object_vs_clause",
+    "policy_object_vs_realization_mechanism",
+    "policy_object_vs_target_object",
+    "policy_object_vs_flat_configuration_blob"
+  ],
+  "final_definition": {
+    "10.1": "A Policy Object in this system is a graph-founded, execution-oriented semantic governing object that carries identity, clauses, safe replacement semantics, lifecycle capability, realization-mechanism binding, and lightweight-by-default observation/audit capability.",
+    "10.2": "In execution-policy families, applicability and clause-truth evaluation remain structurally present but are typically pre-resolved upstream and therefore operationally dormant during normal realization.",
+    "10.3": "A policy object does not own its target object. Instead, it is assigned a realization mechanism, and that mechanism enacts the policy on an external execution-bearing target object."
+  }
+}

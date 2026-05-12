@@ -1,0 +1,43 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightcoral];
+
+    // Main TBridge class
+    TBridge [label="{TBridge<T> | + bridge_id : TBridgeId\l+ config : TBridgeConfig\l+ protocol : TBridgeProtocol<T>\l+ status : TBridgeStatus\l+ last_result : TBridgeCoreResult\l+ last_issue : TBridgeCoreIssue\l+ correlation : TCorrelationToken\l+ bridge_name : string_view\l|+ is_valid() : bool\l+ is_ready() : bool\l+ is_running() : bool\l+ is_terminal() : bool\l+ view() : TBridgeCoreView\l+ frame() : TBridgeCoreFrame\l+ snapshot() : TBridgeCoreSnapshot\l+ trace_current_step() : TBridgeCoreTrace\l+ step_model_once() : TBridgeCoreResult\l+ step_model_report() : TBridgeCoreStepReport\l+ run_model_to_terminal() : TBridgeCoreResult\l+ declare() : TBridge [static]\l}"];
+
+    // Dependencies
+    TBridgeId [label="TBridgeId", fillcolor=lightblue];
+    TBridgeConfig [label="TBridgeConfig", fillcolor=lightblue];
+    TBridgeProtocol [label="TBridgeProtocol<T>", fillcolor=lightgreen];
+    TBridgeStatus [label="TBridgeStatus", fillcolor=lightblue];
+    TBridgeCoreResult [label="TBridgeCoreResult", fillcolor=lightgray];
+    TBridgeCoreIssue [label="TBridgeCoreIssue", fillcolor=lightgray];
+    TCorrelationToken [label="TCorrelationToken", fillcolor=lightblue];
+    TBridgeCoreView [label="TBridgeCoreView", fillcolor=lightgray];
+    TBridgeCoreFrame [label="TBridgeCoreFrame", fillcolor=lightgray];
+    TBridgeCoreSnapshot [label="TBridgeCoreSnapshot", fillcolor=lightgray];
+    TBridgeCoreTrace [label="TBridgeCoreTrace", fillcolor=lightgray];
+    TBridgeCoreStepReport [label="TBridgeCoreStepReport", fillcolor=lightgray];
+
+    // Relationships
+    TBridge -> TBridgeId [label="owns"];
+    TBridge -> TBridgeConfig [label="configures"];
+    TBridge -> TBridgeProtocol [label="orchestrates"];
+    TBridge -> TBridgeStatus [label="tracks"];
+    TBridge -> TBridgeCoreResult [label="produces"];
+    TBridge -> TBridgeCoreIssue [label="reports"];
+    TBridge -> TCorrelationToken [label="correlates"];
+    TBridge -> TBridgeCoreView [label="exposes"];
+    TBridge -> TBridgeCoreFrame [label="captures"];
+    TBridge -> TBridgeCoreSnapshot [label="snapshots"];
+    TBridge -> TBridgeCoreTrace [label="traces"];
+    TBridge -> TBridgeCoreStepReport [label="reports"];
+
+    // Key methods
+    step_model_once [label="step_model_once()\n- Validate bridge state\n- Check budget\n- Consume step\n- Advance protocol\n- Update status\n- Return result", shape=note, fillcolor=yellow];
+    declare [label="declare() [static]\n- Validate parameters\n- Check protocol ready\n- Create bridge instance\n- Set initial status", shape=note, fillcolor=yellow];
+
+    TBridge -> step_model_once [style=dotted];
+    TBridge -> declare [style=dotted];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridge_class_diagram.dot

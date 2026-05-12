@@ -1,0 +1,13 @@
+digraph TPortView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W05)
+    TPortView [label="{TPortView (W05)|...|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool}"];
+
+    // Used by TObligationSurfacePair
+    TObligationSurfacePair_uses [label="{TObligationSurfacePair|port : TPortView|...}" shape=record];
+
+    // Relationships
+    TObligationSurfacePair_uses -> TPortView [label="uses"];
+}

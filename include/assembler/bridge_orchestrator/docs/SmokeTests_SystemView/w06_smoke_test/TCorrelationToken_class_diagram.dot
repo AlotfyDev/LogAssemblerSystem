@@ -1,0 +1,17 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W01)
+    TCorrelationToken [label="{TCorrelationToken (W01)|token_id : uint64_t\nsequence : uint32_t|+ is_valid() : bool|+ invalid() : TCorrelationToken\n+ generate() : TCorrelationToken}"];
+
+    // Used by multiple W06 components
+    TBinding_uses [label="{TBinding|correlation : TCorrelationToken|...}" shape=record];
+    TBindingCompatibilityReport_uses [label="{TBindingCompatibilityReport|correlation : TCorrelationToken|...}" shape=record];
+    TChannel_uses [label="{TChannel|correlation : TCorrelationToken|...}" shape=record];
+
+    // Relationships
+    TBinding_uses -> TCorrelationToken [label="uses for tracking"];
+    TBindingCompatibilityReport_uses -> TCorrelationToken [label="uses for evaluation"];
+    TChannel_uses -> TCorrelationToken [label="uses for declaration"];
+}

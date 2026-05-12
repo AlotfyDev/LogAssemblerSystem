@@ -1,0 +1,14 @@
+digraph TParticipant_Behavioral {
+  rankdir=TB;
+  node [shape=box];
+
+  CreatePortParticipant [label="TParticipant::make(10u, host_provider, \"write_side\", \"placement_host\", \"Dummy Host Port\", token)"];
+  CreateAdapterParticipant [label="TParticipant::make(20u, content_provider, \"log_level_api\", \"placement_content_adapter\", \"Dummy Content Adapter\", token)"];
+  PortViewFromParticipant [label="TParticipantView::from_participant(port_participant)"];
+  AdapterViewFromParticipant [label="TParticipantView::from_participant(adapter_participant)"];
+
+  CreatePortParticipant -> PortViewFromParticipant;
+  CreateAdapterParticipant -> AdapterViewFromParticipant;
+
+  Legend [shape=none, label="TParticipant used to create descriptors for port and adapter participants"];
+}

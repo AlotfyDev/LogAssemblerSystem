@@ -1,0 +1,11 @@
+LOGAPI-CAT-W01_Foundation_And_Holistic_View
+├── diagrams
+│   ├── LOGAPI-CAT-000_catalog_scope.mmd
+│   ├── LOGAPI-CAT-000_domain_boundary.mmd
+│   ├── LOGAPI-CAT-001_end_to_end_overview.mmd
+│   └── LOGAPI-CAT-001_layer_map.mmd
+├── docs
+│   ├── LOGAPI-CAT-000_Catalog_Roadmap_And_Doctrine.md
+│   └── LOGAPI-CAT-001_Domain_Holistic_View.md
+├── CHANGED_FILES.txt
+└── WAVE_MANIFEST.json

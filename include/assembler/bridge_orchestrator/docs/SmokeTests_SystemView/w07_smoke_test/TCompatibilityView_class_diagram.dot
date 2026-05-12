@@ -1,0 +1,34 @@
+digraph TCompatibilityView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightcyan];
+
+    TCompatibilityView [label="{TCompatibilityView (W07)|binding : TBindingView\ncompatible : bool\nissue_count : size_t\nblocking_issue_count : size_t\nwarning_issue_count : size_t\nsummary : string_view|+ passed() : bool\n+ needs_review() : bool\n+ from_matrix<Capacity>(...) : TCompatibilityView|Read-only evaluation projection}"];
+
+    TBindingView [label="{TBindingView (W06)|binding_id : TBindingId\nchannel_id : uint64_t\nplugin_adapter : TPluginAdapterView\nport : TPortView\nprofile : TBindingProfile\ncompatibility : TBindingCompatibilityReport\nstatus : TBindingStatus\ncorrelation : TCorrelationToken\nbinding_name : string_view|+ is_valid() : bool\n+ is_usable() : bool\n+ is_accepted() : bool|Read-only binding view}" shape=record, fillcolor=white];
+
+    // Relationships
+    TCompatibilityView -> TBindingView [label="references"];
+
+    // Template method usage
+    from_matrix_method [label="from_matrix<Capacity>(binding_view, matrix, summary)\nStatic factory method that aggregates matrix data", shape=ellipse, fillcolor=yellow];
+
+    TCompatibilityView -> from_matrix_method [label="created by"];
+
+    // Status helpers
+    passed_method [label="passed()\nReturn compatible && blocking_issue_count == 0", shape=ellipse, fillcolor=lightgreen];
+
+    needs_review_method [label="needs_review()\nReturn warning_issue_count > 0 && blocking_issue_count == 0", shape=ellipse, fillcolor=orange];
+
+    TCompatibilityView -> passed_method [label="provides"];
+    TCompatibilityView -> needs_review_method [label="provides"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        MainClass [label="Main View Class", fillcolor=lightcyan];
+        Dependency [label="Dependency", fillcolor=white];
+        Factory [label="Factory Method", shape=ellipse, fillcolor=yellow];
+        SuccessCheck [label="Success Check", shape=ellipse, fillcolor=lightgreen];
+        ReviewCheck [label="Review Check", shape=ellipse, fillcolor=orange];
+    }
+}

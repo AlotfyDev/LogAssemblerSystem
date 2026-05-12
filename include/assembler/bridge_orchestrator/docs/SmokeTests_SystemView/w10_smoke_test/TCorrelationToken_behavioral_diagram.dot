@@ -1,0 +1,36 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontsize=10];
+
+    // Creation
+    CREATE_TOKEN [label="Create TCorrelationToken"];
+    FROM_PARTS [label="TCorrelationToken::from_parts(high, low)\n- Create from two uint32_t parts"];
+    INVALID_TOKEN [label="TCorrelationToken::invalid()\n- Create invalid token"];
+
+    // Usage in W10
+    PARTICIPANT_CREATION [label="TParticipant::make()\n- Correlation for participants"];
+    CHANNEL_DECLARATION [label="TChannel::declare()\n- Correlation for channels"];
+    BINDING_PROPOSAL [label="TBinding::propose()\n- Correlation for bindings"];
+    SESSION_REQUEST [label="TSessionOpenRequest::make()\n- Correlation for sessions"];
+    PROTOCOL_DECLARATION [label="TBridgeProtocol::declare()\n- Correlation for protocols"];
+    BRIDGE_DECLARATION [label="TBridge::declare()\n- Correlation for bridges"];
+
+    // Validation
+    VALIDATE_TOKEN [label="token.is_valid()\n- Check if token is valid"];
+
+    // Flow
+    CREATE_TOKEN -> FROM_PARTS;
+    CREATE_TOKEN -> INVALID_TOKEN;
+    FROM_PARTS -> VALIDATE_TOKEN;
+    INVALID_TOKEN -> VALIDATE_TOKEN;
+
+    VALIDATE_TOKEN -> PARTICIPANT_CREATION [label="valid"];
+    PARTICIPANT_CREATION -> CHANNEL_DECLARATION;
+    CHANNEL_DECLARATION -> BINDING_PROPOSAL;
+    BINDING_PROPOSAL -> SESSION_REQUEST;
+    SESSION_REQUEST -> PROTOCOL_DECLARATION;
+    PROTOCOL_DECLARATION -> BRIDGE_DECLARATION;
+
+    VALIDATE_TOKEN -> CREATE_TOKEN [label="invalid", style=dashed, color=red];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TCorrelationToken_behavioral_diagram.dot

@@ -1,0 +1,24 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    BUDGET_CREATION [label="Create TBridgeStepBudget"];
+    SINGLE_STEP [label="single_step()\n- Max steps = 1"];
+    FINITE [label="finite(max_steps)\n- Limited execution"];
+    INFINITE [label="infinite()\n- Unlimited execution"];
+
+    BUDGET_CREATION -> SINGLE_STEP;
+    BUDGET_CREATION -> FINITE;
+    BUDGET_CREATION -> INFINITE;
+
+    EXECUTION [label="During bridge execution"];
+    CHECK_EXHAUSTED [label="budget.exhausted()"];
+    CONSUME_STEP [label="budget.consume_one()"];
+    TRACK_REMAINING [label="budget.remaining_steps()"];
+
+    EXECUTION -> CHECK_EXHAUSTED;
+    CHECK_EXHAUSTED -> CONSUME_STEP [label="not exhausted"];
+    CONSUME_STEP -> TRACK_REMAINING;
+    CHECK_EXHAUSTED -> EXECUTION [label="exhausted", style=dashed, color=red];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeStepBudget_behavioral_diagram.dot

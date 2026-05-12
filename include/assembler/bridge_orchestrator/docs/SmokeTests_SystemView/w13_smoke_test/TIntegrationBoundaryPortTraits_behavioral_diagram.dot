@@ -1,0 +1,9 @@
+digraph TIntegrationBoundaryPortTraits_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    Traits [label="{TIntegrationBoundaryPortTraits<Derived>\n(Compile-time Traits)|• has_view : bool constexpr\n• has_descriptor : bool constexpr\n• has_readiness : bool constexpr\n• has_accept_handoff : bool constexpr\n• has_complete_handoff : bool constexpr\n• has_reject_handoff : bool constexpr\n• satisfies_required_surface : bool constexpr\l}", fillcolor=orange];
+
+    W13Usage [label="{W13 Usage|• CRTP interface validation\n• Compile-time enforcement\l}", shape=note, fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryPortTraits_class_diagram.dot

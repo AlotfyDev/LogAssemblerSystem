@@ -1,0 +1,31 @@
+digraph TCorrelationToken_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TCorrelationToken [label="{TCorrelationToken|std::uint64_t high;\nstd::uint64_t low;|+ is_valid() const noexcept\n+ invalid() static constexpr\n+ from_parts(high, low) static constexpr\n+ operator==(lhs, rhs) const\n+ operator!=(lhs, rhs) const}"];
+    std::hash_specialization [label="{std::hash\<TCorrelationToken\>|+ operator()(token) const noexcept}"];
+
+    // Dependencies
+    TCorrelationToken -> std::hash_specialization [label="specialization"];
+
+    // Usage in W04
+    TCorrelationToken -> TChannel [label="correlation field"];
+    TCorrelationToken -> TParticipant [label="correlation field"];
+
+    // Invisible positioning
+    TChannel [shape=plaintext, label="TChannel"];
+    TParticipant [shape=plaintext, label="TParticipant"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TCorrelationToken Structure";
+        color=white;
+        style=filled;
+
+        legend_data [label="Data Members", shape=rectangle, fillcolor=lightblue];
+        legend_methods [label="Methods", shape=rectangle, fillcolor=lightgreen];
+        legend_specialization [label="Hash Specialization", shape=rectangle, fillcolor=yellow];
+        legend_usage [label="W04 Usage", shape=plaintext];
+    }
+}

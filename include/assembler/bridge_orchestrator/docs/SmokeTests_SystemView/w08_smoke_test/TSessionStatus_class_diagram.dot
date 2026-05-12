@@ -1,0 +1,32 @@
+digraph TSessionStatus_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main enum/class
+    TSessionStatus [label="{TSessionStatus|CREATED\lOPEN\lACTIVATED\lCOMPLETED\lREJECTED\l+ is_terminal(): bool\l+ is_active(): bool\l+ is_success(): bool\l+ can_transition_to(next: TSessionStatus): bool\l+ to_string(): std::string\l+ from_string(str: std::string): TSessionStatus}", fillcolor=lightyellow, style=filled];
+
+    // Usage context
+    TSession [label="{TSession|+ status_: TSessionStatus\l|+ get_status(): TSessionStatus\l+ set_status(status: TSessionStatus): void}", fillcolor=lightblue, style=filled];
+
+    TSessionView [label="{TSessionView|+ status_: TSessionStatus\l|+ get_status(): TSessionStatus}", fillcolor=lightblue, style=filled];
+
+    TSessionSnapshot [label="{TSessionSnapshot|+ status_: TSessionStatus\l|+ get_status(): TSessionStatus}", fillcolor=lightblue, style=filled];
+
+    TSessionResult [label="{TSessionResult|+ status_: TSessionStatus\l|+ get_status(): TSessionStatus}", fillcolor=lightblue, style=filled];
+
+    // Relationships
+    TSession -> TSessionStatus [label="contains"];
+    TSessionView -> TSessionStatus [label="contains"];
+    TSessionSnapshot -> TSessionStatus [label="contains"];
+    TSessionResult -> TSessionStatus [label="contains"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewClass [label="New W08 Component", fillcolor=lightyellow];
+        UserClass [label="Using Component", fillcolor=lightblue];
+    }
+}

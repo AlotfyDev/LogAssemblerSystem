@@ -1,0 +1,50 @@
+digraph TBindingCompatibilityReport_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Creation paths
+    call_evaluate [label="Call TBindingCompatibilityReport::evaluate()\n(channel, surface_pair, correlation_token)"];
+    call_compatible [label="Call TBindingCompatibilityReport::compatible()\n(token, reason)"];
+    call_incompatible [label="Call TBindingCompatibilityReport::incompatible()\n(reason, token, validation_flags)"];
+
+    // Evaluation process
+    validate_channel [label="Validate TChannel\nchannel.is_valid() && channel.is_declared()"];
+    validate_pair [label="Validate TObligationSurfacePair\npair.is_valid()"];
+    check_primary_flow [label="Check primary placement flow\npair.supports_primary_placement_flow()"];
+
+    // Decision logic
+    compatibility_check [label="All validations pass?", shape=diamond];
+    set_compatible_status [label="Set status = compatible"];
+    set_incompatible_status [label="Set status = incompatible"];
+
+    // Usage in binding
+    binding_uses_report [label="TBinding uses report for\ncompatibility and status determination"];
+    check_is_compatible [label="Call report.is_compatible()"];
+    convert_to_bridge_result [label="Call report.as_bridge_result()\nfor bridge layer integration"];
+
+    // End
+    report_ready [label="Compatibility Report Ready", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> call_evaluate [label="Primary path"];
+    smoke_test -> call_compatible [label="Helper path"];
+    smoke_test -> call_incompatible [label="Helper path"];
+
+    call_evaluate -> validate_channel;
+    validate_channel -> validate_pair;
+    validate_pair -> check_primary_flow;
+    check_primary_flow -> compatibility_check;
+
+    compatibility_check -> set_compatible_status [label="Yes"];
+    compatibility_check -> set_incompatible_status [label="No"];
+
+    set_compatible_status -> binding_uses_report;
+    set_incompatible_status -> binding_uses_report;
+
+    binding_uses_report -> check_is_compatible;
+    check_is_compatible -> convert_to_bridge_result;
+    convert_to_bridge_result -> report_ready;
+}

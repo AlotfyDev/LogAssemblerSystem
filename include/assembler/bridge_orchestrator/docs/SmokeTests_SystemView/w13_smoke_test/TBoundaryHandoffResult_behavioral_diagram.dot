@@ -1,0 +1,92 @@
+digraph TBoundaryHandoffResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Result creation patterns
+    Start [label="Create TBoundaryHandoffResult", shape=ellipse, fillcolor=lightgreen];
+
+    ChooseOutcome [label="Choose Result Outcome", fillcolor=lightyellow, shape=diamond];
+
+    // Success outcomes
+    Accepted [label="ACCEPTED: Handoff Started\nTBoundaryHandoffResult::accepted(handle, note)\n• status = accepted\n• handle = valid handle\n• bridge_result = success\n• Used when handoff begins successfully", fillcolor=lightgreen];
+
+    Completed [label="COMPLETED: Handoff Finished\nTBoundaryHandoffResult::completed(handle, note)\n• status = completed\n• handle = valid handle\n• bridge_result = success\n• Used when handoff finishes successfully", fillcolor=lightgreen];
+
+    // Error outcomes
+    Rejected [label="REJECTED: Admission Rejected\nTBoundaryHandoffResult::rejected(error, token)\n• status = rejected\n• handle = invalid\n• bridge_result = reject(error)\n• Used for policy violations", fillcolor=pink];
+
+    Deferred [label="DEFERRED: Try Again Later\nTBoundaryHandoffResult::deferred(error, token)\n• status = deferred\n• handle = invalid\n• bridge_result = defer(error)\n• Used for ordering requirements", fillcolor=orange];
+
+    Failed [label="FAILED: Unrecoverable Error\nTBoundaryHandoffResult::failed(error, token)\n• status = failed\n• handle = invalid\n• bridge_result = fail(error)\n• Used for system errors", fillcolor=red];
+
+    Unsupported [label="UNSUPPORTED: Incompatible\nTBoundaryHandoffResult::unsupported(text, token)\n• status = unsupported\n• handle = invalid\n• bridge_result = reject(incompatible_carrier)\n• Used for capability mismatches", fillcolor=purple];
+
+    // Result checking
+    CheckResult [label="Check Result State", fillcolor=lightblue];
+
+    AcceptedCheck [label="result.accepted()\n• status == accepted\n• handle.is_valid()\n• bridge_result.succeeded()"];
+
+    CompletedCheck [label="result.completed()\n• status == completed\n• bridge_result.succeeded()"];
+
+    FailedCheck [label="result.failed()\n• status is failed status\n• OR bridge_result.failed()"];
+
+    DeferredCheck [label="result.deferred()\n• status == deferred\n• OR bridge_result.deferred()"];
+
+    // Usage in smoke test
+    SmokeTestUsage [label="W13 Smoke Test Usage", fillcolor=lightcyan];
+
+    AcceptUsage [label="auto accepted = port.accept_boundary_handoff(request);\nif (!accepted.accepted()) return error;"];
+
+    CompleteUsage [label="auto completed = port.complete_boundary_handoff(accepted.handle);\nif (!completed.completed()) return error;"];
+
+    RejectUsage [label="auto rejected = port.reject_boundary_handoff(request);\nif (!rejected.failed() || rejected.status != TBoundaryHandoffStatus::rejected) return error;"];
+
+    // Flow connections
+    Start -> ChooseOutcome;
+
+    ChooseOutcome -> Accepted [label="Handoff accepted"];
+    ChooseOutcome -> Completed [label="Handoff completed"];
+    ChooseOutcome -> Rejected [label="Admission rejected"];
+    ChooseOutcome -> Deferred [label="Deferred processing"];
+    ChooseOutcome -> Failed [label="System failure"];
+    ChooseOutcome -> Unsupported [label="Unsupported operation"];
+
+    Accepted -> CheckResult;
+    Completed -> CheckResult;
+    Rejected -> CheckResult;
+    Deferred -> CheckResult;
+    Failed -> CheckResult;
+    Unsupported -> CheckResult;
+
+    CheckResult -> AcceptedCheck;
+    CheckResult -> CompletedCheck;
+    CheckResult -> FailedCheck;
+    CheckResult -> DeferredCheck;
+
+    AcceptedCheck -> SmokeTestUsage;
+    CompletedCheck -> SmokeTestUsage;
+    FailedCheck -> SmokeTestUsage;
+    DeferredCheck -> SmokeTestUsage;
+
+    SmokeTestUsage -> AcceptUsage;
+    SmokeTestUsage -> CompleteUsage;
+    SmokeTestUsage -> RejectUsage;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendChoice [label="Outcome Choice", shape=diamond, fillcolor=lightyellow];
+        LegendAccepted [label="Success Outcomes", fillcolor=lightgreen];
+        LegendRejected [label="Rejection Outcome", fillcolor=pink];
+        LegendDeferred [label="Deferral Outcome", fillcolor=orange];
+        LegendFailed [label="Failure Outcome", fillcolor=red];
+        LegendUnsupported [label="Unsupported Outcome", fillcolor=purple];
+        LegendCheck [label="Result Checking", fillcolor=lightblue];
+        LegendUsage [label="Smoke Test Usage", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffResult_behavioral_diagram.dot

@@ -1,0 +1,16 @@
+digraph TParticipant_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TParticipant [label="{TParticipant|id : TParticipantId\l role : TParticipantRole\l name : std::string_view\l metadata : TParticipantMetadata\l|+ is_valid() : bool\l+ make(id, role, name, metadata) : TParticipant\l}"]
+
+    TParticipantId [label="TParticipantId", shape=record, fillcolor=lightyellow]
+    TParticipantRole [label="TParticipantRole", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TParticipantMetadata [label="TParticipantMetadata", shape=record, fillcolor=lightyellow]
+
+    TParticipant -> TParticipantId [label="uses", style=dashed]
+    TParticipant -> TParticipantRole [label="uses", style=dashed]
+    TParticipant -> std_string_view [label="uses", style=dashed]
+    TParticipant -> TParticipantMetadata [label="uses", style=dashed]
+}

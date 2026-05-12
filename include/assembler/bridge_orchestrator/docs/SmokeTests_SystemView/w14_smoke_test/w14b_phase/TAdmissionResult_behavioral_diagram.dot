@@ -1,0 +1,36 @@
+digraph TAdmissionResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Port admission logic
+    Port_Admit [label="port.admit(request)\nPort makes admission decision", fillcolor=orange];
+    Get_Readiness [label="auto readiness = readiness(request)", fillcolor=lavender];
+    Check_Ready [label="if (readiness.is_ready())", fillcolor=lavender];
+    Record_Admission_State [label="state_.record_admission()", fillcolor=lavender];
+    Accept_Result [label="return TAdmissionResult::accept(request.correlation)", fillcolor=lightgreen];
+    Check_Deferred [label="else if (readiness.is_deferred())", fillcolor=lavender];
+    Defer_Result [label="return TAdmissionResult::defer(readiness.reason, request.correlation)", fillcolor=red];
+    Reject_Result [label="return TAdmissionResult::reject(readiness.reason ?: \"placement_request_not_admissible\", request.correlation)", fillcolor=red];
+
+    // Query operations
+    Check_Accepted [label="result.accepted()\nCheck if admission was accepted", fillcolor=lavender];
+    Check_Rejected [label="result.rejected()\nCheck if admission was rejected", fillcolor=lavender];
+    Check_Deferred_Query [label="result.deferred()\nCheck if admission was deferred", fillcolor=lavender];
+    Check_Failed [label="result.failed()\nCheck if admission failed", fillcolor=lavender];
+
+    // Flow connections
+    Port_Admit -> Get_Readiness;
+    Get_Readiness -> Check_Ready;
+    Check_Ready -> Record_Admission_State [label="ready"];
+    Check_Ready -> Check_Deferred [label="not ready"];
+
+    Record_Admission_State -> Accept_Result;
+    Check_Deferred -> Defer_Result [label="deferred"];
+    Check_Deferred -> Reject_Result [label="not ready"];
+
+    Accept_Result -> Check_Accepted;
+    Defer_Result -> Check_Deferred_Query;
+    Reject_Result -> Check_Rejected;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TAdmissionResult_behavioral_diagram.dot

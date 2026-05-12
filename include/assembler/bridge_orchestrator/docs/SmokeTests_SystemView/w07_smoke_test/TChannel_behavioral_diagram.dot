@@ -1,0 +1,41 @@
+digraph TChannel_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Key operations
+    declare_channel [label="declare(uint64_t, TParticipant, TParticipant, TChannelProfile, TChannelBindingPolicy, string_view, TCorrelationToken)\nCreate declared channel with validation", fillcolor=white];
+
+    validate_identity [label="has_valid_identity()\nCheck channel_id != 0", fillcolor=white];
+
+    validate_participants [label="has_valid_participants()\nCheck source.is_valid() && target.is_valid() && source.id != target.id", fillcolor=white];
+
+    validate_roles [label="has_compatible_roles()\nCheck participant roles are compatible with profile", fillcolor=white];
+
+    check_declared [label="is_declared()\nCheck status == declared || active", fillcolor=white];
+
+    check_valid [label="is_valid()\nCheck all validation methods pass", fillcolor=white];
+
+    // W07 usage
+    binding_proposal [label="Used in TBinding::propose()\nas channel parameter", fillcolor=palegreen];
+
+    compatibility_validation [label="Channel validity checked during\ncompatibility evaluation (require_channel_valid)", fillcolor=lightcyan];
+
+    // Flow
+    declare_channel -> validate_identity [label="enables"];
+    declare_channel -> validate_participants [label="enables"];
+    declare_channel -> validate_roles [label="enables"];
+    declare_channel -> check_declared [label="sets"];
+    declare_channel -> check_valid [label="enables"];
+
+    declare_channel -> binding_proposal [label="used in"];
+    check_valid -> compatibility_validation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Channel Declaration", fillcolor=white];
+        Validation [label="Validation Check", fillcolor=white];
+        Binding [label="Binding Usage", fillcolor=palegreen];
+        Eval [label="Evaluation Usage", fillcolor=lightcyan];
+    }
+}

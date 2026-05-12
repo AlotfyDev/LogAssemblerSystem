@@ -1,0 +1,22 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    REPORT_GENERATION [label="TBridge::step_model_report()"];
+    CAPTURE_BEFORE [label="Capture before frame"];
+    EXECUTE_STEP [label="Execute step_model_once()"];
+    CAPTURE_AFTER [label="Capture after frame"];
+    CREATE_TRACE [label="Create step trace"];
+    ASSEMBLE_REPORT [label="Assemble TBridgeCoreStepReport\n- before + after frames\n- result + trace"];
+    VALIDATE_REPORT [label="report.is_valid()"];
+    RETURN_REPORT [label="Return step report"];
+
+    REPORT_GENERATION -> CAPTURE_BEFORE;
+    CAPTURE_BEFORE -> EXECUTE_STEP;
+    EXECUTE_STEP -> CAPTURE_AFTER;
+    CAPTURE_AFTER -> CREATE_TRACE;
+    CREATE_TRACE -> ASSEMBLE_REPORT;
+    ASSEMBLE_REPORT -> VALIDATE_REPORT;
+    VALIDATE_REPORT -> RETURN_REPORT [label="valid"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreStepReport_behavioral_diagram.dot

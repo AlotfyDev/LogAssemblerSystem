@@ -1,0 +1,49 @@
+flowchart LR
+    POF[Policy Object Foundation W01-W09]
+    ASN[Assignment Basics W10]
+    REG[Registry Basics W11]
+    FAM[Family And Scope W12]
+    CAP[Target Capability W13]
+    COMP[Compatibility Matrix W14]
+    ASNL[Assignment Lifecycle W15]
+    PUB[Source Publication W16]
+    REGV[Registry Versioning W17]
+    RC[Realization Contract W18]
+    RR[Runtime Readiness W19]
+    RP[Runtime Plan W20]
+    RZ[Realizer Interface W21]
+    SES[Realization Session W22]
+    XP[Execution Plan W23]
+    ENG[Engine Skeleton W24]
+    TGT[Ecosystem Targets W25-W28]
+    SW[System-Wide Integration W29]
+    PERS[Persistence Boundary W30]
+    AUD[Audit Export Boundary W31]
+    FAIL[Failure Recovery W32]
+    TEST[Test Compliance W33]
+    PROD[Production Readiness W34]
+
+    POF -->|policy reference| ASN
+    ASN -->|catalog lookup keys| REG
+    FAM -->|family profile| COMP
+    CAP -->|capability set| COMP
+    COMP -->|compatibility report| ASNL
+    PUB -->|publication state| REGV
+    REGV -->|versioned lookup| RC
+    ASNL -->|active or eligible assignment evidence| RC
+    COMP -->|compatible family-target evidence| RC
+    RC -->|contract and preconditions| RR
+    RR -->|readiness report| RP
+    RP -->|pre-execution plan| RZ
+    RZ -->|realizer identity and capability| SES
+    SES -->|session context| XP
+    XP -->|guarded plan| ENG
+    TGT -->|domain target descriptors| SW
+    PERS -->|persistence boundary evidence| PROD
+    AUD -->|audit export boundary evidence| PROD
+    FAIL -->|failure and recovery reports| PROD
+    TEST -->|compliance reports| PROD
+    SW -->|integration report| PROD
+
+    classDef boundary stroke-dasharray: 4 3;
+    class PERS,AUD,FAIL,PROD boundary;

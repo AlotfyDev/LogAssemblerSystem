@@ -1,0 +1,24 @@
+digraph TChannelBindingPolicy_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    TChannelBindingPolicy [label="{TChannelBindingPolicy (W04 - Reused)|binding_mode : TChannelBindingMode\nlifecycle : TChannelBindingLifecycle\nvisibility : TChannelVisibility\nrequire_compatible_roles : bool\nrequire_compatible_carriers : bool\nallow_rebinding : bool\nmax_active_bindings : uint32_t\npolicy_name : string_view|+ is_valid() : bool\n+ is_static() : bool\n+ is_dynamic() : bool\n+ is_strict_one_to_one() : bool\n+ is_compatible_with(profile) : bool\n+ strict_static_one_to_one(visibility, name) : TChannelBindingPolicy|Channel binding policy}"];
+
+    TChannelBindingMode [label="{TChannelBindingMode|unknown, strict_one_to_one,\none_adapter_to_many_ports,\nmany_adapters_to_one_port,\nmany_to_many, observer_only|Binding mode enum}" shape=record, fillcolor=white];
+
+    TChannelBindingLifecycle [label="{TChannelBindingLifecycle|unknown, static_binding,\ndeferred_binding, dynamic_binding|Lifecycle enum}" shape=record, fillcolor=white];
+
+    TChannelVisibility [label="{TChannelVisibility|unknown, private_channel,\ndomain_local, cross_domain,\nboundary_facing|Visibility enum}" shape=record, fillcolor=white];
+
+    // Relationships
+    TChannelBindingPolicy -> TChannelBindingMode [label="has"];
+    TChannelBindingPolicy -> TChannelBindingLifecycle [label="has"];
+    TChannelBindingPolicy -> TChannelVisibility [label="has"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W04", fillcolor=lightblue];
+        Enum [label="Enum Types", fillcolor=white];
+    }
+}

@@ -1,0 +1,25 @@
+Component Name,Wave,Category,Description,Usage in W15
+TFirstIntegrationSkeletonBinding,W15,Binding,Aggregate include for W15 first integration skeleton,Main include file providing availability marker
+TFirstIntegrationSkeleton,W15,Skeleton,First end-to-end ASCC integration skeleton,Main skeleton class that orchestrates W14A adapter and W14B port integration
+TFirstIntegrationSkeletonConfig,W15,Config,Configuration for the first ASCC integration skeleton,Contains IDs, names, and limits for all integration components
+TFirstIntegrationSkeletonFactory,W15,Factory,Factory helpers for the first ASCC integration skeleton,Provides static factory methods for default and configured skeleton creation
+TFirstIntegrationSkeletonReport,W15,Report,Result report for the first ASCC integration skeleton,Comprehensive report with model success, flow success, and failure notes
+TFirstIntegrationSkeletonModelPlan,W15,Plan,Model-declaration plan for the first ASCC integration skeleton,Declares channel, binding, session, protocol, and bridge model objects
+TFirstIntegrationSkeletonIdSet,W15,Ids,Typed ID set for the first ASCC integration skeleton,Provides typed IDs for all integration components
+TLogLevelAPIEnvelopePluginAdapterBinding,W14A,Binding,Aggregate include for Log Level API envelope plugin adapter,Provides adapter binding interface
+TLogLevelAPIEnvelopePluginAdapter,W14A,Adapter,Log Level API envelope plugin adapter implementation,Provides placement request, handle acceptance, load signal emission, and next destination routing
+TLogLevelAPIEnvelopePluginAdapterFactory,W14A,Factory,Factory for Log Level API envelope plugin adapter,Creates adapter from correlation token, envelope ID, and size hint
+TWriteSideEnvelopePlacementPortBinding,W14B,Binding,Aggregate include for Write Side envelope placement port,Provides port binding interface
+TWriteSideEnvelopePlacementPort,W14B,Port,Write Side envelope placement port implementation,Provides readiness checking, admission, placement handle creation, load signal reception, and next destination handling
+TCorrelationToken,W01,Carrier,Correlation token for tracking operations across the system,Used for correlation tracking in skeleton execution and all bridge operations
+TChannel,W01,Channel,Communication channel between adapter and port,Declared by model plan with single adapter single port profile
+TBinding,W01,Binding,Binding between adapter and port participants,Proposed by model plan with strict static one-to-one profile
+TSession,W01,Session,Session opened for binding with policy,Opened by model plan for communication session
+TBridgeProtocol,W01,Protocol,Bridge protocol for envelope placement,Declared by model plan with envelope placement plan
+TBridge,W01,Bridge,Bridge model execution container,Declared by model plan and run to terminal for model completion
+TObligationSurfacePair,W01,Obligation,Surface pair for adapter and port views,Made by model plan for binding compatibility checking
+TAdmissionResult,W01,Result,Result of admission operation,Returned by port admission and checked for acceptance
+TPlacementHandle,W01,Handle,Handle for accepted placement,Created by port and accepted by adapter
+TBridgeResult,W01,Result,Result of bridge operations,Returned by adapter handle acceptance and load signal reception
+TBridgeCoreResult,W01,Result,Result of bridge core operations,Returned by bridge model run to terminal</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\w15_components.csv

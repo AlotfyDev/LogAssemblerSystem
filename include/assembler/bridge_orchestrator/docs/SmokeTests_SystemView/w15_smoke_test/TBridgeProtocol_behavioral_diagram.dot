@@ -1,0 +1,25 @@
+digraph TBridgeProtocol_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    ProtocolDeclaration [label="Protocol Declaration:\n- TFirstIntegrationSkeletonModelPlan::declare_protocol()\n- declares envelope placement protocol on session\n- uses envelope placement plan and protocol_id/name from config"];
+
+    ReadyValidation [label="Protocol Validation:\n- protocol.is_ready() called in skeleton\n- validates protocol declared and ready for use\n- failure returns early with protocol not ready note"];
+
+    BridgeUsage [label="Bridge Declaration Input:\n- protocol passed to TFirstIntegrationSkeletonModelPlan::declare_bridge()\n- used as foundation for bridge model execution\n- enables bridge orchestration on protocol"];
+
+    ProtocolDeclaration -> ReadyValidation;
+    ReadyValidation -> BridgeUsage [label="ready"];
+    ReadyValidation -> End [label="not ready"];
+
+    End [label="Protocol Not Ready", shape=ellipse, fillcolor=lightcoral];
+
+    ProtocolDeclaration [fillcolor=lightblue];
+    ReadyValidation [fillcolor=lightyellow];
+    BridgeUsage [fillcolor=lightsalmon];
+
+    label="TBridgeProtocol Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBridgeProtocol_behavioral_diagram.dot

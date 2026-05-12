@@ -1,0 +1,40 @@
+digraph TBridgeProtocolState_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    StartProtocol [label="Start Protocol State\nTBridgeProtocolState::start(token)\nCreates initial state with idle stage", fillcolor=yellow]
+
+    ApplyTransition [label="Apply Transition\nstate.apply_transition(transition)\nMoves from idle to session_opening", fillcolor=yellow]
+
+    CheckTransition [label="Check Transition Applied\nReturns true (transition successful)", fillcolor=lightgreen]
+
+    CreateSnapshot [label="Create Snapshot\nstate.snapshot(\"envelope_placement\")\nCreates read-only view", fillcolor=yellow]
+
+    CompleteProtocol [label="Complete Protocol\nstate.complete(TBridgeResult::success(token))\nSets terminal_success stage and success state", fillcolor=yellow]
+
+    CheckTerminal [label="Check Terminal State\nstate.is_terminal()\nReturns true (protocol completed)", fillcolor=lightgreen]
+
+    End [label="Protocol state lifecycle completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> StartProtocol
+    StartProtocol -> ApplyTransition
+    ApplyTransition -> CheckTransition
+    CheckTransition -> CreateSnapshot
+    CreateSnapshot -> CompleteProtocol
+    CompleteProtocol -> CheckTerminal
+    CheckTerminal -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="State Creation/Modification", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="State Validation", shape=rectangle, fillcolor=lightgreen]
+    }
+}

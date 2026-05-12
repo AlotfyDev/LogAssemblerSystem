@@ -1,0 +1,13 @@
+flowchart LR
+    W01["W01-W09\nStructural Spine"]
+    W10["W10-W12\nSchemas"]
+    W13["W13-W18\nParsers"]
+    W19["W19-W24\nProduction Prep"]
+    W25["W25-W26\nCirculation Readiness"]
+    W27["W27\nPublic API"]
+    W28["W28-W30\nHardening"]
+    W31["W31-W34\nContainers"]
+
+    W01 --> W10 --> W13 --> W19 --> W25 --> W27 --> W28
+    W13 --> W31
+    W31 --> W28

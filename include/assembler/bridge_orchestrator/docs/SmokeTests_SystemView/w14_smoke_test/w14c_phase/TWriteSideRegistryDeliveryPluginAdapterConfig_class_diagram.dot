@@ -1,0 +1,22 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterConfig_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Config struct
+    Config [label="{TWriteSideRegistryDeliveryPluginAdapterConfig|+ adapter_id : std::uint64_t = 14031u\l+ participant_id : std::uint64_t = 14032u\l+ participant_domain : std::string_view = 'write_side'\l+ participant_family : std::string_view = 'registry_delivery_plugin_adapter'\l+ participant_display_name : std::string_view = 'Write Side Registry Delivery PluginAdapter'\l+ adapter_display_name : std::string_view = 'write_side_registry_delivery_plugin_adapter'\l+ requested_destination_family : std::string_view = 'registry_delivery'\l+ allow_ordered_delivery : bool = true\l+ emit_boundary_handoff_requests : bool = true\l|+ is_valid() const\l+ defaults() static\l}", fillcolor=lightsalmon, style=filled];
+
+    // Validation requirements
+    Validation [label="{is_valid() requirements|+ adapter_id != 0\l+ participant_id != 0\l+ participant_domain not empty\l+ participant_family not empty\l+ adapter_display_name not empty\l+ requested_destination_family not empty\l}", fillcolor=lightyellow];
+
+    // Default values
+    Defaults [label="{defaults() static method|+ returns TWriteSideRegistryDeliveryPluginAdapterConfig{}\l+ uses all default member values\l+ always valid configuration\l}", fillcolor=lightgreen];
+
+    // Relationships
+    Config -> Validation [label="checked by"];
+    Config -> Defaults [label="alternative to"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterConfig Class Structure";
+    labelloc=t;
+}

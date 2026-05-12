@@ -1,0 +1,46 @@
+digraph TBridgeRegistry_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TBridgeRegistry Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateRegistry [label="Create Bridge Registry\nTBridgeRegistry<4, 12> bridges{};\nTemplated with capacity and plan capacity for bridge management", fillcolor=yellow]
+
+    ValidateRegistry [label="Validate Registry\nbridges.is_valid()\nDelegates to internal TBoundedRegistry\nReturns true", fillcolor=lightgreen]
+
+    CreateBridge [label="Create Bridge Component\nTBridge<12> bridge = make_bridge(bridge_id, protocol, config)", fillcolor=yellow]
+
+    RegisterBridge [label="Register Bridge\nbridges.register_bridge(bridge)\nRegisters with bridge_id as key\nReturns true", fillcolor=orange]
+
+    LookupBridge [label="Lookup Bridge\nbridges.contains(bridge.bridge_id)\nReturns true (bridge found)", fillcolor=lightcyan]
+
+    FindBridge [label="Find Bridge Entry\nbridges.find(bridge.bridge_id)\nReturns pointer to TRegistryEntry with bridge data", fillcolor=lightcyan]
+
+    GenerateSnapshot [label="Generate Snapshot\nbridges.snapshot()\nReturns registry statistics for bridge management", fillcolor=purple]
+
+    End [label="Bridge registry operations\ncompleted with plan capacity management", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateRegistry
+    CreateRegistry -> ValidateRegistry
+    ValidateRegistry -> CreateBridge
+    CreateBridge -> RegisterBridge
+    RegisterBridge -> LookupBridge
+    LookupBridge -> FindBridge
+    FindBridge -> GenerateSnapshot
+    GenerateSnapshot -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Registry/Bridge Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        RegistrationLegend [label="Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Lookup Operations", shape=rectangle, fillcolor=lightcyan]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

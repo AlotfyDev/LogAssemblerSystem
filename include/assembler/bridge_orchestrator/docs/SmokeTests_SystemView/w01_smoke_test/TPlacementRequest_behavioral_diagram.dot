@@ -1,0 +1,32 @@
+digraph TPlacementRequest_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Placement Request Creation", shape=ellipse, fillcolor=green]
+
+    CreateRequest [label="TPlacementRequest::make(token, \"log_level_envelope\", 128u, true)\nCreates request with correlation token,\npayload kind, size hint, and ordering requirement", fillcolor=yellow]
+
+    ValidateRequest [label="request.is_valid()\nChecks correlation.is_valid() && !payload_kind.empty()\nReturns true", fillcolor=lightgreen]
+
+    RequestValidated [label="Request validated and ready for use", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Request available for bridge processing", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateRequest
+    CreateRequest -> ValidateRequest
+    ValidateRequest -> RequestValidated
+    RequestValidated -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Request Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="State/Decision", shape=diamond, fillcolor=lightcyan]
+    }
+}

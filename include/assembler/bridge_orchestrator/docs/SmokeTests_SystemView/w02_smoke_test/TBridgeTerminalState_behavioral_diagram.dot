@@ -1,0 +1,28 @@
+digraph TBridgeTerminalState_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CheckTerminal [label="Check Terminal State\nis_terminal_state(success)\nReturns true (success is terminal)", fillcolor=lightgreen]
+
+    GetStateName [label="Get State Name\nto_string(success)\nReturns \"success\"", fillcolor=orange]
+
+    End [label="Terminal state validation completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CheckTerminal
+    CheckTerminal -> GetStateName
+    GetStateName -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ValidationLegend [label="State Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="State Usage", shape=rectangle, fillcolor=orange]
+    }
+}

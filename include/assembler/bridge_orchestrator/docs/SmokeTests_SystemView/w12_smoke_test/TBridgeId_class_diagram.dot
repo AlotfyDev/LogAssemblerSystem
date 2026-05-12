@@ -1,0 +1,10 @@
+digraph TBridgeId_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TBridgeId [label="{TBridgeId|value : std::uint64_t\l|+ is_valid() : bool\l+ invalid() : TBridgeId\l+ from_value(value) : TBridgeId\l}"]
+
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+
+    TBridgeId -> std_uint64_t [label="uses", style=dashed]
+}

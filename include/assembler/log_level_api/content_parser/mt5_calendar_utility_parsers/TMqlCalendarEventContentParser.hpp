@@ -1,0 +1,40 @@
+#pragma once
+
+/*
+    LOGAPI-W18 — MT5 Calendar And Utility Parsers
+
+    Responsibility:
+        Define dedicated parser surfaces for MetaTrader 5 utility and calendar
+        structures:
+            - MqlDateTime
+            - MqlParam
+            - MqlCalendarCountry
+            - MqlCalendarEvent
+            - MqlCalendarValue
+
+    Boundary:
+        This wave does not implement MQL5 runtime binding, binary ABI parsing,
+        concrete validators, metadata injection, timestamp stabilization,
+        envelope assembly, circulation binding, or policy assignment.
+
+    Hot-path doctrine:
+        Each MT5 utility/calendar structure has a dedicated parser type.
+        No generic parser dispatcher selects a parser in the hot path.
+        Parser selection is configuration-time.
+*/
+
+#include "TLogApiMt5CalendarUtilityParserDetail.hpp"
+
+namespace assembler::log_level_api::content_parser::mt5_calendar_utility_parsers {
+
+class TMqlCalendarEventContentParser final {
+public:
+    [[nodiscard]] static TLogApiMt5CalendarUtilityParseResult Parse(
+        const TLogApiMt5MqlCalendarEventInputView& input,
+        const TLogApiMt5CalendarUtilityParserProfile& profile
+    ) {
+        return detail::ParseEvent(input, profile);
+    }
+};
+
+} // namespace assembler::log_level_api::content_parser::mt5_calendar_utility_parsers

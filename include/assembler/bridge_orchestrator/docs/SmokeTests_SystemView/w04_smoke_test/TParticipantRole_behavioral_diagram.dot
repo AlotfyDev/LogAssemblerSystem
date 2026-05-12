@@ -1,0 +1,57 @@
+digraph TParticipantRole_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Channel Management Roles
+    content_provider [label="content_provider\n(Channel source)"];
+    host_provider [label="host_provider\n(Channel target)"];
+    receiver_provider [label="receiver_provider\n(Channel target)"];
+    registry_provider [label="registry_provider\n(Channel target)"];
+    diagnostic_observer [label="diagnostic_observer\n(Observer target)"];
+
+    // Role classification
+    provider_classification [label="is_provider_role()\n(content, host, receiver, registry, persistence, telemetry, abi_boundary, governance)"];
+    boundary_classification [label="is_boundary_role()\n(receiver, registry, persistence, telemetry, abi_boundary)"];
+    observer_classification [label="is_observer_role()\n(diagnostic_observer)"];
+    exchange_classification [label="participates_in_primary_exchange()\n(content, host, receiver)"];
+
+    // Channel compatibility validation
+    source_validation [label="Source Role Validation\n(must be content_provider)"];
+    target_validation [label="Target Role Validation\n(valid target roles)"];
+    compatibility_check [label="TChannel::has_compatible_roles()"];
+
+    // Flow connections
+    content_provider -> provider_classification;
+    content_provider -> exchange_classification;
+    content_provider -> source_validation;
+
+    host_provider -> provider_classification;
+    host_provider -> exchange_classification;
+    host_provider -> target_validation;
+
+    receiver_provider -> provider_classification;
+    receiver_provider -> boundary_classification;
+    receiver_provider -> exchange_classification;
+    receiver_provider -> target_validation;
+
+    registry_provider -> provider_classification;
+    registry_provider -> boundary_classification;
+    registry_provider -> target_validation;
+
+    diagnostic_observer -> observer_classification;
+    diagnostic_observer -> target_validation;
+
+    source_validation -> compatibility_check;
+    target_validation -> compatibility_check;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TParticipantRole W04 Compatibility";
+        color=white;
+        style=filled;
+
+        legend_roles [label="Channel Roles", shape=rectangle, fillcolor=lightyellow];
+        legend_classification [label="Role Classification", shape=rectangle, fillcolor=lightblue];
+        legend_validation [label="Channel Validation", shape=rectangle, fillcolor=lightgreen];
+    }
+}

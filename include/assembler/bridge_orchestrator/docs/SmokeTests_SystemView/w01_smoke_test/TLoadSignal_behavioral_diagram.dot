@@ -1,0 +1,41 @@
+digraph TLoadSignal_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Load Signal Flow", shape=ellipse, fillcolor=green]
+
+    CreateSignal [label="TLoadSignal::completed(token, handle, 128u)\nCreates load signal with COMPLETED kind,\ncorrelation token, placement handle, and 128 bytes loaded", fillcolor=yellow]
+
+    CheckSignal [label="signal.completed()\nChecks kind == load_completed\nReturns true", fillcolor=lightgreen]
+
+    LoadCompleted [label="Load completed successfully", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Load signal processing completed", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    CheckFailed [label="signal.failed()\n(kind == load_failed)", fillcolor=lightgrey]
+    CheckStarted [label="signal.kind == load_started", fillcolor=lightgrey]
+
+    // Flow
+    Start -> CreateSignal
+    CreateSignal -> CheckSignal
+    CheckSignal -> LoadCompleted
+    LoadCompleted -> End
+
+    // Alternative flows (shown but not taken)
+    CreateSignal -> CheckFailed [style=dashed, color=grey]
+    CreateSignal -> CheckStarted [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Status Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

@@ -1,0 +1,9 @@
+digraph TDiagnosticCategory_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    CategoryUsage [label="Category Usage", fillcolor=lightgray];
+
+    BoundaryCategory [label="boundary\nIntegration boundary operations", fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TDiagnosticCategory_behavioral_diagram.dot

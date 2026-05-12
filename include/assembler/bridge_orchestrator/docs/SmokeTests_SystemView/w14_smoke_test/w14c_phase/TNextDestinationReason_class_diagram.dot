@@ -1,0 +1,20 @@
+digraph TNextDestinationReason_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    NextDestinationReason [label="{TNextDestinationReason (W01)|enumeration of routing reasons\l+ current_destination_completed\l+ retry_requested\l+ other reasons...\l}", fillcolor=lightgreen, style=filled];
+
+    CurrentCompleted [label="{current_destination_completed|used in W14C after load signal\lindicates successful placement completion\l}", fillcolor=lightsalmon];
+    RetryRequested [label="{retry_requested|used when placement handle missing\lindicates need to retry placement\l}", fillcolor=lightsalmon];
+
+    NextDestinationRequest [label="{TNextDestinationRequest|contains reason for routing\lguides bridge next destination logic\l}", fillcolor=lightblue];
+
+    NextDestinationReason -> CurrentCompleted [label="defines"];
+    NextDestinationReason -> RetryRequested [label="defines"];
+    NextDestinationRequest -> CurrentCompleted [label="uses"];
+    NextDestinationRequest -> RetryRequested [label="uses"];
+
+    label="TNextDestinationReason (W01) Class Structure and W14C Usage";
+    labelloc=t;
+}

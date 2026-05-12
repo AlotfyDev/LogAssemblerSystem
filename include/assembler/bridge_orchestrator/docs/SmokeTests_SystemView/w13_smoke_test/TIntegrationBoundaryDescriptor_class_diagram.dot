@@ -1,0 +1,46 @@
+digraph TIntegrationBoundaryDescriptor_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    Descriptor [label="{TIntegrationBoundaryDescriptor\n(Value Type)|• kind : TIntegrationBoundaryKind\n• direction : TIntegrationBoundaryDirection\n• capability_mask : uint32_t\n• boundary_family : string_view\n• correlation : TCorrelationToken|+ is_valid() : bool\l+ has(capability) : bool\l+ make(...) : TIntegrationBoundaryDescriptor\l+ persistence(token) : TIntegrationBoundaryDescriptor\l+ telemetry(token) : TIntegrationBoundaryDescriptor\l+ thin_c_abi(token) : TIntegrationBoundaryDescriptor\l+ read_side(token) : TIntegrationBoundaryDescriptor\l+ in_process_receiver(token) : TIntegrationBoundaryDescriptor\l}", fillcolor=lightcyan];
+
+    // Dependencies
+    Kind [label="{TIntegrationBoundaryKind\n(Enum)|• unknown\n• registry_delivery\n• persistence\n• telemetry\n• thin_c_abi\n• read_side\n• in_process_receiver\n• custom\l}", fillcolor=lavender];
+
+    Direction [label="{TIntegrationBoundaryDirection\n(Enum)|• unknown\n• inbound\n• outbound\n• bidirectional\l}", fillcolor=lavender];
+
+    Capability [label="{TIntegrationBoundaryCapability\n(Enum)|• accepts_handoff\n• supports_ordering\n• emits_acknowledgement\n• supports_batch\n• supports_backpressure\n• supports_diagnostics\l}", fillcolor=lavender];
+
+    Correlation [label="{TCorrelationToken\n(W01 Reused)|• high : uint64_t\n• low : uint64_t|+ is_valid() : bool\l+ invalid() : TCorrelationToken\l+ from_parts(h,l) : TCorrelationToken\l}", fillcolor=lightgray];
+
+    // Relationships
+    Descriptor -> Kind [label="uses"];
+    Descriptor -> Direction [label="uses"];
+    Descriptor -> Capability [label="uses"];
+    Descriptor -> Correlation [label="uses"];
+
+    // Factory method relationships
+    PersistenceFactory [label="persistence(token)\n• kind: persistence\n• direction: outbound\n• capabilities: accepts_handoff,\n  completes_handoff,\n  emits_acknowledgement,\n  supports_backpressure", shape=note, fillcolor=lightyellow];
+
+    TelemetryFactory [label="telemetry(token)\n• kind: telemetry\n• direction: outbound\n• capabilities: accepts_handoff,\n  supports_batch,\n  supports_diagnostics", shape=note, fillcolor=lightyellow];
+
+    ReadSideFactory [label="read_side(token)\n• kind: read_side\n• direction: outbound\n• capabilities: accepts_handoff,\n  exposes_readiness", shape=note, fillcolor=lightyellow];
+
+    Descriptor -> PersistenceFactory [label="creates", style=dashed];
+    Descriptor -> TelemetryFactory [label="creates", style=dashed];
+    Descriptor -> ReadSideFactory [label="creates", style=dashed];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendMain [label="Main Component", fillcolor=lightcyan];
+        LegendEnum [label="Enumeration", fillcolor=lavender];
+        LegendReused [label="W01 Reused", fillcolor=lightgray];
+        LegendFactory [label="Factory Method", shape=note, fillcolor=lightyellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryDescriptor_class_diagram.dot

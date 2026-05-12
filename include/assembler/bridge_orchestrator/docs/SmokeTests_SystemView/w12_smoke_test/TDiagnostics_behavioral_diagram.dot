@@ -1,0 +1,19 @@
+digraph TDiagnostics_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnostics Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    IncludeAggregate [label="Include Aggregate Header\n#include \"diagnostics/TDiagnostics.hpp\"\nProvides access to all diagnostic components", fillcolor=yellow]
+
+    CheckAvailability [label="Check Availability Marker\nASCC_W12_DIAGNOSTICS_AVAILABLE == true\nVerifies diagnostics layer is available", fillcolor=lightgreen]
+
+    AccessComponents [label="Access Diagnostic Components\nUse TBridgeDiagnosticBuilder, TDiagnosticCollector, etc.\nthrough namespace assembler::communication_context", fillcolor=cyan]
+
+    End [label="Aggregate usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> IncludeAggregate
+    IncludeAggregate -> CheckAvailability
+    CheckAvailability -> AccessComponents
+    AccessComponents -> End
+}

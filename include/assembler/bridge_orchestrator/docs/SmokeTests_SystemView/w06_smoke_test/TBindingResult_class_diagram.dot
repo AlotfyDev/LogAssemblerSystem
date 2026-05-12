@@ -1,0 +1,19 @@
+digraph TBindingResult_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TBindingResult [label="{TBindingResult|binding_id : TBindingId\ncompatibility : TBindingCompatibilityReport|+ is_success() : bool|+ accept() : TBindingResult\n+ reject() : TBindingResult}"];
+
+    // Dependencies
+    TBindingId_dep [label="{TBindingId|value : uint64_t|+ is_valid() : bool}"];
+    TBindingCompatibilityReport_dep [label="{TBindingCompatibilityReport|status : TBindingCompatibilityStatus|...}" shape=record];
+
+    // Created by TBinding
+    TBinding_creates [label="{TBinding (creates)|+ result() : TBindingResult}" shape=record];
+
+    // Relationships
+    TBindingResult -> TBindingId_dep [label="has"];
+    TBindingResult -> TBindingCompatibilityReport_dep [label="has"];
+    TBinding_creates -> TBindingResult [label="creates"];
+}

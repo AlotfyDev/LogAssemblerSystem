@@ -1,0 +1,42 @@
+digraph TLogLevelAPIEnvelopePluginAdapter_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage sequence
+    AdapterCreation [label="Adapter Creation:\n- created via TLogLevelAPIEnvelopePluginAdapterFactory::from_fields()\n- initialized with correlation token, envelope_id, payload_size_hint"];
+
+    ViewAccess [label="View Access:\n- adapter.view() called for model declaration\n- returns TPluginAdapterView for channel participant\n- used in TFirstIntegrationSkeletonModelPlan::declare_channel()"];
+
+    ReadinessCheck [label="Readiness Check:\n- adapter.readiness().is_ready() called in carrier flow\n- validates adapter can participate in placement\n- returns true when ready for placement operations"];
+
+    PlacementRequestPrep [label="Placement Request Preparation:\n- adapter.prepare_placement_request() creates request\n- includes envelope material info and destination family\n- used by port for admission decision"];
+
+    HandleAcceptance [label="Placement Handle Acceptance:\n- adapter.accept_placement_handle(handle) validates and stores handle\n- correlation token matching validation\n- returns success/failure result"];
+
+    LoadSignalEmission [label="Load Signal Emission:\n- adapter.emit_load_signal() creates completion signal\n- indicates envelope material is ready for transfer\n- includes handle and completion status"];
+
+    NextDestinationRouting [label="Next Destination Routing:\n- adapter.next_destination_request() requests routing decision\n- specifies completion reason and next destination needs\n- enables proper material flow termination"];
+
+    // Flow connections
+    AdapterCreation -> ViewAccess;
+    ViewAccess -> ReadinessCheck;
+    ReadinessCheck -> PlacementRequestPrep;
+    PlacementRequestPrep -> HandleAcceptance;
+    HandleAcceptance -> LoadSignalEmission;
+    LoadSignalEmission -> NextDestinationRouting;
+
+    // Styling by lifecycle phase
+    AdapterCreation [fillcolor=lightblue];
+    ViewAccess [fillcolor=lightyellow];
+    ReadinessCheck [fillcolor=lightsalmon];
+    PlacementRequestPrep [fillcolor=lightgreen];
+    HandleAcceptance [fillcolor=lightcyan];
+    LoadSignalEmission [fillcolor=palegreen];
+    NextDestinationRouting [fillcolor=orange];
+
+    // Title
+    label="TLogLevelAPIEnvelopePluginAdapter Usage in W15 Smoke Test (W14A Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TLogLevelAPIEnvelopePluginAdapter_behavioral_diagram.dot

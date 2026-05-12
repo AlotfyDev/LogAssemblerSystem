@@ -1,0 +1,16 @@
+digraph TBoundaryHandoffHandle_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    Handle [label="{TBoundaryHandoffHandle\n(Value Type)|• id : uint64_t\n• material_kind : string_view\n• correlation : TCorrelationToken\n• note : string_view|+ is_valid() : bool\l+ invalid() : TBoundaryHandoffHandle\l+ make(id, kind, token, note) : TBoundaryHandoffHandle\l}", fillcolor=lightcyan];
+
+    // Factory methods
+    InvalidFactory [label="{invalid()\nReturns invalid handle}", shape=note, fillcolor=lightgreen];
+
+    MakeFactory [label="{make(id, kind, token, note)\nCreates valid handle}", shape=note, fillcolor=lightgreen];
+
+    // W13 usage
+    W13Usage [label="{W13 Usage|• Created in accept_boundary_handoff()\n• Passed to complete_boundary_handoff()\n• Stored in accepted results\l}", shape=note, fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffHandle_class_diagram.dot

@@ -1,0 +1,27 @@
+digraph TPortView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // View creation
+    create_from_port [label="Create from port obligations"];
+
+    // Validation
+    check_is_valid [label="Call view.is_valid()"];
+    check_primary_support [label="Call view.supports_primary_placement_flow()"];
+
+    // Usage in surface pair
+    assign_to_surface_pair [label="Assign to TObligationSurfacePair.port"];
+
+    // End
+    port_view_ready [label="Port View Ready", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> create_from_port;
+    create_from_port -> check_is_valid;
+    check_is_valid -> check_primary_support;
+    check_primary_support -> assign_to_surface_pair;
+    assign_to_surface_pair -> port_view_ready;
+}

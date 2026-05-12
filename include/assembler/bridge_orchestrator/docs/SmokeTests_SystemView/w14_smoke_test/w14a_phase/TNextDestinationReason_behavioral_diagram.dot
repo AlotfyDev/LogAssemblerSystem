@@ -1,0 +1,24 @@
+digraph TNextDestinationReason_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    reason_assignment [label="TNextDestinationReason::continuous_flow_requested\nUsed in next_destination_request() when handle is accepted"];
+
+    reason_check [label="next.reason == TNextDestinationReason::continuous_flow_requested\nValidates correct reason is set"];
+
+    success [label="Reason enum used correctly", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    reason_assignment -> reason_check;
+    reason_check -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        enum_usage [label="Enum Usage", fillcolor=lightyellow];
+        validation [label="Validation Check"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TNextDestinationReason_behavioral_diagram.dot

@@ -1,0 +1,62 @@
+digraph TWriteSideEnvelopePlacementPort_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontsize=10];
+    edge [fontsize=9];
+
+    // Main class
+    WriteSideEnvelopePlacementPort [label="{TWriteSideEnvelopePlacementPort\n(CRTP Port Implementation)|+ config() : const TWriteSideEnvelopePlacementPortConfig&\l+ target() : const TWriteSidePlacementTargetDescriptor&\l+ state() : const TWriteSideEnvelopePlacementPortState&\l+ view() : TPortView\l+ readiness(request) : TReadinessView\l+ admit(request) : TAdmissionResult\l+ placement_handle(request) : TPlacementHandle\l+ receive_load_signal(signal) : TBridgeResult\l+ next_destination(request) : TBridgeResult\l+ reset_state() : void\l|- config_ : TWriteSideEnvelopePlacementPortConfig\l- target_ : TWriteSidePlacementTargetDescriptor\l- state_ : TWriteSideEnvelopePlacementPortState\l}", fillcolor=orange];
+
+    // Base class
+    Port [label="{TPort<TWriteSideEnvelopePlacementPort>\n(W05 CRTP Base)|# readiness(const TPlacementRequest&) -> TReadinessView\l# admit(const TPlacementRequest&) -> TAdmissionResult\l# placement_handle(const TPlacementRequest&) -> TPlacementHandle\l}", fillcolor=lightyellow];
+
+    // Configuration and state types
+    Config [label="{TWriteSideEnvelopePlacementPortConfig\n(Configuration)|• is_valid() : bool\l• handle_family : string_view\l• first_handle_value : uint64_t\l• supported_payload_kinds : array\l• supported_destination_families : array\l}", fillcolor=lightcyan];
+
+    Target [label="{TWriteSidePlacementTargetDescriptor\n(Target Description)|• is_valid() : bool\l• handle_family : string_view\l• supports_ordered_placement : bool\l• capacity_hint : uint64_t\l}", fillcolor=lightcyan];
+
+    State [label="{TWriteSideEnvelopePlacementPortState\n(State Management)|• has_last_handle() : bool\l• last_handle : TPlacementHandle\l• has_completed_load() : bool\l• record_admission() : void\l• record_handle(handle) : void\l• record_signal(signal) : void\l• allocate_handle_value() : uint64_t\l• reset(first_value) : void\l}", fillcolor=lightcyan];
+
+    // Policies
+    AdmissionPolicy [label="{TWriteSideEnvelopePlacementAdmissionPolicy\n(Admission Logic)|+ payload_kind_is_supported(request, config) : bool\l+ destination_is_supported(request, config) : bool\l+ request_is_admissible(request, config) : bool\l+ readiness_capacity_hint(config) : uint64_t\l}", fillcolor=lavender];
+
+    // View builder
+    ViewBuilder [label="{TWriteSideEnvelopePlacementPortViewBuilder\n(View Construction)|+ view(config) : TPortView\l}", fillcolor=lavender];
+
+    // Carrier types used
+    ReadinessView [label="{TReadinessView\n(Bridge Carrier)|• state : TReadinessState\l• reason : string_view\l• correlation : TCorrelationToken\l• size_hint : uint64_t\l+ is_ready() : bool\l+ ready(token, size) : TReadinessView\l+ not_ready(reason, token) : TReadinessView\l}", fillcolor=lightgreen];
+
+    AdmissionResult [label="{TAdmissionResult\n(Bridge Carrier)|• status : TAdmissionStatus\l• correlation : TCorrelationToken\l• error : TBridgeError\l• reason : string_view\l+ accepted() : bool\l+ accept(token) : TAdmissionResult\l+ reject(reason, token) : TAdmissionResult\l}", fillcolor=lightgreen];
+
+    PlacementHandle [label="{TPlacementHandle\n(Bridge Carrier)|• value : uint64_t\l• correlation : TCorrelationToken\l• handle_family : string_view\l+ is_valid() : bool\l+ make(value, token, family) : TPlacementHandle\l}", fillcolor=lightgreen];
+
+    PlacementRequest [label="{TPlacementRequest\n(Bridge Carrier)|• correlation : TCorrelationToken\l• payload_kind : string_view\l• payload_size_hint : uint64_t\l• requires_ordered_placement : bool\l• requested_destination_family : string_view\l+ is_valid() : bool\l}", fillcolor=lightgreen];
+
+    LoadSignal [label="{TLoadSignal\n(Bridge Carrier)|• kind : TLoadSignalKind\l• correlation : TCorrelationToken\l• placement : TPlacementHandle\l• bytes_loaded : uint64_t\l• note : string_view\l+ completed() : bool\l+ failed() : bool\l}", fillcolor=lightgreen];
+
+    NextDestRequest [label="{TNextDestinationRequest\n(Bridge Carrier)|• correlation : TCorrelationToken\l• current_handle : TPlacementHandle\l• reason : TNextDestinationReason\l• note : string_view\l+ is_valid() : bool\l}", fillcolor=lightgreen];
+
+    BridgeResult [label="{TBridgeResult\n(Bridge Carrier)|• status : TBridgeStatus\l• correlation : TCorrelationToken\l• error : TBridgeError\l+ succeeded() : bool\l+ failed() : bool\l+ success(token) : TBridgeResult\l}", fillcolor=lightgreen];
+
+    // Relationships
+    WriteSideEnvelopePlacementPort -> Port [label="inherits from", arrowhead=onormal];
+    WriteSideEnvelopePlacementPort -> Config [label="contains"];
+    WriteSideEnvelopePlacementPort -> Target [label="contains"];
+    WriteSideEnvelopePlacementPort -> State [label="contains"];
+
+    WriteSideEnvelopePlacementPort -> AdmissionPolicy [label="uses"];
+    WriteSideEnvelopePlacementPort -> ViewBuilder [label="uses"];
+
+    WriteSideEnvelopePlacementPort -> ReadinessView [label="returns"];
+    WriteSideEnvelopePlacementPort -> AdmissionResult [label="returns"];
+    WriteSideEnvelopePlacementPort -> PlacementHandle [label="returns"];
+    WriteSideEnvelopePlacementPort -> BridgeResult [label="returns"];
+
+    AdmissionPolicy -> PlacementRequest [label="validates"];
+    AdmissionPolicy -> Config [label="uses"];
+
+    // Input parameters
+    WriteSideEnvelopePlacementPort -> PlacementRequest [label="accepts", style=dashed];
+    WriteSideEnvelopePlacementPort -> LoadSignal [label="accepts", style=dashed];
+    WriteSideEnvelopePlacementPort -> NextDestRequest [label="accepts", style=dashed];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TWriteSideEnvelopePlacementPort_class_diagram.dot

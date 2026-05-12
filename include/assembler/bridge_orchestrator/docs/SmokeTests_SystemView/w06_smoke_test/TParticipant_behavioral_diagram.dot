@@ -1,0 +1,27 @@
+digraph TParticipant_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Participant setup
+    create_source [label="Create source participant\n(content_provider role)"];
+    create_target [label="Create target participant\n(host_provider role)"];
+
+    // Validation
+    check_valid [label="Call participant.is_valid()"];
+
+    // Usage in channel
+    assign_to_channel [label="Assign to TChannel source/target"];
+
+    // End
+    participants_ready [label="Participants Ready for Channel", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> create_source;
+    create_source -> create_target;
+    create_target -> check_valid;
+    check_valid -> assign_to_channel;
+    assign_to_channel -> participants_ready;
+}

@@ -1,0 +1,12 @@
+digraph TDiagnosticPolicy_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticPolicy [label="{TDiagnosticPolicy|minimum_severity : TDiagnosticSeverity\l include_invalid_records : bool\l|+ is_valid() : bool\l+ includes(record) : bool\l+ all() : TDiagnosticPolicy\l+ warnings_and_above() : TDiagnosticPolicy\l+ errors_only() : TDiagnosticPolicy\l}"]
+
+    TDiagnosticSeverity [label="TDiagnosticSeverity", shape=record, fillcolor=lightyellow]
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+
+    TDiagnosticPolicy -> TDiagnosticSeverity [label="uses", style=dashed]
+    TDiagnosticPolicy -> TDiagnosticRecord [label="filters", style=dashed]
+}

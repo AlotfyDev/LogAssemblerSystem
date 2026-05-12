@@ -1,0 +1,25 @@
+digraph TLogLevelAPIEnvelopePluginAdapterBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main binding header
+    Binding [label="{TLogLevelAPIEnvelopePluginAdapterBinding|W14A binding header\laggregate include for adapter\l}", fillcolor=lightsalmon, style=filled];
+
+    // Aggregated components from W14A
+    Adapter [label="{TLogLevelAPIEnvelopePluginAdapter|main adapter implementation\lplacement request, load signal\l}", fillcolor=lightblue];
+    Factory [label="{TLogLevelAPIEnvelopePluginAdapterFactory|factory for adapter creation\lfrom_fields, from_descriptor methods\l}", fillcolor=lightblue];
+    Descriptor [label="{TLogLevelEnvelopeDescriptor|envelope material description\lcorrelation, size, ordering\l}", fillcolor=lightblue];
+    Config [label="{TLogLevelAPIEnvelopePluginAdapterConfig|adapter configuration\lparticipant IDs, names\l}", fillcolor=lightblue];
+
+    // Relationships
+    Binding -> Adapter [label="aggregates"];
+    Binding -> Factory [label="aggregates"];
+    Binding -> Descriptor [label="aggregates"];
+    Binding -> Config [label="aggregates"];
+
+    // Title
+    label="TLogLevelAPIEnvelopePluginAdapterBinding Class Structure (W14A Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TLogLevelAPIEnvelopePluginAdapterBinding_class_diagram.dot

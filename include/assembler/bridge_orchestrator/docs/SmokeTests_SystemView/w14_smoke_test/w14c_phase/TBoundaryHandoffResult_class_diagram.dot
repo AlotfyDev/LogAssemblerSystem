@@ -1,0 +1,14 @@
+digraph TBoundaryHandoffResult_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    BoundaryHandoffResult [label="{TBoundaryHandoffResult (W13)|boundary handoff operation result\l+ handle : TBoundaryHandoffHandle\l+ bridge_result : TBridgeResult\l+ accepted() const\l+ completed() const\l+ deferred() const\l}", fillcolor=lightgreen, style=filled];
+
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|accepts and processes handoff result\lhandles different result scenarios\l}", fillcolor=lightsalmon];
+
+    Adapter -> BoundaryHandoffResult [label="accepts"];
+
+    label="TBoundaryHandoffResult (W13) Class Structure and W14C Usage";
+    labelloc=t;
+}

@@ -1,0 +1,30 @@
+digraph TBridge_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    BridgeDeclaration [label="Bridge Declaration:\n- TFirstIntegrationSkeletonModelPlan::declare_bridge()\n- declares bridge model on protocol with bounded execution\n- uses bridge_id, max_steps, bridge_name from config"];
+
+    ReadyValidation [label="Bridge Validation:\n- bridge.is_valid() && bridge.is_ready() called in skeleton\n- validates bridge declared and ready for model execution\n- failure returns early with bridge not declared/ready note"];
+
+    ModelExecution [label="Model Execution:\n- bridge.run_model_to_terminal() executes bridge model to completion\n- returns TBridgeCoreResult with completion status\n- validates bridge_model_result.completed()"];
+
+    CarrierFlowEnablement [label="Carrier Flow Enablement:\n- successful model execution enables carrier flow phase\n- adapter and port can now exchange carriers\n- bridge model completion is prerequisite for placement flow"];
+
+    BridgeDeclaration -> ReadyValidation;
+    ReadyValidation -> ModelExecution [label="declared and ready"];
+    ReadyValidation -> End [label="not declared/ready"];
+    ModelExecution -> CarrierFlowEnablement [label="completed"];
+    ModelExecution -> End [label="not completed"];
+
+    End [label="Bridge Model Not Completed", shape=ellipse, fillcolor=lightcoral];
+
+    BridgeDeclaration [fillcolor=lightblue];
+    ReadyValidation [fillcolor=lightyellow];
+    ModelExecution [fillcolor=lightsalmon];
+    CarrierFlowEnablement [fillcolor=lightgreen];
+
+    label="TBridge Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBridge_behavioral_diagram.dot

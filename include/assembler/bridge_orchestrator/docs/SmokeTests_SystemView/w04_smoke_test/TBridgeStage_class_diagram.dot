@@ -1,0 +1,30 @@
+digraph TBridgeStage_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main enum
+    TBridgeStage [label="{TBridgeStage|idle\nsession_opening\nchannel_resolution\nbinding_resolution\ncompatibility_check\nadapter_readiness\nrequest_preparation\nport_readiness\nadmission_request\nadmission_result\nhandle_exchange\nadapter_handle_acceptance\nload_or_delivery_signal\nnext_destination\nresult_consolidation\nsession_closure\nterminal_success\nterminal_rejected\nterminal_failed\nterminal_deferred|}"];
+    terminal_helper [label="{is_terminal_bridge_stage(stage)|constexpr bool}"];
+
+    // Dependencies
+    terminal_helper -> TBridgeStage [label="operates on"];
+
+    // Usage in W04
+    TBridgeStage -> channel_resolution [label="channel_resolution stage"];
+    TBridgeStage -> binding_resolution [label="binding_resolution stage"];
+
+    // Invisible positioning
+    channel_resolution [shape=plaintext, label="Channel Resolution"];
+    binding_resolution [shape=plaintext, label="Binding Resolution"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TBridgeStage Structure";
+        color=white;
+        style=filled;
+
+        legend_enum [label="Protocol Stages", shape=rectangle, fillcolor=lightyellow];
+        legend_helper [label="Terminal Stage Helper", shape=rectangle, fillcolor=lightblue];
+        legend_w04 [label="W04 Channel Stages", shape=plaintext];
+    }
+}

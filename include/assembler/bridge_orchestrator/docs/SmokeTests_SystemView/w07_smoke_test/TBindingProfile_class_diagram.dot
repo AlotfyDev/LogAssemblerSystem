@@ -1,0 +1,18 @@
+digraph TBindingProfile_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    TBindingProfile [label="{TBindingProfile (W06 - Reused)|kind : TBindingKind\nrequire_channel_valid : bool\nrequire_channel_declared : bool\nrequire_surface_pair_valid : bool\nrequire_primary_placement_flow : bool\nallow_session_materialization : bool\nallow_rebinding : bool\nprofile_version : uint32_t\nprofile_name : string_view|+ is_valid() : bool\n+ is_strict_one_to_one() : bool\n+ strict_static_one_to_one(name) : TBindingProfile|Binding profile configuration}"];
+
+    TBindingKind [label="{TBindingKind|unknown, strict_one_to_one,\none_adapter_to_many_ports,\nmany_adapters_to_one_port,\nmany_to_many, observer_only|Binding cardinality types}" shape=record, fillcolor=white];
+
+    // Relationships
+    TBindingProfile -> TBindingKind [label="has"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W06", fillcolor=lightyellow];
+        Enum [label="Enum Type", fillcolor=white];
+    }
+}

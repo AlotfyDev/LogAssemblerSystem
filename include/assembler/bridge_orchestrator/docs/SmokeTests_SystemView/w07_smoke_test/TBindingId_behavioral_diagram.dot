@@ -1,0 +1,31 @@
+digraph TBindingId_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Basic operations
+    create_from_value [label="from_value(uint64_t)\nCreate TBindingId with specified value", fillcolor=white];
+
+    check_valid [label="is_valid()\nReturn value != 0", fillcolor=white];
+
+    create_invalid [label="invalid()\nReturn TBindingId{0} for invalid state", fillcolor=white];
+
+    // W07 usage
+    binding_creation [label="Used in TBinding::propose()\nto create unique binding identities", fillcolor=palegreen];
+
+    view_creation [label="Used in TBindingView construction\nas binding_id field", fillcolor=lightcyan];
+
+    // Flow
+    create_from_value -> check_valid [label="enables"];
+    create_invalid -> check_valid [label="provides"];
+
+    create_from_value -> binding_creation [label="used in"];
+    create_from_value -> view_creation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Basic [label="Basic Operation", fillcolor=white];
+        Binding [label="Binding Usage", fillcolor=palegreen];
+        View [label="View Usage", fillcolor=lightcyan];
+    }
+}

@@ -1,0 +1,22 @@
+digraph TDiagnosticSnapshot_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticSnapshot Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateFromReport [label="Create from Report\nTDiagnosticSnapshot::from_report(report)\nProjects report statistics into immutable snapshot", fillcolor=purple]
+
+    ValidateSnapshot [label="Validate Snapshot\nsnapshot.is_valid() returns true\nChecks snapshot validity", fillcolor=lightgreen]
+
+    CheckStatistics [label="Check Statistics\ncount=3, failure_count=0, highest_severity=warning (first snapshot)\ncount=4, failure_count=1, highest_severity=error (second snapshot)\nVerify aggregated diagnostic statistics", fillcolor=lightgreen]
+
+    CheckFailures [label="Check Failures\nsnapshot.has_failures() returns false (first), true (second)\nVerify failure detection logic", fillcolor=lightgreen]
+
+    End [label="Snapshot usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateFromReport
+    CreateFromReport -> ValidateSnapshot
+    ValidateSnapshot -> CheckStatistics
+    CheckStatistics -> CheckFailures
+    CheckFailures -> End
+}

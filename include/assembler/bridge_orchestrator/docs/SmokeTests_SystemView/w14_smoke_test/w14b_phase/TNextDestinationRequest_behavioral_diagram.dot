@@ -1,0 +1,48 @@
+digraph TNextDestinationRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Request creation
+    Adapter_Next_Dest [label="adapter.next_destination_request()\nAdapter requests next destination", fillcolor=lightblue];
+    Create_Request [label="TNextDestinationRequest::make(descriptor_.correlation, state_.accepted_handle, reason, note)", fillcolor=lavender];
+    Determine_Reason [label="auto reason = state_.has_accepted_handle() ? continuous_flow_requested : retry_requested", fillcolor=lavender];
+    Determine_Note [label="auto note = state_.has_accepted_handle() ? \"continue_after_log_level_envelope_load\" : \"retry_after_missing_placement_handle\"", fillcolor=lavender];
+    Return_Request [label="return next_destination_request", fillcolor=lightgreen];
+
+    // Request processing
+    Port_Process_Request [label="port.next_destination(request)\nPort processes next destination request", fillcolor=orange];
+    Validate_Request [label="if (!request.is_valid())", fillcolor=lavender];
+    Invalid_Request [label="return TBridgeResult::reject(protocol violation)", fillcolor=red];
+    Check_Handle [label="if (state_.has_last_handle() && request.current_handle != state_.last_handle)", fillcolor=lavender];
+    Handle_Mismatch [label="return TBridgeResult::reject(invalid correlation)", fillcolor=red];
+    Success_Result [label="return TBridgeResult::success(request.correlation)", fillcolor=lightgreen];
+
+    // Request validation
+    Request_Validation [label="request.is_valid()\nValidate next destination request", fillcolor=lavender];
+    Correlation_Valid [label="correlation.is_valid()", fillcolor=lavender];
+    Valid_Result [label="Return true - request is valid", fillcolor=lightgreen];
+    Invalid_Result [label="Return false - request is invalid", fillcolor=red];
+
+    // Flow connections
+    Adapter_Next_Dest -> Determine_Reason;
+    Determine_Reason -> Determine_Note;
+    Determine_Note -> Create_Request;
+    Create_Request -> Return_Request;
+
+    Return_Request -> Request_Validation;
+    Request_Validation -> Correlation_Valid;
+    Correlation_Valid -> Valid_Result [label="correlation valid"];
+    Correlation_Valid -> Invalid_Result [label="correlation invalid"];
+
+    Valid_Result -> Port_Process_Request;
+    Invalid_Result -> Port_Process_Request [style=dashed];
+
+    Port_Process_Request -> Validate_Request;
+    Validate_Request -> Invalid_Request [label="invalid"];
+    Validate_Request -> Check_Handle [label="valid"];
+
+    Check_Handle -> Handle_Mismatch [label="mismatch"];
+    Check_Handle -> Success_Result [label="matches"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TNextDestinationRequest_behavioral_diagram.dot

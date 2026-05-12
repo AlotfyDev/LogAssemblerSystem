@@ -1,0 +1,99 @@
+digraph W14C_C4_Architecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial"];
+
+    // External Systems
+    subgraph cluster_external {
+        label="External Systems";
+        color=lightgray;
+        style=filled;
+
+        Registry [label="Log Level Records Registry", fillcolor=lightblue];
+        WriteSide [label="Write Side System", fillcolor=lightgreen];
+    }
+
+    // Communication Context Boundary
+    subgraph cluster_communication_context {
+        label="Communication Context";
+        color=lightblue;
+        style=filled;
+
+        // Bridge Core
+        subgraph cluster_bridge_core {
+            label="Bridge Core";
+            color=lightyellow;
+            style=filled;
+
+            BridgeRuntime [label="Bridge Runtime", fillcolor=lightcyan];
+            PlacementManager [label="Placement Manager", fillcolor=lightcyan];
+            BoundaryHandoffManager [label="Boundary Handoff Manager", fillcolor=lightcyan];
+        }
+
+        // W14C Write Side Registry Delivery Binding
+        subgraph cluster_w14c_binding {
+            label="W14C Write Side Registry Delivery PluginAdapter Binding";
+            color=lightcoral;
+            style=filled;
+
+            // Main Components
+            W14CBinding [label="TWriteSideRegistryDelivery\nPluginAdapterBinding", fillcolor=lightsalmon];
+            W14CAdapter [label="TWriteSideRegistryDelivery\nPluginAdapter", fillcolor=lightsalmon];
+            W14CFactory [label="TWriteSideRegistryDelivery\nPluginAdapterFactory", fillcolor=lightsalmon];
+
+            // Supporting Components
+            W14CDescriptor [label="TWriteSideRegistryDelivery\nMaterialDescriptor", fillcolor=lightsalmon];
+            W14CConfig [label="TWriteSideRegistryDelivery\nPluginAdapterConfig", fillcolor=lightsalmon];
+            W14CState [label="TWriteSideRegistryDelivery\nPluginAdapterState", fillcolor=lightsalmon];
+            W14CViewBuilder [label="TWriteSideRegistryDelivery\nPluginAdapterViewBuilder", fillcolor=lightsalmon];
+            W14CReadinessPolicy [label="TWriteSideRegistryDelivery\nReadinessPolicy", fillcolor=lightsalmon];
+        }
+
+        // Reused Components from Previous Waves
+        subgraph cluster_reused_components {
+            label="Reused Components (W01-W13)";
+            color=lightgreen;
+            style=filled;
+
+            CorrelationToken [label="TCorrelationToken\n(W01)", fillcolor=lightgreen];
+            PluginAdapterInterface [label="TPluginAdapter\n(W05)", fillcolor=lightgreen];
+            PlacementRequest [label="TPlacementRequest\n(W01)", fillcolor=lightgreen];
+            BoundaryHandoffRequest [label="TBoundaryHandoffRequest\n(W13)", fillcolor=lightgreen];
+            PlacementHandle [label="TPlacementHandle\n(W01)", fillcolor=lightgreen];
+            LoadSignal [label="TLoadSignal\n(W01)", fillcolor=lightgreen];
+            NextDestinationRequest [label="TNextDestinationRequest\n(W01)", fillcolor=lightgreen];
+            BoundaryHandoffResult [label="TBoundaryHandoffResult\n(W13)", fillcolor=lightgreen];
+        }
+    }
+
+    // Relationships
+    WriteSide -> W14CFactory [label="creates adapter"];
+    W14CFactory -> W14CAdapter [label="produces"];
+    W14CAdapter -> W14CDescriptor [label="uses"];
+    W14CAdapter -> W14CConfig [label="uses"];
+    W14CAdapter -> W14CState [label="manages"];
+    W14CAdapter -> W14CViewBuilder [label="builds views"];
+    W14CAdapter -> W14CReadinessPolicy [label="checks readiness"];
+
+    W14CAdapter -> PluginAdapterInterface [label="implements"];
+    W14CAdapter -> CorrelationToken [label="uses"];
+    W14CAdapter -> PlacementRequest [label="creates"];
+    W14CAdapter -> BoundaryHandoffRequest [label="creates"];
+    W14CAdapter -> PlacementHandle [label="accepts"];
+    W14CAdapter -> LoadSignal [label="emits"];
+    W14CAdapter -> NextDestinationRequest [label="generates"];
+    W14CAdapter -> BoundaryHandoffResult [label="accepts"];
+
+    W14CAdapter -> BridgeRuntime [label="interacts with"];
+    BridgeRuntime -> PlacementManager [label="coordinates"];
+    BridgeRuntime -> BoundaryHandoffManager [label="coordinates"];
+
+    PlacementManager -> Registry [label="places material"];
+    BoundaryHandoffManager -> Registry [label="hands off material"];
+
+    W14CBinding -> W14CAdapter [label="aggregates"];
+
+    // Layout hints
+    {rank=same; W14CBinding; W14CAdapter; W14CFactory;}
+    {rank=same; W14CDescriptor; W14CConfig; W14CState;}
+    {rank=same; W14CViewBuilder; W14CReadinessPolicy;}
+}

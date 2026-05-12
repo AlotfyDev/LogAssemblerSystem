@@ -1,0 +1,135 @@
+digraph W14A_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Start
+    start [label="W14a Smoke Test Start", shape=ellipse, fillcolor=lightgreen];
+
+    // Static assertions
+    static_assert_w14a [label="Static Assert:\nASCC_W14A_LOG_LEVEL_API_ENVELOPE_PLUGIN_ADAPTER_AVAILABLE"];
+    static_assert_w10 [label="Static Assert:\nASCC_W10_BRIDGE_CORE_AVAILABLE"];
+    static_assert_plugin_adapter [label="Static Assert:\nis_plugin_adapter_obligation_surface<TLogLevelAPIEnvelopePluginAdapter>"];
+
+    // Token creation
+    token_creation [label="TCorrelationToken::from_parts(14u, 1u)"];
+
+    // Factory creation
+    factory_creation [label="TLogLevelAPIEnvelopePluginAdapterFactory::from_fields(\ntoken, \"env-0001\", 128u)"];
+
+    // Adapter operations
+    adapter_view [label="adapter.view()"];
+    view_validation [label="adapter_view.is_valid()"];
+    primary_placement_check [label="adapter_view.supports_primary_placement_flow()"];
+
+    readiness_check [label="adapter.readiness()"];
+    readiness_validation [label="readiness.is_ready()"];
+
+    placement_request_prep [label="adapter.prepare_placement_request()"];
+    placement_request_validation [label="placement_request.is_valid()"];
+    payload_kind_check [label="placement_request.payload_kind == \"log_level_envelope\""];
+    destination_family_check [label="placement_request.requested_destination_family == \"write_side\""];
+
+    bad_load_signal [label="adapter.emit_load_signal()\n(before handle acceptance)"];
+    bad_signal_check [label="bad_signal.failed()"];
+
+    handle_creation [label="TPlacementHandle::make(42u, token, \"write_side_envelope_slot\")"];
+
+    handle_acceptance [label="adapter.accept_placement_handle(handle)"];
+    acceptance_check [label="accept_result.succeeded()"];
+
+    load_signal [label="adapter.emit_load_signal()\n(after handle acceptance)"];
+    load_signal_check [label="signal.completed()"];
+    bytes_loaded_check [label="signal.bytes_loaded == 128u"];
+
+    next_destination [label="adapter.next_destination_request()"];
+    next_destination_check [label="next.is_valid()"];
+    reason_check [label="next.reason == TNextDestinationReason::continuous_flow_requested"];
+
+    wrong_handle_creation [label="TPlacementHandle::make(99u, TCorrelationToken::from_parts(14u, 2u), \"wrong\")"];
+    wrong_handle_acceptance [label="adapter.accept_placement_handle(wrong_handle_result)"];
+    wrong_handle_check [label="wrong_handle_result.rejected()"];
+
+    // End
+    end [label="Smoke Test Success\n(return 0)", shape=ellipse, fillcolor=lightgreen];
+
+    // Error paths
+    error_1 [label="return 1", shape=rectangle, fillcolor=red];
+    error_2 [label="return 2", shape=rectangle, fillcolor=red];
+    error_3 [label="return 3", shape=rectangle, fillcolor=red];
+    error_4 [label="return 4", shape=rectangle, fillcolor=red];
+    error_5 [label="return 5", shape=rectangle, fillcolor=red];
+    error_6 [label="return 6", shape=rectangle, fillcolor=red];
+    error_7 [label="return 7", shape=rectangle, fillcolor=red];
+    error_8 [label="return 8", shape=rectangle, fillcolor=red];
+    error_9 [label="return 9", shape=rectangle, fillcolor=red];
+    error_10 [label="return 10", shape=rectangle, fillcolor=red];
+    error_11 [label="return 11", shape=rectangle, fillcolor=red];
+    error_12 [label="return 12", shape=rectangle, fillcolor=red];
+    error_13 [label="return 13", shape=rectangle, fillcolor=red];
+
+    // Flow connections
+    start -> static_assert_w14a;
+    static_assert_w14a -> static_assert_w10;
+    static_assert_w10 -> static_assert_plugin_adapter;
+    static_assert_plugin_adapter -> token_creation;
+    token_creation -> factory_creation;
+    factory_creation -> adapter_view;
+    adapter_view -> view_validation;
+    view_validation -> primary_placement_check [label="true"];
+    view_validation -> error_1 [label="false"];
+    primary_placement_check -> readiness_check [label="true"];
+    primary_placement_check -> error_2 [label="false"];
+
+    readiness_check -> readiness_validation;
+    readiness_validation -> placement_request_prep [label="true"];
+    readiness_validation -> error_3 [label="false"];
+
+    placement_request_prep -> placement_request_validation;
+    placement_request_validation -> payload_kind_check [label="true"];
+    placement_request_validation -> error_4 [label="false"];
+
+    payload_kind_check -> destination_family_check [label="true"];
+    payload_kind_check -> error_5 [label="false"];
+
+    destination_family_check -> bad_load_signal [label="true"];
+    destination_family_check -> error_6 [label="false"];
+
+    bad_load_signal -> bad_signal_check;
+    bad_signal_check -> handle_creation [label="true"];
+    bad_signal_check -> error_7 [label="false"];
+
+    handle_creation -> handle_acceptance;
+    handle_acceptance -> acceptance_check;
+    acceptance_check -> load_signal [label="true"];
+    acceptance_check -> error_8 [label="false"];
+
+    load_signal -> load_signal_check;
+    load_signal_check -> bytes_loaded_check [label="true"];
+    load_signal_check -> error_9 [label="false"];
+
+    bytes_loaded_check -> next_destination [label="true"];
+    bytes_loaded_check -> error_10 [label="false"];
+
+    next_destination -> next_destination_check;
+    next_destination_check -> reason_check [label="true"];
+    next_destination_check -> error_11 [label="false"];
+
+    reason_check -> wrong_handle_creation [label="true"];
+    reason_check -> error_12 [label="false"];
+
+    wrong_handle_creation -> wrong_handle_acceptance;
+    wrong_handle_acceptance -> wrong_handle_check;
+    wrong_handle_check -> end [label="true"];
+    wrong_handle_check -> error_13 [label="false"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        success_path [label="Success Path", fillcolor=lightblue];
+        error_path [label="Error Path", fillcolor=red, shape=rectangle];
+        static_check [label="Static Assertion", fillcolor=yellow];
+        operation [label="Runtime Operation", fillcolor=lightblue];
+        validation [label="Validation Check", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\w14a_holistic_behavioral_diagram.dot

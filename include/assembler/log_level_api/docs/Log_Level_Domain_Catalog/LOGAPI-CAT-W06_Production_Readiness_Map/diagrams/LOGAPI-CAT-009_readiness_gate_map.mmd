@@ -1,0 +1,33 @@
+flowchart TB
+    D["W28 Diagnostics Model"]
+    C["W29 Compliance Suite"]
+    P["W30 Production Readiness Gate"]
+
+    E1["Compile Smoke Evidence"]
+    E2["Configuration-First Evidence"]
+    E3["Content-Only API Evidence"]
+    E4["Parser Coverage Evidence"]
+    E5["Metadata Preparedness Evidence"]
+    E6["Timestamp Preparedness Evidence"]
+    E7["Envelope Readiness Evidence"]
+    E8["Handoff Contract Evidence"]
+
+    E1 --> P
+    E2 --> C
+    E3 --> C
+    E4 --> P
+    E5 --> P
+    E6 --> P
+    E7 --> P
+    E8 --> P
+
+    D --> P
+    C --> P
+
+    P --> R["Readiness Report"]
+    R --> Q{"Blocking issues?"}
+    Q -->|No| Ready["Domain Evidence Ready"]
+    Q -->|Yes| Blocked["Blocked"]
+
+    note["Does not certify deployment, security, circulation internals, or external receivers"]
+    Ready -.-> note

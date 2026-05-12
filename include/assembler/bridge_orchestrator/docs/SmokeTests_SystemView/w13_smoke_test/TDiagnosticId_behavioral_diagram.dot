@@ -1,0 +1,36 @@
+digraph TDiagnosticId_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    DiagnosticId [label="{TDiagnosticId\n(W12 Reused)|+ from_value(value) : TDiagnosticId\l}", fillcolor=lightgray];
+
+    W13Usage [label="{W13 Usage|• Diagnostic identification\n• Smoke test diagnostics\l}", shape=note, fillcolor=pink];
+}
+
+digraph TDiagnosticId_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    IdCreation [label="Create Diagnostic ID", fillcolor=lightgray];
+
+    FromValue [label="TDiagnosticId::from_value(13u)\nCreate ID from numeric value", fillcolor=lightcyan];
+}
+
+digraph TDiagnosticCategory_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    Category [label="{TDiagnosticCategory\n(W12 Reused)|• boundary\n• ... (other categories)\l}", fillcolor=lightgray];
+
+    W13Usage [label="{W13 Usage|• Boundary operation categorization\n• Diagnostic filtering\l}", shape=note, fillcolor=pink];
+}
+
+digraph TDiagnosticCategory_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    CategoryUsage [label="Category Usage", fillcolor=lightgray];
+
+    BoundaryCategory [label="boundary\nIntegration boundary operations", fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TDiagnosticId_class_diagram.dot

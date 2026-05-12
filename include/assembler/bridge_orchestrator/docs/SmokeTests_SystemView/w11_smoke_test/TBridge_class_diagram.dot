@@ -1,0 +1,20 @@
+digraph TBridge_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TBridge [label="{TBridge<PlanCapacity>|bridge_id : TBridgeId\l protocol : TBridgeProtocol<PlanCapacity>\l config : TBridgeConfig\l state : TBridgeState\l metadata : TBridgeMetadata\l|+ is_valid() : bool\l+ make(id, protocol, config, metadata) : TBridge\l}"]
+
+    PlanCapacity [label="PlanCapacity", shape=ellipse, fillcolor=lightgrey]
+    TBridgeId [label="TBridgeId", shape=record, fillcolor=lightyellow]
+    TBridgeProtocol [label="{TBridgeProtocol<PlanCapacity>|...}", shape=record, fillcolor=lightyellow]
+    TBridgeConfig [label="TBridgeConfig", shape=record, fillcolor=lightyellow]
+    TBridgeState [label="TBridgeState", shape=record, fillcolor=lightyellow]
+    TBridgeMetadata [label="TBridgeMetadata", shape=record, fillcolor=lightyellow]
+
+    TBridge -> PlanCapacity [label="parameterized by", style=dashed]
+    TBridge -> TBridgeId [label="uses", style=dashed]
+    TBridge -> TBridgeProtocol [label="contains", style=dashed]
+    TBridge -> TBridgeConfig [label="uses", style=dashed]
+    TBridge -> TBridgeState [label="uses", style=dashed]
+    TBridge -> TBridgeMetadata [label="uses", style=dashed]
+}

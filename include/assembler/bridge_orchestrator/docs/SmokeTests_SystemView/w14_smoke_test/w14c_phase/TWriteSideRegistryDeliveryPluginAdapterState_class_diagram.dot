@@ -1,0 +1,26 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterState_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // State struct
+    State [label="{TWriteSideRegistryDeliveryPluginAdapterState|+ accepted_placement_handle : TPlacementHandle\l+ load_signal_emitted : bool = false\l+ accepted_boundary_handle : TBoundaryHandoffHandle\l+ boundary_handoff_completed : bool = false\l|+ has_accepted_placement_handle() const\l+ has_accepted_boundary_handle() const\l+ accept_placement_handle()\l+ mark_load_signal_emitted()\l+ accept_boundary_handoff()\l+ complete_boundary_handoff()\l+ reset()\l}", fillcolor=lightsalmon, style=filled];
+
+    // Handle types
+    PlacementHandle [label="{TPlacementHandle|placement acceptance handle\lcorrelation and placement details\l}", fillcolor=lightblue];
+    BoundaryHandoffHandle [label="{TBoundaryHandoffHandle|boundary handoff acceptance handle\lcorrelation and boundary details\l}", fillcolor=lightblue];
+
+    // Boolean flags
+    LoadSignalFlag [label="{bool load_signal_emitted|tracks whether load signal emitted\lprevents duplicate emissions\l}", fillcolor=lightcyan];
+    CompletionFlag [label="{bool boundary_handoff_completed|tracks handoff completion\lused for lifecycle management\l}", fillcolor=lightcyan];
+
+    // Relationships
+    State -> PlacementHandle [label="contains"];
+    State -> BoundaryHandoffHandle [label="contains"];
+    State -> LoadSignalFlag [label="contains"];
+    State -> CompletionFlag [label="contains"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterState Class Structure";
+    labelloc=t;
+}

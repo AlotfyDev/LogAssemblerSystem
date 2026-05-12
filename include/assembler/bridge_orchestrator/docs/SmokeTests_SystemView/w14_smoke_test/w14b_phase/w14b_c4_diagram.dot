@@ -1,0 +1,113 @@
+digraph W14B_C4_Architecture_Diagram {
+    rankdir=TB;
+    node [shape=box, style=filled, fontsize=10];
+    edge [fontsize=9];
+
+    // External Systems (Context)
+    subgraph cluster_context {
+        label="Context: W14B Write Side Envelope Placement Port Binding";
+        style=filled;
+        color=lightgray;
+
+        W14A_Adapter [label="W14A Log Level API\nEnvelope Plugin Adapter", fillcolor=lightblue];
+        Bridge_Core [label="W10 Bridge Core", fillcolor=lightgreen];
+        W05_Obligations [label="W05 Port & PluginAdapter\nObligation Traits", fillcolor=lightyellow];
+    }
+
+    // Container Level
+    subgraph cluster_containers {
+        label="Containers: W14B Concrete Binding System";
+        style=filled;
+        color=lightcyan;
+
+        Port_Binding [label="TWriteSideEnvelopePlacementPortBinding\n(Aggregate Include)", fillcolor=orange];
+        Port_Implementation [label="TWriteSideEnvelopePlacementPort\n(CRTP Port Implementation)", fillcolor=orange];
+        Port_Factory [label="TWriteSideEnvelopePlacementPortFactory\n(Port Construction)", fillcolor=orange];
+        Adapter_Binding [label="TLogLevelAPIEnvelopePluginAdapterBinding\n(Aggregate Include - W14A)", fillcolor=lightblue];
+        Adapter_Implementation [label="TLogLevelAPIEnvelopePluginAdapter\n(CRTP Adapter Implementation - W14A)", fillcolor=lightblue];
+        Adapter_Factory [label="TLogLevelAPIEnvelopePluginAdapterFactory\n(Adapter Construction - W14A)", fillcolor=lightblue];
+    }
+
+    // Component Level
+    subgraph cluster_components {
+        label="Components: Port & Adapter Implementation Details";
+        style=filled;
+        color=lavender;
+
+        Port_Readiness [label="readiness()\nValidate config, payload, destination"];
+        Port_Admission [label="admit()\nAccept/Reject/Defer placement"];
+        Port_Handle [label="placement_handle()\nProduce opaque handle"];
+        Port_Signal [label="receive_load_signal()\nProcess completion signals"];
+        Port_NextDest [label="next_destination()\nHandle next destination requests"];
+
+        Adapter_Readiness [label="readiness()\nCheck descriptor validity"];
+        Adapter_Request [label="prepare_placement_request()\nCreate placement request"];
+        Adapter_Handle [label="accept_placement_handle()\nAccept opaque handle"];
+        Adapter_Signal [label="emit_load_signal()\nEmit load completion"];
+        Adapter_NextDest [label="next_destination_request()\nRequest next destination"];
+    }
+
+    // W01 Carrier Components
+    subgraph cluster_carriers {
+        label="W01 Bridge Carriers (Primitive Foundation)";
+        style=filled;
+        color=lightgreen;
+
+        CorrelationToken [label="TCorrelationToken\nRequest correlation"];
+        PlacementRequest [label="TPlacementRequest\nPlacement parameters"];
+        ReadinessView [label="TReadinessView\nCapacity & readiness"];
+        AdmissionResult [label="TAdmissionResult\nAdmission outcome"];
+        PlacementHandle [label="TPlacementHandle\nOpaque placement reference"];
+        LoadSignal [label="TLoadSignal\nLoad progress signal"];
+        NextDestRequest [label="TNextDestinationRequest\nFuture destination request"];
+    }
+
+    // Relationships
+    W14A_Adapter -> Port_Binding [label="integrates with", style=dashed];
+    Bridge_Core -> Port_Binding [label="orchestrates", style=dashed];
+    W05_Obligations -> Port_Implementation [label="CRTP compliance"];
+
+    Port_Binding -> Port_Implementation [label="aggregates"];
+    Port_Binding -> Port_Factory [label="aggregates"];
+    Adapter_Binding -> Adapter_Implementation [label="aggregates"];
+    Adapter_Binding -> Adapter_Factory [label="aggregates"];
+
+    Port_Factory -> Port_Implementation [label="creates"];
+    Adapter_Factory -> Adapter_Implementation [label="creates"];
+
+    Port_Implementation -> Port_Readiness [label="implements"];
+    Port_Implementation -> Port_Admission [label="implements"];
+    Port_Implementation -> Port_Handle [label="implements"];
+    Port_Implementation -> Port_Signal [label="implements"];
+    Port_Implementation -> Port_NextDest [label="implements"];
+
+    Adapter_Implementation -> Adapter_Readiness [label="implements"];
+    Adapter_Implementation -> Adapter_Request [label="implements"];
+    Adapter_Implementation -> Adapter_Handle [label="implements"];
+    Adapter_Implementation -> Adapter_Signal [label="implements"];
+    Adapter_Implementation -> Adapter_NextDest [label="implements"];
+
+    // Carrier usage
+    Port_Readiness -> ReadinessView [label="returns"];
+    Port_Admission -> AdmissionResult [label="returns"];
+    Port_Handle -> PlacementHandle [label="returns"];
+    Port_Signal -> CorrelationToken [label="uses"];
+    Port_NextDest -> CorrelationToken [label="uses"];
+
+    Adapter_Request -> PlacementRequest [label="returns"];
+    Adapter_Readiness -> ReadinessView [label="returns"];
+    Adapter_Handle -> CorrelationToken [label="validates"];
+    Adapter_Signal -> LoadSignal [label="returns"];
+    Adapter_NextDest -> NextDestRequest [label="returns"];
+
+    // Integration flow
+    Adapter_Request -> Port_Readiness [label="requests readiness"];
+    Port_Readiness -> Port_Admission [label="leads to admission"];
+    Port_Admission -> Port_Handle [label="produces handle"];
+    Port_Handle -> Adapter_Handle [label="passed to adapter"];
+    Adapter_Handle -> Adapter_Signal [label="enables signal"];
+    Adapter_Signal -> Port_Signal [label="sent to port"];
+    Port_Signal -> Adapter_NextDest [label="may trigger"];
+    Adapter_NextDest -> Port_NextDest [label="requests next"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\w14b_c4_diagram.dot

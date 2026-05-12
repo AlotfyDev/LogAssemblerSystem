@@ -1,0 +1,33 @@
+digraph TBridgeResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    HandleAcceptanceResult [label="Handle Acceptance Result:\n- adapter.accept_placement_handle() returns TBridgeResult\n- indicates success/failure of handle acceptance\n- correlation token included for tracking"];
+
+    LoadSignalResult [label="Load Signal Result:\n- port.receive_load_signal() returns TBridgeResult\n- indicates success/failure of load signal reception\n- correlation token matches original request"];
+
+    NextDestinationResult [label="Next Destination Result:\n- port.next_destination() returns TBridgeResult\n- indicates success/failure of destination processing\n- correlation token matches request"];
+
+    SuccessValidation [label="Success Validation:\n- result.succeeded() called for each operation\n- validates carrier exchange operations completed successfully\n- failure returns early with specific operation failure note"];
+
+    ReportStorage [label="Report Storage:\n- bridge results stored in TFirstIntegrationSkeletonReport\n- adapter_handle_result, load_signal_result, next_destination_result\n- provides detailed operation results for debugging"];
+
+    HandleAcceptanceResult -> SuccessValidation [label="handle acceptance"];
+    LoadSignalResult -> SuccessValidation [label="load signal"];
+    NextDestinationResult -> SuccessValidation [label="next destination"];
+    SuccessValidation -> ReportStorage [label="succeeded"];
+    SuccessValidation -> End [label="failed"];
+
+    End [label="Bridge Operation Failed", shape=ellipse, fillcolor=lightcoral];
+
+    HandleAcceptanceResult [fillcolor=lightblue];
+    LoadSignalResult [fillcolor=lightyellow];
+    NextDestinationResult [fillcolor=lightsalmon];
+    SuccessValidation [fillcolor=lightgreen];
+    ReportStorage [fillcolor=lightcyan];
+
+    label="TBridgeResult Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBridgeResult_behavioral_diagram.dot

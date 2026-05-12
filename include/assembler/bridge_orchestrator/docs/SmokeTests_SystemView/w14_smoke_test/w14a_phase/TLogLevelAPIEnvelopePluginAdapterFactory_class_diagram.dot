@@ -1,0 +1,32 @@
+digraph TLogLevelAPIEnvelopePluginAdapterFactory_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main factory struct
+    TLogLevelAPIEnvelopePluginAdapterFactory [label="{TLogLevelAPIEnvelopePluginAdapterFactory\nFactory for adapter creation|+ from_descriptor(TLogLevelEnvelopeDescriptor, TLogLevelAPIEnvelopePluginAdapterConfig) static constexpr -> TLogLevelAPIEnvelopePluginAdapter\n+ from_fields(TCorrelationToken, string_view, uint64_t, TLogLevelAPIEnvelopePluginAdapterConfig) static constexpr -> TLogLevelAPIEnvelopePluginAdapter}"];
+
+    // Dependencies
+    TLogLevelEnvelopeDescriptor [label="{TLogLevelEnvelopeDescriptor\nEnvelope descriptor carrier}"];
+
+    TLogLevelAPIEnvelopePluginAdapterConfig [label="{TLogLevelAPIEnvelopePluginAdapterConfig\nAdapter configuration}"];
+
+    TCorrelationToken [label="{TCorrelationToken\nCorrelation token}", fillcolor=lightyellow];
+
+    TLogLevelAPIEnvelopePluginAdapter [label="{TLogLevelAPIEnvelopePluginAdapter\nCreated adapter}"];
+
+    // Relationships
+    TLogLevelAPIEnvelopePluginAdapterFactory -> TLogLevelEnvelopeDescriptor [label="creates from"];
+    TLogLevelAPIEnvelopePluginAdapterFactory -> TLogLevelAPIEnvelopePluginAdapterConfig [label="uses"];
+    TLogLevelAPIEnvelopePluginAdapterFactory -> TCorrelationToken [label="uses"];
+    TLogLevelAPIEnvelopePluginAdapterFactory -> TLogLevelAPIEnvelopePluginAdapter [label="creates"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        factory_class [label="Factory Class", fillcolor=lightblue];
+        dependency [label="Dependency"];
+        created_object [label="Created Object"];
+        reused_dep [label="Reused Component", fillcolor=lightyellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLogLevelAPIEnvelopePluginAdapterFactory_class_diagram.dot

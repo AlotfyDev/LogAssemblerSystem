@@ -1,0 +1,33 @@
+digraph TPluginAdapterView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=white];
+
+    // Key operations
+    create_view [label="make(uint64_t, TParticipantView, TPluginAdapterObligationProfile, string_view, TCorrelationToken)\nCreate adapter view with validation", fillcolor=white];
+
+    validate_view [label="is_valid()\nCheck valid && adapter_id != 0 && participant.is_valid() && profile.is_valid()", fillcolor=white];
+
+    check_primary_flow [label="supports_primary_placement_flow()\nCheck is_valid() && profile.supports_primary_placement_flow()", fillcolor=white];
+
+    create_invalid [label="invalid()\nReturn invalid adapter view", fillcolor=white];
+
+    // W07 usage
+    surface_pair_creation [label="Used in TObligationSurfacePair::make()\nas plugin_adapter parameter", fillcolor=lightgreen];
+
+    binding_validation [label="Adapter view validity checked\nduring binding proposal and compatibility evaluation", fillcolor=lightcyan];
+
+    // Flow
+    create_view -> validate_view [label="enables"];
+    create_view -> check_primary_flow [label="enables"];
+
+    create_view -> surface_pair_creation [label="used in"];
+    validate_view -> binding_validation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="View Creation", fillcolor=white];
+        Surface [label="Surface Pair Usage", fillcolor=lightgreen];
+        Validation [label="Validation Usage", fillcolor=lightcyan];
+    }
+}

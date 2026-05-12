@@ -1,0 +1,46 @@
+digraph TBindingRegistry_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TBindingRegistry Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateRegistry [label="Create Binding Registry\nTBindingRegistry<4> bindings{};\nUses TBoundedRegistry internally", fillcolor=yellow]
+
+    ValidateRegistry [label="Validate Registry\nbindings.is_valid()\nDelegates to internal TBoundedRegistry\nReturns true", fillcolor=lightgreen]
+
+    CreateBinding [label="Create Binding Component\nTBinding binding = make_binding(binding_id, channel, ...)", fillcolor=yellow]
+
+    RegisterBinding [label="Register Binding\nbindings.register_binding(binding)\nCalls registry.register_value(binding_id, binding, name)\nReturns true", fillcolor=orange]
+
+    LookupBinding [label="Lookup Binding\nbindings.contains(binding.binding_id)\nReturns true (binding found)", fillcolor=lightcyan]
+
+    FindBinding [label="Find Binding Entry\nbindings.find(binding.binding_id)\nReturns pointer to TRegistryEntry\nValidates entry contents", fillcolor=lightcyan]
+
+    GenerateSnapshot [label="Generate Snapshot\nbindings.snapshot()\nDelegates to internal registry snapshot\nReturns statistics", fillcolor=purple]
+
+    End [label="Binding registry operations\ncompleted using TBoundedRegistry", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateRegistry
+    CreateRegistry -> ValidateRegistry
+    ValidateRegistry -> CreateBinding
+    CreateBinding -> RegisterBinding
+    RegisterBinding -> LookupBinding
+    LookupBinding -> FindBinding
+    FindBinding -> GenerateSnapshot
+    GenerateSnapshot -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Registry/Binding Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        RegistrationLegend [label="Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Lookup Operations", shape=rectangle, fillcolor=lightcyan]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

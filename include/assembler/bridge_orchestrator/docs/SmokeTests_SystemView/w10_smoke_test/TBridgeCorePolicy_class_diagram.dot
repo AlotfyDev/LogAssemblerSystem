@@ -1,0 +1,53 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=mistyrose];
+
+    TBridgeCorePolicy [label="{TBridgeCorePolicy |+ check_declaration() : TBridgeCoreIssue [static]\l}"];
+
+    TBridge [label="TBridge::declare() uses", fillcolor=lightcoral];
+    DeclarationValidation [label="Declaration validation\n- Parameter validation\n- Configuration checking\n- Protocol readiness", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCorePolicy [label="validates with"];
+    TBridgeCorePolicy -> DeclarationValidation [label="provides"];
+}
+
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    POLICY_CHECK [label="TBridgeCorePolicy::check_declaration()"];
+    VALIDATE_PARAMS [label="Validate declaration parameters\n- bridge_id validity\n- config validity\n- protocol readiness"];
+    CHECK_CONSTRAINTS [label="Check business constraints\n- Budget limits\n- Protocol compatibility"];
+    RETURN_ISSUE [label="Return TBridgeCoreIssue\n- none() if valid\n- issue if invalid"];
+
+    POLICY_CHECK -> VALIDATE_PARAMS;
+    VALIDATE_PARAMS -> CHECK_CONSTRAINTS;
+    CHECK_CONSTRAINTS -> RETURN_ISSUE;
+}
+
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=mistyrose];
+
+    TBridgeError [label="{TBridgeError | + code : TBridgeErrorCode\l+ message : string_view\l|+ make() : TBridgeError [static]\l}"];
+
+    TBridgeCoreResult [label="Used in TBridgeCoreResult", fillcolor=lightgray];
+    ErrorReporting [label="Structured error reporting\n- Error codes\n- Error messages\n- Error context", shape=note, fillcolor=yellow];
+
+    TBridgeCoreResult -> TBridgeError [label="contains"];
+    TBridgeError -> ErrorReporting [label="provides"];
+}
+
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=mistyrose];
+
+    TBridgeResult [label="{TBridgeResult | + success : bool\l+ error : TBridgeError\l+ consumed_steps : uint32_t\l|+ success() : TBridgeResult [static]\l+ error() : TBridgeResult [static]\l}"];
+
+    TBridge [label="TBridge operations return", fillcolor=lightcoral];
+    OperationResult [label="Operation result reporting\n- Success/failure status\n- Error details\n- Step consumption", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeResult [label="returns"];
+    TBridgeResult -> OperationResult [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCorePolicy_class_diagram.dot

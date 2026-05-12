@@ -1,0 +1,28 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightcyan];
+
+    // Key operations
+    create_from_parts [label="from_parts(uint64_t, uint64_t)\nCreate token from high/low parts", fillcolor=white];
+
+    check_valid [label="is_valid()\nReturn high != 0 || low != 0", fillcolor=white];
+
+    create_invalid [label="invalid()\nReturn zero-initialized token", fillcolor=white];
+
+    // W07 usage
+    correlation_tracking [label="Used throughout W07 smoke test\nfor operation correlation in participants, channels, bindings", fillcolor=palegreen];
+
+    // Flow
+    create_from_parts -> check_valid [label="enables"];
+    create_invalid -> check_valid [label="provides"];
+
+    create_from_parts -> correlation_tracking [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Token Creation", fillcolor=white];
+        Validation [label="Validation", fillcolor=white];
+        Usage [label="W07 Correlation Usage", fillcolor=palegreen];
+    }
+}

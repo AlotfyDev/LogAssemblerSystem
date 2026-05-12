@@ -1,0 +1,28 @@
+flowchart TB
+    L1[Layer 1\nPolicy Object Foundation\nW01-W09]
+    L2[Layer 2\nAssignment & Registry Basics\nW10-W11]
+    L3[Layer 3\nArchitecture Completion\nARCH-001-ARCH-008]
+    L4[Layer 4\nImplementation Foundation\nW12-W17]
+    L5[Layer 5\nRuntime Readiness\nW18-W20]
+    L6[Layer 6\nRealization Runtime Skeleton\nW21-W24]
+    L7[Layer 7\nEcosystem Integration\nW25-W29]
+    L8[Layer 8\nProduction Hardening\nW30-W34]
+
+    L1 --> L2 --> L3 --> L4 --> L5 --> L6 --> L7 --> L8
+
+    L1:::foundation
+    L2:::foundation
+    L3:::architecture
+    L4:::descriptor
+    L5:::readiness
+    L6:::skeleton
+    L7:::integration
+    L8:::hardening
+
+    classDef foundation fill:#e8ffe8,stroke:#383,stroke-width:2px
+    classDef architecture fill:#fff4d6,stroke:#a70,stroke-width:2px
+    classDef descriptor fill:#eaf4ff,stroke:#369,stroke-width:2px
+    classDef readiness fill:#f1eaff,stroke:#639,stroke-width:2px
+    classDef skeleton fill:#f8f8f8,stroke:#666,stroke-dasharray: 5 5
+    classDef integration fill:#e8ffff,stroke:#088,stroke-width:2px
+    classDef hardening fill:#ffe8e8,stroke:#933,stroke-width:2px

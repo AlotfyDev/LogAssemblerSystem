@@ -1,0 +1,40 @@
+digraph TLoadSignal_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TLoadSignal [label="{TLoadSignal|kind : TLoadSignalKind\l correlation : TCorrelationToken\l placement : TPlacementHandle\l bytes_loaded : uint64_t\l note : std::string_view\l|+ completed() : bool\l+ failed() : bool\l+ started(token, handle) : TLoadSignal\l+ completed(token, handle, bytes) : TLoadSignal\l+ failed(token, handle, why) : TLoadSignal\l}"]
+
+    // Enums and dependencies
+    TLoadSignalKind [label="{TLoadSignalKind|unknown\l load_started\l load_completed\l load_failed\l}", shape=record, fillcolor=lightyellow]
+
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=orange]
+
+    TPlacementHandle [label="{TPlacementHandle|value : uint64_t\l correlation : TCorrelationToken\l handle_family : std::string_view\l|+ is_valid() : bool\l+ invalid() : TPlacementHandle\l+ make(opaque_value, token, family) : TPlacementHandle\l}", shape=record, fillcolor=lightgreen]
+
+    // Primitive types
+    uint64_t [label="uint64_t", shape=ellipse, fillcolor=lightgrey, style=invis]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey, style=invis]
+
+    // Relationships
+    TLoadSignal -> TLoadSignalKind [label="uses"]
+    TLoadSignal -> TCorrelationToken [label="contains"]
+    TLoadSignal -> TPlacementHandle [label="contains"]
+    TLoadSignal -> uint64_t [label="uses", style=dashed]
+    TLoadSignal -> std_string_view [label="uses", style=dashed]
+    TPlacementHandle -> TCorrelationToken [label="contains"]
+    TPlacementHandle -> uint64_t [label="uses", style=dashed]
+    TPlacementHandle -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        EnumLegend [label="Enum", shape=record, fillcolor=lightyellow]
+        DepClassLegend [label="Dependency Class", shape=record, fillcolor=lightgreen]
+        CorrTokenLegend [label="Correlation Token", shape=record, fillcolor=orange]
+    }
+}

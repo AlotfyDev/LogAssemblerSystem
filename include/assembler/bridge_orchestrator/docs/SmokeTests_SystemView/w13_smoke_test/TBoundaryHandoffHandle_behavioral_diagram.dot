@@ -1,0 +1,47 @@
+digraph TBoundaryHandoffHandle_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Handle lifecycle
+    Start [label="Handle Lifecycle", shape=ellipse, fillcolor=lightgreen];
+
+    CreateHandle [label="Create Handle", fillcolor=lightyellow];
+
+    MakeHandle [label="TBoundaryHandoffHandle::make(\n    id,              // uint64_t\n    material_kind,   // string_view\n    correlation,     // TCorrelationToken\n    note            // string_view\n)", fillcolor=lavender];
+
+    // Handle usage
+    UseHandle [label="Use Handle", fillcolor=pink];
+
+    AcceptResult [label="Store in accepted result\nTBoundaryHandoffResult::accepted(handle)", fillcolor=lightgreen];
+
+    CompleteHandoff [label="Complete handoff\ncomplete_boundary_handoff(handle)", fillcolor=lightcyan];
+
+    ValidateHandle [label="Validate handle\nif (!handle.is_valid()) return failed", fillcolor=red];
+
+    // Smoke test
+    SmokeTest [label="Smoke Test Usage", fillcolor=lightcyan];
+
+    CreateInAccept [label="auto handle = TBoundaryHandoffHandle::make(\n    next_handle_++,\n    request.target.kind,\n    request.correlation,\n    \"mock_persistence_handoff\"\n);"];
+
+    ReturnAccepted [label="return TBoundaryHandoffResult::accepted(handle);"];
+
+    CompleteCall [label="auto completed = port.complete_boundary_handoff(accepted.handle);"];
+
+    // Flow connections
+    Start -> CreateHandle;
+    CreateHandle -> MakeHandle;
+
+    MakeHandle -> UseHandle;
+
+    UseHandle -> AcceptResult;
+    UseHandle -> CompleteHandoff;
+    CompleteHandoff -> ValidateHandle;
+
+    AcceptResult -> SmokeTest;
+    ValidateHandle -> SmokeTest;
+
+    SmokeTest -> CreateInAccept;
+    CreateInAccept -> ReturnAccepted;
+    ReturnAccepted -> CompleteCall;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffHandle_behavioral_diagram.dot

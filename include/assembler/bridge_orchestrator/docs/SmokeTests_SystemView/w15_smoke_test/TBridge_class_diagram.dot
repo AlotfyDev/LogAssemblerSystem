@@ -1,0 +1,11 @@
+digraph TBridge_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    Bridge [label="{TBridge|+ is_valid() const noexcept -> bool\l+ is_ready() const noexcept -> bool\l+ run_model_to_terminal() -> TBridgeCoreResult\l+ declare() static constexpr -> TBridge\l}", fillcolor=lightsalmon, style=filled];
+
+    label="TBridge Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBridge_class_diagram.dot

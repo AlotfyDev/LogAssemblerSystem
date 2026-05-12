@@ -1,0 +1,43 @@
+digraph TOptionalRegistries_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main header file
+    TOptionalRegistries [label="{TOptionalRegistries.hpp|ASCC_W11_OPTIONAL_REGISTRIES_AVAILABLE : bool\l|+ N/A (header-only aggregate include)\l}"]
+
+    // Included headers
+    TBoundedRegistry_hpp [label="TBoundedRegistry.hpp", shape=note, fillcolor=lightgrey]
+    TRegistryEntry_hpp [label="TRegistryEntry.hpp", shape=note, fillcolor=lightgrey]
+    TRegistryLookupResult_hpp [label="TRegistryLookupResult.hpp", shape=note, fillcolor=lightgrey]
+    TRegistrySnapshot_hpp [label="TRegistrySnapshot.hpp", shape=note, fillcolor=lightgrey]
+    TRegistryEntryStatus_hpp [label="TRegistryEntryStatus.hpp", shape=note, fillcolor=lightgrey]
+    TCommunicationContextRegistrySet_hpp [label="TCommunicationContextRegistrySet.hpp", shape=note, fillcolor=lightgrey]
+    TBindingRegistry_hpp [label="TBindingRegistry.hpp", shape=note, fillcolor=lightgrey]
+    TBridgeProtocolRegistry_hpp [label="TBridgeProtocolRegistry.hpp", shape=note, fillcolor=lightgrey]
+    TBridgeRegistry_hpp [label="TBridgeRegistry.hpp", shape=note, fillcolor=lightgrey]
+    TChannelRegistry_hpp [label="TChannelRegistry.hpp", shape=note, fillcolor=lightgrey]
+    TSessionRegistry_hpp [label="TSessionRegistry.hpp", shape=note, fillcolor=lightgrey]
+
+    // Relationships
+    TOptionalRegistries -> TBoundedRegistry_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TRegistryEntry_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TRegistryLookupResult_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TRegistrySnapshot_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TRegistryEntryStatus_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TCommunicationContextRegistrySet_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TBindingRegistry_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TBridgeProtocolRegistry_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TBridgeRegistry_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TChannelRegistry_hpp [label="includes", style=dashed]
+    TOptionalRegistries -> TSessionRegistry_hpp [label="includes", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        HeaderLegend [label="Header File", shape=record, fillcolor=lightblue]
+        IncludeLegend [label="Included Header", shape=note, fillcolor=lightgrey]
+    }
+}

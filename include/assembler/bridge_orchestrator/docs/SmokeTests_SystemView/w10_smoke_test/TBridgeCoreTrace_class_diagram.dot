@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgray];
+
+    TBridgeCoreTrace [label="{TBridgeCoreTrace | + bridge_id : TBridgeId\l+ status : TBridgeStatus\l+ protocol_trace : TBridgeProtocolTrace\l+ correlation : TCorrelationToken\l+ note : string_view\l|+ make() : TBridgeCoreTrace [static]\l+ is_valid() : bool\l}"];
+
+    TBridge [label="TBridge::trace_current_step()", fillcolor=lightcoral];
+    ExecutionTracing [label="Execution tracing\n- Step-by-step tracking\n- Protocol trace integration\n- Correlation context", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreTrace [label="traces"];
+    TBridgeCoreTrace -> ExecutionTracing [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreTrace_class_diagram.dot

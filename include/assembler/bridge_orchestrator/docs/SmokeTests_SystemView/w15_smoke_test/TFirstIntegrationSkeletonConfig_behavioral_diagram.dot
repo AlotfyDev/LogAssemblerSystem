@@ -1,0 +1,33 @@
+digraph TFirstIntegrationSkeletonConfig_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage
+    DefaultCreation [label="Default Configuration Creation:\n- TFirstIntegrationSkeletonConfig::defaults()\n- creates config with W15-specific IDs (1501-1505)\n- sets envelope_id to 'w15-log-level-envelope'\n- sets channel_name to 'w15_log_level_api_to_write_side_channel'"];
+
+    ValidationCheck [label="Configuration Validation:\n- config.is_valid() called first in skeleton.run()\n- validates all IDs > 0, names not empty\n- returns failure report if validation fails"];
+
+    SkeletonConstruction [label="Skeleton Construction:\n- passed to TFirstIntegrationSkeleton constructor\n- stored as member for model declaration\n- used by TFirstIntegrationSkeletonModelPlan::from_config()"];
+
+    IdDerivation [label="ID Set Derivation:\n- TFirstIntegrationSkeletonIdSet::from_config(config)\n- converts config IDs to typed ID objects\n- used in model declaration helpers"];
+
+    // Flow connections
+    DefaultCreation -> ValidationCheck;
+    ValidationCheck -> SkeletonConstruction [label="valid"];
+    ValidationCheck -> End [label="invalid"];
+    SkeletonConstruction -> IdDerivation;
+
+    End [label="Configuration Invalid - Early Return", shape=ellipse, fillcolor=lightcoral];
+
+    // Styling
+    DefaultCreation [fillcolor=lightblue];
+    ValidationCheck [fillcolor=lightyellow];
+    SkeletonConstruction [fillcolor=lightsalmon];
+    IdDerivation [fillcolor=lightgreen];
+
+    // Title
+    label="TFirstIntegrationSkeletonConfig Usage in W15 Smoke Test";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonConfig_behavioral_diagram.dot

@@ -1,0 +1,14 @@
+digraph TNextDestinationReason_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Enum
+    TNextDestinationReason [label="{TNextDestinationReason\nEnum for destination request reasons|unknown\ncurrent_destination_completed\ncurrent_destination_rejected\ncurrent_destination_saturated\ncontinuous_flow_requested\nretry_requested}"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        enum_type [label="Enum Type", fillcolor=lightyellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TNextDestinationReason_class_diagram.dot

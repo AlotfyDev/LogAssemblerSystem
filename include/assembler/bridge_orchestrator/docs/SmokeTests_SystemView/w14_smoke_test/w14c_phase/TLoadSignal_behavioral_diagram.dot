@@ -1,0 +1,21 @@
+digraph TLoadSignal_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    EmissionCheck [label="emit_load_signal() validation:\n- checks state.has_accepted_placement_handle()\n- returns failed signal if no placement handle\n- proceeds with completion signal if valid"];
+
+    SignalCreation [label="TLoadSignal::completed() creation:\n- correlation: descriptor.correlation\n- placement_handle: state.accepted_placement_handle\n- material_size: descriptor.material_size_hint"];
+
+    StateUpdate [label="State update after emission:\n- state.mark_load_signal_emitted()\n- prevents duplicate load signals\n- tracks load completion"];
+
+    EmissionCheck -> SignalCreation [label="placement handle accepted"];
+    SignalCreation -> StateUpdate;
+
+    EmissionCheck [fillcolor=lightblue];
+    SignalCreation [fillcolor=lightsalmon];
+    StateUpdate [fillcolor=lightgreen];
+
+    label="TLoadSignal Usage in W14C Smoke Test";
+    labelloc=t;
+}

@@ -1,0 +1,23 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    ISSUE_CREATION [label="Create TBridgeCoreIssue"];
+    NONE [label="none()\n- No issue present"];
+    FATAL [label="fatal(status, code, message)\n- Critical error\n- Execution cannot continue"];
+    BLOCK [label="block(status, code, message)\n- Blocking issue\n- Execution blocked"];
+    WARN [label="warn(status, code, message)\n- Warning issue\n- Execution can continue"];
+
+    ISSUE_CREATION -> NONE;
+    ISSUE_CREATION -> FATAL;
+    ISSUE_CREATION -> BLOCK;
+    ISSUE_CREATION -> WARN;
+
+    CHECK_ISSUE [label="Check issue properties\n- is_present()\n- is_fatal()\n- is_blocking()"];
+
+    NONE -> CHECK_ISSUE;
+    FATAL -> CHECK_ISSUE;
+    BLOCK -> CHECK_ISSUE;
+    WARN -> CHECK_ISSUE;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreIssue_behavioral_diagram.dot

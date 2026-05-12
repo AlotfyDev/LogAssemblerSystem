@@ -1,0 +1,57 @@
+digraph TPortObligationTraits_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontsize=10];
+    edge [fontsize=9];
+
+    // Main traits class
+    PortObligationTraits [label="{TPortObligationTraits<T>\n(CRTP Static Interface Checking)|+ value : bool\l+ readiness_exists : bool\l+ admit_exists : bool\l+ placement_handle_exists : bool\l+ all_obligations_satisfied : bool\l}", fillcolor=lightyellow];
+
+    // Template parameter
+    PortType [label="{T\n(Port Type Parameter)|Must provide:\l• readiness(TPlacementRequest) -> TReadinessView\l• admit(TPlacementRequest) -> TAdmissionResult\l• placement_handle(TPlacementRequest) -> TPlacementHandle\l}", fillcolor=lightcyan];
+
+    // SFINAE helpers
+    ReadinessExists [label="{readiness_exists\n(SFINAE Check)|Checks if T::readiness(const TPlacementRequest&) exists\lReturns: bool\l}", fillcolor=lavender];
+
+    AdmitExists [label="{admit_exists\n(SFINAE Check)|Checks if T::admit(const TPlacementRequest&) exists\lReturns: bool\l}", fillcolor=lavender];
+
+    HandleExists [label="{placement_handle_exists\n(SFINAE Check)|Checks if T::placement_handle(const TPlacementRequest&) exists\lReturns: bool\l}", fillcolor=lavender];
+
+    AllSatisfied [label="{all_obligations_satisfied\n(Composite Check)|readiness_exists && admit_exists && placement_handle_exists\lReturns: bool\l}", fillcolor=lavender];
+
+    // Required signatures
+    ReadinessSignature [label="{readiness signature\n(Required)|TReadinessView readiness(const TPlacementRequest&)\l• const qualified\l• noexcept recommended\l• validates and returns readiness\l}", fillcolor=lightgreen];
+
+    AdmitSignature [label="{admit signature\n(Required)|TAdmissionResult admit(const TPlacementRequest&)\l• const qualified\l• noexcept recommended\l• accepts/rejects/defers admission\l}", fillcolor=lightgreen];
+
+    HandleSignature [label="{placement_handle signature\n(Required)|TPlacementHandle placement_handle(const TPlacementRequest&)\l• const qualified\l• noexcept recommended\l• produces opaque handles\l}", fillcolor=lightgreen];
+
+    // Carrier types
+    PlacementRequest [label="{TPlacementRequest\n(Input Type)|• correlation : TCorrelationToken\l• payload_kind : string_view\l• payload_size_hint : uint64_t\l}", fillcolor=lightcyan];
+
+    ReadinessView [label="{TReadinessView\n(Readiness Output)|• state : TReadinessState\l• correlation : TCorrelationToken\l• size_hint : uint64_t\l}", fillcolor=lightcyan];
+
+    AdmissionResult [label="{TAdmissionResult\n(Admission Output)|• status : TAdmissionStatus\l• correlation : TCorrelationToken\l• reason : string_view\l}", fillcolor=lightcyan];
+
+    PlacementHandle [label="{TPlacementHandle\n(Handle Output)|• value : uint64_t\l• correlation : TCorrelationToken\l• handle_family : string_view\l}", fillcolor=lightcyan];
+
+    // Relationships
+    PortObligationTraits -> PortType [label="checks", arrowhead=normal];
+    PortObligationTraits -> ReadinessExists [label="contains"];
+    PortObligationTraits -> AdmitExists [label="contains"];
+    PortObligationTraits -> HandleExists [label="contains"];
+    PortObligationTraits -> AllSatisfied [label="contains"];
+
+    ReadinessExists -> ReadinessSignature [label="validates"];
+    AdmitExists -> AdmitSignature [label="validates"];
+    HandleExists -> HandleSignature [label="validates"];
+
+    ReadinessSignature -> PlacementRequest [label="accepts"];
+    ReadinessSignature -> ReadinessView [label="returns"];
+
+    AdmitSignature -> PlacementRequest [label="accepts"];
+    AdmitSignature -> AdmissionResult [label="returns"];
+
+    HandleSignature -> PlacementRequest [label="accepts"];
+    HandleSignature -> PlacementHandle [label="returns"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TPortObligationTraits_class_diagram.dot

@@ -1,0 +1,88 @@
+digraph W14C_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Start
+    Start [label="Start W14C Smoke Test", shape=ellipse, fillcolor=lightgreen];
+
+    // Factory Creation Phase
+    FactoryCreate [label="TWriteSideRegistryDeliveryPluginAdapterFactory::from_fields()\n- correlation_token\n- material_id\n- material_size_hint\n- ordered_delivery flag"];
+    MaterialDescriptor [label="TWriteSideRegistryDeliveryMaterialDescriptor::default_log_level_envelope()\n- validates correlation token\n- sets material kind to 'log_level_envelope'\n- sets registry boundary descriptor"];
+    AdapterConstruct [label="TWriteSideRegistryDeliveryPluginAdapter constructor\n- stores descriptor\n- stores config (defaults)\n- initializes empty state"];
+
+    // View and Readiness Phase
+    ViewCall [label="adapter.view()\n- calls TWriteSideRegistryDeliveryPluginAdapterViewBuilder::view()\n- validates config\n- builds participant and adapter views\n- uses delivery_content_provider obligation profile"];
+    ReadinessCall [label="adapter.readiness()\n- calls TWriteSideRegistryDeliveryReadinessPolicy::readiness()\n- validates descriptor and config\n- checks boundary handoff support\n- returns ready/not_ready/deferred"];
+
+    // Placement Request Phase
+    PlacementRequestPrep [label="adapter.prepare_placement_request()\n- validates descriptor\n- creates TPlacementRequest with:\n  • correlation token\n  • material kind\n  • size hint\n  • ordered delivery flag\n  • destination family 'registry_delivery'"];
+    PlacementHandleAccept [label="adapter.accept_placement_handle(handle)\n- validates handle correlation matches\n- stores handle in state\n- returns success/failure"];
+
+    // Load Signal Phase
+    LoadSignalEmit [label="adapter.emit_load_signal()\n- checks placement handle accepted\n- creates TLoadSignal::completed()\n- marks load signal emitted in state\n- returns signal"];
+
+    // Next Destination Phase
+    NextDestinationRequest [label="adapter.next_destination_request()\n- generates TNextDestinationRequest\n- includes accepted placement handle\n- sets reason: current_destination_completed\n- provides completion context"];
+
+    // Boundary Handoff Phase
+    BoundaryHandoffPrep [label="adapter.prepare_boundary_handoff_request()\n- validates descriptor\n- creates TBoundaryHandoffRequest with:\n  • correlation token\n  • registry boundary\n  • material kind and size\n  • ordered delivery flag"];
+
+    BoundaryHandoffAccept [label="adapter.accept_boundary_handoff_result(result)\n- if accepted: stores boundary handle in state\n- if completed: marks boundary handoff completed\n- if deferred: returns defer result\n- if failed: returns failure with error"];
+
+    // State Management
+    StateReset [label="adapter.reset_state()\n- clears accepted placement handle\n- resets load signal flag\n- clears boundary handoff handle\n- resets completion flags"];
+
+    // End
+    End [label="End W14C Smoke Test", shape=ellipse, fillcolor=lightcoral];
+
+    // Flow connections
+    Start -> FactoryCreate;
+    FactoryCreate -> MaterialDescriptor;
+    MaterialDescriptor -> AdapterConstruct;
+
+    AdapterConstruct -> ViewCall;
+    ViewCall -> ReadinessCall;
+
+    ReadinessCall -> PlacementRequestPrep [label="ready"];
+    ReadinessCall -> End [label="not ready"];
+
+    PlacementRequestPrep -> PlacementHandleAccept;
+    PlacementHandleAccept -> LoadSignalEmit [label="success"];
+    PlacementHandleAccept -> End [label="failure"];
+
+    LoadSignalEmit -> NextDestinationRequest;
+    NextDestinationRequest -> BoundaryHandoffPrep;
+
+    BoundaryHandoffPrep -> BoundaryHandoffAccept;
+    BoundaryHandoffAccept -> StateReset [label="accepted/completed"];
+    BoundaryHandoffAccept -> End [label="failed"];
+
+    StateReset -> End;
+
+    // Layout hints for better organization
+    {rank=same; FactoryCreate; MaterialDescriptor; AdapterConstruct;}
+    {rank=same; ViewCall; ReadinessCall;}
+    {rank=same; PlacementRequestPrep; PlacementHandleAccept;}
+    {rank=same; LoadSignalEmit; NextDestinationRequest;}
+    {rank=same; BoundaryHandoffPrep; BoundaryHandoffAccept;}
+    {rank=same; StateReset;}
+
+    // Color coding for phases
+    FactoryCreate [fillcolor=lightblue];
+    MaterialDescriptor [fillcolor=lightblue];
+    AdapterConstruct [fillcolor=lightblue];
+
+    ViewCall [fillcolor=lightyellow];
+    ReadinessCall [fillcolor=lightyellow];
+
+    PlacementRequestPrep [fillcolor=lightgreen];
+    PlacementHandleAccept [fillcolor=lightgreen];
+    LoadSignalEmit [fillcolor=lightgreen];
+    NextDestinationRequest [fillcolor=lightgreen];
+
+    BoundaryHandoffPrep [fillcolor=lightsalmon];
+    BoundaryHandoffAccept [fillcolor=lightsalmon];
+
+    StateReset [fillcolor=lightgray];
+}

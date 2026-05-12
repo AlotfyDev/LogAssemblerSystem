@@ -1,0 +1,34 @@
+digraph TChannelBindingPolicy_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Key operations
+    create_strict_policy [label="strict_static_one_to_one(TChannelVisibility, string_view)\nCreate strict 1:1 static binding policy", fillcolor=white];
+
+    validate_policy [label="is_valid()\nCheck all enums != unknown && max_active_bindings > 0", fillcolor=white];
+
+    check_static [label="is_static()\nCheck lifecycle == static_binding", fillcolor=white];
+
+    check_strict [label="is_strict_one_to_one()\nCheck binding_mode == strict_one_to_one && max_active_bindings == 1", fillcolor=white];
+
+    check_compatible [label="is_compatible_with(TChannelProfile)\nCheck policy is compatible with channel profile constraints", fillcolor=white];
+
+    // W07 usage
+    channel_declaration [label="Used in TChannel::declare()\nto specify strict binding constraints for compatibility evaluation", fillcolor=palegreen];
+
+    // Flow
+    create_strict_policy -> validate_policy [label="enables"];
+    create_strict_policy -> check_static [label="enables"];
+    create_strict_policy -> check_strict [label="enables"];
+    create_strict_policy -> check_compatible [label="enables"];
+
+    create_strict_policy -> channel_declaration [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Policy Creation", fillcolor=white];
+        Validation [label="Validation Check", fillcolor=white];
+        Usage [label="W07 Channel Usage", fillcolor=palegreen];
+    }
+}

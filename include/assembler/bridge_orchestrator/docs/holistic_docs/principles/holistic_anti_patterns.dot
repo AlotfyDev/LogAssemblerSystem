@@ -1,0 +1,102 @@
+digraph BridgeOrchestratorAntiPatterns {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fillcolor=lightcoral, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    subgraph cluster_global_state {
+        label="❌ Global State Dependencies";
+        bgcolor=mistyrose;
+
+        GlobalVariables [label="Global Variables\nShared Mutable State"];
+        SingletonPattern [label="Singleton Pattern\nHidden Dependencies"];
+        StaticState [label="Static State\nThread-Unsafe Access"];
+
+        GlobalVariables -> SingletonPattern -> StaticState [color=red];
+    }
+
+    subgraph cluster_tight_coupling {
+        label="❌ Tight Coupling Between Layers";
+        bgcolor=lightsalmon;
+
+        DirectDependencies [label="Direct Layer Dependencies\nBypassing Abstractions"];
+        CircularReferences [label="Circular References\nMutual Dependencies"];
+        InterfaceViolation [label="Interface Violations\nLayer Boundary Breaches"];
+
+        DirectDependencies -> CircularReferences -> InterfaceViolation [color=red];
+    }
+
+    subgraph cluster_complex_inheritance {
+        label="❌ Complex Inheritance Hierarchies";
+        bgcolor=lightyellow;
+
+        DeepInheritance [label="Deep Inheritance Trees\nFragile Base Class Problem"];
+        MultipleInheritance [label="Multiple Inheritance\nDiamond Problem"];
+        TemplateMetaprogramming [label="Complex Templates\nCompile-Time Complexity"];
+
+        DeepInheritance -> MultipleInheritance -> TemplateMetaprogramming [color=red];
+    }
+
+    subgraph cluster_runtime_checking {
+        label="❌ Runtime Type Checking";
+        bgcolor=lightcyan;
+
+        DynamicCasting [label="Dynamic Casting\nType Safety Violations"];
+        StringComparisons [label="String-Based Type Checks\nError-Prone Comparisons"];
+        Reflection [label="Runtime Reflection\nPerformance Overhead"];
+
+        DynamicCasting -> StringComparisons -> Reflection [color=red];
+    }
+
+    subgraph cluster_resource_leaks {
+        label="❌ Resource Leaks";
+        bgcolor=lightgreen;
+
+        ManualMemory [label="Manual Memory Management\nRaw Pointers"];
+        UnhandledExceptions [label="Unhandled Exceptions\nResource Cleanup Failure"];
+        CyclicReferences [label="Cyclic References\nSmart Pointer Issues"];
+
+        ManualMemory -> UnhandledExceptions -> CyclicReferences [color=red];
+    }
+
+    // Show how Bridge Orchestrator avoids these
+    subgraph cluster_avoidance_patterns {
+        label="✅ Avoidance Through Architecture";
+        bgcolor=lightblue;
+
+        LayeredDesign [label="Layered Design\nClear Boundaries"];
+        RAII [label="RAII Pattern\nAutomatic Cleanup"];
+        StaticPolymorphism [label="Static Polymorphism\nCompile-Time Safety"];
+        RegistryPattern [label="Registry Pattern\nControlled Access"];
+
+        LayeredDesign -> {RAII StaticPolymorphism RegistryPattern};
+    }
+
+    // Connect anti-patterns to their avoidance
+    GlobalVariables -> LayeredDesign [style=dotted, color=blue, label="avoided by"];
+    TightCoupling -> LayeredDesign [style=dotted, color=blue];
+    ComplexInheritance -> StaticPolymorphism [style=dotted, color=blue];
+    RuntimeChecking -> StaticPolymorphism [style=dotted, color=blue];
+    ResourceLeaks -> RAII [style=dotted, color=blue];
+
+    // Show consequences of anti-patterns
+    GlobalVariables -> ThreadSafetyIssues [label="causes", color=red];
+    TightCoupling -> MaintenanceNightmare [label="leads to", color=red];
+    ComplexInheritance -> CompileErrors [label="produces", color=red];
+    RuntimeChecking -> RuntimeCrashes [label="risks", color=red];
+    ResourceLeaks -> MemoryLeaks [label="causes", color=red];
+
+    ThreadSafetyIssues [shape=ellipse, fillcolor=red, label="Thread Safety Issues"];
+    MaintenanceNightmare [shape=ellipse, fillcolor=red, label="Maintenance Nightmare"];
+    CompileErrors [shape=ellipse, fillcolor=red, label="Compile-Time Errors"];
+    RuntimeCrashes [shape=ellipse, fillcolor=red, label="Runtime Crashes"];
+    MemoryLeaks [shape=ellipse, fillcolor=red, label="Memory Leaks"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+        SolidArrow [label="Causes/Leads To"];
+        DottedArrow [label="Avoided By"];
+        SolidArrow -> DottedArrow [style=dotted];
+    }
+}

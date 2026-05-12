@@ -1,0 +1,19 @@
+digraph TPort_Behavioral {
+  rankdir=TB;
+  node [shape=box];
+
+  PortInstance [label="DummyPort port"];
+  Readiness [label="port.readiness(request)"];
+  Admit [label="port.admit(request)"];
+  Handle [label="port.placement_handle(request)"];
+  ReceiveSignal [label="port.receive_load_signal(signal)"];
+  NextDest [label="port.next_destination(request)"];
+
+  PortInstance -> Readiness;
+  Readiness -> Admit;
+  Admit -> Handle;
+  Handle -> ReceiveSignal;
+  ReceiveSignal -> NextDest;
+
+  Legend [shape=none, label="TPort methods called in primary placement flow"];
+}

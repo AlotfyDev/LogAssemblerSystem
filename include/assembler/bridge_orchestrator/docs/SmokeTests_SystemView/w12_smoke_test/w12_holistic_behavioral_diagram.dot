@@ -1,0 +1,103 @@
+digraph W12_Holistic_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Start
+    Start [label="Start\nW12 Diagnostics Smoke Test", shape=ellipse, fillcolor=green]
+
+    // Setup Phase
+    SetupCorrelation [label="Setup Correlation Token\nTCorrelationToken::from_parts(12u, 1u)", fillcolor=yellow]
+    SetupDiagnosticsAvailable [label="Verify Diagnostics Available\nASCC_W12_DIAGNOSTICS_AVAILABLE == true", fillcolor=lightgreen]
+
+    // Bridge Result Diagnostics Creation
+    CreateCompletedBridge [label="Create Completed Bridge Result\nTBridgeCoreResult::completed(TBridgeId::from_value(1201u), 8u, token, \"completed message\")", fillcolor=yellow]
+    BuildBridgeRecord [label="Build Bridge Diagnostic Record\nTBridgeDiagnosticBuilder::from_result(TDiagnosticId::from_value(1u), completed_bridge)\nCreates info severity record", fillcolor=orange]
+    ValidateBridgeRecord [label="Validate Bridge Record\nrecord.is_valid() && !record.failed() && record.severity == info", fillcolor=lightgreen]
+
+    // Exhausted Bridge Result Diagnostics
+    CreateExhaustedBridge [label="Create Exhausted Bridge Result\nTBridgeCoreResult::exhausted_budget(TBridgeId::from_value(1202u), 2u, token)", fillcolor=yellow]
+    BuildExhaustedRecord [label="Build Exhausted Diagnostic Record\nTBridgeDiagnosticBuilder::from_result(TDiagnosticId::from_value(2u), exhausted_bridge)\nCreates warning severity record", fillcolor=orange]
+    ValidateExhaustedRecord [label="Validate Exhausted Record\nrecord.is_valid() && record.severity == warning", fillcolor=lightgreen]
+
+    // Registry Snapshot Diagnostics
+    CreateRegistrySnapshot [label="Create Registry Snapshot\nTRegistrySnapshot::make(\"w12_registry_snapshot\", 1u, 4u, 0u, token)", fillcolor=yellow]
+    BuildRegistryRecord [label="Build Registry Diagnostic Record\nTRegistryDiagnosticBuilder::from_snapshot(TDiagnosticId::from_value(3u), registry_snapshot)", fillcolor=orange]
+    ValidateRegistryRecord [label="Validate Registry Record\nrecord.is_valid()", fillcolor=lightgreen]
+
+    // Diagnostic Collector Creation
+    CreateCollector [label="Create Diagnostic Collector\nTDiagnosticCollector<8>::make(\"w12_smoke_collector\", token)", fillcolor=yellow]
+    ValidateCollector [label="Validate Collector\ncollector.is_valid()", fillcolor=lightgreen]
+
+    // Record Collection
+    AddBridgeRecord [label="Add Bridge Record\ncollector.add(bridge_record)", fillcolor=cyan]
+    AddExhaustedRecord [label="Add Exhausted Record\ncollector.add(exhausted_record)", fillcolor=cyan]
+    AddRegistryRecord [label="Add Registry Record\ncollector.add(registry_record)", fillcolor=cyan]
+
+    // First Snapshot Generation
+    GenerateFirstSnapshot [label="Generate First Snapshot\ncollector.snapshot()\ncount=3, failure_count=0, highest_severity=warning", fillcolor=purple]
+    ValidateFirstSnapshot [label="Validate First Snapshot\nsnapshot.is_valid() && snapshot.count == 3 && snapshot.failure_count == 0", fillcolor=lightgreen]
+
+    // Explicit Error Record Creation
+    CreateExplicitError [label="Create Explicit Error Record\nTDiagnosticRecord::error(TDiagnosticId::from_value(4u), protocol, \"protocol.synthetic_error\", \"synthetic_protocol\", \"error message\", token)", fillcolor=yellow]
+    AddErrorWithPolicy [label="Add Error with Policy Filter\ncollector.add_if_included(explicit_error, TDiagnosticPolicy::warnings_and_above())\nAdds error record due to policy", fillcolor=cyan]
+
+    // Second Snapshot Generation
+    GenerateSecondSnapshot [label="Generate Second Snapshot\ncollector.snapshot()\ncount=4, failure_count=1, highest_severity=error", fillcolor=purple]
+    ValidateSecondSnapshot [label="Validate Second Snapshot\nsnapshot.has_failures() && snapshot.failure_count == 1 && snapshot.highest_severity == error", fillcolor=lightgreen]
+
+    // Diagnostic View Creation
+    CreateDiagnosticView [label="Create Diagnostic View\nTDiagnosticView::from_record(explicit_error)", fillcolor=yellow]
+    ValidateDiagnosticView [label="Validate Diagnostic View\nview.is_valid() && view.failed()", fillcolor=lightgreen]
+
+    // End
+    End [label="End\nAll diagnostics operations completed successfully", shape=ellipse, fillcolor=red]
+
+    // Flow connections
+    Start -> SetupCorrelation
+    SetupCorrelation -> SetupDiagnosticsAvailable
+    SetupDiagnosticsAvailable -> CreateCompletedBridge
+
+    CreateCompletedBridge -> BuildBridgeRecord
+    BuildBridgeRecord -> ValidateBridgeRecord
+    ValidateBridgeRecord -> CreateExhaustedBridge
+
+    CreateExhaustedBridge -> BuildExhaustedRecord
+    BuildExhaustedRecord -> ValidateExhaustedRecord
+    ValidateExhaustedRecord -> CreateRegistrySnapshot
+
+    CreateRegistrySnapshot -> BuildRegistryRecord
+    BuildRegistryRecord -> ValidateRegistryRecord
+    ValidateRegistryRecord -> CreateCollector
+
+    CreateCollector -> ValidateCollector
+    ValidateCollector -> AddBridgeRecord
+
+    AddBridgeRecord -> AddExhaustedRecord
+    AddExhaustedRecord -> AddRegistryRecord
+    AddRegistryRecord -> GenerateFirstSnapshot
+
+    GenerateFirstSnapshot -> ValidateFirstSnapshot
+    ValidateFirstSnapshot -> CreateExplicitError
+
+    CreateExplicitError -> AddErrorWithPolicy
+    AddErrorWithPolicy -> GenerateSecondSnapshot
+
+    GenerateSecondSnapshot -> ValidateSecondSnapshot
+    ValidateSecondSnapshot -> CreateDiagnosticView
+
+    CreateDiagnosticView -> ValidateDiagnosticView
+    ValidateDiagnosticView -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        SetupLegend [label="Setup/Validation", shape=rectangle, fillcolor=yellow]
+        CreationLegend [label="Component Creation", shape=rectangle, fillcolor=lightgreen]
+        BuilderLegend [label="Diagnostic Building", shape=rectangle, fillcolor=orange]
+        CollectionLegend [label="Record Collection", shape=rectangle, fillcolor=cyan]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

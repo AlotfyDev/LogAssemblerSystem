@@ -1,0 +1,53 @@
+digraph TIntegrationBoundaryReport_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    Report [label="{TIntegrationBoundaryReport\n(Value Type)|• boundary : TIntegrationBoundaryPortView\n• result : TBoundaryHandoffResult\n• diagnostic : TDiagnosticRecord\n• note : string_view|+ is_valid() : bool\l+ failed() : bool\l+ make(view, result, diagnostic, note) : TIntegrationBoundaryReport\l}", fillcolor=lightcyan];
+
+    // Component parts
+    PortView [label="{TIntegrationBoundaryPortView\n(Boundary View)|• descriptor : TIntegrationBoundaryDescriptor\n• port_name : string_view\n• readiness_label : string_view\n• correlation : TCorrelationToken\l}", fillcolor=lavender];
+
+    HandoffResult [label="{TBoundaryHandoffResult\n(Handoff Result)|• status : TBoundaryHandoffStatus\n• handle : TBoundaryHandoffHandle\n• bridge_result : TBridgeResult\n• note : string_view\l}", fillcolor=pink];
+
+    DiagnosticRecord [label="{TDiagnosticRecord\n(W12 Reused)|• id : TDiagnosticId\n• category : TDiagnosticCategory\n• operation : string_view\n• component : string_view\n• message : string_view\n• correlation : TCorrelationToken|+ is_valid() : bool\l+ failed() : bool\l}", fillcolor=lightgray];
+
+    // Validation logic
+    ValidationLogic [label="{Validation Logic|is_valid() const noexcept {\n    return boundary.is_valid()\n        && result.status != TBoundaryHandoffStatus::unknown;\n}\n\nfailed() const noexcept {\n    return result.failed()\n        || (diagnostic.is_valid() && diagnostic.failed());\n}|}", shape=note, fillcolor=lightyellow];
+
+    // Factory method
+    FactoryMethod [label="{Factory Method|make(view, result, diagnostic = {}, note = {}) noexcept {\n    return TIntegrationBoundaryReport{\n        view,\n        result,\n        diagnostic,\n        note\n    };\n}|}", shape=note, fillcolor=lightgreen];
+
+    // Usage in smoke test
+    SmokeTestUsage [label="{Smoke Test Usage|auto report = TIntegrationBoundaryReport::make(\n    view,\n    completed,\n    diagnostic,\n    \"mock boundary report\"\n);\n\nif (!report.is_valid() || report.failed()) {\n    return error;\n}|}", shape=note, fillcolor=lightcyan];
+
+    // Relationships
+    Report -> PortView [label="contains"];
+    Report -> HandoffResult [label="contains"];
+    Report -> DiagnosticRecord [label="contains"];
+
+    Report -> ValidationLogic [label="validates with"];
+    Report -> FactoryMethod [label="created by"];
+
+    ValidationLogic -> PortView [label="validates"];
+    ValidationLogic -> HandoffResult [label="validates"];
+    ValidationLogic -> DiagnosticRecord [label="validates"];
+
+    FactoryMethod -> SmokeTestUsage [label="used in"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendMain [label="Main Component", fillcolor=lightcyan];
+        LegendView [label="Boundary View", fillcolor=lavender];
+        LegendResult [label="Handoff Result", fillcolor=pink];
+        LegendReused [label="W12 Reused", fillcolor=lightgray];
+        LegendValidation [label="Validation Logic", shape=note, fillcolor=lightyellow];
+        LegendFactory [label="Factory Method", shape=note, fillcolor=lightgreen];
+        LegendUsage [label="Usage Example", shape=note, fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryReport_class_diagram.dot

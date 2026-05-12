@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgray];
+
+    TBridgeCoreSnapshot [label="{TBridgeCoreSnapshot | + bridge_id : TBridgeId\l+ status : TBridgeStatus\l+ config : TBridgeConfig\l+ protocol_view : TBridgeProtocolView\l+ frame : TBridgeCoreFrame\l+ last_issue : TBridgeCoreIssue\l+ correlation : TCorrelationToken\l+ bridge_name : string_view\l|+ is_valid() : bool\l+ to_string() : string\l}"];
+
+    TBridge [label="TBridge::snapshot()", fillcolor=lightcoral];
+    Diagnostics [label="Complete diagnostics\n- Full state capture\n- Error context\n- Execution snapshot", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreSnapshot [label="captures"];
+    TBridgeCoreSnapshot -> Diagnostics [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreSnapshot_class_diagram.dot

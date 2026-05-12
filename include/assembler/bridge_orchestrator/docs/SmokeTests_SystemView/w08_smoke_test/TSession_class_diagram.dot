@@ -1,0 +1,53 @@
+digraph TSession_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main TSession class
+    TSession [label="{TSession|+ session_id_: TSessionId\l+ status_: TSessionStatus\l+ binding_: TBinding\l+ policy_: TSessionPolicy\l+ view_: TSessionView\l+ snapshot_: TSessionSnapshot\l|+ open(request: TSessionOpenRequest): TSessionResult\l+ activate(): TSessionResult\l+ complete(): TSessionResult\l+ reject(): TSessionResult\l+ is_open(): bool\l+ is_terminal(): bool\l+ is_valid(): bool\l- validate_state_transition(): bool\l- update_status(status: TSessionStatus): void\l- create_view(): TSessionView\l- capture_snapshot(): TSessionSnapshot}", fillcolor=lightyellow, style=filled];
+
+    // Supporting types
+    TSessionId [label="{TSessionId|+ value_: uint64_t\l|+ generate(): TSessionId\l+ is_valid(): bool\l+ to_string(): std::string}", fillcolor=lightblue, style=filled];
+
+    TSessionStatus [label="{TSessionStatus|CREATED\lOPEN\lACTIVATED\lCOMPLETED\lREJECTED\l+ is_terminal(): bool\l+ is_active(): bool}", fillcolor=lightblue, style=filled];
+
+    TSessionPolicy [label="{TSessionPolicy|+ allow_multiple_bindings_: bool\l+ require_compatibility_validation_: bool\l+ max_lifetime_seconds_: uint32_t\l|+ validate(request: TSessionOpenRequest): bool\l+ is_expired(session: TSession): bool}", fillcolor=lightblue, style=filled];
+
+    // Dependencies from reused components
+    TBinding [label="{TBinding|+ id_: TBindingId\l+ channel_: TChannel\l+ adapter_view_: TPluginAdapterView\l+ profile_: TBindingProfile\l+ surface_pair_: TObligationSurfacePair}", fillcolor=lightcyan, style=filled];
+
+    TSessionView [label="{TSessionView|+ session_id_: TSessionId\l+ status_: TSessionStatus\l+ binding_id_: TBindingId\l+ created_time_: timestamp\l+ last_updated_: timestamp\l|+ is_readonly(): bool}", fillcolor=lightgreen, style=filled];
+
+    TSessionSnapshot [label="{TSessionSnapshot|+ session_id_: TSessionId\l+ status_: TSessionStatus\l+ binding_snapshot_: TBindingSnapshot\l+ captured_at_: timestamp\l+ events_: vector<TSessionEvent>}", fillcolor=lightgreen, style=filled];
+
+    // Result and Request types
+    TSessionResult [label="{TSessionResult|+ success_: bool\l+ session_id_: TSessionId\l+ error_message_: std::string\l+ status_: TSessionStatus\l|+ create_success(session_id): TSessionResult\l+ create_rejected(error): TSessionResult}", fillcolor=lightgreen, style=filled];
+
+    TSessionOpenRequest [label="{TSessionOpenRequest|+ binding_id_: TBindingId\l+ correlation_token_: TCorrelationToken\l+ policy_: TSessionPolicy\l+ timeout_seconds_: uint32_t\l|+ is_valid(): bool}", fillcolor=lightgreen, style=filled];
+
+    // Relationships
+    TSession -> TSessionId [label="contains"];
+    TSession -> TSessionStatus [label="contains"];
+    TSession -> TSessionPolicy [label="contains"];
+    TSession -> TBinding [label="contains"];
+
+    TSession -> TSessionView [label="creates"];
+    TSession -> TSessionSnapshot [label="creates"];
+
+    TSession -> TSessionResult [label="returns", style=dashed];
+    TSession -> TSessionOpenRequest [label="accepts", style=dashed];
+
+    // Internal relationships
+    TSessionPolicy -> TSessionOpenRequest [label="validates", style=dashed];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        CoreClass [label="Core TSession Class", fillcolor=lightyellow];
+        SupportType [label="Supporting Type", fillcolor=lightblue];
+        ReusedDep [label="Reused Dependency", fillcolor=lightcyan];
+        ResultType [label="Result/Request Type", fillcolor=lightgreen];
+    }
+}

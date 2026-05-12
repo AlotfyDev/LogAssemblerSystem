@@ -1,0 +1,19 @@
+digraph TPluginAdapter_Behavioral {
+  rankdir=TB;
+  node [shape=box];
+
+  AdapterInstance [label="DummyPluginAdapter adapter"];
+  Readiness [label="adapter.readiness()"];
+  PrepareReq [label="adapter.prepare_placement_request()"];
+  AcceptHandle [label="adapter.accept_placement_handle(handle)"];
+  EmitSignal [label="adapter.emit_load_signal()"];
+  NextReq [label="adapter.next_destination_request()"];
+
+  AdapterInstance -> Readiness;
+  Readiness -> PrepareReq;
+  PrepareReq -> AcceptHandle;
+  AcceptHandle -> EmitSignal;
+  EmitSignal -> NextReq;
+
+  Legend [shape=none, label="TPluginAdapter methods called in primary placement flow"];
+}

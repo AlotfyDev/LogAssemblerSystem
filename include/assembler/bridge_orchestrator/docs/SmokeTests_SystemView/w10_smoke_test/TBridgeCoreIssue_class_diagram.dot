@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=mistyrose];
+
+    TBridgeCoreIssue [label="{TBridgeCoreIssue | + status : TBridgeStatus\l+ code : string_view\l+ message : string_view\l+ correlation : TCorrelationToken\l|+ none() : TBridgeCoreIssue [static]\l+ fatal() : TBridgeCoreIssue [static]\l+ block() : TBridgeCoreIssue [static]\l+ warn() : TBridgeCoreIssue [static]\l+ is_present() : bool\l+ is_fatal() : bool\l+ is_blocking() : bool\l}"];
+
+    TBridge [label="TBridge error reporting", fillcolor=lightcoral];
+    ErrorHandling [label="Structured error reporting\n- Issue classification\n- Error context\n- Blocking vs non-blocking", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreIssue [label="reports"];
+    TBridgeCoreIssue -> ErrorHandling [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreIssue_class_diagram.dot

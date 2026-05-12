@@ -1,0 +1,31 @@
+digraph TChannel_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    TChannel [label="{TChannel (W04 - Reused)|channel_id : uint64_t\nsource : TParticipant\ntarget : TParticipant\nprofile : TChannelProfile\nbinding_policy : TChannelBindingPolicy\nstatus : TChannelStatus\ncorrelation : TCorrelationToken\nchannel_name : string_view|+ has_valid_identity() : bool\n+ has_valid_participants() : bool\n+ has_compatible_roles() : bool\n+ is_declared() : bool\n+ is_active() : bool\n+ is_valid() : bool\n+ declare(id, source, target, profile, policy, name, token) : TChannel|Bridge-visible channel topology}"];
+
+    // Dependencies
+    TParticipant [label="{TParticipant (W03)|...|Participant descriptor}" shape=record, fillcolor=lightgreen];
+
+    TChannelProfile [label="{TChannelProfile (W04)|...|Channel profile}" shape=record, fillcolor=white];
+
+    TChannelBindingPolicy [label="{TChannelBindingPolicy (W04)|...|Binding policy}" shape=record, fillcolor=white];
+
+    TCorrelationToken [label="{TCorrelationToken (W01)|...|Correlation token}" shape=record, fillcolor=lightcyan];
+
+    // Relationships
+    TChannel -> TParticipant [label="has source"];
+    TChannel -> TParticipant [label="has target"];
+    TChannel -> TChannelProfile [label="has"];
+    TChannel -> TChannelBindingPolicy [label="has"];
+    TChannel -> TCorrelationToken [label="has"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W04", fillcolor=lightblue];
+        W03 [label="W03 Component", fillcolor=lightgreen];
+        W01 [label="W01 Component", fillcolor=lightcyan];
+        Local [label="W04 Component", fillcolor=white];
+    }
+}

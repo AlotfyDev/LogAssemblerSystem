@@ -1,0 +1,16 @@
+digraph TDiagnosticId_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticId Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateIds [label="Create Diagnostic IDs\nTDiagnosticId::from_value(1u)\nTDiagnosticId::from_value(2u)\nTDiagnosticId::from_value(3u)\nTDiagnosticId::from_value(4u)\nCreates unique identifiers for diagnostic records", fillcolor=yellow]
+
+    UseInRecordCreation [label="Use in Record Creation\nPassed to diagnostic record factory methods\nUniquely identifies each diagnostic observation", fillcolor=orange]
+
+    End [label="ID usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateIds
+    CreateIds -> UseInRecordCreation
+    UseInRecordCreation -> End
+}

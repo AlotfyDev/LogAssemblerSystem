@@ -1,0 +1,5 @@
+digraph TPort_Class {
+  node [shape=record];
+
+  TPort [label="{TPort&lt;Derived&gt;|derived_type = Derived|+ view() : TPortView\n+ readiness(request) : TReadinessView\n+ admit(request) : TAdmissionResult\n+ placement_handle(request) : TPlacementHandle\n+ receive_load_signal(signal) : TBridgeResult\n+ next_destination(request) : TBridgeResult}"];
+}

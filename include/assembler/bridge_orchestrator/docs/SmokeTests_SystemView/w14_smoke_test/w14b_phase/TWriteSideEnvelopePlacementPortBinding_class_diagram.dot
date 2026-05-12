@@ -1,0 +1,45 @@
+digraph TWriteSideEnvelopePlacementPortBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontsize=10];
+    edge [fontsize=9];
+
+    // Aggregate include header
+    Binding [label="{TWriteSideEnvelopePlacementPortBinding.hpp\n(Aggregate Include Header)|#include \"TWriteSideEnvelopePlacementPort.hpp\"\l#include \"TWriteSidePlacementTargetDescriptor.hpp\"\l#include \"TWriteSideEnvelopePlacementPortConfig.hpp\"\l#include \"TWriteSideEnvelopePlacementPortFactory.hpp\"\l#include \"TWriteSideEnvelopePlacementAdmissionPolicy.hpp\"\l#include \"TWriteSideEnvelopePlacementPortState.hpp\"\l#include \"TWriteSideEnvelopePlacementPortViewBuilder.hpp\"\l|+ ASCC_W14B_WRITE_SIDE_ENVELOPE_PLACEMENT_PORT_AVAILABLE = true\l}", fillcolor=orange];
+
+    // Included components
+    Port [label="{TWriteSideEnvelopePlacementPort\n(Main Port Implementation)|+ readiness(request) : TReadinessView\l+ admit(request) : TAdmissionResult\l+ placement_handle(request) : TPlacementHandle\l}", fillcolor=lightcyan];
+
+    Config [label="{TWriteSideEnvelopePlacementPortConfig\n(Configuration)|+ defaults() : TWriteSideEnvelopePlacementPortConfig\l• is_valid() : bool\l}", fillcolor=lightcyan];
+
+    Factory [label="{TWriteSideEnvelopePlacementPortFactory\n(Factory)|+ make_default() : TWriteSideEnvelopePlacementPort\l+ from_config(config, target) : TWriteSideEnvelopePlacementPort\l}", fillcolor=lightcyan];
+
+    TargetDescriptor [label="{TWriteSidePlacementTargetDescriptor\n(Target)|+ defaults() : TWriteSidePlacementTargetDescriptor\l• is_valid() : bool\l}", fillcolor=lightcyan];
+
+    AdmissionPolicy [label="{TWriteSideEnvelopePlacementAdmissionPolicy\n(Policy)|+ payload_kind_is_supported(request, config) : bool\l+ destination_is_supported(request, config) : bool\l}", fillcolor=lightcyan];
+
+    State [label="{TWriteSideEnvelopePlacementPortState\n(State)|+ record_admission() : void\l+ record_handle(handle) : void\l+ allocate_handle_value() : uint64_t\l}", fillcolor=lightcyan];
+
+    ViewBuilder [label="{TWriteSideEnvelopePlacementPortViewBuilder\n(View)|+ view(config) : TPortView\l}", fillcolor=lightcyan];
+
+    // Relationships
+    Binding -> Port [label="includes"];
+    Binding -> Config [label="includes"];
+    Binding -> Factory [label="includes"];
+    Binding -> TargetDescriptor [label="includes"];
+    Binding -> AdmissionPolicy [label="includes"];
+    Binding -> State [label="includes"];
+    Binding -> ViewBuilder [label="includes"];
+
+    // Usage relationships
+    Factory -> Port [label="creates"];
+    Factory -> Config [label="uses"];
+    Factory -> TargetDescriptor [label="uses"];
+
+    Port -> Config [label="contains"];
+    Port -> TargetDescriptor [label="contains"];
+    Port -> State [label="contains"];
+
+    Port -> AdmissionPolicy [label="uses"];
+    Port -> ViewBuilder [label="uses"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TWriteSideEnvelopePlacementPortBinding_class_diagram.dot

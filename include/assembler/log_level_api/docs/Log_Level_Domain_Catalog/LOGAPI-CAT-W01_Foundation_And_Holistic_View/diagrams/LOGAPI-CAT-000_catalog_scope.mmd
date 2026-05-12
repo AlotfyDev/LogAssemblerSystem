@@ -1,0 +1,24 @@
+flowchart LR
+    subgraph LOGAPI["Log Level API Catalog Scope"]
+        A["Implementation Waves W01-W34"]
+        B["Component Catalog"]
+        C["Type/Header Catalog"]
+        D["Behavioral Flows"]
+        E["Gap Matrix"]
+        F["Production Readiness"]
+    end
+
+    subgraph OUT["Out of Scope"]
+        CIRC["Circulation Internals"]
+        BRIDGE["Bridge Orchestration"]
+        POLICY["Policy Assignment Runtime"]
+        EXT["External Receivers / Add-ons"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+
+    LOGAPI -. boundary .-> OUT

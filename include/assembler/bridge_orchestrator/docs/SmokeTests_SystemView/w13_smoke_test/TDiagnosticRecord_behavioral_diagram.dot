@@ -1,0 +1,9 @@
+digraph TDiagnosticRecord_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    Diagnostic [label="{TDiagnosticRecord\n(W12 Reused)|• id : TDiagnosticId\n• category : TDiagnosticCategory\n• operation : string_view\n• component : string_view\n• message : string_view\n• correlation : TCorrelationToken|+ is_valid() : bool\l+ failed() : bool\l+ info(id, category, operation, component, message, token) : TDiagnosticRecord\l}", fillcolor=lightgray];
+
+    W13Usage [label="{W13 Usage|• Report diagnostic information\n• Operation observability\l}", shape=note, fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TDiagnosticRecord_class_diagram.dot

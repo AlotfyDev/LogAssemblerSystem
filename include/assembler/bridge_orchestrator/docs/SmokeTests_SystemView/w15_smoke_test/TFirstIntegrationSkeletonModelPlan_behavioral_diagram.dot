@@ -1,0 +1,38 @@
+digraph TFirstIntegrationSkeletonModelPlan_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage sequence
+    ChannelDeclaration [label="Channel Declaration:\n- declare_channel(config, adapter, port, correlation)\n- creates TChannel with single adapter single port profile\n- participant views from adapter.view() and port.view()\n- uses channel_name from config"];
+
+    SurfacePairCreation [label="Surface Pair Creation:\n- make_surface_pair(adapter, port)\n- creates TObligationSurfacePair from adapter.view() and port.view()\n- validates surface pair compatibility and placement flow support"];
+
+    BindingDeclaration [label="Binding Declaration:\n- declare_binding(config, channel, surface_pair, correlation)\n- proposes TBinding with strict static one-to-one profile\n- uses binding_name from config"];
+
+    SessionOpening [label="Session Opening:\n- open_session(config, binding, correlation)\n- opens TSession with strict declaration policy\n- uses session_name from config"];
+
+    ProtocolDeclaration [label="Protocol Declaration:\n- declare_protocol(config, session, correlation)\n- declares TEnvelopePlacementProtocol with envelope placement plan\n- uses protocol_name from config"];
+
+    BridgeDeclaration [label="Bridge Declaration:\n- declare_bridge(config, protocol, correlation)\n- declares TEnvelopePlacementBridge with bounded model run\n- uses bridge_name and max_bridge_model_steps from config"];
+
+    // Flow connections
+    ChannelDeclaration -> SurfacePairCreation;
+    SurfacePairCreation -> BindingDeclaration;
+    BindingDeclaration -> SessionOpening;
+    SessionOpening -> ProtocolDeclaration;
+    ProtocolDeclaration -> BridgeDeclaration;
+
+    // Styling by declaration order
+    ChannelDeclaration [fillcolor=lightblue];
+    SurfacePairCreation [fillcolor=lightyellow];
+    BindingDeclaration [fillcolor=lightsalmon];
+    SessionOpening [fillcolor=lightgreen];
+    ProtocolDeclaration [fillcolor=lightcyan];
+    BridgeDeclaration [fillcolor=palegreen];
+
+    // Title
+    label="TFirstIntegrationSkeletonModelPlan Usage in W15 Smoke Test";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonModelPlan_behavioral_diagram.dot

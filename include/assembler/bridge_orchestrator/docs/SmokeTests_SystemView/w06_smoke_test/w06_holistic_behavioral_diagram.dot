@@ -1,0 +1,101 @@
+digraph W06_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Start
+    start [label="Start W06 Smoke Test", shape=ellipse, color=green];
+
+    // Channel Creation Phase
+    channel_profile [label="Create TChannelProfile\nTSingleAdapterSinglePortProfile::make()"];
+    channel_policy [label="Create TChannelBindingPolicy\nTChannelBindingPolicy::strict_static_one_to_one()"];
+    participants [label="Prepare TParticipant\n(source: content_provider,\ntarget: host_provider)"];
+    channel_declare [label="Declare TChannel\nTChannel::declare(id, source, target, profile, policy)"];
+
+    // Obligation Surface Phase
+    plugin_adapter_view [label="Create TPluginAdapterView\nfrom plugin adapter obligations"];
+    port_view [label="Create TPortView\nfrom port obligations"];
+    surface_pair [label="Create TObligationSurfacePair\nTObligationSurfacePair::make(plugin_adapter, port)"];
+
+    // Binding Phase
+    binding_id [label="Generate TBindingId\nTBindingId::from_value(unique_id)"];
+    binding_profile [label="Create TBindingProfile\nTBindingProfile::strict_static_one_to_one()"];
+    correlation_token [label="Prepare TCorrelationToken\nfor operation tracking"];
+
+    // Binding Proposal
+    binding_propose [label="Propose TBinding\nTBinding::propose(binding_id, channel, surface_pair, profile, token)",
+                    shape=diamond, color=blue];
+    compatibility_evaluate [label="Evaluate Compatibility\nTBindingCompatibilityReport::evaluate(channel, pair, token)"];
+
+    // Decision Point
+    compatible_check [label="Is Compatible?", shape=diamond];
+    compatible_yes [label="Yes: Status = compatible"];
+    compatible_no [label="No: Status = incompatible"];
+
+    // Binding Materialization
+    binding_validate [label="Validate TBinding\nbinding.is_compatible()"];
+    materialize_declaration [label="Materialize Declaration Only\nTBinding::materialize_declaration_only(binding)"];
+    status_materialized [label="Status = materialized"];
+
+    // View and Result Generation
+    binding_view [label="Generate TBindingView\nbinding.view()"];
+    binding_result [label="Generate TBindingResult\nbinding.result()"];
+
+    // Validation Phase
+    validation_checks [label="Perform Validation Checks", shape=diamond];
+    check_valid [label="binding.is_valid()"];
+    check_compatible [label="binding.is_compatible()"];
+    check_materialized [label="binding.is_materialized()"];
+    check_session_ready [label="binding.may_materialize_session()"];
+
+    // End
+    end [label="W06 Smoke Test Complete", shape=ellipse, color=red];
+
+    // Edges
+    start -> channel_profile;
+    channel_profile -> channel_policy;
+    channel_policy -> participants;
+    participants -> channel_declare;
+
+    channel_declare -> plugin_adapter_view;
+    plugin_adapter_view -> port_view;
+    port_view -> surface_pair;
+
+    surface_pair -> binding_id;
+    binding_id -> binding_profile;
+    binding_profile -> correlation_token;
+    correlation_token -> binding_propose;
+
+    binding_propose -> compatibility_evaluate;
+    compatibility_evaluate -> compatible_check;
+
+    compatible_check -> compatible_yes [label="Yes"];
+    compatible_check -> compatible_no [label="No"];
+
+    compatible_yes -> binding_validate;
+    binding_validate -> materialize_declaration;
+    materialize_declaration -> status_materialized;
+
+    status_materialized -> binding_view;
+    binding_view -> binding_result;
+    binding_result -> validation_checks;
+
+    compatible_no -> validation_checks [label="Skip materialization"];
+
+    validation_checks -> check_valid;
+    check_valid -> check_compatible;
+    check_compatible -> check_materialized;
+    check_materialized -> check_session_ready;
+    check_session_ready -> end;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        color=white;
+
+        creation [label="Creation/Setup", shape=box, style=rounded, color=lightblue];
+        evaluation [label="Evaluation/Decision", shape=diamond, color=blue];
+        action [label="Action/Operation", shape=box, style=rounded, color=green];
+        validation [label="Validation", shape=box, style=rounded, color=yellow];
+    }
+}

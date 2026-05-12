@@ -1,0 +1,26 @@
+digraph TBridgeTransition_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main struct
+    TBridgeTransition [label="{TBridgeTransition|from : TBridgeStage\l to : TBridgeStage\l reason : string_view\l|+ is_self_transition() : bool\l+ is_terminal_transition() : bool\l+ is_valid() : bool\l+ make(from, to, reason) : TBridgeTransition\l}"]
+
+    // Dependencies
+    TBridgeStage [label="TBridgeStage", shape=record, fillcolor=lightcyan]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    TBridgeTransition -> TBridgeStage [label="uses", style=dashed]
+    TBridgeTransition -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        StructLegend [label="Struct", shape=record, fillcolor=lightblue]
+        EnumLegend [label="Enum Class", shape=record, fillcolor=lightcyan]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

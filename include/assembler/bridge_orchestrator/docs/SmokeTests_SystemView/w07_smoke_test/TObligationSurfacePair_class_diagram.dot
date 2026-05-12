@@ -1,0 +1,21 @@
+digraph TObligationSurfacePair_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgreen];
+
+    TObligationSurfacePair [label="{TObligationSurfacePair (W05 - Reused)|plugin_adapter : TPluginAdapterView\nport : TPortView|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool\n+ report_primary_placement_support() : TObligationReport\n+ make(adapter, port) : TObligationSurfacePair|Compatible obligation surface pair}"];
+
+    TPluginAdapterView [label="{TPluginAdapterView (W05)|...|Plugin adapter view}" shape=record, fillcolor=white];
+
+    TPortView [label="{TPortView (W05)|...|Port view}" shape=record, fillcolor=white];
+
+    // Relationships
+    TObligationSurfacePair -> TPluginAdapterView [label="contains"];
+    TObligationSurfacePair -> TPortView [label="contains"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W05", fillcolor=lightgreen];
+        Component [label="Component View", fillcolor=white];
+    }
+}

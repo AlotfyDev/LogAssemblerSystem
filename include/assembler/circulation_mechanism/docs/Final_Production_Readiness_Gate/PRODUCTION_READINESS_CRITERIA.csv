@@ -1,0 +1,10 @@
+﻿criterion_id,criterion,required,evidence_source,status
+CME-PRG-001,compile_all_aggregates,true,cme_full_system_all_aggregates_compile_test.cpp,passed
+CME-PRG-002,minimal_composition_flow,true,cme_full_system_minimal_circulation_composition_test.cpp,passed
+CME-PRG-003,end_to_end_circulation_flow,true,cme_end_to_end_circulation_flow_test.cpp,passed
+CME-PRG-004,anti_collapse_compliance,true,cme_anti_collapse_boundary_compliance_test.cpp,passed
+CME-PRG-005,gap_closure_trace,true,GAP_CLOSURE_NOTES.md,passed
+CME-PRG-006,boundary_contracts,true,communication binding + read-side boundary tests,passed
+CME-PRG-007,read_side_profile_readiness,true,read-side profile checks in e2e/compliance,passed
+CME-PRG-008,no_unmapped_required_gaps,true,prior gap closure map + integration package,passed
+CME-PRG-009,manifest_and_evidence,true,WAVE_MANIFEST.json / COMPILE_CHECK.json,passed

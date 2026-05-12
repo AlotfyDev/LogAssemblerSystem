@@ -1,0 +1,22 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component (W01 reused)
+    CorrelationToken [label="{TCorrelationToken\n(W01 Reused Value Type)|• high : uint64_t\n• low : uint64_t|+ is_valid() : bool\l+ invalid() : TCorrelationToken\l+ from_parts(high, low) : TCorrelationToken\l+ operator==(lhs, rhs) : bool\l+ operator!=(lhs, rhs) : bool\l}", fillcolor=lightgray];
+
+    // Validation logic
+    ValidationLogic [label="{Validation Logic|is_valid() const noexcept {\n    return high != 0u || low != 0u;\n}|}", shape=note, fillcolor=lightyellow];
+
+    // Factory methods
+    InvalidFactory [label="{invalid()\nReturns invalid token (0, 0)}", shape=note, fillcolor=lightgreen];
+
+    FromPartsFactory [label="{from_parts(high, low)\nCreates token from high/low parts}", shape=note, fillcolor=lightgreen];
+
+    // Usage in W13
+    W13Usage [label="{W13 Usage|• Correlation for boundary descriptors\n• Correlation for handoff requests\n• Correlation for diagnostic records\n• Correlation for boundary views\l}", shape=note, fillcolor=pink];
+
+    // Hash specialization
+    HashSpecialization [label="{std::hash<TCorrelationToken>\n(Standard Library Support)|size_t operator()(const TCorrelationToken&) const noexcept {\n    // FNV-1a style hash\n}|}", shape=note, fillcolor=orange];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TCorrelationToken_class_diagram.dot

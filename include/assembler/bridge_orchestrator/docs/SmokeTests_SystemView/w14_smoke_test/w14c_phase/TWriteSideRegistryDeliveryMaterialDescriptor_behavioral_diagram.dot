@@ -1,0 +1,35 @@
+digraph TWriteSideRegistryDeliveryMaterialDescriptor_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Usage in smoke test
+    FactoryCreation [label="Created via factory from_fields():\n- correlation token provided\n- material_id provided\n- material_size_hint (default 0)\n- ordered flag (default false)"];
+
+    DefaultEnvelope [label="TWriteSideRegistryDeliveryMaterialDescriptor::default_log_level_envelope():\n- sets material_kind = 'log_level_envelope'\n- creates registry boundary descriptor with correlation\n- validates inputs"];
+
+    ValidationCheck [label="is_valid() validation:\n- correlation.is_valid() must be true\n- material_id not empty\n- material_kind not empty\n- registry_boundary.is_valid()\n- boundary kind == registry_delivery\n- boundary accepts_handoff capability"];
+
+    DestinationFamily [label="destination_family() usage:\n- returns registry_boundary.boundary_family\n- fallback to 'registry_delivery' if empty\n- used in placement requests"];
+
+    AdapterStorage [label="Stored in TWriteSideRegistryDeliveryPluginAdapter:\n- used for all adapter operations\n- provides material metadata\n- correlation for all operations"];
+
+    // Flow connections
+    FactoryCreation -> DefaultEnvelope;
+    DefaultEnvelope -> ValidationCheck;
+    ValidationCheck -> AdapterStorage [label="valid"];
+    ValidationCheck -> FactoryCreation [label="invalid"];
+
+    AdapterStorage -> DestinationFamily [label="used in placement"];
+
+    // Styling
+    FactoryCreation [fillcolor=lightblue];
+    DefaultEnvelope [fillcolor=lightgreen];
+    ValidationCheck [fillcolor=lightyellow];
+    DestinationFamily [fillcolor=lightcyan];
+    AdapterStorage [fillcolor=lightsalmon];
+
+    // Title
+    label="TWriteSideRegistryDeliveryMaterialDescriptor Usage in W14C Smoke Test";
+    labelloc=t;
+}

@@ -1,0 +1,28 @@
+digraph TBoundaryHandoffResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    ResultAcceptance [label="accept_boundary_handoff_result() scenarios:"];
+
+    AcceptedScenario [label="result.accepted() scenario:\n- stores boundary handle in state\n- returns success result\n- enables handoff tracking"];
+
+    CompletedScenario [label="result.completed() scenario:\n- stores boundary handle in state\n- marks handoff completed\n- returns success result"];
+
+    DeferredScenario [label="result.deferred() scenario:\n- returns defer result with error\n- maintains current state\n- allows retry later"];
+
+    FailedScenario [label="Failed scenario (no accepted/completed):\n- returns failure result\n- includes error details\n- correlation maintained"];
+
+    ResultAcceptance -> AcceptedScenario [label="accepted"];
+    ResultAcceptance -> CompletedScenario [label="completed"];
+    ResultAcceptance -> DeferredScenario [label="deferred"];
+    ResultAcceptance -> FailedScenario [label="failed"];
+
+    AcceptedScenario [fillcolor=lightgreen];
+    CompletedScenario [fillcolor=lightgreen];
+    DeferredScenario [fillcolor=lightyellow];
+    FailedScenario [fillcolor=lightsalmon];
+
+    label="TBoundaryHandoffResult Usage in W14C Smoke Test";
+    labelloc=t;
+}

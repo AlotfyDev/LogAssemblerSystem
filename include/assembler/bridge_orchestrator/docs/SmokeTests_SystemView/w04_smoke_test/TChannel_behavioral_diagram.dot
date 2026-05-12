@@ -1,0 +1,67 @@
+digraph TChannel_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Channel Declaration
+    channel_declaration [label="TChannel::declare()\n(id, source, target, profile, policy, name, correlation)"];
+
+    // Component assignment
+    source_assignment [label="source = TParticipant\n(content_provider)"];
+    target_assignment [label="target = TParticipant\n(host_provider/receiver_provider)"];
+    profile_assignment [label="profile = TChannelProfile\n(single_adapter_single_port)"];
+    policy_assignment [label="binding_policy = TChannelBindingPolicy\n(strict_static_one_to_one)"];
+
+    // Status initialization
+    status_setting [label="status = declared"];
+
+    // Validation sequence
+    identity_validation [label="has_valid_identity()\n(channel_id != 0)"];
+    participant_validation [label="has_valid_participants()\n(source.is_valid() && target.is_valid())"];
+    role_compatibility [label="has_compatible_roles()\n(source=content_provider, target=valid_target)"];
+    profile_policy_compat [label="binding_policy.is_compatible_with(profile)"];
+    overall_validation [label="is_valid()\n(all validations combined)"];
+
+    // View creation
+    source_view_creation [label="source_view()\n(TParticipantView from source)"];
+    target_view_creation [label="target_view()\n(TParticipantView from target)"];
+
+    // Status checks
+    declared_check [label="is_declared()\n(status == declared || active)"];
+    active_check [label="is_active()\n(status == active)"];
+
+    // Flow
+    channel_declaration -> source_assignment;
+    channel_declaration -> target_assignment;
+    channel_declaration -> profile_assignment;
+    channel_declaration -> policy_assignment;
+    channel_declaration -> status_setting;
+
+    source_assignment -> participant_validation;
+    target_assignment -> participant_validation;
+
+    participant_validation -> role_compatibility;
+    profile_assignment -> profile_policy_compat;
+    policy_assignment -> profile_policy_compat;
+
+    identity_validation -> overall_validation;
+    participant_validation -> overall_validation;
+    role_compatibility -> overall_validation;
+    profile_policy_compat -> overall_validation;
+
+    overall_validation -> source_view_creation;
+    overall_validation -> target_view_creation;
+    overall_validation -> declared_check;
+    overall_validation -> active_check;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TChannel W04 Declaration & Validation";
+        color=white;
+        style=filled;
+
+        legend_declaration [label="Channel Declaration", shape=rectangle, fillcolor=lightyellow];
+        legend_assignment [label="Component Assignment", shape=rectangle, fillcolor=lightblue];
+        legend_validation [label="Validation Chain", shape=rectangle, fillcolor=lightgreen];
+        legend_views [label="View Creation", shape=rectangle, fillcolor=orange];
+    }
+}

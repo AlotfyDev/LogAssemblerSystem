@@ -1,0 +1,54 @@
+digraph W03_Holistic_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Start
+    Start [label="Start\nW03 Smoke Test", shape=ellipse, fillcolor=green]
+
+    // Main behavioral flow for participant management
+    CreateCorrelationToken [label="Create Correlation Token\nTCorrelationToken::from_parts(1u, 2u)", fillcolor=yellow]
+
+    ValidateParticipantRole [label="Validate Participant Role\nis_provider_role(content_provider)\nis_boundary_role(receiver_provider)\nis_observer_role(diagnostic_observer)", fillcolor=lightgreen]
+
+    CreateParticipant [label="Create Participant Descriptor\nTParticipant::make(42u, content_provider,\n\"log_domain\", \"family_a\", \"Logger-1\", token)", fillcolor=yellow]
+
+    ValidateParticipant [label="Validate Participant\nparticipant.is_valid()\nparticipant.is_provider()\nparticipant.participates_in_exchange()", fillcolor=lightgreen]
+
+    CreateParticipantView [label="Create Participant View\nTParticipantView::from_participant(participant)", fillcolor=yellow]
+
+    ValidateParticipantView [label="Validate Participant View\nview.is_valid()\nview.is_provider()\nview.participates_in_exchange()", fillcolor=lightgreen]
+
+    ValidateTerminalStage [label="Validate Terminal Stage Compatibility\nis_terminal_bridge_stage(terminal_success)\nis_terminal_bridge_stage(terminal_failed)", fillcolor=orange]
+
+    CreateMultipleParticipants [label="Create Multiple Participants\nDifferent roles: content_provider, receiver_provider,\ndiagnostic_observer, governance_provider", fillcolor=yellow]
+
+    ValidateRoleClassifications [label="Validate Role Classifications\nCheck provider, boundary, observer roles\nacross all participant types", fillcolor=lightgreen]
+
+    // End
+    End [label="End\nAll participant management\nvalidations passed", shape=ellipse, fillcolor=red]
+
+    // Flow connections
+    Start -> CreateCorrelationToken
+    CreateCorrelationToken -> ValidateParticipantRole
+    ValidateParticipantRole -> CreateParticipant
+    CreateParticipant -> ValidateParticipant
+    ValidateParticipant -> CreateParticipantView
+    CreateParticipantView -> ValidateParticipantView
+    ValidateParticipantView -> ValidateTerminalStage
+    ValidateTerminalStage -> CreateMultipleParticipants
+    CreateMultipleParticipants -> ValidateRoleClassifications
+    ValidateRoleClassifications -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation Check", shape=rectangle, fillcolor=lightgreen]
+        CompatibilityLegend [label="W02 Compatibility Check", shape=rectangle, fillcolor=orange]
+        FlowLegend [label="Control Flow", shape=arrow, fillcolor=black]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\w03_holistic_behavioral_diagram.dot

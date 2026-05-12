@@ -1,0 +1,25 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TCorrelationToken Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateToken [label="Create Correlation Token\nTCorrelationToken::from_parts(12u, 1u)\nCreates correlation token for tracking across components", fillcolor=yellow]
+
+    UseInBridgeResults [label="Use in Bridge Results\nPassed to TBridgeCoreResult factory methods\nCorrelates bridge operations", fillcolor=orange]
+
+    UseInRegistrySnapshots [label="Use in Registry Snapshots\nPassed to TRegistrySnapshot::make()\nCorrelates registry diagnostic snapshots", fillcolor=orange]
+
+    UseInDiagnosticRecords [label="Use in Diagnostic Records\nPassed to diagnostic record creation\nCorrelates diagnostic observations", fillcolor=orange]
+
+    UseInCollectors [label="Use in Diagnostic Collectors\nPassed to TDiagnosticCollector::make()\nCorrelates diagnostic collection sessions", fillcolor=orange]
+
+    End [label="Correlation usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateToken
+    CreateToken -> UseInBridgeResults
+    UseInBridgeResults -> UseInRegistrySnapshots
+    UseInRegistrySnapshots -> UseInDiagnosticRecords
+    UseInDiagnosticRecords -> UseInCollectors
+    UseInCollectors -> End
+}

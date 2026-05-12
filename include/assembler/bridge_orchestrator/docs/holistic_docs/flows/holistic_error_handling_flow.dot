@@ -1,0 +1,127 @@
+digraph BridgeOrchestrator_ErrorHandlingFlow {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Error sources
+    ERRORS [label="Error Sources", fillcolor=red, shape=ellipse];
+
+    // Layer error nodes
+    W01_Error [label="W01: Request Errors\n• Invalid payload size\n• Malformed correlation token\n• Unsupported payload kind", fillcolor=lightcoral];
+    W03_Error [label="W03: Participant Errors\n• Role assignment failure\n• Participant creation failure\n• Invalid participant config", fillcolor=lightcoral];
+    W04_Error [label="W04: Channel Errors\n• Topology establishment failure\n• Invalid channel profile\n• Policy conflicts", fillcolor=lightcoral];
+    W05_Error [label="W05: Obligation Errors\n• Surface creation failure\n• View binding failure\n• Obligation pair mismatch", fillcolor=lightcoral];
+    W06_Error [label="W06: Binding Errors\n• Compatibility evaluation failure\n• Binding validation failure\n• Materialization failure", fillcolor=lightcoral];
+    W08_Error [label="W08: Session Errors\n• Session creation failure\n• Lifecycle transition failure\n• Session timeout", fillcolor=lightcoral];
+    W09_Error [label="W09: Protocol Errors\n• Protocol creation failure\n• Execution plan failure\n• Step configuration failure", fillcolor=lightcoral];
+    W10_Error [label="W10: Bridge Errors\n• Resource exhaustion\n• Orchestration failure\n• Budget exceeded", fillcolor=lightcoral];
+    W11_Error [label="W11: Registry Errors\n• Registration failure\n• Capacity limits exceeded\n• Registry corruption", fillcolor=lightcoral];
+    W13_Error [label="W13: Boundary Errors\n• Handoff coordination failure\n• External system rejection\n• Boundary state corruption", fillcolor=lightcoral];
+    W14_Error [label="W14: Implementation Errors\n• Adapter implementation failure\n• Port binding failure\n• Language-specific errors", fillcolor=lightcoral];
+
+    // Error handling nodes
+    Diagnostics [label="Diagnostics Collection\n• Error context capture\n• Stack trace collection\n• Performance metrics", fillcolor=yellow];
+    Recovery [label="Recovery Mechanisms\n• Graceful degradation\n• Deferred states\n• Resource cleanup", fillcolor=orange];
+    Rollback [label="Rollback Capabilities\n• Boundary rollback\n• Registry snapshots\n• State restoration", fillcolor=darkorange];
+    Rejection [label="Request Rejection\n• Error result creation\n• Correlation token preservation\n• Client notification", fillcolor=red];
+
+    // Termination states
+    Terminate [label="Bridge Termination\n• Resource cleanup\n• Session closure\n• Diagnostic reporting", fillcolor=red, shape=ellipse];
+
+    // Error propagation flow
+    ERRORS -> W01_Error;
+    W01_Error -> Rejection [label="Immediate Rejection"];
+
+    ERRORS -> W03_Error;
+    W03_Error -> Diagnostics;
+    Diagnostics -> Recovery;
+
+    ERRORS -> W04_Error;
+    W04_Error -> Diagnostics;
+    Diagnostics -> Rollback;
+
+    ERRORS -> W05_Error;
+    W05_Error -> Diagnostics;
+    Diagnostics -> Recovery;
+
+    ERRORS -> W06_Error;
+    W06_Error -> Rejection [label="Binding Rejection"];
+
+    ERRORS -> W08_Error;
+    W08_Error -> Rollback;
+    Rollback -> Terminate;
+
+    ERRORS -> W09_Error;
+    W09_Error -> Diagnostics;
+    Diagnostics -> Recovery;
+
+    ERRORS -> W10_Error;
+    W10_Error -> Terminate [label="Resource Exhaustion"];
+
+    ERRORS -> W11_Error;
+    W11_Error -> Rejection [label="Registration Failure"];
+
+    ERRORS -> W13_Error;
+    W13_Error -> Rollback;
+    Rollback -> Diagnostics;
+
+    ERRORS -> W14_Error;
+    W14_Error -> Diagnostics;
+    Diagnostics -> Rejection;
+
+    // Recovery paths
+    Recovery -> W03_Error [dir=back, label="Retry", style=dashed, color=green];
+    Recovery -> W04_Error [dir=back, label="Retry", style=dashed, color=green];
+    Recovery -> W05_Error [dir=back, label="Retry", style=dashed, color=green];
+    Recovery -> W09_Error [dir=back, label="Retry", style=dashed, color=green];
+    Recovery -> W14_Error [dir=back, label="Retry", style=dashed, color=green];
+
+    // Successful recovery continuation
+    Recovery -> W06_Error [dir=forward, label="Continue", style=dashed, color=blue];
+    Recovery -> W08_Error [dir=forward, label="Continue", style=dashed, color=blue];
+    Recovery -> W10_Error [dir=forward, label="Continue", style=dashed, color=blue];
+
+    // Diagnostic escalation
+    Diagnostics -> W12_Diagnostics [label="Report to W12", style=dotted, color=red];
+    W12_Diagnostics [label="W12: Diagnostics Layer\n• Error aggregation\n• Performance analysis\n• Troubleshooting data", fillcolor=yellow];
+
+    // Registry error handling
+    W11_Error -> W11_Registries [label="Registry Recovery", style=dotted, color=orange];
+    W11_Registries [label="W11: Registry Layer\n• Snapshot restoration\n• Capacity management\n• Consistency checks", fillcolor=orange];
+
+    // Error result flow
+    Rejection -> Error_Result [label="Create Error Result"];
+    Error_Result [label="Error Result\n• Correlation preserved\n• Error details\n• Recovery suggestions", fillcolor=red, shape=box];
+
+    // Timing considerations
+    edge [color=black, style=solid];
+    ERRORS -> W01_Error [label="Immediate (<1ms)"];
+    ERRORS -> W10_Error [label="During Execution"];
+    Recovery -> W06_Error [label="After Diagnosis"];
+
+    // Error propagation patterns
+    subgraph cluster_propagation {
+        label="Error Propagation Patterns";
+        style=filled;
+        fillcolor=lightgray;
+
+        Pattern1 [label="Request Validation → Rejection", shape=plaintext];
+        Pattern2 [label="Resource Exhaustion → Termination", shape=plaintext];
+        Pattern3 [label="Compatibility → Binding Rejection", shape=plaintext];
+        Pattern4 [label="Execution → Rollback + Diagnostics", shape=plaintext];
+        Pattern5 [label="Boundary → Handoff Failure", shape=plaintext];
+    }
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        Legend1 [label="Solid Red: Error Flow", shape=plaintext];
+        Legend2 [label="Dashed Green: Recovery Retry", shape=plaintext];
+        Legend3 [label="Dashed Blue: Continue After Recovery", shape=plaintext];
+        Legend4 [label="Dotted Red: Diagnostic Escalation", shape=plaintext];
+        Legend5 [label="Dotted Orange: Registry Recovery", shape=plaintext];
+    }
+}

@@ -1,0 +1,30 @@
+digraph TWriteSideEnvelopePlacementPortBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage
+    IncludeBinding [label="Include W14B Binding:\n- #include TWriteSideEnvelopePlacementPortBinding\n- provides aggregate access to W14B port components\n- enables W15 skeleton to use W14B port"];
+
+    PortCreation [label="Port Creation via Factory:\n- TWriteSideEnvelopePlacementPortFactory::make_default()\n- creates port with default configuration\n- no parameters needed for basic port"];
+
+    ViewValidation [label="View Validation:\n- port.view().is_valid()\n- validates port view construction\n- used in W15 skeleton view validation phase"];
+
+    SkeletonIntegration [label="W15 Skeleton Integration:\n- port used in model declaration (channel creation)\n- port used in carrier flow (readiness, admission, handle)\n- provides envelope placement to Write Side"];
+
+    // Flow connections
+    IncludeBinding -> PortCreation;
+    PortCreation -> ViewValidation;
+    ViewValidation -> SkeletonIntegration;
+
+    // Styling
+    IncludeBinding [fillcolor=lightblue];
+    PortCreation [fillcolor=lightyellow];
+    ViewValidation [fillcolor=lightsalmon];
+    SkeletonIntegration [fillcolor=lightgreen];
+
+    // Title
+    label="TWriteSideEnvelopePlacementPortBinding Usage in W15 Smoke Test (W14B Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TWriteSideEnvelopePlacementPortBinding_behavioral_diagram.dot

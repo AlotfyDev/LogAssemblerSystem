@@ -1,0 +1,43 @@
+digraph TBridgeProtocolRegistry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TBridgeProtocolRegistry [label="{TBridgeProtocolRegistry<Capacity, PlanCapacity>|registry : TBoundedRegistry<TBridgeProtocolId, Protocol, Capacity>\l|+ is_valid() : bool\l+ register_protocol(protocol) : bool\l+ find(id) : const TRegistryEntry<TBridgeProtocolId, Protocol>*\l+ contains(id) : bool\l+ snapshot() : TRegistrySnapshot\l+ make(name, token) : TBridgeProtocolRegistry\l}"]
+
+    // Template Parameters
+    Capacity [label="Capacity", shape=ellipse, fillcolor=lightgrey]
+    PlanCapacity [label="PlanCapacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Type Aliases
+    Protocol [label="Protocol = TBridgeProtocol<PlanCapacity>", shape=record, fillcolor=lightyellow]
+
+    // Member Types
+    TBoundedRegistry [label="{TBoundedRegistry<TBridgeProtocolId, Protocol, Capacity>|...}", shape=record, fillcolor=lightyellow]
+    TBridgeProtocolId [label="TBridgeProtocolId", shape=record, fillcolor=lightyellow]
+    TBridgeProtocol [label="TBridgeProtocol<PlanCapacity>", shape=record, fillcolor=lightyellow]
+    TRegistryEntry [label="{TRegistryEntry<TBridgeProtocolId, Protocol>|...}", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TBridgeProtocolRegistry -> Capacity [label="parameterized by", style=dashed]
+    TBridgeProtocolRegistry -> PlanCapacity [label="parameterized by", style=dashed]
+    TBridgeProtocolRegistry -> Protocol [label="uses type alias", style=dashed]
+    TBridgeProtocolRegistry -> TBoundedRegistry [label="contains", style=dashed]
+    TBridgeProtocolRegistry -> TBridgeProtocolId [label="uses for keys", style=dashed]
+    TBridgeProtocolRegistry -> TBridgeProtocol [label="registers", style=dashed]
+    TBridgeProtocolRegistry -> TRegistryEntry [label="returns", style=dashed]
+    TBridgeProtocolRegistry -> TRegistrySnapshot [label="produces", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        AliasLegend [label="Type Alias", shape=record, fillcolor=lightyellow]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

@@ -1,0 +1,8 @@
+digraph TDiagnosticSeverity_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticSeverity [label="{TDiagnosticSeverity|none\ltrace\linfo\lmessages\lwarning\lerror\lcritical|+ is_failure_diagnostic_severity(severity) : bool\l+ is_actionable_diagnostic_severity(severity) : bool\l+ severity_rank(severity) : int\l+ severity_at_least(actual, threshold) : bool\l+ to_string(severity) : std::string_view\l}"]
+
+    // No dependencies - enum class with free functions
+}

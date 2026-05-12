@@ -1,0 +1,53 @@
+digraph TSessionView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // View creation and updates
+    CreateView [label="Create View\nTSessionView::create(session)\n- Extract session identity\n- Capture current status\n- Record timestamps\n- Generate binding summary", fillcolor=lightyellow];
+
+    UpdateView [label="Update View\nsession.update_view()\n- Refresh status information\n- Update last modified time\n- Recalculate binding summary\n- Maintain view consistency", fillcolor=lightyellow];
+
+    // View operations
+    GetSessionId [label="Get Session ID\nview.get_session_id()\n- Return TSessionId\n- Enable session correlation\n- Support external references", fillcolor=lightyellow];
+
+    GetStatus [label="Get Status\nview.get_status()\n- Return current TSessionStatus\n- Enable status monitoring\n- Support decision making", fillcolor=lightyellow];
+
+    GetBindingInfo [label="Get Binding Info\nview.get_binding_id()\nview.get_binding_summary()\n- Provide binding details\n- Support debugging\n- Enable monitoring", fillcolor=lightyellow];
+
+    ExportJson [label="Export JSON\nview.to_json()\n- Serialize view data\n- Enable external consumption\n- Support APIs and logging", fillcolor=lightyellow];
+
+    // Usage contexts
+    ExternalMonitoring [label="External Monitoring\n- API responses\n- Dashboard displays\n- Status queries", fillcolor=lightblue];
+
+    LoggingDiagnostics [label="Logging & Diagnostics\n- Session state logging\n- Error reporting\n- Performance monitoring", fillcolor=lightblue];
+
+    SessionQueries [label="Session Queries\n- Find sessions by status\n- Filter by binding\n- Time-based queries", fillcolor=lightblue];
+
+    // Flow
+    CreateView -> GetSessionId [label="1. View created with session data"];
+
+    GetSessionId -> ExternalMonitoring [label="2. Enable external session tracking"];
+
+    CreateView -> GetStatus [label="3. Capture session status"];
+
+    GetStatus -> LoggingDiagnostics [label="4. Enable status-based logging"];
+
+    CreateView -> GetBindingInfo [label="5. Include binding information"];
+
+    GetBindingInfo -> SessionQueries [label="6. Support binding-based queries"];
+
+    UpdateView -> GetStatus [label="7. Update status on changes"];
+
+    ExportJson -> ExternalMonitoring [label="8. Export for external systems"];
+    ExportJson -> LoggingDiagnostics [label="9. Export for diagnostics"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Session Monitoring";
+        bgcolor=white;
+
+        ViewOps [label="View Operations", fillcolor=lightyellow];
+        ExternalUsage [label="External Usage", fillcolor=lightblue];
+    }
+}

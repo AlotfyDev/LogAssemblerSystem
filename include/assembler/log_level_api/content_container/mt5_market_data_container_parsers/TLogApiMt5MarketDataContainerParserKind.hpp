@@ -1,0 +1,32 @@
+#pragma once
+
+/*
+    LOGAPI-W32 — MT5 Market Data Container Parsers
+
+    Responsibility:
+        Define dedicated container parsers for MT5 market data arrays:
+            - MqlTick[]
+            - MqlRates[]
+            - MqlBookInfo[]
+
+    Boundary:
+        This wave does not implement generic runtime dispatch, validators,
+        metadata injection, timestamp stabilization, envelope assembly,
+        circulation handoff, policy assignment, or real MT5 runtime binding.
+
+    Doctrine:
+        Container parser owns the loop.
+        Element parser owns one element.
+        Each container parser is bound to exactly one element kind.
+*/
+
+namespace assembler::log_level_api::content_container::mt5_market_data_container_parsers {
+
+enum class TLogApiMt5MarketDataContainerParserKind {
+    Unknown = 0,
+    MqlTickArray,
+    MqlRatesArray,
+    MqlBookInfoArray
+};
+
+} // namespace assembler::log_level_api::content_container::mt5_market_data_container_parsers

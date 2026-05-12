@@ -1,0 +1,27 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightcoral];
+
+    // TBridgeConfig class
+    TBridgeConfig [label="{TBridgeConfig | + run_mode : TBridgeRunMode\l+ budget : TBridgeStepBudget\l+ require_ready_protocol : bool\l+ collect_diagnostic_snapshot : bool\l+ collect_trace_frame : bool\l+ strict_terminal_consistency : bool\l+ config_name : string_view\l|+ is_valid() : bool\l+ should_collect_diagnostics() : bool\l+ manual_step() : TBridgeConfig [static]\l+ bounded_model_run() : TBridgeConfig [static]\l+ single_pass_model_run() : TBridgeConfig [static]\l+ diagnostic_dry_run() : TBridgeConfig [static]\l}"];
+
+    // Dependencies
+    TBridgeRunMode [label="TBridgeRunMode", fillcolor=lightblue];
+    TBridgeStepBudget [label="TBridgeStepBudget", fillcolor=lightblue];
+
+    // Relationships
+    TBridgeConfig -> TBridgeRunMode [label="defines"];
+    TBridgeConfig -> TBridgeStepBudget [label="manages"];
+
+    // Factory methods
+    manual_step [label="manual_step()\n- Single step execution\n- Manual control", shape=note, fillcolor=yellow];
+    bounded_model_run [label="bounded_model_run(max_steps)\n- Bounded execution\n- Automatic until terminal or limit", shape=note, fillcolor=yellow];
+    single_pass_model_run [label="single_pass_model_run()\n- Single pass execution\n- One step only", shape=note, fillcolor=yellow];
+    diagnostic_dry_run [label="diagnostic_dry_run(max_steps)\n- Diagnostic mode\n- Full tracing enabled", shape=note, fillcolor=yellow];
+
+    TBridgeConfig -> manual_step [style=dotted];
+    TBridgeConfig -> bounded_model_run [style=dotted];
+    TBridgeConfig -> single_pass_model_run [style=dotted];
+    TBridgeConfig -> diagnostic_dry_run [style=dotted];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeConfig_class_diagram.dot

@@ -1,0 +1,9 @@
+digraph TIntegrationBoundaryPortTraits_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    TraitValidation [label="Trait Validation", fillcolor=orange];
+
+    StaticAssert [label="static_assert(satisfies_required_surface)\nCompile-time interface check", fillcolor=red];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryPortTraits_behavioral_diagram.dot

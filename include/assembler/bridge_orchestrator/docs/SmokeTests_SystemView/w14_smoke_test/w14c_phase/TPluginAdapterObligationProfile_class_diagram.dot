@@ -1,0 +1,24 @@
+digraph TPluginAdapterObligationProfile_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Obligation profile (W05 component)
+    ObligationProfile [label="{TPluginAdapterObligationProfile (W05)|defines specific adapter capabilities\l+ family : TPluginAdapterObligationFamily\l+ can_prepare_placement_request : bool\l+ can_accept_placement_handle : bool\l+ can_emit_load_signal : bool\l+ can_prepare_boundary_handoff_request : bool\l+ adapter_name : std::string_view\l}", fillcolor=lightgreen, style=filled];
+
+    // W14C specific profile values
+    W14CProfile [label="{W14C Delivery Content Provider Profile|+ family = DELIVERY_CONTENT_PROVIDER\l+ can_prepare_placement_request = true\l+ can_accept_placement_handle = true\l+ can_emit_load_signal = true\l+ can_prepare_boundary_handoff_request = true\l+ adapter_name = 'registry_delivery_content_plugin_adapter'\l}", fillcolor=lightsalmon];
+
+    // Usage in W14C
+    ViewBuilder [label="{TWriteSideRegistryDeliveryPluginAdapterViewBuilder|creates the obligation profile\lprovides delivery_content_provider_profile()\l}", fillcolor=lightsalmon];
+    PluginAdapterView [label="{TPluginAdapterView|contains obligation profile\lused for adapter capability declaration\l}", fillcolor=lightblue];
+
+    // Relationships
+    ObligationProfile -> W14CProfile [label="defines W14C instance"];
+    ViewBuilder -> W14CProfile [label="creates"];
+    PluginAdapterView -> W14CProfile [label="contains"];
+
+    // Title
+    label="TPluginAdapterObligationProfile (W05) Class Structure and W14C Usage";
+    labelloc=t;
+}

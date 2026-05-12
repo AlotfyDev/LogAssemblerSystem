@@ -1,0 +1,47 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Creation patterns
+    Create_From_Parts [label="TCorrelationToken::from_parts(high, low)\nCreate token with specific high/low values", fillcolor=lightgreen];
+    Create_Invalid [label="TCorrelationToken::invalid()\nCreate invalid token (0, 0)", fillcolor=lightgreen];
+    Default_Construct [label="TCorrelationToken{} \nDefault construct invalid token", fillcolor=lightgreen];
+
+    // Validation
+    Check_Valid [label="token.is_valid()\nCheck if high != 0 || low != 0", fillcolor=lavender];
+    Valid_Result [label="Return true - token is valid", fillcolor=lightgreen];
+    Invalid_Result [label="Return false - token is invalid", fillcolor=red];
+
+    // Comparison
+    Equality_Check [label="token1 == token2\nCompare high and low parts", fillcolor=orange];
+    Inequality_Check [label="token1 != token2\n!(token1 == token2)", fillcolor=orange];
+
+    // Hashing
+    Hash_Value [label="std::hash<TCorrelationToken>{}(token)\nFNV-1a hash of high and low", fillcolor=orange];
+
+    // Usage in W14B smoke test
+    W14B_Correlation [label="TCorrelationToken::from_parts(14u, 1u)\nCreate correlation token for W14B placement flow", fillcolor=yellow];
+    Adapter_Correlation [label="Use in adapter descriptor correlation", fillcolor=lightblue];
+    Port_Correlation [label="Use in placement request/handle correlations", fillcolor=orange];
+    Signal_Correlation [label="Use in load signals and bridge results", fillcolor=lightcyan];
+
+    // Flow connections
+    Create_From_Parts -> Check_Valid;
+    Create_Invalid -> Check_Valid;
+    Default_Construct -> Check_Valid;
+
+    Check_Valid -> Valid_Result [label="high != 0 || low != 0"];
+    Check_Valid -> Invalid_Result [label="high == 0 && low == 0"];
+
+    Valid_Result -> Equality_Check [style=dashed];
+    Valid_Result -> Hash_Value [style=dashed];
+
+    Equality_Check -> Inequality_Check;
+    Hash_Value -> Signal_Correlation [style=dashed];
+
+    W14B_Correlation -> Adapter_Correlation;
+    W14B_Correlation -> Port_Correlation;
+    W14B_Correlation -> Signal_Correlation;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TCorrelationToken_behavioral_diagram.dot

@@ -1,0 +1,38 @@
+digraph TParticipantView_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main struct
+    TParticipantView [label="{TParticipantView|std::uint64_t participant_id;\nTParticipantRole role;\nstd::string_view domain;\nstd::string_view family;\nstd::string_view display_name;\nTCorrelationToken correlation;\nbool valid;|+ is_valid() const noexcept\n+ is_provider() const noexcept\n+ is_boundary() const noexcept\n+ participates_in_exchange() const noexcept\n+ from_participant(participant) static constexpr\n+ invalid() static constexpr}"];
+
+    // Dependencies
+    TParticipantView -> TParticipantRole [label="role field"];
+    TParticipantView -> TCorrelationToken [label="correlation field"];
+
+    // Creation from TParticipant
+    from_participant [label="{from_participant(participant)|participant_id = p.participant_id;\nrole = p.role;\ndomain = p.domain;\nfamily = p.family;\ndisplay_name = p.display_name;\ncorrelation = p.correlation;\nvalid = p.is_valid();}"];
+
+    // Dependencies
+    from_participant -> TParticipant [label="created from"];
+
+    // Usage in W04
+    TParticipantView -> TChannel [label="source_view(), target_view()"];
+
+    // Invisible positioning
+    TParticipantRole [shape=plaintext, label="TParticipantRole"];
+    TCorrelationToken [shape=plaintext, label="TCorrelationToken"];
+    TParticipant [shape=plaintext, label="TParticipant"];
+    TChannel [shape=plaintext, label="TChannel"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TParticipantView Structure";
+        color=white;
+        style=filled;
+
+        legend_data [label="Data Members", shape=rectangle, fillcolor=lightblue];
+        legend_methods [label="Instance Methods", shape=rectangle, fillcolor=lightgreen];
+        legend_factory [label="Factory Methods", shape=rectangle, fillcolor=yellow];
+        legend_w04 [label="W04 Channel Usage", shape=plaintext];
+    }
+}

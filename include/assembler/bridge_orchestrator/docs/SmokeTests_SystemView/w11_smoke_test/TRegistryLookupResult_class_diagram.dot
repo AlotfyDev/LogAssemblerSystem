@@ -1,0 +1,19 @@
+digraph TRegistryLookupResult_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TRegistryLookupResult [label="{TRegistryLookupResult|found : bool\l rejected : bool\l registry_name : std::string_view\l note : std::string_view\l reason : TBridgeError\l correlation : TCorrelationToken\l|+ succeeded() : bool\l+ failed() : bool\l+ found_result(name, token, text) : TRegistryLookupResult\l+ missing(name, token, text) : TRegistryLookupResult\l+ reject(name, error, token) : TRegistryLookupResult\l}"]
+
+    // Member Types
+    bool_type [label="bool", shape=ellipse, fillcolor=lightgrey]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TBridgeError [label="TBridgeError", shape=record, fillcolor=lightyellow]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TRegistryLookupResult -> bool_type [label="uses", style=dashed]
+    TRegistryLookupResult -> std_string_view [label="uses", style=dashed]
+    TRegistryLookupResult -> TBridgeError [label="uses", style=dashed]
+    TRegistryLookupResult -> TCorrelationToken [label="uses", style=dashed]
+}

@@ -1,0 +1,34 @@
+digraph TObligationSurfacePair_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightgreen];
+
+    // Key operations
+    create_pair [label="make(TPluginAdapterView, TPortView)\nCreate surface pair from adapter and port views", fillcolor=white];
+
+    validate_pair [label="is_valid()\nReturn plugin_adapter.is_valid() && port.is_valid()", fillcolor=white];
+
+    check_primary_flow [label="supports_primary_placement_flow()\nCheck both adapter and port support primary placement", fillcolor=white];
+
+    report_support [label="report_primary_placement_support()\nReturn TObligationReport based on primary flow support", fillcolor=white];
+
+    // W07 usage
+    binding_creation [label="Used in TBinding::propose()\nas surface_pair parameter", fillcolor=palegreen];
+
+    compatibility_validation [label="Surface pair validity checked\nduring compatibility evaluation\n(require_surface_pair_valid)", fillcolor=lightcyan];
+
+    // Flow
+    create_pair -> validate_pair [label="enables"];
+    create_pair -> check_primary_flow [label="enables"];
+    create_pair -> report_support [label="enables"];
+
+    create_pair -> binding_creation [label="used in"];
+    validate_pair -> compatibility_validation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Pair Creation", fillcolor=white];
+        Binding [label="Binding Usage", fillcolor=palegreen];
+        Eval [label="Evaluation Usage", fillcolor=lightcyan];
+    }
+}

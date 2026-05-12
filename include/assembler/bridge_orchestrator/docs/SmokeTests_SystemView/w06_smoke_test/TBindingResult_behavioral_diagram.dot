@@ -1,0 +1,32 @@
+digraph TBindingResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Creation
+    binding_calls_result [label="Call binding.result()\nTBinding::result() method"];
+
+    // Result determination
+    check_binding_compatibility [label="Check binding.is_compatible()", shape=diamond];
+    create_accept_result [label="Call TBindingResult::accept()\nFor compatible bindings"];
+    create_reject_result [label="Call TBindingResult::reject()\nFor incompatible bindings"];
+
+    // Validation
+    check_is_success [label="Call result.is_success()\nCheck if binding was accepted"];
+
+    // End
+    result_ready [label="Binding Result Available", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> binding_calls_result;
+    binding_calls_result -> check_binding_compatibility;
+
+    check_binding_compatibility -> create_accept_result [label="Compatible"];
+    check_binding_compatibility -> create_reject_result [label="Incompatible"];
+
+    create_accept_result -> check_is_success;
+    create_reject_result -> check_is_success;
+    check_is_success -> result_ready;
+}

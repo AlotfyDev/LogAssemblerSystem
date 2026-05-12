@@ -1,0 +1,59 @@
+digraph TChannelBindingPolicy_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // W08 context
+    SessionCreation [label="Session Creation\n(TSession::open)", fillcolor=lightyellow];
+
+    // Policy validation steps
+    CanBindCheck [label="Can Bind Check\npolicy.can_bind(channel, adapter)\n- Validate channel capacity\n- Check adapter compatibility\n- Apply binding constraints", fillcolor=lightcyan];
+
+    SurfaceValidation [label="Surface Validation\npolicy.validate_surface_pair(pair)\n- Check surface compatibility\n- Validate obligation-surface matching\n- Apply compatibility rules", fillcolor=lightcyan];
+
+    ConstraintCheck [label="Constraint Check\npolicy.get_binding_constraints()\n- Verify adapter limits\n- Check dynamic binding rules\n- Validate binding attempt limits", fillcolor=lightcyan];
+
+    // Internal validation methods
+    CheckChannel [label="Check Channel Compatibility\n- Verify channel is active\n- Check capacity availability\n- Validate channel type", fillcolor=lightblue];
+
+    CheckAdapter [label="Check Adapter Compatibility\n- Verify adapter capabilities\n- Check binding requirements\n- Validate adapter state", fillcolor=lightblue];
+
+    ValidateSurfaces [label="Validate Surface Compatibility\n- Compare obligation requirements\n- Check surface capabilities\n- Calculate compatibility score", fillcolor=lightblue];
+
+    // Decision outcomes
+    BindingAllowed [label="Binding Allowed\n- Proceed with session creation\n- Create valid TSession", fillcolor=lightgreen, shape=ellipse];
+
+    BindingRejected [label="Binding Rejected\n- Create rejected TSession\n- Set terminal REJECTED status", fillcolor=lightcoral, shape=ellipse];
+
+    // Flow in W08
+    SessionCreation -> CanBindCheck [label="1. Validate binding capability"];
+
+    CanBindCheck -> CheckChannel [label="2. Internal channel validation"];
+    CanBindCheck -> CheckAdapter [label="3. Internal adapter validation"];
+
+    CheckChannel -> ConstraintCheck [label="4. Apply binding constraints"];
+    CheckAdapter -> ConstraintCheck [label="5. Apply binding constraints"];
+
+    ConstraintCheck -> SurfaceValidation [label="6. Validate surface compatibility"];
+
+    SurfaceValidation -> ValidateSurfaces [label="7. Detailed surface validation"];
+
+    ValidateSurfaces -> BindingAllowed [label="If all validations pass"];
+    ValidateSurfaces -> BindingRejected [label="If any validation fails"];
+
+    // Feedback to session creation
+    BindingAllowed -> SessionCreation [label="8. Allow session creation"];
+    BindingRejected -> SessionCreation [label="9. Reject session creation"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Binding Validation";
+        bgcolor=white;
+
+        PolicyValidation [label="Policy Validation Steps", fillcolor=lightcyan];
+        InternalChecks [label="Internal Validation Methods", fillcolor=lightblue];
+        W08Integration [label="W08 Session Creation", fillcolor=lightyellow];
+        Success [label="Success Path", fillcolor=lightgreen];
+        Failure [label="Failure Path", fillcolor=lightcoral];
+    }
+}

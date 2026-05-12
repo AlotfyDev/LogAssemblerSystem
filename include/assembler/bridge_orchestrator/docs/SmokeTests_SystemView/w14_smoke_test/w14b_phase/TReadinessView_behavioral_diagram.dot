@@ -1,0 +1,83 @@
+digraph TReadinessView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Adapter readiness
+    Adapter_Readiness_Check [label="adapter.readiness()\nAdapter checks its readiness", fillcolor=lightblue];
+    Config_Valid [label="config_.is_valid()", fillcolor=lavender];
+    Descriptor_Ready [label="TLogLevelAPIEnvelopePluginAdapterReadinessPolicy::descriptor_is_ready(descriptor_)", fillcolor=lavender];
+    Capacity_Hint [label="TLogLevelAPIEnvelopePluginAdapterReadinessPolicy::readiness_capacity_hint(descriptor_)", fillcolor=lavender];
+    Adapter_Ready [label="return TReadinessView::ready(descriptor_.correlation, capacity_hint)", fillcolor=lightgreen];
+
+    // Port readiness evaluation
+    Port_Readiness_Check [label="port.readiness(request)\nPort evaluates readiness for request", fillcolor=orange];
+    Config_Target_Valid [label="config_.is_valid() && target_.is_valid()", fillcolor=lavender];
+    Request_Valid [label="request.is_valid()", fillcolor=lavender];
+    Payload_Supported [label="TWriteSideEnvelopePlacementAdmissionPolicy::payload_kind_is_supported(request, config_)", fillcolor=lavender];
+    Destination_Supported [label="TWriteSideEnvelopePlacementAdmissionPolicy::destination_is_supported(request, config_)", fillcolor=lavender];
+    Ordered_Placement_OK [label="!request.requires_ordered_placement || target_.supports_ordered_placement", fillcolor=lavender];
+    Port_Capacity [label="TWriteSideEnvelopePlacementAdmissionPolicy::readiness_capacity_hint(config_)", fillcolor=lavender];
+    Port_Ready [label="return TReadinessView::ready(request.correlation, capacity_hint)", fillcolor=lightgreen];
+
+    // Not ready states
+    Config_Invalid [label="return TReadinessView::not_ready(\"write_side_envelope_placement_port_config_or_target_invalid\", request.correlation)", fillcolor=red];
+    Request_Invalid [label="return TReadinessView::not_ready(\"placement_request_invalid\", request.correlation)", fillcolor=red];
+    Payload_Unsupported [label="return TReadinessView::not_ready(\"unsupported_payload_kind\", request.correlation)", fillcolor=red];
+    Descriptor_Invalid [label="return TReadinessView::not_ready(\"log_level_envelope_descriptor_invalid\", descriptor_.correlation)", fillcolor=red];
+    Config_Invalid_Adapter [label="return TReadinessView::not_ready(\"log_level_api_envelope_plugin_adapter_config_invalid\", descriptor_.correlation)", fillcolor=red];
+
+    // Deferred states
+    Destination_Unsupported [label="return TReadinessView::deferred(\"unsupported_destination_family\", request.correlation)", fillcolor=red, shape=diamond];
+    Ordered_Not_Supported [label="return TReadinessView::deferred(\"ordered_placement_not_supported_by_target\", request.correlation)", fillcolor=red, shape=diamond];
+
+    // Query operations
+    Check_Is_Ready [label="readiness.is_ready()\nCheck if ready", fillcolor=lavender];
+    Check_Is_Not_Ready [label="readiness.is_not_ready()\nCheck if not ready", fillcolor=lavender];
+    Check_Is_Deferred [label="readiness.is_deferred()\nCheck if deferred", fillcolor=lavender];
+
+    // Admission logic
+    Admission_Check [label="if (readiness.is_ready()) accept else check deferral", fillcolor=orange];
+
+    // Flow connections
+    Adapter_Readiness_Check -> Config_Valid;
+    Config_Valid -> Config_Invalid_Adapter [label="config invalid"];
+    Config_Valid -> Descriptor_Ready [label="config valid"];
+
+    Descriptor_Ready -> Descriptor_Invalid [label="descriptor invalid"];
+    Descriptor_Ready -> Capacity_Hint [label="descriptor ready"];
+
+    Capacity_Hint -> Adapter_Ready;
+
+    Port_Readiness_Check -> Config_Target_Valid;
+    Config_Target_Valid -> Config_Invalid [label="config/target invalid"];
+    Config_Target_Valid -> Request_Valid [label="config/target valid"];
+
+    Request_Valid -> Request_Invalid [label="request invalid"];
+    Request_Valid -> Payload_Supported [label="request valid"];
+
+    Payload_Supported -> Payload_Unsupported [label="payload unsupported"];
+    Payload_Supported -> Destination_Supported [label="payload supported"];
+
+    Destination_Supported -> Destination_Unsupported [label="destination unsupported"];
+    Destination_Supported -> Ordered_Placement_OK [label="destination supported"];
+
+    Ordered_Placement_OK -> Ordered_Not_Supported [label="ordered not supported"];
+    Ordered_Placement_OK -> Port_Capacity [label="ordered OK"];
+
+    Port_Capacity -> Port_Ready;
+
+    Port_Ready -> Check_Is_Ready;
+    Config_Invalid -> Check_Is_Not_Ready;
+    Request_Invalid -> Check_Is_Not_Ready;
+    Payload_Unsupported -> Check_Is_Not_Ready;
+    Descriptor_Invalid -> Check_Is_Not_Ready;
+    Config_Invalid_Adapter -> Check_Is_Not_Ready;
+    Destination_Unsupported -> Check_Is_Deferred;
+    Ordered_Not_Supported -> Check_Is_Deferred;
+
+    Check_Is_Ready -> Admission_Check [label="ready"];
+    Check_Is_Not_Ready -> Admission_Check [label="not ready"];
+    Check_Is_Deferred -> Admission_Check [label="deferred"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TReadinessView_behavioral_diagram.dot

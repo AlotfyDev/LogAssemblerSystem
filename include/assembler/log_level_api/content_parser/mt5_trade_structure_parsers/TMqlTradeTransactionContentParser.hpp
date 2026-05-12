@@ -1,0 +1,36 @@
+#pragma once
+
+/*
+    LOGAPI-W17 — MT5 Trade Structure Parsers
+
+    Responsibility:
+        Define dedicated parser surfaces for MetaTrader 5 trade-related structures:
+        MqlTradeRequest, MqlTradeCheckResult, MqlTradeResult, and
+        MqlTradeTransaction.
+
+    Boundary:
+        This wave does not implement MQL5 runtime binding, binary ABI parsing,
+        concrete validators, metadata injection, timestamp stabilization,
+        envelope assembly, circulation binding, or policy assignment.
+
+    Hot-path doctrine:
+        Each MT5 trade structure has a dedicated parser type.
+        No generic parser dispatcher selects a parser in the hot path.
+        Parser selection is configuration-time.
+*/
+
+#include "TLogApiMt5TradeParserDetail.hpp"
+
+namespace assembler::log_level_api::content_parser::mt5_trade_structure_parsers {
+
+class TMqlTradeTransactionContentParser final {
+public:
+    [[nodiscard]] static TLogApiMt5TradeParseResult Parse(
+        const TLogApiMt5MqlTradeTransactionInputView& input,
+        const TLogApiMt5TradeParserProfile& profile
+    ) {
+        return detail::ParseTradeTransaction(input, profile);
+    }
+};
+
+} // namespace assembler::log_level_api::content_parser::mt5_trade_structure_parsers

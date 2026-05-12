@@ -1,0 +1,34 @@
+#pragma once
+
+/*
+    LOGAPI-W03 — Validator Contract And Binding Surface
+
+    Responsibility:
+        Define validation contracts, validation result carriers, validation issues,
+        validator capabilities, safe points, and configuration-time validator
+        binding descriptors.
+
+    Boundary:
+        No concrete validators, concrete schemas, metadata structs, timestamp
+        algorithms, envelope assembly, API hot path, communication bindings,
+        or policy assignment.
+
+    Doctrine:
+        Validator contracts are core.
+        Concrete validators are schema-family add-ons.
+        Validator binding is resolved before the hot path.
+*/
+
+namespace assembler::log_level_api::validator {
+
+enum class TLogApiValidatorStatus {
+    Unknown = 0,
+    Declared,
+    Bound,
+    Resolved,
+    Active,
+    Suspended,
+    Rejected
+};
+
+} // namespace assembler::log_level_api::validator

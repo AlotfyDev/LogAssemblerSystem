@@ -1,0 +1,29 @@
+digraph TPlacementHandle_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    HandleCreation [label="Handle Creation:\n- port.placement_handle(placement_request) called after admission\n- port creates acceptance handle for the placement request\n- includes correlation token and handle family"];
+
+    ValidityValidation [label="Validity Validation:\n- placement_handle.is_valid() called in skeleton\n- validates handle created successfully by port\n- failure returns early with invalid placement handle note"];
+
+    AdapterAcceptance [label="Adapter Acceptance:\n- adapter.accept_placement_handle(placement_handle) called\n- adapter validates handle correlation and accepts for use\n- enables load signal emission"];
+
+    ReportStorage [label="Report Storage:\n- placement_handle stored in TFirstIntegrationSkeletonReport\n- provides handle information for debugging\n- correlation token preserved for tracking"];
+
+    HandleCreation -> ValidityValidation;
+    ValidityValidation -> AdapterAcceptance [label="valid"];
+    ValidityValidation -> End [label="invalid"];
+    AdapterAcceptance -> ReportStorage;
+
+    End [label="Placement Handle Invalid", shape=ellipse, fillcolor=lightcoral];
+
+    HandleCreation [fillcolor=lightblue];
+    ValidityValidation [fillcolor=lightyellow];
+    AdapterAcceptance [fillcolor=lightsalmon];
+    ReportStorage [fillcolor=lightgreen];
+
+    label="TPlacementHandle Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TPlacementHandle_behavioral_diagram.dot

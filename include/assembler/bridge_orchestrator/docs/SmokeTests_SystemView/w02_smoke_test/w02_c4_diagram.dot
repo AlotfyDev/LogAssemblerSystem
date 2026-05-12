@@ -1,0 +1,68 @@
+digraph C4_W02_CommunicationContext {
+    rankdir=TB
+    node [shape=box, style=filled, fillcolor=lightblue]
+
+    // System Context
+    subgraph cluster_SystemContext {
+        label="System Context"
+        style=filled
+        fillcolor=lightgrey
+
+        ExternalSystems [label="External Systems\n(Log Producers/Consumers)", shape=ellipse, fillcolor=lightgreen]
+        CommunicationContext [label="Communication Context System", shape=box, fillcolor=lightblue]
+    }
+
+    // Containers
+    subgraph cluster_Containers {
+        label="Containers"
+        style=filled
+        fillcolor=lightyellow
+
+        BridgeCore [label="Bridge Core\n(Error/Result Handling)", fillcolor=orange]
+        ProtocolState [label="Protocol State\n(State Management)", fillcolor=orange]
+        Correlation [label="Correlation\n(Token Management)", fillcolor=orange]
+    }
+
+    // Components within Protocol State
+    subgraph cluster_ProtocolState {
+        label="Protocol State Components"
+        style=filled
+        fillcolor=lightcyan
+
+        BridgeStages [label="Bridge Stages\n(TBridgeStage)", fillcolor=pink]
+        TerminalStates [label="Terminal States\n(TBridgeTerminalState)", fillcolor=pink]
+        Transitions [label="Transitions\n(TBridgeTransition)", fillcolor=pink]
+        Snapshots [label="Snapshots\n(TBridgeProtocolSnapshot)", fillcolor=pink]
+        Lifecycle [label="Lifecycle\n(TBridgeProtocolState)", fillcolor=pink]
+    }
+
+    // Relationships
+    ExternalSystems -> CommunicationContext [label="sends/receives data"]
+    CommunicationContext -> BridgeCore [label="uses"]
+    CommunicationContext -> ProtocolState [label="manages state"]
+    CommunicationContext -> Correlation [label="tracks operations"]
+
+    ProtocolState -> BridgeStages [label="defines stages"]
+    ProtocolState -> TerminalStates [label="defines terminals"]
+    ProtocolState -> Transitions [label="enables transitions"]
+    ProtocolState -> Snapshots [label="creates snapshots"]
+    ProtocolState -> Lifecycle [label="manages lifecycle"]
+
+    Lifecycle -> Transitions [label="applies transitions"]
+    Lifecycle -> Snapshots [label="generates snapshots"]
+    Lifecycle -> TerminalStates [label="reaches terminals"]
+
+    Correlation -> Lifecycle [label="correlates state"]
+    BridgeCore -> Lifecycle [label="provides results"]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        SystemLegend [label="System", shape=box, fillcolor=lightblue]
+        ContainerLegend [label="Container", shape=box, fillcolor=orange]
+        ComponentLegend [label="Component", shape=record, fillcolor=pink]
+    }
+}

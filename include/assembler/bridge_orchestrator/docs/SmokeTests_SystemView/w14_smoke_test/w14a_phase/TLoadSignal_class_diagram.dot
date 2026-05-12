@@ -1,0 +1,28 @@
+digraph TLoadSignal_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main struct
+    TLoadSignal [label="{TLoadSignal\nBridge-visible content-load signal carrier|+ kind: TLoadSignalKind\n+ correlation: TCorrelationToken\n+ placement: TPlacementHandle\n+ bytes_loaded: uint64_t\n+ note: string_view|+ completed() const noexcept -> bool\n+ failed() const noexcept -> bool\n+ started(TCorrelationToken, TPlacementHandle) static constexpr -> TLoadSignal\n+ completed(TCorrelationToken, TPlacementHandle, uint64_t) static constexpr -> TLoadSignal\n+ failed(TCorrelationToken, TPlacementHandle, string_view) static constexpr -> TLoadSignal}"];
+
+    // Enum
+    TLoadSignalKind [label="{TLoadSignalKind\nunknown, load_started, load_completed, load_failed}"];
+
+    // Dependencies
+    TCorrelationToken [label="{TCorrelationToken\nCorrelation token}", fillcolor=lightyellow];
+    TPlacementHandle [label="{TPlacementHandle\nPlacement handle}", fillcolor=lightyellow];
+
+    // Relationships
+    TLoadSignal -> TLoadSignalKind [label="uses"];
+    TLoadSignal -> TCorrelationToken [label="contains"];
+    TLoadSignal -> TPlacementHandle [label="contains"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        carrier_struct [label="Carrier Struct", fillcolor=lightyellow];
+        enum_type [label="Enum Type"];
+        member [label="Member Object"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLoadSignal_class_diagram.dot

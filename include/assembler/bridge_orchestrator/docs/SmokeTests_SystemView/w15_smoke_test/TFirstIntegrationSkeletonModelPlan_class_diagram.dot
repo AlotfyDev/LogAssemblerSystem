@@ -1,0 +1,45 @@
+digraph TFirstIntegrationSkeletonModelPlan_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main model plan struct
+    ModelPlan [label="{TFirstIntegrationSkeletonModelPlan|+ declare_channel(TFirstIntegrationSkeletonConfig, TLogLevelAPIEnvelopePluginAdapter, TWriteSideEnvelopePlacementPort, TCorrelationToken) static constexpr -> TChannel\l+ make_surface_pair(TLogLevelAPIEnvelopePluginAdapter, TWriteSideEnvelopePlacementPort) static constexpr -> TObligationSurfacePair\l+ declare_binding(TFirstIntegrationSkeletonConfig, TChannel, TObligationSurfacePair, TCorrelationToken) static constexpr -> TBinding\l+ open_session(TFirstIntegrationSkeletonConfig, TBinding, TCorrelationToken) static constexpr -> TSession\l+ declare_protocol(TFirstIntegrationSkeletonConfig, TSession, TCorrelationToken) static constexpr -> TEnvelopePlacementProtocol\l+ declare_bridge(TFirstIntegrationSkeletonConfig, TEnvelopePlacementProtocol, TCorrelationToken) static constexpr -> TEnvelopePlacementBridge\l}", fillcolor=lightsalmon, style=filled];
+
+    // Type aliases
+    ProtocolPlan [label="{TEnvelopePlacementProtocolPlan|protocol plan for envelope placement\l12-step bridge protocol\l}", fillcolor=lightblue];
+    Protocol [label="{TEnvelopePlacementProtocol|bridge protocol instance\lstep-by-step execution\l}", fillcolor=lightblue];
+    Bridge [label="{TEnvelopePlacementBridge|bridge model container\lbounded execution\l}", fillcolor=lightblue];
+
+    // Parameter types
+    Config [label="{TFirstIntegrationSkeletonConfig|configuration parameters\lIDs and names\l}", fillcolor=lightcyan];
+    Adapter [label="{TLogLevelAPIEnvelopePluginAdapter|W14A adapter instance\lprovides view and operations\l}", fillcolor=lightcyan];
+    Port [label="{TWriteSideEnvelopePlacementPort|W14B port instance\lprovides view and operations\l}", fillcolor=lightcyan];
+    CorrelationToken [label="{TCorrelationToken|correlation tracking token\lused in all declarations\l}", fillcolor=lightcyan];
+
+    // Created components
+    Channel [label="{TChannel|communication channel\lconnects adapter and port\l}", fillcolor=palegreen];
+    SurfacePair [label="{TObligationSurfacePair|adapter-port surface pairing\lvalidates compatibility\l}", fillcolor=palegreen];
+    Binding [label="{TBinding|binding declaration\lstrict one-to-one profile\l}", fillcolor=palegreen];
+    Session [label="{TSession|opened session\lstrict declaration policy\l}", fillcolor=palegreen];
+
+    // Relationships
+    ModelPlan -> ProtocolPlan [label="defines"];
+    ModelPlan -> Protocol [label="creates"];
+    ModelPlan -> Bridge [label="creates"];
+
+    ModelPlan -> Config [label="accepts"];
+    ModelPlan -> Adapter [label="accepts"];
+    ModelPlan -> Port [label="accepts"];
+    ModelPlan -> CorrelationToken [label="accepts"];
+
+    ModelPlan -> Channel [label="creates"];
+    ModelPlan -> SurfacePair [label="creates"];
+    ModelPlan -> Binding [label="creates"];
+    ModelPlan -> Session [label="creates"];
+
+    // Title
+    label="TFirstIntegrationSkeletonModelPlan Class Structure";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonModelPlan_class_diagram.dot

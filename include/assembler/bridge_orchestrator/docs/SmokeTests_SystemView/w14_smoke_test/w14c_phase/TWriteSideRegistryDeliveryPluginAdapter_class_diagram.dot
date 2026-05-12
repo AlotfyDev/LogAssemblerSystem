@@ -1,0 +1,47 @@
+digraph TWriteSideRegistryDeliveryPluginAdapter_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main adapter class
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|+ descriptor_ : TWriteSideRegistryDeliveryMaterialDescriptor\l+ config_ : TWriteSideRegistryDeliveryPluginAdapterConfig\l+ state_ : TWriteSideRegistryDeliveryPluginAdapterState\l|+ TWriteSideRegistryDeliveryPluginAdapter()\l+ descriptor() const\l+ config() const\l+ state() const\l+ view()\l+ readiness()\l+ prepare_placement_request()\l+ prepare_boundary_handoff_request()\l+ accept_placement_handle()\l+ emit_load_signal()\l+ next_destination_request()\l+ accept_boundary_handoff_result()\l+ reset_state()\l}", fillcolor=lightsalmon, style=filled];
+
+    // Inheritance
+    PluginAdapterInterface [label="{TPluginAdapter&lt;TWriteSideRegistryDeliveryPluginAdapter&gt;|template interface for plugin adapters\lprovides common adapter contract\l}", fillcolor=lightgray];
+
+    // Member components
+    Descriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|material metadata and validation\lcorrelation token, material info, boundary\l}", fillcolor=lightblue];
+    Config [label="{TWriteSideRegistryDeliveryPluginAdapterConfig|adapter configuration settings\lIDs, names, behavior flags\l}", fillcolor=lightblue];
+    State [label="{TWriteSideRegistryDeliveryPluginAdapterState|runtime state management\lhandles, flags, lifecycle tracking\l}", fillcolor=lightblue];
+
+    // Collaborating components
+    View [label="{TPluginAdapterView|adapter identity and capabilities\lparticipant info, obligation profile\l}", fillcolor=lightcyan];
+    ReadinessView [label="{TReadinessView|readiness assessment result\lready/not_ready/deferred with reason\l}", fillcolor=lightcyan];
+    PlacementRequest [label="{TPlacementRequest|material placement request\lcorrelation, material info, destination\l}", fillcolor=lightcyan];
+    BoundaryHandoffRequest [label="{TBoundaryHandoffRequest|boundary handoff request\lcorrelation, boundary, material info\l}", fillcolor=lightcyan];
+    BridgeResult [label="{TBridgeResult|operation result with correlation\lsuccess/failure/defer with details\l}", fillcolor=lightcyan];
+    LoadSignal [label="{TLoadSignal|material load completion signal\lcorrelation, handle, size info\l}", fillcolor=lightcyan];
+    NextDestinationRequest [label="{TNextDestinationRequest|next destination routing request\lcorrelation, handle, reason, context\l}", fillcolor=lightcyan];
+    BoundaryHandoffResult [label="{TBoundaryHandoffResult|boundary handoff operation result\laccepted/completed/failed with handle\l}", fillcolor=lightcyan];
+
+    // Relationships
+    Adapter -> PluginAdapterInterface [label="implements", arrowhead=onormal];
+
+    Adapter -> Descriptor [label="owns"];
+    Adapter -> Config [label="owns"];
+    Adapter -> State [label="owns"];
+
+    Adapter -> View [label="creates"];
+    Adapter -> ReadinessView [label="creates"];
+    Adapter -> PlacementRequest [label="creates"];
+    Adapter -> BoundaryHandoffRequest [label="creates"];
+    Adapter -> BridgeResult [label="returns"];
+    Adapter -> LoadSignal [label="creates"];
+    Adapter -> NextDestinationRequest [label="creates"];
+
+    Adapter -> BoundaryHandoffResult [label="accepts"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapter Class Structure";
+    labelloc=t;
+}

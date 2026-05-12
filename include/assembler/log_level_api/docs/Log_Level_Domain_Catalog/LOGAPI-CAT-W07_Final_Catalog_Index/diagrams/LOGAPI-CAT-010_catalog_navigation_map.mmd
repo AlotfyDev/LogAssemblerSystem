@@ -1,0 +1,25 @@
+flowchart TB
+    Start["Start Here"]
+    Start --> Foundation["CAT-000/001 Foundation & Holistic View"]
+    Foundation --> Component["CAT-002/003 Components & Types"]
+    Component --> Behavior["CAT-004/005 E2E & Behavioral"]
+    Behavior --> Schema["CAT-006/007 Schema Parser MT5"]
+    Schema --> Gaps["CAT-008 Gap Matrix"]
+    Gaps --> Readiness["CAT-009 Production Readiness"]
+    Readiness --> Index["CAT-010 Final Index"]
+
+    Concern["Navigate By Concern"] --> Whole["Whole Domain"]
+    Concern --> Ownership["Component Ownership"]
+    Concern --> Types["Types / Headers"]
+    Concern --> HotPath["Hot Path Behavior"]
+    Concern --> MT5["MT5"]
+    Concern --> GapsC["Gaps"]
+    Concern --> Ready["Readiness"]
+
+    Whole --> Foundation
+    Ownership --> Component
+    Types --> Component
+    HotPath --> Behavior
+    MT5 --> Schema
+    GapsC --> Gaps
+    Ready --> Readiness

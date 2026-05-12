@@ -1,0 +1,41 @@
+digraph TWriteSideEnvelopePlacementPortBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Include usage
+    Include_Binding [label="#include \"TWriteSideEnvelopePlacementPortBinding.hpp\"", fillcolor=orange];
+    Availability_Check [label="ASCC_W14B_WRITE_SIDE_ENVELOPE_PLACEMENT_PORT_AVAILABLE == true", fillcolor=lightgreen];
+
+    // Component access
+    Access_Port [label="Access TWriteSideEnvelopePlacementPort class", fillcolor=lightcyan];
+    Access_Factory [label="Access TWriteSideEnvelopePlacementPortFactory class", fillcolor=lightcyan];
+    Access_Config [label="Access TWriteSideEnvelopePlacementPortConfig class", fillcolor=lightcyan];
+    Access_Target [label="Access TWriteSidePlacementTargetDescriptor class", fillcolor=lightcyan];
+    Access_Policy [label="Access TWriteSideEnvelopePlacementAdmissionPolicy class", fillcolor=lightcyan];
+    Access_State [label="Access TWriteSideEnvelopePlacementPortState class", fillcolor=lightcyan];
+    Access_ViewBuilder [label="Access TWriteSideEnvelopePlacementPortViewBuilder class", fillcolor=lightcyan];
+
+    // Usage in code
+    Create_Port [label="TWriteSideEnvelopePlacementPortFactory::make_default()", fillcolor=lavender];
+    Configure_Port [label="TWriteSideEnvelopePlacementPortFactory::from_config(config, target)", fillcolor=lavender];
+    Use_Port [label="port.readiness(request), port.admit(request), etc.", fillcolor=lavender];
+
+    // Flow
+    Include_Binding -> Availability_Check;
+    Include_Binding -> Access_Port;
+    Include_Binding -> Access_Factory;
+    Include_Binding -> Access_Config;
+    Include_Binding -> Access_Target;
+    Include_Binding -> Access_Policy;
+    Include_Binding -> Access_State;
+    Include_Binding -> Access_ViewBuilder;
+
+    Access_Port -> Use_Port;
+    Access_Factory -> Create_Port;
+    Access_Factory -> Configure_Port;
+
+    Create_Port -> Use_Port;
+    Configure_Port -> Use_Port;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TWriteSideEnvelopePlacementPortBinding_behavioral_diagram.dot

@@ -1,0 +1,34 @@
+digraph TWriteSideRegistryDeliveryMaterialDescriptor_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main descriptor struct
+    Descriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|+ correlation : TCorrelationToken\l+ material_id : std::string_view\l+ material_kind : std::string_view\l+ material_size_hint : std::uint64_t\l+ requires_ordered_delivery : bool\l+ registry_boundary : TIntegrationBoundaryDescriptor\l|+ is_valid() const\l+ destination_family() const\l+ make() static\l+ default_log_level_envelope() static\l}", fillcolor=lightsalmon, style=filled];
+
+    // Member types
+    CorrelationToken [label="{TCorrelationToken|correlation tracking token\lmust be valid for descriptor\l}", fillcolor=lightblue];
+    StringView [label="{std::string_view|immutable string reference\lused for IDs and kinds\l}", fillcolor=lightblue];
+    SizeType [label="{std::uint64_t|size hint for material\lin bytes, can be 0\l}", fillcolor=lightblue];
+    Bool [label="{bool|ordered delivery requirement\lfalse for unordered\l}", fillcolor=lightblue];
+    BoundaryDescriptor [label="{TIntegrationBoundaryDescriptor|registry boundary specification\lkind, direction, capabilities\l}", fillcolor=lightblue];
+
+    // Boundary components
+    BoundaryKind [label="{TIntegrationBoundaryKind|boundary type enumeration\lmust be registry_delivery\l}", fillcolor=lightcyan];
+    BoundaryCapability [label="{TIntegrationBoundaryCapability|boundary capability flags\lmust include accepts_handoff\l}", fillcolor=lightcyan];
+
+    // Relationships
+    Descriptor -> CorrelationToken [label="contains"];
+    Descriptor -> StringView [label="contains (material_id)"];
+    Descriptor -> StringView [label="contains (material_kind)"];
+    Descriptor -> SizeType [label="contains"];
+    Descriptor -> Bool [label="contains"];
+    Descriptor -> BoundaryDescriptor [label="contains"];
+
+    BoundaryDescriptor -> BoundaryKind [label="specifies"];
+    BoundaryDescriptor -> BoundaryCapability [label="requires"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryMaterialDescriptor Class Structure";
+    labelloc=t;
+}

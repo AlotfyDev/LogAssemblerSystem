@@ -1,0 +1,70 @@
+digraph W01_Holistic_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Start
+    Start [label="Start\nW01 Smoke Test", shape=ellipse, fillcolor=green]
+
+    // Main behavioral flow
+    CreateToken [label="Create Correlation Token\nTCorrelationToken::from_parts(1u, 2u)", fillcolor=yellow]
+    ValidateToken [label="Validate Token\nis_valid()", fillcolor=lightgreen]
+
+    CreateRequest [label="Create Placement Request\nTPlacementRequest::make(token, ...)", fillcolor=yellow]
+    ValidateRequest [label="Validate Request\nis_valid()", fillcolor=lightgreen]
+
+    CreateHandle [label="Create Placement Handle\nTPlacementHandle::make(7u, token, ...)", fillcolor=yellow]
+    ValidateHandle [label="Validate Handle\nis_valid()", fillcolor=lightgreen]
+
+    CreateReadiness [label="Create Readiness View\nTReadinessView::ready(token, 1u)", fillcolor=yellow]
+    CheckReadiness [label="Check Readiness\nis_ready()", fillcolor=lightgreen]
+
+    CreateAdmission [label="Create Admission Result\nTAdmissionResult::accept(token)", fillcolor=yellow]
+    CheckAdmission [label="Check Admission\naccepted()", fillcolor=lightgreen]
+
+    CreateSignal [label="Create Load Signal\nTLoadSignal::completed(token, handle, 128u)", fillcolor=yellow]
+    CheckSignal [label="Check Signal\ncompleted()", fillcolor=lightgreen]
+
+    CreateNextDestination [label="Create Next Destination Request\nTNextDestinationRequest::make(...)", fillcolor=yellow]
+    ValidateNextDestination [label="Validate Next Destination\nis_valid()", fillcolor=lightgreen]
+
+    CreateResult [label="Create Bridge Result\nTBridgeResult::success(token)", fillcolor=yellow]
+    CheckResult [label="Check Result\nsucceeded()", fillcolor=lightgreen]
+
+    CreateView [label="Create Carrier View\nTCarrierView::make(...)", fillcolor=yellow]
+    ValidateView [label="Validate View\nis_valid()", fillcolor=lightgreen]
+
+    // End
+    End [label="End\nAll validations passed", shape=ellipse, fillcolor=red]
+
+    // Flow connections
+    Start -> CreateToken
+    CreateToken -> ValidateToken
+    ValidateToken -> CreateRequest
+    CreateRequest -> ValidateRequest
+    ValidateRequest -> CreateHandle
+    CreateHandle -> ValidateHandle
+    ValidateHandle -> CreateReadiness
+    CreateReadiness -> CheckReadiness
+    CheckReadiness -> CreateAdmission
+    CreateAdmission -> CheckAdmission
+    CheckAdmission -> CreateSignal
+    CreateSignal -> CheckSignal
+    CheckSignal -> CreateNextDestination
+    CreateNextDestination -> ValidateNextDestination
+    ValidateNextDestination -> CreateResult
+    CreateResult -> CheckResult
+    CheckResult -> CreateView
+    CreateView -> ValidateView
+    ValidateView -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation Check", shape=rectangle, fillcolor=lightgreen]
+        FlowLegend [label="Control Flow", shape=arrow, fillcolor=black]
+    }
+}

@@ -1,0 +1,17 @@
+Component Name,Include Path,Category,Description
+TDiagnostics,diagnostics/TDiagnostics.hpp,Aggregate Include,Aggregate include for W12 optional diagnostics with availability marker
+TBridgeCoreResult,bridge_core/results/TBridgeCoreResult.hpp,Bridge Result,Bridge operation result containing completion status and correlation (W10)
+TBridgeId,bridge_core/ids/TBridgeId.hpp,Bridge ID,Opaque bridge identifier for correlation and routing (W10)
+TRegistrySnapshot,registries/optional_registries/snapshots/TRegistrySnapshot.hpp,Registry Snapshot,Diagnostic snapshot of registry state with capacity and statistics (W11)
+TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,Correlation Token,Correlation token for tracking requests across system components (W01)
+TDiagnosticId,diagnostics/ids/TDiagnosticId.hpp,Diagnostic ID,Opaque diagnostic identifier for records and reports
+TBridgeDiagnosticBuilder,diagnostics/builders/TBridgeDiagnosticBuilder.hpp,Diagnostic Builder,Builder for creating diagnostic records from bridge core results
+TDiagnosticSeverity,diagnostics/severity/TDiagnosticSeverity.hpp,Diagnostic Severity,Diagnostic severity taxonomy with ordering and comparison helpers
+TRegistryDiagnosticBuilder,diagnostics/builders/TRegistryDiagnosticBuilder.hpp,Diagnostic Builder,Builder for creating diagnostic records from registry snapshots
+TDiagnosticCollector,diagnostics/collectors/TDiagnosticCollector.hpp,Diagnostic Collector,Template-based bounded collector for diagnostic records with snapshot generation
+TDiagnosticRecord,diagnostics/records/TDiagnosticRecord.hpp,Diagnostic Record,Atomic diagnostic observation with ID, category, severity, and correlation
+TDiagnosticCategory,diagnostics/categories/TDiagnosticCategory.hpp,Diagnostic Category,Diagnostic category taxonomy for organizing diagnostic records
+TDiagnosticPolicy,diagnostics/policies/TDiagnosticPolicy.hpp,Diagnostic Policy,Filtering policies for diagnostic record inclusion and severity thresholds
+TDiagnosticView,diagnostics/views/TDiagnosticView.hpp,Diagnostic View,View wrapper providing additional diagnostic record operations
+TDiagnosticReport,diagnostics/reports/TDiagnosticReport.hpp,Diagnostic Report,Bounded container for diagnostic records with append and filtering operations
+TDiagnosticSnapshot,diagnostics/snapshots/TDiagnosticSnapshot.hpp,Diagnostic Snapshot,Immutable snapshot of diagnostic report state with aggregate statistics

@@ -1,0 +1,46 @@
+digraph TChannelBindingPolicy_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main struct
+    TChannelBindingPolicy [label="{TChannelBindingPolicy|TChannelBindingMode binding_mode;\nTChannelBindingLifecycle lifecycle;\nTChannelVisibility visibility;\nbool require_compatible_roles;\nbool require_compatible_carriers;\nbool allow_rebinding;\nstd::uint32_t max_active_bindings;\nstd::string_view policy_name;|+ is_valid() const noexcept\n+ is_static() const noexcept\n+ is_dynamic() const noexcept\n+ is_strict_one_to_one() const noexcept\n+ is_compatible_with(profile) const noexcept\n+ strict_static_one_to_one(...) static constexpr}"];
+
+    // Enums
+    TChannelBindingMode [label="{TChannelBindingMode|unknown\nstrict_one_to_one\none_adapter_to_many_ports\nmany_adapters_to_one_port\nmany_to_many\nobserver_only}"];
+    TChannelBindingLifecycle [label="{TChannelBindingLifecycle|unknown\nstatic_binding\ndeferred_binding\ndynamic_binding}"];
+    TChannelVisibility [label="{TChannelVisibility|unknown\nprivate_channel\ndomain_local\ncross_domain\nboundary_facing}"];
+
+    // String conversion helpers
+    to_string_mode [label="{to_string(TChannelBindingMode)|constexpr std::string_view}"];
+    to_string_lifecycle [label="{to_string(TChannelBindingLifecycle)|constexpr std::string_view}"];
+    to_string_visibility [label="{to_string(TChannelVisibility)|constexpr std::string_view}"];
+
+    // Dependencies
+    TChannelBindingPolicy -> TChannelBindingMode [label="binding_mode field"];
+    TChannelBindingPolicy -> TChannelBindingLifecycle [label="lifecycle field"];
+    TChannelBindingPolicy -> TChannelVisibility [label="visibility field"];
+    TChannelBindingPolicy -> TChannelProfile [label="compatibility check"];
+
+    to_string_mode -> TChannelBindingMode [label="converts"];
+    to_string_lifecycle -> TChannelBindingLifecycle [label="converts"];
+    to_string_visibility -> TChannelVisibility [label="converts"];
+
+    // Usage in W04
+    TChannelBindingPolicy -> TChannel [label="binding_policy field"];
+
+    // Invisible positioning
+    TChannelProfile [shape=plaintext, label="TChannelProfile"];
+    TChannel [shape=plaintext, label="TChannel"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TChannelBindingPolicy Structure";
+        color=white;
+        style=filled;
+
+        legend_data [label="Data Members", shape=rectangle, fillcolor=lightblue];
+        legend_enums [label="Enumerations", shape=rectangle, fillcolor=lightyellow];
+        legend_helpers [label="String Helpers", shape=rectangle, fillcolor=lightgreen];
+        legend_w04 [label="W04 Usage", shape=plaintext];
+    }
+}

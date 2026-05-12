@@ -1,0 +1,22 @@
+digraph TParticipant_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TParticipant Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateParticipant [label="Create Participant\nTParticipant::make(id, role, name, metadata)\nCreates participant with identity and role", fillcolor=yellow]
+
+    ValidateParticipant [label="Validate Participant\nparticipant.is_valid()\nChecks id, role, name validity\nReturns true", fillcolor=lightgreen]
+
+    UseInChannelCreation [label="Use in Channel Creation\nPassed to TChannel::make() as participant\nEstablishes channel ownership", fillcolor=orange]
+
+    RegistryIntegration [label="Registry Integration\nParticipant data used in channel registry\nSupports correlation tracking", fillcolor=lightcyan]
+
+    End [label="Participant established\nfor communication context", shape=ellipse, fillcolor=red]
+
+    Start -> CreateParticipant
+    CreateParticipant -> ValidateParticipant
+    ValidateParticipant -> UseInChannelCreation
+    UseInChannelCreation -> RegistryIntegration
+    RegistryIntegration -> End
+}

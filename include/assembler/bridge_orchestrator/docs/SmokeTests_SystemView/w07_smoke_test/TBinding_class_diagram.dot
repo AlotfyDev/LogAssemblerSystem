@@ -1,0 +1,38 @@
+digraph TBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=white];
+
+    TBinding [label="{TBinding (W06 - Reused)|binding_id : TBindingId\nchannel : TChannel\nsurface_pair : TObligationSurfacePair\nprofile : TBindingProfile\ncompatibility : TBindingCompatibilityReport\nstatus : TBindingStatus\ncorrelation : TCorrelationToken\nbinding_name : string_view|+ is_valid() : bool\n+ is_compatible() : bool\n+ is_materialized() : bool\n+ may_materialize_session() : bool\n+ view() : TBindingView\n+ result() : TBindingResult|+ propose(id, channel, pair, profile, name, token) : TBinding\n+ materialize_declaration_only(binding) : TBinding}"];
+
+    // Key dependencies for W07 usage
+    TBindingId [label="{TBindingId (W06)|value : uint64_t|+ is_valid() : bool\n+ from_value(v) : TBindingId|Opaque binding identity}" shape=record, fillcolor=lightyellow];
+
+    TChannel [label="{TChannel (W04)|...|Channel topology}" shape=record, fillcolor=lightblue];
+
+    TObligationSurfacePair [label="{TObligationSurfacePair (W05)|...|Surface pair}" shape=record, fillcolor=lightgreen];
+
+    TBindingProfile [label="{TBindingProfile (W06)|...|Binding profile}" shape=record, fillcolor=lightyellow];
+
+    TCorrelationToken [label="{TCorrelationToken (W01)|...|Correlation token}" shape=record, fillcolor=lightcyan];
+
+    TBindingView [label="{TBindingView (W06)|...|Read-only binding view}" shape=record, fillcolor=white];
+
+    // Relationships
+    TBinding -> TBindingId [label="has"];
+    TBinding -> TChannel [label="has"];
+    TBinding -> TObligationSurfacePair [label="has"];
+    TBinding -> TBindingProfile [label="has"];
+    TBinding -> TCorrelationToken [label="has"];
+
+    TBinding -> TBindingView [label="produces"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W06", fillcolor=white];
+        W06 [label="W06 Component", fillcolor=lightyellow];
+        W04 [label="W04 Component", fillcolor=lightblue];
+        W05 [label="W05 Component", fillcolor=lightgreen];
+        W01 [label="W01 Component", fillcolor=lightcyan];
+    }
+}

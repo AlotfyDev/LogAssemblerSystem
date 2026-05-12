@@ -1,0 +1,31 @@
+digraph TFirstIntegrationSkeletonReport_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main report struct
+    Report [label="{TFirstIntegrationSkeletonReport|+ config_valid : bool\l+ adapter_view_valid : bool\l+ port_view_valid : bool\l+ channel_valid : bool\l+ surface_pair_valid : bool\l+ binding_compatible : bool\l+ session_open : bool\l+ protocol_ready : bool\l+ bridge_declared : bool\l+ bridge_model_completed : bool\l+ adapter_ready : bool\l+ placement_request_valid : bool\l+ port_ready : bool\l+ admission_accepted : bool\l+ placement_handle_valid : bool\l+ adapter_accepted_handle : bool\l+ load_signal_completed : bool\l+ port_received_load_signal : bool\l+ next_destination_acknowledged : bool\l+ admission : TAdmissionResult\l+ placement_handle : TPlacementHandle\l+ adapter_handle_result : TBridgeResult\l+ load_signal_result : TBridgeResult\l+ next_destination_result : TBridgeResult\l+ bridge_model_result : TBridgeCoreResult\l+ failure_note : std::string_view\l|+ model_succeeded() const noexcept -> bool\l+ flow_succeeded() const noexcept -> bool\l+ succeeded() const noexcept -> bool\l+ failed() const noexcept -> bool\l+ mark_failure(std::string_view) noexcept\l}", fillcolor=lightsalmon, style=filled];
+
+    // Member types
+    Bool [label="{bool|boolean flag\lvalidation and success indicators\l}", fillcolor=lightblue];
+    StringView [label="{std::string_view|failure description\lwhen validation fails\l}", fillcolor=lightblue];
+
+    // Bridge carrier types
+    AdmissionResult [label="{TAdmissionResult|admission operation result\lcorrelation and acceptance status\l}", fillcolor=lightcyan];
+    PlacementHandle [label="{TPlacementHandle|placement acceptance handle\lcorrelation and handle family\l}", fillcolor=lightcyan];
+    BridgeResult [label="{TBridgeResult|bridge operation result\lsuccess/failure with correlation\l}", fillcolor=lightcyan];
+    BridgeCoreResult [label="{TBridgeCoreResult|bridge core execution result\lcompleted/failed with details\l}", fillcolor=lightcyan];
+
+    // Relationships
+    Report -> Bool [label="uses"];
+    Report -> StringView [label="uses"];
+    Report -> AdmissionResult [label="contains"];
+    Report -> PlacementHandle [label="contains"];
+    Report -> BridgeResult [label="contains"];
+    Report -> BridgeCoreResult [label="contains"];
+
+    // Title
+    label="TFirstIntegrationSkeletonReport Class Structure";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonReport_class_diagram.dot

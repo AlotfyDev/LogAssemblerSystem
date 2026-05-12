@@ -1,0 +1,30 @@
+digraph TBindingView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TBindingView [label="{TBindingView|binding_id : TBindingId\nchannel_id : uint64_t\nplugin_adapter : TPluginAdapterView\nport : TPortView\nprofile : TBindingProfile\ncompatibility : TBindingCompatibilityReport\nstatus : TBindingStatus\ncorrelation : TCorrelationToken\nbinding_name : string_view|+ is_valid() : bool\n+ is_usable() : bool\n+ is_accepted() : bool}"];
+
+    // Dependencies
+    TBindingId_dep [label="{TBindingId|...}" shape=record];
+    TPluginAdapterView_dep [label="{TPluginAdapterView|...}" shape=record];
+    TPortView_dep [label="{TPortView|...}" shape=record];
+    TBindingProfile_dep [label="{TBindingProfile|...}" shape=record];
+    TBindingCompatibilityReport_dep [label="{TBindingCompatibilityReport|...}" shape=record];
+    TBindingStatus_dep [label="{TBindingStatus|...}" shape=Mrecord];
+    TCorrelationToken_dep [label="{TCorrelationToken|...}" shape=record];
+
+    // Created by TBinding
+    TBinding_creates [label="{TBinding (creates)|+ view() : TBindingView}" shape=record];
+
+    // Relationships
+    TBindingView -> TBindingId_dep [label="has"];
+    TBindingView -> TPluginAdapterView_dep [label="has"];
+    TBindingView -> TPortView_dep [label="has"];
+    TBindingView -> TBindingProfile_dep [label="has"];
+    TBindingView -> TBindingCompatibilityReport_dep [label="has"];
+    TBindingView -> TBindingStatus_dep [label="has"];
+    TBindingView -> TCorrelationToken_dep [label="has"];
+
+    TBinding_creates -> TBindingView [label="creates"];
+}

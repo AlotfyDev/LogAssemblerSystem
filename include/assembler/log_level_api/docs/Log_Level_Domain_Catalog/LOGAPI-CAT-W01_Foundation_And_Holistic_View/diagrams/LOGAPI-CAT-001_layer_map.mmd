@@ -1,0 +1,29 @@
+flowchart TB
+    L1["W01 Configuration Surface"]
+    L2["W02 Content Profiles"]
+    L3["W10-W12 Schema Add-ons"]
+    L4["W13 Parser Core"]
+    L5["W14-W18 Dedicated Parsers"]
+    L6["W31-W34 Content Containers / Batch Parsers"]
+    L7["W04/W19/W20 Metadata"]
+    L8["W05/W21/W22 Timestamp"]
+    L9["W06 Public-facing Facade"]
+    L10["W07/W23 Envelope Carrier + Final Shape"]
+    L11["W08 Assembler Families"]
+    L12["W24 Readiness / Exposure"]
+    L13["W09/W25/W26 Binding / Handoff Readiness"]
+    L14["W27 Public API"]
+    L15["W28 Diagnostics"]
+    L16["W29 Compliance"]
+    L17["W30 Production Readiness"]
+
+    L1 --> L2 --> L3 --> L4 --> L5 --> L6
+    L1 --> L7
+    L1 --> L8
+    L6 --> L9
+    L7 --> L10
+    L8 --> L10
+    L9 --> L10
+    L10 --> L11 --> L12 --> L13
+    L1 --> L14
+    L14 --> L15 --> L16 --> L17

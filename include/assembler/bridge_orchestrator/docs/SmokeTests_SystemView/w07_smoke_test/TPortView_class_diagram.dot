@@ -1,0 +1,23 @@
+digraph TPortView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=white];
+
+    TPortView [label="{TPortView (W05 - Reused)|port_id : uint64_t\nparticipant : TParticipantView\nobligation_profile : TPortObligationProfile\ncorrelation : TCorrelationToken\ndisplay_name : string_view\nvalid : bool|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool\n+ make(id, participant, profile, name, token) : TPortView\n+ invalid() : TPortView|Read-only port view}"];
+
+    // Dependencies
+    TParticipantView [label="{TParticipantView (W03)|...|Participant view}" shape=record, fillcolor=lightblue];
+
+    TCorrelationToken [label="{TCorrelationToken (W01)|...|Correlation token}" shape=record, fillcolor=lightcyan];
+
+    // Relationships
+    TPortView -> TParticipantView [label="has"];
+    TPortView -> TCorrelationToken [label="has"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W05", fillcolor=white];
+        W03 [label="W03 Component", fillcolor=lightblue];
+        W01 [label="W01 Component", fillcolor=lightcyan];
+    }
+}

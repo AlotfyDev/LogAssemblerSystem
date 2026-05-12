@@ -1,0 +1,45 @@
+digraph TBindingView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Creation
+    binding_calls_view [label="Call binding.view()\nTBinding::view() method"];
+
+    // View construction
+    extract_binding_id [label="Extract binding.binding_id"];
+    extract_channel_id [label="Extract binding.channel.channel_id"];
+    extract_plugin_adapter [label="Extract binding.surface_pair.plugin_adapter"];
+    extract_port [label="Extract binding.surface_pair.port"];
+    extract_profile [label="Extract binding.profile"];
+    extract_compatibility [label="Extract binding.compatibility"];
+    extract_status [label="Extract binding.status"];
+    extract_correlation [label="Extract binding.correlation"];
+    extract_name [label="Extract binding.binding_name"];
+
+    // View validation
+    check_is_valid [label="Call view.is_valid()\nCheck binding_id.is_valid()"];
+    check_is_usable [label="Call view.is_usable()\nCheck validity and usability"];
+    check_is_accepted [label="Call view.is_accepted()\nCheck acceptance status"];
+
+    // End
+    view_ready [label="Binding View Available for External Use", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> binding_calls_view;
+    binding_calls_view -> extract_binding_id;
+    extract_binding_id -> extract_channel_id;
+    extract_channel_id -> extract_plugin_adapter;
+    extract_plugin_adapter -> extract_port;
+    extract_port -> extract_profile;
+    extract_profile -> extract_compatibility;
+    extract_compatibility -> extract_status;
+    extract_status -> extract_correlation;
+    extract_correlation -> extract_name;
+    extract_name -> check_is_valid;
+    check_is_valid -> check_is_usable;
+    check_is_usable -> check_is_accepted;
+    check_is_accepted -> view_ready;
+}

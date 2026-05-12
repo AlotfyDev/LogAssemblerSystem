@@ -1,0 +1,34 @@
+digraph TBridgeProtocolSnapshot_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateSnapshot [label="Create Snapshot\nstate.snapshot(\"envelope_placement\")\nCreates read-only view of protocol state", fillcolor=yellow]
+
+    ValidateSnapshot [label="Validate Snapshot\nsnapshot.is_valid()\nReturns true (has valid correlation token)", fillcolor=lightgreen]
+
+    CheckTerminal [label="Check Terminal State\nsnapshot.is_terminal()\nReturns true after completion", fillcolor=lightgreen]
+
+    CheckError [label="Check Error State\nsnapshot.has_error()\nReturns false (no errors in success case)", fillcolor=lightgreen]
+
+    End [label="Snapshot validation completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateSnapshot
+    CreateSnapshot -> ValidateSnapshot
+    ValidateSnapshot -> CheckTerminal
+    CheckTerminal -> CheckError
+    CheckError -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Snapshot Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Snapshot Validation", shape=rectangle, fillcolor=lightgreen]
+    }
+}

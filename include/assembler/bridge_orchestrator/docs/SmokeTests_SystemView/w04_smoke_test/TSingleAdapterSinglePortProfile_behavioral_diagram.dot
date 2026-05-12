@@ -1,0 +1,50 @@
+digraph TSingleAdapterSinglePortProfile_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Usage Pattern
+    profile_preset_usage [label="Use Single Adapter Single Port Preset\n(1:1 unidirectional mapping)"];
+
+    // Factory method usage
+    make_call [label="TSingleAdapterSinglePortProfile::make()\n(creates canonical profile)"];
+
+    // Profile characteristics
+    single_adapter [label="1 adapter (min=max=1)"];
+    single_port [label="1 port (min=max=1)"];
+    unidirectional [label="unidirectional direction"];
+    profile_name [label="profile_name = \"single_adapter_single_port\""];
+
+    // Validation usage
+    profile_validation [label="TSingleAdapterSinglePortProfile::matches(profile)\n(validate profile matches preset)"];
+
+    // Channel integration
+    channel_profile_assignment [label="Assign to TChannel.profile"];
+    policy_compatibility [label="Compatible with strict_static_one_to_one policy"];
+
+    // Flow
+    profile_preset_usage -> make_call;
+
+    make_call -> single_adapter;
+    make_call -> single_port;
+    make_call -> unidirectional;
+    make_call -> profile_name;
+
+    single_adapter -> profile_validation;
+    single_port -> profile_validation;
+    unidirectional -> profile_validation;
+
+    profile_validation -> channel_profile_assignment;
+    channel_profile_assignment -> policy_compatibility;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TSingleAdapterSinglePortProfile W04 Usage";
+        color=white;
+        style=filled;
+
+        legend_factory [label="Factory Usage", shape=rectangle, fillcolor=lightyellow];
+        legend_characteristics [label="Profile Characteristics", shape=rectangle, fillcolor=lightblue];
+        legend_validation [label="Validation Usage", shape=rectangle, fillcolor=lightgreen];
+        legend_integration [label="Channel Integration", shape=rectangle, fillcolor=orange];
+    }
+}

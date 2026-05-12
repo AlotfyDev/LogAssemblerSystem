@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_hardening_w06/cme_concurrency_full_aggregate_probe.cpp,passed,0,0
+tests_hardening_w06/cme_concurrency_policy_acceptance_test.cpp,passed,0,0
+tests_hardening_w06/cme_concurrency_policy_negative_test.cpp,passed,0,0

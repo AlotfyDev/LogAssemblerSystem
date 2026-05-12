@@ -1,0 +1,133 @@
+digraph W14B_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Start
+    Start [label="W14B Smoke Test Start", shape=ellipse, fillcolor=lightgreen];
+
+    // Port and Adapter Creation
+    Port_Creation [label="TWriteSideEnvelopePlacementPortFactory::make_default()\nCreate default Write Side placement port", fillcolor=orange];
+    Adapter_Creation [label="TLogLevelAPIEnvelopePluginAdapterFactory::from_fields()\nCreate Log Level API envelope adapter with correlation token", fillcolor=lightblue];
+
+    // Primary Placement Flow Setup
+    Correlation_Token [label="TCorrelationToken::from_parts(14u, 1u)\nCreate correlation token for W14B placement flow", fillcolor=yellow];
+
+    // Adapter Readiness Check
+    Adapter_Readiness_Check [label="adapter.readiness()\nCheck if adapter is ready for placement", fillcolor=lightblue];
+    Adapter_Readiness_Result [label="TReadinessView::ready(correlation, capacity_hint)\nAdapter reports readiness with capacity", fillcolor=lightcyan];
+
+    // Placement Request Preparation
+    Placement_Request_Prep [label="adapter.prepare_placement_request()\nAdapter prepares placement request from descriptor", fillcolor=lightblue];
+    Placement_Request_Created [label="TPlacementRequest::make(correlation, envelope_kind, size_hint, ordered, destination)\nPlacement request created with envelope parameters", fillcolor=lightcyan];
+
+    // Port Readiness Evaluation
+    Port_Readiness_Check [label="port.readiness(placement_request)\nPort evaluates readiness for this placement request", fillcolor=orange];
+    Port_Readiness_Valid [label="Validate config, target, request validity\nCheck payload kind and destination support", fillcolor=lavender];
+    Port_Readiness_Result [label="TReadinessView::ready(correlation, capacity_hint)\nPort reports ready with capacity hint", fillcolor=lightcyan];
+
+    // Admission Process
+    Admission_Check [label="port.admit(placement_request)\nPort admits placement request", fillcolor=orange];
+    Admission_Logic [label="Check readiness, record admission in state\nAccept valid requests that are ready", fillcolor=lavender];
+    Admission_Result [label="TAdmissionResult::accept(correlation)\nAdmission accepted", fillcolor=lightcyan];
+
+    // Handle Production
+    Handle_Production [label="port.placement_handle(placement_request)\nPort produces opaque placement handle", fillcolor=orange];
+    Handle_Creation [label="Allocate handle value, create TPlacementHandle\nRecord handle in port state", fillcolor=lavender];
+    Handle_Created [label="TPlacementHandle::make(value, correlation, handle_family)\nOpaque handle created and returned", fillcolor=lightcyan];
+
+    // Handle Acceptance
+    Handle_Acceptance [label="adapter.accept_placement_handle(handle)\nAdapter accepts the placement handle", fillcolor=lightblue];
+    Handle_Validation [label="Validate handle validity and correlation match\nAccept valid handles", fillcolor=lavender];
+    Handle_Accepted [label="TBridgeResult::success(correlation)\nHandle accepted successfully", fillcolor=lightcyan];
+
+    // Load Signal Emission
+    Load_Signal_Emission [label="adapter.emit_load_signal()\nAdapter emits load completion signal", fillcolor=lightblue];
+    Load_Signal_Creation [label="TLoadSignal::completed(correlation, handle, bytes_loaded)\nCreate completion signal with load details", fillcolor=lightcyan];
+
+    // Load Signal Reception
+    Load_Signal_Reception [label="port.receive_load_signal(signal)\nPort receives and processes load signal", fillcolor=orange];
+    Signal_Validation [label="Validate signal handle matches last produced handle\nCheck signal completion status", fillcolor=lavender];
+    Signal_Processed [label="TBridgeResult::success(correlation)\nSignal processed successfully, state updated", fillcolor=lightcyan];
+
+    // Next Destination Request
+    Next_Destination_Request [label="adapter.next_destination_request()\nAdapter requests next destination for continuous flow", fillcolor=lightblue];
+    Next_Destination_Created [label="TNextDestinationRequest::make(correlation, handle, continuous_flow_requested, note)\nNext destination request created", fillcolor=lightcyan];
+
+    // Next Destination Processing
+    Next_Destination_Processing [label="port.next_destination(request)\nPort processes next destination request", fillcolor=orange];
+    Next_Destination_Validation [label="Validate request and handle correlation\nAccept valid requests", fillcolor=lavender];
+    Next_Destination_Result [label="TBridgeResult::success(correlation)\nNext destination request processed", fillcolor=lightcyan];
+
+    // Error Scenarios
+    Unsupported_Payload [label="port.readiness() with unsupported payload\nReturns not_ready with reason", fillcolor=red, shape=diamond];
+    Invalid_Handle [label="port.receive_load_signal() with invalid handle\nReturns reject with error", fillcolor=red, shape=diamond];
+    Mismatched_Correlation [label="adapter.accept_placement_handle() with wrong correlation\nReturns fail with correlation error", fillcolor=red, shape=diamond];
+
+    // State Validation
+    Final_State_Check [label="Validate final state after operations\nPort has_completed_load() should be true", fillcolor=lightgray];
+
+    // End
+    End [label="W14B Smoke Test Complete", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow connections
+    Start -> Correlation_Token;
+    Correlation_Token -> Port_Creation;
+    Correlation_Token -> Adapter_Creation;
+
+    Port_Creation -> Adapter_Readiness_Check;
+    Adapter_Creation -> Adapter_Readiness_Check;
+
+    Adapter_Readiness_Check -> Adapter_Readiness_Result;
+    Adapter_Readiness_Result -> Placement_Request_Prep;
+    Placement_Request_Prep -> Placement_Request_Created;
+
+    Placement_Request_Created -> Port_Readiness_Check;
+    Port_Readiness_Check -> Port_Readiness_Valid;
+    Port_Readiness_Valid -> Port_Readiness_Result;
+
+    Port_Readiness_Result -> Admission_Check;
+    Admission_Check -> Admission_Logic;
+    Admission_Logic -> Admission_Result;
+
+    Admission_Result -> Handle_Production;
+    Handle_Production -> Handle_Creation;
+    Handle_Creation -> Handle_Created;
+
+    Handle_Created -> Handle_Acceptance;
+    Handle_Acceptance -> Handle_Validation;
+    Handle_Validation -> Handle_Accepted;
+
+    Handle_Accepted -> Load_Signal_Emission;
+    Load_Signal_Emission -> Load_Signal_Creation;
+
+    Load_Signal_Creation -> Load_Signal_Reception;
+    Load_Signal_Reception -> Signal_Validation;
+    Signal_Validation -> Signal_Processed;
+
+    Signal_Processed -> Next_Destination_Request;
+    Next_Destination_Request -> Next_Destination_Created;
+
+    Next_Destination_Created -> Next_Destination_Processing;
+    Next_Destination_Processing -> Next_Destination_Validation;
+    Next_Destination_Validation -> Next_Destination_Result;
+
+    Next_Destination_Result -> Final_State_Check;
+    Final_State_Check -> End;
+
+    // Error paths
+    Port_Readiness_Check -> Unsupported_Payload [label="unsupported payload", style=dashed];
+    Load_Signal_Reception -> Invalid_Handle [label="invalid handle", style=dashed];
+    Handle_Acceptance -> Mismatched_Correlation [label="wrong correlation", style=dashed];
+
+    Unsupported_Payload -> End [style=dashed];
+    Invalid_Handle -> End [style=dashed];
+    Mismatched_Correlation -> End [style=dashed];
+
+    // Notes
+    note1 [label="Complete primary placement flow: request → readiness → admission → handle → acceptance → signal → next destination", shape=note, fillcolor=lightyellow];
+    note2 [label="Integration between W14A adapter and W14B port for end-to-end placement testing", shape=note, fillcolor=lightyellow];
+    note3 [label="W05 port obligation surface compliance via CRTP inheritance", shape=note, fillcolor=lightyellow];
+    note4 [label="Error handling for unsupported requests and mismatched signals", shape=note, fillcolor=lightyellow];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\w14b_holistic_behavioral_diagram.dot

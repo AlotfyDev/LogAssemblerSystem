@@ -1,0 +1,36 @@
+digraph TSessionRegistry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TSessionRegistry [label="{TSessionRegistry<Capacity>|registry : TBoundedRegistry<TSessionId, TSession, Capacity>\l|+ is_valid() : bool\l+ register_session(session) : bool\l+ find(id) : const TRegistryEntry<TSessionId, TSession>*\l+ contains(id) : bool\l+ snapshot() : TRegistrySnapshot\l+ make(name, token) : TSessionRegistry\l}"]
+
+    // Template Parameters
+    Capacity [label="Capacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Member Types
+    TBoundedRegistry [label="{TBoundedRegistry<TSessionId, TSession, Capacity>|...}", shape=record, fillcolor=lightyellow]
+    TSessionId [label="TSessionId", shape=record, fillcolor=lightyellow]
+    TSession [label="TSession", shape=record, fillcolor=lightyellow]
+    TRegistryEntry [label="{TRegistryEntry<TSessionId, TSession>|...}", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TSessionRegistry -> Capacity [label="parameterized by", style=dashed]
+    TSessionRegistry -> TBoundedRegistry [label="contains", style=dashed]
+    TSessionRegistry -> TSessionId [label="uses for keys", style=dashed]
+    TSessionRegistry -> TSession [label="registers", style=dashed]
+    TSessionRegistry -> TRegistryEntry [label="returns", style=dashed]
+    TSessionRegistry -> TRegistrySnapshot [label="produces", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

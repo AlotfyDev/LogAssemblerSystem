@@ -1,0 +1,57 @@
+digraph TChannelProfile_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Profile Creation Patterns
+    profile_construction [label="TChannelProfile::make()\n(kind, direction, min/max adapters, min/max ports, name)"];
+
+    // Profile types used in W04
+    single_adapter_single_port [label="single_adapter_single_port\n(1:1 mapping)"];
+    unidirectional_direction [label="unidirectional\n(one-way communication)"];
+
+    // Validation sequence
+    multiplicity_validation [label="Multiplicity Validation\n(min <= max, max > 0)"];
+    direction_validation [label="!unknown direction"];
+    kind_validation [label="!unknown kind"];
+    overall_validation [label="is_valid()"];
+
+    // Classification helpers
+    adapter_classification [label="Adapter Classification\n(is_single_adapter(), allows_multiple_adapters())"];
+    port_classification [label="Port Classification\n(is_single_port(), allows_multiple_ports())"];
+    one_to_one_check [label="is_one_to_one()\n(single adapter + single port)"];
+
+    // Policy compatibility
+    policy_compatibility [label="TChannelBindingPolicy::is_compatible_with(profile)"];
+
+    // Flow
+    profile_construction -> single_adapter_single_port;
+    profile_construction -> unidirectional_direction;
+
+    single_adapter_single_port -> multiplicity_validation;
+    unidirectional_direction -> direction_validation;
+
+    multiplicity_validation -> kind_validation;
+    direction_validation -> kind_validation;
+
+    kind_validation -> overall_validation;
+
+    overall_validation -> adapter_classification;
+    overall_validation -> port_classification;
+    overall_validation -> one_to_one_check;
+
+    adapter_classification -> policy_compatibility;
+    port_classification -> policy_compatibility;
+    one_to_one_check -> policy_compatibility;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TChannelProfile W04 Usage Pattern";
+        color=white;
+        style=filled;
+
+        legend_construction [label="Profile Construction", shape=rectangle, fillcolor=lightyellow];
+        legend_validation [label="Validation Chain", shape=rectangle, fillcolor=lightblue];
+        legend_classification [label="Classification Helpers", shape=rectangle, fillcolor=lightgreen];
+        legend_compatibility [label="Policy Compatibility", shape=rectangle, fillcolor=orange];
+    }
+}

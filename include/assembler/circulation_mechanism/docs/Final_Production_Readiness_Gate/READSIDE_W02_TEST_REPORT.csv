@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_readside_w02/cme_readside_runtime_lists_flow_test.cpp,passed,0,0
+tests_readside_w02/cme_readside_runtime_lists_full_aggregate_probe.cpp,passed,0,0
+tests_readside_w02/cme_readside_runtime_lists_negative_test.cpp,passed,0,0

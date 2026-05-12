@@ -1,0 +1,24 @@
+flowchart LR
+    Core[EG-POL Core]
+
+    Core --> Source[Policy Source Add-ons]
+    Core --> Persist[Policy Persistence Add-ons]
+    Core --> Audit[Policy Audit Export Add-ons]
+    Core --> Compliance[Policy Compliance Add-ons]
+    Core --> Realization[Policy Realization Add-ons]
+    Core --> Visualization[Policy Visualization Add-ons]
+    Core --> Diagnostics[Policy Diagnostics Add-ons]
+    Core --> Tooling[Policy Tooling Add-ons]
+
+    Source --> S1[YAML / JSON / constexpr / generated]
+    Persist --> P1[File / SQLite / Journal / KV]
+    Audit --> A1[JSON / File / Console / OTEL]
+    Compliance --> C1[Static / CI / Negative Catalog]
+    Realization --> R1[LogLevelApi / MaterialCirculation / CommunicationContext / Addons]
+    Visualization --> V1[Graph / Matrix / Readiness / Catalog]
+    Diagnostics --> D1[Issue Aggregator / Trace Correlator]
+    Tooling --> T1[Manifest Linter / Header Doctrine Checker]
+
+    R1 -. gated by .-> Gates[Compatibility + Assignment + Readiness + Authority]
+    Persist -. boundary only .-> NoStore[Not storage by default]
+    Audit -. boundary only .-> NoTelemetry[Not telemetry by default]

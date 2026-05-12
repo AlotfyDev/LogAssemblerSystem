@@ -1,0 +1,20 @@
+digraph TDiagnosticSnapshot_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticSnapshot [label="{TDiagnosticSnapshot|report_name : std::string_view\l count : std::size_t\l rejected_records : std::uint64_t\l failure_count : std::size_t\l highest_severity : TDiagnosticSeverity\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ has_failures() : bool\l+ from_report<Capacity>(report) : TDiagnosticSnapshot\l}"]
+
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    std_size_t [label="std::size_t", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    TDiagnosticSeverity [label="TDiagnosticSeverity", shape=record, fillcolor=lightyellow]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    TDiagnosticReport [label="TDiagnosticReport<Capacity>", shape=record, fillcolor=lightyellow]
+
+    TDiagnosticSnapshot -> std_string_view [label="uses", style=dashed]
+    TDiagnosticSnapshot -> std_size_t [label="uses", style=dashed]
+    TDiagnosticSnapshot -> std_uint64_t [label="uses", style=dashed]
+    TDiagnosticSnapshot -> TDiagnosticSeverity [label="contains", style=dashed]
+    TDiagnosticSnapshot -> TCorrelationToken [label="contains", style=dashed]
+    TDiagnosticSnapshot -> TDiagnosticReport [label="projects from", style=dashed]
+}

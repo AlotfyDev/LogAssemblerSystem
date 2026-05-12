@@ -1,0 +1,43 @@
+digraph TAdmissionResult_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Admission Control Flow", shape=ellipse, fillcolor=green]
+
+    CreateAdmission [label="TAdmissionResult::accept(token)\nCreates admission result with ACCEPTED status,\ncorrelation token, no error, and empty reason", fillcolor=yellow]
+
+    CheckAdmission [label="admission.accepted()\nChecks status == accepted && !error.has_error()\nReturns true", fillcolor=lightgreen]
+
+    AdmissionGranted [label="Admission granted - carrier accepted", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Admission control completed successfully", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    CheckRejected [label="admission.rejected()\n(status == rejected)", fillcolor=lightgrey]
+    CheckDeferred [label="admission.deferred()\n(status == deferred)", fillcolor=lightgrey]
+    CheckFailed [label="admission.failed()\n(status == failed || error.has_error())", fillcolor=lightgrey]
+
+    // Flow
+    Start -> CreateAdmission
+    CreateAdmission -> CheckAdmission
+    CheckAdmission -> AdmissionGranted
+    AdmissionGranted -> End
+
+    // Alternative flows (shown but not taken)
+    CreateAdmission -> CheckRejected [style=dashed, color=grey]
+    CreateAdmission -> CheckDeferred [style=dashed, color=grey]
+    CreateAdmission -> CheckFailed [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Status Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

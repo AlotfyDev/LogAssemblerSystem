@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant Config as Configuration
+    participant Container as MT5 Container Parser
+    participant Element as Dedicated Element Parser
+    participant Batch as Parsed Batch Ref
+
+    Config->>Container: Resolve container parser + element parser
+    Container->>Container: Receive known MT5 array type
+    loop each element
+        Container->>Element: Parse one known structure
+        Element-->>Container: Parsed element result
+    end
+    Container-->>Batch: Parsed content batch ref
+    Note over Container: No runtime parser dispatch inside loop

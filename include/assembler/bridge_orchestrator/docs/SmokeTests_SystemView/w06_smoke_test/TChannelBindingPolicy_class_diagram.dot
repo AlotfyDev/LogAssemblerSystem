@@ -1,0 +1,22 @@
+digraph TChannelBindingPolicy_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W04)
+    TChannelBindingPolicy [label="{TChannelBindingPolicy (W04)|binding_mode : TChannelBindingMode\nlifecycle : TChannelBindingLifecycle\nvisibility : TChannelVisibility\nrequire_compatible_roles : bool\nrequire_compatible_carriers : bool\nallow_rebinding : bool\nmax_active_bindings : uint32_t\npolicy_name : string_view|+ is_valid() : bool\n+ is_static() : bool\n+ is_dynamic() : bool\n+ is_strict_one_to_one() : bool\n+ is_compatible_with(TChannelProfile) : bool|+ strict_static_one_to_one() : TChannelBindingPolicy}"];
+
+    // Enums
+    TChannelBindingMode_dep [label="{TChannelBindingMode|...}" shape=Mrecord];
+    TChannelBindingLifecycle_dep [label="{TChannelBindingLifecycle|...}" shape=Mrecord];
+    TChannelVisibility_dep [label="{TChannelVisibility|...}" shape=Mrecord];
+
+    // Used by TChannel
+    TChannel_uses [label="{TChannel|binding_policy : TChannelBindingPolicy|...}" shape=record];
+
+    // Relationships
+    TChannelBindingPolicy -> TChannelBindingMode_dep [label="has"];
+    TChannelBindingPolicy -> TChannelBindingLifecycle_dep [label="has"];
+    TChannelBindingPolicy -> TChannelVisibility_dep [label="has"];
+
+    TChannel_uses -> TChannelBindingPolicy [label="uses"];
+}

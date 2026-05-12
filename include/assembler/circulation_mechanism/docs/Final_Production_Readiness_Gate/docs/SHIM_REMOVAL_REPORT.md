@@ -1,0 +1,36 @@
+# SHIM_REMOVAL_REPORT — CME-PROD-HARDEN-W01
+
+## 1. Moved Compatibility Artifacts
+
+```text
+compatibility/legacy_read_side_aggregates/read_side_circulation_profile_w01.hpp
+compatibility/legacy_read_side_aggregates/read_side_circulation_profile_w02.hpp
+compatibility/legacy_read_side_aggregates/read_side_circulation_profile_w03.hpp
+compatibility/legacy_read_side_aggregates/read_side_circulation_profile_w04.hpp
+compatibility/legacy_type_shims/TContainerTimeRange.hpp
+compatibility/legacy_type_shims/TContainerTimeRangeView.hpp
+compatibility/legacy_type_shims/TSafePointState.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w01.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w02.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w03.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w04.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w05.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w06.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w07.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w08.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w09.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w10.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w11.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w12.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w13.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_w14.hpp
+compatibility/legacy_wave_aggregates/circulation_mechanism_waiting_list.hpp
+```
+
+## 2. Public API Status
+
+Compatibility artifacts are not in the canonical public root.
+
+## 3. Follow-Up
+
+Future waves may remove `compatibility/` entirely once downstream consumers migrate to canonical aggregates.

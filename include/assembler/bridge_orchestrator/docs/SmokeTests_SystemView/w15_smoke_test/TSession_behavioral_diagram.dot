@@ -1,0 +1,25 @@
+digraph TSession_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    SessionOpening [label="Session Opening:\n- TFirstIntegrationSkeletonModelPlan::open_session()\n- opens session on binding with declaration policy\n- session_id and session_name from config"];
+
+    OpenValidation [label="Session Validation:\n- session.is_open() called in skeleton\n- validates session opened successfully\n- failure returns early with session not open note"];
+
+    ProtocolUsage [label="Protocol Declaration Input:\n- session passed to TFirstIntegrationSkeletonModelPlan::declare_protocol()\n- used as foundation for protocol declaration\n- enables protocol execution on session"];
+
+    SessionOpening -> OpenValidation;
+    OpenValidation -> ProtocolUsage [label="open"];
+    OpenValidation -> End [label="not open"];
+
+    End [label="Session Not Open", shape=ellipse, fillcolor=lightcoral];
+
+    SessionOpening [fillcolor=lightblue];
+    OpenValidation [fillcolor=lightyellow];
+    ProtocolUsage [fillcolor=lightsalmon];
+
+    label="TSession Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TSession_behavioral_diagram.dot

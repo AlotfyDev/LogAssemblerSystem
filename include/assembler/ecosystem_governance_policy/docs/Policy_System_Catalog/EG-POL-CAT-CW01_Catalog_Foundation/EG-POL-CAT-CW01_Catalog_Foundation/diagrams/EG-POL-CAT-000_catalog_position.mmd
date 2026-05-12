@@ -1,0 +1,44 @@
+flowchart TB
+    subgraph AS[Assembler System]
+        subgraph EG[ecosystem_governance]
+            POL[EG-POL Policy System]
+            REG[Policy Registry]
+            PERSIST[Policy Persistence Boundary]
+            AUDIT[Policy Audit Export Boundary]
+            HARD[Production Hardening Boundaries]
+        end
+        LOG[log_level_api]
+        MC[material_circulation]
+        CC[communication_context]
+        ADD[addons]
+    end
+
+    CAT[EG-POL-CAT\nPolicy System Catalog]
+
+    CAT -. describes .-> POL
+    CAT -. indexes .-> REG
+    CAT -. maps target surfaces .-> LOG
+    CAT -. maps target surfaces .-> MC
+    CAT -. maps policy surfaces .-> CC
+    CAT -. maps addon targets .-> ADD
+    CAT -. summarizes .-> PERSIST
+    CAT -. summarizes .-> AUDIT
+    CAT -. summarizes .-> HARD
+
+    CAT:::catalog
+    POL:::policy
+    REG:::registry
+    PERSIST:::boundary
+    AUDIT:::boundary
+    HARD:::gate
+    LOG:::target
+    MC:::target
+    CC:::target
+    ADD:::target
+
+    classDef catalog fill:#eef,stroke:#336,stroke-width:2px
+    classDef policy fill:#efe,stroke:#363,stroke-width:2px
+    classDef registry fill:#ffd,stroke:#aa7,stroke-width:1px
+    classDef boundary fill:#f8f8f8,stroke:#888,stroke-dasharray: 5 5
+    classDef gate fill:#fee,stroke:#933,stroke-width:2px
+    classDef target fill:#eef8ff,stroke:#369

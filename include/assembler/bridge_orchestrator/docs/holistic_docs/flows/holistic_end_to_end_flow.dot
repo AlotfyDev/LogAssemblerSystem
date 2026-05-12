@@ -1,0 +1,117 @@
+digraph BridgeOrchestrator_EndToEndFlow {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Start node
+    START [label="Request Initiation", fillcolor=green, shape=ellipse];
+
+    // Layer W01 - Carriers
+    W01_Request [label="W01: Carriers\nTPlacementRequest\nCorrelation Token\nPayload Specification", fillcolor=lightcyan];
+    W01_Carrier [label="Carrier Creation\nSize & Kind Validation"];
+
+    // Layer W03 - Participants
+    W03_Participants [label="W03: Participants\nSource & Target Creation\nRole Assignment\n(content_provider, host_provider)", fillcolor=lightyellow];
+
+    // Layer W04 - Channels
+    W04_Channels [label="W04: Channels\nTChannel Creation\nProfile & Policy Setup\nTopology Establishment", fillcolor=lightgreen];
+
+    // Layer W05 - Obligations
+    W05_Obligations [label="W05: Obligations\nTPluginAdapterView\nTPortView Creation\nTObligationSurfacePair", fillcolor=lightcoral];
+
+    // Layer W06 - Bindings
+    W06_Bindings [label="W06: Bindings\nTBinding Proposal\nCompatibility Evaluation\nValidation & Materialization", fillcolor=lightsalmon];
+
+    // Layer W08 - Sessions
+    W08_Sessions [label="W08: Sessions\nTSession Creation\nLifecycle Management\n(open → activate → complete)", fillcolor=lightpink];
+
+    // Layer W09 - Protocols
+    W09_Protocols [label="W09: Protocols\nTBridgeProtocol Creation\nExecution Plan Setup\nStep-by-Step Configuration", fillcolor=moccasin];
+
+    // Layer W10 - Bridge Core
+    W10_Bridge [label="W10: Bridge Core\nTBridge Creation\nResource Budget Config\nStep-by-Step Orchestration", fillcolor=khaki];
+
+    // Layer W11 - Registries
+    W11_Registries [label="W11: Registries\nComponent Registration\nRegistry Snapshots\nStatistics Collection", fillcolor=lavender];
+
+    // Layer W12 - Diagnostics
+    W12_Diagnostics [label="W12: Diagnostics\nDiagnostic Collection\nCompatibility Monitoring\nPerformance Reporting", fillcolor=thistle];
+
+    // Layer W13 - Integration Boundaries
+    W13_Boundaries [label="W13: Integration Boundaries\nExternal System Handoff\nBoundary State Management", fillcolor=palegreen];
+
+    // Layer W14 - Concrete Bindings
+    W14_Concrete [label="W14: Concrete Bindings\nAdapter Implementations\nPort Implementations\nLanguage Optimizations", fillcolor=peachpuff];
+
+    // Layer W15 - Integration Skeletons
+    W15_Testing [label="W15: Integration Skeletons\nEnd-to-End Validation\nWorkflow Verification\nTest Reporting", fillcolor=lightsteelblue];
+
+    // End node
+    END [label="Complete", fillcolor=green, shape=ellipse];
+
+    // Happy path flow
+    START -> W01_Request;
+    W01_Request -> W01_Carrier;
+    W01_Carrier -> W03_Participants;
+    W03_Participants -> W04_Channels;
+    W04_Channels -> W05_Obligations;
+    W05_Obligations -> W06_Bindings;
+    W06_Bindings -> W08_Sessions;
+    W08_Sessions -> W09_Protocols;
+    W09_Protocols -> W10_Bridge;
+    W10_Bridge -> W11_Registries;
+    W11_Registries -> W12_Diagnostics;
+    W12_Diagnostics -> W13_Boundaries;
+    W13_Boundaries -> W14_Concrete;
+    W14_Concrete -> W15_Testing;
+    W15_Testing -> END;
+
+    // Registry coordination arrows (bidirectional)
+    W11_Registries -> W01_Request [dir=both, style=dotted, color=blue, label="Registration"];
+    W11_Registries -> W03_Participants [dir=both, style=dotted, color=blue];
+    W11_Registries -> W04_Channels [dir=both, style=dotted, color=blue];
+    W11_Registries -> W05_Obligations [dir=both, style=dotted, color=blue];
+    W11_Registries -> W06_Bindings [dir=both, style=dotted, color=blue];
+    W11_Registries -> W08_Sessions [dir=both, style=dotted, color=blue];
+    W11_Registries -> W09_Protocols [dir=both, style=dotted, color=blue];
+    W11_Registries -> W10_Bridge [dir=both, style=dotted, color=blue];
+    W11_Registries -> W13_Boundaries [dir=both, style=dotted, color=blue];
+    W11_Registries -> W14_Concrete [dir=both, style=dotted, color=blue];
+
+    // Diagnostic monitoring arrows
+    W12_Diagnostics -> W01_Request [style=dotted, color=red, label="Monitor"];
+    W12_Diagnostics -> W03_Participants [style=dotted, color=red];
+    W12_Diagnostics -> W04_Channels [style=dotted, color=red];
+    W12_Diagnostics -> W05_Obligations [style=dotted, color=red];
+    W12_Diagnostics -> W06_Bindings [style=dotted, color=red];
+    W12_Diagnostics -> W08_Sessions [style=dotted, color=red];
+    W12_Diagnostics -> W09_Protocols [style=dotted, color=red];
+    W12_Diagnostics -> W10_Bridge [style=dotted, color=red];
+    W12_Diagnostics -> W13_Boundaries [style=dotted, color=red];
+    W12_Diagnostics -> W14_Concrete [style=dotted, color=red];
+
+    // Timing and state transition labels
+    edge [color=black, style=solid];
+    W01_Request -> W01_Carrier [label="Validate\n& Create"];
+    W03_Participants -> W04_Channels [label="Establish\nTopology"];
+    W04_Channels -> W05_Obligations [label="Create\nSurfaces"];
+    W05_Obligations -> W06_Bindings [label="Propose\nBindings"];
+    W06_Bindings -> W08_Sessions [label="Create\nSession"];
+    W08_Sessions -> W09_Protocols [label="Define\nProtocol"];
+    W09_Protocols -> W10_Bridge [label="Orchestrate\nExecution"];
+    W10_Bridge -> W11_Registries [label="Register\nComponents"];
+    W11_Registries -> W12_Diagnostics [label="Collect\nMetrics"];
+    W12_Diagnostics -> W13_Boundaries [label="Handoff\nControl"];
+    W13_Boundaries -> W14_Concrete [label="Implement\nBindings"];
+    W14_Concrete -> W15_Testing [label="Validate\nIntegration"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+        Legend1 [label="Solid: Main Flow", shape=plaintext];
+        Legend2 [label="Dotted Blue: Registry Coordination", shape=plaintext];
+        Legend3 [label="Dotted Red: Diagnostic Monitoring", shape=plaintext];
+    }
+}

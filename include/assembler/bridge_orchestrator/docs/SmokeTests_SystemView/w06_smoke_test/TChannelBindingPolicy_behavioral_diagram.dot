@@ -1,0 +1,39 @@
+digraph TChannelBindingPolicy_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Policy creation
+    call_strict_static [label="Call TChannelBindingPolicy::strict_static_one_to_one()\nCreate strict policy"];
+
+    // Policy configuration
+    set_binding_mode [label="Set binding_mode = strict_one_to_one"];
+    set_lifecycle [label="Set lifecycle = static_binding"];
+    set_visibility [label="Set visibility = cross_domain"];
+    set_max_bindings [label="Set max_active_bindings = 1"];
+
+    // Validation
+    check_is_valid [label="Call policy.is_valid()"];
+    check_is_strict [label="Call policy.is_strict_one_to_one()"];
+    check_compatibility [label="Call policy.is_compatible_with(profile)"];
+
+    // Usage in channel
+    assign_to_channel [label="Assign to TChannel.binding_policy"];
+
+    // End
+    policy_configured [label="Policy Ready for Channel", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> call_strict_static;
+    call_strict_static -> set_binding_mode;
+    set_binding_mode -> set_lifecycle;
+    set_lifecycle -> set_visibility;
+    set_visibility -> set_max_bindings;
+    set_max_bindings -> check_is_valid;
+    check_is_valid -> check_is_strict;
+    check_is_strict -> check_compatibility;
+    check_compatibility -> assign_to_channel;
+    assign_to_channel -> policy_configured;
+}

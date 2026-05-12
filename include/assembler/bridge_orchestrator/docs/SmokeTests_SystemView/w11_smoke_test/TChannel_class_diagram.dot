@@ -1,0 +1,18 @@
+digraph TChannel_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TChannel [label="{TChannel|channel_id : std::uint64_t\l participant : TParticipant\l policy : TChannelBindingPolicy\l name : std::string_view\l metadata : TChannelMetadata\l|+ is_valid() : bool\l+ make(id, participant, policy, name, metadata) : TChannel\l}"]
+
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    TParticipant [label="TParticipant", shape=record, fillcolor=lightyellow]
+    TChannelBindingPolicy [label="TChannelBindingPolicy", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TChannelMetadata [label="TChannelMetadata", shape=record, fillcolor=lightyellow]
+
+    TChannel -> std_uint64_t [label="uses", style=dashed]
+    TChannel -> TParticipant [label="contains", style=dashed]
+    TChannel -> TChannelBindingPolicy [label="uses", style=dashed]
+    TChannel -> std_string_view [label="uses", style=dashed]
+    TChannel -> TChannelMetadata [label="uses", style=dashed]
+}

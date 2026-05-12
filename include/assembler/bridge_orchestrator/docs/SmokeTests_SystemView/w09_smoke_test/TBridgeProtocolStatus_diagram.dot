@@ -1,0 +1,121 @@
+digraph TBridgeProtocolStatus_Component_Diagram {
+    // Component Diagram for TBridgeProtocolStatus (Layer 2 - POD)
+    // Current status and progress tracking
+
+    graph [fontname="Arial", fontsize=10, rankdir=TB]
+    node [fontname="Arial", fontsize=9, shape=box, style=filled]
+
+    // Core Component
+    TBridgeProtocolStatus [label="TBridgeProtocolStatus\n(Layer 2 - POD)", fillcolor=lightblue]
+
+    // Status Fields
+    subgraph cluster_status_fields {
+        label="Status Fields"
+        bgcolor=lightgray
+
+        currentStep [label="currentStep\n(uint8_t)", fillcolor=white]
+        totalSteps [label="totalSteps\n(uint8_t = 12)", fillcolor=white]
+        state [label="state\n(TProtocolState)", fillcolor=white]
+        progress [label="progress\n(float 0.0-1.0)", fillcolor=white]
+        lastUpdate [label="lastUpdate\n(uint64_t timestamp)", fillcolor=white]
+    }
+
+    // Protocol States
+    subgraph cluster_states {
+        label="Protocol States"
+        bgcolor=white
+
+        INITIALIZING [label="INITIALIZING\n(0x00)", fillcolor=lightcyan]
+        EXECUTING [label="EXECUTING\n(0x01)", fillcolor=lightcyan]
+        VALIDATING [label="VALIDATING\n(0x02)", fillcolor=lightcyan]
+        COMPLETED [label="COMPLETED\n(0x03)", fillcolor=lightgreen]
+        FAILED [label="FAILED\n(0x04)", fillcolor=red]
+        ABORTED [label="ABORTED\n(0x05)", fillcolor=orange]
+    }
+
+    // Progress Tracking
+    subgraph cluster_progress {
+        label="Progress Tracking"
+        bgcolor=lightyellow
+
+        StepProgress [label="Step Progress:\ncurrentStep / totalSteps", fillcolor=white]
+        TimeProgress [label="Time Progress:\nElapsed vs Estimated", fillcolor=white]
+        ValidationProgress [label="Validation Progress:\nChecks completed", fillcolor=white]
+    }
+
+    // Utility Functions
+    subgraph cluster_utilities {
+        label="Utility Functions"
+        bgcolor=lightgreen
+
+        UpdateProgress [label="UpdateProgress(step, state)\nUpdate status"]
+        IsComplete [label="IsComplete()\nCheck completion"]
+        GetProgressPercent [label="GetProgressPercent()\nReturn 0-100%"]
+        ToString [label="ToString()\nStatus description"]
+        IsFailed [label="IsFailed()\nFailure check"]
+        Reset [label="Reset()\nReset to initial"]
+        Serialize [label="Serialize()\nStatus serialization"]
+    }
+
+    // Error Tracking
+    subgraph cluster_errors {
+        label="Error Tracking"
+        bgcolor=lightcoral
+
+        lastErrorCode [label="lastErrorCode\n(uint32_t)", fillcolor=white]
+        errorMessage [label="errorMessage\n(char[256])", fillcolor=white]
+        retryCount [label="retryCount\n(uint8_t)", fillcolor=white]
+    }
+
+    // Relationships
+    TBridgeProtocolStatus -> currentStep
+    TBridgeProtocolStatus -> totalSteps
+    TBridgeProtocolStatus -> state
+    TBridgeProtocolStatus -> progress
+    TBridgeProtocolStatus -> lastUpdate
+    TBridgeProtocolStatus -> lastErrorCode
+    TBridgeProtocolStatus -> errorMessage
+    TBridgeProtocolStatus -> retryCount
+
+    UpdateProgress -> currentStep [label="updates"]
+    UpdateProgress -> state [label="updates"]
+    UpdateProgress -> progress [label="calculates"]
+    UpdateProgress -> lastUpdate [label="timestamps"]
+
+    IsComplete -> state [label="checks"]
+    IsComplete -> currentStep [label="compares"]
+    IsComplete -> totalSteps [label="compares"]
+
+    GetProgressPercent -> progress [label="converts"]
+    ToString -> state [label="describes"]
+    ToString -> currentStep [label="includes"]
+    ToString -> progress [label="includes"]
+
+    IsFailed -> state [label="checks"]
+    Reset -> currentStep [label="resets"]
+    Reset -> state [label="resets"]
+    Serialize -> currentStep [label="serializes"]
+    Serialize -> state [label="serializes"]
+    Serialize -> progress [label="serializes"]
+
+    // State Transitions
+    INITIALIZING -> EXECUTING [label="Start Protocol"]
+    EXECUTING -> VALIDATING [label="Validation Step"]
+    VALIDATING -> EXECUTING [label="Continue"]
+    EXECUTING -> COMPLETED [label="All Steps Done"]
+    EXECUTING -> FAILED [label="Error Occurred"]
+    VALIDATING -> FAILED [label="Validation Failed"]
+    ANY -> ABORTED [label="User Abort"]
+
+    // Usage in Components
+    TBridgeProtocol [label="TBridgeProtocol\n(Updates status)", fillcolor=orange]
+    TProtocolStepExecutor [label="TProtocolStepExecutor\n(Reports progress)", fillcolor=orange]
+    TBridgeProtocolManager [label="TBridgeProtocolManager\n(Monitors status)", fillcolor=yellow]
+
+    TBridgeProtocol -> TBridgeProtocolStatus [label="updates", style=dashed]
+    TProtocolStepExecutor -> TBridgeProtocolStatus [label="modifies", style=dashed]
+    TBridgeProtocolManager -> TBridgeProtocolStatus [label="reads", style=dashed]
+
+    // Size and Alignment Info
+    SizeInfo [label="Size: 280 bytes\nAlignment: 8 bytes\n#pragma pack(1)", fillcolor=lightgreen]
+}

@@ -1,0 +1,34 @@
+digraph TSessionPolicy_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TSessionPolicy [label="{TSessionPolicy|+ allow_multiple_bindings_: bool\l+ require_compatibility_validation_: bool\l+ max_lifetime_seconds_: uint32_t\l+ timeout_behavior_: TimeoutBehavior\l+ max_retry_attempts_: uint32_t\l|+ create_default(): TSessionPolicy\l+ create_custom(settings): TSessionPolicy\l+ validate(request: TSessionOpenRequest): bool\l+ is_expired(session: TSession): bool\l+ should_retry(failure_count: uint32_t): bool\l+ get_max_lifetime(): uint32_t\l+ get_timeout_behavior(): TimeoutBehavior\l- validate_request_parameters(request: TSessionOpenRequest): bool\l- check_policy_constraints(): bool}", fillcolor=lightyellow, style=filled];
+
+    // Supporting types
+    TimeoutBehavior [label="{TimeoutBehavior|EXPIRE_SESSION\lNOTIFY_AND_WAIT\lAUTO_RETRY\l+ is_terminal(): bool\l+ allows_retry(): bool}", fillcolor=lightblue, style=filled];
+
+    // Usage context
+    TSessionOpenRequest [label="{TSessionOpenRequest|+ policy_: TSessionPolicy\l|+ get_policy(): TSessionPolicy}", fillcolor=lightcyan, style=filled];
+
+    TSession [label="{TSession|+ policy_: TSessionPolicy\l|+ apply_policy(policy: TSessionPolicy): void}", fillcolor=lightcyan, style=filled];
+
+    // Relationships
+    TSessionPolicy -> TimeoutBehavior [label="contains"];
+    TSessionOpenRequest -> TSessionPolicy [label="contains"];
+    TSession -> TSessionPolicy [label="contains"];
+
+    TSessionPolicy -> TSessionOpenRequest [label="validates", style=dashed];
+    TSessionPolicy -> TSession [label="validates", style=dashed];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewClass [label="New W08 Component", fillcolor=lightyellow];
+        SupportType [label="Supporting Type", fillcolor=lightblue];
+        UserClass [label="Using Component", fillcolor=lightcyan];
+    }
+}

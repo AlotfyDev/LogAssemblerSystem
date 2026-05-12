@@ -1,0 +1,5 @@
+#include <cassert>
+#include <string>
+#include "assembler/ecosystem_governance/policy_test_compliance/TPolicyTestAndComplianceSuite.hpp"
+#include "assembler/ecosystem_governance/policy_test_compliance/TPolicyNegativeComplianceCatalog.hpp"
+int main(){using namespace assembler::ecosystem_governance::policy_test_compliance;TPolicyTestAndComplianceSuite suite;suite.suite_id=TPolicyComplianceSuiteId{"eg-pol-w33-suite"};suite.add_case(TPolicyNegativeComplianceCatalog::policy_must_not_own_target());suite.add_case(TPolicyNegativeComplianceCatalog::assignment_must_not_invoke_target());suite.add_case(TPolicyNegativeComplianceCatalog::registry_must_not_be_service_locator());suite.add_case(TPolicyNegativeComplianceCatalog::realizer_must_consume_readiness());assert(!suite.suite_id.empty());assert(suite.case_count()==4);assert(suite.report.planned_cases==4);assert(suite.cases[0].has_assertions());assert(std::string(to_string(TPolicyComplianceDimension::anti_collapse))=="anti_collapse");assert(is_positive(TPolicyComplianceOutcome::pass));assert(suite.cases[0].assertions[0].is_blocking());return 0;}

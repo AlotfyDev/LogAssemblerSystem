@@ -1,0 +1,8 @@
+Component Name,Include Path,Category,Description
+TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,Correlation,Handles correlation tokens for tracking requests across the system (reused from W01)
+TBridgeResult,bridge_core/results/TBridgeResult.hpp,Core Results,Defines result types for bridge core operations (reused from W01)
+TBridgeStage,protocol_state/stages/TBridgeStage.hpp,Protocol Stages,Defines the stages in the bridge protocol lifecycle
+TBridgeTerminalState,protocol_state/terminal_states/TBridgeTerminalState.hpp,Terminal States,Defines terminal states that end protocol execution
+TBridgeTransition,protocol_state/transitions/TBridgeTransition.hpp,Transitions,Manages transitions between protocol stages
+TBridgeProtocolSnapshot,protocol_state/snapshots/TBridgeProtocolSnapshot.hpp,Snapshots,Creates point-in-time views of protocol state
+TBridgeProtocolState,protocol_state/lifecycle/TBridgeProtocolState.hpp,Protocol Lifecycle,Manages the overall lifecycle of bridge protocol execution

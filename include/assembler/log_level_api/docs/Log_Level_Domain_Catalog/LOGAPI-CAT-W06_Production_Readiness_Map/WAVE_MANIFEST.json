@@ -1,0 +1,22 @@
+{
+  "wave": "LOGAPI-CAT-W06_Production_Readiness_Map",
+  "project": "Assembler System",
+  "domain": "log_level_api",
+  "catalog_pack": "LOGAPI-CAT",
+  "scope": "production readiness map, diagnostics/compliance/readiness interpretation, readiness levels",
+  "documents": [
+    "docs/LOGAPI-CAT-009_Production_Readiness_Map.md"
+  ],
+  "diagrams": [
+    "diagrams/LOGAPI-CAT-009_readiness_gate_map.mmd",
+    "diagrams/LOGAPI-CAT-009_readiness_levels.mmd"
+  ],
+  "boundaries": [
+    "catalog only",
+    "no implementation code",
+    "no circulation internals",
+    "no deployment certification",
+    "no security certification",
+    "no policy assignment runtime"
+  ]
+}

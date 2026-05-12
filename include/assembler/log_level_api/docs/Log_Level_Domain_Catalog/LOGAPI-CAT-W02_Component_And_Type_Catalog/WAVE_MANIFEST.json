@@ -1,0 +1,22 @@
+{
+  "wave": "LOGAPI-CAT-W02_Component_And_Type_Catalog",
+  "project": "Assembler System",
+  "domain": "log_level_api",
+  "catalog_pack": "LOGAPI-CAT",
+  "scope": "component inventory, responsibility map, type/header catalog, ownership and dependency diagrams",
+  "documents": [
+    "docs/LOGAPI-CAT-002_Component_Inventory_And_Responsibilities.md",
+    "docs/LOGAPI-CAT-003_Type_And_Header_Catalog.md"
+  ],
+  "diagrams": [
+    "diagrams/LOGAPI-CAT-002_component_dependency_graph.mmd",
+    "diagrams/LOGAPI-CAT-002_component_ownership_map.mmd"
+  ],
+  "boundaries": [
+    "catalog only",
+    "no implementation code",
+    "no circulation internals",
+    "no policy assignment runtime",
+    "no bridge orchestration"
+  ]
+}

@@ -1,0 +1,11 @@
+digraph TBridgeProtocol_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    Protocol [label="{TBridgeProtocol|+ is_ready() const noexcept -> bool\l+ declare() static constexpr -> TBridgeProtocol\l}", fillcolor=lightsalmon, style=filled];
+
+    label="TBridgeProtocol Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBridgeProtocol_class_diagram.dot

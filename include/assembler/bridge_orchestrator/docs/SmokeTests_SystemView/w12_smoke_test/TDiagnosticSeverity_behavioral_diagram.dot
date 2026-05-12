@@ -1,0 +1,22 @@
+digraph TDiagnosticSeverity_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticSeverity Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CheckInfoSeverity [label="Check Info Severity\nBridge completed result -> info severity\nLowest actionable severity level", fillcolor=lightgreen]
+
+    CheckWarningSeverity [label="Check Warning Severity\nBridge exhausted result -> warning severity\nHigher than info, actionable", fillcolor=lightgreen]
+
+    CheckErrorSeverity [label="Check Error Severity\nExplicit error record -> error severity\nFailure severity level", fillcolor=lightgreen]
+
+    UseInValidation [label="Use in Validation\nCompare severity levels in snapshot validation\nCheck highest_severity in diagnostic snapshots", fillcolor=cyan]
+
+    End [label="Severity usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CheckInfoSeverity
+    CheckInfoSeverity -> CheckWarningSeverity
+    CheckWarningSeverity -> CheckErrorSeverity
+    CheckErrorSeverity -> UseInValidation
+    UseInValidation -> End
+}

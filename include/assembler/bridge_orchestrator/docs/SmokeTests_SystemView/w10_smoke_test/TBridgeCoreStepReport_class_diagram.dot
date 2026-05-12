@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgray];
+
+    TBridgeCoreStepReport [label="{TBridgeCoreStepReport | + before : TBridgeCoreFrame\l+ after : TBridgeCoreFrame\l+ result : TBridgeCoreResult\l+ trace : TBridgeCoreTrace\l|+ is_valid() : bool\l}"];
+
+    TBridge [label="TBridge::step_model_report()", fillcolor=lightcoral];
+    StepReporting [label="Step execution reporting\n- Before/after frames\n- Execution result\n- Step tracing", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreStepReport [label="generates"];
+    TBridgeCoreStepReport -> StepReporting [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreStepReport_class_diagram.dot

@@ -1,0 +1,30 @@
+digraph TPlacementRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Placement request usage in W14C
+    PreparationCall [label="prepare_placement_request() call:\n- validates descriptor.is_valid()\n- returns invalid request if descriptor invalid\n- creates TPlacementRequest::make() if valid"];
+
+    RequestCreation [label="TPlacementRequest::make() parameters:\n- correlation: descriptor.correlation\n- material_kind: descriptor.material_kind\n- material_size_hint: descriptor.material_size_hint\n- requires_ordered_delivery: descriptor.requires_ordered_delivery\n- destination_family: descriptor.destination_family()"];
+
+    BridgeSubmission [label="Submitted to bridge runtime:\n- bridge uses request to find placement destination\n- registry delivery destination family routes to registry\n- placement handle returned for acceptance"];
+
+    HandleAcceptance [label="Leads to handle acceptance:\n- adapter.accept_placement_handle() validates correlation\n- handle stored in adapter state\n- enables load signal emission"];
+
+    // Flow connections
+    PreparationCall -> RequestCreation [label="descriptor valid"];
+    PreparationCall -> BridgeSubmission [label="descriptor invalid"];
+    RequestCreation -> BridgeSubmission;
+    BridgeSubmission -> HandleAcceptance;
+
+    // Styling
+    PreparationCall [fillcolor=lightblue];
+    RequestCreation [fillcolor=lightsalmon];
+    BridgeSubmission [fillcolor=lightgreen];
+    HandleAcceptance [fillcolor=lightcyan];
+
+    // Title
+    label="TPlacementRequest Usage in W14C Smoke Test";
+    labelloc=t;
+}

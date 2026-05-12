@@ -1,0 +1,17 @@
+Component Name,Category,Wave,Status,Description,Key Dependencies
+TBinding,Binding,W06,New,Main binding declaration between channel topology and obligation surfaces,TBindingId, TChannel, TObligationSurfacePair, TBindingProfile, TBindingCompatibilityReport, TCorrelationToken
+TBindingCompatibilityReport,Binding,W06,New,Compatibility report for channel and obligation-surface binding,TChannel, TObligationSurfacePair, TCorrelationToken
+TBindingId,Binding,W06,New,Opaque binding identity primitive,None
+TBindingProfile,Binding,W06,New,Binding profile and binding-kind declaration model,None
+TBindingResult,Binding,W06,New,Result wrapper for binding operations,TBindingId, TBindingCompatibilityReport
+TBindingStatus,Binding,W06,New,Binding status enumeration,None
+TBindingView,Binding,W06,New,View of binding for external consumption,TBindingId, TBindingCompatibilityReport
+TCorrelationToken,Correlation,W01,Reused,Correlation token for tracking operations,None
+TParticipant,Participant,W03,Reused,Participant descriptor,TParticipantRole
+TParticipantRole,Participant,W03,Reused,Participant role enumeration,None
+TChannel,Channel,W04,Reused,Bridge-visible channel topology descriptor,TParticipant, TChannelProfile, TChannelBindingPolicy, TCorrelationToken
+TPluginAdapterView,Obligation,W05,Reused,View of plugin adapter obligations,None
+TPortView,Obligation,W05,Reused,View of port obligations,None
+TObligationSurfacePair,Obligation,W05,Reused,Pair of compatible obligation surface views,TPluginAdapterView, TPortView
+TSingleAdapterSinglePortProfile,Channel,W04,Reused,Canonical one-adapter/one-port channel profile preset,TChannelProfile
+TChannelBindingPolicy,Channel,W04,Reused,Bridge-visible channel binding policy,TChannelProfile

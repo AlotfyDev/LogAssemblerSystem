@@ -1,0 +1,39 @@
+digraph TNextDestinationRequest_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Next Destination Request Flow", shape=ellipse, fillcolor=green]
+
+    CreateNextDestination [label="TNextDestinationRequest::make(...)\nCreates next destination request with correlation token,\ncurrent placement handle, CONTINUOUS_FLOW_REQUESTED reason,\nand note 'precalculate next placement'", fillcolor=yellow]
+
+    ValidateNextDestination [label="next.is_valid()\nChecks correlation.is_valid()\nReturns true", fillcolor=lightgreen]
+
+    RequestValid [label="Next destination request is valid", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Next destination request processing completed", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    InvalidRequest [label="next.is_valid() == false\n(correlation not valid)", fillcolor=lightgrey]
+
+    // Flow
+    Start -> CreateNextDestination
+    CreateNextDestination -> ValidateNextDestination
+    ValidateNextDestination -> RequestValid
+    RequestValid -> End
+
+    // Alternative flows (shown but not taken)
+    ValidateNextDestination -> InvalidRequest [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

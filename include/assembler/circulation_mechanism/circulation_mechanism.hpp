@@ -30,3 +30,4 @@
 #include "circulation_mechanism_read_side_adapter_contracts.hpp"
 #include "circulation_mechanism_concurrency.hpp"
 #include "circulation_mechanism_versioning.hpp"
+#include "circulation_mechanism_final_readiness.hpp"

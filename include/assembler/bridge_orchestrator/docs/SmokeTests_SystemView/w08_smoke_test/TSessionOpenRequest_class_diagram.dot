@@ -1,0 +1,32 @@
+digraph TSessionOpenRequest_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TSessionOpenRequest [label="{TSessionOpenRequest|+ binding_id_: TBindingId\l+ correlation_token_: TCorrelationToken\l+ policy_: TSessionPolicy\l+ timeout_seconds_: uint32_t\l+ requested_at_: timestamp\l|+ create(binding_id: TBindingId, correlation: TCorrelationToken, policy: TSessionPolicy): TSessionOpenRequest\l+ is_valid(): bool\l+ is_expired(): bool\l+ get_binding_id(): TBindingId\l+ get_correlation_token(): TCorrelationToken\l+ get_policy(): TSessionPolicy\l+ get_timeout_seconds(): uint32_t\l- validate_binding_id(): bool\l- validate_correlation_token(): bool\l- validate_policy(): bool}", fillcolor=lightyellow, style=filled];
+
+    // Dependencies
+    TBindingId [label="{TBindingId|+ value_: uint64_t\l+ namespace_: std::string\l|+ generate(): TBindingId\l+ is_valid(): bool\l+ to_string(): std::string\l+ from_string(str: std::string): TBindingId}", fillcolor=lightcyan, style=filled];
+
+    TCorrelationToken [label="{TCorrelationToken|+ id_: std::string\l+ timestamp_: uint64_t\l+ sequence_: uint32_t\l|+ create(): TCorrelationToken\l+ is_valid(): bool\l+ matches(other: TCorrelationToken): bool}", fillcolor=lightcyan, style=filled];
+
+    TSessionPolicy [label="{TSessionPolicy|+ allow_multiple_bindings_: bool\l+ require_compatibility_validation_: bool\l+ max_lifetime_seconds_: uint32_t\l+ timeout_behavior_: TimeoutBehavior\l|+ validate(request: TSessionOpenRequest): bool\l+ is_expired(session: TSession): bool}", fillcolor=lightblue, style=filled];
+
+    // Relationships
+    TSessionOpenRequest -> TBindingId [label="contains"];
+    TSessionOpenRequest -> TCorrelationToken [label="contains"];
+    TSessionOpenRequest -> TSessionPolicy [label="contains"];
+
+    TSessionPolicy -> TSessionOpenRequest [label="validates", style=dashed];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewClass [label="New W08 Component", fillcolor=lightyellow];
+        ReusedClass [label="Reused Component", fillcolor=lightcyan];
+        SupportClass [label="Supporting Component", fillcolor=lightblue];
+    }
+}

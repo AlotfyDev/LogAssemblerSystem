@@ -1,0 +1,21 @@
+digraph TIntegrationBoundaryDirection_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    DirectionUsage [label="Direction Usage", fillcolor=lightblue];
+
+    Inbound [label="inbound\nData flows into the boundary", fillcolor=lightgreen];
+
+    Outbound [label="outbound\nData flows out of the boundary", fillcolor=lightcyan];
+
+    Bidirectional [label="bidirectional\nData flows both ways", fillcolor=orange];
+
+    Unknown [label="unknown\nDirection not specified", fillcolor=gray];
+
+    // Flow connections
+    DirectionUsage -> Inbound;
+    DirectionUsage -> Outbound;
+    DirectionUsage -> Bidirectional;
+    DirectionUsage -> Unknown;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryDirection_behavioral_diagram.dot

@@ -1,0 +1,67 @@
+digraph TLogLevelAPIEnvelopePluginAdapter_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Adapter lifecycle in W14a smoke test
+    adapter_creation [label="TLogLevelAPIEnvelopePluginAdapter created\nvia factory with descriptor and config"];
+
+    view_operation [label="view()\nReturns TPluginAdapterView with correlation"];
+    view_validation [label="view.is_valid() && view.supports_primary_placement_flow()"];
+
+    readiness_operation [label="readiness()\nValidates config and descriptor, returns TReadinessView"];
+    readiness_validation [label="readiness.is_ready()"];
+
+    placement_request_operation [label="prepare_placement_request()\nCreates TPlacementRequest with envelope_kind and destination_family"];
+    placement_request_validation [label="placement_request.is_valid() &&\npayload_kind == \"log_level_envelope\" &&\nrequested_destination_family == \"write_side\""];
+
+    bad_load_signal_operation [label="emit_load_signal() BEFORE handle acceptance\nReturns failed signal"];
+    bad_signal_validation [label="bad_signal.failed()"];
+
+    handle_creation [label="TPlacementHandle::make(42u, token, \"write_side_envelope_slot\")"];
+
+    handle_acceptance_operation [label="accept_placement_handle(handle)\nValidates handle and correlation match"];
+    handle_acceptance_validation [label="accept_result.succeeded()"];
+
+    load_signal_operation [label="emit_load_signal() AFTER handle acceptance\nReturns completed signal with bytes_loaded"];
+    load_signal_validation [label="signal.completed() && signal.bytes_loaded == 128u"];
+
+    next_destination_operation [label="next_destination_request()\nReturns request with continuous_flow reason"];
+    next_destination_validation [label="next.is_valid() &&\nnext.reason == TNextDestinationReason::continuous_flow_requested"];
+
+    wrong_handle_creation [label="TPlacementHandle::make(99u, wrong_token, \"wrong\")"];
+
+    wrong_handle_rejection [label="accept_placement_handle(wrong_handle)\nRejects due to correlation mismatch"];
+    wrong_handle_validation [label="wrong_handle_result.rejected()"];
+
+    success [label="All adapter operations succeed", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    adapter_creation -> view_operation;
+    view_operation -> view_validation;
+    view_validation -> readiness_operation;
+    readiness_operation -> readiness_validation;
+    readiness_validation -> placement_request_operation;
+    placement_request_operation -> placement_request_validation;
+    placement_request_validation -> bad_load_signal_operation;
+    bad_load_signal_operation -> bad_signal_validation;
+    bad_signal_validation -> handle_creation;
+    handle_creation -> handle_acceptance_operation;
+    handle_acceptance_operation -> handle_acceptance_validation;
+    handle_acceptance_validation -> load_signal_operation;
+    load_signal_operation -> load_signal_validation;
+    load_signal_validation -> next_destination_operation;
+    next_destination_operation -> next_destination_validation;
+    next_destination_validation -> wrong_handle_creation;
+    wrong_handle_creation -> wrong_handle_rejection;
+    wrong_handle_rejection -> wrong_handle_validation;
+    wrong_handle_validation -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        adapter_operation [label="Adapter Operation", fillcolor=lightblue];
+        validation [label="Validation Check"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLogLevelAPIEnvelopePluginAdapter_behavioral_diagram.dot

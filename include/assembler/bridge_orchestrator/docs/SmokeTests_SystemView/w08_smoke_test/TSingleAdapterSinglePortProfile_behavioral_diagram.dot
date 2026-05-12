@@ -1,0 +1,46 @@
+digraph TSingleAdapterSinglePortProfile_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Client usage in W08
+    SessionManager [label="TSession Manager\n(W08)", fillcolor=lightyellow];
+
+    // Profile creation and usage
+    CreateProfile [label="Create Profile\nTSingleAdapterSinglePortProfile::create()\n- Accept TPluginAdapterView and TPortView\n- Initialize binding policy\n- Validate compatibility", fillcolor=lightcyan];
+
+    ValidateProfile [label="Validate Profile\nprofile.is_valid()\n- Check adapter-port compatibility\n- Verify surface pair creation\n- Apply binding policy rules", fillcolor=lightcyan];
+
+    GetBindingPolicy [label="Get Binding Policy\nprofile.get_binding_policy()\n- Return TChannelBindingPolicy\n- Used for channel binding validation", fillcolor=lightcyan];
+
+    GetSurfacePair [label="Get Surface Pair\nprofile.get_surface_pair()\n- Return TObligationSurfacePair\n- Used for compatibility evaluation", fillcolor=lightcyan];
+
+    // Integration with session lifecycle
+    BindToChannel [label="Bind to Channel\n- Use profile binding policy\n- Create channel-adapter binding\n- Enable session execution context", fillcolor=lightblue];
+
+    CompatibilityCheck [label="Compatibility Check\n- Evaluate surface pair compatibility\n- Validate with TCompatibilityEvaluator (W07)\n- Determine binding validity", fillcolor=lightblue];
+
+    // Flow in W08 context
+    SessionManager -> CreateProfile [label="1. Create profile for session binding"];
+
+    CreateProfile -> ValidateProfile [label="2. Validate profile configuration"];
+    ValidateProfile -> GetBindingPolicy [label="3. Get binding policy for validation"];
+    ValidateProfile -> GetSurfacePair [label="4. Get surface pair for compatibility"];
+
+    GetBindingPolicy -> BindToChannel [label="5. Use policy for channel binding"];
+    GetSurfacePair -> CompatibilityCheck [label="6. Use pair for compatibility evaluation"];
+
+    BindToChannel -> CompatibilityCheck [label="7. Integrated binding validation"];
+
+    CompatibilityCheck -> SessionManager [label="8. Return compatibility result"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Session Lifecycle";
+        bgcolor=white;
+
+        ProfileOps [label="Profile Operations", fillcolor=lightcyan];
+        SessionIntegration [label="Session Integration", fillcolor=lightblue];
+        W08Component [label="W08 Component", fillcolor=lightyellow];
+    }
+}

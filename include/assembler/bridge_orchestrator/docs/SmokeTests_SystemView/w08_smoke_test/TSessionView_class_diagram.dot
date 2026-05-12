@@ -1,0 +1,35 @@
+digraph TSessionView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TSessionView [label="{TSessionView|+ session_id_: TSessionId\l+ status_: TSessionStatus\l+ binding_id_: TBindingId\l+ created_time_: timestamp\l+ last_updated_time_: timestamp\l+ binding_summary_: std::string\l|+ create(session: TSession): TSessionView\l+ is_readonly(): bool\l+ get_session_id(): TSessionId\l+ get_status(): TSessionStatus\l+ get_binding_id(): TBindingId\l+ get_created_time(): timestamp\l+ get_last_updated_time(): timestamp\l+ get_binding_summary(): std::string\l+ to_json(): std::string\l- extract_binding_summary(session: TSession): std::string}", fillcolor=lightyellow, style=filled];
+
+    // Dependencies
+    TSessionId [label="{TSessionId|+ value_: uint64_t\l+ namespace_: std::string\l|+ to_string(): std::string}", fillcolor=lightcyan, style=filled];
+
+    TSessionStatus [label="{TSessionStatus|CREATED\lOPEN\lACTIVATED\lCOMPLETED\lREJECTED\l+ to_string(): std::string}", fillcolor=lightcyan, style=filled];
+
+    TBindingId [label="{TBindingId|+ value_: uint64_t\l+ namespace_: std::string\l|+ to_string(): std::string}", fillcolor=lightcyan, style=filled];
+
+    // Usage context
+    TSession [label="{TSession|+ view_: TSessionView\l|+ get_view(): TSessionView\l+ update_view(): void}", fillcolor=lightblue, style=filled];
+
+    // Relationships
+    TSessionView -> TSessionId [label="contains"];
+    TSessionView -> TSessionStatus [label="contains"];
+    TSessionView -> TBindingId [label="contains"];
+
+    TSession -> TSessionView [label="creates"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewClass [label="New W08 Component", fillcolor=lightyellow];
+        ReusedDep [label="Reused Dependency", fillcolor=lightcyan];
+        UserClass [label="Using Component", fillcolor=lightblue];
+    }
+}

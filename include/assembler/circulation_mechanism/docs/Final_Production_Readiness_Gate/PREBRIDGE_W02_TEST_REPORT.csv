@@ -1,0 +1,3 @@
+﻿test,status,compile_returncode,run_returncode
+tests_prebridge_w02/cme_prebridge_default_injection_negative_test.cpp,passed,0,0
+tests_prebridge_w02/cme_prebridge_default_injection_profile_test.cpp,passed,0,0

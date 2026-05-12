@@ -1,0 +1,19 @@
+digraph TDiagnosticCategory_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticCategory Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    UseBridgeCoreCategory [label="Use Bridge Core Category\nTDiagnosticCategory::bridge_core in bridge diagnostic records\nCategorizes bridge operation diagnostics", fillcolor=orange]
+
+    UseRegistryCategory [label="Use Registry Category\nTDiagnosticCategory::registry in registry diagnostic records\nCategorizes registry state diagnostics", fillcolor=orange]
+
+    UseProtocolCategory [label="Use Protocol Category\nTDiagnosticCategory::protocol in explicit error record\nCategorizes protocol-related diagnostics", fillcolor=orange]
+
+    End [label="Category usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> UseBridgeCoreCategory
+    UseBridgeCoreCategory -> UseRegistryCategory
+    UseRegistryCategory -> UseProtocolCategory
+    UseProtocolCategory -> End
+}

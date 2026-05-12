@@ -1,0 +1,32 @@
+digraph TParticipantRole_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=white];
+
+    // Key operations
+    check_provider_role [label="is_provider_role(TParticipantRole)\nCheck if role is a provider type", fillcolor=white];
+
+    check_boundary_role [label="is_boundary_role(TParticipantRole)\nCheck if role is boundary-facing", fillcolor=white];
+
+    check_observer_role [label="is_observer_role(TParticipantRole)\nCheck if role is observer type", fillcolor=white];
+
+    check_exchange_participation [label="participates_in_primary_exchange(TParticipantRole)\nCheck if role participates in primary exchange", fillcolor=white];
+
+    convert_to_string [label="to_string(TParticipantRole)\nConvert role to string representation", fillcolor=white];
+
+    // W07 usage
+    role_validation [label="Used in participant validation\nand channel role compatibility checks", fillcolor=palegreen];
+
+    // Flow
+    check_provider_role -> role_validation [label="used in"];
+    check_boundary_role -> role_validation [label="used in"];
+    check_observer_role -> role_validation [label="used in"];
+    check_exchange_participation -> role_validation [label="used in"];
+    convert_to_string -> role_validation [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Classification [label="Role Classification", fillcolor=white];
+        Usage [label="W07 Role Validation", fillcolor=palegreen];
+    }
+}

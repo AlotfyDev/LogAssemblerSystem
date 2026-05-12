@@ -1,0 +1,26 @@
+digraph TChannel_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W04)
+    TChannel [label="{TChannel (W04)|channel_id : uint64_t\nsource : TParticipant\ntarget : TParticipant\nprofile : TChannelProfile\nbinding_policy : TChannelBindingPolicy\nstatus : TChannelStatus\ncorrelation : TCorrelationToken\nchannel_name : string_view|+ has_valid_identity() : bool\n+ has_valid_participants() : bool\n+ has_compatible_roles() : bool\n+ is_declared() : bool\n+ is_active() : bool\n+ is_valid() : bool|+ declare() : TChannel}"];
+
+    // Dependencies
+    TParticipant_dep [label="{TParticipant|...}" shape=record];
+    TChannelProfile_dep [label="{TChannelProfile|...}" shape=record];
+    TChannelBindingPolicy_dep [label="{TChannelBindingPolicy|...}" shape=record];
+    TChannelStatus_dep [label="{TChannelStatus|...}" shape=Mrecord];
+    TCorrelationToken_dep [label="{TCorrelationToken|...}" shape=record];
+
+    // Used by TBinding
+    TBinding_uses [label="{TBinding|channel : TChannel|...}" shape=record];
+
+    // Relationships
+    TChannel -> TParticipant_dep [label="has source/target"];
+    TChannel -> TChannelProfile_dep [label="has"];
+    TChannel -> TChannelBindingPolicy_dep [label="has"];
+    TChannel -> TChannelStatus_dep [label="has"];
+    TChannel -> TCorrelationToken_dep [label="has"];
+
+    TBinding_uses -> TChannel [label="uses for binding"];
+}

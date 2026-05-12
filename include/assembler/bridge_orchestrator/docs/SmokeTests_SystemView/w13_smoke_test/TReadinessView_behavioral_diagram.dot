@@ -1,0 +1,62 @@
+digraph TReadinessView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Readiness evaluation
+    Start [label="Evaluate Readiness", shape=ellipse, fillcolor=lightgreen];
+
+    PolicyEvaluation [label="Policy Evaluation Result", fillcolor=lightyellow];
+
+    EvaluateReadiness [label="TIntegrationBoundaryPolicy::request_readiness(request)", fillcolor=lavender];
+
+    // State determination
+    DetermineState [label="Determine Readiness State", fillcolor=lightblue, shape=diamond];
+
+    Ready [label="Ready State\nTReadinessView::ready(token, size_hint)\n• All validations pass\n• Request can proceed immediately", fillcolor=lightgreen];
+
+    NotReady [label="Not Ready State\nTReadinessView::not_ready(reason, token)\n• Validation failure\n• Request cannot proceed", fillcolor=pink];
+
+    Deferred [label="Deferred State\nTReadinessView::deferred(reason, token)\n• Ordering requirement not met\n• Request deferred for later processing", fillcolor=orange];
+
+    // State checking
+    CheckState [label="Check Readiness State", fillcolor=lightcyan];
+
+    IsReady [label="readiness.is_ready()\n→ Proceed with handoff"];
+
+    IsNotReady [label="readiness.is_not_ready()\n→ Fail handoff attempt"];
+
+    IsDeferred [label="readiness.is_deferred()\n→ Defer handoff attempt"];
+
+    // W13 usage
+    W13Usage [label="W13 Usage in Smoke Test", fillcolor=lightcyan];
+
+    PortReadiness [label="auto readiness = port.boundary_readiness(request);"];
+
+    CheckReady [label="if (!readiness.is_ready()) return error;"];
+
+    // Flow connections
+    Start -> PolicyEvaluation;
+    PolicyEvaluation -> EvaluateReadiness;
+
+    EvaluateReadiness -> DetermineState;
+
+    DetermineState -> Ready [label="All checks pass"];
+    DetermineState -> NotReady [label="Validation fails"];
+    DetermineState -> Deferred [label="Ordering not supported"];
+
+    Ready -> CheckState;
+    NotReady -> CheckState;
+    Deferred -> CheckState;
+
+    CheckState -> IsReady;
+    CheckState -> IsNotReady;
+    CheckState -> IsDeferred;
+
+    IsReady -> W13Usage;
+    IsNotReady -> W13Usage;
+    IsDeferred -> W13Usage;
+
+    W13Usage -> PortReadiness;
+    PortReadiness -> CheckReady;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TReadinessView_behavioral_diagram.dot

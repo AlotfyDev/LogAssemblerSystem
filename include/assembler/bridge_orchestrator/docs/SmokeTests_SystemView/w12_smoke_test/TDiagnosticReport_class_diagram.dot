@@ -1,0 +1,24 @@
+digraph TDiagnosticReport_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticReport [label="{TDiagnosticReport<Capacity>|records : std::array<TDiagnosticRecord, Capacity>\l count : std::size_t\l rejected_records : std::uint64_t\l report_name : std::string_view\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ empty() : bool\l+ full() : bool\l+ append(record) : bool\l+ append_if_included(record, policy) : bool\l+ count_at_least(minimum) : std::size_t\l+ failure_count() : std::size_t\l+ has_failures() : bool\l+ highest_severity() : TDiagnosticSeverity\l+ make(name, token) : TDiagnosticReport\l}"]
+
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    TDiagnosticPolicy [label="TDiagnosticPolicy", shape=record, fillcolor=lightyellow]
+    TDiagnosticSeverity [label="TDiagnosticSeverity", shape=record, fillcolor=lightyellow]
+    std_array [label="std::array", shape=ellipse, fillcolor=lightgrey]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    std_size_t [label="std::size_t", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+
+    TDiagnosticReport -> TDiagnosticRecord [label="contains", style=dashed]
+    TDiagnosticReport -> TCorrelationToken [label="contains", style=dashed]
+    TDiagnosticReport -> TDiagnosticPolicy [label="uses", style=dashed]
+    TDiagnosticReport -> TDiagnosticSeverity [label="uses", style=dashed]
+    TDiagnosticReport -> std_array [label="uses", style=dashed]
+    TDiagnosticReport -> std_string_view [label="uses", style=dashed]
+    TDiagnosticReport -> std_size_t [label="uses", style=dashed]
+    TDiagnosticReport -> std_uint64_t [label="uses", style=dashed]
+}

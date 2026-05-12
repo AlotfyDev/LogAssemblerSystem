@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Config
+    participant API
+    participant CParser as Dedicated Container Parser
+    participant EParser as Dedicated Element Parser
+    participant Batch
+    participant Env
+    participant Handoff
+
+    Config->>Config: Resolve container shape + container parser + element parser
+    API->>CParser: MT5 array/container
+    loop each element
+        CParser->>EParser: parse known element type
+        EParser-->>CParser: parsed element result
+    end
+    CParser-->>Batch: Parsed batch ref
+    Batch-->>Env: Batch-as-single or element-stream strategy (descriptor)
+    Env->>Handoff: Later handoff contract

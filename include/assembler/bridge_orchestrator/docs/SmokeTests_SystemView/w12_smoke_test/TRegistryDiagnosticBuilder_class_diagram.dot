@@ -1,0 +1,14 @@
+digraph TRegistryDiagnosticBuilder_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TRegistryDiagnosticBuilder [label="{TRegistryDiagnosticBuilder|+ from_snapshot(id, snapshot, subject) : TDiagnosticRecord\l}"]
+
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+    TDiagnosticId [label="TDiagnosticId", shape=record, fillcolor=lightyellow]
+
+    TRegistryDiagnosticBuilder -> TDiagnosticRecord [label="creates", style=dashed]
+    TRegistryDiagnosticBuilder -> TRegistrySnapshot [label="diagnoses", style=dashed]
+    TRegistryDiagnosticBuilder -> TDiagnosticId [label="uses", style=dashed]
+}

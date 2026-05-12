@@ -1,0 +1,53 @@
+digraph TraversalFoundations {
+  graph [rankdir=LR, bgcolor="white", fontname="Arial", fontsize=12, labelloc="t", label="Policy Traversal & Orchestration Foundations V1"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, color="#334155", fillcolor="#F8FAFC"];
+  edge [fontname="Arial", fontsize=10, color="#64748B"];
+
+  sc [label="Sequence Channel\n(smallest traversal-bearing unit)", shape=ellipse, fillcolor="#DBEAFE", color="#2563EB", penwidth=1.5];
+
+  linear [label="Linear Sequence Channel", fillcolor="#EFF6FF"];
+  ring [label="Ring Sequence Channel", fillcolor="#EFF6FF"];
+
+  singleslot [label="Single-Slot Channel", fillcolor="#F8FAFC"];
+  multislot [label="Multi-Slot Channel\n(conjunction/composite allowance)", fillcolor="#F8FAFC"];
+
+  entry [label="Entry Surface", fillcolor="#FEF3C7", color="#D97706"];
+  exitn [label="Exit Surface", fillcolor="#FEF3C7", color="#D97706"];
+
+  transition [label="Transition\n(successive movement\nbetween channels)", fillcolor="#DCFCE7", color="#16A34A"];
+  relation [label="Relation\n(edge connector passes\nthrough relation)", fillcolor="#ECFCCB", color="#65A30D"];
+
+  merge [label="Merge / Join Possibility", fillcolor="#F3E8FF", color="#7C3AED"];
+  readiness [label="Channel Eligibility /\nReadiness", fillcolor="#F1F5F9"];
+  cursor [label="Position / Cursor Awareness", fillcolor="#F1F5F9"];
+
+  sc -> linear [label="channel kind"];
+  sc -> ring [label="channel kind"];
+  sc -> singleslot [label="slot cardinality"];
+  sc -> multislot [label="slot cardinality"];
+
+  sc -> entry [label="has"];
+  sc -> exitn [label="has"];
+
+  sc -> transition [label="participates in"];
+  transition -> relation [label="mediated by"];
+  relation -> sc [label="to target channel", style=dashed];
+
+  multislot -> merge [label="preserves"];
+  sc -> readiness [label="may possess"];
+  sc -> cursor [label="admits"];
+
+  subgraph cluster_minimum {
+    label="Minimum Foundational Set";
+    color="#CBD5E1";
+    style="rounded,dashed";
+    m1 [label="Sequence Channel", shape=note, fillcolor="#FFFFFF"];
+    m2 [label="Linear / Ring", shape=note, fillcolor="#FFFFFF"];
+    m3 [label="Single / Multi-slot", shape=note, fillcolor="#FFFFFF"];
+    m4 [label="Entry / Exit", shape=note, fillcolor="#FFFFFF"];
+    m5 [label="Transition + Relation", shape=note, fillcolor="#FFFFFF"];
+    m6 [label="Merge / Join possibility", shape=note, fillcolor="#FFFFFF"];
+    m7 [label="Eligibility / Readiness", shape=note, fillcolor="#FFFFFF"];
+    m8 [label="Position / Cursor awareness", shape=note, fillcolor="#FFFFFF"];
+  }
+}

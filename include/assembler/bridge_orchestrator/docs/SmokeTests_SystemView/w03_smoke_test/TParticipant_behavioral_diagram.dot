@@ -1,0 +1,48 @@
+digraph TParticipant_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in W03 smoke test
+    Start [label="W03 Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateParticipant [label="Create Participant Descriptor\nTParticipant::make(42u, content_provider,\n\"log_domain\", \"family_a\", \"Logger-1\", token)", fillcolor=yellow]
+
+    ValidateParticipant [label="Validate Participant\nparticipant.is_valid() -> true\nChecks id != 0, role != unknown, domain not empty", fillcolor=lightgreen]
+
+    TestProviderClassification [label="Test Provider Classification\nparticipant.is_provider() -> true\n(uses is_provider_role internally)", fillcolor=lightgreen]
+
+    TestBoundaryClassification [label="Test Boundary Classification\nparticipant.is_boundary() -> false\n(depends on role type)", fillcolor=lightgreen]
+
+    TestExchangeParticipation [label="Test Exchange Participation\nparticipant.participates_in_exchange() -> true\n(content_provider participates in primary exchange)", fillcolor=lightgreen]
+
+    CreateMultipleParticipants [label="Create Multiple Participants\nDifferent roles: receiver_provider, diagnostic_observer,\npersistence_provider, governance_provider", fillcolor=yellow]
+
+    TestEquality [label="Test Participant Equality\nparticipant1 == participant2\nCompares id, role, domain fields", fillcolor=orange]
+
+    UseInViewCreation [label="Used in TParticipantView::from_participant()\nParticipant data projected to read-only view", fillcolor=yellow]
+
+    End [label="Participant descriptor validation\nand classification completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateParticipant
+    CreateParticipant -> ValidateParticipant
+    ValidateParticipant -> TestProviderClassification
+    TestProviderClassification -> TestBoundaryClassification
+    TestBoundaryClassification -> TestExchangeParticipation
+    TestExchangeParticipation -> CreateMultipleParticipants
+    CreateMultipleParticipants -> TestEquality
+    TestEquality -> UseInViewCreation
+    UseInViewCreation -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Participant Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation and Classification", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Equality Testing", shape=rectangle, fillcolor=orange]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TParticipant_behavioral_diagram.dot

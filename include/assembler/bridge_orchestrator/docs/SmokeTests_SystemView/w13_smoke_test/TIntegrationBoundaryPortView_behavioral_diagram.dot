@@ -1,0 +1,53 @@
+digraph TIntegrationBoundaryPortView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // View creation
+    Start [label="Create Port View", shape=ellipse, fillcolor=lightgreen];
+
+    UseFactory [label="Use Factory Method", fillcolor=lightyellow];
+
+    MakeView [label="TIntegrationBoundaryPortView::make(\n    descriptor,    // TIntegrationBoundaryDescriptor\n    port_name,     // string_view\n    readiness,     // string_view (optional)\n    correlation   // TCorrelationToken (optional)\n)", fillcolor=lavender];
+
+    // View usage
+    ViewUsage [label="View Usage", fillcolor=pink];
+
+    BoundaryView [label="port.boundary_view()\nReturns port view from CRTP implementation", fillcolor=lightcyan];
+
+    ReportCreation [label="TIntegrationBoundaryReport::make(view, ...)\nInclude view in boundary reports", fillcolor=pink];
+
+    // Validation
+    ValidateView [label="Validate View", fillcolor=lightblue];
+
+    CheckValid [label="view.is_valid()\n• descriptor.is_valid()\n• !port_name.empty()"];
+
+    // Smoke test
+    SmokeTest [label="Smoke Test Usage", fillcolor=lightcyan];
+
+    CreateView [label="auto view = port.boundary_view();"];
+
+    ValidateViewUsage [label="if (!view.is_valid()) return error;"];
+
+    CreateReport [label="auto report = TIntegrationBoundaryReport::make(view, completed, diagnostic);"];
+
+    // Flow connections
+    Start -> UseFactory;
+    UseFactory -> MakeView;
+
+    MakeView -> ViewUsage;
+
+    ViewUsage -> BoundaryView;
+    ViewUsage -> ReportCreation;
+
+    BoundaryView -> ValidateView;
+    ReportCreation -> ValidateView;
+
+    ValidateView -> CheckValid;
+
+    CheckValid -> SmokeTest;
+
+    SmokeTest -> CreateView;
+    CreateView -> ValidateViewUsage;
+    ValidateViewUsage -> CreateReport;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryPortView_behavioral_diagram.dot

@@ -1,0 +1,5 @@
+digraph TCorrelationToken_Class {
+  node [shape=record];
+
+  TCorrelationToken [label="{TCorrelationToken|high : uint64_t\nlow : uint64_t|+ is_valid() : bool\n+ invalid() : TCorrelationToken\n+ from_parts(high, low) : TCorrelationToken\n+ operator==\n+ operator!=}"];
+}

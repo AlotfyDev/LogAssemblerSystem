@@ -1,0 +1,36 @@
+digraph TBindingRegistry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TBindingRegistry [label="{TBindingRegistry<Capacity>|registry : TBoundedRegistry<TBindingId, TBinding, Capacity>\l|+ is_valid() : bool\l+ register_binding(binding) : bool\l+ find(id) : const TRegistryEntry<TBindingId, TBinding>*\l+ contains(id) : bool\l+ snapshot() : TRegistrySnapshot\l+ make(name, token) : TBindingRegistry\l}"]
+
+    // Template Parameters
+    Capacity [label="Capacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Member Types
+    TBoundedRegistry [label="{TBoundedRegistry<TBindingId, TBinding, Capacity>|...}", shape=record, fillcolor=lightyellow]
+    TBindingId [label="TBindingId", shape=record, fillcolor=lightyellow]
+    TBinding [label="TBinding", shape=record, fillcolor=lightyellow]
+    TRegistryEntry [label="{TRegistryEntry<TBindingId, TBinding>|...}", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TBindingRegistry -> Capacity [label="parameterized by", style=dashed]
+    TBindingRegistry -> TBoundedRegistry [label="contains", style=dashed]
+    TBindingRegistry -> TBindingId [label="uses for keys", style=dashed]
+    TBindingRegistry -> TBinding [label="registers", style=dashed]
+    TBindingRegistry -> TRegistryEntry [label="returns", style=dashed]
+    TBindingRegistry -> TRegistrySnapshot [label="produces", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

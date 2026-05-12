@@ -1,0 +1,34 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterViewBuilder_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // View building in smoke test
+    ViewMethodCall [label="adapter.view() calls:\n- TWriteSideRegistryDeliveryPluginAdapterViewBuilder::view()\n- passes config and descriptor.correlation\n- validates config.is_valid()"];
+
+    ParticipantCreation [label="participant() helper:\n- creates TParticipant with CONTENT_PROVIDER role\n- uses config participant_* fields\n- uses correlation token (can be invalid)"];
+
+    ObligationProfileCreation [label="delivery_content_provider_profile():\n- creates TPluginAdapterObligationProfile\n- family: DELIVERY_CONTENT_PROVIDER\n- capabilities: placement_request, placement_handle, load_signal, boundary_handoff\n- adapter name: 'registry_delivery_content_plugin_adapter'"];
+
+    ViewAssembly [label="view() assembly:\n- creates TParticipantView from participant\n- creates TPluginAdapterView with:\n  • participant view\n  • delivery content provider profile\n  • adapter display name from config"];
+
+    AdapterViewUsage [label="TPluginAdapterView returned:\n- used by bridge runtime for adapter identity\n- provides obligation compliance information\n- enables placement and boundary handoff workflows"];
+
+    // Flow connections
+    ViewMethodCall -> ParticipantCreation;
+    ViewMethodCall -> ObligationProfileCreation;
+    ParticipantCreation -> ViewAssembly;
+    ObligationProfileCreation -> ViewAssembly;
+    ViewAssembly -> AdapterViewUsage;
+
+    // Styling
+    ViewMethodCall [fillcolor=lightblue];
+    ParticipantCreation [fillcolor=lightgreen];
+    ObligationProfileCreation [fillcolor=lightyellow];
+    ViewAssembly [fillcolor=lightsalmon];
+    AdapterViewUsage [fillcolor=lightcyan];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterViewBuilder Usage in W14C Smoke Test";
+    labelloc=t;
+}

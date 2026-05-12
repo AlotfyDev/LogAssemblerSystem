@@ -1,0 +1,80 @@
+digraph TBridgeProtocol_Component_Diagram {
+    // Component Diagram for TBridgeProtocol (Layer 3 - Stateful)
+    // Core bridge protocol execution state machine
+
+    graph [fontname="Arial", fontsize=10, rankdir=TB]
+    node [fontname="Arial", fontsize=9, shape=box, style=filled]
+
+    // Core Component
+    TBridgeProtocol [label="TBridgeProtocol\n(Layer 3 - Stateful)", fillcolor=orange]
+
+    // Internal State
+    subgraph cluster_internal_state {
+        label="Internal State"
+        bgcolor=lightgray
+
+        protocolId [label="protocolId_\n(TBridgeProtocolId)", fillcolor=lightblue]
+        protocolKind [label="protocolKind_\n(TBridgeProtocolKind)", fillcolor=lightblue]
+        protocolPlan [label="protocolPlan_\n(TBridgeProtocolPlan)", fillcolor=lightblue]
+        currentStatus [label="currentStatus_\n(TBridgeProtocolStatus)", fillcolor=lightblue]
+        currentStep [label="currentStep_\n(size_t)", fillcolor=white]
+        sessionRef [label="sessionRef_\n(TBridgeSession*)", fillcolor=white]
+    }
+
+    // Public Methods
+    subgraph cluster_public_methods {
+        label="Public Interface"
+        bgcolor=lightyellow
+
+        Initialize [label="Initialize()\nSetup protocol state"]
+        ExecuteStep [label="ExecuteStep(step)\nExecute specific step"]
+        AdvanceStep [label="AdvanceStep()\nMove to next step"]
+        GetStatus [label="GetStatus()\nReturn current status"]
+        IsComplete [label="IsComplete()\nCheck completion"]
+        HandleError [label="HandleError(error)\nError handling"]
+        Finalize [label="Finalize()\nCleanup resources"]
+    }
+
+    // Private Methods
+    subgraph cluster_private_methods {
+        label="Private Implementation"
+        bgcolor=lightcyan
+
+        ValidateTransition [label="ValidateTransition()\nValidate state changes"]
+        ExecuteEnvelopePlacement [label="ExecuteEnvelopePlacement()\nCoordinate placement"]
+        UpdateProgress [label="UpdateProgress()\nUpdate status"]
+        CheckCompletion [label="CheckCompletion()\nVerify completion"]
+    }
+
+    // Dependencies
+    subgraph cluster_dependencies {
+        label="Dependencies"
+        bgcolor=white
+
+        TBridgeSession [label="TBridgeSession\n(Session context)"]
+        TEnvelopePlacement [label="TEnvelopePlacement\n(Envelope operations)"]
+        TProtocolStepExecutor [label="TProtocolStepExecutor\n(Step execution)"]
+        TProtocolValidator [label="TProtocolValidator\n(Validation logic)"]
+    }
+
+    // Relationships
+    TBridgeProtocol -> protocolId
+    TBridgeProtocol -> protocolKind
+    TBridgeProtocol -> protocolPlan
+    TBridgeProtocol -> currentStatus
+    TBridgeProtocol -> currentStep
+    TBridgeProtocol -> sessionRef
+
+    Initialize -> ValidateTransition [label="uses"]
+    ExecuteStep -> ExecuteEnvelopePlacement [label="uses"]
+    AdvanceStep -> UpdateProgress [label="uses"]
+    GetStatus -> currentStatus [label="reads"]
+    IsComplete -> CheckCompletion [label="uses"]
+    HandleError -> UpdateProgress [label="uses"]
+    Finalize -> sessionRef [label="cleanup"]
+
+    TBridgeProtocol -> TBridgeSession [label="references", style=dashed]
+    TBridgeProtocol -> TEnvelopePlacement [label="coordinates", style=dashed]
+    TBridgeProtocol -> TProtocolStepExecutor [label="uses", style=dashed]
+    TBridgeProtocol -> TProtocolValidator [label="uses", style=dashed]
+}

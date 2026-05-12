@@ -1,0 +1,41 @@
+digraph TReadinessView_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Readiness Check Flow", shape=ellipse, fillcolor=green]
+
+    CreateReadiness [label="TReadinessView::ready(token, 1u)\nCreates readiness view with READY state,\ncorrelation token, and capacity hint of 1", fillcolor=yellow]
+
+    CheckReadiness [label="readiness.is_ready()\nChecks state == TReadinessState::ready\nReturns true", fillcolor=lightgreen]
+
+    ReadinessConfirmed [label="Readiness confirmed - carrier is ready", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Readiness check completed successfully", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    CheckDeferred [label="readiness.is_deferred()\n(state == deferred)", fillcolor=lightgrey]
+    CheckNotReady [label="readiness.is_ready() == false\n(state == not_ready, unknown, or saturated)", fillcolor=lightgrey]
+
+    // Flow
+    Start -> CreateReadiness
+    CreateReadiness -> CheckReadiness
+    CheckReadiness -> ReadinessConfirmed
+    ReadinessConfirmed -> End
+
+    // Alternative flows (shown but not taken)
+    CreateReadiness -> CheckDeferred [style=dashed, color=grey]
+    CreateReadiness -> CheckNotReady [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Status Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

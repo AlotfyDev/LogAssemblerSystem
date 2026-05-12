@@ -1,0 +1,43 @@
+digraph TBridgeRegistry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TBridgeRegistry [label="{TBridgeRegistry<Capacity, PlanCapacity>|registry : TBoundedRegistry<TBridgeId, Bridge, Capacity>\l|+ is_valid() : bool\l+ register_bridge(bridge) : bool\l+ find(id) : const TRegistryEntry<TBridgeId, Bridge>*\l+ contains(id) : bool\l+ snapshot() : TRegistrySnapshot\l+ make(name, token) : TBridgeRegistry\l}"]
+
+    // Template Parameters
+    Capacity [label="Capacity", shape=ellipse, fillcolor=lightgrey]
+    PlanCapacity [label="PlanCapacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Type Aliases
+    Bridge [label="Bridge = TBridge<PlanCapacity>", shape=record, fillcolor=lightyellow]
+
+    // Member Types
+    TBoundedRegistry [label="{TBoundedRegistry<TBridgeId, Bridge, Capacity>|...}", shape=record, fillcolor=lightyellow]
+    TBridgeId [label="TBridgeId", shape=record, fillcolor=lightyellow]
+    TBridge [label="TBridge<PlanCapacity>", shape=record, fillcolor=lightyellow]
+    TRegistryEntry [label="{TRegistryEntry<TBridgeId, Bridge>|...}", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TBridgeRegistry -> Capacity [label="parameterized by", style=dashed]
+    TBridgeRegistry -> PlanCapacity [label="parameterized by", style=dashed]
+    TBridgeRegistry -> Bridge [label="uses type alias", style=dashed]
+    TBridgeRegistry -> TBoundedRegistry [label="contains", style=dashed]
+    TBridgeRegistry -> TBridgeId [label="uses for keys", style=dashed]
+    TBridgeRegistry -> TBridge [label="registers", style=dashed]
+    TBridgeRegistry -> TRegistryEntry [label="returns", style=dashed]
+    TBridgeRegistry -> TRegistrySnapshot [label="produces", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        AliasLegend [label="Type Alias", shape=record, fillcolor=lightyellow]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

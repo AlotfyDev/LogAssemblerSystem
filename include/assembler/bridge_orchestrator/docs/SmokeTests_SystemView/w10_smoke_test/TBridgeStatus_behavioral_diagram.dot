@@ -1,0 +1,31 @@
+digraph G {
+    rankdir=LR;
+    node [shape=circle, style=filled, fillcolor=lightblue];
+
+    // Bridge Status State Machine
+    unknown -> declared [label="validation"];
+    declared -> ready [label="protocol ready"];
+    ready -> running [label="execution start"];
+    running -> completed [label="protocol complete"];
+    running -> failed [label="execution error"];
+    running -> rejected [label="invalid protocol"];
+    running -> exhausted [label="budget depleted"];
+    running -> paused [label="pause request"];
+    paused -> running [label="resume"];
+    paused -> cancelled [label="cancel"];
+
+    // Terminal states (red)
+    completed [fillcolor=red];
+    failed [fillcolor=red];
+    rejected [fillcolor=red];
+    exhausted [fillcolor=red];
+    cancelled [fillcolor=red];
+
+    // Runnable states (green)
+    ready [fillcolor=green];
+    running [fillcolor=green];
+
+    // Legend
+    legend [label="Legend\nGreen: Runnable\nRed: Terminal\nBlue: Transition", shape=rectangle, fillcolor=white, style=solid];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeStatus_behavioral_diagram.dot

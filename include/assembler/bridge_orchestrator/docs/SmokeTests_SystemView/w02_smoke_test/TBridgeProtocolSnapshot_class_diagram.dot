@@ -1,0 +1,34 @@
+digraph TBridgeProtocolSnapshot_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main struct
+    TBridgeProtocolSnapshot [label="{TBridgeProtocolSnapshot|correlation : TCorrelationToken\l current_stage : TBridgeStage\l previous_stage : TBridgeStage\l terminal_state : TBridgeTerminalState\l result : TBridgeResult\l error : TBridgeError\l protocol_family : string_view\l|+ is_terminal() : bool\l+ has_error() : bool\l+ is_valid() : bool\l+ make(...) : TBridgeProtocolSnapshot\l}"]
+
+    // Dependencies
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightcyan]
+    TBridgeStage [label="TBridgeStage", shape=record, fillcolor=lightcyan]
+    TBridgeTerminalState [label="TBridgeTerminalState", shape=record, fillcolor=lightcyan]
+    TBridgeResult [label="TBridgeResult", shape=record, fillcolor=lightcyan]
+    TBridgeError [label="TBridgeError", shape=record, fillcolor=lightcyan]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    TBridgeProtocolSnapshot -> TCorrelationToken [label="uses", style=dashed]
+    TBridgeProtocolSnapshot -> TBridgeStage [label="uses", style=dashed]
+    TBridgeProtocolSnapshot -> TBridgeTerminalState [label="uses", style=dashed]
+    TBridgeProtocolSnapshot -> TBridgeResult [label="uses", style=dashed]
+    TBridgeProtocolSnapshot -> TBridgeError [label="uses", style=dashed]
+    TBridgeProtocolSnapshot -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        StructLegend [label="Struct", shape=record, fillcolor=lightblue]
+        ComponentLegend [label="Component", shape=record, fillcolor=lightcyan]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

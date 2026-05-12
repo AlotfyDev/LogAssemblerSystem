@@ -1,0 +1,21 @@
+digraph TIntegrationBoundaryKind_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    BoundaryValidation [label="Material descriptor validation:\n- descriptor.is_valid() checks boundary.kind == registry_delivery\n- ensures correct boundary type for registry delivery"];
+
+    BoundaryCreation [label="Boundary descriptor creation:\n- TIntegrationBoundaryDescriptor::registry_delivery()\n- sets kind to registry_delivery\n- includes accepts_handoff capability"];
+
+    HandoffSupportCheck [label="Readiness policy validation:\n- TIntegrationBoundaryPolicy::supports_outbound_handoff()\n- verifies boundary supports handoff operations\n- registry_delivery boundaries must accept handoff"];
+
+    BoundaryValidation -> BoundaryCreation;
+    BoundaryCreation -> HandoffSupportCheck;
+
+    BoundaryValidation [fillcolor=lightblue];
+    BoundaryCreation [fillcolor=lightsalmon];
+    HandoffSupportCheck [fillcolor=lightyellow];
+
+    label="TIntegrationBoundaryKind Usage in W14C Smoke Test";
+    labelloc=t;
+}

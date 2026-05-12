@@ -1,0 +1,46 @@
+digraph TParticipantView_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Channel View Creation
+    source_view_creation [label="TChannel::source_view()\n(Create read-only source view)"];
+    target_view_creation [label="TChannel::target_view()\n(Create read-only target view)"];
+
+    // Factory method usage
+    from_participant_call [label="TParticipantView::from_participant(participant)\n(Safe projection from TParticipant)"];
+
+    // View characteristics
+    read_only_projection [label="Read-only participant data"];
+    validity_projection [label="valid = participant.is_valid()"];
+    role_classification [label="Same role classification helpers"];
+
+    // Diagnostic usage
+    validation_checks [label="View validation checks\n(is_valid(), is_provider(), etc.)"];
+    diagnostic_output [label="Channel diagnostics\n(participant role verification)"];
+
+    // Flow
+    source_view_creation -> from_participant_call;
+    target_view_creation -> from_participant_call;
+
+    from_participant_call -> read_only_projection;
+    from_participant_call -> validity_projection;
+    from_participant_call -> role_classification;
+
+    read_only_projection -> validation_checks;
+    validity_projection -> validation_checks;
+    role_classification -> validation_checks;
+
+    validation_checks -> diagnostic_output;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TParticipantView W04 Usage Pattern";
+        color=white;
+        style=filled;
+
+        legend_creation [label="View Creation", shape=rectangle, fillcolor=lightyellow];
+        legend_projection [label="Data Projection", shape=rectangle, fillcolor=lightblue];
+        legend_validation [label="Validation Usage", shape=rectangle, fillcolor=lightgreen];
+        legend_diagnostic [label="Diagnostic Usage", shape=rectangle, fillcolor=orange];
+    }
+}

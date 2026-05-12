@@ -1,0 +1,125 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Start
+    START [label="W10 Bridge Core Smoke Test\nStart", shape=oval, fillcolor=lightgreen];
+
+    // Setup Phase
+    subgraph cluster_setup {
+        label="Setup Phase";
+        color=blue;
+        style=dashed;
+
+        PARTICIPANTS [label="Create Participants\nTParticipant::make()\n- source (content_provider)\n- target (host_provider)"];
+        CHANNEL [label="Declare Channel\nTChannel::declare()\n- source + target\n- profile + policy"];
+        VIEWS [label="Create Views\nTPluginAdapterView::make()\nTPortView::make()"];
+        PAIR [label="Create Obligation Pair\nTObligationSurfacePair::make()"];
+        BINDING [label="Propose Binding\nTBinding::propose()\n- channel + pair + profile"];
+        SESSION_REQUEST [label="Create Session Request\nTSessionOpenRequest::make()\n- binding + policy"];
+        SESSION [label="Open Session\nTSession::open()\n- validates binding"];
+        PROTOCOL_PLAN [label="Create Protocol Plan\nTBridgeProtocolPlan<12>::envelope_placement_plan()"];
+        PROTOCOL [label="Declare Protocol\nTBridgeProtocol<12>::declare()\n- session + plan"];
+    }
+
+    // Bridge Declaration
+    BRIDGE_DECLARATION [label="Declare Bridge\nTBridge<12>::declare()\n- protocol + config\n- validates protocol ready"];
+
+    // Validation Phase
+    subgraph cluster_validation {
+        label="Validation Phase";
+        color=green;
+        style=solid;
+
+        VALIDATE_BRIDGE [label="Validate Bridge\nbridge.is_valid()\nbridge.is_ready()\nbridge.view().is_valid()\nbridge.snapshot().is_valid()"];
+        CHECK_PROTOCOL [label="Check Protocol\nprotocol.is_ready()"];
+    }
+
+    // Execution Phase
+    subgraph cluster_execution {
+        label="Execution Phase";
+        color=orange;
+        style=solid;
+
+        STEP_REPORT [label="Single Step Report\nbridge.step_model_report()\n- captures before/after frames\n- returns step result\n- validates success"];
+        CHECK_RUNNING [label="Check Running Status\nbridge.status == running"];
+        RUN_TO_TERMINAL [label="Run to Terminal\nbridge.run_model_to_terminal()\n- executes until terminal state"];
+        CHECK_COMPLETED [label="Check Completion\nresult.completed()\nbridge.status == completed\nbridge.is_terminal()\nbudget.consumed_steps == 12"];
+        CHECK_PROTOCOL_COMPLETED [label="Check Protocol Completion\nbridge.protocol.status == completed"];
+    }
+
+    // Exhaustion Scenario
+    subgraph cluster_exhaustion {
+        label="Exhaustion Scenario";
+        color=red;
+        style=dashed;
+
+        EXHAUSTION_BRIDGE [label="Create Exhaustion Bridge\nTBridge<12>::declare()\n- same protocol\n- config with budget=2"];
+        EXHAUSTION_RUN [label="Run Exhaustion Test\nbridge.run_model_to_terminal()"];
+        CHECK_EXHAUSTED [label="Check Exhaustion\nresult.exhausted()\nbridge.status == exhausted"];
+    }
+
+    // Rejection Scenario
+    subgraph cluster_rejection {
+        label="Rejection Scenario";
+        color=red;
+        style=dashed;
+
+        INVALID_BRIDGE [label="Create Invalid Bridge\nTBridge<12>::declare()\n- invalid bridge ID"];
+        CHECK_REJECTED [label="Check Rejection\nbridge.status == rejected"];
+    }
+
+    // End
+    END [label="Test Complete\nReturn 0", shape=oval, fillcolor=lightgreen];
+
+    // Flow connections
+    START -> PARTICIPANTS;
+    PARTICIPANTS -> CHANNEL;
+    CHANNEL -> VIEWS;
+    VIEWS -> PAIR;
+    PAIR -> BINDING;
+    BINDING -> SESSION_REQUEST;
+    SESSION_REQUEST -> SESSION;
+    SESSION -> PROTOCOL_PLAN;
+    PROTOCOL_PLAN -> PROTOCOL;
+    PROTOCOL -> BRIDGE_DECLARATION;
+
+    BRIDGE_DECLARATION -> VALIDATE_BRIDGE;
+    VALIDATE_BRIDGE -> CHECK_PROTOCOL;
+    CHECK_PROTOCOL -> STEP_REPORT;
+
+    STEP_REPORT -> CHECK_RUNNING;
+    CHECK_RUNNING -> RUN_TO_TERMINAL;
+    RUN_TO_TERMINAL -> CHECK_COMPLETED;
+    CHECK_COMPLETED -> CHECK_PROTOCOL_COMPLETED;
+    CHECK_PROTOCOL_COMPLETED -> EXHAUSTION_BRIDGE;
+
+    EXHAUSTION_BRIDGE -> EXHAUSTION_RUN;
+    EXHAUSTION_RUN -> CHECK_EXHAUSTED;
+    CHECK_EXHAUSTED -> INVALID_BRIDGE;
+
+    INVALID_BRIDGE -> CHECK_REJECTED;
+    CHECK_REJECTED -> END;
+
+    // Error paths
+    STEP_REPORT -> END [label="Invalid report", style=dotted, color=red];
+    RUN_TO_TERMINAL -> END [label="Failed run", style=dotted, color=red];
+    CHECK_COMPLETED -> END [label="Incomplete", style=dotted, color=red];
+    CHECK_EXHAUSTED -> END [label="Not exhausted", style=dotted, color=red];
+    CHECK_REJECTED -> END [label="Not rejected", style=dotted, color=red];
+
+    // Key state transitions
+    edge [label="status: ready → running", fontsize=8, color=blue];
+    STEP_REPORT -> CHECK_RUNNING [xlabel="bridge.status = running"];
+
+    edge [label="status: running → completed", fontsize=8, color=green];
+    RUN_TO_TERMINAL -> CHECK_COMPLETED [xlabel="bridge.status = completed"];
+
+    edge [label="budget exhausted", fontsize=8, color=red];
+    EXHAUSTION_RUN -> CHECK_EXHAUSTED [xlabel="status = exhausted"];
+
+    edge [label="invalid config", fontsize=8, color=red];
+    INVALID_BRIDGE -> CHECK_REJECTED [xlabel="status = rejected"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\w10_holistic_behavioral_diagram.dot

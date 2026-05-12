@@ -1,0 +1,4 @@
+WAVE_MANIFEST.json
+diagrams/LOGAPI-CAT-010_catalog_navigation_map.mmd
+diagrams/LOGAPI-CAT-010_implementation_wave_map.mmd
+docs/LOGAPI-CAT-010_Log_Level_API_Catalog_Index.md

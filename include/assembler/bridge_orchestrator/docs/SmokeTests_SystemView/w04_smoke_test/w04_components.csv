@@ -1,0 +1,10 @@
+Component Name,Component Type,Source File,Status,Dependencies,Description
+TCorrelationToken,Primitive Carrier,bridge_carriers/correlation/TCorrelationToken.hpp,reused,W01 foundation,Bridge-visible correlation token for tracking communication context
+TBridgeStage,Protocol State,protocol_state/stages/TBridgeStage.hpp,reused,W02 foundation,Bridge-visible protocol stage enumeration for communication lifecycle
+TParticipant,Participant Descriptor,participants/descriptors/TParticipant.hpp,reused,W03 foundation,Bridge-visible participant descriptor for communication actors
+TParticipantRole,Role Vocabulary,participants/roles/TParticipantRole.hpp,reused,W03 foundation,Participant role vocabulary (provider, boundary, observer classifications)
+TParticipantView,Read-Only View,participants/views/TParticipantView.hpp,reused,W03 foundation,Read-only projection of participant descriptor for diagnostics
+TChannelProfile,Channel Profile,channels/profiles/TChannelProfile.hpp,new,W04 foundation,Channel topology profile descriptor with multiplicity and direction
+TSingleAdapterSinglePortProfile,Profile Preset,channels/profiles/TSingleAdapterSinglePortProfile.hpp,new,W04 foundation,Canonical one-adapter/one-port channel profile preset
+TChannelBindingPolicy,Binding Policy,channels/policies/TChannelBindingPolicy.hpp,new,W04 foundation,Channel binding policy controlling participant associations
+TChannel,Channel Topology,channels/topology/TChannel.hpp,new,W04 foundation,Channel topology descriptor connecting participants under profile and policy

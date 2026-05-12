@@ -1,0 +1,13 @@
+﻿criterion,required,status
+canonical_domain_consolidation,true,passed
+prebridge_injection_ready,true,passed
+readside_injection_ready,true,passed
+build_ci_ready,true,passed
+diagnostics_export_ready,true,passed
+performance_stress_baseline_ready,true,passed
+concurrency_policy_ready,true,passed
+versioning_compatibility_ready,true,passed
+gap_closure_complete,true,passed
+dependency_coverage_complete,true,passed
+examples_ready,true,passed
+manifest_evidence_complete,true,passed

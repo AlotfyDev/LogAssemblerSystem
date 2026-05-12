@@ -1,0 +1,14 @@
+digraph TParticipantView_Behavioral {
+  rankdir=TB;
+  node [shape=box];
+
+  PortParticipant [label="Create port TParticipant"];
+  AdapterParticipant [label="Create adapter TParticipant"];
+  PortView [label="TParticipantView::from_participant(port_participant)"];
+  AdapterView [label="TParticipantView::from_participant(adapter_participant)"];
+
+  PortParticipant -> PortView;
+  AdapterParticipant -> AdapterView;
+
+  Legend [shape=none, label="TParticipantView created as read-only projections of participants"];
+}

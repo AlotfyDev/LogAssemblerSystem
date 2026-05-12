@@ -1,0 +1,33 @@
+flowchart LR
+    CFG["Configuration\nW01"]
+    CONTENT["Content Profiles\nW02"]
+    SCHEMA["Schema Add-ons\nW10-W12"]
+    PARSER["Parser Core\nW13"]
+    EPARSER["Dedicated Element Parsers\nW14-W18"]
+    CONTAINER["Container Core\nW31"]
+    CPARSER["Container Parsers\nW32-W34"]
+    META["Metadata\nW04,W19,W20"]
+    TIME["Timestamp\nW05,W21,W22"]
+    FACADE["Facade/Public API\nW06,W27"]
+    ENV["Envelope\nW07,W23,W24"]
+    ASM["Assembler\nW08"]
+    HANDOFF["Binding/Handoff\nW09,W25,W26"]
+    HARD["Diagnostics/Compliance/Readiness\nW28-W30"]
+
+    CFG --> CONTENT
+    CONTENT --> SCHEMA
+    SCHEMA --> PARSER
+    PARSER --> EPARSER
+    EPARSER --> CONTAINER
+    CONTAINER --> CPARSER
+    CFG --> META
+    CFG --> TIME
+    CFG --> FACADE
+    CPARSER --> FACADE
+    FACADE --> ASM
+    META --> ASM
+    TIME --> ASM
+    ASM --> ENV
+    ENV --> HANDOFF
+    HANDOFF --> HARD
+    FACADE --> HARD

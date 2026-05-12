@@ -1,0 +1,21 @@
+digraph TPlacementHandle_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    Acceptance [label="accept_placement_handle() validation:\n- checks handle.is_valid()\n- validates handle.correlation matches descriptor.correlation\n- returns failure if correlation mismatch"];
+
+    StateStorage [label="Stored in adapter state:\n- state.accept_placement_handle(handle)\n- enables load signal emission\n- tracks placement lifecycle"];
+
+    LoadSignalEmission [label="Used in emit_load_signal():\n- checks state.has_accepted_placement_handle()\n- included in TLoadSignal::completed()\n- provides placement context"];
+
+    Acceptance -> StateStorage [label="correlation matches"];
+    StateStorage -> LoadSignalEmission;
+
+    Acceptance [fillcolor=lightblue];
+    StateStorage [fillcolor=lightsalmon];
+    LoadSignalEmission [fillcolor=lightgreen];
+
+    label="TPlacementHandle Usage in W14C Smoke Test";
+    labelloc=t;
+}

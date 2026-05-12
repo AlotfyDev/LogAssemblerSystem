@@ -1,0 +1,115 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Layer 6: Binding Layer Components
+    subgraph cluster_w06 {
+        label="W06 Binding Layer\n(Binding Integration & Compatibility)";
+        style=filled;
+        fillcolor=lightcyan;
+
+        TBinding [label="{TBinding|Bridge-visible binding declarations\nbetween channels and obligation surfaces}"];
+        TBindingId [label="{TBindingId|Unique binding identity primitives\nuint64_t-based opaque identifiers}"];
+        TBindingProfile [label="{TBindingProfile|Binding execution profiles\nstrict_one_to_one, many_to_many, etc.}"];
+        TBindingCompatibilityReport [label="{TBindingCompatibilityReport|Compatibility evaluation results\nchannel + surface pair validation}"];
+        TBindingResult [label="{TBindingResult|Operation results with binding context\naccepted/rejected/deferred/failed}"];
+        TBindingStatus [label="{TBindingStatus|Binding lifecycle status enumeration\nproposed → compatible → materialized}"];
+        TBindingView [label="{TBindingView|Read-only binding state projections\nbridge-visible binding metadata}"];
+
+        // Binding Layer Relationships
+        TBinding -> TBindingId [label="owns"];
+        TBinding -> TBindingProfile [label="configures"];
+        TBinding -> TBindingCompatibilityReport [label="validates"];
+        TBinding -> TBindingStatus [label="tracks"];
+        TBinding -> TBindingView [label="projects"];
+
+        TBinding -> TBindingResult [label="produces"];
+
+        TBindingCompatibilityReport -> TBindingResult [label="converts"];
+
+        TBindingProfile -> TBindingCompatibilityReport [label="guides"];
+        TBindingStatus -> TBindingView [label="exposes"];
+    }
+
+    // External Interfaces
+    subgraph cluster_external {
+        label="External Layer Interfaces";
+        style=filled;
+        fillcolor=lightyellow;
+
+        W04Channel [label="{W04 Channel Topology|Channel declarations and policies}"];
+        W05Obligation [label="{W05 Obligation Surfaces|Plugin adapter and port views}"];
+        W07Compatibility [label="{W07 Compatibility Evaluation|Advanced compatibility analysis}"];
+        W10BridgeCore [label="{W10 Bridge Core|Bridge orchestration engine}"];
+        W11Registry [label="{W11 Registry Coordination|Binding registry management}"];
+
+        // W06 interfaces
+        W04Channel -> TBinding [label="provides channel"];
+        W05Obligation -> TBinding [label="provides surfaces"];
+        W07Compatibility -> TBindingCompatibilityReport [label="enhances"];
+        TBinding -> W10BridgeCore [label="enables orchestration"];
+        TBinding -> W11Registry [label="registers bindings"];
+    }
+
+    // Data Flow Patterns
+    subgraph cluster_flows {
+        label="Binding Lifecycle Flow";
+        style=filled;
+        fillcolor=lightgreen;
+
+        ProposalFlow [label="{Proposal Flow|Channel + Surfaces → Binding Proposal}"];
+        CompatibilityFlow [label="{Compatibility Flow|Profile-guided evaluation → Report}"];
+        MaterializationFlow [label="{Materialization Flow|Compatible → Materialized → Session Ready}"];
+        ResultFlow [label="{Result Flow|Status + Context → Binding Result}"];
+
+        ProposalFlow -> TBinding [style=dotted];
+        CompatibilityFlow -> TBindingCompatibilityReport [style=dotted];
+        MaterializationFlow -> TBindingStatus [style=dotted];
+        ResultFlow -> TBindingResult [style=dotted];
+    }
+
+    // Usage from Smoke Tests
+    subgraph cluster_usage {
+        label="W06 Smoke Test Usage Patterns";
+        style=filled;
+        fillcolor=lightcoral;
+
+        BindingProposal [label="{Binding Proposal|TBinding::propose(id, channel, pair, profile)}"];
+        CompatibilityEval [label="{Compatibility Evaluation|TBindingCompatibilityReport::evaluate(channel, pair)}"];
+        StatusTransition [label="{Status Transition|proposed → compatible → materialized}"];
+        ViewProjection [label="{View Projection|TBindingView with channel_id, adapters, ports}"];
+        ResultGeneration [label="{Result Generation|TBindingResult::accept/reject based on compatibility}"];
+
+        BindingProposal -> TBinding;
+        CompatibilityEval -> TBindingCompatibilityReport;
+        StatusTransition -> TBindingStatus;
+        ViewProjection -> TBindingView;
+        ResultGeneration -> TBindingResult;
+    }
+
+    // Performance Characteristics
+    subgraph cluster_performance {
+        label="Performance Characteristics";
+        style=filled;
+        fillcolor=gold;
+
+        ZeroCopyValidation [label="{Zero-Copy Validation|Direct compatibility evaluation\nNo allocation in hot path}"];
+        ConstexprOperations [label="{constexpr Operations|Compile-time validation\nZero runtime overhead}"];
+        OpaqueIdentity [label="{Opaque Identity|Type-safe binding identification\nRegistry-friendly design}"];
+        StatelessEvaluation [label="{Stateless Evaluation|Pure function compatibility checks\nThread-safe and deterministic}"];
+
+        ZeroCopyValidation -> TBindingCompatibilityReport;
+        ConstexprOperations -> TBindingId;
+        OpaqueIdentity -> TBindingId;
+        StatelessEvaluation -> TBindingProfile;
+    }
+
+    // Layer Boundaries
+    edge [style=dashed, color=red, constraint=false];
+    TBinding -> W10BridgeCore [label="W06→W10: enables orchestration"];
+    TBindingResult -> W07Compatibility [label="W06→W07: compatibility results"];
+    TBindingView -> W11Registry [label="W06→W11: registry views"];
+    W04Channel -> TBinding [label="W04→W06: channel input"];
+    W05Obligation -> TBinding [label="W05→W06: surface input"];
+}</content>
+<parameter name="filePath">include/assembler/communication_context/docs/holistic_docs/layers/holistic_binding_layer.dot

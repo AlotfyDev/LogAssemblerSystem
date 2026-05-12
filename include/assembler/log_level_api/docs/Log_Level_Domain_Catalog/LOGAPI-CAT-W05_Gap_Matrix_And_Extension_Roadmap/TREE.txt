@@ -1,0 +1,8 @@
+LOGAPI-CAT-W05_Gap_Matrix_And_Extension_Roadmap
+├── diagrams
+│   ├── LOGAPI-CAT-008_extension_roadmap.mmd
+│   └── LOGAPI-CAT-008_gap_priority_matrix.mmd
+├── docs
+│   └── LOGAPI-CAT-008_Gap_Matrix_And_Logical_Extensions.md
+├── CHANGED_FILES.txt
+└── WAVE_MANIFEST.json

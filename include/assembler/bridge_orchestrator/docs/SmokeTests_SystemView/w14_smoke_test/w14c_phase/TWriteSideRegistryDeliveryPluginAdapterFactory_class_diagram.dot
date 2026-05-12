@@ -1,0 +1,35 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterFactory_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Factory class
+    Factory [label="{TWriteSideRegistryDeliveryPluginAdapterFactory|+ from_descriptor()\l+ from_fields()\l}", fillcolor=lightsalmon, style=filled];
+
+    // Created components
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|concrete adapter instance\lconfigured with descriptor and config\l}", fillcolor=lightblue];
+
+    // Input components
+    MaterialDescriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|material descriptor input\lcorrelation, material info, boundary\l}", fillcolor=lightcyan];
+    Config [label="{TWriteSideRegistryDeliveryPluginAdapterConfig|configuration input\lcan use defaults()\l}", fillcolor=lightcyan];
+
+    // Parameters for from_fields
+    CorrelationToken [label="{TCorrelationToken|correlation token parameter\lfor tracking operations\l}", fillcolor=lightgreen];
+    MaterialId [label="{std::string_view|material ID parameter\lunique material identifier\l}", fillcolor=lightgreen];
+    SizeHint [label="{std::uint64_t|size hint parameter\lmaterial size estimate\l}", fillcolor=lightgreen];
+    OrderedFlag [label="{bool|ordered delivery flag\lwhether material needs ordering\l}", fillcolor=lightgreen];
+
+    // Relationships
+    Factory -> Adapter [label="creates", arrowhead=normal];
+    Factory -> MaterialDescriptor [label="uses as input"];
+    Factory -> Config [label="uses as input"];
+
+    MaterialDescriptor -> CorrelationToken [label="contains"];
+    MaterialDescriptor -> MaterialId [label="contains"];
+    MaterialDescriptor -> SizeHint [label="contains"];
+    MaterialDescriptor -> OrderedFlag [label="contains"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterFactory Class Structure";
+    labelloc=t;
+}

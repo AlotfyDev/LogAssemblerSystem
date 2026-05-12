@@ -1,0 +1,13 @@
+digraph TPluginAdapterView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W05)
+    TPluginAdapterView [label="{TPluginAdapterView (W05)|...|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool}"];
+
+    // Used by TObligationSurfacePair
+    TObligationSurfacePair_uses [label="{TObligationSurfacePair|plugin_adapter : TPluginAdapterView|...}" shape=record];
+
+    // Relationships
+    TObligationSurfacePair_uses -> TPluginAdapterView [label="uses"];
+}

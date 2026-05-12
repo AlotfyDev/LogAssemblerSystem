@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_hardening_w08/cme_final_production_readiness_gate_negative_test.cpp,passed,0,0
+tests_hardening_w08/cme_final_production_readiness_gate_pass_test.cpp,passed,0,0
+tests_hardening_w08/cme_final_readiness_full_aggregate_probe.cpp,passed,0,0

@@ -1,0 +1,27 @@
+digraph TIntegrationBoundaryCapability_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    CapabilityUsage [label="Capability Usage", fillcolor=lightblue];
+
+    AcceptsHandoff [label="accepts_handoff\nRequired for boundary to accept handoffs", fillcolor=lightgreen];
+
+    SupportsOrdering [label="supports_ordering\nBoundary supports ordered handoff processing", fillcolor=orange];
+
+    EmitsAcknowledgement [label="emits_acknowledgement\nBoundary provides acknowledgement feedback", fillcolor=lightcyan];
+
+    SupportsBatch [label="supports_batch\nBoundary supports batched operations", fillcolor=lavender];
+
+    SupportsBackpressure [label="supports_backpressure\nBoundary supports backpressure handling", fillcolor=yellow];
+
+    SupportsDiagnostics [label="supports_diagnostics\nBoundary provides diagnostic information", fillcolor=pink];
+
+    // Flow connections
+    CapabilityUsage -> AcceptsHandoff;
+    CapabilityUsage -> SupportsOrdering;
+    CapabilityUsage -> EmitsAcknowledgement;
+    CapabilityUsage -> SupportsBatch;
+    CapabilityUsage -> SupportsBackpressure;
+    CapabilityUsage -> SupportsDiagnostics;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryCapability_behavioral_diagram.dot

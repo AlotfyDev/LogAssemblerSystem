@@ -1,0 +1,14 @@
+digraph TNextDestinationRequest_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    NextDestinationRequest [label="{TNextDestinationRequest (W01)|next destination routing request\l+ correlation : TCorrelationToken\l+ placement_handle : TPlacementHandle\l+ reason : TNextDestinationReason\l+ context : std::string_view\l+ make() static\l}", fillcolor=lightgreen, style=filled];
+
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|generates next destination request\lprovides routing guidance\l}", fillcolor=lightsalmon];
+
+    Adapter -> NextDestinationRequest [label="creates"];
+
+    label="TNextDestinationRequest (W01) Class Structure and W14C Usage";
+    labelloc=t;
+}

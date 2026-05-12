@@ -1,0 +1,35 @@
+digraph TBridgeStage_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in W03 smoke test
+    Start [label="W03 Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    ValidateTerminalSuccess [label="Validate Terminal Success Stage\nis_terminal_bridge_stage(terminal_success)\nReturns true - W02 compatibility check", fillcolor=lightgreen]
+
+    ValidateTerminalFailed [label="Validate Terminal Failed Stage\nis_terminal_bridge_stage(terminal_failed)\nReturns true - W02 compatibility check", fillcolor=lightgreen]
+
+    ValidateNonTerminal [label="Validate Non-Terminal Stage\n!is_terminal_bridge_stage(session_opening)\nReturns false - confirms non-terminal", fillcolor=lightgreen]
+
+    GetStageStrings [label="Get Stage String Representations\nto_string(terminal_success) -> \"terminal_success\"\nto_string(idle) -> \"idle\"", fillcolor=orange]
+
+    End [label="W02 protocol stage compatibility\nvalidated for W03 participant management", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> ValidateTerminalSuccess
+    ValidateTerminalSuccess -> ValidateTerminalFailed
+    ValidateTerminalFailed -> ValidateNonTerminal
+    ValidateNonTerminal -> GetStageStrings
+    GetStageStrings -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ValidationLegend [label="Terminal Stage Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Stage String Usage", shape=rectangle, fillcolor=orange]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TBridgeStage_behavioral_diagram.dot

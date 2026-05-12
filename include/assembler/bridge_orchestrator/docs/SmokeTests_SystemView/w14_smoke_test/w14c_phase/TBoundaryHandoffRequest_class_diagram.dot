@@ -1,0 +1,20 @@
+digraph TBoundaryHandoffRequest_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Boundary handoff request (W13 component)
+    BoundaryHandoffRequest [label="{TBoundaryHandoffRequest (W13)|boundary handoff request\l+ correlation : TCorrelationToken\l+ boundary : TIntegrationBoundaryDescriptor\l+ material_kind : std::string_view\l+ material_size_hint : std::uint64_t\l+ requires_ordered_delivery : bool\l+ make() static\l}", fillcolor=lightgreen, style=filled];
+
+    // Usage in W14C
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|creates boundary handoff request\lprepare_boundary_handoff_request() method\l}", fillcolor=lightsalmon];
+    MaterialDescriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|provides boundary and material info\lregistry_boundary, material details\l}", fillcolor=lightsalmon];
+
+    // Relationships
+    Adapter -> BoundaryHandoffRequest [label="creates"];
+    BoundaryHandoffRequest -> MaterialDescriptor [label="uses data from"];
+
+    // Title
+    label="TBoundaryHandoffRequest (W13) Class Structure and W14C Usage";
+    labelloc=t;
+}

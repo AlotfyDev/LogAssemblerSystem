@@ -1,0 +1,27 @@
+digraph TNextDestinationRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    destination_request [label="adapter.next_destination_request()\nCreates request with correlation, accepted handle, and reason"];
+
+    request_validation [label="next.is_valid()\nValidates correlation is valid"];
+
+    reason_check [label="next.reason == TNextDestinationReason::continuous_flow_requested\nChecks correct reason for continuous flow"];
+
+    success [label="Next destination request generated correctly", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    destination_request -> request_validation;
+    request_validation -> reason_check;
+    reason_check -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        request_operation [label="Request Operation", fillcolor=lightyellow];
+        validation [label="Validation Check"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TNextDestinationRequest_behavioral_diagram.dot

@@ -1,0 +1,29 @@
+digraph TBindingId_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // ID creation
+    create_from_value [label="Call TBindingId::from_value(unique_id)\nCreate binding identity"];
+
+    // Validation
+    check_valid [label="Call id.is_valid()\nCheck value != 0"];
+
+    // Usage in binding
+    assign_to_binding [label="Assign to TBinding.binding_id"];
+    use_in_view [label="Include in TBindingView.binding_id"];
+    use_in_result [label="Include in TBindingResult.binding_id"];
+
+    // End
+    id_ready [label="Binding ID Ready for Use", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> create_from_value;
+    create_from_value -> check_valid;
+    check_valid -> assign_to_binding;
+    assign_to_binding -> use_in_view;
+    use_in_view -> use_in_result;
+    use_in_result -> id_ready;
+}

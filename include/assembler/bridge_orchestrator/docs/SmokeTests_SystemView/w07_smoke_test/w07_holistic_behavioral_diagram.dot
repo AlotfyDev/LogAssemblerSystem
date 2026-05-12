@@ -1,0 +1,118 @@
+digraph W07_Holistic_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Start
+    start [label="W07 Smoke Test Start\nCompatibility Evaluation", shape=ellipse, fillcolor=lightgreen];
+
+    // Setup Phase
+    setup_correlation [label="Setup Correlation Token\nTCorrelationToken::from_parts(1u, 2u)", fillcolor=yellow];
+    create_participants [label="Create Participants\nTParticipant::make()\n- Content Provider\n- Host Provider", fillcolor=yellow];
+    create_channel [label="Create Channel\nTChannel::declare()\n- Single adapter/port profile\n- Strict binding policy", fillcolor=yellow];
+    create_adapter_view [label="Create Plugin Adapter View\nTPluginAdapterView::make()\n- Valid obligation profile\n- Primary placement support", fillcolor=yellow];
+    create_port_view [label="Create Port View\nTPortView::make()\n- Valid obligation profile\n- Primary placement support", fillcolor=yellow];
+    create_surface_pair [label="Create Obligation Surface Pair\nTObligationSurfacePair::make()\n- Adapter + Port pairing", fillcolor=yellow];
+
+    // Binding Phase
+    create_binding [label="Create Binding Proposal\nTBinding::propose()\n- Channel + Surface Pair\n- Strict binding profile\n- Compatibility evaluation", fillcolor=orange];
+
+    // Compatibility Evaluation Phase (Main W07 Focus)
+    evaluate_strict_binding [label="Evaluate Strict Binding\nTCompatibilityEvaluator::evaluate_strict_binding()\n- Generate TCompatibilityMatrix<8>\n- Apply strict binding rules\n- Collect compatibility issues", fillcolor=palegreen, shape=box];
+
+    check_compatibility [label="Check Compatibility\nTCompatibilityEvaluator::is_strictly_compatible()\n- Boolean compatibility result\n- binding.is_compatible() AND matrix.compatible()", fillcolor=palegreen, shape=diamond];
+
+    generate_view [label="Generate Compatibility View\nTCompatibilityEvaluator::view_strict_binding()\n- Create TCompatibilityView\n- Aggregate issue counts\n- Determine pass/review status", fillcolor=palegreen, shape=box];
+
+    // Decision Points
+    binding_compatible [label="Binding Compatible?", shape=diamond, fillcolor=lightyellow];
+    strict_compatible [label="Strictly Compatible?", shape=diamond, fillcolor=lightyellow];
+    has_warnings [label="Has Warnings?", shape=diamond, fillcolor=lightyellow];
+
+    // Results
+    compatible_result [label="Compatible Result\n- passed() = true\n- needs_review() = false\n- No blocking issues", fillcolor=lightgreen];
+    needs_review_result [label="Needs Review Result\n- passed() = false\n- needs_review() = true\n- Warnings present, no blocking", fillcolor=orange];
+    incompatible_result [label="Incompatible Result\n- passed() = false\n- needs_review() = false\n- Blocking issues detected", fillcolor=red];
+
+    // Invalid Scenarios
+    invalid_binding_scenario [label="Invalid Binding Scenario\n- Corrupt binding data\n- Incompatible participants\n- Invalid surface pair", fillcolor=pink];
+    invalid_evaluation [label="Invalid Evaluation\n- Matrix generation fails\n- Issue aggregation errors", fillcolor=pink];
+    invalid_view_generation [label="Invalid View Generation\n- View construction fails\n- Status determination errors", fillcolor=pink];
+
+    // End
+    end [label="W07 Smoke Test Complete\nCompatibility Evaluation Results", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow connections
+    start -> setup_correlation;
+    setup_correlation -> create_participants;
+    create_participants -> create_channel;
+    create_channel -> create_adapter_view;
+    create_adapter_view -> create_port_view;
+    create_port_view -> create_surface_pair;
+    create_surface_pair -> create_binding;
+    create_binding -> evaluate_strict_binding;
+
+    evaluate_strict_binding -> check_compatibility;
+    check_compatibility -> generate_view [label="Yes"];
+    check_compatibility -> incompatible_result [label="No"];
+
+    generate_view -> binding_compatible;
+    binding_compatible -> strict_compatible [label="Yes"];
+    binding_compatible -> incompatible_result [label="No"];
+
+    strict_compatible -> has_warnings [label="Yes"];
+    strict_compatible -> compatible_result [label="No"];
+
+    has_warnings -> needs_review_result [label="Yes"];
+    has_warnings -> compatible_result [label="No"];
+
+    compatible_result -> end;
+    needs_review_result -> end;
+    incompatible_result -> end;
+
+    // Invalid scenario flows
+    create_binding -> invalid_binding_scenario [style=dashed, color=red];
+    evaluate_strict_binding -> invalid_evaluation [style=dashed, color=red];
+    generate_view -> invalid_view_generation [style=dashed, color=red];
+
+    invalid_binding_scenario -> end [style=dashed, color=red];
+    invalid_evaluation -> end [style=dashed, color=red];
+    invalid_view_generation -> end [style=dashed, color=red];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        setup [label="Setup Phase", fillcolor=yellow];
+        binding [label="Binding Phase", fillcolor=orange];
+        evaluation [label="W07 Evaluation Phase", fillcolor=palegreen];
+        decision [label="Decision Point", shape=diamond, fillcolor=lightyellow];
+        success [label="Success Path", fillcolor=lightgreen];
+        review [label="Review Needed", fillcolor=orange];
+        failure [label="Failure Path", fillcolor=red];
+        invalid [label="Invalid Scenario", fillcolor=pink];
+    }
+
+    // Key behavioral patterns
+    {
+        rank=same;
+        evaluate_strict_binding;
+        check_compatibility;
+        generate_view;
+    }
+
+    // Behavioral notes
+    note1 [label="Channel creation with strict binding policies", shape=note, fillcolor=white];
+    note2 [label="Obligation surface pair creation from adapter/port views", shape=note, fillcolor=white];
+    note3 [label="Binding proposal with compatibility requirements", shape=note, fillcolor=white];
+    note4 [label="Matrix-based compatibility assessment (W07 Core)", shape=note, fillcolor=white];
+    note5 [label="Strict vs lenient compatibility evaluation modes", shape=note, fillcolor=white];
+    note6 [label="Blocking vs non-blocking issue classification", shape=note, fillcolor=white];
+    note7 [label="Compatibility view generation for external consumption", shape=note, fillcolor=white];
+    note8 [label="Invalid binding scenario testing and blocking issue detection", shape=note, fillcolor=white];
+    note9 [label="Comprehensive validation: compatible, issue_count, blocking_count, passed, needs_review", shape=note, fillcolor=white];
+
+    edge [style=invis];
+    note1 -> note2 -> note3 -> note4 -> note5 -> note6 -> note7 -> note8 -> note9;
+}

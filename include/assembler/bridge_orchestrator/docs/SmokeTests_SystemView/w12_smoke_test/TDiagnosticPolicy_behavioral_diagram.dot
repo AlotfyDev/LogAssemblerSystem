@@ -1,0 +1,16 @@
+digraph TDiagnosticPolicy_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticPolicy Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateWarningsPolicy [label="Create Warnings Policy\nTDiagnosticPolicy::warnings_and_above()\nCreates policy that includes warnings, errors, and critical", fillcolor=yellow]
+
+    UseInCollector [label="Use in Collector Filtering\ncollector.add_if_included(error_record, warnings_and_above_policy)\nFilters error record through policy - allows because error >= warning", fillcolor=cyan]
+
+    End [label="Policy usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateWarningsPolicy
+    CreateWarningsPolicy -> UseInCollector
+    UseInCollector -> End
+}

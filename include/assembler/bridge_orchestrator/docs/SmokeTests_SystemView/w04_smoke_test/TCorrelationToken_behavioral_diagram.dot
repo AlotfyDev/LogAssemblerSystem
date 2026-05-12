@@ -1,0 +1,38 @@
+digraph TCorrelationToken_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // Usage in W04 Channel Management
+    participant_creation [label="TParticipant Creation\n(with correlation token)"];
+    channel_declaration [label="TChannel Declaration\n(with correlation token)"];
+    validation_check [label="Correlation Validation\n(token.is_valid())"];
+
+    // Token operations
+    token_from_parts [label="TCorrelationToken::from_parts()\n(high, low)"];
+    token_invalid [label="TCorrelationToken::invalid()\n(default construction)"];
+    token_validation [label="token.is_valid()\n(high != 0 || low != 0)"];
+
+    // Flow
+    participant_creation -> token_from_parts;
+    participant_creation -> token_invalid;
+    channel_declaration -> token_from_parts;
+    channel_declaration -> token_invalid;
+
+    token_from_parts -> validation_check;
+    token_invalid -> validation_check;
+    validation_check -> channel_validation [label="correlation context"];
+
+    // Component integration
+    channel_validation [label="TChannel::is_valid()\ncorrelation integration"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TCorrelationToken W04 Usage";
+        color=white;
+        style=filled;
+
+        legend_construction [label="Token Construction", shape=rectangle, fillcolor=lightyellow];
+        legend_validation [label="Validation in Channel Context", shape=rectangle, fillcolor=lightblue];
+        legend_integration [label="Channel Integration", shape=rectangle, fillcolor=lightgreen];
+    }
+}

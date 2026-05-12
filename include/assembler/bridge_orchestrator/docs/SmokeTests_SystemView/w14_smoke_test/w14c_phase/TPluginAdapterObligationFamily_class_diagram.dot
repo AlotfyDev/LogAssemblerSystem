@@ -1,0 +1,24 @@
+digraph TPluginAdapterObligationFamily_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Obligation family (W05 component)
+    ObligationFamily [label="{TPluginAdapterObligationFamily (W05)|enumeration of adapter obligation families\ldefines adapter capability categories\l+ DELIVERY_CONTENT_PROVIDER\l+ other families...\l}", fillcolor=lightgreen, style=filled];
+
+    // Specific family used in W14C
+    DeliveryContentProvider [label="{DELIVERY_CONTENT_PROVIDER|W14C adapter obligation family\lspecifies content delivery capabilities\lused in adapter view building\l}", fillcolor=lightsalmon];
+
+    // Usage in W14C
+    ObligationProfile [label="{TPluginAdapterObligationProfile|contains obligation family\ldefines specific adapter capabilities\l}", fillcolor=lightblue];
+    ViewBuilder [label="{TWriteSideRegistryDeliveryPluginAdapterViewBuilder|creates obligation profile\luses DELIVERY_CONTENT_PROVIDER family\l}", fillcolor=lightsalmon];
+
+    // Relationships
+    ObligationFamily -> DeliveryContentProvider [label="defines"];
+    ViewBuilder -> ObligationProfile [label="creates"];
+    ObligationProfile -> DeliveryContentProvider [label="uses"];
+
+    // Title
+    label="TPluginAdapterObligationFamily (W05) Class Structure and W14C Usage";
+    labelloc=t;
+}

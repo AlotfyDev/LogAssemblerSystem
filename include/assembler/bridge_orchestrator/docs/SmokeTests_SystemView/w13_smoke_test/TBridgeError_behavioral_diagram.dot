@@ -1,0 +1,66 @@
+digraph TBridgeError_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Error creation
+    Start [label="Create TBridgeError", shape=ellipse, fillcolor=lightgreen];
+
+    UseFactory [label="Use Factory Method", fillcolor=lightyellow];
+
+    MakeError [label="TBridgeError::make(code, message)", fillcolor=lavender];
+
+    // Error codes used in W13
+    ErrorCodes [label="W13 Error Codes", fillcolor=pink];
+
+    AdmissionRejected [label="admission_rejected\n\"mock rejection\"", fillcolor=red];
+
+    AdmissionDeferred [label="admission_deferred\nreadiness.reason", fillcolor=orange];
+
+    HandleUnavailable [label="handle_unavailable\n\"boundary handle invalid\"", fillcolor=red];
+
+    IncompatibleCarrier [label="incompatible_carrier\n\"boundary does not accept handoff\"", fillcolor=red];
+
+    // Usage in results
+    UsageInResults [label="Usage in Handoff Results", fillcolor=lightcyan];
+
+    RejectedResult [label="TBoundaryHandoffResult::rejected(error, token)", fillcolor=pink];
+
+    DeferredResult [label="TBoundaryHandoffResult::deferred(error, token)", fillcolor=orange];
+
+    FailedResult [label="TBoundaryHandoffResult::failed(error, token)", fillcolor=red];
+
+    // Smoke test example
+    SmokeTest [label="Smoke Test Example", fillcolor=lightcyan];
+
+    CreateRejection [label="auto rejection_error = TBridgeError::make(\n    TBridgeErrorCode::admission_rejected,\n    \"mock rejection\"\n);"];
+
+    UseInReject [label="auto rejected = TBoundaryHandoffResult::rejected(\n    rejection_error, request.correlation\n);"];
+
+    // Flow connections
+    Start -> UseFactory;
+    UseFactory -> MakeError;
+
+    MakeError -> ErrorCodes;
+
+    ErrorCodes -> AdmissionRejected;
+    ErrorCodes -> AdmissionDeferred;
+    ErrorCodes -> HandleUnavailable;
+    ErrorCodes -> IncompatibleCarrier;
+
+    AdmissionRejected -> UsageInResults;
+    AdmissionDeferred -> UsageInResults;
+    HandleUnavailable -> UsageInResults;
+    IncompatibleCarrier -> UsageInResults;
+
+    UsageInResults -> RejectedResult;
+    UsageInResults -> DeferredResult;
+    UsageInResults -> FailedResult;
+
+    RejectedResult -> SmokeTest;
+    DeferredResult -> SmokeTest;
+    FailedResult -> SmokeTest;
+
+    SmokeTest -> CreateRejection;
+    CreateRejection -> UseInReject;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBridgeError_behavioral_diagram.dot

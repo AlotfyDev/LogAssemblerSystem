@@ -1,0 +1,31 @@
+digraph TParticipant_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main struct
+    TParticipant [label="{TParticipant|participant_id : std::uint64_t\l role : TParticipantRole\l domain : std::string_view\l family : std::string_view\l display_name : std::string_view\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ is_provider() : bool\l+ is_boundary() : bool\l+ is_observer() : bool\l+ participates_in_exchange() : bool\l+ invalid() : TParticipant\l+ make(...) : TParticipant\l+ operator==(lhs, rhs) : bool\l+ operator!=(lhs, rhs) : bool\l}"]
+
+    // Dependencies
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TParticipantRole [label="TParticipantRole", shape=record, fillcolor=lightyellow]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TParticipant -> std_uint64_t [label="uses", style=dashed]
+    TParticipant -> std_string_view [label="uses", style=dashed]
+    TParticipant -> TParticipantRole [label="uses", style=dashed]
+    TParticipant -> TCorrelationToken [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        StructLegend [label="Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TParticipant_class_diagram.dot

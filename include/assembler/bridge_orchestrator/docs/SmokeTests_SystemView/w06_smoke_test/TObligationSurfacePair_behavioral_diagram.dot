@@ -1,0 +1,33 @@
+digraph TObligationSurfacePair_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Surface pair creation
+    create_plugin_adapter_view [label="Create TPluginAdapterView\nfrom plugin adapter obligations"];
+    create_port_view [label="Create TPortView\nfrom port obligations"];
+    call_make [label="Call TObligationSurfacePair::make()\n(plugin_adapter_view, port_view)"];
+
+    // Validation
+    check_is_valid [label="Call pair.is_valid()\nCheck both views are valid"];
+    check_primary_flow [label="Call pair.supports_primary_placement_flow()\nCheck primary placement support"];
+
+    // Usage in binding
+    pass_to_binding_proposal [label="Pass to TBinding::propose()"];
+    used_in_compatibility_eval [label="Used in TBindingCompatibilityReport::evaluate()"];
+
+    // End
+    surface_pair_ready [label="Surface Pair Ready for Binding", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> create_plugin_adapter_view;
+    create_plugin_adapter_view -> create_port_view;
+    create_port_view -> call_make;
+    call_make -> check_is_valid;
+    check_is_valid -> check_primary_flow;
+    check_primary_flow -> pass_to_binding_proposal;
+    pass_to_binding_proposal -> used_in_compatibility_eval;
+    used_in_compatibility_eval -> surface_pair_ready;
+}

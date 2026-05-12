@@ -1,0 +1,30 @@
+digraph TBridgeStage_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main enum
+    TBridgeStage [label="{TBridgeStage\n(enum class)|idle\l session_opening\l channel_resolution\l binding_resolution\l compatibility_check\l adapter_readiness\l request_preparation\l port_readiness\l admission_request\l admission_result\l handle_exchange\l adapter_handle_acceptance\l load_or_delivery_signal\l next_destination\l result_consolidation\l session_closure\l terminal_success\l terminal_rejected\l terminal_failed\l terminal_deferred\l}"]
+
+    // Free functions
+    is_terminal_bridge_stage [label="{is_terminal_bridge_stage|\l+ operator(stage: TBridgeStage) : bool\l}", shape=record, fillcolor=lightyellow]
+    to_string [label="{to_string|\l+ operator(stage: TBridgeStage) : string_view\l}", shape=record, fillcolor=lightyellow]
+
+    // Dependencies
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    is_terminal_bridge_stage -> TBridgeStage [label="operates on", style=dashed]
+    to_string -> TBridgeStage [label="operates on", style=dashed]
+    to_string -> std_string_view [label="returns", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        EnumLegend [label="Enum Class", shape=record, fillcolor=lightblue]
+        FunctionLegend [label="Free Function", shape=record, fillcolor=lightyellow]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

@@ -1,0 +1,29 @@
+digraph TSessionId_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TSessionId [label="{TSessionId|+ value_: uint64_t\l+ namespace_: std::string\l+ created_at_: timestamp\l|+ generate(): TSessionId\l+ create_custom(value: uint64_t, namespace: std::string): TSessionId\l+ is_valid(): bool\l+ to_string(): std::string\l+ from_string(str: std::string): TSessionId\l+ equals(other: TSessionId): bool\l+ get_namespace(): std::string\l+ get_value(): uint64_t\l- validate_format(str: std::string): bool\l- generate_unique_value(): uint64_t}", fillcolor=lightyellow, style=filled];
+
+    // Usage context
+    TSession [label="{TSession|+ session_id_: TSessionId\l|+ get_id(): TSessionId}", fillcolor=lightblue, style=filled];
+
+    TSessionView [label="{TSessionView|+ session_id_: TSessionId\l|+ get_session_id(): TSessionId}", fillcolor=lightblue, style=filled];
+
+    TSessionSnapshot [label="{TSessionSnapshot|+ session_id_: TSessionId\l|+ get_session_id(): TSessionId}", fillcolor=lightblue, style=filled];
+
+    // Relationships
+    TSession -> TSessionId [label="contains"];
+    TSessionView -> TSessionId [label="contains"];
+    TSessionSnapshot -> TSessionId [label="contains"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewClass [label="New W08 Component", fillcolor=lightyellow];
+        UserClass [label="Using Component", fillcolor=lightblue];
+    }
+}

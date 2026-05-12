@@ -1,0 +1,11 @@
+flowchart BT
+    Primitive[Primitive\nW01] --> Foundation[Foundation\nW02-W08]
+    Foundation --> Aggregate[Aggregate\nW09]
+    Aggregate --> Relation[Relation / Catalog Basics\nW10-W11]
+    Relation --> Descriptor[Descriptor Layer\nW12-W17]
+    Descriptor --> PreExecution[Pre-Execution Readiness\nW18-W20]
+    PreExecution --> InterfaceSkeleton[Interface / Session / Engine Skeleton\nW21-W24]
+    InterfaceSkeleton --> IntegrationDescriptor[Integration Descriptors\nW25-W29]
+    IntegrationDescriptor --> Hardening[Hardening Boundaries + Gates\nW30-W34]
+    Hardening -.-> FutureRuntime[Future Runtime Implementation\nnot yet delivered]
+    FutureRuntime -.-> FutureProduction[Future Production Deployment\nnot yet delivered]

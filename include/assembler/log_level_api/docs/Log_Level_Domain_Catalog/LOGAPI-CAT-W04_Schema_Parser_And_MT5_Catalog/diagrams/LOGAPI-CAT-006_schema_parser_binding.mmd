@@ -1,0 +1,19 @@
+flowchart LR
+    Schema["Schema Descriptor"]
+    Profile["Parser Profile"]
+    Binding["Parser Binding"]
+    Input["Content Input"]
+    Parser["Dedicated Parser"]
+    Parsed["Parsed Content Ref/View"]
+
+    Schema --> Profile
+    Profile --> Binding
+    Binding --> Parser
+    Input --> Parser
+    Parser --> Parsed
+
+    note1["Configuration-time: Schema/Profile/Binding"]
+    note2["Hot-path: Input → Dedicated Parser → Parsed View"]
+
+    note1 -.-> Schema
+    note2 -.-> Input

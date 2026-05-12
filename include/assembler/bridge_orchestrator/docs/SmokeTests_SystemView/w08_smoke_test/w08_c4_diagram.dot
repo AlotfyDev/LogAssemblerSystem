@@ -1,0 +1,92 @@
+digraph W08_C4_Architecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // System Context
+    subgraph cluster_context {
+        label="W08: Session Lifecycle Management System Context";
+        bgcolor=lightgray;
+
+        Client [label="Client Applications", fillcolor=lightgreen];
+
+        subgraph cluster_system {
+            label="Communication Context System";
+            bgcolor=white;
+
+            SessionLifecycleManager [label="Session Lifecycle\nManagement", fillcolor=lightyellow];
+        }
+
+        CompatibilityEvaluator [label="Compatibility\nEvaluator (W07)", fillcolor=lightcyan];
+        BindingManager [label="Binding Manager\n(W06)", fillcolor=lightcyan];
+        ChannelManager [label="Channel Manager\n(W04)", fillcolor=lightcyan];
+    }
+
+    // Container Level
+    subgraph cluster_containers {
+        label="W08 System Containers";
+        bgcolor=lightgray;
+
+        SessionCore [label="Session Core\n(TSession)", fillcolor=lightyellow];
+        SessionSupport [label="Session Support\n(TSessionId, TSessionStatus, etc.)", fillcolor=lightyellow];
+
+        subgraph cluster_reused {
+            label="Reused Components";
+            bgcolor=white;
+
+            BindingComponents [label="Binding Components\n(TBinding, TBindingId, etc.)", fillcolor=lightcyan];
+            ChannelComponents [label="Channel Components\n(TChannel, TChannelBindingPolicy)", fillcolor=lightcyan];
+            ParticipantComponents [label="Participant Components\n(TParticipant, TParticipantRole)", fillcolor=lightcyan];
+            AdapterComponents [label="Adapter Components\n(TPluginAdapterView, TPortView)", fillcolor=lightcyan];
+        }
+    }
+
+    // Component Level
+    subgraph cluster_components {
+        label="W08 Key Components";
+        bgcolor=lightgray;
+
+        SessionManager [label="TSession\n(Session Manager)", fillcolor=lightyellow];
+        SessionValidator [label="Session Validator\n(TCompatibilityEvaluator)", fillcolor=lightyellow];
+        SessionStateTracker [label="Session State Tracker\n(TSessionStatus, TSessionView)", fillcolor=lightyellow];
+
+        BindingResolver [label="Binding Resolver\n(TBinding, TBindingProfile)", fillcolor=lightcyan];
+        ChannelBinder [label="Channel Binder\n(TChannelBindingPolicy)", fillcolor=lightcyan];
+        AdapterMatcher [label="Adapter Matcher\n(TPluginAdapterView, TPortView)", fillcolor=lightcyan];
+    }
+
+    // Relationships
+    Client -> SessionLifecycleManager [label="requests session\nmanagement"];
+
+    SessionLifecycleManager -> CompatibilityEvaluator [label="validates\ncompatibility"];
+    SessionLifecycleManager -> BindingManager [label="resolves bindings"];
+    SessionLifecycleManager -> ChannelManager [label="manages channels"];
+
+    SessionCore -> SessionSupport [label="uses"];
+    SessionSupport -> BindingComponents [label="depends on"];
+    SessionSupport -> ChannelComponents [label="depends on"];
+    SessionSupport -> ParticipantComponents [label="depends on"];
+    SessionSupport -> AdapterComponents [label="depends on"];
+
+    SessionManager -> SessionValidator [label="validates"];
+    SessionManager -> SessionStateTracker [label="tracks state"];
+
+    SessionValidator -> BindingResolver [label="resolves"];
+    SessionValidator -> ChannelBinder [label="binds"];
+    SessionValidator -> AdapterMatcher [label="matches"];
+
+    // External Dependencies
+    BindingResolver -> BindingComponents [label="uses"];
+    ChannelBinder -> ChannelComponents [label="uses"];
+    AdapterMatcher -> AdapterComponents [label="uses"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        NewComponent [label="New W08 Component", fillcolor=lightyellow];
+        ReusedComponent [label="Reused Component", fillcolor=lightcyan];
+        ExternalSystem [label="External System", fillcolor=lightgreen];
+    }
+}

@@ -1,0 +1,12 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightcyan];
+
+    TCorrelationToken [label="{TCorrelationToken (W01 - Reused)|high : uint64_t\nlow : uint64_t|+ is_valid() : bool\n+ invalid() : TCorrelationToken\n+ from_parts(high, low) : TCorrelationToken|Bridge-visible correlation primitive}"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W01", fillcolor=lightcyan];
+    }
+}

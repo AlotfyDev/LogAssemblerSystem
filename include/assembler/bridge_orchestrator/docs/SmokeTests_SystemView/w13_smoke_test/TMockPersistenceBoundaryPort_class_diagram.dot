@@ -1,0 +1,53 @@
+digraph TMockPersistenceBoundaryPort_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    MockPort [label="{TMockPersistenceBoundaryPort\n(CRTP Implementation)|• descriptor_ : TIntegrationBoundaryDescriptor\n• next_handle_ : uint64_t|+ TMockPersistenceBoundaryPort(descriptor, first_handle)\l+ boundary_view() : TIntegrationBoundaryPortView\l+ boundary_descriptor() : TIntegrationBoundaryDescriptor\l+ boundary_readiness(request) : TReadinessView\l+ accept_boundary_handoff(request) : TBoundaryHandoffResult\l+ complete_boundary_handoff(handle) : TBoundaryHandoffResult\l+ reject_boundary_handoff(request) : TBoundaryHandoffResult\l}", fillcolor=lightcyan];
+
+    // Inheritance
+    CRTPBase [label="{TIntegrationBoundaryPort<TMockPersistenceBoundaryPort>\n(CRTP Base)|• derived_type = TMockPersistenceBoundaryPort\n|+ boundary_view() : TIntegrationBoundaryPortView\l+ boundary_descriptor() : TIntegrationBoundaryDescriptor\l+ boundary_readiness(request) : TReadinessView\l+ accept_boundary_handoff(request) : TBoundaryHandoffResult\l+ complete_boundary_handoff(handle) : TBoundaryHandoffResult\l+ reject_boundary_handoff(request) : TBoundaryHandoffResult\l}", fillcolor=lightgray];
+
+    // Dependencies
+    Descriptor [label="{TIntegrationBoundaryDescriptor\n(Stored)|• kind, direction, capability_mask, boundary_family, correlation\l}", fillcolor=lavender];
+
+    PortView [label="{TIntegrationBoundaryPortView\n(Returned)|• descriptor, port_name, readiness_label, correlation\l}", fillcolor=lightgreen];
+
+    ReadinessView [label="{TReadinessView\n(Returned)|• state, reason, correlation, size_hint\l}", fillcolor=lightgreen];
+
+    HandoffResult [label="{TBoundaryHandoffResult\n(Returned)|• status, handle, bridge_result, note\l}", fillcolor=pink];
+
+    // Implementation details
+    ViewImplementation [label="{boundary_view() Implementation|return TIntegrationBoundaryPortView::make(\n    descriptor_,\n    \"mock_persistence_boundary_port\",\n    \"ready\",\n    descriptor_.correlation\n);|}", shape=note, fillcolor=lightyellow];
+
+    ReadinessImplementation [label="{boundary_readiness() Implementation|return TIntegrationBoundaryPolicy::request_readiness(request);|}", shape=note, fillcolor=lightyellow];
+
+    AcceptImplementation [label="{accept_boundary_handoff() Implementation|auto readiness = boundary_readiness(request);\nif (!readiness.is_ready()) return deferred;\nauto handle = TBoundaryHandoffHandle::make(...);\nreturn accepted(handle);|}", shape=note, fillcolor=lightyellow];
+
+    // Relationships
+    MockPort -> CRTPBase [label="inherits from", arrowhead=empty];
+    MockPort -> Descriptor [label="stores"];
+
+    MockPort -> PortView [label="returns"];
+    MockPort -> ReadinessView [label="returns"];
+    MockPort -> HandoffResult [label="returns"];
+
+    ViewImplementation -> PortView [label="creates"];
+    ReadinessImplementation -> ReadinessView [label="delegates to"];
+    AcceptImplementation -> HandoffResult [label="creates"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendMain [label="Main Component", fillcolor=lightcyan];
+        LegendCRTP [label="CRTP Base", fillcolor=lightgray];
+        LegendStored [label="Stored Data", fillcolor=lavender];
+        LegendReturn [label="Return Types", fillcolor=lightgreen];
+        LegendResult [label="Result Types", fillcolor=pink];
+        LegendImpl [label="Implementation Details", shape=note, fillcolor=lightyellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TMockPersistenceBoundaryPort_class_diagram.dot

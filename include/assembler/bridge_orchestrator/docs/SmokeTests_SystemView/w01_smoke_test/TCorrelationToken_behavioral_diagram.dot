@@ -1,0 +1,46 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateToken [label="TCorrelationToken::from_parts(1u, 2u)\nCreates token with high=1, low=2", fillcolor=yellow]
+
+    ValidateToken [label="token.is_valid()\nChecks if high != 0 || low != 0\nReturns true", fillcolor=lightgreen]
+
+    UseInRequest [label="Used in TPlacementRequest::make(token, ...)", fillcolor=orange]
+    UseInHandle [label="Used in TPlacementHandle::make(7u, token, ...)", fillcolor=orange]
+    UseInReadiness [label="Used in TReadinessView::ready(token, 1u)", fillcolor=orange]
+    UseInAdmission [label="Used in TAdmissionResult::accept(token)", fillcolor=orange]
+    UseInSignal [label="Used in TLoadSignal::completed(token, handle, 128u)", fillcolor=orange]
+    UseInNextDest [label="Used in TNextDestinationRequest::make(token, ...)", fillcolor=orange]
+    UseInResult [label="Used in TBridgeResult::success(token)", fillcolor=orange]
+    UseInView [label="Used in TCarrierView::make(..., token, ...)", fillcolor=orange]
+
+    End [label="Token correlation maintained\nacross all operations", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateToken
+    CreateToken -> ValidateToken
+    ValidateToken -> UseInRequest
+    UseInRequest -> UseInHandle
+    UseInHandle -> UseInReadiness
+    UseInReadiness -> UseInAdmission
+    UseInAdmission -> UseInSignal
+    UseInSignal -> UseInNextDest
+    UseInNextDest -> UseInResult
+    UseInResult -> UseInView
+    UseInView -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Token Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Token Usage in Other Components", shape=rectangle, fillcolor=orange]
+    }
+}

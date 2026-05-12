@@ -1,0 +1,6 @@
+digraph TRegistryEntryStatus_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TRegistryEntryStatus [label="{TRegistryEntryStatus\n(enum class)|unknown\nregistered\nactive\nsuspended\nretired\nrejected|+ is_usable_registry_entry_status(status) : bool\l+ is_terminal_registry_entry_status(status) : bool\l+ to_string(status) : std::string_view\l}"]
+}

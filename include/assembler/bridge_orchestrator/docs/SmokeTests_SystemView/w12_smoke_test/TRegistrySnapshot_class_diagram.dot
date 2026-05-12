@@ -1,0 +1,16 @@
+digraph TRegistrySnapshot_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TRegistrySnapshot [label="{TRegistrySnapshot|registry_name : std::string_view\l count : std::size_t\l capacity : std::size_t\l rejected_insertions : std::uint64_t\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ empty() : bool\l+ full() : bool\l+ invalid() : TRegistrySnapshot\l+ make(name, count, capacity, rejected, token) : TRegistrySnapshot\l}"]
+
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    std_size_t [label="std::size_t", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+
+    TRegistrySnapshot -> std_string_view [label="uses", style=dashed]
+    TRegistrySnapshot -> std_size_t [label="uses", style=dashed]
+    TRegistrySnapshot -> std_uint64_t [label="uses", style=dashed]
+    TRegistrySnapshot -> TCorrelationToken [label="uses", style=dashed]
+}

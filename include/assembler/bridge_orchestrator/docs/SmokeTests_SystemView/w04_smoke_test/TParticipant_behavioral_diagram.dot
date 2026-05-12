@@ -1,0 +1,58 @@
+digraph TParticipant_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Channel Management Usage
+    source_creation [label="Create Source Participant\n(content_provider role)"];
+    target_creation [label="Create Target Participant\n(host_provider/receiver_provider role)"];
+
+    // Construction patterns
+    make_factory [label="TParticipant::make()\n(id, role, domain, family, display_name, correlation)"];
+    invalid_default [label="TParticipant::invalid()\n(default invalid participant)"];
+
+    // Validation sequence
+    identity_validation [label="participant_id != 0"];
+    role_validation [label="role != unknown"];
+    domain_validation [label="!domain.empty()"];
+    overall_validation [label="is_valid()"];
+
+    // Role classification
+    provider_check [label="is_provider()\nis_boundary()\nis_observer()"];
+    exchange_check [label="participates_in_exchange()"];
+
+    // Channel integration
+    channel_assignment [label="Assign to TChannel\n(source or target)"];
+    role_compatibility [label="TChannel::has_compatible_roles()"];
+
+    // Flow
+    source_creation -> make_factory;
+    target_creation -> make_factory;
+
+    make_factory -> identity_validation;
+    make_factory -> role_validation;
+    make_factory -> domain_validation;
+
+    identity_validation -> overall_validation;
+    role_validation -> overall_validation;
+    domain_validation -> overall_validation;
+
+    overall_validation -> provider_check;
+    overall_validation -> exchange_check;
+
+    provider_check -> channel_assignment;
+    exchange_check -> channel_assignment;
+
+    channel_assignment -> role_compatibility;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TParticipant W04 Usage Pattern";
+        color=white;
+        style=filled;
+
+        legend_creation [label="Participant Creation", shape=rectangle, fillcolor=lightyellow];
+        legend_validation [label="Validation Chain", shape=rectangle, fillcolor=lightblue];
+        legend_classification [label="Role Classification", shape=rectangle, fillcolor=lightgreen];
+        legend_integration [label="Channel Integration", shape=rectangle, fillcolor=orange];
+    }
+}

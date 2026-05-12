@@ -1,0 +1,16 @@
+digraph TRegistrySnapshot_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TRegistrySnapshot Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateSnapshot [label="Create Registry Snapshot\nTRegistrySnapshot::make(\"w12_registry_snapshot\", 1u, 4u, 0u, token)\nCaptures registry state with count, capacity, and rejected insertions", fillcolor=yellow]
+
+    UseInDiagnostics [label="Use in Diagnostics Building\nPassed to TRegistryDiagnosticBuilder::from_snapshot()\nConverted to diagnostic record for registry monitoring", fillcolor=orange]
+
+    End [label="Snapshot usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateSnapshot
+    CreateSnapshot -> UseInDiagnostics
+    UseInDiagnostics -> End
+}

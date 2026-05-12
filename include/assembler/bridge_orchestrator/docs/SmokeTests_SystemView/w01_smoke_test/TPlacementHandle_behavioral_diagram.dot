@@ -1,0 +1,39 @@
+digraph TPlacementHandle_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Placement Handle Creation", shape=ellipse, fillcolor=green]
+
+    CreateHandle [label="TPlacementHandle::make(7u, token, \"write_side_slot_family\")\nCreates handle with opaque value 7,\ncorrelation token, and family label", fillcolor=yellow]
+
+    ValidateHandle [label="handle.is_valid()\nChecks value != 0 && correlation.is_valid()\nReturns true", fillcolor=lightgreen]
+
+    UseInSignal [label="Used in TLoadSignal::completed(token, handle, 128u)", fillcolor=orange]
+    UseInNextDest [label="Used in TNextDestinationRequest::make(token, handle, ...)", fillcolor=orange]
+
+    HandleValidated [label="Handle validated and ready for use", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Handle available for load signaling and routing", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateHandle
+    CreateHandle -> ValidateHandle
+    ValidateHandle -> HandleValidated
+    HandleValidated -> UseInSignal
+    HandleValidated -> UseInNextDest
+    UseInSignal -> End
+    UseInNextDest -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Handle Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Handle Usage", shape=rectangle, fillcolor=orange]
+        StateLegend [label="State", shape=diamond, fillcolor=lightcyan]
+    }
+}

@@ -1,0 +1,9 @@
+digraph TDiagnosticId_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    IdCreation [label="Create Diagnostic ID", fillcolor=lightgray];
+
+    FromValue [label="TDiagnosticId::from_value(13u)\nCreate ID from numeric value", fillcolor=lightcyan];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TDiagnosticId_behavioral_diagram.dot

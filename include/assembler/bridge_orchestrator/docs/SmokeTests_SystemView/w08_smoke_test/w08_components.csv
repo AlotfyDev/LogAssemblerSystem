@@ -1,0 +1,22 @@
+ComponentName,Type,Status,WaveIntroduced,Description
+TSession,Core Component,New,W08,Main session lifecycle management component that coordinates binding execution contexts
+TSingleAdapterSinglePortProfile,Reused Component,Reused,W04,Channel profile for single adapter single port configurations
+TChannelBindingPolicy,Reused Component,Reused,W04,Policy for binding channels with adapters
+TCorrelationToken,Reused Component,Reused,W01,Token for correlating requests and responses across contexts
+TParticipant,Reused Component,Reused,W03,Represents participants in communication scenarios
+TParticipantRole,Reused Component,Reused,W03,Defines roles that participants can assume
+TChannel,Reused Component,Reused,W04,Communication channel abstraction
+TPluginAdapterView,Reused Component,Reused,W05,View interface for plugin adapters
+TPortView,Reused Component,Reused,W05,View interface for ports
+TObligationSurfacePair,Reused Component,Reused,W05,Pair of obligation and surface for binding contracts
+TBinding,Reused Component,Reused,W06,Binding between adapter and channel
+TBindingId,Reused Component,Reused,W06,Unique identifier for bindings
+TBindingProfile,Reused Component,Reused,W06,Profile describing binding characteristics
+TCompatibilityEvaluator,Reused Component,Reused,W07,Evaluates compatibility between bindings and profiles
+TSessionOpenRequest,Supporting Component,New,W08,Request structure for opening sessions
+TSessionId,Supporting Component,New,W08,Unique identifier for sessions
+TSessionPolicy,Supporting Component,New,W08,Policy governing session behavior
+TSessionStatus,Supporting Component,New,W08,Status enumeration for session states
+TSessionView,Supporting Component,New,W08,Read-only view of session state
+TSessionSnapshot,Supporting Component,New,W08,Snapshot of session state at a point in time
+TSessionResult,Supporting Component,New,W08,Result structure for session operations

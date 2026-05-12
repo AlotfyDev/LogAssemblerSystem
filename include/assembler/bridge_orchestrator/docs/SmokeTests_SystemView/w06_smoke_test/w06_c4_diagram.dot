@@ -1,0 +1,108 @@
+digraph C4_Architecture_W06_Binding_System {
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial"];
+
+    // Context Level - Communication Context
+    subgraph cluster_context {
+        label="Context: Communication Context";
+        style=filled;
+        color=lightblue;
+        node [color=white];
+
+        CommunicationContext [label="Communication Context\n(Log Assembly System)"];
+    }
+
+    // Container Level - Implementation Waves
+    subgraph cluster_containers {
+        label="Containers: Implementation Waves";
+        style=filled;
+        color=lightgreen;
+
+        W01 [label="W01: Primitive Carriers\n(TCorrelationToken)"];
+        W03 [label="W03: Participants\n(TParticipant, TParticipantRole)"];
+        W04 [label="W04: Channel Foundations\n(TChannel, TChannelProfile, TChannelBindingPolicy, TSingleAdapterSinglePortProfile)"];
+        W05 [label="W05: Obligation Surfaces\n(TPluginAdapterView, TPortView, TObligationSurfacePair)"];
+        W06 [label="W06: Binding Model\n(TBinding, TBindingId, TBindingProfile, TBindingCompatibilityReport, TBindingView, TBindingResult, TBindingStatus)"];
+
+        // Dependencies between waves
+        W01 -> W03 [style=dashed, label="depends on"];
+        W03 -> W04 [style=dashed, label="depends on"];
+        W04 -> W05 [style=dashed, label="depends on"];
+        W05 -> W06 [style=dashed, label="depends on"];
+    }
+
+    // Component Level - Binding System Components
+    subgraph cluster_components {
+        label="Components: W06 Binding System";
+        style=filled;
+        color=lightyellow;
+
+        // Core binding components
+        TBinding [label="TBinding\n(Main binding object)"];
+        TBindingId [label="TBindingId\n(Opaque identity)"];
+        TBindingProfile [label="TBindingProfile\n(Binding constraints)"];
+        TBindingCompatibilityReport [label="TBindingCompatibilityReport\n(Compatibility evaluation)"];
+
+        // Helper components
+        TBindingView [label="TBindingView\n(External view)"];
+        TBindingResult [label="TBindingResult\n(Operation result)"];
+        TBindingStatus [label="TBindingStatus\n(Status enum)"];
+
+        // Component relationships
+        TBindingId -> TBinding [label="identity"];
+        TBindingProfile -> TBinding [label="constraints"];
+        TBindingCompatibilityReport -> TBinding [label="compatibility"];
+        TBinding -> TBindingView [label="view()"];
+        TBinding -> TBindingResult [label="result()"];
+        TBinding -> TBindingStatus [label="status"];
+    }
+
+    // Code Level - Key Classes and Their Relationships
+    subgraph cluster_code {
+        label="Code: Class Structure and Dependencies";
+        style=filled;
+        color=lightcoral;
+
+        // Main classes
+        TBinding_class [label="TBinding\nstruct final"];
+
+        // Identity and profile
+        TBindingId_class [label="TBindingId\nstruct final"];
+        TBindingProfile_class [label="TBindingProfile\nstruct final"];
+
+        // Compatibility and results
+        TBindingCompatibilityReport_class [label="TBindingCompatibilityReport\nstruct final"];
+        TBindingView_class [label="TBindingView\nstruct final"];
+        TBindingResult_class [label="TBindingResult\nstruct final"];
+
+        // Enums
+        TBindingStatus_enum [label="TBindingStatus\nenum class"];
+        TBindingKind_enum [label="TBindingKind\nenum class"];
+
+        // Class relationships
+        TBindingId_class -> TBinding_class [label="member"];
+        TBindingProfile_class -> TBinding_class [label="member"];
+        TBindingCompatibilityReport_class -> TBinding_class [label="member"];
+        TBindingStatus_enum -> TBinding_class [label="member"];
+
+        TBinding_class -> TBindingView_class [label="view()"];
+        TBinding_class -> TBindingResult_class [label="result()"];
+        TBindingKind_enum -> TBindingProfile_class [label="member"];
+    }
+
+    // Overall relationships
+    CommunicationContext -> W06 [label="contains"];
+    W06 -> TBinding [label="implements"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        color=white;
+
+        context_node [label="Context Level", shape=ellipse];
+        container_node [label="Container Level", shape=box, style="filled,rounded"];
+        component_node [label="Component Level", shape=component];
+        code_node [label="Code Level", shape=record];
+    }
+}

@@ -1,0 +1,21 @@
+flowchart TB
+    subgraph LOGAPI["log_level_api domain"]
+        CFG["Configuration"]
+        CONTENT["Content + Parser"]
+        PREP["Metadata + Timestamp"]
+        ENV["Envelope Final Shape"]
+        EXP["Readiness / Exposure"]
+        HANDOFF["Handoff Contract"]
+    end
+
+    subgraph CIRC["circulation domain (external)"]
+        ADMIT["Intake / Admission"]
+        PLACE["Placement"]
+        QUEUE["Queues / Slots / Waiting Lists"]
+        DISPATCH["Dispatch"]
+    end
+
+    CFG --> CONTENT --> PREP --> ENV --> EXP --> HANDOFF
+    HANDOFF -->|"contract only"| ADMIT
+
+    style CIRC stroke-dasharray: 5 5

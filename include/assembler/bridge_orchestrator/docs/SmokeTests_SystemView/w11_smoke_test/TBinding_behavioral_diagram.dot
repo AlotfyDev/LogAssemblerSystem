@@ -1,0 +1,25 @@
+digraph TBinding_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TBinding Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateBinding [label="Create Binding\nTBinding::make(binding_id, channel, profile)\nCreates binding linking channel and profile", fillcolor=yellow]
+
+    ValidateBinding [label="Validate Binding\nbinding.is_valid()\nChecks id, channel, profile validity\nReturns true", fillcolor=lightgreen]
+
+    RegisterInRegistry [label="Register in Binding Registry\nbinding_registry.register_binding(binding)\nBinding stored in bounded registry\nReturns true", fillcolor=orange]
+
+    UseInSessionCreation [label="Use in Session Creation\nPassed to TSession::make() as binding reference\nEstablishes session binding", fillcolor=orange]
+
+    LookupOperations [label="Registry Lookup Operations\nbinding_registry.contains(binding.binding_id)\nReturns true for registered bindings", fillcolor=lightcyan]
+
+    End [label="Binding established\nand registered", shape=ellipse, fillcolor=red]
+
+    Start -> CreateBinding
+    CreateBinding -> ValidateBinding
+    ValidateBinding -> RegisterInRegistry
+    RegisterInRegistry -> UseInSessionCreation
+    UseInSessionCreation -> LookupOperations
+    LookupOperations -> End
+}

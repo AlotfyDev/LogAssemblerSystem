@@ -1,0 +1,21 @@
+digraph TNextDestinationRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    RequestGeneration [label="next_destination_request() call:\n- generates routing guidance after load signal\n- provides placement handle and completion context"];
+
+    ParameterSetting [label="TNextDestinationRequest::make() parameters:\n- correlation: descriptor.correlation\n- placement_handle: state.accepted_placement_handle\n- reason: current_destination_completed or retry_requested\n- context: completion or retry message"];
+
+    BridgeRouting [label="Bridge uses for next destination:\n- determines next step in material workflow\n- registry delivery may route to boundary handoff\n- provides workflow continuation logic"];
+
+    RequestGeneration -> ParameterSetting;
+    ParameterSetting -> BridgeRouting;
+
+    RequestGeneration [fillcolor=lightblue];
+    ParameterSetting [fillcolor=lightsalmon];
+    BridgeRouting [fillcolor=lightgreen];
+
+    label="TNextDestinationRequest Usage in W14C Smoke Test";
+    labelloc=t;
+}

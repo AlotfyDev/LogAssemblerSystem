@@ -1,0 +1,23 @@
+digraph TParticipantRole_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Role assignment
+    assign_content_provider [label="Assign content_provider to source"];
+    assign_host_provider [label="Assign host_provider to target"];
+
+    // Role validation
+    check_role_compatibility [label="Check roles are compatible\nsource: content_provider, target: host_provider"];
+
+    // End
+    roles_assigned [label="Roles Assigned for Channel", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> assign_content_provider;
+    assign_content_provider -> assign_host_provider;
+    assign_host_provider -> check_role_compatibility;
+    check_role_compatibility -> roles_assigned;
+}

@@ -1,0 +1,15 @@
+flowchart TB
+    Core["W13 Parser Core"]
+
+    Core --> Opaque["OpaqueNoParse"]
+    Core --> JSON["W14 JSON Level Parsers"]
+    Core --> CStruct["W15 C-Struct Level Parsers"]
+    Core --> MT5Market["W16 MT5 Market Data Parsers"]
+    Core --> MT5Trade["W17 MT5 Trade Parsers"]
+    Core --> MT5Cal["W18 MT5 Calendar/Utility Parsers"]
+
+    JSON --> JL["Trace Debug Info Notice Warning Error Critical Fatal"]
+    CStruct --> CL["Trace Debug Info Notice Warning Error Critical Fatal"]
+    MT5Market --> MM["MqlTick MqlRates MqlBookInfo"]
+    MT5Trade --> MT["TradeRequest CheckResult Result Transaction"]
+    MT5Cal --> MC["DateTime Param CalendarCountry CalendarEvent CalendarValue"]

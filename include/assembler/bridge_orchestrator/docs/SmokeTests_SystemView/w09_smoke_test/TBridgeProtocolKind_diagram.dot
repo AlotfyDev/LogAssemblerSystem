@@ -1,0 +1,85 @@
+digraph TBridgeProtocolKind_Component_Diagram {
+    // Component Diagram for TBridgeProtocolKind (Layer 2 - POD)
+    // Enumeration of bridge protocol types
+
+    graph [fontname="Arial", fontsize=10, rankdir=TB]
+    node [fontname="Arial", fontsize=9, shape=box, style=filled]
+
+    // Core Component
+    TBridgeProtocolKind [label="TBridgeProtocolKind\n(Layer 2 - POD)", fillcolor=lightblue]
+
+    // Enumeration Values
+    subgraph cluster_enum_values {
+        label="Protocol Types"
+        bgcolor=white
+
+        EnvelopePlacement [label="ENVELOPE_PLACEMENT\n(0x01)", fillcolor=lightcyan]
+        SessionSynchronization [label="SESSION_SYNCHRONIZATION\n(0x02)", fillcolor=lightcyan]
+        DataTransfer [label="DATA_TRANSFER\n(0x03)", fillcolor=lightcyan]
+        StateTransition [label="STATE_TRANSITION\n(0x04)", fillcolor=lightcyan]
+        ErrorRecovery [label="ERROR_RECOVERY\n(0x05)", fillcolor=lightcyan]
+        ResourceManagement [label="RESOURCE_MANAGEMENT\n(0x06)", fillcolor=lightcyan]
+        CustomProtocol [label="CUSTOM_PROTOCOL\n(0xFF)", fillcolor=lightcyan]
+    }
+
+    // Data Member
+    subgraph cluster_data {
+        label="Data Member"
+        bgcolor=lightgray
+
+        value [label="value_\n(uint8_t)", fillcolor=white]
+    }
+
+    // Utility Functions
+    subgraph cluster_utility_functions {
+        label="Utility Functions"
+        bgcolor=lightyellow
+
+        FromValue [label="FromValue(val)\nCreate from uint8_t"]
+        ToString [label="ToString()\nString representation"]
+        IsValid [label="IsValid()\nRange validation"]
+        GetDescription [label="GetDescription()\nHuman readable"]
+        operator_eq [label="operator==()\nEquality comparison"]
+        operator_lt [label="operator<()\nOrdering comparison"]
+    }
+
+    // Protocol Behaviors
+    subgraph cluster_behaviors {
+        label="Protocol Behaviors"
+        bgcolor=lightgreen
+
+        BehaviorEnvelope [label="ENVELOPE_PLACEMENT:\n12-step placement plan", fillcolor=lightyellow]
+        BehaviorSession [label="SESSION_SYNCHRONIZATION:\nSession state sync", fillcolor=lightyellow]
+        BehaviorData [label="DATA_TRANSFER:\nBulk data movement", fillcolor=lightyellow]
+        BehaviorState [label="STATE_TRANSITION:\nState machine changes", fillcolor=lightyellow]
+        BehaviorError [label="ERROR_RECOVERY:\nFault tolerance", fillcolor=lightyellow]
+        BehaviorResource [label="RESOURCE_MANAGEMENT:\nResource lifecycle", fillcolor=lightyellow]
+    }
+
+    // Relationships
+    TBridgeProtocolKind -> value
+
+    FromValue -> value [label="sets"]
+    ToString -> value [label="converts"]
+    IsValid -> value [label="validates"]
+    GetDescription -> value [label="maps"]
+
+    EnvelopePlacement -> BehaviorEnvelope [label="defines"]
+    SessionSynchronization -> BehaviorSession [label="defines"]
+    DataTransfer -> BehaviorData [label="defines"]
+    StateTransition -> BehaviorState [label="defines"]
+    ErrorRecovery -> BehaviorError [label="defines"]
+    ResourceManagement -> BehaviorResource [label="defines"]
+
+    // Usage in Components
+    TBridgeProtocol [label="TBridgeProtocol\n(Determines execution logic)", fillcolor=orange]
+    TBridgeProtocolPlan [label="TBridgeProtocolPlan\n(Plan type selection)", fillcolor=lightblue]
+    TProtocolStepExecutor [label="TProtocolStepExecutor\n(Execution strategy)", fillcolor=orange]
+
+    TBridgeProtocol -> TBridgeProtocolKind [label="uses", style=dashed]
+    TBridgeProtocolPlan -> TBridgeProtocolKind [label="references", style=dashed]
+    TProtocolStepExecutor -> TBridgeProtocolKind [label="adapts to", style=dashed]
+
+    // Size and Alignment Info
+    SizeInfo [label="Size: 1 byte\nAlignment: 1 byte\nenum class", fillcolor=lightgreen]
+}

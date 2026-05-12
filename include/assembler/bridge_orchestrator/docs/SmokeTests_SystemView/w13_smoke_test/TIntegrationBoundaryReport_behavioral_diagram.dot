@@ -1,0 +1,97 @@
+digraph TIntegrationBoundaryReport_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Report creation
+    Start [label="Create TIntegrationBoundaryReport", shape=ellipse, fillcolor=lightgreen];
+
+    UseFactory [label="Use Factory Method", fillcolor=lightyellow];
+
+    FactoryCall [label="TIntegrationBoundaryReport::make(\n    boundary_view,     // TIntegrationBoundaryPortView\n    handoff_result,    // TBoundaryHandoffResult\n    diagnostic,        // TDiagnosticRecord (optional)\n    note              // string_view (optional)\n)", fillcolor=lavender];
+
+    // Aggregation
+    AggregateData [label="Aggregate Boundary Data", fillcolor=lightblue];
+
+    BoundaryView [label="Include Boundary View\n• descriptor, port_name, readiness_label, correlation"];
+
+    HandoffResult [label="Include Handoff Result\n• status, handle, bridge_result, result_note"];
+
+    DiagnosticInfo [label="Include Diagnostic Information\n• id, category, operation, component, message, correlation"];
+
+    ReportNote [label="Include Report Note\n• Additional context or observation"];
+
+    // Validation
+    ValidateReport [label="Validate Report", fillcolor=orange];
+
+    CheckValidity [label="report.is_valid()\n• boundary.is_valid()\n• result.status != unknown"];
+
+    CheckFailure [label="report.failed()\n• result.failed() OR\n• (diagnostic.is_valid() AND diagnostic.failed())"];
+
+    // Usage patterns
+    UsagePatterns [label="Usage Patterns", fillcolor=pink];
+
+    SuccessReport [label="Success Report\n• Valid boundary view\n• Successful result\n• Optional success diagnostic\n• Used for completed operations"];
+
+    FailureReport [label="Failure Report\n• Valid boundary view\n• Failed result\n• Error diagnostic with details\n• Used for failed operations"];
+
+    MonitoringReport [label="Monitoring Report\n• Boundary state observation\n• Result analysis\n• Diagnostic context\n• Used for operational visibility"];
+
+    // Smoke test usage
+    SmokeTestUsage [label="W13 Smoke Test Usage", fillcolor=lightcyan];
+
+    CreateReport [label="auto report = TIntegrationBoundaryReport::make(\n    view,\n    completed,\n    diagnostic,\n    \"mock boundary report\"\n);"];
+
+    ValidateReportUsage [label="if (!report.is_valid() || report.failed()) {\n    return error;\n}"];
+
+    // Flow connections
+    Start -> UseFactory;
+    UseFactory -> FactoryCall;
+
+    FactoryCall -> AggregateData;
+
+    AggregateData -> BoundaryView;
+    AggregateData -> HandoffResult;
+    AggregateData -> DiagnosticInfo;
+    AggregateData -> ReportNote;
+
+    BoundaryView -> ValidateReport;
+    HandoffResult -> ValidateReport;
+    DiagnosticInfo -> ValidateReport;
+    ReportNote -> ValidateReport;
+
+    ValidateReport -> CheckValidity;
+    ValidateReport -> CheckFailure;
+
+    CheckValidity -> UsagePatterns;
+    CheckFailure -> UsagePatterns;
+
+    UsagePatterns -> SuccessReport;
+    UsagePatterns -> FailureReport;
+    UsagePatterns -> MonitoringReport;
+
+    SuccessReport -> SmokeTestUsage;
+    FailureReport -> SmokeTestUsage;
+    MonitoringReport -> SmokeTestUsage;
+
+    SmokeTestUsage -> CreateReport;
+    CreateReport -> ValidateReportUsage;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendFactory [label="Factory Method", fillcolor=lightyellow];
+        LegendCall [label="Factory Call", fillcolor=lavender];
+        LegendAggregate [label="Data Aggregation", fillcolor=lightblue];
+        LegendData [label="Data Components"];
+        LegendValidation [label="Validation", fillcolor=orange];
+        LegendCheck [label="Validation Checks"];
+        LegendUsage [label="Usage Patterns", fillcolor=pink];
+        LegendPattern [label="Report Patterns"];
+        LegendTest [label="Smoke Test Usage", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryReport_behavioral_diagram.dot

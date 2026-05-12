@@ -1,0 +1,17 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightcoral];
+
+    // TBridgeStatus enum
+    TBridgeStatus [label="{TBridgeStatus | unknown\l declared\l ready\l running\l paused\l completed\l rejected\l failed\l exhausted\l cancelled\l|+ is_terminal_bridge_status() : bool\l+ is_runnable_bridge_status() : bool\l+ to_string() : string_view\l}"];
+
+    // Helper functions
+    is_terminal [label="is_terminal_bridge_status()\nReturns true for:\n- completed\n- rejected\n- failed\n- exhausted\n- cancelled", shape=note, fillcolor=yellow];
+    is_runnable [label="is_runnable_bridge_status()\nReturns true for:\n- ready\n- running", shape=note, fillcolor=yellow];
+    to_string_func [label="to_string()\nConverts enum to string\nfor diagnostics", shape=note, fillcolor=yellow];
+
+    TBridgeStatus -> is_terminal [style=dotted];
+    TBridgeStatus -> is_runnable [style=dotted];
+    TBridgeStatus -> to_string_func [style=dotted];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeStatus_class_diagram.dot

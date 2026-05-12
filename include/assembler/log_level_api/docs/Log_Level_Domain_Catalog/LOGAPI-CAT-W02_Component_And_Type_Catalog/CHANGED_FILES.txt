@@ -1,0 +1,5 @@
+WAVE_MANIFEST.json
+diagrams/LOGAPI-CAT-002_component_dependency_graph.mmd
+diagrams/LOGAPI-CAT-002_component_ownership_map.mmd
+docs/LOGAPI-CAT-002_Component_Inventory_And_Responsibilities.md
+docs/LOGAPI-CAT-003_Type_And_Header_Catalog.md

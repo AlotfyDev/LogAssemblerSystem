@@ -1,0 +1,7 @@
+Component Name,Include Path,Category,Description
+TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,Correlation,Handles correlation tokens for tracking requests across the system (reused from W01)
+TBridgeStage,protocol_state/stages/TBridgeStage.hpp,Protocol State,Defines bridge protocol stages for communication lifecycle (reused from W02)
+TParticipantRole,participants/roles/TParticipantRole.hpp,Participant Roles,Defines participant role types and classification helpers
+TParticipant,participants/descriptors/TParticipant.hpp,Participant Descriptors,Defines participant descriptors with identity and role information
+TParticipantView,participants/views/TParticipantView.hpp,Participant Views,Provides read-only views of participant information</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\w03_components.csv

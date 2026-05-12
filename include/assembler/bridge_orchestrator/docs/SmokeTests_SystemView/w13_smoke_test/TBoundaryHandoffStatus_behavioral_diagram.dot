@@ -1,0 +1,30 @@
+digraph TBoundaryHandoffStatus_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    StatusUsage [label="Status Usage in Results", fillcolor=lightblue];
+
+    Accepted [label="accepted\nHandoff started successfully", fillcolor=lightgreen];
+
+    Completed [label="completed\nHandoff finished successfully", fillcolor=lightgreen];
+
+    Rejected [label="rejected\nAdmission rejected", fillcolor=pink];
+
+    Deferred [label="deferred\nProcessing deferred", fillcolor=orange];
+
+    Failed [label="failed\nOperation failed", fillcolor=red];
+
+    Unsupported [label="unsupported\nOperation not supported", fillcolor=purple];
+
+    Unknown [label="unknown\nUninitialized status", fillcolor=gray];
+
+    // Flow connections
+    StatusUsage -> Accepted;
+    StatusUsage -> Completed;
+    StatusUsage -> Rejected;
+    StatusUsage -> Deferred;
+    StatusUsage -> Failed;
+    StatusUsage -> Unsupported;
+    StatusUsage -> Unknown;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffStatus_behavioral_diagram.dot

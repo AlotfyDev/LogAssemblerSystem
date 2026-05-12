@@ -1,0 +1,118 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Layer 1: Carrier Components
+    subgraph cluster_w01 {
+        label="W01 Carrier Layer\n(Transport Primitives)";
+        style=filled;
+        fillcolor=lightcyan;
+
+        TCorrelationToken [label="{TCorrelationToken|Correlation tracking\nacross operations}"];
+        TPlacementRequest [label="{TPlacementRequest|Data placement requests\nwith size and ordering hints}"];
+        TPlacementHandle [label="{TPlacementHandle|Opaque placement handles\nfor resource management}"];
+        TLoadSignal [label="{TLoadSignal|Load completion signals\nwith bytes transferred}"];
+        TNextDestinationRequest [label="{TNextDestinationRequest|Next destination routing\nwith reasons}"];
+        TBridgeResult [label="{TBridgeResult|Bridge operation results\nwith status and errors}"];
+        TReadinessView [label="{TReadinessView|Component readiness states}"];
+        TAdmissionResult [label="{TAdmissionResult|Admission control decisions}"];
+
+        // Carrier Layer Relationships
+        TCorrelationToken -> TPlacementRequest [label="correlation"];
+        TCorrelationToken -> TPlacementHandle [label="correlation"];
+        TCorrelationToken -> TLoadSignal [label="correlation"];
+        TCorrelationToken -> TNextDestinationRequest [label="correlation"];
+        TCorrelationToken -> TBridgeResult [label="correlation"];
+
+        TPlacementRequest -> TPlacementHandle [label="creates"];
+        TPlacementHandle -> TLoadSignal [label="completes"];
+        TPlacementHandle -> TNextDestinationRequest [label="routes"];
+
+        TLoadSignal -> TBridgeResult [label="results"];
+        TNextDestinationRequest -> TBridgeResult [label="results"];
+
+        TReadinessView -> TAdmissionResult [label="controls"];
+        TAdmissionResult -> TPlacementRequest [label="approves"];
+    }
+
+    // External Interfaces
+    subgraph cluster_external {
+        label="External Interfaces";
+        style=filled;
+        fillcolor=lightyellow;
+
+        BridgeCore [label="{Bridge Core|Error/Result types}"];
+        ProtocolState [label="{Protocol State|W02 Layer}"];
+        Endpoints [label="{Endpoint Domains|Log Level API\nWrite Side\nRead Side}"];
+
+        // W01 interfaces
+        BridgeCore -> TBridgeResult [label="provides"];
+        ProtocolState -> TCorrelationToken [label="uses"];
+        Endpoints -> TPlacementRequest [label="creates"];
+    }
+
+    // Data Flow Patterns
+    subgraph cluster_flows {
+        label="Data Flow Patterns";
+        style=filled;
+        fillcolor=lightgreen;
+
+        RequestFlow [label="{Request Flow|Placement → Admission → Handle → Signal}"];
+        ResultFlow [label="{Result Flow|Signal → Result → Protocol State}"];
+        CorrelationFlow [label="{Correlation Flow|Token tracks across all operations}"];
+
+        RequestFlow -> TPlacementRequest [style=dotted];
+        ResultFlow -> TBridgeResult [style=dotted];
+        CorrelationFlow -> TCorrelationToken [style=dotted];
+    }
+
+    // Usage from Smoke Tests
+    subgraph cluster_usage {
+        label="W01 Smoke Test Usage Patterns";
+        style=filled;
+        fillcolor=lightcoral;
+
+        TokenCreation [label="{Token Creation|from_parts(1,2)}"];
+        RequestCreation [label="{Request Creation|make(token, \"log_level_envelope\", 128)}"];
+        HandleCreation [label="{Handle Creation|make(7, token, \"write_side_slot_family\")}"];
+        ReadinessCheck [label="{Readiness Check|ready(token, 1)}"];
+        AdmissionCheck [label="{Admission Check|accept(token)}"];
+        SignalGeneration [label="{Signal Generation|completed(token, handle, 128)}"];
+        NextDestination [label="{Next Destination|continuous_flow_requested}"];
+        ResultValidation [label="{Result Validation|success(token)}"];
+
+        TokenCreation -> TCorrelationToken;
+        RequestCreation -> TPlacementRequest;
+        HandleCreation -> TPlacementHandle;
+        ReadinessCheck -> TReadinessView;
+        AdmissionCheck -> TAdmissionResult;
+        SignalGeneration -> TLoadSignal;
+        NextDestination -> TNextDestinationRequest;
+        ResultValidation -> TBridgeResult;
+    }
+
+    // Performance Characteristics
+    subgraph cluster_performance {
+        label="Performance Characteristics";
+        style=filled;
+        fillcolor=gold;
+
+        ZeroCopy [label="{Zero-Copy|Direct memory access\nNo allocations in hot path}"];
+        Constexpr [label="{constexpr Operations|Compile-time validation\nZero runtime overhead}"];
+        OpaqueHandles [label="{Opaque Handles|Type-safe resource management\nNo direct memory access}"];
+        CorrelationTracking [label="{Correlation Tracking|Request-response correlation\nAcross async boundaries}"];
+
+        ZeroCopy -> TPlacementHandle;
+        Constexpr -> TCorrelationToken;
+        OpaqueHandles -> TPlacementHandle;
+        CorrelationTracking -> TCorrelationToken;
+    }
+
+    // Layer Boundaries
+    edge [style=dashed, color=red, constraint=false];
+    TBridgeResult -> ProtocolState [label="W01→W02"];
+    TCorrelationToken -> ProtocolState [label="correlation"];
+    Endpoints -> RequestFlow [label="entry point"];
+    ResultFlow -> ProtocolState [label="terminal"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\holistic_docs\layers\holistic_carrier_layer.dot

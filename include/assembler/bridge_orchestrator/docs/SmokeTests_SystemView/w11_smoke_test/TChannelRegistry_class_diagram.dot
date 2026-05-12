@@ -1,0 +1,40 @@
+digraph TChannelRegistry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TChannelRegistry [label="{TChannelRegistry<Capacity>|channels : std::array<TChannel, Capacity>\l count : std::size_t\l rejected_insertions : std::uint64_t\l registry_name : std::string_view\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ full() : bool\l+ find(channel_id) : const TChannel*\l+ contains(channel_id) : bool\l+ register_channel(channel) : bool\l+ snapshot() : TRegistrySnapshot\l+ make(name, token) : TChannelRegistry\l}"]
+
+    // Template Parameters
+    Capacity [label="Capacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Member Types
+    TChannel [label="TChannel", shape=record, fillcolor=lightyellow]
+    std_array [label="std::array<TChannel, Capacity>", shape=record, fillcolor=lightyellow]
+    std_size_t [label="std::size_t", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TChannelRegistry -> Capacity [label="parameterized by", style=dashed]
+    TChannelRegistry -> std_array [label="contains", style=dashed]
+    TChannelRegistry -> std_size_t [label="uses", style=dashed]
+    TChannelRegistry -> std_uint64_t [label="uses", style=dashed]
+    TChannelRegistry -> std_string_view [label="uses", style=dashed]
+    TChannelRegistry -> TCorrelationToken [label="uses", style=dashed]
+    TChannelRegistry -> TChannel [label="registers", style=dashed]
+    TChannelRegistry -> TRegistrySnapshot [label="produces", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

@@ -1,0 +1,49 @@
+digraph TPortObligationTraits_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Compile-time checking
+    Template_Instantiation [label="TPortObligationTraits<TWriteSideEnvelopePlacementPort>", fillcolor=lightyellow];
+    Check_Readiness_Method [label="Check if T::readiness(const TPlacementRequest&) exists", fillcolor=lavender];
+    Check_Admit_Method [label="Check if T::admit(const TPlacementRequest&) exists", fillcolor=lavender];
+    Check_Handle_Method [label="Check if T::placement_handle(const TPlacementRequest&) exists", fillcolor=lavender];
+    Validate_Return_Types [label="Validate return types: TReadinessView, TAdmissionResult, TPlacementHandle", fillcolor=lavender];
+    Validate_Const_Qualifiers [label="Validate methods are const-qualified", fillcolor=lavender];
+
+    // Results
+    Readiness_Exists_True [label="readiness_exists = true", fillcolor=lightgreen];
+    Admit_Exists_True [label="admit_exists = true", fillcolor=lightgreen];
+    Handle_Exists_True [label="placement_handle_exists = true", fillcolor=lightgreen];
+    All_Satisfied_True [label="all_obligations_satisfied = true", fillcolor=lightgreen];
+
+    // Compilation outcomes
+    Compilation_Success [label="Compilation succeeds - W05 port obligations satisfied", fillcolor=lightgreen];
+    Compilation_Failure [label="Compilation fails - missing or incorrect port methods", fillcolor=red, shape=diamond];
+
+    // Usage in W14B
+    CRTP_Inheritance [label="TWriteSideEnvelopePlacementPort : public TPort<TWriteSideEnvelopePlacementPort>", fillcolor=orange];
+    Static_Check [label="Compiler enforces W05 port interface compliance", fillcolor=orange];
+
+    // Flow
+    Template_Instantiation -> Check_Readiness_Method;
+    Template_Instantiation -> Check_Admit_Method;
+    Template_Instantiation -> Check_Handle_Method;
+
+    Check_Readiness_Method -> Validate_Return_Types;
+    Check_Admit_Method -> Validate_Return_Types;
+    Check_Handle_Method -> Validate_Return_Types;
+
+    Validate_Return_Types -> Validate_Const_Qualifiers;
+    Validate_Const_Qualifiers -> Readiness_Exists_True [label="all checks pass"];
+    Validate_Const_Qualifiers -> Compilation_Failure [label="checks fail"];
+
+    Readiness_Exists_True -> Admit_Exists_True;
+    Admit_Exists_True -> Handle_Exists_True;
+    Handle_Exists_True -> All_Satisfied_True;
+    All_Satisfied_True -> Compilation_Success;
+
+    Compilation_Success -> CRTP_Inheritance;
+    CRTP_Inheritance -> Static_Check;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TPortObligationTraits_behavioral_diagram.dot

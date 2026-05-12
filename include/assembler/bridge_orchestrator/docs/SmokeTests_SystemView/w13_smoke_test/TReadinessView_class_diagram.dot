@@ -1,0 +1,21 @@
+digraph TReadinessView_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component (W01 reused)
+    ReadinessView [label="{TReadinessView\n(W01 Reused Value Type)|• state : TReadinessState\n• reason : string_view\n• correlation : TCorrelationToken\n• size_hint : uint64_t|+ is_ready() : bool\l+ is_deferred() : bool\l+ is_not_ready() : bool\l+ ready(token, size) : TReadinessView\l+ not_ready(reason, token) : TReadinessView\l+ deferred(reason, token) : TReadinessView\l}", fillcolor=lightgray];
+
+    // State enum
+    ReadinessState [label="{TReadinessState\n(Enum)|• ready\n• not_ready\n• deferred\l}", fillcolor=lavender];
+
+    // Factory methods
+    ReadyFactory [label="{ready(token, size_hint)\nCreates ready state}", shape=note, fillcolor=lightgreen];
+
+    NotReadyFactory [label="{not_ready(reason, token)\nCreates not ready state}", shape=note, fillcolor=pink];
+
+    DeferredFactory [label="{deferred(reason, token)\nCreates deferred state}", shape=note, fillcolor=orange];
+
+    // W13 usage
+    W13Usage [label="{W13 Usage|• Policy evaluation results\n• Boundary readiness checks\n• Request validation outcomes\l}", shape=note, fillcolor=lightcyan];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TReadinessView_class_diagram.dot

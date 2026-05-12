@@ -1,0 +1,11 @@
+digraph TAdmissionResult_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    AdmissionResult [label="{TAdmissionResult|+ accepted() const noexcept -> bool\l+ accept() static constexpr -> TAdmissionResult\l+ reject() static constexpr -> TAdmissionResult\l}", fillcolor=lightsalmon, style=filled];
+
+    label="TAdmissionResult Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TAdmissionResult_class_diagram.dot

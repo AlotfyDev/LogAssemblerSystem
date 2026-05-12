@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_readside_w03/cme_readside_admission_full_aggregate_probe.cpp,passed,0,0
+tests_readside_w03/cme_readside_receiver_admission_negative_test.cpp,passed,0,0
+tests_readside_w03/cme_readside_receiver_admission_runtime_test.cpp,passed,0,0

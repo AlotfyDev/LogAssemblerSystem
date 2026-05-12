@@ -1,0 +1,30 @@
+digraph TParticipantRole_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main enum
+    TParticipantRole [label="{TParticipantRole|unknown\n\ncontent_provider\nhost_provider\nreceiver_provider\n\nregistry_provider\npersistence_provider\ntelemetry_provider\nabi_boundary_provider\n\ndiagnostic_observer\nbridge_orchestrator\ngovernance_provider|}"];
+    role_helpers [label="{Role Classification Helpers|+ is_provider_role(role)\n+ is_boundary_role(role)\n+ is_observer_role(role)\n+ participates_in_primary_exchange(role)\n+ to_string(role)}"];
+
+    // Dependencies
+    role_helpers -> TParticipantRole [label="operates on"];
+
+    // Usage in W04
+    TParticipantRole -> TParticipant [label="role field"];
+    TParticipantRole -> TChannel [label="role validation"];
+
+    // Invisible positioning
+    TParticipant [shape=plaintext, label="TParticipant"];
+    TChannel [shape=plaintext, label="TChannel"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TParticipantRole Structure";
+        color=white;
+        style=filled;
+
+        legend_enum [label="Role Enumerations", shape=rectangle, fillcolor=lightyellow];
+        legend_helpers [label="Classification Helpers", shape=rectangle, fillcolor=lightblue];
+        legend_w04 [label="W04 Channel Usage", shape=plaintext];
+    }
+}

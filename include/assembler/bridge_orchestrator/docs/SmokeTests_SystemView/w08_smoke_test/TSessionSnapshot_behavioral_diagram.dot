@@ -1,0 +1,47 @@
+digraph TSessionSnapshot_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Snapshot creation
+    CaptureSnapshot [label="Capture Snapshot\nTSessionSnapshot::capture(session)\n- Record session identity\n- Capture current status\n- Snapshot binding state\n- Collect performance metrics\n- Record session events", fillcolor=lightyellow];
+
+    // Data collection
+    CollectSessionData [label="Collect Session Data\n- Extract TSessionId\n- Get current TSessionStatus\n- Record timestamp\n- Gather session metadata", fillcolor=lightyellow];
+
+    CaptureBindingState [label="Capture Binding State\n- Create TBindingSnapshot\n- Record channel information\n- Capture adapter details\n- Store compatibility score", fillcolor=lightyellow];
+
+    CollectEvents [label="Collect Session Events\n- Gather TSessionEvent history\n- Record operation sequence\n- Capture error events\n- Include state transitions", fillcolor=lightyellow];
+
+    GatherMetrics [label="Gather Performance Metrics\n- Count total operations\n- Calculate duration statistics\n- Track error rates\n- Record timing data", fillcolor=lightyellow];
+
+    // Usage contexts
+    HistoricalAnalysis [label="Historical Analysis\n- Session lifecycle review\n- Performance trend analysis\n- Error pattern detection\n- Compliance auditing", fillcolor=lightblue];
+
+    DebuggingSupport [label="Debugging Support\n- Session state inspection\n- Event timeline analysis\n- Binding issue diagnosis\n- Performance bottleneck identification", fillcolor=lightblue];
+
+    PersistenceBackup [label="Persistence & Backup\n- Session state serialization\n- Recovery point creation\n- Audit trail maintenance\n- Long-term archival", fillcolor=lightblue];
+
+    // Flow
+    CaptureSnapshot -> CollectSessionData [label="1. Start snapshot capture"];
+
+    CollectSessionData -> CaptureBindingState [label="2. Capture binding state"];
+    CollectSessionData -> CollectEvents [label="3. Collect event history"];
+    CollectSessionData -> GatherMetrics [label="4. Gather performance data"];
+
+    CaptureBindingState -> HistoricalAnalysis [label="5. Enable binding analysis"];
+    CollectEvents -> DebuggingSupport [label="6. Enable event debugging"];
+    GatherMetrics -> HistoricalAnalysis [label="7. Enable performance analysis"];
+
+    CaptureSnapshot -> PersistenceBackup [label="8. Enable state persistence"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Session Analysis";
+        bgcolor=white;
+
+        SnapshotOps [label="Snapshot Operations", fillcolor=lightyellow];
+        AnalysisUsage [label="Analysis & Debugging", fillcolor=lightblue];
+        PersistenceUsage [label="Persistence & Backup", fillcolor=lightgreen];
+    }
+}

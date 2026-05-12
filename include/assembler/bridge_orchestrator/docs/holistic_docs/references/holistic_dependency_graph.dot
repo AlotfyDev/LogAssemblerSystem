@@ -1,0 +1,199 @@
+digraph holistic_dependency_graph {
+    graph [rankdir=TB, labelloc="t", fontsize=16, fontname="Arial",
+           label="Bridge Orchestrator — Holistic Component Dependency Graph\nCritical Path Analysis with Layer Dependencies and Integration Points",
+           size="20,20"];
+    node [shape=box, style="rounded,filled", fontname="Arial", fontsize=8, width=1.2, height=0.6];
+    edge [fontname="Arial", fontsize=7, arrowsize=0.6];
+
+    // Layer ranking for proper layout
+    {rank=same; E_EXT_001; E_EXT_002; E_EXT_003; E_EXT_004; E_EXT_005; E_EXT_006; E_EXT_007;}
+    {rank=same; E_INT_001; E_INT_007; E_INT_008; E_INT_009;}
+    {rank=same; BCO_001; CT_FAM_001; CT_FAM_002; CT_FAM_003;}
+    {rank=same; E_INT_010; BCO_002;}
+    {rank=same; E_INT_003; E_INT_004; E_INT_005; E_INT_006;}
+    {rank=same; E_RT_008; E_RT_009; E_RT_010;}
+    {rank=same; E_RT_001; E_RT_002; E_RT_003; E_RT_004;}
+    {rank=same; E_RT_005; E_RT_006; E_RT_007;}
+    {rank=same; E_INT_002;}
+    {rank=same; DOC_001; DOC_002; DOC_003; DOC_004; DOC_005; DOC_006; DOC_007;}
+
+    // External Layer (Entry Points)
+    subgraph cluster_external { label="External Entry Points"; fillcolor="#f0f8ff"; style=filled;
+        E_EXT_001 [label="E-EXT-001\nLevel API", fillcolor="#D9ECFF", shape=invhouse];
+        E_EXT_002 [label="E-EXT-002\nAdmin", fillcolor="#FFF3CD", shape=invhouse];
+        E_EXT_003 [label="E-EXT-003\nPolicy Source", fillcolor="#FFF3CD", shape=invhouse];
+        E_EXT_004 [label="E-EXT-004\nMetadata Source", fillcolor="#FFF3CD", shape=invhouse];
+        E_EXT_005 [label="E-EXT-005\nOperational Source", fillcolor="#FFF3CD", shape=invhouse];
+        E_EXT_006 [label="E-EXT-006\nLog Registry", fillcolor="#E2F0D9", shape=invhouse];
+        E_EXT_007 [label="E-EXT-007\nQuery System", fillcolor="#EEEEEE", shape=invhouse];
+    }
+
+    // Core Processing Pipeline
+    subgraph cluster_ingress { label="Ingress Processing"; fillcolor="#fffacd"; style=filled;
+        E_INT_001 [label="E-INT-001\nAssembler\nSubsystem", fillcolor="#FFE2CC"];
+        E_INT_007 [label="E-INT-007\nMetadata\nInjector", fillcolor="#FFE2CC"];
+        E_INT_008 [label="E-INT-008\nTimestamp\nStabilizer", fillcolor="#FFE2CC"];
+        E_INT_009 [label="E-INT-009\nValidator", fillcolor="#FFE2CC"];
+    }
+
+    // Policy System
+    subgraph cluster_policy { label="Policy Management"; fillcolor="#f5deb3"; style=filled;
+        BCO_001 [label="BCO-001\nPolicy\nBundle", fillcolor="#EADCF8"];
+        E_INT_010 [label="E-INT-010\nPolicy\nAssigner", fillcolor="#FFE2CC"];
+        BCO_002 [label="BCO-002\nPolicy\nObject", fillcolor="#EADCF8"];
+    }
+
+    // Contract Families
+    subgraph cluster_contracts { label="Contract Families"; fillcolor="#ffffff"; style=filled;
+        CT_FAM_001 [label="CT-FAM-001\nIngress\nContracts", fillcolor="#FFFFFF", style=dashed];
+        CT_FAM_002 [label="CT-FAM-002\nPolicy\nContracts", fillcolor="#FFFFFF", style=dashed];
+        CT_FAM_003 [label="CT-FAM-003\nMetadata\nContracts", fillcolor="#FFFFFF", style=dashed];
+        CT_FAM_004 [label="CT-FAM-004\nOperational\nContracts", fillcolor="#FFFFFF", style=dashed];
+        CT_FAM_006 [label="CT-FAM-006\nEnvelope\nContracts", fillcolor="#FFFFFF", style=dashed];
+        CT_FAM_008 [label="CT-FAM-008\nRuntime\nContracts", fillcolor="#FFFFFF", style=dashed];
+    }
+
+    // Runtime State Management
+    subgraph cluster_runtime { label="Runtime State Management"; fillcolor="#e8f5e9"; style=filled;
+        E_INT_005 [label="E-INT-005\nQueue Bundle\nAgent", fillcolor="#FFE2CC"];
+        E_INT_003 [label="E-INT-003\nWriting Round\nManager", fillcolor="#FFE2CC"];
+        E_INT_004 [label="E-INT-004\nDelivery Round\nManager", fillcolor="#FFE2CC"];
+        E_INT_006 [label="E-INT-006\nSingle Queue\nModerator", fillcolor="#FFE2CC"];
+
+        E_RT_008 [label="E-RT-008\nWriting\nWaiting List", fillcolor="#E8F5E9"];
+        E_RT_009 [label="E-RT-009\nDelivery\nWaiting List", fillcolor="#E8F5E9"];
+        E_RT_010 [label="E-RT-010\nQueue\nIdentifier", fillcolor="#E8F5E9"];
+
+        E_RT_001 [label="E-RT-001\nQueue\nBundle", fillcolor="#E8F5E9"];
+        E_RT_002 [label="E-RT-002\nQueue\nContainer", fillcolor="#E8F5E9"];
+        E_RT_003 [label="E-RT-003\nSingle\nQueue", fillcolor="#E8F5E9"];
+        E_RT_004 [label="E-RT-004\nPending\nQueue", fillcolor="#E8F5E9"];
+
+        E_RT_005 [label="E-RT-005\nSlot", fillcolor="#E8F5E9"];
+        E_RT_006 [label="E-RT-006\nSlot\nOccupancy", fillcolor="#E8F5E9"];
+        E_RT_007 [label="E-RT-007\nSlot\nLifecycle", fillcolor="#E8F5E9"];
+    }
+
+    // Envelope Processing
+    subgraph cluster_envelope { label="Envelope Processing"; fillcolor="#ffe4e1"; style=filled;
+        BCO_003 [label="BCO-003\nLog\nEnvelope", fillcolor="#EADCF8", shape=box3d];
+    }
+
+    // Boundary Component
+    subgraph cluster_boundary { label="Boundary & Exit"; fillcolor="#ffb6c1"; style=filled;
+        E_INT_002 [label="E-INT-002\nDispatcher", fillcolor="#FFE2CC", shape=house];
+    }
+
+    // Constitutional Rules
+    subgraph cluster_doctrine { label="Constitutional Rules"; fillcolor="#f5f5f5"; style=filled;
+        DOC_001 [label="DOC-001\nBoundary Law", fillcolor="#F5F5F5", style=dotted];
+        DOC_002 [label="DOC-002\nThree Surfaces", fillcolor="#F5F5F5", style=dotted];
+        DOC_003 [label="DOC-003\nPolicy Doctrine", fillcolor="#F5F5F5", style=dotted];
+        DOC_004 [label="DOC-004\nComponent Host", fillcolor="#F5F5F5", style=dotted];
+        DOC_005 [label="DOC-005\nTemplate Contracts", fillcolor="#F5F5F5", style=dotted];
+        DOC_006 [label="DOC-006\nEnvelope Carrier", fillcolor="#F5F5F5", style=dotted];
+        DOC_007 [label="DOC-007\nQueue=Container", fillcolor="#F5F5F5", style=dotted];
+    }
+
+    // ===== DEPENDENCY EDGES =====
+
+    // External Dependencies (Entry Points)
+    E_EXT_001 -> E_INT_001 [label="Content\nIngress", color="#1f77b4", penwidth=3];
+    E_EXT_002 -> BCO_001 [label="Policy\nGovernance", color="#ff7f0e", penwidth=2];
+    E_EXT_003 -> BCO_001 [label="Policy\nSource", color="#ff7f0e", penwidth=2];
+    E_EXT_004 -> E_INT_007 [label="Metadata\nDirective", color="#2ca02c", penwidth=2];
+    E_EXT_005 -> E_INT_005 [label="Operational\nDirective", color="#8c564b", penwidth=2];
+    E_EXT_006 -> E_INT_002 [label="Registry\nReadiness", color="#9467bd", penwidth=2, constraint=false];
+    E_EXT_007 -> E_INT_001 [label="Exclusion\nBoundary", color="#666666", style=dashed, constraint=false];
+
+    // Policy Dependency Chain
+    BCO_001 -> E_INT_010 [label="Policy\nBundle Intake", color="#ff7f0e", penwidth=2];
+    E_INT_010 -> BCO_002 [label="Policy\nAssignment", color="#ff7f0e", penwidth=2];
+
+    // Policy Distribution to Components
+    BCO_002 -> E_INT_002 [label="Dispatch\nPolicy", color="#ff7f0e"];
+    BCO_002 -> E_INT_008 [label="Timestamp\nPolicy", color="#ff7f0e"];
+    BCO_002 -> E_INT_009 [label="Validation\nPolicy", color="#ff7f0e"];
+    BCO_002 -> E_INT_005 [label="Queue\nPolicy", color="#ff7f0e"];
+    BCO_002 -> E_INT_006 [label="Moderation\nPolicy", color="#ff7f0e"];
+    BCO_002 -> E_INT_003 [label="Writing\nPolicy", color="#ff7f0e"];
+    BCO_002 -> E_INT_004 [label="Delivery\nPolicy", color="#ff7f0e"];
+
+    // Content Processing Pipeline
+    E_INT_001 -> CT_FAM_001 [label="Ingress\nContract", color="#1f77b4", style=dashed];
+    CT_FAM_001 -> E_INT_009 [label="Validation\nContract", color="#1f77b4"];
+    CT_FAM_001 -> BCO_003 [label="Envelope\nRealization", color="#2ca02c", penwidth=2];
+
+    // Metadata Processing
+    CT_FAM_003 -> E_INT_007 [label="Metadata\nContract", color="#2ca02c", style=dashed];
+    E_INT_007 -> BCO_003 [label="Metadata\nInjection", color="#2ca02c"];
+
+    // Timestamp Processing
+    E_INT_008 -> BCO_003 [label="Timestamp\nStabilization", color="#2ca02c"];
+
+    // Runtime State Dependencies
+    CT_FAM_008 -> E_RT_001 [label="Runtime\nContracts", color="#9467bd", style=dashed];
+    E_INT_005 -> E_RT_001 [label="Bundle\nOrchestration", color="#9467bd", penwidth=2];
+    E_RT_001 -> E_RT_002 [label="Queue\nGrouping", color="#9467bd"];
+    E_RT_002 -> E_RT_005 [label="Slot\nContainment", color="#9467bd"];
+    E_RT_005 -> E_RT_006 [label="Occupancy\nPosition", color="#9467bd"];
+    E_RT_007 -> E_RT_005 [label="Lifecycle\nManagement", color="#9467bd"];
+
+    // Queue Management Dependencies
+    E_INT_005 -> E_RT_008 [label="Writing\nAvailability", color="#8c564b"];
+    E_INT_005 -> E_RT_009 [label="Delivery\nAvailability", color="#8c564b"];
+    E_RT_008 -> E_RT_010 [label="Queue\nIdentifiers", color="#8c564b"];
+    E_RT_009 -> E_RT_010 [label="Queue\nIdentifiers", color="#8c564b"];
+    E_RT_010 -> E_RT_002 [label="Container\nLocation", color="#8c564b"];
+
+    // Round Manager Dependencies
+    E_INT_003 -> E_RT_008 [label="Writing\nRounds", color="#d62728"];
+    E_INT_004 -> E_RT_009 [label="Delivery\nRounds", color="#d62728"];
+
+    // Moderator Dependencies
+    E_INT_006 -> E_RT_003 [label="Queue\nModeration", color="#e377c2"];
+    E_INT_004 -> E_INT_006 [label="Post-Dispatch\nModeration", color="#e377c2"];
+    E_INT_006 -> E_RT_009 [label="Requalification", color="#e377c2"];
+
+    // Envelope Flow Dependencies
+    BCO_003 -> E_RT_006 [label="Slot\nOccupation", color="#2ca02c"];
+    BCO_003 -> E_INT_003 [label="Writing\nProgression", color="#2ca02c", penwidth=2];
+    E_INT_003 -> E_INT_004 [label="Dispatch\nReadiness", color="#2ca02c", penwidth=2];
+    E_INT_004 -> E_INT_002 [label="Dispatcher\nHandoff", color="#2ca02c", penwidth=2];
+    E_INT_002 -> BCO_003 [label="Envelope\nMovement", color="#2ca02c"];
+
+    // Boundary Dependencies
+    E_INT_002 -> E_EXT_006 [label="Registry\nHandoff", color="#9467bd", penwidth=2];
+    BCO_003 -> E_EXT_006 [label="Lifecycle\nTransfer", color="#2ca02c", constraint=false];
+
+    // Pending Queue Dependencies
+    E_RT_002 -> E_RT_004 [label="Waiting\nDiscipline", color="#17becf"];
+    E_INT_005 -> E_RT_004 [label="Discipline\nRestoration", color="#17becf"];
+
+    // Doctrine Dependencies (Cross-Cutting)
+    DOC_001 -> E_INT_002 [label="Boundary\nAuthority", color="#7f7f7f", style=dotted, constraint=false];
+    DOC_002 -> E_INT_001 [label="Three\nSurfaces", color="#7f7f7f", style=dotted, constraint=false];
+    DOC_003 -> BCO_002 [label="Policy\nDoctrine", color="#7f7f7f", style=dotted, constraint=false];
+    DOC_004 -> E_INT_002 [label="Component\nHosting", color="#7f7f7f", style=dotted, constraint=false];
+    DOC_005 -> CT_FAM_001 [label="Template\nContracts", color="#7f7f7f", style=dotted, constraint=false];
+    DOC_006 -> BCO_003 [label="Envelope\nCarrier", color="#7f7f7f", style=dotted, constraint=false];
+    DOC_007 -> E_RT_002 [label="Queue=\nContainer", color="#7f7f7f", style=dotted, constraint=false];
+
+    // Contract Derivation Dependencies
+    CT_FAM_001 -> CT_FAM_006 [label="Envelope\nDerivation", color="#e377c2", style=dashed, constraint=false];
+    CT_FAM_002 -> BCO_002 [label="Policy\nDerivation", color="#e377c2", style=dashed, constraint=false];
+
+    // Critical Path Highlighting
+    edge [color="#d62728", penwidth=4, style=bold, constraint=false];
+    E_EXT_001 -> E_INT_001 -> CT_FAM_001 -> BCO_003 -> E_INT_003 -> E_INT_004 -> E_INT_002 -> E_EXT_006 [label="CRITICAL PATH"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Dependency Types";
+        style=invis;
+        LEGEND_DIRECT [label="Direct Dependencies", shape=ellipse, fillcolor="#FFE4E1"];
+        LEGEND_USAGE [label="Usage Relationships", shape=ellipse, fillcolor="#E0FFFF"];
+        LEGEND_INTEGRATION [label="Integration Points", shape=ellipse, fillcolor="#F0FFF0"];
+        LEGEND_CROSSCUTTING [label="Cross-Cutting Concerns", shape=ellipse, fillcolor="#FFFACD"];
+    }
+}

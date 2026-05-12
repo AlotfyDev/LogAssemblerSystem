@@ -1,0 +1,34 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Token creation
+    generate_token [label="Generate correlation token\nfor operation tracking"];
+    prepare_invalid [label="Use TCorrelationToken::invalid()\nfor default construction"];
+
+    // Usage contexts
+    channel_declaration [label="Used in TChannel::declare()\nTrack channel creation"];
+    binding_proposal [label="Used in TBinding::propose()\nTrack binding creation"];
+    compatibility_evaluation [label="Used in TBindingCompatibilityReport::evaluate()\nTrack compatibility check"];
+
+    // Validation
+    check_valid [label="Call token.is_valid()\nCheck token_id != 0"];
+
+    // End
+    correlation_tracking [label="Correlation Tracking Active", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> generate_token;
+    smoke_test -> prepare_invalid;
+
+    generate_token -> channel_declaration;
+    prepare_invalid -> channel_declaration;
+
+    channel_declaration -> binding_proposal;
+    binding_proposal -> compatibility_evaluation;
+    compatibility_evaluation -> check_valid;
+    check_valid -> correlation_tracking;
+}

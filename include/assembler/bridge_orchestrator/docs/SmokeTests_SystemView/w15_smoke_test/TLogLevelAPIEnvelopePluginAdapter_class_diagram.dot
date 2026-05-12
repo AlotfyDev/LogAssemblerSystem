@@ -1,0 +1,29 @@
+digraph TLogLevelAPIEnvelopePluginAdapter_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main adapter class
+    Adapter [label="{TLogLevelAPIEnvelopePluginAdapter|+ view() -> TPluginAdapterView\l+ readiness() -> TReadinessView\l+ prepare_placement_request() -> TPlacementRequest\l+ accept_placement_handle(TPlacementHandle) -> TBridgeResult\l+ emit_load_signal() -> TLoadSignal\l+ next_destination_request() -> TNextDestinationRequest\l}", fillcolor=lightsalmon, style=filled];
+
+    // Collaborating components
+    View [label="{TPluginAdapterView|adapter identity and capabilities\lparticipant info, obligation profile\l}", fillcolor=lightblue];
+    ReadinessView [label="{TReadinessView|readiness assessment\lready/not_ready/deferred\l}", fillcolor=lightblue];
+    PlacementRequest [label="{TPlacementRequest|material placement request\lcorrelation, material info\l}", fillcolor=lightblue];
+    BridgeResult [label="{TBridgeResult|operation success/failure\lwith correlation\l}", fillcolor=lightblue];
+    LoadSignal [label="{TLoadSignal|load completion signal\lcorrelation, handle, size\l}", fillcolor=lightblue];
+    NextDestinationRequest [label="{TNextDestinationRequest|next destination routing\lcorrelation, handle, reason\l}", fillcolor=lightblue];
+
+    // Relationships
+    Adapter -> View [label="returns"];
+    Adapter -> ReadinessView [label="returns"];
+    Adapter -> PlacementRequest [label="creates"];
+    Adapter -> BridgeResult [label="returns"];
+    Adapter -> LoadSignal [label="creates"];
+    Adapter -> NextDestinationRequest [label="creates"];
+
+    // Title
+    label="TLogLevelAPIEnvelopePluginAdapter Class Structure (W14A Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TLogLevelAPIEnvelopePluginAdapter_class_diagram.dot

@@ -1,0 +1,48 @@
+digraph TSessionId_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Creation contexts
+    SessionCreation [label="Session Creation\nTSession::open()", fillcolor=lightyellow];
+    SessionIdGeneration [label="ID Generation\nTSessionId::generate()\n- Create unique 64-bit value\n- Assign namespace\n- Record creation timestamp", fillcolor=lightyellow];
+
+    // Validation and usage
+    ValidateId [label="Validate ID\nid.is_valid()\n- Check value format\n- Verify namespace validity\n- Confirm creation timestamp", fillcolor=lightyellow];
+
+    ConvertToString [label="Convert to String\nid.to_string()\n- Format as namespace:value\n- Include creation info\n- Generate human-readable ID", fillcolor=lightyellow];
+
+    ParseFromString [label="Parse from String\nTSessionId::from_string()\n- Parse namespace:value format\n- Validate components\n- Reconstruct TSessionId", fillcolor=lightyellow];
+
+    // Usage in session lifecycle
+    AssignToSession [label="Assign to Session\n- Set as TSession.session_id_\n- Use for session tracking\n- Enable session correlation", fillcolor=lightblue];
+
+    IncludeInView [label="Include in View\n- Add to TSessionView\n- Enable external monitoring\n- Support session queries", fillcolor=lightblue];
+
+    IncludeInSnapshot [label="Include in Snapshot\n- Add to TSessionSnapshot\n- Preserve session identity\n- Support historical analysis", fillcolor=lightblue];
+
+    // Flow
+    SessionCreation -> SessionIdGeneration [label="1. Generate unique session ID"];
+
+    SessionIdGeneration -> AssignToSession [label="2. Assign to new session"];
+
+    AssignToSession -> ValidateId [label="3. Validate ID integrity"];
+
+    ValidateId -> IncludeInView [label="4. Include in session view"];
+    ValidateId -> IncludeInSnapshot [label="5. Include in session snapshot"];
+
+    IncludeInView -> ConvertToString [label="6. Convert for external use"];
+    IncludeInSnapshot -> ConvertToString [label="7. Convert for persistence"];
+
+    // Parsing flow
+    ConvertToString -> ParseFromString [label="8. Round-trip validation"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Session Identity";
+        bgcolor=white;
+
+        IdOps [label="ID Operations", fillcolor=lightyellow];
+        SessionIntegration [label="Session Integration", fillcolor=lightblue];
+    }
+}

@@ -1,0 +1,43 @@
+digraph TBridgeCore_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    smoke_test_include [label="Smoke Test Includes:\n#include \"TBridgeCore.hpp\""];
+
+    availability_check [label="Static Assert:\nASCC_W10_BRIDGE_CORE_AVAILABLE"];
+
+    success [label="Assertion Passes", shape=ellipse, fillcolor=lightgreen];
+
+    // The core provides access to bridge components
+    provides_bridge [label="Provides TBridge"];
+    provides_config [label="Provides TBridgeConfig"];
+    provides_status [label="Provides TBridgeStatus"];
+    provides_result [label="Provides TBridgeCoreResult"];
+    provides_view [label="Provides TBridgeCoreView"];
+
+    // Flow
+    smoke_test_include -> availability_check;
+    availability_check -> success [label="true"];
+
+    success -> provides_bridge;
+    success -> provides_config;
+    success -> provides_status;
+    success -> provides_result;
+    success -> provides_view;
+
+    // W14A compatibility note
+    compatibility_note [label="W14A adapter is compatible with\nW10 bridge surface but does not\ninvoke bridge orchestration", shape=note];
+
+    provides_bridge -> compatibility_note [style=dotted];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        compile_time [label="Compile-time Operation", fillcolor=lightyellow];
+        runtime [label="Runtime Usage", shape=note];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+        note [label="Compatibility Note", shape=note];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TBridgeCore_behavioral_diagram.dot

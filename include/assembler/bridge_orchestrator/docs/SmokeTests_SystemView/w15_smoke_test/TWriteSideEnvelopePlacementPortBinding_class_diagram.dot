@@ -1,0 +1,25 @@
+digraph TWriteSideEnvelopePlacementPortBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main binding header
+    Binding [label="{TWriteSideEnvelopePlacementPortBinding|W14B binding header\laggregate include for port\l}", fillcolor=lightsalmon, style=filled];
+
+    // Aggregated components from W14B
+    Port [label="{TWriteSideEnvelopePlacementPort|main port implementation\lreadiness, admission, handle\l}", fillcolor=lightblue];
+    Factory [label="{TWriteSideEnvelopePlacementPortFactory|factory for port creation\lmake_default method\l}", fillcolor=lightblue];
+    Config [label="{TWriteSideEnvelopePlacementPortConfig|port configuration\lparticipant IDs, names\l}", fillcolor=lightblue];
+    State [label="{TWriteSideEnvelopePlacementPortState|port runtime state\laccepted handles, status\l}", fillcolor=lightblue];
+
+    // Relationships
+    Binding -> Port [label="aggregates"];
+    Binding -> Factory [label="aggregates"];
+    Binding -> Config [label="aggregates"];
+    Binding -> State [label="aggregates"];
+
+    // Title
+    label="TWriteSideEnvelopePlacementPortBinding Class Structure (W14B Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TWriteSideEnvelopePlacementPortBinding_class_diagram.dot

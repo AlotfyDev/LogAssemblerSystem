@@ -1,0 +1,23 @@
+digraph TFirstIntegrationSkeletonConfig_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main config struct
+    Config [label="{TFirstIntegrationSkeletonConfig|+ channel_id : std::uint64_t\l+ binding_id : std::uint64_t\l+ session_id : std::uint64_t\l+ protocol_id : std::uint64_t\l+ bridge_id : std::uint64_t\l+ max_bridge_model_steps : std::uint32_t\l+ envelope_id : std::string_view\l+ payload_size_hint : std::uint64_t\l+ channel_name : std::string_view\l+ binding_name : std::string_view\l+ session_name : std::string_view\l+ protocol_name : std::string_view\l+ bridge_name : std::string_view\l|+ is_valid() const noexcept -> bool\l+ defaults() static constexpr -> TFirstIntegrationSkeletonConfig\l}", fillcolor=lightsalmon, style=filled];
+
+    // Member types
+    Uint64 [label="{std::uint64_t|64-bit unsigned integer\lused for IDs and hints\l}", fillcolor=lightblue];
+    Uint32 [label="{std::uint32_t|32-bit unsigned integer\lused for step limits\l}", fillcolor=lightblue];
+    StringView [label="{std::string_view|read-only string reference\lused for names and IDs\l}", fillcolor=lightblue];
+
+    // Relationships
+    Config -> Uint64 [label="uses"];
+    Config -> Uint32 [label="uses"];
+    Config -> StringView [label="uses"];
+
+    // Title
+    label="TFirstIntegrationSkeletonConfig Class Structure";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonConfig_class_diagram.dot

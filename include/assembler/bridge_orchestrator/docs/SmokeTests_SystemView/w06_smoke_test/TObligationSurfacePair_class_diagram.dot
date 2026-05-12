@@ -1,0 +1,20 @@
+digraph TObligationSurfacePair_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W05)
+    TObligationSurfacePair [label="{TObligationSurfacePair (W05)|plugin_adapter : TPluginAdapterView\nport : TPortView|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool|+ make() : TObligationSurfacePair}"];
+
+    // Dependencies
+    TPluginAdapterView_dep [label="{TPluginAdapterView|...}" shape=record];
+    TPortView_dep [label="{TPortView|...}" shape=record];
+
+    // Used by TBinding
+    TBinding_uses [label="{TBinding|surface_pair : TObligationSurfacePair|...}" shape=record];
+
+    // Relationships
+    TObligationSurfacePair -> TPluginAdapterView_dep [label="has"];
+    TObligationSurfacePair -> TPortView_dep [label="has"];
+
+    TBinding_uses -> TObligationSurfacePair [label="uses for binding"];
+}

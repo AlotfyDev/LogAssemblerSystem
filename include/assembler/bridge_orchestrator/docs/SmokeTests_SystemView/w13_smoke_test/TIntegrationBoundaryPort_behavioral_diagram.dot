@@ -1,0 +1,79 @@
+digraph TIntegrationBoundaryPort_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // CRTP Implementation
+    Start [label="Implement TIntegrationBoundaryPort<TDerived>", shape=ellipse, fillcolor=lightgreen];
+
+    DefineDerived [label="Define Derived Class\nclass TMockPersistenceBoundaryPort final\n    : public TIntegrationBoundaryPort<TMockPersistenceBoundaryPort>", fillcolor=lightblue];
+
+    ImplementMethods [label="Implement Required Methods", fillcolor=lightyellow];
+
+    BoundaryView [label="TIntegrationBoundaryPortView boundary_view() const noexcept\n{\n    return TIntegrationBoundaryPortView::make(\n        descriptor_,\n        \"mock_persistence_boundary_port\",\n        \"ready\",\n        descriptor_.correlation);\n}", fillcolor=lavender];
+
+    BoundaryDescriptor [label="TIntegrationBoundaryDescriptor boundary_descriptor() const noexcept\n{\n    return descriptor_;\n}", fillcolor=lavender];
+
+    BoundaryReadiness [label="TReadinessView boundary_readiness(\n    const TBoundaryHandoffRequest& request) noexcept\n{\n    return TIntegrationBoundaryPolicy::request_readiness(request);\n}", fillcolor=lavender];
+
+    AcceptHandoff [label="TBoundaryHandoffResult accept_boundary_handoff(\n    const TBoundaryHandoffRequest& request) noexcept\n{\n    auto readiness = boundary_readiness(request);\n    if (!readiness.is_ready()) {\n        return TBoundaryHandoffResult::deferred(...);\n    }\n    auto handle = TBoundaryHandoffHandle::make(...);\n    return TBoundaryHandoffResult::accepted(handle);\n}", fillcolor=lavender];
+
+    CompleteHandoff [label="TBoundaryHandoffResult complete_boundary_handoff(\n    const TBoundaryHandoffHandle& handle) noexcept\n{\n    if (!handle.is_valid()) {\n        return TBoundaryHandoffResult::failed(...);\n    }\n    return TBoundaryHandoffResult::completed(handle);\n}", fillcolor=lavender];
+
+    RejectHandoff [label="TBoundaryHandoffResult reject_boundary_handoff(\n    const TBoundaryHandoffRequest& request) noexcept\n{\n    return TBoundaryHandoffResult::rejected(\n        TBridgeError::make(...), request.correlation);\n}", fillcolor=lavender];
+
+    // Compile-time validation
+    CompileValidation [label="Compile-time Validation", fillcolor=orange];
+
+    TraitCheck [label="TIntegrationBoundaryPortTraits<TDerived>::satisfies_required_surface", fillcolor=pink];
+
+    StaticAssert [label="static_assert(\n    TIntegrationBoundaryPortTraits<TMockPersistenceBoundaryPort>::satisfies_required_surface,\n    \"Mock boundary port must satisfy W13 required surface\");", fillcolor=red];
+
+    // Runtime usage
+    RuntimeUsage [label="Runtime Usage in Smoke Test", fillcolor=lightcyan];
+
+    CreatePort [label="TMockPersistenceBoundaryPort port{descriptor};"];
+
+    CallMethods [label="Call CRTP Methods\n• port.boundary_view()\n• port.boundary_descriptor()\n• port.boundary_readiness(request)\n• port.accept_boundary_handoff(request)\n• port.complete_boundary_handoff(handle)\n• port.reject_boundary_handoff(request)"];
+
+    // Flow connections
+    Start -> DefineDerived;
+    DefineDerived -> ImplementMethods;
+
+    ImplementMethods -> BoundaryView;
+    ImplementMethods -> BoundaryDescriptor;
+    ImplementMethods -> BoundaryReadiness;
+    ImplementMethods -> AcceptHandoff;
+    ImplementMethods -> CompleteHandoff;
+    ImplementMethods -> RejectHandoff;
+
+    BoundaryView -> CompileValidation;
+    BoundaryDescriptor -> CompileValidation;
+    BoundaryReadiness -> CompileValidation;
+    AcceptHandoff -> CompileValidation;
+    CompleteHandoff -> CompileValidation;
+    RejectHandoff -> CompileValidation;
+
+    CompileValidation -> TraitCheck;
+    TraitCheck -> StaticAssert;
+
+    StaticAssert -> RuntimeUsage;
+    RuntimeUsage -> CreatePort;
+    CreatePort -> CallMethods;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendDefine [label="Class Definition", fillcolor=lightblue];
+        LegendImplement [label="Method Implementation", fillcolor=lightyellow];
+        LegendMethod [label="Method Code", fillcolor=lavender];
+        LegendValidation [label="Validation", fillcolor=orange];
+        LegendCheck [label="Trait Check", fillcolor=pink];
+        LegendAssert [label="Static Assert", fillcolor=red];
+        LegendUsage [label="Runtime Usage", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryPort_behavioral_diagram.dot

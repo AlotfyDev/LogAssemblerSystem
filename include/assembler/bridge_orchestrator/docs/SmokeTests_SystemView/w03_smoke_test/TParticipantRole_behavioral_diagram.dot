@@ -1,0 +1,42 @@
+digraph TParticipantRole_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in W03 smoke test
+    Start [label="W03 Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    TestProviderRole [label="Test Provider Role Classification\nis_provider_role(content_provider) -> true\nis_provider_role(receiver_provider) -> true\nis_provider_role(governance_provider) -> true", fillcolor=lightgreen]
+
+    TestBoundaryRole [label="Test Boundary Role Classification\nis_boundary_role(receiver_provider) -> true\nis_boundary_role(abi_boundary_provider) -> true\nis_boundary_role(registry_provider) -> true", fillcolor=lightgreen]
+
+    TestObserverRole [label="Test Observer Role Classification\nis_observer_role(diagnostic_observer) -> true\nis_observer_role(bridge_orchestrator) -> false", fillcolor=lightgreen]
+
+    TestExchangeParticipation [label="Test Primary Exchange Participation\nparticipates_in_primary_exchange(content_provider) -> true\nparticipates_in_primary_exchange(host_provider) -> true\nparticipates_in_primary_exchange(receiver_provider) -> true", fillcolor=lightgreen]
+
+    GetRoleStrings [label="Get Role String Representations\nto_string(content_provider) -> \"content_provider\"\nto_string(diagnostic_observer) -> \"diagnostic_observer\"", fillcolor=orange]
+
+    UseInParticipantCreation [label="Used in TParticipant::make()\nRole classification drives participant behavior", fillcolor=yellow]
+
+    End [label="Role validation and classification\ncompleted for all participant types", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> TestProviderRole
+    TestProviderRole -> TestBoundaryRole
+    TestBoundaryRole -> TestObserverRole
+    TestObserverRole -> TestExchangeParticipation
+    TestExchangeParticipation -> GetRoleStrings
+    GetRoleStrings -> UseInParticipantCreation
+    UseInParticipantCreation -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassificationLegend [label="Role Classification Testing", shape=rectangle, fillcolor=lightgreen]
+        StringLegend [label="String Representation", shape=rectangle, fillcolor=orange]
+        UsageLegend [label="Role Usage in Participant Creation", shape=rectangle, fillcolor=yellow]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TParticipantRole_behavioral_diagram.dot

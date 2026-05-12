@@ -1,0 +1,33 @@
+flowchart LR
+    root([Policy Root Node])
+
+    identity["Identity Structure<br/>(policy id, family, version, scope, source)"]
+    clauseA["Clause Node A<br/>(directive / constraint / parameter / fallback)"]
+    clauseB["Clause Node B"]
+    safe["Safe Point Structure<br/>(replacement boundaries / eligibility anchors)"]
+    lifecycle["Lifecycle / State Structure<br/>(state nodes / transition-bearing substructure)"]
+    mech["Realization Mechanism Binding Node"]
+    target["Target-Kind Descriptor (optional)<br/>(dispatcher / moderator / queue bundle agent / ...)"]
+    obs["Observation / Audit Structure<br/>(lightweight by default)"]
+    appl["Applicability Structure (optional)<br/>(often dormant in execution-policy families)"]
+
+    root -->|recognizes / grounds| identity
+    root -->|contains| clauseA
+    root -->|contains| clauseB
+    clauseA -.->|precedence / dependency / override / exclusion| clauseB
+    root -->|replacement structure| safe
+    clauseA -.->|participates in| safe
+    root -->|lifecycle slot| lifecycle
+    root -->|binds| mech
+    mech -.->|expects target kind| target
+    root -->|auditability| obs
+    root -.->|applicability slot| appl
+
+    subgraph invariants["Minimum Structural Invariants"]
+      i1["1 Root"]
+      i2["1 Identity-bearing structure"]
+      i3[">=1 Clause nodes"]
+      i4[">=1 Safe Point nodes"]
+      i5["1 Mechanism Binding node"]
+      i6["1 Observation/Audit structure"]
+    end

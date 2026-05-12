@@ -1,0 +1,17 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // TCorrelationToken (W01 reused in W10)
+    TCorrelationToken [label="{TCorrelationToken | + parts : uint32_t[2]\l|+ from_parts() : TCorrelationToken [static]\l+ is_valid() : bool\l+ invalid() : TCorrelationToken [static]\l+ to_string() : string\l}"];
+
+    // Usage in W10
+    BridgeUsage [label="Used in TBridge for:\n- Tracing execution\n- Error correlation\n- Snapshot correlation", shape=note, fillcolor=lightcoral];
+    SessionUsage [label="Used in TSession for:\n- Session correlation\n- Binding correlation", shape=note, fillcolor=lightgreen];
+    ProtocolUsage [label="Used in TBridgeProtocol for:\n- Protocol correlation\n- Step tracing", shape=note, fillcolor=lightblue];
+
+    TCorrelationToken -> BridgeUsage [label="W10 Bridge correlation"];
+    TCorrelationToken -> SessionUsage [label="W08 Session correlation"];
+    TCorrelationToken -> ProtocolUsage [label="W09 Protocol correlation"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TCorrelationToken_class_diagram.dot

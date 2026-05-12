@@ -1,0 +1,60 @@
+digraph TSessionStatus_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Status values
+    Created [label="CREATED\n- Initial session state\n- Session object created\n- Not yet validated", fillcolor=lightgray, shape=ellipse];
+
+    Open [label="OPEN\n- Session opened successfully\n- Basic validation passed\n- Ready for activation", fillcolor=lightyellow, shape=ellipse];
+
+    Activated [label="ACTIVATED\n- Session fully active\n- Binding execution enabled\n- Processing requests", fillcolor=lightblue, shape=ellipse];
+
+    Completed [label="COMPLETED\n- Session finished successfully\n- All operations complete\n- Terminal state", fillcolor=lightgreen, shape=ellipse];
+
+    Rejected [label="REJECTED\n- Session rejected\n- Validation or binding failed\n- Terminal state", fillcolor=lightcoral, shape=ellipse];
+
+    // Status operations
+    CheckTerminal [label="Check Terminal\nstatus.is_terminal()\n- COMPLETED and REJECTED are terminal\n- No further state transitions allowed", fillcolor=lightyellow];
+
+    CheckActive [label="Check Active\nstatus.is_active()\n- ACTIVATED is active\n- Session can process operations", fillcolor=lightyellow];
+
+    CheckSuccess [label="Check Success\nstatus.is_success()\n- COMPLETED indicates success\n- REJECTED indicates failure", fillcolor=lightyellow];
+
+    ValidateTransition [label="Validate Transition\nstatus.can_transition_to(next)\n- Check allowed state changes\n- Prevent invalid transitions\n- Enforce lifecycle rules", fillcolor=lightyellow];
+
+    // State transitions
+    Created -> Open [label="TSession::open() succeeds"];
+    Open -> Activated [label="TSession::activate() succeeds"];
+    Activated -> Completed [label="TSession::complete() called"];
+
+    // Rejection paths
+    Created -> Rejected [label="TSession::open() fails"];
+    Open -> Rejected [label="TSession::activate() fails"];
+
+    // Usage in session operations
+    CheckTerminal -> Completed [label="For COMPLETED status"];
+    CheckTerminal -> Rejected [label="For REJECTED status"];
+
+    CheckActive -> Activated [label="For ACTIVATED status"];
+
+    CheckSuccess -> Completed [label="For success states"];
+    CheckSuccess -> Rejected [label="For failure states"];
+
+    // Transition validation
+    ValidateTransition -> Created [label="From CREATED to OPEN"];
+    ValidateTransition -> Open [label="From OPEN to ACTIVATED"];
+    ValidateTransition -> Activated [label="From ACTIVATED to COMPLETED"];
+    ValidateTransition -> Rejected [label="To REJECTED from any state"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="W08 Session State Machine";
+        bgcolor=white;
+
+        StateValues [label="Status Values", fillcolor=lightgray];
+        StatusOps [label="Status Operations", fillcolor=lightyellow];
+        NormalFlow [label="Normal Lifecycle", style=solid];
+        ErrorFlow [label="Error/Rejection Path", style=dashed, color=red];
+    }
+}

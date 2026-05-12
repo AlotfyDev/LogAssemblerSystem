@@ -1,0 +1,17 @@
+digraph TCorrelationToken_Behavioral {
+  rankdir=TB;
+  node [shape=box];
+
+  CreateToken [label="TCorrelationToken::from_parts(1u, 2u)"];
+  PortParticipant [label="TParticipant::make(..., token)"];
+  AdapterParticipant [label="TParticipant::make(..., token)"];
+  PortView [label="TPortView::make(..., token)"];
+  AdapterView [label="TPluginAdapterView::make(..., token)"];
+
+  CreateToken -> PortParticipant;
+  CreateToken -> AdapterParticipant;
+  PortParticipant -> PortView;
+  AdapterParticipant -> AdapterView;
+
+  Legend [shape=none, label="TCorrelationToken used as correlation ID in all participants and views"];
+}

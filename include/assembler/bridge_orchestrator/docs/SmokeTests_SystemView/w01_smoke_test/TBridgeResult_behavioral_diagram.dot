@@ -1,0 +1,43 @@
+digraph TBridgeResult_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Bridge Result Creation", shape=ellipse, fillcolor=green]
+
+    CreateResult [label="TBridgeResult::success(token)\nCreates success result with correlation token", fillcolor=yellow]
+
+    CheckSuccess [label="result.succeeded()\nChecks status == success && !error.has_error()\nReturns true", fillcolor=lightgreen]
+
+    ResultValidated [label="Result indicates successful bridge operation", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Bridge operation completed successfully", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    CheckRejected [label="result.rejected()\n(status == rejected)", fillcolor=lightgrey]
+    CheckDeferred [label="result.deferred()\n(status == deferred)", fillcolor=lightgrey]
+    CheckFailed [label="result.failed()\n(status == failed || error.has_error())", fillcolor=lightgrey]
+
+    // Flow
+    Start -> CreateResult
+    CreateResult -> CheckSuccess
+    CheckSuccess -> ResultValidated
+    ResultValidated -> End
+
+    // Alternative flows (shown but not taken)
+    CreateResult -> CheckRejected [style=dashed, color=grey]
+    CreateResult -> CheckDeferred [style=dashed, color=grey]
+    CreateResult -> CheckFailed [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Result Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Status Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

@@ -1,0 +1,69 @@
+digraph C4_W03_CommunicationContext {
+    rankdir=TB
+    node [shape=box, style=filled, fillcolor=lightblue]
+
+    // System Context
+    subgraph cluster_SystemContext {
+        label="System Context"
+        style=filled
+        fillcolor=lightgrey
+
+        ExternalSystems [label="External Systems\n(Log Producers/Consumers)", shape=ellipse, fillcolor=lightgreen]
+        CommunicationContext [label="Communication Context System", shape=box, fillcolor=lightblue]
+    }
+
+    // Containers
+    subgraph cluster_Containers {
+        label="Containers"
+        style=filled
+        fillcolor=lightyellow
+
+        BridgeCore [label="Bridge Core\n(Protocol State)", fillcolor=orange]
+        BridgeCarriers [label="Bridge Carriers\n(Correlation)", fillcolor=orange]
+        ParticipantManagement [label="Participant Management\n(Roles/Descriptors/Views)", fillcolor=orange]
+
+        CommunicationContext -> BridgeCore [label="uses"]
+        CommunicationContext -> BridgeCarriers [label="uses"]
+        CommunicationContext -> ParticipantManagement [label="uses"]
+    }
+
+    // Components within Participant Management
+    subgraph cluster_ParticipantManagement {
+        label="Participant Management Components"
+        style=filled
+        fillcolor=lightcyan
+
+        Correlation [label="Correlation\n(TCorrelationToken)", fillcolor=pink]
+        ProtocolState [label="Protocol State\n(TBridgeStage)", fillcolor=pink]
+        ParticipantRoles [label="Participant Roles\n(TParticipantRole)", fillcolor=pink]
+        ParticipantDescriptors [label="Participant Descriptors\n(TParticipant)", fillcolor=pink]
+        ParticipantViews [label="Participant Views\n(TParticipantView)", fillcolor=pink]
+
+        ParticipantManagement -> Correlation [label="uses"]
+        ParticipantManagement -> ProtocolState [label="uses"]
+        ParticipantManagement -> ParticipantRoles [label="defines"]
+        ParticipantManagement -> ParticipantDescriptors [label="defines"]
+        ParticipantManagement -> ParticipantViews [label="defines"]
+    }
+
+    // Relationships
+    ExternalSystems -> CommunicationContext [label="sends/receives data"]
+    BridgeCore -> BridgeCarriers [label="coordinates"]
+    BridgeCarriers -> ParticipantManagement [label="provides context"]
+    ParticipantDescriptors -> ParticipantRoles [label="classifies"]
+    ParticipantViews -> ParticipantDescriptors [label="projects"]
+    Correlation -> ParticipantDescriptors [label="correlates"]
+    ProtocolState -> ParticipantManagement [label="validates stages"]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        SystemLegend [label="System", shape=box, fillcolor=lightblue]
+        ContainerLegend [label="Container", shape=box, fillcolor=orange]
+        ComponentLegend [label="Component", shape=box, fillcolor=pink]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\w03_c4_diagram.dot

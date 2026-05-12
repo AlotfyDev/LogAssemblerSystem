@@ -1,0 +1,48 @@
+digraph TBoundaryHandoffRequest_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    Request [label="{TBoundaryHandoffRequest\n(Value Type)|• correlation : TCorrelationToken\n• target : TIntegrationBoundaryDescriptor\n• material_kind : string_view\n• material_size_hint : uint64_t\n• requires_ordered_handoff : bool|+ is_valid() : bool\l+ make(token, descriptor, kind, size_hint, ordered) : TBoundaryHandoffRequest\l}", fillcolor=lightcyan];
+
+    // Dependencies
+    Correlation [label="{TCorrelationToken\n(W01 Reused)|• high : uint64_t\n• low : uint64_t|+ is_valid() : bool\l+ invalid() : TCorrelationToken\l+ from_parts(h,l) : TCorrelationToken\l}", fillcolor=lightgray];
+
+    TargetDescriptor [label="{TIntegrationBoundaryDescriptor\n(Target Boundary)|• kind : TIntegrationBoundaryKind\n• direction : TIntegrationBoundaryDirection\n• capability_mask : uint32_t\n• boundary_family : string_view\n• correlation : TCorrelationToken\l}", fillcolor=lavender];
+
+    // Validation logic
+    ValidationLogic [label="{Validation Logic|is_valid() const noexcept {\n    return correlation.is_valid()\n        && target.is_valid()\n        && target.has(TIntegrationBoundaryCapability::accepts_handoff)\n        && !material_kind.empty();\n}|}", shape=note, fillcolor=lightyellow];
+
+    // Factory method
+    FactoryMethod [label="{Factory Method|make(token, descriptor, kind, size_hint = 0u, ordered = false) noexcept {\n    return TBoundaryHandoffRequest{\n        token,\n        descriptor,\n        kind,\n        size_hint,\n        ordered\n    };\n}|}", shape=note, fillcolor=lightgreen];
+
+    // Usage in smoke test
+    SmokeTestUsage [label="{Smoke Test Usage|auto request = TBoundaryHandoffRequest::make(\n    token,\n    descriptor,\n    \"log_level_envelope\",\n    256u,\n    false);\n\nif (!request.is_valid()) {\n    return error;\n}|}", shape=note, fillcolor=pink];
+
+    // Relationships
+    Request -> Correlation [label="uses"];
+    Request -> TargetDescriptor [label="targets"];
+
+    Request -> ValidationLogic [label="validates with"];
+    Request -> FactoryMethod [label="created by"];
+
+    ValidationLogic -> Correlation [label="validates"];
+    ValidationLogic -> TargetDescriptor [label="validates"];
+
+    FactoryMethod -> SmokeTestUsage [label="used in"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendMain [label="Main Component", fillcolor=lightcyan];
+        LegendReused [label="W01 Reused", fillcolor=lightgray];
+        LegendTarget [label="Target Type", fillcolor=lavender];
+        LegendValidation [label="Validation Logic", shape=note, fillcolor=lightyellow];
+        LegendFactory [label="Factory Method", shape=note, fillcolor=lightgreen];
+        LegendUsage [label="Usage Example", shape=note, fillcolor=pink];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffRequest_class_diagram.dot

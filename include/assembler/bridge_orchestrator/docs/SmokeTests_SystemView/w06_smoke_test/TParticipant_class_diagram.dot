@@ -1,0 +1,17 @@
+digraph TParticipant_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W03)
+    TParticipant [label="{TParticipant (W03)|participant_id : uint64_t\nrole : TParticipantRole|+ is_valid() : bool|+ invalid() : TParticipant}"];
+
+    // Dependencies
+    TParticipantRole_dep [label="{TParticipantRole|...}" shape=Mrecord];
+
+    // Used by TChannel
+    TChannel_uses [label="{TChannel|source : TParticipant\ntarget : TParticipant|...}" shape=record];
+
+    // Relationships
+    TParticipant -> TParticipantRole_dep [label="has"];
+    TChannel_uses -> TParticipant [label="uses as source/target"];
+}

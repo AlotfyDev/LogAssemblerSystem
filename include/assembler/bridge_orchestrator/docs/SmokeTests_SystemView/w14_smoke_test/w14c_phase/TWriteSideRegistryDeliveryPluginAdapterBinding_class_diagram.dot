@@ -1,0 +1,39 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main binding class (it's just an aggregate include)
+    Binding [label="{TWriteSideRegistryDeliveryPluginAdapterBinding|+ ASCC_W14C_WRITE_SIDE_REGISTRY_DELIVERY_PLUGIN_ADAPTER_AVAILABLE : bool\l|+ aggregate include only\l|+ no runtime behavior\l}", fillcolor=lightsalmon, style=filled];
+
+    // Included components
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|concrete adapter implementation\limplements TPluginAdapter\l}", fillcolor=lightblue];
+    Factory [label="{TWriteSideRegistryDeliveryPluginAdapterFactory|+ from_descriptor()\l+ from_fields()\l}", fillcolor=lightblue];
+    MaterialDescriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|+ correlation : TCorrelationToken\l+ material_id : string_view\l+ material_kind : string_view\l+ material_size_hint : uint64_t\l+ requires_ordered_delivery : bool\l+ registry_boundary : TIntegrationBoundaryDescriptor\l|+ is_valid()\l+ destination_family()\l+ make()\l+ default_log_level_envelope()\l}", fillcolor=lightblue];
+    Config [label="{TWriteSideRegistryDeliveryPluginAdapterConfig|+ adapter_id : uint64_t\l+ participant_id : uint64_t\l+ participant_domain : string_view\l+ participant_family : string_view\l+ display_names : string_view\l+ requested_destination_family : string_view\l+ allow_ordered_delivery : bool\l+ emit_boundary_handoff_requests : bool\l|+ is_valid()\l+ defaults()\l}", fillcolor=lightblue];
+    State [label="{TWriteSideRegistryDeliveryPluginAdapterState|+ accepted_placement_handle : TPlacementHandle\l+ load_signal_emitted : bool\l+ accepted_boundary_handle : TBoundaryHandoffHandle\l+ boundary_handoff_completed : bool\l|+ has_accepted_placement_handle()\l+ accept_placement_handle()\l+ mark_load_signal_emitted()\l+ accept_boundary_handoff()\l+ complete_boundary_handoff()\l+ reset()\l}", fillcolor=lightblue];
+    ViewBuilder [label="{TWriteSideRegistryDeliveryPluginAdapterViewBuilder|+ participant()\l+ delivery_content_provider_profile()\l+ view()\l}", fillcolor=lightblue];
+    ReadinessPolicy [label="{TWriteSideRegistryDeliveryReadinessPolicy|+ descriptor_is_ready()\l+ readiness()\l}", fillcolor=lightblue];
+
+    // Relationships
+    Binding -> Adapter [label="aggregates"];
+    Binding -> Factory [label="aggregates"];
+    Binding -> MaterialDescriptor [label="aggregates"];
+    Binding -> Config [label="aggregates"];
+    Binding -> State [label="aggregates"];
+    Binding -> ViewBuilder [label="aggregates"];
+    Binding -> ReadinessPolicy [label="aggregates"];
+
+    // Dependencies on external components
+    Adapter -> MaterialDescriptor [label="uses"];
+    Adapter -> Config [label="uses"];
+    Adapter -> State [label="manages"];
+
+    ViewBuilder -> Config [label="uses"];
+    ReadinessPolicy -> MaterialDescriptor [label="validates"];
+    ReadinessPolicy -> Config [label="validates"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterBinding Class Structure";
+    labelloc=t;
+}

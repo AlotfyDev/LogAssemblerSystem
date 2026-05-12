@@ -1,0 +1,38 @@
+digraph TBridgeProtocolState_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main struct
+    TBridgeProtocolState [label="{TBridgeProtocolState|correlation : TCorrelationToken\l current_stage : TBridgeStage\l previous_stage : TBridgeStage\l terminal_state : TBridgeTerminalState\l result : TBridgeResult\l error : TBridgeError\l|+ is_terminal() : bool\l+ has_error() : bool\l+ can_transition() : bool\l+ snapshot(protocol_family) : TBridgeProtocolSnapshot\l+ apply_transition(transition) : bool\l+ complete(result) : void\l+ start(token) : TBridgeProtocolState\l}"]
+
+    // Dependencies
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightcyan]
+    TBridgeStage [label="TBridgeStage", shape=record, fillcolor=lightcyan]
+    TBridgeTerminalState [label="TBridgeTerminalState", shape=record, fillcolor=lightcyan]
+    TBridgeResult [label="TBridgeResult", shape=record, fillcolor=lightcyan]
+    TBridgeError [label="TBridgeError", shape=record, fillcolor=lightcyan]
+    TBridgeTransition [label="TBridgeTransition", shape=record, fillcolor=lightcyan]
+    TBridgeProtocolSnapshot [label="TBridgeProtocolSnapshot", shape=record, fillcolor=lightcyan]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    TBridgeProtocolState -> TCorrelationToken [label="uses", style=dashed]
+    TBridgeProtocolState -> TBridgeStage [label="uses", style=dashed]
+    TBridgeProtocolState -> TBridgeTerminalState [label="uses", style=dashed]
+    TBridgeProtocolState -> TBridgeResult [label="uses", style=dashed]
+    TBridgeProtocolState -> TBridgeError [label="uses", style=dashed]
+    TBridgeProtocolState -> TBridgeTransition [label="uses", style=dashed]
+    TBridgeProtocolState -> TBridgeProtocolSnapshot [label="returns", style=dashed]
+    TBridgeProtocolState -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        StructLegend [label="Struct", shape=record, fillcolor=lightblue]
+        ComponentLegend [label="Component", shape=record, fillcolor=lightcyan]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

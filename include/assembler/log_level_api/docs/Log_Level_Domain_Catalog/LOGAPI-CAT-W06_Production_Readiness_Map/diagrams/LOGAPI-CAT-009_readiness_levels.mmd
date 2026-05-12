@@ -1,0 +1,18 @@
+flowchart LR
+    A["Compile-Ready"]
+    B["Smoke-Ready"]
+    C["Contract-Ready"]
+    D["Catalog-Ready"]
+    E["Production-Runtime-Ready"]
+
+    A --> B --> C --> D --> E
+
+    A:::yes
+    B:::yes
+    C:::yes
+    D:::partial
+    E:::no
+
+    classDef yes fill:#d6f5d6,stroke:#248f24,color:#000
+    classDef partial fill:#fff2cc,stroke:#d6a300,color:#000
+    classDef no fill:#f8d7da,stroke:#b02a37,color:#000

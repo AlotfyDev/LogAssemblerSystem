@@ -1,0 +1,75 @@
+digraph W14A_C4_Architecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+
+    // Context Level - W14A Log Level API Envelope Plugin Adapter Binding
+    subgraph cluster_context {
+        label="W14A Log Level API Envelope Plugin Adapter Binding Context";
+        style=filled;
+        fillcolor=lightgray;
+
+        // Main Components
+        TLogLevelAPIEnvelopePluginAdapterBinding [label="TLogLevelAPIEnvelopePluginAdapterBinding\n(Aggregate Include)\nNew W14A"];
+
+        TLogLevelAPIEnvelopePluginAdapter [label="TLogLevelAPIEnvelopePluginAdapter\n(Concrete Adapter)\nNew W14A"];
+
+        TLogLevelAPIEnvelopePluginAdapterFactory [label="TLogLevelAPIEnvelopePluginAdapterFactory\n(Factory)\nNew W14A"];
+    }
+
+    // Container Level - Dependencies
+    subgraph cluster_containers {
+        label="Dependencies";
+        style=filled;
+        fillcolor=lightyellow;
+
+        // W05 Plugin Adapter Obligations
+        TPluginAdapterObligationTraits [label="TPluginAdapterObligationTraits\n(Reused W05)\nObligation Surface"];
+
+        // W10 Bridge Core
+        TBridgeCore [label="TBridgeCore\n(Reused W10)\nBridge Surface"];
+
+        // W01 Primitive Carriers
+        subgraph cluster_carriers {
+            label="W01 Primitive Carriers";
+            TCorrelationToken [label="TCorrelationToken"];
+            TPlacementHandle [label="TPlacementHandle"];
+            TPlacementRequest [label="TPlacementRequest"];
+            TLoadSignal [label="TLoadSignal"];
+            TNextDestinationRequest [label="TNextDestinationRequest"];
+            TNextDestinationReason [label="TNextDestinationReason"];
+        }
+    }
+
+    // Relationships
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapter [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapterFactory [label="includes"];
+
+    TLogLevelAPIEnvelopePluginAdapter -> TPluginAdapterObligationTraits [label="satisfies\nW05 obligations"];
+    TLogLevelAPIEnvelopePluginAdapter -> TBridgeCore [label="compatible with\nW10 bridge"];
+
+    TLogLevelAPIEnvelopePluginAdapter -> TCorrelationToken [label="uses"];
+    TLogLevelAPIEnvelopePluginAdapter -> TPlacementHandle [label="accepts"];
+    TLogLevelAPIEnvelopePluginAdapter -> TPlacementRequest [label="prepares"];
+    TLogLevelAPIEnvelopePluginAdapter -> TLoadSignal [label="emits"];
+    TLogLevelAPIEnvelopePluginAdapter -> TNextDestinationRequest [label="generates"];
+
+    TLogLevelAPIEnvelopePluginAdapterFactory -> TLogLevelAPIEnvelopePluginAdapter [label="creates"];
+
+    // Smoke Test Usage
+    smoketest [label="W14a Smoke Test\n(validates integration)", shape=ellipse, fillcolor=lightgreen];
+    smoketest -> TLogLevelAPIEnvelopePluginAdapterBinding [label="includes"];
+    smoketest -> TPluginAdapterObligationTraits [label="validates"];
+    smoketest -> TBridgeCore [label="checks availability"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        new_comp [label="New W14A Component", fillcolor=lightblue];
+        reused_comp [label="Reused Component", fillcolor=lightyellow];
+        smoke_test [label="Smoke Test", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\w14a_c4_diagram.dot

@@ -1,0 +1,4 @@
+WAVE_MANIFEST.json
+diagrams/LOGAPI-CAT-008_extension_roadmap.mmd
+diagrams/LOGAPI-CAT-008_gap_priority_matrix.mmd
+docs/LOGAPI-CAT-008_Gap_Matrix_And_Logical_Extensions.md

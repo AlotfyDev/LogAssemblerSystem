@@ -1,0 +1,48 @@
+digraph Holistic_Behavioral_W05 {
+  rankdir=TB;
+  node [shape=rectangle, style=rounded];
+
+  // Start
+  Start [label="Start W05 Smoke Test"];
+
+  // Adapter Flow
+  AdapterReadiness [label="Adapter.readiness()\nCheck if ready"];
+  PrepareRequest [label="Adapter.prepare_placement_request()\nCreate placement request"];
+  AcceptHandle [label="Adapter.accept_placement_handle()\nAccept placement handle"];
+  EmitLoadSignal [label="Adapter.emit_load_signal()\nEmit load completed signal"];
+  NextDestinationReq [label="Adapter.next_destination_request()\nRequest next destination"];
+
+  // Port Flow
+  PortReadiness [label="Port.readiness(request)\nCheck port readiness"];
+  Admit [label="Port.admit(request)\nAdmit placement"];
+  PlacementHandle [label="Port.placement_handle(request)\nCreate placement handle"];
+  ReceiveLoadSignal [label="Port.receive_load_signal(signal)\nReceive load signal"];
+  NextDestination [label="Port.next_destination(request)\nHandle next destination"];
+
+  // Pair Creation
+  CreatePair [label="TObligationSurfacePair::make()\nCreate surface pair"];
+  CheckSupport [label="Pair.supports_primary_placement_flow()\nCheck compatibility"];
+  Report [label="Pair.report_primary_placement_support()\nGenerate satisfaction report"];
+
+  // End
+  End [label="End Test\nReturn 0"];
+
+  // Flow
+  Start -> AdapterReadiness;
+  AdapterReadiness -> PrepareRequest;
+  PrepareRequest -> PortReadiness;
+  PortReadiness -> Admit;
+  Admit -> PlacementHandle;
+  PlacementHandle -> AcceptHandle;
+  AcceptHandle -> EmitLoadSignal;
+  EmitLoadSignal -> ReceiveLoadSignal;
+  ReceiveLoadSignal -> NextDestinationReq;
+  NextDestinationReq -> NextDestination;
+  NextDestination -> CreatePair;
+  CreatePair -> CheckSupport;
+  CheckSupport -> Report;
+  Report -> End;
+
+  // Legend
+  Legend [shape=none, label="Primary Placement Flow:\nreadiness → request → admission → handle → load signal → next destination"];
+}

@@ -1,0 +1,17 @@
+digraph TBridgeError_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component (W01 reused)
+    BridgeError [label="{TBridgeError\n(W01 Reused Value Type)|• code : TBridgeErrorCode\n• message : string_view|+ make(code, message) : TBridgeError\l}", fillcolor=lightgray];
+
+    // Error code enum
+    BridgeErrorCode [label="{TBridgeErrorCode\n(W01 Reused Enum)|• success\n• admission_rejected\n• admission_deferred\n• handle_unavailable\n• incompatible_carrier\n• ... (other codes)\l}", fillcolor=lavender];
+
+    // Factory method
+    MakeFactory [label="{make(code, message)\nCreates error with code and message}", shape=note, fillcolor=lightgreen];
+
+    // W13 usage
+    W13Usage [label="{W13 Usage|• Rejection errors in results\n• Deferral reasons\n• Failure diagnostics\l}", shape=note, fillcolor=pink];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBridgeError_class_diagram.dot

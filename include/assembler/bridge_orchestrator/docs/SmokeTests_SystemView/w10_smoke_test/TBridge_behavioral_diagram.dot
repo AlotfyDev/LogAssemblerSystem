@@ -1,0 +1,80 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // States
+    subgraph cluster_states {
+        label="Bridge States";
+        color=blue;
+
+        UNKNOWN [label="unknown\nInitial state"];
+        DECLARED [label="declared\nAfter validation"];
+        READY [label="ready\nProtocol ready + budget available"];
+        RUNNING [label="running\nExecuting steps"];
+        COMPLETED [label="completed\nProtocol finished successfully"];
+        REJECTED [label="rejected\nInvalid configuration"];
+        FAILED [label="failed\nExecution error"];
+        EXHAUSTED [label="exhausted\nBudget depleted"];
+        CANCELLED [label="cancelled\nManually stopped"];
+    }
+
+    // Declaration Flow
+    DECLARE_START [label="TBridge::declare()", shape=oval];
+    VALIDATE_PARAMS [label="Validate parameters\n- bridge_id valid\n- config valid\n- protocol ready"];
+    POLICY_CHECK [label="TBridgeCorePolicy::check_declaration()\n- Comprehensive validation"];
+    CREATE_BRIDGE [label="Create TBridge instance\n- Set status to ready/rejected"];
+    DECLARE_END [label="Return TBridge", shape=oval];
+
+    // Execution Flow
+    EXECUTE_START [label="step_model_once()", shape=oval];
+    VALIDATE_STATE [label="Validate bridge state\n- is_valid()\n- not terminal"];
+    CHECK_BUDGET [label="Check budget\n- budget.exhausted()"];
+    CONSUME_STEP [label="Consume step\n- budget.consume_one()"];
+    UPDATE_STATUS [label="Update status\n- ready → running"];
+    ADVANCE_PROTOCOL [label="Advance protocol\n- protocol.advance_model_step()"];
+    HANDLE_RESULT [label="Handle protocol result\n- failed: set failed\n- rejected: set rejected\n- completed: set completed\n- else: continue"];
+    RETURN_RESULT [label="Return result", shape=oval];
+
+    // Terminal Run Flow
+    TERMINAL_START [label="run_model_to_terminal()", shape=oval];
+    LOOP_CHECK [label="While not terminal\nand not budget exhausted"];
+    STEP_EXECUTE [label="Execute step_model_once()"];
+    CHECK_TERMINAL [label="Check terminal state"];
+    RETURN_FINAL [label="Return final result", shape=oval];
+
+    // Transitions
+    DECLARE_START -> VALIDATE_PARAMS;
+    VALIDATE_PARAMS -> POLICY_CHECK;
+    POLICY_CHECK -> CREATE_BRIDGE;
+    CREATE_BRIDGE -> DECLARE_END;
+
+    EXECUTE_START -> VALIDATE_STATE;
+    VALIDATE_STATE -> CHECK_BUDGET;
+    CHECK_BUDGET -> CONSUME_STEP;
+    CONSUME_STEP -> UPDATE_STATUS;
+    UPDATE_STATUS -> ADVANCE_PROTOCOL;
+    ADVANCE_PROTOCOL -> HANDLE_RESULT;
+    HANDLE_RESULT -> RETURN_RESULT;
+
+    TERMINAL_START -> LOOP_CHECK;
+    LOOP_CHECK -> STEP_EXECUTE [label="not terminal"];
+    STEP_EXECUTE -> LOOP_CHECK;
+    LOOP_CHECK -> CHECK_TERMINAL [label="terminal"];
+    CHECK_TERMINAL -> RETURN_FINAL;
+
+    // State transitions
+    edge [style=dotted, color=blue];
+    DECLARED -> READY [label="validation passed"];
+    READY -> RUNNING [label="step execution"];
+    RUNNING -> COMPLETED [label="protocol completed"];
+    RUNNING -> FAILED [label="protocol failed"];
+    RUNNING -> REJECTED [label="protocol rejected"];
+    RUNNING -> EXHAUSTED [label="budget exhausted"];
+
+    // Key methods
+    VALIDATE_STATE -> UNKNOWN [label="invalid → unknown", style=dashed];
+    POLICY_CHECK -> REJECTED [label="validation failed", style=dashed];
+    CHECK_BUDGET -> EXHAUSTED [label="budget exhausted", style=dashed];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridge_behavioral_diagram.dot

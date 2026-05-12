@@ -1,0 +1,45 @@
+digraph TParticipantView_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in W03 smoke test
+    Start [label="W03 Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateParticipant [label="Create Source Participant\nTParticipant::make(42u, content_provider,\n\"log_domain\", \"family_a\", \"Logger-1\", token)", fillcolor=yellow]
+
+    CreateParticipantView [label="Create Participant View\nfrom Participant\nTParticipantView::from_participant(participant)", fillcolor=yellow]
+
+    ValidateView [label="Validate Participant View\nview.is_valid() -> true\nview.is_provider() -> true\nview.participates_in_exchange() -> true", fillcolor=lightgreen]
+
+    TestViewImmutability [label="Test View Immutability\nView is read-only projection of participant data\nNo mutation methods available", fillcolor=orange]
+
+    TestViewConsistency [label="Test View-Participant Consistency\nview.participant_id == participant.participant_id\nview.role == participant.role\nview.correlation == participant.correlation", fillcolor=lightgreen]
+
+    CreateInvalidView [label="Create Invalid View\nTParticipantView::invalid()\nCreates view with valid=false", fillcolor=yellow]
+
+    TestInvalidView [label="Test Invalid View\ninvalid_view.is_valid() -> false\nAll classification methods return false", fillcolor=lightgreen]
+
+    End [label="Participant view validation\nand immutability testing completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateParticipant
+    CreateParticipant -> CreateParticipantView
+    CreateParticipantView -> ValidateView
+    ValidateView -> TestViewImmutability
+    TestViewImmutability -> TestViewConsistency
+    TestViewConsistency -> CreateInvalidView
+    CreateInvalidView -> TestInvalidView
+    TestInvalidView -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation and Consistency", shape=rectangle, fillcolor=lightgreen]
+        ImmutabilityLegend [label="Immutability Testing", shape=rectangle, fillcolor=orange]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TParticipantView_behavioral_diagram.dot

@@ -1,0 +1,20 @@
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Configured
+    Configured --> ContentReceived
+    ContentReceived --> Parsed
+    Parsed --> MetadataPrepared
+    MetadataPrepared --> TimestampStabilized
+    TimestampStabilized --> EnvelopeShaped
+    EnvelopeShaped --> EnvelopeExposed
+    EnvelopeExposed --> HandoffContractAccepted
+    HandoffContractAccepted --> SmokeIntegrated
+    SmokeIntegrated --> Diagnosed
+    Diagnosed --> Compliant
+    Compliant --> ProductionReady
+    ProductionReady --> [*]
+
+    ContentReceived --> Rejected: missing content
+    Parsed --> Rejected: parse failed
+    EnvelopeShaped --> Rejected: incomplete envelope
+    HandoffContractAccepted --> Rejected: contract rejected

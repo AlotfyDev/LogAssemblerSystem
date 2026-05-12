@@ -1,0 +1,17 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    CREATE_ID [label="TBridgeId::from_value(id)"];
+    VALIDATE_ID [label="id.is_valid()"];
+    USE_IN_BRIDGE [label="TBridge::declare(id, ...)\n- Bridge identity"];
+    INVALID_ID [label="TBridgeId::invalid()\n- Invalid bridge ID"];
+
+    CREATE_ID -> VALIDATE_ID;
+    VALIDATE_ID -> USE_IN_BRIDGE [label="valid"];
+    VALIDATE_ID -> INVALID_ID [label="invalid"];
+
+    REJECTION [label="Bridge rejection\nif invalid ID", fillcolor=red];
+    INVALID_ID -> REJECTION;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeId_behavioral_diagram.dot

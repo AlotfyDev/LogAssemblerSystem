@@ -1,0 +1,25 @@
+digraph TChannel_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TChannel Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateChannel [label="Create Channel\nTChannel::make(1u, participant, policy)\nCreates channel with ID, participant, and policy", fillcolor=yellow]
+
+    ValidateChannel [label="Validate Channel\nchannel.is_valid()\nChecks id, participant, policy validity\nReturns true", fillcolor=lightgreen]
+
+    RegisterInRegistry [label="Register in Channel Registry\nchannel_registry.register_channel(channel)\nChannel stored in bounded registry\nReturns true", fillcolor=orange]
+
+    UseInBindingCreation [label="Use in Binding Creation\nPassed to TBinding::make() as channel reference\nEstablishes binding channel", fillcolor=orange]
+
+    LookupOperations [label="Registry Lookup Operations\nchannel_registry.contains(channel.channel_id)\nchannel_registry.find(channel.channel_id)\nReturns registered channel data", fillcolor=lightcyan]
+
+    End [label="Channel established\nand registered", shape=ellipse, fillcolor=red]
+
+    Start -> CreateChannel
+    CreateChannel -> ValidateChannel
+    ValidateChannel -> RegisterInRegistry
+    RegisterInRegistry -> UseInBindingCreation
+    UseInBindingCreation -> LookupOperations
+    LookupOperations -> End
+}

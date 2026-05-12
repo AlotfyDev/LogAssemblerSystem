@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_readside_w04/cme_readside_adapter_contracts_full_aggregate_probe.cpp,passed,0,0
+tests_readside_w04/cme_readside_adapter_contracts_negative_test.cpp,passed,0,0
+tests_readside_w04/cme_readside_adapter_contracts_test.cpp,passed,0,0

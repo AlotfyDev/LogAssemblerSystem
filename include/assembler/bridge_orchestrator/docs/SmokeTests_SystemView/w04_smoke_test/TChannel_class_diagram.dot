@@ -1,0 +1,47 @@
+digraph TChannel_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main struct
+    TChannel [label="{TChannel|std::uint64_t channel_id;\nTParticipant source;\nTParticipant target;\nTChannelProfile profile;\nTChannelBindingPolicy binding_policy;\nTChannelStatus status;\nTCorrelationToken correlation;\nstd::string_view channel_name;|+ has_valid_identity() const noexcept\n+ has_valid_participants() const noexcept\n+ has_compatible_roles() const noexcept\n+ is_declared() const noexcept\n+ is_active() const noexcept\n+ is_valid() const noexcept\n+ source_view() const noexcept\n+ target_view() const noexcept\n+ declare(...) static constexpr}"];
+
+    // Enums
+    TChannelStatus [label="{TChannelStatus|unknown\ndeclared\nactive\nsuspended\nretired}"];
+
+    // Views
+    TParticipantView [label="{TParticipantView|participant_id;\nrole;\ndomain;\nfamily;\ndisplay_name;\ncorrelation;\nvalid;|+ is_valid() const noexcept\n+ is_provider() const noexcept\n+ is_boundary() const noexcept\n+ participates_in_exchange() const noexcept\n+ from_participant(participant) static constexpr}"];
+
+    // String conversion helpers
+    to_string_status [label="{to_string(TChannelStatus)|constexpr std::string_view}"];
+
+    // Dependencies
+    TChannel -> TParticipant [label="source field"];
+    TChannel -> TParticipant [label="target field"];
+    TChannel -> TChannelProfile [label="profile field"];
+    TChannel -> TChannelBindingPolicy [label="binding_policy field"];
+    TChannel -> TChannelStatus [label="status field"];
+    TChannel -> TCorrelationToken [label="correlation field"];
+
+    TChannel -> TParticipantView [label="view creation"];
+    TParticipantView -> TParticipant [label="created from"];
+
+    to_string_status -> TChannelStatus [label="converts"];
+
+    // Invisible positioning
+    TParticipant [shape=plaintext, label="TParticipant"];
+    TChannelProfile [shape=plaintext, label="TChannelProfile"];
+    TChannelBindingPolicy [shape=plaintext, label="TChannelBindingPolicy"];
+    TCorrelationToken [shape=plaintext, label="TCorrelationToken"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TChannel Structure";
+        color=white;
+        style=filled;
+
+        legend_data [label="Data Members", shape=rectangle, fillcolor=lightblue];
+        legend_enums [label="Enumerations", shape=rectangle, fillcolor=lightyellow];
+        legend_views [label="View Projections", shape=rectangle, fillcolor=lightgreen];
+        legend_w04 [label="W04 Integration", shape=plaintext];
+    }
+}

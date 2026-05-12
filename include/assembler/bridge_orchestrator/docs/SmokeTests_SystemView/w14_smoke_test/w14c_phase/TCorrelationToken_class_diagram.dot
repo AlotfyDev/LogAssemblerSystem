@@ -1,0 +1,24 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Correlation token (W01 component)
+    CorrelationToken [label="{TCorrelationToken (W01)|correlation tracking across operations\lused for request/response matching\l+ is_valid() const\l+ invalid() static\l+ make() static\l}", fillcolor=lightgreen, style=filled];
+
+    // Usage in W14C
+    MaterialDescriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|contains correlation token\lused for all adapter operations\l}", fillcolor=lightsalmon];
+    PlacementRequest [label="{TPlacementRequest|uses correlation for placement\lmatches requests to responses\l}", fillcolor=lightblue];
+    BoundaryHandoffRequest [label="{TBoundaryHandoffRequest|uses correlation for handoff\lmatches handoff to results\l}", fillcolor=lightblue];
+    BridgeResult [label="{TBridgeResult|includes correlation in results\lallows tracking operation outcomes\l}", fillcolor=lightblue];
+
+    // Relationships
+    MaterialDescriptor -> CorrelationToken [label="contains"];
+    PlacementRequest -> CorrelationToken [label="uses"];
+    BoundaryHandoffRequest -> CorrelationToken [label="uses"];
+    BridgeResult -> CorrelationToken [label="includes"];
+
+    // Title
+    label="TCorrelationToken (W01) Class Structure and W14C Usage";
+    labelloc=t;
+}

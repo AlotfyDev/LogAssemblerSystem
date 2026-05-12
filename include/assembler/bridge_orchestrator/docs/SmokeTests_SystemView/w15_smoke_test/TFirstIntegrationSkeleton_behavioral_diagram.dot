@@ -1,0 +1,80 @@
+digraph TFirstIntegrationSkeleton_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage sequence
+    CreateSkeleton [label="Create TFirstIntegrationSkeleton\n- constructed via factory with config and correlation token\n- stores config and correlation for integration execution"];
+
+    ConfigValidation [label="Configuration Validation:\n- config.is_valid() checks all IDs, names, limits\n- returns failure report if config invalid"];
+
+    ComponentCreation [label="Component Creation:\n1. TLogLevelAPIEnvelopePluginAdapterFactory::from_fields()\n   - creates adapter with correlation, envelope_id, payload_size_hint\n2. TWriteSideEnvelopePlacementPortFactory::make_default()\n   - creates port with default configuration"];
+
+    ViewValidation [label="View Validation:\n1. adapter.view().is_valid() - validates adapter view\n2. port.view().is_valid() - validates port view\n- returns failure if either view invalid"];
+
+    ModelDeclaration [label="Model Declaration Phase:\n1. declare_channel() - creates channel with participants\n2. make_surface_pair() - pairs adapter and port views\n3. declare_binding() - proposes binding with compatibility\n4. open_session() - opens communication session\n5. declare_protocol() - creates envelope placement protocol\n6. declare_bridge() - creates bridge with bounded execution"];
+
+    ModelValidation [label="Model Validation:\n- validates channel, surface_pair, binding, session\n- validates protocol and bridge readiness\n- returns failure if any component not ready"];
+
+    BridgeExecution [label="Bridge Model Execution:\n- bridge.run_model_to_terminal() executes to completion\n- validates bridge_model_result.completed()\n- returns failure if model execution fails"];
+
+    AdapterReadiness [label="Adapter Readiness Check:\n- adapter.readiness().is_ready() for placement flow\n- returns failure if adapter not ready"];
+
+    PlacementFlow [label="Placement Flow:\n1. adapter.prepare_placement_request() - creates request\n2. port.readiness(request).is_ready() - checks port readiness\n3. port.admit(request) - executes admission\n4. port.placement_handle(request) - gets placement handle"];
+
+    HandleExchange [label="Handle Exchange:\n1. adapter.accept_placement_handle() - accepts handle\n2. validates handle acceptance succeeded"];
+
+    LoadSignalExchange [label="Load Signal Exchange:\n1. adapter.emit_load_signal() - emits completion signal\n2. port.receive_load_signal() - receives and processes signal"];
+
+    NextDestinationExchange [label="Next Destination Exchange:\n1. adapter.next_destination_request() - requests routing\n2. port.next_destination() - executes destination processing"];
+
+    ReportGeneration [label="Report Generation:\n- collects all validation results into TFirstIntegrationSkeletonReport\n- sets model_succeeded(), flow_succeeded(), succeeded() flags\n- includes failure notes for debugging"];
+
+    // Flow connections
+    CreateSkeleton -> ConfigValidation;
+    ConfigValidation -> ComponentCreation [label="config valid"];
+    ConfigValidation -> ReportGeneration [label="config invalid"];
+
+    ComponentCreation -> ViewValidation;
+    ViewValidation -> ModelDeclaration [label="views valid"];
+    ViewValidation -> ReportGeneration [label="views invalid"];
+
+    ModelDeclaration -> ModelValidation;
+    ModelValidation -> BridgeExecution [label="model valid"];
+    ModelValidation -> ReportGeneration [label="model invalid"];
+
+    BridgeExecution -> AdapterReadiness [label="bridge completed"];
+    BridgeExecution -> ReportGeneration [label="bridge failed"];
+
+    AdapterReadiness -> PlacementFlow [label="adapter ready"];
+    AdapterReadiness -> ReportGeneration [label="adapter not ready"];
+
+    PlacementFlow -> HandleExchange;
+    HandleExchange -> LoadSignalExchange;
+    LoadSignalExchange -> NextDestinationExchange;
+    NextDestinationExchange -> ReportGeneration;
+
+    // Styling by lifecycle phase
+    CreateSkeleton [fillcolor=lightblue];
+    ConfigValidation [fillcolor=lightblue];
+    ComponentCreation [fillcolor=lightblue];
+
+    ViewValidation [fillcolor=lightyellow];
+    ModelDeclaration [fillcolor=lightyellow];
+    ModelValidation [fillcolor=lightyellow];
+
+    BridgeExecution [fillcolor=lightsalmon];
+
+    AdapterReadiness [fillcolor=lightgreen];
+    PlacementFlow [fillcolor=lightgreen];
+    HandleExchange [fillcolor=lightgreen];
+    LoadSignalExchange [fillcolor=lightgreen];
+    NextDestinationExchange [fillcolor=lightgreen];
+
+    ReportGeneration [fillcolor=lightgray];
+
+    // Title
+    label="TFirstIntegrationSkeleton Usage in W15 Smoke Test";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeleton_behavioral_diagram.dot

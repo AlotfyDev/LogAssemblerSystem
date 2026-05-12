@@ -1,0 +1,39 @@
+digraph TBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=white];
+
+    // W07 usage focus: binding proposal and evaluation
+    propose_binding [label="TBinding::propose()\n1. Create TBinding with provided parameters\n2. Evaluate compatibility using TBindingCompatibilityReport::evaluate()\n3. Set status based on compatibility result\n4. Return constructed binding", fillcolor=palegreen];
+
+    check_compatibility [label="is_compatible()\nReturn is_valid() && compatibility.is_compatible() && status indicates compatibility", fillcolor=lightcyan];
+
+    get_binding_view [label="view()\nReturn TBindingView constructed from binding fields", fillcolor=lightcyan];
+
+    // W07 evaluation context
+    evaluator_evaluation [label="TCompatibilityEvaluator Usage\n1. evaluate_strict_binding() uses binding.view()\n2. is_strictly_compatible() checks binding.is_compatible()\n3. view_strict_binding() uses binding.view() for TCompatibilityView", fillcolor=palegreen, shape=box];
+
+    // Valid scenarios in W07
+    valid_binding_creation [label="Valid Binding Creation\n- Compatible channel and surface pair\n- Valid binding profile\n- Compatibility evaluation passes\n- Status set to compatible", fillcolor=lightgreen];
+
+    invalid_binding_creation [label="Invalid Binding Creation\n- Incompatible channel/surface pair\n- Invalid parameters\n- Compatibility evaluation fails\n- Status set to incompatible", fillcolor=red];
+
+    // Flow
+    propose_binding -> check_compatibility [label="enables"];
+    propose_binding -> get_binding_view [label="enables"];
+
+    check_compatibility -> evaluator_evaluation [label="used by"];
+    get_binding_view -> evaluator_evaluation [label="used by"];
+
+    propose_binding -> valid_binding_creation [label="when valid"];
+    propose_binding -> invalid_binding_creation [label="when invalid"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        MainOp [label="Main Operation (propose)", fillcolor=palegreen];
+        QueryOp [label="Query Operation", fillcolor=lightcyan];
+        Usage [label="W07 Evaluator Usage", shape=box, fillcolor=palegreen];
+        Valid [label="Valid Scenario", fillcolor=lightgreen];
+        Invalid [label="Invalid Scenario", fillcolor=red];
+    }
+}

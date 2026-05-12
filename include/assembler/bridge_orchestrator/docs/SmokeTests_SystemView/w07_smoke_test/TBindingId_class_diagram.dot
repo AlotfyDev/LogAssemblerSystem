@@ -1,0 +1,12 @@
+digraph TBindingId_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    TBindingId [label="{TBindingId (W06 - Reused)|value : uint64_t|+ is_valid() : bool\n+ invalid() : TBindingId\n+ from_value(v) : TBindingId|Opaque binding identity}"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W06", fillcolor=lightyellow];
+    }
+}

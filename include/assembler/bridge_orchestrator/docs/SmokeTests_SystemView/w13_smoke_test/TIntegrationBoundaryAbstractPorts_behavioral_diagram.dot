@@ -1,0 +1,84 @@
+digraph TIntegrationBoundaryAbstractPorts_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Main workflow
+    IncludeAggregate [label="#include TIntegrationBoundaryAbstractPorts.hpp", fillcolor=lightcyan];
+
+    CheckAvailability [label="Check ASCC_W13_INTEGRATION_BOUNDARY_ABSTRACT_PORTS_AVAILABLE", fillcolor=lightgreen];
+
+    AccessComponents [label="Access W13 Components Through Aggregate Include", fillcolor=lightblue];
+
+    // Component access paths
+    subgraph cluster_ComponentAccess {
+        label="Component Access Paths";
+        style=filled;
+        fillcolor=lavender;
+
+        CreateDescriptor [label="TIntegrationBoundaryDescriptor::persistence(token)"];
+        CreateView [label="TIntegrationBoundaryPortView::make(descriptor, name)"];
+        CreateRequest [label="TBoundaryHandoffRequest::make(token, descriptor, kind)"];
+        EvaluatePolicy [label="TIntegrationBoundaryPolicy::request_readiness(request)"];
+        CreateResult [label="TBoundaryHandoffResult::accepted(handle)"];
+        CreateReport [label="TIntegrationBoundaryReport::make(view, result, diagnostic)"];
+
+        ImplementPort [label="Implement TIntegrationBoundaryPort<TDerived>", shape=diamond];
+        ValidateTraits [label="TIntegrationBoundaryPortTraits<TDerived>::satisfies_required_surface"];
+    }
+
+    // Usage patterns
+    subgraph cluster_UsagePatterns {
+        label="W13 Smoke Test Usage Patterns";
+        style=filled;
+        fillcolor=lightyellow;
+
+        DescriptorCreation [label="Boundary descriptor creation\n• persistence(), telemetry(), thin_c_abi()\n• read_side(), in_process_receiver()\n• registry_delivery()"];
+
+        PortImplementation [label="CRTP port implementation\n• TMockPersistenceBoundaryPort\n• boundary_view(), boundary_descriptor()\n• boundary_readiness(), accept_boundary_handoff()\n• complete_boundary_handoff(), reject_boundary_handoff()"];
+
+        RequestValidation [label="Request validation workflow\n• Correlation token validation\n• Target descriptor validation\n• Capability checking (accepts_handoff)\n• Material kind validation\n• Ordering support validation"];
+
+        HandoffLifecycle [label="Handoff lifecycle management\n• Request → Readiness → Accept/Reject\n• Handle creation and validation\n• Completion workflow\n• Deferred vs immediate handling"];
+
+        ResultProcessing [label="Result processing patterns\n• accepted(), completed(), failed()\n• deferred(), rejected() handling\n• Bridge result integration\n• Error propagation"];
+
+        ReportGeneration [label="Report generation\n• Boundary view inclusion\n• Result and diagnostic aggregation\n• Operation visibility and monitoring"];
+    }
+
+    // Flow
+    IncludeAggregate -> CheckAvailability;
+    CheckAvailability -> AccessComponents;
+
+    AccessComponents -> CreateDescriptor;
+    AccessComponents -> CreateView;
+    AccessComponents -> CreateRequest;
+    AccessComponents -> EvaluatePolicy;
+    AccessComponents -> CreateResult;
+    AccessComponents -> CreateReport;
+    AccessComponents -> ImplementPort;
+
+    ImplementPort -> ValidateTraits;
+
+    CreateDescriptor -> DescriptorCreation;
+    ImplementPort -> PortImplementation;
+    CreateRequest -> RequestValidation;
+    EvaluatePolicy -> RequestValidation;
+    CreateResult -> HandoffLifecycle;
+    CreateResult -> ResultProcessing;
+    CreateReport -> ReportGeneration;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendInclude [label="Include Operation", fillcolor=lightcyan];
+        LegendCheck [label="Availability Check", fillcolor=lightgreen];
+        LegendAccess [label="Component Access", fillcolor=lightblue];
+        LegendCreation [label="Creation Pattern", fillcolor=lavender];
+        LegendUsage [label="Usage Pattern", fillcolor=lightyellow];
+        LegendDecision [label="Implementation Decision", shape=diamond];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryAbstractPorts_behavioral_diagram.dot

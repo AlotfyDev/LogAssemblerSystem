@@ -1,0 +1,33 @@
+digraph TCarrierView_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TCarrierView [label="{TCarrierView|kind : TCarrierKind\l correlation : TCorrelationToken\l valid : bool\l label : std::string_view\l|+ is_valid() : bool\l+ make(carrier_kind, token, is_valid, display_label) : TCarrierView\l}"]
+
+    // Enums and dependencies
+    TCarrierKind [label="{TCarrierKind|unknown\l correlation_token\l placement_request\l placement_handle\l admission_result\l readiness_view\l load_signal\l next_destination_request\l bridge_result\l bridge_error\l carrier_result\l carrier_error\l}", shape=record, fillcolor=lightyellow]
+
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=orange]
+
+    // Primitive types
+    bool_type [label="bool", shape=ellipse, fillcolor=lightgrey, style=invis]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey, style=invis]
+
+    // Relationships
+    TCarrierView -> TCarrierKind [label="uses"]
+    TCarrierView -> TCorrelationToken [label="contains"]
+    TCarrierView -> bool_type [label="uses", style=dashed]
+    TCarrierView -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        EnumLegend [label="Enum", shape=record, fillcolor=lightyellow]
+        CorrTokenLegend [label="Correlation Token", shape=record, fillcolor=orange]
+    }
+}

@@ -1,0 +1,29 @@
+digraph TPluginAdapterObligationProfile_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Obligation profile usage in W14C
+    ProfileCreation [label="Profile creation in view builder:\n- delivery_content_provider_profile() static method\n- sets all capability flags to true\n- specifies adapter name for registry delivery"];
+
+    ViewIntegration [label="Integrated into adapter view:\n- TPluginAdapterView contains obligation profile\n- declares adapter capabilities to bridge runtime\n- enables placement and boundary handoff workflows"];
+
+    CapabilityDeclaration [label="Capability declarations:\n- can_prepare_placement_request: enables placement workflow\n- can_accept_placement_handle: enables handle acceptance\n- can_emit_load_signal: enables load completion signaling\n- can_prepare_boundary_handoff_request: enables boundary handoff"];
+
+    BridgeRuntimeMatching [label="Bridge runtime adapter matching:\n- bridge uses profile to find compatible adapters\n- matches adapter capabilities to workflow requirements\n- ensures W14C adapter is selected for registry delivery"];
+
+    // Flow connections
+    ProfileCreation -> ViewIntegration;
+    ViewIntegration -> CapabilityDeclaration;
+    CapabilityDeclaration -> BridgeRuntimeMatching;
+
+    // Styling
+    ProfileCreation [fillcolor=lightblue];
+    ViewIntegration [fillcolor=lightsalmon];
+    CapabilityDeclaration [fillcolor=lightgreen];
+    BridgeRuntimeMatching [fillcolor=lightcyan];
+
+    // Title
+    label="TPluginAdapterObligationProfile Usage in W14C Smoke Test";
+    labelloc=t;
+}

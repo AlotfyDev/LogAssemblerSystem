@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=mistyrose];
+
+    TBridgeCoreResult [label="{TBridgeCoreResult | + bridge_id : TBridgeId\l+ result_type : enum\l+ consumed_steps : uint32_t\l+ correlation : TCorrelationToken\l+ note : string_view\l|+ running() : TBridgeCoreResult [static]\l+ completed() : TBridgeCoreResult [static]\l+ failed() : TBridgeCoreResult [static]\l+ rejected() : TBridgeCoreResult [static]\l+ exhausted_budget() : TBridgeCoreResult [static]\l+ running() : bool\l+ completed() : bool\l+ failed() : bool\l+ rejected() : bool\l+ exhausted() : bool\l}"];
+
+    TBridge [label="TBridge operations return", fillcolor=lightcoral];
+    StatusReporting [label="Execution status reporting\n- Success/failure indication\n- Step consumption tracking\n- Error context", shape=note, fillcolor=yellow];
+
+    TBridge -> TBridgeCoreResult [label="returns"];
+    TBridgeCoreResult -> StatusReporting [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreResult_class_diagram.dot

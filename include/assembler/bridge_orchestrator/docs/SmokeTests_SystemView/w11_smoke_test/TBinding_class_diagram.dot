@@ -1,0 +1,18 @@
+digraph TBinding_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TBinding [label="{TBinding|binding_id : TBindingId\l channel : TChannel\l profile : TBindingProfile\l name : std::string_view\l metadata : TBindingMetadata\l|+ is_valid() : bool\l+ make(id, channel, profile, name, metadata) : TBinding\l}"]
+
+    TBindingId [label="TBindingId", shape=record, fillcolor=lightyellow]
+    TChannel [label="TChannel", shape=record, fillcolor=lightyellow]
+    TBindingProfile [label="TBindingProfile", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TBindingMetadata [label="TBindingMetadata", shape=record, fillcolor=lightyellow]
+
+    TBinding -> TBindingId [label="uses", style=dashed]
+    TBinding -> TChannel [label="references", style=dashed]
+    TBinding -> TBindingProfile [label="uses", style=dashed]
+    TBinding -> std_string_view [label="uses", style=dashed]
+    TBinding -> TBindingMetadata [label="uses", style=dashed]
+}

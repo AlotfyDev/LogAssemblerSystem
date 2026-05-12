@@ -1,0 +1,80 @@
+digraph TIntegrationBoundaryDescriptor_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Creation patterns
+    Start [label="Create TIntegrationBoundaryDescriptor", shape=ellipse, fillcolor=lightgreen];
+
+    FactoryMethods [label="Use Factory Methods", fillcolor=lightyellow];
+
+    PersistenceFactory [label="TIntegrationBoundaryDescriptor::persistence(token)\n• kind = persistence\n• direction = outbound\n• capabilities = accepts_handoff + completes_handoff +\n  emits_acknowledgement + supports_backpressure\n• boundary_family = \"persistence\"", fillcolor=lavender];
+
+    TelemetryFactory [label="TIntegrationBoundaryDescriptor::telemetry(token)\n• kind = telemetry\n• direction = outbound\n• capabilities = accepts_handoff + supports_batch +\n  supports_diagnostics\n• boundary_family = \"telemetry\"", fillcolor=lavender];
+
+    ThinCABIFactory [label="TIntegrationBoundaryDescriptor::thin_c_abi(token)\n• kind = thin_c_abi\n• direction = bidirectional\n• capabilities = accepts_handoff + completes_handoff +\n  emits_acknowledgement\n• boundary_family = \"thin_c_abi\"", fillcolor=lavender];
+
+    ReadSideFactory [label="TIntegrationBoundaryDescriptor::read_side(token)\n• kind = read_side\n• direction = outbound\n• capabilities = accepts_handoff + exposes_readiness\n• boundary_family = \"read_side\"", fillcolor=lavender];
+
+    CustomFactory [label="TIntegrationBoundaryDescriptor::make(kind, direction, capabilities, family, token)", fillcolor=lavender];
+
+    // Validation
+    Validation [label="Descriptor Validation", fillcolor=lightblue];
+
+    IsValid [label="descriptor.is_valid()\n• kind != unknown\n• direction != unknown\n• !boundary_family.empty()"];
+
+    CapabilityCheck [label="descriptor.has(capability)\n• Check capability_mask bits\n• Used for boundary admission"];
+
+    // Usage in smoke test
+    SmokeTestUsage [label="W13 Smoke Test Usage", fillcolor=pink];
+
+    CreatePersistence [label="auto descriptor = TIntegrationBoundaryDescriptor::persistence(token);"];
+
+    ValidatePersistence [label="if (!descriptor.is_valid()) return error;"];
+
+    CheckHandoffCapability [label="if (!descriptor.has(TIntegrationBoundaryCapability::accepts_handoff)) return error;"];
+
+    PolicyCheck [label="if (!TIntegrationBoundaryPolicy::supports_outbound_handoff(descriptor)) return error;"];
+
+    CreateRequest [label="auto request = TBoundaryHandoffRequest::make(token, descriptor, \"log_level_envelope\", size, ordered);"];
+
+    // Flow connections
+    Start -> FactoryMethods;
+
+    FactoryMethods -> PersistenceFactory [label="persistence boundary"];
+    FactoryMethods -> TelemetryFactory [label="telemetry boundary"];
+    FactoryMethods -> ThinCABIFactory [label="thin C ABI boundary"];
+    FactoryMethods -> ReadSideFactory [label="read-side boundary"];
+    FactoryMethods -> CustomFactory [label="custom boundary"];
+
+    PersistenceFactory -> Validation;
+    TelemetryFactory -> Validation;
+    ThinCABIFactory -> Validation;
+    ReadSideFactory -> Validation;
+    CustomFactory -> Validation;
+
+    Validation -> IsValid;
+    Validation -> CapabilityCheck;
+
+    IsValid -> SmokeTestUsage;
+    CapabilityCheck -> SmokeTestUsage;
+
+    SmokeTestUsage -> CreatePersistence;
+    CreatePersistence -> ValidatePersistence;
+    ValidatePersistence -> CheckHandoffCapability;
+    CheckHandoffCapability -> PolicyCheck;
+    PolicyCheck -> CreateRequest;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendFactory [label="Factory Method", fillcolor=lavender];
+        LegendValidation [label="Validation", fillcolor=lightblue];
+        LegendUsage [label="Smoke Test Usage", fillcolor=pink];
+        LegendMethod [label="Static Method", fillcolor=lightyellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryDescriptor_behavioral_diagram.dot

@@ -1,0 +1,33 @@
+digraph TChannelBindingPolicy_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TChannelBindingPolicy [label="{TChannelBindingPolicy|+ allow_multiple_adapters_: bool\l+ require_explicit_binding_: bool\l+ validate_surface_compatibility_: bool\l+ max_binding_attempts_: uint32_t\l|+ can_bind(channel: TChannel, adapter: TPluginAdapterView): bool\l+ validate_surface_pair(pair: TObligationSurfacePair): bool\l+ get_binding_constraints(): TBindingConstraints\l- check_channel_compatibility(channel: TChannel): bool\l- check_adapter_compatibility(adapter: TPluginAdapterView): bool\l- validate_surface_compatibility(pair: TObligationSurfacePair): bool}", fillcolor=lightcyan, style=filled];
+
+    // Supporting types
+    TBindingConstraints [label="{TBindingConstraints|+ max_adapters_per_channel_: uint32_t\l+ require_surface_validation_: bool\l+ allow_dynamic_binding_: bool\l|+ is_satisfied_by(binding: TBinding): bool}", fillcolor=lightblue, style=filled];
+
+    // Dependencies
+    TChannel [label="{TChannel|+ channel_id_: std::string\l+ channel_type_: ChannelType\l+ capacity_: uint32_t\l+ is_active_: bool\l|+ can_accept_adapter(adapter: TPluginAdapterView): bool\l+ get_channel_properties(): TChannelProperties}", fillcolor=lightblue, style=filled];
+
+    TPluginAdapterView [label="{TPluginAdapterView|+ plugin_id_: std::string\l+ adapter_type_: AdapterType\l+ capabilities_: vector<std::string>\l|+ get_binding_requirements(): TAdapterRequirements}", fillcolor=lightblue, style=filled];
+
+    TObligationSurfacePair [label="{TObligationSurfacePair|+ obligation_: TObligation\l+ surface_: TSurface\l+ compatibility_score_: double\l|+ is_compatible(): bool}", fillcolor=lightblue, style=filled];
+
+    // Relationships
+    TChannelBindingPolicy -> TBindingConstraints [label="contains"];
+    TChannelBindingPolicy -> TChannel [label="validates", style=dashed];
+    TChannelBindingPolicy -> TPluginAdapterView [label="validates", style=dashed];
+    TChannelBindingPolicy -> TObligationSurfacePair [label="validates", style=dashed];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        ReusedClass [label="Reused W04 Component", fillcolor=lightcyan];
+        SupportClass [label="Supporting Component", fillcolor=lightblue];
+    }
+}

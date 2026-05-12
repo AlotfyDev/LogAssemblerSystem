@@ -1,0 +1,42 @@
+digraph TFirstIntegrationSkeletonBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Main binding header
+    Binding [label="{TFirstIntegrationSkeletonBinding|+ ASCC_W15_FIRST_INTEGRATION_SKELETON_AVAILABLE : bool\l}", fillcolor=lightsalmon, style=filled];
+
+    // Aggregated components
+    Skeleton [label="{TFirstIntegrationSkeleton|main integration skeleton class\lexecutes end-to-end integration\l}", fillcolor=lightblue];
+    Config [label="{TFirstIntegrationSkeletonConfig|configuration for skeleton\lIDs, names, limits\l}", fillcolor=lightblue];
+    Factory [label="{TFirstIntegrationSkeletonFactory|factory methods for skeleton\lmake_default, from_config, etc.\l}", fillcolor=lightblue];
+    Report [label="{TFirstIntegrationSkeletonReport|execution result report\lmodel and flow success flags\l}", fillcolor=lightblue];
+    ModelPlan [label="{TFirstIntegrationSkeletonModelPlan|model declaration helpers\lchannel, binding, session creation\l}", fillcolor=lightblue];
+    IdSet [label="{TFirstIntegrationSkeletonIdSet|typed ID collection\lchannel, binding, session IDs\l}", fillcolor=lightblue];
+
+    // W14A/W14B components
+    AdapterBinding [label="{TLogLevelAPIEnvelopePluginAdapterBinding|W14A adapter binding\lprovides adapter interface\l}", fillcolor=lightcyan];
+    PortBinding [label="{TWriteSideEnvelopePlacementPortBinding|W14B port binding\lprovides port interface\l}", fillcolor=lightcyan];
+    Adapter [label="{TLogLevelAPIEnvelopePluginAdapter|W14A adapter implementation\lplacement and load signal\l}", fillcolor=lightcyan];
+    AdapterFactory [label="{TLogLevelAPIEnvelopePluginAdapterFactory|W14A adapter factory\lfrom_fields method\l}", fillcolor=lightcyan];
+    Port [label="{TWriteSideEnvelopePlacementPort|W14B port implementation\lreadiness and admission\l}", fillcolor=lightcyan];
+
+    // Relationships
+    Binding -> Skeleton [label="aggregates"];
+    Binding -> Config [label="aggregates"];
+    Binding -> Factory [label="aggregates"];
+    Binding -> Report [label="aggregates"];
+    Binding -> ModelPlan [label="aggregates"];
+    Binding -> IdSet [label="aggregates"];
+
+    Binding -> AdapterBinding [label="aggregates"];
+    Binding -> PortBinding [label="aggregates"];
+    Binding -> Adapter [label="aggregates"];
+    Binding -> AdapterFactory [label="aggregates"];
+    Binding -> Port [label="aggregates"];
+
+    // Title
+    label="TFirstIntegrationSkeletonBinding Class Structure";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonBinding_class_diagram.dot

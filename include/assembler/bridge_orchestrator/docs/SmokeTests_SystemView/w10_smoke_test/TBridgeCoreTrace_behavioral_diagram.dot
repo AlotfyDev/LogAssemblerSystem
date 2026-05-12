@@ -1,0 +1,16 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    TRACE_CREATION [label="TBridgeCoreTrace::make()"];
+    COLLECT_CONTEXT [label="Collect trace context\n- bridge_id, status\n- protocol_trace\n- correlation, note"];
+    CREATE_TRACE [label="Create TBridgeCoreTrace"];
+    VALIDATE_TRACE [label="trace.is_valid()"];
+    USE_TRACE [label="Use for execution tracing\n- Step debugging\n- Performance analysis\n- Error correlation"];
+
+    TRACE_CREATION -> COLLECT_CONTEXT;
+    COLLECT_CONTEXT -> CREATE_TRACE;
+    CREATE_TRACE -> VALIDATE_TRACE;
+    VALIDATE_TRACE -> USE_TRACE [label="valid"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreTrace_behavioral_diagram.dot

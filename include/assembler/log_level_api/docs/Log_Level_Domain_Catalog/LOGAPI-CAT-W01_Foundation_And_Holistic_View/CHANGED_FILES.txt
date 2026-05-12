@@ -1,0 +1,7 @@
+WAVE_MANIFEST.json
+diagrams/LOGAPI-CAT-000_catalog_scope.mmd
+diagrams/LOGAPI-CAT-000_domain_boundary.mmd
+diagrams/LOGAPI-CAT-001_end_to_end_overview.mmd
+diagrams/LOGAPI-CAT-001_layer_map.mmd
+docs/LOGAPI-CAT-000_Catalog_Roadmap_And_Doctrine.md
+docs/LOGAPI-CAT-001_Domain_Holistic_View.md

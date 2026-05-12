@@ -1,0 +1,25 @@
+digraph TRegistryLookupResult_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TRegistryLookupResult Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateFound [label="Create Found Result\nTRegistryLookupResult::found_result(name, token)\nSets found=true, rejected=false", fillcolor=yellow]
+
+    CreateMissing [label="Create Missing Result\nTRegistryLookupResult::missing(name, token)\nSets found=false, rejected=false", fillcolor=yellow]
+
+    CreateRejected [label="Create Rejected Result\nTRegistryLookupResult::reject(name, error, token)\nSets found=false, rejected=true", fillcolor=red]
+
+    CheckStatus [label="Check Result Status\nresult.succeeded() - found and not rejected\nresult.failed() - opposite of succeeded", fillcolor=lightgreen]
+
+    UseInRegistry [label="Use in Registry Operations\nReturned by TBoundedRegistry::lookup_result()\nProvides diagnostic information for lookups", fillcolor=lightcyan]
+
+    End [label="Lookup result operations\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateFound
+    CreateFound -> CreateMissing
+    CreateMissing -> CreateRejected
+    CreateRejected -> CheckStatus
+    CheckStatus -> UseInRegistry
+    UseInRegistry -> End
+}

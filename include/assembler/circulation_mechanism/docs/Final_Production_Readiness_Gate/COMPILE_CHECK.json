@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "test": "tests_hardening_w08/cme_final_production_readiness_gate_negative_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/include /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/tests_hardening_w08/cme_final_production_readiness_gate_negative_test.cpp -o /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/tests_hardening_w08/cme_final_production_readiness_gate_negative_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests_hardening_w08/cme_final_production_readiness_gate_pass_test.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/include /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/tests_hardening_w08/cme_final_production_readiness_gate_pass_test.cpp -o /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/tests_hardening_w08/cme_final_production_readiness_gate_pass_test",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    },
+    {
+      "test": "tests_hardening_w08/cme_final_readiness_full_aggregate_probe.cpp",
+      "command": "g++ -std=c++17 -I /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/include /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/tests_hardening_w08/cme_final_readiness_full_aggregate_probe.cpp -o /mnt/data/CME-PROD-HARDEN-W08_Final_Production_Readiness_Gate/tests_hardening_w08/cme_final_readiness_full_aggregate_probe",
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_returncode": 0,
+      "run_stdout": "",
+      "run_stderr": "",
+      "status": "passed"
+    }
+  ]
+}

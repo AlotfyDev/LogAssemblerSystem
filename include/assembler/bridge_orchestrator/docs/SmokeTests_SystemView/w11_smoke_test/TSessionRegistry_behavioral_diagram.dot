@@ -1,0 +1,46 @@
+digraph TSessionRegistry_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TSessionRegistry Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateRegistry [label="Create Session Registry\nTSessionRegistry<4> sessions{};\nUses TBoundedRegistry for session management", fillcolor=yellow]
+
+    ValidateRegistry [label="Validate Registry\nsessions.is_valid()\nDelegates to internal TBoundedRegistry\nReturns true", fillcolor=lightgreen]
+
+    CreateSession [label="Create Session Component\nTSession session = make_session(session_id, binding, policy)", fillcolor=yellow]
+
+    RegisterSession [label="Register Session\nsessions.register_session(session)\nCalls registry.register_value(session_id, session, name)\nReturns true", fillcolor=orange]
+
+    LookupSession [label="Lookup Session\nsessions.contains(session.session_id)\nReturns true (session found)", fillcolor=lightcyan]
+
+    FindSession [label="Find Session Entry\nsessions.find(session.session_id)\nReturns pointer to TRegistryEntry\nValidates session contents", fillcolor=lightcyan]
+
+    GenerateSnapshot [label="Generate Snapshot\nsessions.snapshot()\nReturns registry statistics including session count", fillcolor=purple]
+
+    End [label="Session registry operations\ncompleted with bounded capacity management", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateRegistry
+    CreateRegistry -> ValidateRegistry
+    ValidateRegistry -> CreateSession
+    CreateSession -> RegisterSession
+    RegisterSession -> LookupSession
+    LookupSession -> FindSession
+    FindSession -> GenerateSnapshot
+    GenerateSnapshot -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Registry/Session Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        RegistrationLegend [label="Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Lookup Operations", shape=rectangle, fillcolor=lightcyan]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

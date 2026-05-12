@@ -1,0 +1,22 @@
+digraph TDiagnosticReport_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticReport Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CollectorWrapsReport [label="Collector Wraps Report\nTDiagnosticCollector contains TDiagnosticReport<8>\nReport provides bounded storage for diagnostic records", fillcolor=yellow]
+
+    AppendRecords [label="Append Records to Report\nreport.append(record) through collector.add()\nRecords added to internal report array", fillcolor=cyan]
+
+    AppendWithPolicy [label="Append with Policy Filtering\nreport.append_if_included(record, policy) through collector.add_if_included()\nPolicy-based filtering before appending", fillcolor=cyan]
+
+    GenerateSnapshot [label="Generate Snapshot from Report\nTDiagnosticSnapshot::from_report(report)\nReport statistics used to create snapshot", fillcolor=purple]
+
+    End [label="Report usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CollectorWrapsReport
+    CollectorWrapsReport -> AppendRecords
+    AppendRecords -> AppendWithPolicy
+    AppendWithPolicy -> GenerateSnapshot
+    GenerateSnapshot -> End
+}

@@ -1,0 +1,188 @@
+{
+  "document_id": "FIGMA-READY-POLICY-OBJECT-GRAPH-STRUCTURE-V1",
+  "frame": {
+    "name": "Policy Object Graph Structure V1",
+    "width": 1600,
+    "height": 1000,
+    "background": "#FFFFFF"
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "type": "ellipse",
+      "x": 680,
+      "y": 80,
+      "w": 240,
+      "h": 72,
+      "fill": "#DBEAFE",
+      "stroke": "#2563EB",
+      "text": "Policy Root Node"
+    },
+    {
+      "id": "identity",
+      "type": "rect",
+      "x": 80,
+      "y": 220,
+      "w": 280,
+      "h": 110,
+      "fill": "#EFF6FF",
+      "stroke": "#334155",
+      "text": "Identity Structure\n(policy id, family, version, scope, source)"
+    },
+    {
+      "id": "clauseA",
+      "type": "rect",
+      "x": 400,
+      "y": 220,
+      "w": 260,
+      "h": 110,
+      "fill": "#F8FAFC",
+      "stroke": "#334155",
+      "text": "Clause Node A\n(directive / constraint / parameter / fallback)"
+    },
+    {
+      "id": "clauseB",
+      "type": "rect",
+      "x": 720,
+      "y": 220,
+      "w": 220,
+      "h": 90,
+      "fill": "#F8FAFC",
+      "stroke": "#334155",
+      "text": "Clause Node B"
+    },
+    {
+      "id": "safep",
+      "type": "rect",
+      "x": 1000,
+      "y": 220,
+      "w": 320,
+      "h": 110,
+      "fill": "#FEF3C7",
+      "stroke": "#D97706",
+      "text": "Safe Point Structure\n(replacement boundaries / eligibility anchors)"
+    },
+    {
+      "id": "lifecycle",
+      "type": "rect",
+      "x": 100,
+      "y": 420,
+      "w": 320,
+      "h": 120,
+      "fill": "#F3E8FF",
+      "stroke": "#7C3AED",
+      "text": "Lifecycle / State Structure\n(state nodes / transition-bearing substructure)"
+    },
+    {
+      "id": "mech",
+      "type": "rect",
+      "x": 500,
+      "y": 420,
+      "w": 280,
+      "h": 90,
+      "fill": "#DCFCE7",
+      "stroke": "#16A34A",
+      "text": "Realization Mechanism Binding Node"
+    },
+    {
+      "id": "target",
+      "type": "rect",
+      "x": 860,
+      "y": 420,
+      "w": 360,
+      "h": 120,
+      "fill": "#ECFCCB",
+      "stroke": "#65A30D",
+      "text": "Target-Kind Descriptor (optional)\n(dispatcher / moderator / queue bundle agent / ...)"
+    },
+    {
+      "id": "obs",
+      "type": "rect",
+      "x": 1240,
+      "y": 420,
+      "w": 260,
+      "h": 90,
+      "fill": "#F1F5F9",
+      "stroke": "#334155",
+      "text": "Observation / Audit Structure\n(lightweight by default)"
+    },
+    {
+      "id": "appl",
+      "type": "rect",
+      "x": 560,
+      "y": 620,
+      "w": 360,
+      "h": 100,
+      "fill": "#F8FAFC",
+      "stroke": "#94A3B8",
+      "text": "Applicability Structure (optional)\n(often dormant in execution-policy families)",
+      "dashed": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "root",
+      "to": "identity",
+      "label": "recognizes / grounds"
+    },
+    {
+      "from": "root",
+      "to": "clauseA",
+      "label": "contains"
+    },
+    {
+      "from": "root",
+      "to": "clauseB",
+      "label": "contains"
+    },
+    {
+      "from": "clauseA",
+      "to": "clauseB",
+      "label": "precedence / dependency / override / exclusion",
+      "dashed": true
+    },
+    {
+      "from": "root",
+      "to": "safep",
+      "label": "replacement structure"
+    },
+    {
+      "from": "clauseA",
+      "to": "safep",
+      "label": "participates in",
+      "dashed": true
+    },
+    {
+      "from": "root",
+      "to": "lifecycle",
+      "label": "lifecycle slot"
+    },
+    {
+      "from": "root",
+      "to": "mech",
+      "label": "binds"
+    },
+    {
+      "from": "mech",
+      "to": "target",
+      "label": "expects target kind",
+      "dashed": true
+    },
+    {
+      "from": "root",
+      "to": "obs",
+      "label": "auditability"
+    },
+    {
+      "from": "root",
+      "to": "appl",
+      "label": "applicability slot",
+      "dashed": true
+    }
+  ],
+  "notes": [
+    "This is a Figma-ready structured specification, not a native .fig file.",
+    "The graph is structural only; traversal/orchestration is deferred.",
+    "Use Auto Layout groups if rebuilding this manually in Figma."
+  ]
+}

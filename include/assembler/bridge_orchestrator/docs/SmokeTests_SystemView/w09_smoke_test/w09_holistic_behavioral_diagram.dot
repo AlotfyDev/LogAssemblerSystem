@@ -1,0 +1,95 @@
+digraph W09_Holistic_Behavioral_Diagram {
+    // Holistic Behavioral Diagram for W09 Bridge Protocol Execution
+    // Shows 12-step envelope placement plan execution flow
+
+    graph [fontname="Arial", fontsize=10, rankdir=TB, bgcolor=lightcyan]
+    node [fontname="Arial", fontsize=9, shape=rectangle, style=filled, fillcolor=lightyellow]
+    edge [fontname="Arial", fontsize=8]
+
+    // Protocol States
+    ProtocolStart [label="Protocol Start\nTBridgeProtocol::Initialize()", fillcolor=lightgreen]
+    StepValidation [label="Step Validation\nTProtocolValidator::ValidateStep()", fillcolor=lightblue]
+    EnvelopePlacement [label="Envelope Placement\nTEnvelopePlacement::ExecutePlacement()", fillcolor=orange]
+    StatusUpdate [label="Status Update\nTBridgeProtocolStatus::UpdateProgress()", fillcolor=lightblue]
+    StepAdvance [label="Step Advance\nTStepAdvancementLogic::AdvanceToNext()", fillcolor=yellow]
+    ProtocolComplete [label="Protocol Complete\nTBridgeProtocol::Finalize()", fillcolor=lightgreen]
+
+    // 12-Step Execution Flow
+    ProtocolStart -> Step1 [label="Begin Execution"]
+
+    Step1 [label="Step 1: Initialize\nEnvelope Context", fillcolor=white]
+    Step1 -> StepValidation [label="Validate Step 1"]
+
+    Step2 [label="Step 2: Position\nEnvelope Headers", fillcolor=white]
+    StepValidation -> Step2 [label="Step 1 Valid"]
+
+    Step3 [label="Step 3: Align\nEnvelope Boundaries", fillcolor=white]
+    Step2 -> EnvelopePlacement [label="Execute Placement"]
+    EnvelopePlacement -> Step3 [label="Placement Complete"]
+
+    Step4 [label="Step 4: Validate\nEnvelope Integrity", fillcolor=white]
+    Step3 -> StatusUpdate [label="Update Status"]
+    StatusUpdate -> Step4 [label="Status Updated"]
+
+    Step5 [label="Step 5: Establish\nEnvelope Links", fillcolor=white]
+    Step4 -> StepAdvance [label="Advance Logic"]
+    StepAdvance -> Step5 [label="Next Step: 5"]
+
+    Step6 [label="Step 6: Configure\nEnvelope Metadata", fillcolor=white]
+    Step5 -> Step6 [label="Continue"]
+
+    Step7 [label="Step 7: Synchronize\nEnvelope Timestamps", fillcolor=white]
+    Step6 -> Step7 [label="Continue"]
+
+    Step8 [label="Step 8: Finalize\nEnvelope Structure", fillcolor=white]
+    Step7 -> Step8 [label="Continue"]
+
+    Step9 [label="Step 9: Validate\nComplete Structure", fillcolor=white]
+    Step8 -> Step9 [label="Continue"]
+
+    Step10 [label="Step 10: Register\nEnvelope with Session", fillcolor=white]
+    Step9 -> Step10 [label="Continue"]
+
+    Step11 [label="Step 11: Commit\nEnvelope Changes", fillcolor=white]
+    Step10 -> Step11 [label="Continue"]
+
+    Step12 [label="Step 12: Cleanup\nTemporary Resources", fillcolor=white]
+    Step11 -> Step12 [label="Continue"]
+
+    Step12 -> ProtocolComplete [label="All Steps Complete"]
+
+    // Error Handling Paths
+    StepValidation -> ErrorState [label="Validation Failed", color=red]
+    EnvelopePlacement -> ErrorState [label="Placement Failed", color=red]
+    StatusUpdate -> ErrorState [label="Update Failed", color=red]
+    StepAdvance -> ErrorState [label="Advance Failed", color=red]
+
+    ErrorState [label="Error State\nTBridgeProtocol::HandleError()", fillcolor=red, fontcolor=white]
+    ErrorState -> ProtocolStart [label="Retry Protocol", style=dashed]
+    ErrorState -> ProtocolComplete [label="Abort Protocol", style=dashed]
+
+    // Session Integration
+    SessionContext [label="Session Context\nTBridgeSession::GetContext()", fillcolor=lightgray]
+    ProtocolStart -> SessionContext [label="Initialize from Session"]
+    SessionContext -> ProtocolPlan [label="Provides Plan"]
+
+    ProtocolPlan [label="Protocol Plan\nTBridgeProtocolPlan::GetSteps()", fillcolor=lightgray]
+    ProtocolPlan -> StepAdvance [label="Guides Advancement"]
+
+    // Component Interactions
+    ProtocolManager [label="Protocol Manager\nTBridgeProtocolManager", fillcolor=lightgray]
+    ProtocolManager -> ProtocolStart [label="Initiates Protocol"]
+
+    ProtocolFactory [label="Protocol Factory\nTBridgeProtocolFactory", fillcolor=lightgray]
+    ProtocolFactory -> ProtocolStart [label="Creates Protocol"]
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend"
+        LegendStart [label="Start/End", fillcolor=lightgreen]
+        LegendProcess [label="Process", fillcolor=white]
+        LegendDecision [label="Validation/Update", fillcolor=lightblue]
+        LegendData [label="Data/Components", fillcolor=lightgray]
+        LegendError [label="Error", fillcolor=red]
+    }
+}

@@ -1,0 +1,33 @@
+digraph TLoadSignal_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    bad_signal_emission [label="adapter.emit_load_signal() BEFORE handle acceptance\nReturns failed signal (no handle accepted)"];
+
+    bad_signal_check [label="bad_signal.failed()\nValidates signal is failed"];
+
+    handle_acceptance [label="adapter.accept_placement_handle(handle)\nHandle accepted"];
+
+    good_signal_emission [label="adapter.emit_load_signal() AFTER handle acceptance\nReturns completed signal with bytes_loaded"];
+
+    good_signal_check [label="signal.completed() && signal.bytes_loaded == 128u\nValidates signal is completed with correct byte count"];
+
+    success [label="Load signal emission works correctly", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    bad_signal_emission -> bad_signal_check;
+    bad_signal_check -> handle_acceptance;
+    handle_acceptance -> good_signal_emission;
+    good_signal_emission -> good_signal_check;
+    good_signal_check -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        signal_operation [label="Signal Operation", fillcolor=lightyellow];
+        validation [label="Validation Check"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLoadSignal_behavioral_diagram.dot

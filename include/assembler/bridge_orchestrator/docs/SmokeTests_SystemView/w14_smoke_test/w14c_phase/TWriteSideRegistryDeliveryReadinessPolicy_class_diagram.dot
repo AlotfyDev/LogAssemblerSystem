@@ -1,0 +1,28 @@
+digraph TWriteSideRegistryDeliveryReadinessPolicy_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Readiness policy struct
+    ReadinessPolicy [label="{TWriteSideRegistryDeliveryReadinessPolicy|+ descriptor_is_ready() static\l+ readiness() static\l}", fillcolor=lightsalmon, style=filled];
+
+    // Input validation
+    MaterialDescriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|material descriptor to validate\lcorrelation, material info, boundary\l}", fillcolor=lightblue];
+    Config [label="{TWriteSideRegistryDeliveryPluginAdapterConfig|adapter config to validate\lIDs, flags, settings\l}", fillcolor=lightblue];
+
+    // Output types
+    ReadinessView [label="{TReadinessView|readiness assessment result\lREADY / NOT_READY / DEFERRED\l}", fillcolor=lightcyan];
+
+    // External dependencies
+    IntegrationBoundaryPolicy [label="{TIntegrationBoundaryPolicy|boundary capability validation\lchecks handoff support\l}", fillcolor=lightgreen];
+
+    // Relationships
+    ReadinessPolicy -> MaterialDescriptor [label="validates"];
+    ReadinessPolicy -> Config [label="validates"];
+    ReadinessPolicy -> ReadinessView [label="returns"];
+    ReadinessPolicy -> IntegrationBoundaryPolicy [label="uses"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryReadinessPolicy Class Structure";
+    labelloc=t;
+}

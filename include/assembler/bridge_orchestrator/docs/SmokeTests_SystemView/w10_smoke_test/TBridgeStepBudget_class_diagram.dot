@@ -1,0 +1,13 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    TBridgeStepBudget [label="{TBridgeStepBudget | + consumed_steps : uint32_t\l+ max_steps : uint32_t\l|+ single_step() : TBridgeStepBudget [static]\l+ finite() : TBridgeStepBudget [static]\l+ infinite() : TBridgeStepBudget [static]\l+ is_valid() : bool\l+ exhausted() : bool\l+ consume_one() : bool\l+ remaining_steps() : uint32_t\l}"];
+
+    TBridgeConfig [label="Used by TBridgeConfig", fillcolor=lightcoral];
+    BudgetManagement [label="Step execution budgeting\n- Consumption tracking\n- Exhaustion detection\n- Finite/infinite modes", shape=note, fillcolor=yellow];
+
+    TBridgeConfig -> TBridgeStepBudget [label="manages"];
+    TBridgeStepBudget -> BudgetManagement [label="provides"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeStepBudget_class_diagram.dot

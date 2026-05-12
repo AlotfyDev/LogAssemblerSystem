@@ -1,0 +1,24 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Usage in W14C smoke test
+    IncludeBinding [label="Include TWriteSideRegistryDeliveryPluginAdapterBinding.hpp\n- provides aggregate include for W14C components\n- defines availability marker constant"];
+    CheckAvailability [label="Check ASCC_W14C_WRITE_SIDE_REGISTRY_DELIVERY_PLUGIN_ADAPTER_AVAILABLE\n- compile-time availability check\n- ensures W14C components are present"];
+
+    UseComponents [label="Use aggregated W14C components:\n- TWriteSideRegistryDeliveryPluginAdapter\n- TWriteSideRegistryDeliveryPluginAdapterFactory\n- TWriteSideRegistryDeliveryMaterialDescriptor\n- etc."];
+
+    // Flow
+    IncludeBinding -> CheckAvailability;
+    CheckAvailability -> UseComponents [label="available"];
+
+    // Styling
+    IncludeBinding [fillcolor=lightblue];
+    CheckAvailability [fillcolor=lightyellow];
+    UseComponents [fillcolor=lightgreen];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterBinding Usage in W14C Smoke Test";
+    labelloc=t;
+}

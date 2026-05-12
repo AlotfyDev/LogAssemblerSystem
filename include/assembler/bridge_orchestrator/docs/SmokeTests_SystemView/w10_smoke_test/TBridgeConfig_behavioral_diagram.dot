@@ -1,0 +1,57 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Configuration Types
+    subgraph cluster_configs {
+        label="Configuration Types";
+        color=blue;
+
+        MANUAL_STEP [label="Manual Step\n- run_mode: manual_step\n- budget: single_step()\n- Manual control required"];
+        BOUNDED_RUN [label="Bounded Model Run\n- run_mode: bounded_model_run\n- budget: finite(max_steps)\n- Auto until terminal/limit"];
+        SINGLE_PASS [label="Single Pass\n- run_mode: single_pass_model_run\n- budget: finite(1)\n- Execute one step only"];
+        DIAGNOSTIC_DRY [label="Diagnostic Dry Run\n- run_mode: diagnostic_dry_run\n- budget: finite(max_steps)\n- Full tracing enabled"];
+    }
+
+    // Creation Flow
+    CONFIG_CREATION [label="Create TBridgeConfig", shape=oval];
+    SELECT_MODE [label="Select execution mode"];
+    SET_BUDGET [label="Configure step budget"];
+    SET_FLAGS [label="Set diagnostic flags\n- collect_diagnostic_snapshot\n- collect_trace_frame\n- strict_terminal_consistency"];
+    SET_NAME [label="Set configuration name"];
+    VALIDATE_CONFIG [label="Validate configuration\n- run_mode != unknown\n- budget.is_valid()"];
+
+    // Usage Flow
+    BRIDGE_DECLARATION [label="TBridge::declare()"];
+    APPLY_CONFIG [label="Apply configuration to bridge"];
+    BUDGET_MANAGEMENT [label="Budget management during execution"];
+    DIAGNOSTIC_COLLECTION [label="Collect diagnostics if enabled"];
+
+    // Transitions
+    CONFIG_CREATION -> SELECT_MODE;
+    SELECT_MODE -> SET_BUDGET;
+    SET_BUDGET -> SET_FLAGS;
+    SET_FLAGS -> SET_NAME;
+    SET_NAME -> VALIDATE_CONFIG;
+
+    SELECT_MODE -> MANUAL_STEP [label="manual_step()"];
+    SELECT_MODE -> BOUNDED_RUN [label="bounded_model_run()"];
+    SELECT_MODE -> SINGLE_PASS [label="single_pass_model_run()"];
+    SELECT_MODE -> DIAGNOSTIC_DRY [label="diagnostic_dry_run()"];
+
+    VALIDATE_CONFIG -> BRIDGE_DECLARATION;
+    BRIDGE_DECLARATION -> APPLY_CONFIG;
+    APPLY_CONFIG -> BUDGET_MANAGEMENT;
+    APPLY_CONFIG -> DIAGNOSTIC_COLLECTION;
+
+    // Key relationships
+    MANUAL_STEP -> BUDGET_MANAGEMENT [label="single step budget"];
+    BOUNDED_RUN -> BUDGET_MANAGEMENT [label="finite step budget"];
+    SINGLE_PASS -> BUDGET_MANAGEMENT [label="one step budget"];
+    DIAGNOSTIC_DRY -> DIAGNOSTIC_COLLECTION [label="full diagnostics"];
+
+    // Validation
+    VALIDATE_CONFIG -> CONFIG_CREATION [label="invalid config", style=dashed, color=red];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeConfig_behavioral_diagram.dot

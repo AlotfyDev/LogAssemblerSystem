@@ -1,0 +1,74 @@
+digraph TSession_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Client interaction
+    Client [label="Client Application", fillcolor=lightgreen];
+
+    // Session lifecycle states
+    Created [label="Session Created\n(TSessionStatus::CREATED)", fillcolor=lightgray];
+    Opened [label="Session Opened\n(TSessionStatus::OPEN)", fillcolor=lightyellow];
+    Activated [label="Session Activated\n(TSessionStatus::ACTIVATED)", fillcolor=lightblue];
+    Completed [label="Session Completed\n(TSessionStatus::COMPLETED)", fillcolor=lightgreen];
+    Rejected [label="Session Rejected\n(TSessionStatus::REJECTED)", fillcolor=lightcoral];
+
+    // TSession methods
+    OpenMethod [label="TSession::open()\n- Validates TSessionOpenRequest\n- Checks binding compatibility\n- Sets status to OPEN\n- Returns TSessionResult", fillcolor=lightyellow];
+
+    ActivateMethod [label="TSession::activate()\n- Validates current state\n- Activates binding execution\n- Sets status to ACTIVATED\n- Returns TSessionResult", fillcolor=lightblue];
+
+    CompleteMethod [label="TSession::complete()\n- Finalizes session execution\n- Sets status to COMPLETED\n- Returns TSessionResult", fillcolor=lightgreen];
+
+    RejectMethod [label="TSession::reject()\n- Sets terminal REJECTED status\n- Cleans up resources\n- Returns TSessionResult", fillcolor=lightcoral];
+
+    // Supporting operations
+    ValidateRequest [label="Validate Request\n- Check TSessionOpenRequest validity\n- Verify TBinding compatibility\n- Apply TSessionPolicy rules"];
+
+    StateTransition [label="State Transition\n- Update TSessionStatus\n- Create TSessionView\n- Capture TSessionSnapshot"];
+
+    ResultGeneration [label="Generate Result\n- Create TSessionResult\n- Include success/failure status\n- Add error messages if needed"];
+
+    // Flow
+    Client -> OpenMethod [label="1. Call open() with TSessionOpenRequest"];
+
+    OpenMethod -> ValidateRequest [label="2. Validate request and binding"];
+    ValidateRequest -> OpenMethod [label="3. Validation result"];
+
+    OpenMethod -> StateTransition [label="4. Update state to OPEN"];
+    StateTransition -> ResultGeneration [label="5. Generate success result"];
+    ResultGeneration -> Opened [label="6. Session in OPEN state"];
+
+    Opened -> ActivateMethod [label="7. Call activate()"];
+
+    ActivateMethod -> StateTransition [label="8. Update state to ACTIVATED"];
+    StateTransition -> ResultGeneration [label="9. Generate success result"];
+    ResultGeneration -> Activated [label="10. Session in ACTIVATED state"];
+
+    Activated -> CompleteMethod [label="11. Call complete()"];
+
+    CompleteMethod -> StateTransition [label="12. Update state to COMPLETED"];
+    StateTransition -> ResultGeneration [label="13. Generate success result"];
+    ResultGeneration -> Completed [label="14. Session in COMPLETED state"];
+
+    // Rejection path
+    ValidateRequest -> RejectMethod [label="If validation fails"];
+    RejectMethod -> StateTransition [label="Set REJECTED status"];
+    StateTransition -> ResultGeneration [label="Generate rejection result"];
+    ResultGeneration -> Rejected [label="Session rejected"];
+
+    // Alternative rejection paths
+    OpenMethod -> RejectMethod [label="If open fails"];
+    ActivateMethod -> RejectMethod [label="If activation fails"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Behavioral Patterns in W08";
+        bgcolor=white;
+
+        NormalFlow [label="Normal Lifecycle Flow", fillcolor=lightgreen];
+        StateChange [label="State Change Operation", fillcolor=lightyellow];
+        Validation [label="Validation Operation", fillcolor=lightblue];
+        Rejection [label="Rejection Path", fillcolor=lightcoral];
+    }
+}

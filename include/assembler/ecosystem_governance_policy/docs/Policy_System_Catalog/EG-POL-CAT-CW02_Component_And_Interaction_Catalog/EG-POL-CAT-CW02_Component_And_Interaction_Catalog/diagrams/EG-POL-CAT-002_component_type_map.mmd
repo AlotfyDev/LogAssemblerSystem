@@ -1,0 +1,87 @@
+flowchart TD
+    subgraph F0[Policy Object Foundation W01-W09]
+      W01[W01 Identity]
+      W02[W02 Clauses]
+      W03[W03 Replacement]
+      W04[W04 Lifecycle]
+      W05[W05 Observation]
+      W06[W06 Realization Binding]
+      W07[W07 Policy Graph]
+      W08[W08 Traversal Foundation]
+      W09[W09 TPolicy Aggregate]
+      W01 --> W09
+      W02 --> W09
+      W03 --> W09
+      W04 --> W09
+      W05 --> W09
+      W06 --> W09
+      W07 --> W09
+      W08 --> W09
+    end
+
+    subgraph F1[Assignment And Registry W10-W11]
+      W10[W10 Assignment Basics]
+      W11[W11 Registry Basics]
+    end
+
+    subgraph F2[Implementation Foundation W12-W17]
+      W12[W12 Family And Scope]
+      W13[W13 Target Capability]
+      W14[W14 Compatibility Matrix]
+      W15[W15 Assignment Lifecycle]
+      W16[W16 Source And Publication]
+      W17[W17 Registry Versioning]
+    end
+
+    subgraph F3[Runtime Readiness W18-W20]
+      W18[W18 Realization Contract]
+      W19[W19 Runtime Readiness]
+      W20[W20 Runtime Plan]
+    end
+
+    subgraph F4[Realization Runtime Skeleton W21-W24]
+      W21[W21 Realizer Interface]
+      W22[W22 Realization Session]
+      W23[W23 Execution Plan]
+      W24[W24 Engine Skeleton]
+    end
+
+    subgraph F5[Ecosystem Integration W25-W29]
+      W25[W25 LogLevelApi Targets]
+      W26[W26 MaterialCirculation Targets]
+      W27[W27 CommunicationContext Surface]
+      W28[W28 Addon Targets]
+      W29[W29 System-Wide Integration]
+    end
+
+    subgraph F6[Production Hardening W30-W34]
+      W30[W30 Persistence Boundary]
+      W31[W31 Audit Export Boundary]
+      W32[W32 Failure And Recovery]
+      W33[W33 Test And Compliance]
+      W34[W34 Production Readiness Gate]
+    end
+
+    W09 --> W10
+    W10 --> W11
+    W12 --> W14
+    W13 --> W14
+    W14 --> W15
+    W16 --> W17
+    W14 --> W18
+    W15 --> W18
+    W17 --> W18
+    W18 --> W19
+    W19 --> W20
+    W20 --> W21
+    W21 --> W22
+    W22 --> W23
+    W23 --> W24
+    W25 --> W29
+    W26 --> W29
+    W27 --> W29
+    W28 --> W29
+    W30 --> W34
+    W31 --> W34
+    W32 --> W34
+    W33 --> W34

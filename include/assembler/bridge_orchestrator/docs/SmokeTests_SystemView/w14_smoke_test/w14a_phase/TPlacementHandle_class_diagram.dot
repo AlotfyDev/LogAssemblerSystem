@@ -1,0 +1,28 @@
+digraph TPlacementHandle_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main struct
+    TPlacementHandle [label="{TPlacementHandle\nOpaque host-placement handle carrier|+ value: uint64_t\n+ correlation: TCorrelationToken\n+ handle_family: string_view|+ is_valid() const noexcept -> bool\n+ invalid() static constexpr -> TPlacementHandle\n+ make(uint64_t, TCorrelationToken, string_view) static constexpr -> TPlacementHandle}"];
+
+    // Dependencies
+    TCorrelationToken [label="{TCorrelationToken\nCorrelation token}", fillcolor=lightyellow];
+
+    // Friend operators
+    equality_operator [label="{operator==\n(lhs, rhs) -> bool}"];
+    inequality_operator [label="{operator!=\n(lhs, rhs) -> bool}"];
+
+    // Relationships
+    TPlacementHandle -> TCorrelationToken [label="contains"];
+    TPlacementHandle -> equality_operator [label="friend"];
+    TPlacementHandle -> inequality_operator [label="friend"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        carrier_struct [label="Carrier Struct", fillcolor=lightyellow];
+        member [label="Member Object"];
+        friend_function [label="Friend Function"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TPlacementHandle_class_diagram.dot

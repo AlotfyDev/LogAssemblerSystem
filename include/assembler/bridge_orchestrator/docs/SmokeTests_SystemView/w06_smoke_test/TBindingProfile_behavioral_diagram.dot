@@ -1,0 +1,39 @@
+digraph TBindingProfile_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Profile creation
+    call_strict_static [label="Call TBindingProfile::strict_static_one_to_one()\nCreate profile for W06 binding"];
+
+    // Configuration details
+    set_kind [label="Set kind = strict_one_to_one"];
+    set_requirements [label="Set validation requirements\n(channel_valid, surface_valid, etc.)"];
+    set_session_materialization [label="Set allow_session_materialization = false\n(W06 scope limitation)"];
+
+    // Validation
+    check_is_valid [label="Call profile.is_valid()\nCheck version > 0"];
+    check_is_strict [label="Call profile.is_strict_one_to_one()\nCheck kind and flags"];
+
+    // Usage in binding
+    assign_to_binding [label="Assign to TBinding.profile"];
+    use_in_compatibility [label="Used in compatibility evaluation"];
+    use_in_view [label="Include in TBindingView.profile"];
+
+    // End
+    profile_ready [label="Binding Profile Configured", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> call_strict_static;
+    call_strict_static -> set_kind;
+    set_kind -> set_requirements;
+    set_requirements -> set_session_materialization;
+    set_session_materialization -> check_is_valid;
+    check_is_valid -> check_is_strict;
+    check_is_strict -> assign_to_binding;
+    assign_to_binding -> use_in_compatibility;
+    use_in_compatibility -> use_in_view;
+    use_in_view -> profile_ready;
+}

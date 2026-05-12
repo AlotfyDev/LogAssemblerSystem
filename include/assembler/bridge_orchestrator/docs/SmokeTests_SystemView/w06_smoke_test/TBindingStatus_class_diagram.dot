@@ -1,0 +1,13 @@
+digraph TBindingStatus_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Enum definition
+    TBindingStatus [label="{TBindingStatus|unknown\ncompatible\nincompatible\nmaterialized}" shape=Mrecord];
+
+    // Usage in TBinding
+    TBinding [label="{TBinding (uses)|status : TBindingStatus|+ is_valid() : bool\n+ is_compatible() : bool\n+ is_materialized() : bool}" shape=record];
+
+    // Relationship
+    TBinding -> TBindingStatus [label="uses as member"];
+}

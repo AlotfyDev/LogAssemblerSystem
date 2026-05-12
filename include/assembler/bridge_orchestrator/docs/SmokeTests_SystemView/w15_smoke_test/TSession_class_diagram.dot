@@ -1,0 +1,11 @@
+digraph TSession_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    Session [label="{TSession|+ is_open() const noexcept -> bool\l+ open() static constexpr -> TSession\l}", fillcolor=lightsalmon, style=filled];
+
+    label="TSession Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TSession_class_diagram.dot

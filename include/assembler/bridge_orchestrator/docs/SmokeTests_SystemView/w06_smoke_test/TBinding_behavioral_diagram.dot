@@ -1,0 +1,82 @@
+digraph TBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Actor
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // TBinding usage phases
+    create_binding_id [label="Create TBindingId\nfrom unique value"];
+    create_binding_profile [label="Create TBindingProfile\nstrict_static_one_to_one()"];
+    prepare_channel [label="Prepare TChannel\n(with profile and policy)"];
+    prepare_surface_pair [label="Prepare TObligationSurfacePair\n(plugin adapter + port)"];
+    prepare_correlation [label="Prepare TCorrelationToken"];
+
+    // Proposal phase
+    propose_binding [label="Call TBinding::propose()\n(binding_id, channel, surface_pair, profile, token)",
+                    shape=diamond, color=blue];
+    evaluate_compatibility [label="Internal: evaluate compatibility\nTBindingCompatibilityReport::evaluate()"];
+
+    // Status determination
+    check_compatibility [label="Check compatibility result", shape=diamond];
+    set_compatible [label="Set status = compatible"];
+    set_incompatible [label="Set status = incompatible"];
+
+    // Validation methods
+    call_is_valid [label="Call binding.is_valid()\nCheck all members valid"];
+    call_is_compatible [label="Call binding.is_compatible()\nCheck valid + compatible + correct status"];
+    call_is_materialized [label="Call binding.is_materialized()\nCheck valid + materialized status"];
+    call_may_materialize_session [label="Call binding.may_materialize_session()\nCheck compatible + allow_session_materialization"];
+
+    // View and result generation
+    generate_view [label="Call binding.view()\nCreate TBindingView"];
+    generate_result [label="Call binding.result()\nCreate TBindingResult"];
+
+    // Materialization
+    materialize_check [label="Check if can materialize", shape=diamond];
+    call_materialize [label="Call TBinding::materialize_declaration_only()\nSet status = materialized"];
+
+    // End
+    validation_complete [label="Validation Complete", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> create_binding_id;
+    create_binding_id -> create_binding_profile;
+    create_binding_profile -> prepare_channel;
+    prepare_channel -> prepare_surface_pair;
+    prepare_surface_pair -> prepare_correlation;
+    prepare_correlation -> propose_binding;
+
+    propose_binding -> evaluate_compatibility;
+    evaluate_compatibility -> check_compatibility;
+
+    check_compatibility -> set_compatible [label="Compatible"];
+    check_compatibility -> set_incompatible [label="Incompatible"];
+
+    set_compatible -> call_is_valid;
+    set_incompatible -> call_is_valid;
+
+    call_is_valid -> call_is_compatible;
+    call_is_compatible -> call_is_materialized;
+    call_is_materialized -> call_may_materialize_session;
+    call_may_materialize_session -> materialize_check;
+
+    materialize_check -> call_materialize [label="Compatible"];
+    materialize_check -> generate_view [label="Incompatible"];
+
+    call_materialize -> generate_view;
+    generate_view -> generate_result;
+    generate_result -> validation_complete;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        color=white;
+
+        setup [label="Setup Phase", shape=box, style=rounded, color=lightblue];
+        evaluation [label="Evaluation", shape=diamond, color=blue];
+        method_call [label="Method Call", shape=box, style=rounded, color=green];
+        result [label="Result Check", shape=box, style=rounded, color=yellow];
+    }
+}

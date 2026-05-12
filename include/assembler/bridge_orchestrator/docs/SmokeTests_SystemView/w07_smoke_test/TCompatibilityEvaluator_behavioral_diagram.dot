@@ -1,0 +1,71 @@
+digraph TCompatibilityEvaluator_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightblue];
+
+    // Main operations
+    evaluate_strict_binding [label="evaluate_strict_binding(TBinding)\n1. Get strict binding rules\n2. Apply rules to binding\n3. Generate TCompatibilityMatrix<8>\n4. Return matrix with issues", fillcolor=palegreen];
+
+    is_strictly_compatible [label="is_strictly_compatible(TBinding)\n1. Call evaluate_strict_binding()\n2. Check binding.is_compatible()\n3. Check matrix.compatible()\n4. Return AND of both checks", fillcolor=palegreen];
+
+    view_strict_binding [label="view_strict_binding(TBinding)\n1. Call evaluate_strict_binding()\n2. Get binding.view()\n3. Create TCompatibilityView::from_matrix()\n4. Return view with status", fillcolor=palegreen];
+
+    // Internal helpers
+    get_strict_rules [label="strict_binding_rules()\nReturn TCompatibilityRuleSet<7>\nwith strict evaluation rules", fillcolor=yellow];
+
+    check_binding_compatible [label="binding.is_compatible()\nCheck if binding itself is valid\nand meets basic requirements", fillcolor=orange];
+
+    check_matrix_compatible [label="matrix.compatible()\nCheck if matrix has no blocking issues\n(matrix.blocking_count() == 0)", fillcolor=orange];
+
+    create_view_from_matrix [label="TCompatibilityView::from_matrix()\nAggregate matrix issues into view\nwith passed/needs_review status", fillcolor=lightcyan];
+
+    // Flow
+    evaluate_strict_binding -> get_strict_rules [label="calls"];
+    evaluate_strict_binding -> check_matrix_compatible [label="validates"];
+
+    is_strictly_compatible -> evaluate_strict_binding [label="uses"];
+    is_strictly_compatible -> check_binding_compatible [label="checks"];
+    is_strictly_compatible -> check_matrix_compatible [label="checks"];
+
+    view_strict_binding -> evaluate_strict_binding [label="uses"];
+    view_strict_binding -> create_view_from_matrix [label="creates"];
+
+    // Decision points
+    binding_ok [label="Binding Compatible?", shape=diamond, fillcolor=lightyellow];
+    matrix_ok [label="Matrix Compatible?", shape=diamond, fillcolor=lightyellow];
+
+    is_strictly_compatible -> binding_ok;
+    binding_ok -> matrix_ok [label="Yes"];
+    binding_ok -> return_false [label="No"];
+
+    matrix_ok -> return_true [label="Yes"];
+    matrix_ok -> return_false [label="No"];
+
+    // Results
+    return_true [label="Return true\nStrictly compatible", fillcolor=lightgreen];
+    return_false [label="Return false\nNot strictly compatible", fillcolor=red];
+
+    return_matrix [label="Return TCompatibilityMatrix<8>\nWith collected issues", fillcolor=lightgreen];
+    return_view [label="Return TCompatibilityView\nWith aggregated status", fillcolor=lightgreen];
+
+    evaluate_strict_binding -> return_matrix;
+    view_strict_binding -> return_view;
+
+    // Usage in W07 smoke test
+    smoke_test_usage [label="W07 Smoke Test Usage:\n1. Valid binding scenario - expect compatible\n2. Invalid binding scenario - expect incompatible\n3. Warning-only scenario - expect needs_review", shape=note, fillcolor=white];
+
+    smoke_test_usage -> evaluate_strict_binding [style=dashed, label="tests"];
+    smoke_test_usage -> is_strictly_compatible [style=dashed];
+    smoke_test_usage -> view_strict_binding [style=dashed];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        MainOp [label="Main Operation", fillcolor=palegreen];
+        Helper [label="Helper Operation", fillcolor=yellow];
+        Check [label="Validation Check", fillcolor=orange];
+        ViewOp [label="View Operation", fillcolor=lightcyan];
+        Decision [label="Decision Point", shape=diamond, fillcolor=lightyellow];
+        Success [label="Success Result", fillcolor=lightgreen];
+        Failure [label="Failure Result", fillcolor=red];
+    }
+}

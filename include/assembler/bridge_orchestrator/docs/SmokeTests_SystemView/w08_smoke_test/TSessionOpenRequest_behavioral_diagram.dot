@@ -1,0 +1,69 @@
+digraph TSessionOpenRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Client creation
+    Client [label="Client Application", fillcolor=lightgreen];
+
+    // Request creation and validation
+    CreateRequest [label="Create Request\nTSessionOpenRequest::create()\n- Provide TBindingId\n- Add TCorrelationToken\n- Specify TSessionPolicy\n- Set timeout", fillcolor=lightyellow];
+
+    ValidateRequest [label="Validate Request\nrequest.is_valid()\n- Check binding ID validity\n- Verify correlation token\n- Validate session policy\n- Check timeout settings", fillcolor=lightyellow];
+
+    CheckExpiration [label="Check Expiration\nrequest.is_expired()\n- Compare current time with creation time\n- Apply timeout policy\n- Determine if request is still valid", fillcolor=lightyellow];
+
+    // Internal validation methods
+    ValidateBindingId [label="Validate Binding ID\n- Check TBindingId format\n- Verify binding exists\n- Confirm binding permissions", fillcolor=lightblue];
+
+    ValidateCorrelation [label="Validate Correlation Token\n- Check token format\n- Verify token uniqueness\n- Confirm token is active", fillcolor=lightblue];
+
+    ValidatePolicy [label="Validate Session Policy\n- Check policy parameters\n- Verify policy compatibility\n- Apply policy constraints", fillcolor=lightblue];
+
+    // Usage in session lifecycle
+    SubmitToSession [label="Submit to Session Manager\n- Pass request to TSession::open()\n- Initiate session creation\n- Begin validation workflow", fillcolor=lightcyan];
+
+    // Decision outcomes
+    ValidRequest [label="Valid Request\n- Proceed with session creation\n- Create new TSession", fillcolor=lightgreen, shape=ellipse];
+
+    InvalidRequest [label="Invalid Request\n- Reject session creation\n- Return validation errors", fillcolor=lightcoral, shape=ellipse];
+
+    ExpiredRequest [label="Expired Request\n- Reject due to timeout\n- Return expiration error", fillcolor=orange, shape=ellipse];
+
+    // Flow in W08
+    Client -> CreateRequest [label="1. Create session open request"];
+
+    CreateRequest -> ValidateRequest [label="2. Validate request structure"];
+    CreateRequest -> CheckExpiration [label="3. Check request expiration"];
+
+    ValidateRequest -> ValidateBindingId [label="4. Internal binding validation"];
+    ValidateRequest -> ValidateCorrelation [label="5. Internal correlation validation"];
+    ValidateRequest -> ValidatePolicy [label="6. Internal policy validation"];
+
+    ValidateBindingId -> SubmitToSession [label="7. All validations passed"];
+    ValidateCorrelation -> SubmitToSession;
+    ValidatePolicy -> SubmitToSession;
+
+    CheckExpiration -> SubmitToSession [label="8. Request still valid"];
+
+    SubmitToSession -> ValidRequest [label="9. Session creation proceeds"];
+
+    // Error paths
+    ValidateBindingId -> InvalidRequest [label="If binding invalid"];
+    ValidateCorrelation -> InvalidRequest [label="If correlation invalid"];
+    ValidatePolicy -> InvalidRequest [label="If policy invalid"];
+    CheckExpiration -> ExpiredRequest [label="If request expired"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Session Creation";
+        bgcolor=white;
+
+        RequestOps [label="Request Operations", fillcolor=lightyellow];
+        ValidationSteps [label="Validation Steps", fillcolor=lightblue];
+        SessionIntegration [label="Session Integration", fillcolor=lightcyan];
+        Success [label="Success Path", fillcolor=lightgreen];
+        ValidationError [label="Validation Error", fillcolor=lightcoral];
+        TimeoutError [label="Timeout Error", fillcolor=orange];
+    }
+}

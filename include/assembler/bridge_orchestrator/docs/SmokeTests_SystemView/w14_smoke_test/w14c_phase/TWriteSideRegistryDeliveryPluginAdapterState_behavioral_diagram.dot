@@ -1,0 +1,37 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterState_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // State management in smoke test
+    InitialState [label="Initial State (empty):\n- accepted_placement_handle = invalid\n- load_signal_emitted = false\n- accepted_boundary_handle = invalid\n- boundary_handoff_completed = false"];
+
+    PlacementAcceptance [label="accept_placement_handle(handle):\n- stores valid placement handle\n- resets load_signal_emitted to false\n- enables load signal emission"];
+
+    LoadSignalEmission [label="mark_load_signal_emitted():\n- sets load_signal_emitted = true\n- called after emit_load_signal()\n- prevents duplicate load signals"];
+
+    BoundaryHandoffAccepted [label="accept_boundary_handoff(result):\n- if result.accepted(): stores boundary handle\n- sets boundary_handoff_completed = false\n- enables handoff completion tracking"];
+
+    BoundaryHandoffCompleted [label="complete_boundary_handoff(result):\n- if result.completed(): stores boundary handle\n- sets boundary_handoff_completed = true\n- marks handoff lifecycle complete"];
+
+    StateReset [label="reset():\n- clears accepted_placement_handle\n- resets load_signal_emitted = false\n- clears accepted_boundary_handle\n- resets boundary_handoff_completed = false"];
+
+    // Flow connections
+    InitialState -> PlacementAcceptance [label="accept_placement_handle()"];
+    PlacementAcceptance -> LoadSignalEmission [label="emit_load_signal()"];
+    LoadSignalEmission -> BoundaryHandoffAccepted [label="accept_boundary_handoff()"];
+    BoundaryHandoffAccepted -> BoundaryHandoffCompleted [label="complete_boundary_handoff()"];
+    BoundaryHandoffCompleted -> StateReset [label="reset_state()"];
+
+    // Styling by lifecycle phase
+    InitialState [fillcolor=lightgray];
+    PlacementAcceptance [fillcolor=lightgreen];
+    LoadSignalEmission [fillcolor=lightcyan];
+    BoundaryHandoffAccepted [fillcolor=lightsalmon];
+    BoundaryHandoffCompleted [fillcolor=lightsalmon];
+    StateReset [fillcolor=lightyellow];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterState Usage in W14C Smoke Test";
+    labelloc=t;
+}

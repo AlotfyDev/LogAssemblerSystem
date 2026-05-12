@@ -1,0 +1,57 @@
+digraph w04_c4_architecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial"];
+
+    // External Dependencies (from previous waves)
+    subgraph cluster_w01_w03 {
+        label="W01-W03 Foundation";
+        color=lightgray;
+        style=filled;
+
+        TCorrelationToken [label="TCorrelationToken\n(Primitive Carrier)", fillcolor=lightblue];
+        TParticipant [label="TParticipant\n(Participant Descriptor)", fillcolor=lightgreen];
+        TParticipantRole [label="TParticipantRole\n(Role Vocabulary)", fillcolor=lightgreen];
+        TBridgeStage [label="TBridgeStage\n(Protocol State)", fillcolor=yellow];
+    }
+
+    // W04 Channel Management System
+    subgraph cluster_w04 {
+        label="W04 Channel Management";
+        color=lightcyan;
+        style=filled;
+
+        TChannelProfile [label="TChannelProfile\n(Profile Descriptor)", fillcolor=orange];
+        TSingleAdapterSinglePortProfile [label="TSingleAdapterSinglePortProfile\n(Profile Preset)", fillcolor=orange];
+
+        TChannelBindingPolicy [label="TChannelBindingPolicy\n(Binding Policy)", fillcolor=red];
+
+        TChannel [label="TChannel\n(Channel Topology)", fillcolor=pink];
+    }
+
+    // Relationships
+    TSingleAdapterSinglePortProfile -> TChannelProfile [label="instantiates"];
+
+    TChannel -> TChannelProfile [label="uses"];
+    TChannel -> TChannelBindingPolicy [label="enforces"];
+    TChannel -> TParticipant [label="source", color=blue];
+    TChannel -> TParticipant [label="target", color=red];
+    TChannel -> TCorrelationToken [label="correlates"];
+
+    TChannelBindingPolicy -> TChannelProfile [label="compatible_with"];
+
+    // Validation relationships
+    TChannel -> TParticipantRole [label="validates_roles"];
+    TChannel -> TBridgeStage [label="protocol_integration"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        color=white;
+        style=filled;
+
+        legend_foundation [label="Foundation\n(W01-W03)", fillcolor=lightgray, shape=box];
+        legend_channel [label="Channel Management\n(W04)", fillcolor=lightcyan, shape=box];
+        legend_validation [label="Validation/Compatibility", shape=plaintext];
+        legend_topology [label="Topology Construction", shape=plaintext];
+    }
+}

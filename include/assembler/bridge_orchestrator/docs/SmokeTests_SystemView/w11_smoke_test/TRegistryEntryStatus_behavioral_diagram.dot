@@ -1,0 +1,22 @@
+digraph TRegistryEntryStatus_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TRegistryEntryStatus Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    StatusTransitions [label="Status Lifecycle\nunknown → registered → active/suspended → retired\nrejected (terminal from start)", fillcolor=yellow]
+
+    CheckUsability [label="Check Usability\nis_usable_registry_entry_status() - registered or active\nis_terminal_registry_entry_status() - retired or rejected", fillcolor=lightgreen]
+
+    StringConversion [label="String Conversion\nto_string(status) - converts enum to readable string", fillcolor=lightcyan]
+
+    UseInEntries [label="Use in Registry Entries\nControls entry lifecycle and validation\nDetermines if entry can be used", fillcolor=lightcyan]
+
+    End [label="Status operations\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> StatusTransitions
+    StatusTransitions -> CheckUsability
+    CheckUsability -> StringConversion
+    StringConversion -> UseInEntries
+    UseInEntries -> End
+}

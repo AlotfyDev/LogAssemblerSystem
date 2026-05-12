@@ -1,0 +1,18 @@
+digraph TBridgeCoreResult_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TBridgeCoreResult [label="{TBridgeCoreResult|bridge_id : TBridgeId\l operation_count : std::uint64_t\l correlation : TCorrelationToken\l note : std::string_view\l status : TBridgeCoreStatus\l|+ completed() : bool\l+ exhausted() : bool\l+ rejected() : bool\l+ failed() : bool\l+ succeeded() : bool\l+ completed(bridge_id, count, token, note) : TBridgeCoreResult\l+ exhausted_budget(bridge_id, count, token) : TBridgeCoreResult\l}"]
+
+    TBridgeId [label="TBridgeId", shape=record, fillcolor=lightyellow]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    TBridgeCoreStatus [label="TBridgeCoreStatus", shape=record, fillcolor=lightyellow]
+
+    TBridgeCoreResult -> TBridgeId [label="contains", style=dashed]
+    TBridgeCoreResult -> TCorrelationToken [label="contains", style=dashed]
+    TBridgeCoreResult -> std_string_view [label="uses", style=dashed]
+    TBridgeCoreResult -> std_uint64_t [label="uses", style=dashed]
+    TBridgeCoreResult -> TBridgeCoreStatus [label="contains", style=dashed]
+}

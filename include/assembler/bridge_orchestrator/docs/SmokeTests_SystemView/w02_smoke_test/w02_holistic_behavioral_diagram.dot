@@ -1,0 +1,58 @@
+digraph W02_Holistic_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Start
+    Start [label="Start\nW02 Smoke Test", shape=ellipse, fillcolor=green]
+
+    // Main behavioral flow
+    CreateToken [label="Create Correlation Token\nTCorrelationToken::from_parts(10u, 20u)", fillcolor=yellow]
+    ValidateToken [label="Validate Token\nis_valid()", fillcolor=lightgreen]
+
+    CheckTerminalStage [label="Check Terminal Stage\n!is_terminal_bridge_stage(idle)", fillcolor=lightgreen]
+    CheckTerminalState [label="Check Terminal State\nis_terminal_state(success)", fillcolor=lightgreen]
+
+    CreateTransition [label="Create Bridge Transition\nTBridgeTransition::make(idle, session_opening, \"start\")", fillcolor=yellow]
+    ValidateTransition [label="Validate Transition\nis_valid()", fillcolor=lightgreen]
+
+    StartProtocolState [label="Start Protocol State\nTBridgeProtocolState::start(token)", fillcolor=yellow]
+
+    ApplyTransition [label="Apply Transition\ntate.apply_transition(transition)", fillcolor=yellow]
+    CheckTransitionApplied [label="Check Transition Applied\n(applied == true)", fillcolor=lightgreen]
+
+    CreateSnapshot [label="Create Snapshot\nstate.snapshot(\"envelope_placement\")", fillcolor=yellow]
+    ValidateSnapshot [label="Validate Snapshot\nis_valid()", fillcolor=lightgreen]
+
+    CompleteProtocol [label="Complete Protocol\nstate.complete(TBridgeResult::success(token))", fillcolor=yellow]
+    CheckTerminal [label="Check Terminal State\nstate.is_terminal()", fillcolor=lightgreen]
+
+    // End
+    End [label="End\nAll validations passed", shape=ellipse, fillcolor=red]
+
+    // Flow connections
+    Start -> CreateToken
+    CreateToken -> ValidateToken
+    ValidateToken -> CheckTerminalStage
+    CheckTerminalStage -> CheckTerminalState
+    CheckTerminalState -> CreateTransition
+    CreateTransition -> ValidateTransition
+    ValidateTransition -> StartProtocolState
+    StartProtocolState -> ApplyTransition
+    ApplyTransition -> CheckTransitionApplied
+    CheckTransitionApplied -> CreateSnapshot
+    CreateSnapshot -> ValidateSnapshot
+    ValidateSnapshot -> CompleteProtocol
+    CompleteProtocol -> CheckTerminal
+    CheckTerminal -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation Check", shape=rectangle, fillcolor=lightgreen]
+        FlowLegend [label="Control Flow", shape=arrow, fillcolor=black]
+    }
+}

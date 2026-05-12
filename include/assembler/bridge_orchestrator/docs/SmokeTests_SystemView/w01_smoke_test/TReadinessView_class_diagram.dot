@@ -1,0 +1,33 @@
+digraph TReadinessView_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TReadinessView [label="{TReadinessView|state : TReadinessState\l correlation : TCorrelationToken\l capacity_hint : uint64_t\l reason : std::string_view\l|+ is_ready() : bool\l+ is_deferred() : bool\l+ ready(token, capacity) : TReadinessView\l+ not_ready(why, token) : TReadinessView\l+ deferred(why, token) : TReadinessView\l}"]
+
+    // Enums and dependencies
+    TReadinessState [label="{TReadinessState|unknown\l ready\l not_ready\l deferred\l saturated\l}", shape=record, fillcolor=lightyellow]
+
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=orange]
+
+    // Primitive types
+    uint64_t [label="uint64_t", shape=ellipse, fillcolor=lightgrey, style=invis]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey, style=invis]
+
+    // Relationships
+    TReadinessView -> TReadinessState [label="uses"]
+    TReadinessView -> TCorrelationToken [label="contains"]
+    TReadinessView -> uint64_t [label="uses", style=dashed]
+    TReadinessView -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        EnumLegend [label="Enum", shape=record, fillcolor=lightyellow]
+        CorrTokenLegend [label="Correlation Token", shape=record, fillcolor=orange]
+    }
+}

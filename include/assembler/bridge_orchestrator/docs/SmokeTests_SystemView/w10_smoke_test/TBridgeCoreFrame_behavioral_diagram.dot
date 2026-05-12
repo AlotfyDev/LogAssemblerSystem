@@ -1,0 +1,16 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    FRAME_CAPTURE [label="TBridge::frame()"];
+    COLLECT_STATE [label="Collect current state\n- bridge_id, status\n- budget, consumed_steps\n- protocol_frame"];
+    CREATE_FRAME [label="Create TBridgeCoreFrame"];
+    VALIDATE_FRAME [label="frame.is_valid()"];
+    USE_FRAME [label="Use for state inspection\n- Current execution state\n- Budget status\n- Protocol integration"];
+
+    FRAME_CAPTURE -> COLLECT_STATE;
+    COLLECT_STATE -> CREATE_FRAME;
+    CREATE_FRAME -> VALIDATE_FRAME;
+    VALIDATE_FRAME -> USE_FRAME [label="valid"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreFrame_behavioral_diagram.dot

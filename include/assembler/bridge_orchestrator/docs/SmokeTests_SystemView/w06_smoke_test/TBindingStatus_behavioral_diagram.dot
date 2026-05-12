@@ -1,0 +1,34 @@
+digraph TBindingStatus_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Status values used
+    unknown_initial [label="Initial: unknown"];
+    compatible_after_proposal [label="After compatible proposal: compatible"];
+    incompatible_after_proposal [label="After incompatible proposal: incompatible"];
+    materialized_after_declaration [label="After materialize_declaration_only(): materialized"];
+
+    // Status checks
+    check_unknown [label="Check status != unknown\n(binding.is_valid())"];
+    check_compatible [label="Check status == compatible or materialized\n(binding.is_compatible())"];
+    check_materialized [label="Check status == materialized\n(binding.is_materialized())"];
+
+    // End
+    status_validation [label="Status Validation Complete", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> unknown_initial;
+    unknown_initial -> compatible_after_proposal [label="Compatible proposal"];
+    unknown_initial -> incompatible_after_proposal [label="Incompatible proposal"];
+
+    compatible_after_proposal -> materialized_after_declaration [label="Materialize"];
+    incompatible_after_proposal -> check_unknown [label="Skip materialization"];
+
+    materialized_after_declaration -> check_unknown;
+    check_unknown -> check_compatible;
+    check_compatible -> check_materialized;
+    check_materialized -> status_validation;
+}

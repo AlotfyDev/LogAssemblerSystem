@@ -1,0 +1,1 @@
+Policy Object Taxonomy V1 Pack\n\nContents:\n1. 01_Policy_Object_Taxonomy_V1.md\n2. 02_policy_object_taxonomy_v1.schema.json\n\nNotes:\n- English only.\n- Detailed hierarchical numbering is used in the Markdown file.\n- This pack covers semantic closure only.\n- Graph structure internals are intentionally deferred.\n

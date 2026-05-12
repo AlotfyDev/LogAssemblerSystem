@@ -1,0 +1,71 @@
+digraph TSessionPolicy_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Policy creation
+    CreatePolicy [label="Create Policy\nTSessionPolicy::create_default()\n- Set default values\n- Allow single binding\n- Require compatibility validation\n- Set reasonable timeouts", fillcolor=lightyellow];
+
+    CreateCustomPolicy [label="Create Custom Policy\nTSessionPolicy::create_custom()\n- Accept custom settings\n- Validate parameter ranges\n- Apply business rules", fillcolor=lightyellow];
+
+    // Policy validation
+    ValidateRequest [label="Validate Request\npolicy.validate(request)\n- Check request parameters\n- Apply policy constraints\n- Verify compatibility requirements", fillcolor=lightyellow];
+
+    CheckExpiration [label="Check Expiration\npolicy.is_expired(session)\n- Compare session lifetime\n- Apply timeout behavior\n- Determine session validity", fillcolor=lightyellow];
+
+    ShouldRetryCheck [label="Should Retry Check\npolicy.should_retry(failures)\n- Check retry limits\n- Apply retry policies\n- Determine retry eligibility", fillcolor=lightyellow];
+
+    // Internal validation
+    ValidateParameters [label="Validate Parameters\n- Check binding limits\n- Verify timeout settings\n- Validate retry counts", fillcolor=lightblue];
+
+    CheckConstraints [label="Check Constraints\n- Apply business rules\n- Verify policy consistency\n- Check resource limits", fillcolor=lightblue];
+
+    // Usage in session lifecycle
+    ApplyToRequest [label="Apply to Request\n- Include in TSessionOpenRequest\n- Guide session creation\n- Set behavioral expectations", fillcolor=lightcyan];
+
+    EnforceDuringSession [label="Enforce During Session\n- Validate session operations\n- Apply timeout rules\n- Control retry behavior", fillcolor=lightcyan];
+
+    // Decision outcomes
+    PolicyAllows [label="Policy Allows\n- Proceed with operation\n- Session continues normally", fillcolor=lightgreen, shape=ellipse];
+
+    PolicyRejects [label="Policy Rejects\n- Block operation\n- Trigger rejection logic", fillcolor=lightcoral, shape=ellipse];
+
+    // Flow
+    CreatePolicy -> ApplyToRequest [label="1. Create policy for request"];
+
+    CreateCustomPolicy -> ApplyToRequest [label="2. Create custom policy"];
+
+    ApplyToRequest -> ValidateRequest [label="3. Validate incoming requests"];
+
+    ValidateRequest -> ValidateParameters [label="4. Internal parameter validation"];
+    ValidateRequest -> CheckConstraints [label="5. Internal constraint checking"];
+
+    ValidateParameters -> PolicyAllows [label="If parameters valid"];
+    CheckConstraints -> PolicyAllows [label="If constraints satisfied"];
+
+    ValidateParameters -> PolicyRejects [label="If parameters invalid"];
+    CheckConstraints -> PolicyRejects [label="If constraints violated"];
+
+    PolicyAllows -> EnforceDuringSession [label="6. Continue with session"];
+
+    EnforceDuringSession -> CheckExpiration [label="7. Monitor session lifetime"];
+    EnforceDuringSession -> ShouldRetryCheck [label="8. Handle operation failures"];
+
+    CheckExpiration -> PolicyAllows [label="If session active"];
+    ShouldRetryCheck -> PolicyAllows [label="If retry allowed"];
+
+    CheckExpiration -> PolicyRejects [label="If session expired"];
+    ShouldRetryCheck -> PolicyRejects [label="If retry limit exceeded"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Usage in W08 Policy Enforcement";
+        bgcolor=white;
+
+        PolicyOps [label="Policy Operations", fillcolor=lightyellow];
+        InternalChecks [label="Internal Validation", fillcolor=lightblue];
+        SessionIntegration [label="Session Integration", fillcolor=lightcyan];
+        Success [label="Success Path", fillcolor=lightgreen];
+        Failure [label="Failure Path", fillcolor=lightcoral];
+    }
+}

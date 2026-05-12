@@ -1,0 +1,30 @@
+digraph TBridgeResult_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main enum
+    TBridgeResultStatus [label="{TBridgeResultStatus\n(enum class)|success\l rejected\l deferred\l failed\l}", fillcolor=lightcyan]
+
+    // Main struct
+    TBridgeResult [label="{TBridgeResult\n(struct)|status : TBridgeResultStatus\l error : TBridgeError\l correlation : TCorrelationToken\l|+ succeeded() : bool\l+ rejected() : bool\l+ deferred() : bool\l+ failed() : bool\l+ success(token) : TBridgeResult\l+ reject(reason, token) : TBridgeResult\l+ defer(reason, token) : TBridgeResult\l+ fail(reason, token) : TBridgeResult\l}", shape=record, fillcolor=lightblue]
+
+    // Dependencies
+    TBridgeError_type [label="TBridgeError", shape=ellipse, fillcolor=lightgrey]
+    TCorrelationToken_type [label="TCorrelationToken", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    TBridgeResult -> TBridgeResultStatus [label="uses", style=dashed]
+    TBridgeResult -> TBridgeError_type [label="contains", style=dashed]
+    TBridgeResult -> TCorrelationToken_type [label="contains", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        EnumLegend [label="Enum Class", shape=record, fillcolor=lightcyan]
+        StructLegend [label="Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

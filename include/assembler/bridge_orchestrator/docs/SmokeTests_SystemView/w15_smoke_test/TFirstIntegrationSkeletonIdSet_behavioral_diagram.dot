@@ -1,0 +1,34 @@
+digraph TFirstIntegrationSkeletonIdSet_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage
+    ConfigConversion [label="Configuration Conversion:\n- TFirstIntegrationSkeletonIdSet::from_config(config)\n- converts primitive uint64_t IDs from config to typed IDs\n- channel_id remains uint64_t, others become typed wrappers"];
+
+    IdValidation [label="ID Validation:\n- id_set.is_valid() checks all IDs are valid\n- channel_id != 0, typed IDs check their validity\n- used to validate ID set before model declaration"];
+
+    ModelDeclarationUsage [label="Model Declaration Usage:\n- passed to model declaration helpers\n- channel_id used for TChannel::declare()\n- binding_id used for TBinding::propose()\n- session_id used for TSession::open()\n- protocol_id used for protocol declaration\n- bridge_id used for bridge declaration"];
+
+    TypeSafety [label="Type Safety Enforcement:\n- prevents mixing IDs of different types\n- channel_id (uint64_t) vs binding_id (TBindingId)\n- compile-time prevention of ID misuse"];
+
+    // Flow connections
+    ConfigConversion -> IdValidation;
+    IdValidation -> ModelDeclarationUsage [label="valid"];
+    IdValidation -> End [label="invalid"];
+
+    End [label="ID Set Invalid", shape=ellipse, fillcolor=lightcoral];
+
+    ModelDeclarationUsage -> TypeSafety;
+
+    // Styling
+    ConfigConversion [fillcolor=lightblue];
+    IdValidation [fillcolor=lightyellow];
+    ModelDeclarationUsage [fillcolor=lightsalmon];
+    TypeSafety [fillcolor=lightgreen];
+
+    // Title
+    label="TFirstIntegrationSkeletonIdSet Usage in W15 Smoke Test";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonIdSet_behavioral_diagram.dot

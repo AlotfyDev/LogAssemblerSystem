@@ -1,0 +1,33 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Correlation token usage in W14C smoke test
+    FactoryInput [label="Factory input parameter:\n- TWriteSideRegistryDeliveryPluginAdapterFactory::from_fields()\n- correlation token passed to identify material\n- used in material descriptor creation"];
+
+    MaterialDescriptorStorage [label="Stored in material descriptor:\n- descriptor.correlation field\n- used in all adapter operations\n- provides consistent correlation across workflow"];
+
+    PlacementOperations [label="Placement workflow correlation:\n- prepare_placement_request() uses descriptor.correlation\n- accept_placement_handle() validates handle.correlation matches\n- emit_load_signal() uses correlation in signal"];
+
+    BoundaryHandoffOperations [label="Boundary handoff correlation:\n- prepare_boundary_handoff_request() uses descriptor.correlation\n- accept_boundary_handoff_result() uses correlation in results\n- all handoff operations consistently correlated"];
+
+    ReadinessAndView [label="Identity and readiness correlation:\n- view() uses correlation in participant creation\n- readiness() uses correlation in readiness view\n- provides correlation context for all operations"];
+
+    // Flow connections
+    FactoryInput -> MaterialDescriptorStorage;
+    MaterialDescriptorStorage -> PlacementOperations;
+    MaterialDescriptorStorage -> BoundaryHandoffOperations;
+    MaterialDescriptorStorage -> ReadinessAndView;
+
+    // Styling
+    FactoryInput [fillcolor=lightblue];
+    MaterialDescriptorStorage [fillcolor=lightsalmon];
+    PlacementOperations [fillcolor=lightgreen];
+    BoundaryHandoffOperations [fillcolor=lightsalmon];
+    ReadinessAndView [fillcolor=lightyellow];
+
+    // Title
+    label="TCorrelationToken Usage in W14C Smoke Test";
+    labelloc=t;
+}

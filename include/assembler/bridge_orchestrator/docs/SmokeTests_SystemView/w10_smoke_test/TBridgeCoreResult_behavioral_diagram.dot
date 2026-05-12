@@ -1,0 +1,28 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    STEP_EXECUTION [label="step_model_once()"];
+    CREATE_RESULT [label="Create TBridgeCoreResult"];
+    RUNNING [label="running()\n- Bridge still executing\n- Steps consumed"];
+    COMPLETED [label="completed()\n- Bridge finished successfully\n- Protocol completed"];
+    FAILED [label="failed()\n- Execution error\n- Protocol failure"];
+    REJECTED [label="rejected()\n- Invalid configuration\n- Protocol rejection"];
+    EXHAUSTED [label="exhausted_budget()\n- Step budget depleted\n- Could not complete"];
+
+    STEP_EXECUTION -> CREATE_RESULT;
+    CREATE_RESULT -> RUNNING;
+    CREATE_RESULT -> COMPLETED;
+    CREATE_RESULT -> FAILED;
+    CREATE_RESULT -> REJECTED;
+    CREATE_RESULT -> EXHAUSTED;
+
+    CHECK_RESULT [label="Check result type\n- result.running()\n- result.completed()\n- result.failed()\n- etc."];
+
+    RUNNING -> CHECK_RESULT;
+    COMPLETED -> CHECK_RESULT;
+    FAILED -> CHECK_RESULT;
+    REJECTED -> CHECK_RESULT;
+    EXHAUSTED -> CHECK_RESULT;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreResult_behavioral_diagram.dot

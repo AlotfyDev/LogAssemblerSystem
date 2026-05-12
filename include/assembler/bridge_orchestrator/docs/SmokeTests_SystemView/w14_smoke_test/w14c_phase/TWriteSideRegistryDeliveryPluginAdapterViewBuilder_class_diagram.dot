@@ -1,0 +1,39 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterViewBuilder_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // View builder struct
+    ViewBuilder [label="{TWriteSideRegistryDeliveryPluginAdapterViewBuilder|+ participant() static\l+ delivery_content_provider_profile() static\l+ view() static\l}", fillcolor=lightsalmon, style=filled];
+
+    // Created views
+    Participant [label="{TParticipant|participant identity\lrole, domain, family, display name\l}", fillcolor=lightblue];
+    ParticipantView [label="{TParticipantView|participant view wrapper\lcontains participant details\l}", fillcolor=lightblue];
+    PluginAdapterView [label="{TPluginAdapterView|adapter identity and capabilities\lparticipant view + obligation profile\l}", fillcolor=lightblue];
+
+    // Obligation profile
+    ObligationProfile [label="{TPluginAdapterObligationProfile|delivery content provider profile\lcapabilities and requirements\l}", fillcolor=lightcyan];
+    ObligationFamily [label="{TPluginAdapterObligationFamily|DELIVERY_CONTENT_PROVIDER\lspecific obligation family\l}", fillcolor=lightgreen];
+
+    // Input parameters
+    Config [label="{TWriteSideRegistryDeliveryPluginAdapterConfig|configuration input\lprovides IDs and display names\l}", fillcolor=lightyellow];
+    CorrelationToken [label="{TCorrelationToken|correlation for participant\loptional, can be invalid\l}", fillcolor=lightyellow];
+
+    // Relationships
+    ViewBuilder -> Participant [label="creates"];
+    ViewBuilder -> ParticipantView [label="creates"];
+    ViewBuilder -> PluginAdapterView [label="creates"];
+    ViewBuilder -> ObligationProfile [label="creates"];
+
+    Participant -> CorrelationToken [label="uses"];
+    Participant -> Config [label="uses participant_* fields"];
+
+    PluginAdapterView -> ParticipantView [label="contains"];
+    PluginAdapterView -> ObligationProfile [label="contains"];
+
+    ObligationProfile -> ObligationFamily [label="specifies"];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterViewBuilder Class Structure";
+    labelloc=t;
+}

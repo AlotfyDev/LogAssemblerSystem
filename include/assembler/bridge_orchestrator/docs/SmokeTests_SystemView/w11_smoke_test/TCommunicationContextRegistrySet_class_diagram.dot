@@ -1,0 +1,47 @@
+digraph TCommunicationContextRegistrySet_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TCommunicationContextRegistrySet [label="{TCommunicationContextRegistrySet|channels : TChannelRegistry<ChannelCapacity>\l bindings : TBindingRegistry<BindingCapacity>\l sessions : TSessionRegistry<SessionCapacity>\l protocols : TBridgeProtocolRegistry<ProtocolCapacity, PlanCapacity>\l bridges : TBridgeRegistry<BridgeCapacity, PlanCapacity>\l|+ is_valid() : bool\l+ total_count() : std::size_t\l+ make(token) : TCommunicationContextRegistrySet\l}"]
+
+    // Template Parameters
+    ChannelCapacity [label="ChannelCapacity", shape=ellipse, fillcolor=lightgrey]
+    BindingCapacity [label="BindingCapacity", shape=ellipse, fillcolor=lightgrey]
+    SessionCapacity [label="SessionCapacity", shape=ellipse, fillcolor=lightgrey]
+    ProtocolCapacity [label="ProtocolCapacity", shape=ellipse, fillcolor=lightgrey]
+    BridgeCapacity [label="BridgeCapacity", shape=ellipse, fillcolor=lightgrey]
+    PlanCapacity [label="PlanCapacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Registry Types
+    TChannelRegistry [label="{TChannelRegistry<ChannelCapacity>|...}", shape=record, fillcolor=lightyellow]
+    TBindingRegistry [label="{TBindingRegistry<BindingCapacity>|...}", shape=record, fillcolor=lightyellow]
+    TSessionRegistry [label="{TSessionRegistry<SessionCapacity>|...}", shape=record, fillcolor=lightyellow]
+    TBridgeProtocolRegistry [label="{TBridgeProtocolRegistry<ProtocolCapacity, PlanCapacity>|...}", shape=record, fillcolor=lightyellow]
+    TBridgeRegistry [label="{TBridgeRegistry<BridgeCapacity, PlanCapacity>|...}", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TCommunicationContextRegistrySet -> TChannelRegistry [label="contains", style=dashed]
+    TCommunicationContextRegistrySet -> TBindingRegistry [label="contains", style=dashed]
+    TCommunicationContextRegistrySet -> TSessionRegistry [label="contains", style=dashed]
+    TCommunicationContextRegistrySet -> TBridgeProtocolRegistry [label="contains", style=dashed]
+    TCommunicationContextRegistrySet -> TBridgeRegistry [label="contains", style=dashed]
+
+    TCommunicationContextRegistrySet -> ChannelCapacity [label="parameterized by", style=dashed]
+    TCommunicationContextRegistrySet -> BindingCapacity [label="parameterized by", style=dashed]
+    TCommunicationContextRegistrySet -> SessionCapacity [label="parameterized by", style=dashed]
+    TCommunicationContextRegistrySet -> ProtocolCapacity [label="parameterized by", style=dashed]
+    TCommunicationContextRegistrySet -> BridgeCapacity [label="parameterized by", style=dashed]
+    TCommunicationContextRegistrySet -> PlanCapacity [label="parameterized by", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        RegistryLegend [label="Registry Type", shape=record, fillcolor=lightyellow]
+    }
+}

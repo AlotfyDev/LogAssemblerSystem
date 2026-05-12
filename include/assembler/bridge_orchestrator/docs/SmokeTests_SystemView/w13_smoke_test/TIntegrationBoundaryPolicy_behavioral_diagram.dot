@@ -1,0 +1,124 @@
+digraph TIntegrationBoundaryPolicy_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Policy evaluation
+    Start [label="Evaluate Boundary Policy", shape=ellipse, fillcolor=lightgreen];
+
+    ChoosePolicy [label="Choose Policy Method", fillcolor=lightyellow, shape=diamond];
+
+    RequestReadiness [label="request_readiness(request)\nEvaluate handoff request readiness", fillcolor=lightblue];
+
+    OutboundSupport [label="supports_outbound_handoff(descriptor)\nCheck if descriptor supports outbound handoffs", fillcolor=lightcyan];
+
+    InboundSupport [label="supports_inbound_handoff(descriptor)\nCheck if descriptor supports inbound handoffs", fillcolor=lightcyan];
+
+    // Request readiness evaluation
+    ReadinessEvaluation [label="Request Readiness Evaluation", fillcolor=lavender];
+
+    CheckCorrelation [label="correlation.is_valid()\n→ Valid correlation required"];
+
+    CheckTargetValid [label="target.is_valid()\n→ Target descriptor must be valid"];
+
+    CheckAcceptsHandoff [label="target.has(accepts_handoff)\n→ Target must accept handoffs"];
+
+    CheckMaterialKind [label="!material_kind.empty()\n→ Material kind must be specified"];
+
+    CheckOrdering [label="If requires_ordered_handoff:\n    target.has(supports_ordering)\n→ Ordering support required if requested"];
+
+    // Readiness outcomes
+    ReadinessOutcomes [label="Readiness Outcomes", fillcolor=pink, shape=diamond];
+
+    Ready [label="TReadinessView::ready(token, size_hint)\n→ Request can proceed immediately"];
+
+    Deferred [label="TReadinessView::deferred(reason, token)\n→ Request deferred (ordering requirement)"];
+
+    NotReady [label="TReadinessView::not_ready(reason, token)\n→ Request cannot proceed"];
+
+    // Direction support evaluation
+    DirectionEvaluation [label="Direction Support Evaluation", fillcolor=orange];
+
+    CheckDescriptorValid [label="descriptor.is_valid()\n→ Descriptor must be valid"];
+
+    CheckDirectionOutbound [label="can_emit_across_boundary(direction)\n→ Direction must support outbound"];
+
+    CheckDirectionInbound [label="can_receive_across_boundary(direction)\n→ Direction must support inbound"];
+
+    CheckHandoffCapability [label="descriptor.has(accepts_handoff)\n→ Must accept handoffs"];
+
+    // Support outcomes
+    SupportOutcomes [label="Support Outcomes", fillcolor=lightgreen, shape=diamond];
+
+    Supported [label="true\n→ Boundary supports the operation"];
+
+    NotSupported [label="false\n→ Boundary does not support the operation"];
+
+    // Usage in smoke test
+    SmokeTestUsage [label="W13 Smoke Test Usage", fillcolor=lightcyan];
+
+    ReadinessUsage [label="auto readiness = TIntegrationBoundaryPolicy::request_readiness(request);\nif (!readiness.is_ready()) return error;"];
+
+    OutboundUsage [label="if (!TIntegrationBoundaryPolicy::supports_outbound_handoff(descriptor)) return error;"];
+
+    // Flow connections
+    Start -> ChoosePolicy;
+
+    ChoosePolicy -> RequestReadiness [label="Evaluate request"];
+    ChoosePolicy -> OutboundSupport [label="Check outbound"];
+    ChoosePolicy -> InboundSupport [label="Check inbound"];
+
+    RequestReadiness -> ReadinessEvaluation;
+
+    ReadinessEvaluation -> CheckCorrelation;
+    CheckCorrelation -> CheckTargetValid;
+    CheckTargetValid -> CheckAcceptsHandoff;
+    CheckAcceptsHandoff -> CheckMaterialKind;
+    CheckMaterialKind -> CheckOrdering;
+
+    CheckOrdering -> ReadinessOutcomes;
+
+    ReadinessOutcomes -> Ready [label="All checks pass"];
+    ReadinessOutcomes -> Deferred [label="Ordering not supported"];
+    ReadinessOutcomes -> NotReady [label="Other validation failure"];
+
+    OutboundSupport -> DirectionEvaluation;
+    InboundSupport -> DirectionEvaluation;
+
+    DirectionEvaluation -> CheckDescriptorValid;
+    CheckDescriptorValid -> CheckDirectionOutbound;
+    CheckDirectionOutbound -> CheckDirectionInbound [label="inbound"];
+    CheckDirectionInbound -> CheckHandoffCapability;
+
+    CheckHandoffCapability -> SupportOutcomes;
+
+    SupportOutcomes -> Supported [label="All direction checks pass"];
+    SupportOutcomes -> NotSupported [label="Direction check fails"];
+
+    Ready -> SmokeTestUsage;
+    Deferred -> SmokeTestUsage;
+    NotReady -> SmokeTestUsage;
+    Supported -> SmokeTestUsage;
+    NotSupported -> SmokeTestUsage;
+
+    SmokeTestUsage -> ReadinessUsage;
+    SmokeTestUsage -> OutboundUsage;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendChoice [label="Method Choice", shape=diamond, fillcolor=lightyellow];
+        LegendRequest [label="Request Evaluation", fillcolor=lightblue];
+        LegendDirection [label="Direction Support", fillcolor=lightcyan];
+        LegendEval [label="Detailed Evaluation", fillcolor=lavender];
+        LegendOutcomes [label="Evaluation Outcomes", shape=diamond, fillcolor=pink];
+        LegendResult [label="Result States"];
+        LegendDirectionEval [label="Direction Evaluation", fillcolor=orange];
+        LegendSupport [label="Support Outcomes", shape=diamond, fillcolor=lightgreen];
+        LegendUsage [label="Smoke Test Usage", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryPolicy_behavioral_diagram.dot

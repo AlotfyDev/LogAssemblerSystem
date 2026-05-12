@@ -1,0 +1,51 @@
+digraph TBoundedRegistry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TBoundedRegistry [label="{TBoundedRegistry<TId, TValue, Capacity>|entries : std::array<Entry, Capacity>\l count : std::size_t\l rejected_insertions : std::uint64_t\l registry_name : std::string_view\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ empty() : bool\l+ full() : bool\l+ find(id) : const Entry*\l+ find_mutable(id) : Entry*\l+ contains(id) : bool\l+ lookup_result(id) : TRegistryLookupResult\l+ register_value(id, value, label) : bool\l+ snapshot() : TRegistrySnapshot\l+ make(name, token) : TBoundedRegistry\l}"]
+
+    // Template Parameters
+    TId [label="TId", shape=ellipse, fillcolor=lightgrey]
+    TValue [label="TValue", shape=ellipse, fillcolor=lightgrey]
+    Capacity [label="Capacity", shape=ellipse, fillcolor=lightgrey]
+
+    // Type Aliases
+    Entry [label="Entry = TRegistryEntry<TId, TValue>", shape=record, fillcolor=lightyellow]
+
+    // Member Types
+    std_array [label="std::array<Entry, Capacity>", shape=record, fillcolor=lightyellow]
+    std_size_t [label="std::size_t", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    TRegistryEntry [label="{TRegistryEntry<TId, TValue>|...}", shape=record, fillcolor=lightyellow]
+    TRegistryLookupResult [label="TRegistryLookupResult", shape=record, fillcolor=lightyellow]
+    TRegistrySnapshot [label="TRegistrySnapshot", shape=record, fillcolor=lightyellow]
+
+    // Relationships
+    TBoundedRegistry -> TId [label="parameterized by", style=dashed]
+    TBoundedRegistry -> TValue [label="parameterized by", style=dashed]
+    TBoundedRegistry -> Capacity [label="parameterized by", style=dashed]
+    TBoundedRegistry -> Entry [label="uses type alias", style=dashed]
+    TBoundedRegistry -> std_array [label="contains", style=dashed]
+    TBoundedRegistry -> std_size_t [label="uses", style=dashed]
+    TBoundedRegistry -> std_uint64_t [label="uses", style=dashed]
+    TBoundedRegistry -> std_string_view [label="uses", style=dashed]
+    TBoundedRegistry -> TCorrelationToken [label="uses", style=dashed]
+    TBoundedRegistry -> TRegistryEntry [label="contains", style=dashed]
+    TBoundedRegistry -> TRegistryLookupResult [label="produces", style=dashed]
+    TBoundedRegistry -> TRegistrySnapshot [label="produces", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        AliasLegend [label="Type Alias", shape=record, fillcolor=lightyellow]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

@@ -1,0 +1,83 @@
+digraph TCompatibilityMatrix_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightgreen];
+
+    // Initialization
+    matrix_creation [label="TCompatibilityMatrix<8> Creation\n- issues array initialized to clean issues\n- issue_count = 0", fillcolor=yellow];
+
+    // Add operation (main usage)
+    add_issue [label="add(TCompatibilityIssue)\n1. Check if issue.is_clean() - skip if clean\n2. Check if matrix.full() - return false if full\n3. Add issue to issues[issue_count]\n4. Increment issue_count\n5. Return true", fillcolor=palegreen];
+
+    // Query operations
+    check_compatible [label="compatible()\nReturn !has_blocking_issues()\n(i.e., blocking_count() == 0)", fillcolor=lightcyan];
+
+    check_blocking [label="has_blocking_issues()\nReturn blocking_count() > 0", fillcolor=lightcyan];
+
+    count_blocking [label="blocking_count()\nIterate issues[0..issue_count)\nCount issues where is_blocking_issue()", fillcolor=orange];
+
+    count_warnings [label="warning_count()\nIterate issues[0..issue_count)\nCount issues where severity == warning", fillcolor=orange];
+
+    check_warnings [label="has_warnings()\nReturn warning_count() > 0", fillcolor=lightcyan];
+
+    check_full [label="full()\nReturn issue_count >= Capacity", fillcolor=white];
+
+    check_empty [label="empty()\nReturn issue_count == 0", fillcolor=white];
+
+    get_capacity [label="capacity()\nReturn Capacity (template parameter)", fillcolor=white];
+
+    get_first_issue [label="first_issue()\nReturn issues[0] (undefined if empty)", fillcolor=white];
+
+    // Usage patterns in W07
+    rule_evaluation [label="Rule Evaluation Pattern\nTCompatibilityRuleSet::evaluate<N>()\ncalls add() for each detected issue", fillcolor=palegreen, shape=box];
+
+    evaluator_usage [label="Evaluator Usage\nTCompatibilityEvaluator::evaluate_strict_binding()\ncreates matrix and applies rules", fillcolor=palegreen, shape=box];
+
+    view_aggregation [label="View Aggregation\nTCompatibilityView::from_matrix()\nreads counts from matrix", fillcolor=lightcyan, shape=box];
+
+    // Flow connections
+    matrix_creation -> add_issue [label="enables"];
+
+    add_issue -> check_full [label="checks"];
+    add_issue -> count_blocking [label="updates"];
+    add_issue -> count_warnings [label="updates"];
+
+    check_compatible -> check_blocking [label="uses"];
+    check_blocking -> count_blocking [label="uses"];
+
+    check_warnings -> count_warnings [label="uses"];
+
+    view_aggregation -> count_blocking [label="reads"];
+    view_aggregation -> count_warnings [label="reads"];
+    view_aggregation -> check_compatible [label="reads"];
+
+    rule_evaluation -> add_issue [label="calls repeatedly"];
+
+    // W07 smoke test scenarios
+    valid_scenario [label="Valid Binding Scenario\n- Few or no issues added\n- compatible() returns true\n- blocking_count() == 0", fillcolor=lightgreen];
+
+    warning_scenario [label="Warning Scenario\n- Non-blocking issues added\n- has_warnings() returns true\n- compatible() returns true", fillcolor=orange];
+
+    blocking_scenario [label="Blocking Issues Scenario\n- Blocking issues added\n- has_blocking_issues() returns true\n- compatible() returns false", fillcolor=red];
+
+    full_scenario [label="Matrix Full Scenario\n- Capacity reached (8 issues)\n- add() returns false\n- Truncates additional issues", fillcolor=pink];
+
+    // Connect scenarios
+    add_issue -> valid_scenario [label="0 issues"];
+    add_issue -> warning_scenario [label="warnings only"];
+    add_issue -> blocking_scenario [label="blocking issues"];
+    add_issue -> full_scenario [label="capacity exceeded"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Object Creation", fillcolor=yellow];
+        MainOp [label="Main Operation", fillcolor=palegreen];
+        QueryOp [label="Query Operation", fillcolor=lightcyan];
+        CountOp [label="Counting Operation", fillcolor=orange];
+        Utility [label="Utility Operation", fillcolor=white];
+        Valid [label="Valid Scenario", fillcolor=lightgreen];
+        Warning [label="Warning Scenario", fillcolor=orange];
+        Error [label="Error Scenario", fillcolor=red];
+        EdgeCase [label="Edge Case", fillcolor=pink];
+    }
+}

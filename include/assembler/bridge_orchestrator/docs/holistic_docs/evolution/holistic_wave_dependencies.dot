@@ -1,0 +1,197 @@
+digraph BridgeOrchestratorWaveDependencies {
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Foundation Layer (Bottom)
+    W01 [label="W01: Carrier Layer\nFoundation Primitives", fillcolor=lightcoral, shape=box];
+    W02 [label="W02: Protocol State Layer\nLifecycle Management", fillcolor=lightcoral, shape=box];
+
+    // Identity and Topology Layer
+    W03 [label="W03: Participant Layer\nActor Identity", fillcolor=lightsalmon, shape=box];
+    W04 [label="W04: Channel Layer\nTopology Management", fillcolor=lightsalmon, shape=box];
+
+    // Contract Layer
+    W05 [label="W05: Obligation Layer\nContract Enforcement", fillcolor=orange, shape=box];
+
+    // Integration Layer
+    W06 [label="W06: Binding Layer\nIntegration Points", fillcolor=lightyellow, shape=box];
+    W07 [label="W07: Compatibility Layer\nValidation Layer", fillcolor=lightyellow, shape=box];
+
+    // Runtime Layer
+    W08 [label="W08: Session Layer\nRuntime Contexts", fillcolor=yellow, shape=box];
+    W09 [label="W09: Protocol Layer\nExecutable Protocols", fillcolor=yellow, shape=box];
+
+    // Orchestration Layer
+    W10 [label="W10: Bridge Core Layer\nOrchestration Engine", fillcolor=lightgreen, shape=box];
+
+    // Coordination Layer
+    W11 [label="W11: Registry Layer\nComponent Coordination", fillcolor=green, shape=box];
+
+    // Observability Layer
+    W12 [label="W12: Diagnostics Layer\nObservability", fillcolor=cyan, shape=box];
+
+    // Integration Layer
+    W13 [label="W13: Integration Boundary Layer\nExternal Interfaces", fillcolor=blue, shape=box];
+
+    // Implementation Layer
+    W14 [label="W14: Concrete Bindings Layer\nActual Implementations", fillcolor=purple, shape=box];
+
+    // Testing Layer (Top)
+    W15 [label="W15: Integration Skeleton Layer\nEnd-to-End Testing", fillcolor=violet, shape=box];
+
+    // Foundation dependencies
+    W01 -> W02 [label="Primitives"];
+    W01 -> W03 [label="Data Types"];
+    W01 -> W05 [label="Transport"];
+
+    // State dependencies
+    W02 -> W03 [label="Lifecycle"];
+    W02 -> W04 [label="Stages"];
+    W02 -> W08 [label="State Mgmt"];
+
+    // Identity dependencies
+    W03 -> W04 [label="Participants"];
+    W03 -> W05 [label="Roles"];
+    W03 -> W06 [label="Actors"];
+
+    // Topology dependencies
+    W04 -> W05 [label="Channels"];
+    W04 -> W06 [label="Topology"];
+
+    // Contract dependencies
+    W05 -> W06 [label="Obligations"];
+    W05 -> W07 [label="Contracts"];
+
+    // Integration dependencies
+    W06 -> W07 [label="Bindings"];
+    W06 -> W08 [label="Integration"];
+    W06 -> W09 [label="Connections"];
+
+    // Validation dependencies
+    W07 -> W08 [label="Compatibility"];
+    W07 -> W09 [label="Validation"];
+
+    // Runtime dependencies
+    W08 -> W09 [label="Contexts"];
+    W08 -> W10 [label="Sessions"];
+
+    // Protocol dependencies
+    W09 -> W10 [label="Protocols"];
+
+    // Orchestration dependencies
+    W10 -> W11 [label="Engine"];
+    W10 -> W12 [label="Status"];
+    W10 -> W13 [label="Orchestration"];
+
+    // Coordination dependencies
+    W11 -> W12 [label="Registry"];
+    W11 -> W13 [label="Coordination"];
+    W11 -> W14 [label="Components"];
+
+    // Observability dependencies
+    W12 -> W13 [label="Diagnostics"];
+    W12 -> W15 [label="Monitoring"];
+
+    // Integration dependencies
+    W13 -> W14 [label="Boundaries"];
+    W13 -> W15 [label="Interfaces"];
+
+    // Implementation dependencies
+    W14 -> W15 [label="Concrete"];
+
+    // Cross-cutting dependencies
+    W11 -> W07 [label="Component\nValidation", style=dashed, color=red];
+    W12 -> W08 [label="Runtime\nDiagnostics", style=dashed, color=red];
+    W12 -> W10 [label="System\nMonitoring", style=dashed, color=red];
+    W13 -> W06 [label="Boundary\nBindings", style=dashed, color=red];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Dependency Types";
+        style=dashed;
+        color=black;
+
+        direct_dep [label="Direct Build\nDependency", shape=box, fillcolor=white];
+        cross_dep [label="Cross-Cutting\nDependency", shape=box, fillcolor=white, style=dashed];
+        integration_dep [label="Integration\nDependency", shape=box, fillcolor=white, color=blue];
+    }
+
+    // Layer groupings
+    subgraph cluster_foundation {
+        label="Foundation Layer";
+        style=rounded;
+        color=lightcoral;
+        W01 W02
+    }
+
+    subgraph cluster_identity {
+        label="Identity & Topology";
+        style=rounded;
+        color=lightsalmon;
+        W03 W04
+    }
+
+    subgraph cluster_contract {
+        label="Contract Layer";
+        style=rounded;
+        color=orange;
+        W05
+    }
+
+    subgraph cluster_integration {
+        label="Integration Layer";
+        style=rounded;
+        color=lightyellow;
+        W06 W07
+    }
+
+    subgraph cluster_runtime {
+        label="Runtime Layer";
+        style=rounded;
+        color=yellow;
+        W08 W09
+    }
+
+    subgraph cluster_orchestration {
+        label="Orchestration Layer";
+        style=rounded;
+        color=lightgreen;
+        W10
+    }
+
+    subgraph cluster_coordination {
+        label="Coordination Layer";
+        style=rounded;
+        color=green;
+        W11
+    }
+
+    subgraph cluster_observability {
+        label="Observability Layer";
+        style=rounded;
+        color=cyan;
+        W12
+    }
+
+    subgraph cluster_external {
+        label="External Integration";
+        style=rounded;
+        color=blue;
+        W13
+    }
+
+    subgraph cluster_implementation {
+        label="Implementation Layer";
+        style=rounded;
+        color=purple;
+        W14
+    }
+
+    subgraph cluster_testing {
+        label="Testing Layer";
+        style=rounded;
+        color=violet;
+        W15
+    }
+}

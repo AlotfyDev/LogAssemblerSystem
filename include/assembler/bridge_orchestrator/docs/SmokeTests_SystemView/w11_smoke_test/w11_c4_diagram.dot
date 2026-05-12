@@ -1,0 +1,98 @@
+digraph C4_W11_CommunicationContext {
+    rankdir=TB
+    node [shape=box, style=filled, fillcolor=lightblue]
+
+    // System Context
+    subgraph cluster_SystemContext {
+        label="System Context"
+        style=filled
+        fillcolor=lightgrey
+
+        ExternalSystems [label="External Systems\n(Log Producers/Consumers)", shape=ellipse, fillcolor=lightgreen]
+        CommunicationContext [label="Communication Context System", shape=box, fillcolor=lightblue]
+    }
+
+    // Containers
+    subgraph cluster_Containers {
+        label="Containers"
+        style=filled
+        fillcolor=lightyellow
+
+        RegistryLayer [label="Registry Layer\n(Optional W11)", fillcolor=orange]
+        CommunicationContextCore [label="Communication Context Core\n(W01-W10 Components)", fillcolor=orange]
+    }
+
+    // Components within Registry Layer
+    subgraph cluster_RegistryLayer {
+        label="Registry Layer Components"
+        style=filled
+        fillcolor=lightcyan
+
+        RegistrySet [label="Registry Set\n(TCommunicationContextRegistrySet)", fillcolor=pink]
+        ChannelRegistry [label="Channel Registry\n(TChannelRegistry)", fillcolor=pink]
+        BindingRegistry [label="Binding Registry\n(TBindingRegistry)", fillcolor=pink]
+        SessionRegistry [label="Session Registry\n(TSessionRegistry)", fillcolor=pink]
+        ProtocolRegistry [label="Protocol Registry\n(TBridgeProtocolRegistry)", fillcolor=pink]
+        BridgeRegistry [label="Bridge Registry\n(TBridgeRegistry)", fillcolor=pink]
+        BoundedRegistry [label="Bounded Registry\n(TBoundedRegistry)", fillcolor=pink]
+    }
+
+    // Components within Communication Context Core
+    subgraph cluster_CoreComponents {
+        label="Core Components (W01-W10)"
+        style=filled
+        fillcolor=lightcyan
+
+        Participants [label="Participants\n(TParticipant, TParticipantRole)", fillcolor=pink]
+        Channels [label="Channels\n(TChannel, TChannelBindingPolicy)", fillcolor=pink]
+        Bindings [label="Bindings\n(TBinding, TBindingId)", fillcolor=pink]
+        Sessions [label="Sessions\n(TSession, TSessionId)", fillcolor=pink]
+        Protocols [label="Protocols\n(TBridgeProtocol, TBridgeProtocolId)", fillcolor=pink]
+        Bridges [label="Bridges\n(TBridge, TBridgeId)", fillcolor=pink]
+        Correlation [label="Correlation\n(TCorrelationToken)", fillcolor=pink]
+    }
+
+    // Relationships
+    ExternalSystems -> CommunicationContext [label="sends/receives data"]
+    CommunicationContext -> RegistryLayer [label="uses"]
+    CommunicationContext -> CommunicationContextCore [label="uses"]
+
+    RegistryLayer -> RegistrySet
+    RegistrySet -> ChannelRegistry [label="contains"]
+    RegistrySet -> BindingRegistry [label="contains"]
+    RegistrySet -> SessionRegistry [label="contains"]
+    RegistrySet -> ProtocolRegistry [label="contains"]
+    RegistrySet -> BridgeRegistry [label="contains"]
+
+    ChannelRegistry -> BoundedRegistry [label="uses"]
+    BindingRegistry -> BoundedRegistry [label="uses"]
+    SessionRegistry -> BoundedRegistry [label="uses"]
+    ProtocolRegistry -> BoundedRegistry [label="uses"]
+    BridgeRegistry -> BoundedRegistry [label="uses"]
+
+    // Registry to Core relationships
+    ChannelRegistry -> Channels [label="registers"]
+    BindingRegistry -> Bindings [label="registers"]
+    SessionRegistry -> Sessions [label="registers"]
+    ProtocolRegistry -> Protocols [label="registers"]
+    BridgeRegistry -> Bridges [label="registers"]
+
+    // Core component relationships
+    Participants -> Channels [label="participates in"]
+    Channels -> Bindings [label="bound by"]
+    Bindings -> Sessions [label="establishes"]
+    Sessions -> Protocols [label="uses"]
+    Protocols -> Bridges [label="orchestrates"]
+    Correlation -> {Channels Bindings Sessions Protocols Bridges} [label="correlates"]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        SystemLegend [label="System", shape=box, fillcolor=lightblue]
+        ContainerLegend [label="Container", shape=box, fillcolor=orange]
+        ComponentLegend [label="Component", shape=box, fillcolor=pink]
+    }
+}

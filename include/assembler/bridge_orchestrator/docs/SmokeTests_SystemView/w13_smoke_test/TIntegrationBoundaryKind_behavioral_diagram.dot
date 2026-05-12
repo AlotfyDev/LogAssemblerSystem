@@ -1,0 +1,23 @@
+digraph TIntegrationBoundaryKind_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    KindUsage [label="Boundary Kind Usage", fillcolor=lightblue];
+
+    RegistryDelivery [label="registry_delivery\nConfiguration and metadata delivery", fillcolor=lightgreen];
+
+    Persistence [label="persistence\nData persistence operations", fillcolor=lightcyan];
+
+    Telemetry [label="telemetry\nMetrics and monitoring data", fillcolor=orange];
+
+    ThinCABI [label="thin_c_abi\nC language interface", fillcolor=yellow];
+
+    ReadSide [label="read_side\nData reading operations", fillcolor=pink];
+
+    InProcessReceiver [label="in_process_receiver\nIn-process message handling", fillcolor=purple];
+
+    Custom [label="custom\nCustom boundary types", fillcolor=gray];
+
+    Unknown [label="unknown\nKind not specified", fillcolor=gray];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryKind_behavioral_diagram.dot

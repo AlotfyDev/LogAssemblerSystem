@@ -1,0 +1,30 @@
+digraph TPlacementRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    request_creation [label="adapter.prepare_placement_request()\nCreates TPlacementRequest with correlation, payload_kind, size_hint"];
+
+    request_validation [label="placement_request.is_valid()\nValidates correlation and payload_kind"];
+
+    payload_kind_check [label="placement_request.payload_kind == \"log_level_envelope\"\nChecks correct payload kind"];
+
+    destination_check [label="placement_request.requested_destination_family == \"write_side\"\nChecks correct destination family"];
+
+    success [label="Placement request validated correctly", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    request_creation -> request_validation;
+    request_validation -> payload_kind_check;
+    payload_kind_check -> destination_check;
+    destination_check -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        request_operation [label="Request Operation", fillcolor=lightyellow];
+        validation [label="Validation Check"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TPlacementRequest_behavioral_diagram.dot

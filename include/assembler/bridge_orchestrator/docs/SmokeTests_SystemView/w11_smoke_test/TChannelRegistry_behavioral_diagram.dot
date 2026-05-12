@@ -1,0 +1,47 @@
+digraph TChannelRegistry_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TChannelRegistry Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateRegistry [label="Create Channel Registry\nTChannelRegistry<4> channels{};\nInitialized with capacity 4, count 0", fillcolor=yellow]
+
+    ValidateRegistry [label="Validate Registry\nchannels.is_valid()\nChecks capacity > 0 and name not empty\nReturns true", fillcolor=lightgreen]
+
+    CreateChannel [label="Create Channel Component\nTChannel channel = make_channel(1u, participant, policy)", fillcolor=yellow]
+
+    RegisterChannel [label="Register Channel\nchannels.register_channel(channel)\nValidates channel, checks for duplicates\nReturns true", fillcolor=orange]
+
+    LookupChannel [label="Lookup Channel\nchannels.contains(channel.channel_id)\nReturns true (channel found)", fillcolor=lightcyan]
+
+    AttemptDuplicate [label="Attempt Duplicate Registration\nchannels.register_channel(channel)\nDetects duplicate channel_id\nReturns false, increments rejected_insertions", fillcolor=red]
+
+    GenerateSnapshot [label="Generate Snapshot\nchannels.snapshot()\nReturns TRegistrySnapshot with count=1, rejected=1", fillcolor=purple]
+
+    End [label="Channel registry operations\ncompleted with duplicate prevention", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateRegistry
+    CreateRegistry -> ValidateRegistry
+    ValidateRegistry -> CreateChannel
+    CreateChannel -> RegisterChannel
+    RegisterChannel -> LookupChannel
+    LookupChannel -> AttemptDuplicate
+    AttemptDuplicate -> GenerateSnapshot
+    GenerateSnapshot -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Registry/Channel Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        RegistrationLegend [label="Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Lookup", shape=rectangle, fillcolor=lightcyan]
+        DuplicateLegend [label="Duplicate Prevention", shape=rectangle, fillcolor=red]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

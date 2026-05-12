@@ -1,0 +1,17 @@
+digraph TObligationSurfacePair_Behavioral {
+  rankdir=TB;
+  node [shape=box];
+
+  AdapterView [label="adapter.view()"];
+  PortView [label="port.view()"];
+  CreatePair [label="TObligationSurfacePair::make(adapter_view, port_view)"];
+  CheckSupport [label="pair.supports_primary_placement_flow()"];
+  Report [label="pair.report_primary_placement_support()"];
+
+  AdapterView -> CreatePair;
+  PortView -> CreatePair;
+  CreatePair -> CheckSupport;
+  CheckSupport -> Report;
+
+  Legend [shape=none, label="TObligationSurfacePair created to validate compatibility"];
+}

@@ -1,0 +1,13 @@
+digraph TBindingId_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TBindingId [label="{TBindingId|value : uint64_t|+ is_valid() : bool|+ invalid() : TBindingId\n+ from_value(uint64_t) : TBindingId|+ operator==(TBindingId, TBindingId) : bool\n+ operator!=(TBindingId, TBindingId) : bool}"];
+
+    // Usage in TBinding
+    TBinding_uses [label="{TBinding (uses)|binding_id : TBindingId|...}" shape=record];
+
+    // Relationship
+    TBinding_uses -> TBindingId [label="has as member"];
+}

@@ -1,0 +1,13 @@
+flowchart TD
+    W01_09[W01-W09\nPolicy Object Foundation] --> W10_11[W10-W11\nAssignment + Registry Basics]
+    W10_11 --> ARCH[ARCH-001-008\nArchitecture Completion]
+    ARCH --> W12_17[W12-W17\nImplementation Foundation]
+    W12_17 --> W18_20[W18-W20\nRuntime Readiness]
+    W18_20 --> W21_24[W21-W24\nRealization Runtime Skeleton]
+    W21_24 --> W25_29[W25-W29\nEcosystem Integration]
+    W25_29 --> W30_34[W30-W34\nProduction Hardening]
+
+    W30_34 -.-> CAT[EG-POL-CAT\nPolicy System Catalog]
+    CAT -.-> W01_09
+    CAT -.-> W12_17
+    CAT -.-> W25_29

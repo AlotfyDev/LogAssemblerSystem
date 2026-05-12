@@ -1,0 +1,51 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    token_creation [label="TCorrelationToken::from_parts(14u, 1u)\nCreates correlation token for W14A adapter"];
+
+    adapter_creation [label="TLogLevelAPIEnvelopePluginAdapterFactory::from_fields(\ntoken, \"env-0001\", 128u)\nUses token in descriptor creation"];
+
+    view_validation [label="adapter.view()\nToken used in view correlation"];
+
+    readiness_check [label="adapter.readiness()\nToken used in readiness correlation"];
+
+    placement_request [label="adapter.prepare_placement_request()\nToken used in request correlation"];
+
+    handle_creation [label="TPlacementHandle::make(42u, token, \"write_side_envelope_slot\")\nUses same token for handle"];
+
+    handle_acceptance [label="adapter.accept_placement_handle(handle)\nValidates handle.correlation == descriptor.correlation"];
+
+    load_signal [label="adapter.emit_load_signal()\nToken used in signal correlation"];
+
+    next_destination [label="adapter.next_destination_request()\nToken used in destination request"];
+
+    wrong_handle_creation [label="TPlacementHandle::make(99u, TCorrelationToken::from_parts(14u, 2u), \"wrong\")\nCreates token with different low part"];
+
+    wrong_handle_rejection [label="adapter.accept_placement_handle(wrong_handle)\nRejects due to correlation mismatch"];
+
+    success [label="Test passes with valid correlations", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    token_creation -> adapter_creation;
+    adapter_creation -> view_validation;
+    view_validation -> readiness_check;
+    readiness_check -> placement_request;
+    placement_request -> handle_creation;
+    handle_creation -> handle_acceptance;
+    handle_acceptance -> load_signal;
+    load_signal -> next_destination;
+    next_destination -> wrong_handle_creation;
+    wrong_handle_creation -> wrong_handle_rejection;
+    wrong_handle_rejection -> success;
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        token_operation [label="Token Creation/Usage", fillcolor=lightyellow];
+        validation [label="Correlation Validation"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TCorrelationToken_behavioral_diagram.dot

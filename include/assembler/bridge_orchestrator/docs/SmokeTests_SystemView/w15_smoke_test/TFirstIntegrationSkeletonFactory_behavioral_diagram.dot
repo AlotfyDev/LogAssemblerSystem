@@ -1,0 +1,30 @@
+digraph TFirstIntegrationSkeletonFactory_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage
+    DefaultFactory [label="Default Factory Usage:\n- TFirstIntegrationSkeletonFactory::make_default()\n- creates skeleton with default config and invalid correlation token\n- used for basic skeleton testing"];
+
+    ConfigFactory [label="Config Factory Usage:\n- TFirstIntegrationSkeletonFactory::from_config(config)\n- creates skeleton with provided config\n- uses invalid correlation token (default)\n- used when correlation not needed"];
+
+    ConfigTokenFactory [label="Config and Token Factory Usage:\n- TFirstIntegrationSkeletonFactory::from_config_and_token(config, token)\n- creates skeleton with config and correlation token\n- PRIMARY factory method in W15 smoke test\n- enables end-to-end correlation tracking"];
+
+    SkeletonExecution [label="Skeleton Execution:\n- created skeleton used to run integration\n- factory provides controlled instantiation\n- enables different configuration scenarios"];
+
+    // Flow connections
+    ConfigTokenFactory -> SkeletonExecution [label="primary usage"];
+    ConfigFactory -> SkeletonExecution [label="alternative"];
+    DefaultFactory -> SkeletonExecution [label="basic"];
+
+    // Styling
+    DefaultFactory [fillcolor=lightblue];
+    ConfigFactory [fillcolor=lightyellow];
+    ConfigTokenFactory [fillcolor=lightsalmon];
+    SkeletonExecution [fillcolor=lightgreen];
+
+    // Title
+    label="TFirstIntegrationSkeletonFactory Usage in W15 Smoke Test";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TFirstIntegrationSkeletonFactory_behavioral_diagram.dot

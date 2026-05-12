@@ -1,0 +1,17 @@
+digraph TSingleAdapterSinglePortProfile_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class (reused from W04)
+    TSingleAdapterSinglePortProfile [label="{TSingleAdapterSinglePortProfile (W04)|+ make() : TChannelProfile\n+ matches(TChannelProfile) : bool}"];
+
+    // Returns TChannelProfile
+    TChannelProfile_dep [label="{TChannelProfile|...}" shape=record];
+
+    // Used by TChannel
+    TChannel_uses [label="{TChannel|profile : TChannelProfile|...}" shape=record];
+
+    // Relationships
+    TSingleAdapterSinglePortProfile -> TChannelProfile_dep [label="creates"];
+    TChannel_uses -> TChannelProfile_dep [label="uses"];
+}

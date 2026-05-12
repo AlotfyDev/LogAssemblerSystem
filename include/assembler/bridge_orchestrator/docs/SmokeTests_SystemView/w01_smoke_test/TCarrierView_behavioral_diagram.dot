@@ -1,0 +1,39 @@
+digraph TCarrierView_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Carrier View Creation Flow", shape=ellipse, fillcolor=green]
+
+    CreateView [label="TCarrierView::make(TCarrierKind::placement_request, token, true, \"request\")\nCreates carrier view with PLACEMENT_REQUEST kind,\ncorrelation token, valid=true, and label 'request'", fillcolor=yellow]
+
+    ValidateView [label="carrier_view.is_valid()\nChecks valid == true\nReturns true", fillcolor=lightgreen]
+
+    ViewValid [label="Carrier view is valid", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Carrier view creation completed", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (not taken in smoke test)
+    InvalidView [label="carrier_view.is_valid() == false\n(valid == false)", fillcolor=lightgrey]
+
+    // Flow
+    Start -> CreateView
+    CreateView -> ValidateView
+    ValidateView -> ViewValid
+    ViewValid -> End
+
+    // Alternative flows (shown but not taken)
+    ValidateView -> InvalidView [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Result State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

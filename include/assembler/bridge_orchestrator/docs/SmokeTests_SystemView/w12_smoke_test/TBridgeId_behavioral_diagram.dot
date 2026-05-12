@@ -1,0 +1,16 @@
+digraph TBridgeId_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TBridgeId Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateBridgeIds [label="Create Bridge IDs\nTBridgeId::from_value(1201u)\nTBridgeId::from_value(1202u)\nCreates unique bridge identifiers", fillcolor=yellow]
+
+    UseInBridgeResults [label="Use in Bridge Results\nPassed to TBridgeCoreResult factory methods\nIdentifies bridge operations for correlation", fillcolor=orange]
+
+    End [label="Bridge ID usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateBridgeIds
+    CreateBridgeIds -> UseInBridgeResults
+    UseInBridgeResults -> End
+}

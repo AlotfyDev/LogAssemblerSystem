@@ -1,0 +1,11 @@
+digraph TObligationSurfacePair_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    SurfacePair [label="{TObligationSurfacePair|+ is_valid() const noexcept -> bool\l+ supports_primary_placement_flow() const noexcept -> bool\l+ make() static constexpr -> TObligationSurfacePair\l}", fillcolor=lightsalmon, style=filled];
+
+    label="TObligationSurfacePair Class Structure (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TObligationSurfacePair_class_diagram.dot

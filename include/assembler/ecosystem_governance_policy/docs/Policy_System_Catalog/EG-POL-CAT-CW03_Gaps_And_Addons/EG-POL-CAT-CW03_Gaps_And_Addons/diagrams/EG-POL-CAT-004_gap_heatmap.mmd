@@ -1,0 +1,30 @@
+flowchart TD
+    A[Policy System Gaps]
+    A --> B[High Priority]
+    A --> C[Medium Priority]
+    A --> D[Deferred Runtime]
+
+    B --> B1[Typed Clause Expression]
+    B --> B2[Canonical Builder / Validator]
+    B --> B3[Assignment Activation Engine]
+    B --> B4[Registry Persistence Adapters]
+    B --> B5[Operational Readiness Evaluator]
+    B --> B6[Compliance Runner]
+
+    C --> C1[Graph Normalize / Diff]
+    C --> C2[Rollback Selection]
+    C --> C3[Domain Compatibility Rule Packs]
+    C --> C4[Audit Export Adapters]
+    C --> C5[Target Adapter Probes]
+
+    D --> D1[Traversal Engine]
+    D --> D2[Production Realization Engine]
+    D --> D3[Automatic Recovery]
+    D --> D4[Concrete Target Mutation]
+
+    classDef high fill:#ffdddd,stroke:#cc0000,stroke-width:1px;
+    classDef med fill:#fff4cc,stroke:#b58900,stroke-width:1px;
+    classDef def fill:#eeeeee,stroke:#666666,stroke-width:1px;
+    class B,B1,B2,B3,B4,B5,B6 high;
+    class C,C1,C2,C3,C4,C5 med;
+    class D,D1,D2,D3,D4 def;

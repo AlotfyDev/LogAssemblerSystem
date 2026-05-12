@@ -1,0 +1,53 @@
+digraph TCompatibilityView_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightcyan];
+
+    // Creation
+    from_matrix_creation [label="from_matrix<TBindingView, TCompatibilityMatrix<Capacity>>(binding_view, matrix, summary)\n1. Copy binding_view to view.binding\n2. Set view.compatible = matrix.compatible()\n3. Set view.issue_count = matrix.issue_count\n4. Set view.blocking_issue_count = matrix.blocking_count()\n5. Set view.warning_issue_count = matrix.warning_count()\n6. Set view.summary = summary\n7. Return constructed view", fillcolor=yellow];
+
+    // Status queries
+    check_passed [label="passed()\nReturn compatible && blocking_issue_count == 0\n(Successful evaluation with no blocking issues)", fillcolor=lightgreen];
+
+    check_needs_review [label="needs_review()\nReturn warning_issue_count > 0 && blocking_issue_count == 0\n(Warnings present but no blocking issues)", fillcolor=orange];
+
+    // Usage in evaluator
+    evaluator_view_creation [label="TCompatibilityEvaluator::view_strict_binding()\n1. Call evaluate_strict_binding() to get matrix\n2. Get binding.view() for binding_view\n3. Call from_matrix() with appropriate summary\n4. Return constructed TCompatibilityView", fillcolor=palegreen, shape=box];
+
+    // W07 smoke test validation scenarios
+    validate_passed [label="Validate Passed Status\n- Compatible binding with no issues\n- passed() returns true\n- needs_review() returns false", fillcolor=lightgreen];
+
+    validate_needs_review [label="Validate Needs Review Status\n- Compatible binding with warnings\n- passed() returns false\n- needs_review() returns true", fillcolor=orange];
+
+    validate_failed [label="Validate Failed Status\n- Incompatible binding with blocking issues\n- passed() returns false\n- needs_review() returns false", fillcolor=red];
+
+    // Flow
+    evaluator_view_creation -> from_matrix_creation [label="calls"];
+
+    from_matrix_creation -> check_passed [label="enables"];
+    from_matrix_creation -> check_needs_review [label="enables"];
+
+    check_passed -> validate_passed [label="validates"];
+    check_needs_review -> validate_needs_review [label="validates"];
+    check_passed -> validate_failed [label="when false"];
+
+    // Data flow
+    binding_view_input [label="TBindingView Input\n(binding.view() result)", fillcolor=white];
+    matrix_input [label="TCompatibilityMatrix<8> Input\n(evaluate_strict_binding() result)", fillcolor=white];
+    summary_input [label="string_view summary\n(e.g., 'binding is strictly compatible')", fillcolor=white];
+
+    binding_view_input -> from_matrix_creation [label="provides binding"];
+    matrix_input -> from_matrix_creation [label="provides issues"];
+    summary_input -> from_matrix_creation [label="provides description"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="View Creation", fillcolor=yellow];
+        Query [label="Status Query", fillcolor=lightcyan];
+        Success [label="Success Status", fillcolor=lightgreen];
+        Review [label="Review Status", fillcolor=orange];
+        Failure [label="Failure Status", fillcolor=red];
+        Usage [label="Evaluator Usage", shape=box, fillcolor=palegreen];
+        Input [label="Input Data", fillcolor=white];
+    }
+}

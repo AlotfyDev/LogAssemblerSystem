@@ -1,0 +1,12 @@
+digraph TCorrelationToken_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TCorrelationToken [label="{TCorrelationToken|high : std::uint64_t\l low : std::uint64_t\l|+ is_valid() : bool\l+ invalid() : TCorrelationToken\l+ from_parts(high_part, low_part) : TCorrelationToken\l+ operator==(lhs, rhs) : bool\l+ operator!=(lhs, rhs) : bool\l}"]
+
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    std_hash [label="{std::hash<TCorrelationToken>|+ operator()(token) : std::size_t\l}", shape=record, fillcolor=lightyellow]
+
+    TCorrelationToken -> std_uint64_t [label="uses", style=dashed]
+    std_hash -> TCorrelationToken [label="specializes", style=dashed]
+}

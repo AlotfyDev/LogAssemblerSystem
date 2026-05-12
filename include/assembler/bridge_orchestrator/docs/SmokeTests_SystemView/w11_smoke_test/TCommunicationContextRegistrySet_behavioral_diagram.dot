@@ -1,0 +1,46 @@
+digraph TCommunicationContextRegistrySet_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Registry Set Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateSet [label="Create Registry Set\nTCommunicationContextRegistrySet<4,4,4,4,4,12> registry_set{};\nAll registries initialized with default capacities", fillcolor=yellow]
+
+    ValidateSet [label="Validate Registry Set\nregistry_set.is_valid()\nChecks all contained registries are valid\nReturns true", fillcolor=lightgreen]
+
+    RegisterComponents [label="Register Components\nregistry_set.channels.register_channel(channel)\nregistry_set.bindings.register_binding(binding)\nregistry_set.sessions.register_session(session)\nregistry_set.protocols.register_protocol(protocol)\nregistry_set.bridges.register_bridge(bridge)", fillcolor=orange]
+
+    LookupComponents [label="Lookup Components\nregistry_set.channels.contains(channel_id)\nregistry_set.bindings.contains(binding_id)\nregistry_set.sessions.contains(session_id)\nregistry_set.protocols.contains(protocol_id)\nregistry_set.bridges.contains(bridge_id)", fillcolor=lightcyan]
+
+    CheckTotalCount [label="Check Total Count\nregistry_set.total_count()\nSums count from all registries\nReturns 5 (one from each registry)", fillcolor=purple]
+
+    GenerateSnapshots [label="Generate Snapshots\nregistry_set.channels.snapshot()\nregistry_set.bindings.snapshot()\n...\nEach returns TRegistrySnapshot with statistics", fillcolor=purple]
+
+    FinalValidation [label="Final Validation\nregistry_set.is_valid()\nConfirms all registries still valid after operations\nReturns true", fillcolor=lightgreen]
+
+    End [label="Registry Set operations\ncompleted successfully", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateSet
+    CreateSet -> ValidateSet
+    ValidateSet -> RegisterComponents
+    RegisterComponents -> LookupComponents
+    LookupComponents -> CheckTotalCount
+    CheckTotalCount -> GenerateSnapshots
+    GenerateSnapshots -> FinalValidation
+    FinalValidation -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Set Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        RegistrationLegend [label="Component Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Component Lookup", shape=rectangle, fillcolor=lightcyan]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

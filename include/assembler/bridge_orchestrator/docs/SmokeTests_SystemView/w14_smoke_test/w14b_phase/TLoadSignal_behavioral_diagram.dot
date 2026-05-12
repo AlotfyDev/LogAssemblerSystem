@@ -1,0 +1,52 @@
+digraph TLoadSignal_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontsize=10];
+    edge [fontsize=9];
+
+    // Main class
+    LoadSignal [label="{TLoadSignal\n(Bridge-visible Load Signal)|+ kind : TLoadSignalKind\l+ correlation : TCorrelationToken\l+ placement : TPlacementHandle\l+ bytes_loaded : uint64_t\l+ note : string_view\l|+ completed() : bool\l+ failed() : bool\l+ started(correlation, handle) : TLoadSignal\l+ completed(correlation, handle, bytes) : TLoadSignal\l+ failed(correlation, handle, note) : TLoadSignal\l}", fillcolor=lightgreen];
+
+    // Kind enum
+    LoadSignalKind [label="{TLoadSignalKind\n(Signal Kind)|• unknown\l• load_started\l• load_completed\l• load_failed\l}", fillcolor=lightcyan];
+
+    // Contained types
+    CorrelationToken [label="{TCorrelationToken\n(Correlation)|• high : uint64_t\l• low : uint64_t\l}", fillcolor=lightcyan];
+
+    PlacementHandle [label="{TPlacementHandle\n(Handle)|• value : uint64_t\l• correlation : TCorrelationToken\l}", fillcolor=lightcyan];
+
+    StringView [label="{string_view\n(Note)|Optional note or error\l}", fillcolor=orange];
+
+    // Factory methods
+    StartedFactory [label="{started factory\n(Start Signal)|+ started(correlation, handle) : TLoadSignal\l• kind = load_started\l• bytes_loaded = 0\l}", fillcolor=lavender];
+
+    CompletedFactory [label="{completed factory\n(Success Signal)|+ completed(correlation, handle, bytes) : TLoadSignal\l• kind = load_completed\l• includes byte count\l}", fillcolor=lavender];
+
+    FailedFactory [label="{failed factory\n(Failure Signal)|+ failed(correlation, handle, note) : TLoadSignal\l• kind = load_failed\l• includes error note\l}", fillcolor=lavender];
+
+    // Query methods
+    Completed [label="{completed()\n(Check)|kind == load_completed\l}", fillcolor=lavender];
+
+    Failed [label="{failed()\n(Check)|kind == load_failed\l}", fillcolor=lavender];
+
+    // Usage relationships
+    AdapterEmits [label="{TLogLevelAPIEnvelopePluginAdapter\n(Emitter)|emit_load_signal()\nEmits completion signal\l}", fillcolor=lightblue];
+
+    PortReceives [label="{TWriteSideEnvelopePlacementPort\n(Receiver)|receive_load_signal(signal)\nProcesses signal\l}", fillcolor=orange];
+
+    // Relationships
+    LoadSignal -> LoadSignalKind [label="contains"];
+    LoadSignal -> CorrelationToken [label="contains"];
+    LoadSignal -> PlacementHandle [label="contains"];
+    LoadSignal -> StringView [label="uses"];
+
+    LoadSignal -> StartedFactory [label="has static"];
+    LoadSignal -> CompletedFactory [label="has static"];
+    LoadSignal -> FailedFactory [label="has static"];
+
+    LoadSignal -> Completed [label="has method"];
+    LoadSignal -> Failed [label="has method"];
+
+    AdapterEmits -> LoadSignal [label="creates"];
+    PortReceives -> LoadSignal [label="accepts"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TLoadSignal_class_diagram.dot

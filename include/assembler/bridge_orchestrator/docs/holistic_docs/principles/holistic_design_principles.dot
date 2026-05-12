@@ -1,0 +1,106 @@
+digraph BridgeOrchestratorDesignPrinciples {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fillcolor=lightblue, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    subgraph cluster_bridge_centric {
+        label="1. Bridge-Centric Architecture";
+        bgcolor=lightyellow;
+
+        BridgeCore [label="BridgeCore\nCentral Coordination"];
+        BridgeProtocol [label="BridgeProtocol\nExecution Plans"];
+        BridgeResult [label="BridgeResult\nOutcome Management"];
+
+        BridgeCore -> BridgeProtocol [label="orchestrates"];
+        BridgeProtocol -> BridgeResult [label="produces"];
+    }
+
+    subgraph cluster_layered {
+        label="2. Layered Separation of Concerns";
+        bgcolor=lightgreen;
+        rank=same;
+
+        Carriers [label="Carriers\nTransport Layer"];
+        Protocols [label="Protocols\nExecution Layer"];
+        Bindings [label="Bindings\nInterface Layer"];
+        Bridges [label="Bridges\nCoordination Layer"];
+        Integration [label="Integration\nApplication Layer"];
+
+        Carriers -> Protocols -> Bindings -> Bridges -> Integration;
+    }
+
+    subgraph cluster_protocol_driven {
+        label="3. Protocol-Driven Execution";
+        bgcolor=lightcyan;
+
+        ProtocolPlan [label="Protocol Plan\nStep-by-Step Execution"];
+        StateManagement [label="State Management\nProgress Tracking"];
+        TerminalConditions [label="Terminal Conditions\nCompletion Criteria"];
+        Validation [label="Validation\nCompatibility Checks"];
+
+        ProtocolPlan -> StateManagement -> TerminalConditions;
+        Validation -> ProtocolPlan [style=dotted];
+    }
+
+    subgraph cluster_testability {
+        label="4. Testability-First Design";
+        bgcolor=lightpink;
+
+        SmokeTests [label="Smoke Tests\nW01-W15 Validation"];
+        StaticAssertions [label="Static Assertions\nCompile-Time Checks"];
+        EmpiricalValidation [label="Empirical Validation\nUsage Pattern Analysis"];
+
+        SmokeTests -> StaticAssertions -> EmpiricalValidation;
+    }
+
+    subgraph cluster_performance {
+        label="5. Performance-by-Design";
+        bgcolor=lightsalmon;
+
+        ZeroCopy [label="Zero-Copy Operations"];
+        LockFree [label="Lock-Free Algorithms"];
+        ResourceManagement [label="Resource Management\nBudget Enforcement"];
+
+        ZeroCopy -> LockFree -> ResourceManagement;
+    }
+
+    subgraph cluster_cross_language {
+        label="6. Cross-Language Integration";
+        bgcolor=lightsteelblue;
+
+        CppInterfaces [label="C++ Interfaces"];
+        CsharpBindings [label="C# Bindings"];
+        PythonBindings [label="Python Bindings"];
+        Mql5Bindings [label="MQL5 Bindings"];
+
+        CppInterfaces -> {CsharpBindings PythonBindings Mql5Bindings} [label="ABI-Stable Marshalling"];
+    }
+
+    subgraph cluster_registry_based {
+        label="7. Registry-Based Coordination";
+        bgcolor=lavender;
+
+        ComponentRegistry [label="Component Registry\nLifecycle Management"];
+        CapacityManagement [label="Capacity Management\nBounded Resources"];
+        DiagnosticSnapshots [label="Diagnostic Snapshots\nMonitoring Support"];
+
+        ComponentRegistry -> CapacityManagement -> DiagnosticSnapshots;
+    }
+
+    // Connect principles to show interdependencies
+    BridgeCore -> Carriers [style=dotted, color=gray];
+    BridgeProtocol -> Protocols [style=dotted, color=gray];
+    SmokeTests -> BridgeCore [style=dotted, color=red, label="validates"];
+    ZeroCopy -> Carriers [style=dotted, color=blue, label="optimizes"];
+    CppInterfaces -> BridgeCore [style=dotted, color=purple, label="implements"];
+    ComponentRegistry -> BridgeCore [style=dotted, color=green, label="manages"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+        LegendSolid [label="Direct Dependency"];
+        LegendDotted [label="Implementation/Validation"];
+        LegendSolid -> LegendDotted [style=dotted];
+    }
+}

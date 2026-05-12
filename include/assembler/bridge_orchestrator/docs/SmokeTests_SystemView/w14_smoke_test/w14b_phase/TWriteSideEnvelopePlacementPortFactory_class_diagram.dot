@@ -1,0 +1,25 @@
+digraph TWriteSideEnvelopePlacementPortFactory_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontsize=10];
+    edge [fontsize=9];
+
+    // Factory class
+    Factory [label="{TWriteSideEnvelopePlacementPortFactory\n(Factory Helpers)|+ make_default() : TWriteSideEnvelopePlacementPort\l+ from_config(config, target) : TWriteSideEnvelopePlacementPort\l}", fillcolor=orange];
+
+    // Created type
+    Port [label="{TWriteSideEnvelopePlacementPort\n(Created Type)|+ readiness(request) : TReadinessView\l+ admit(request) : TAdmissionResult\l+ placement_handle(request) : TPlacementHandle\l+ receive_load_signal(signal) : TBridgeResult\l+ next_destination(request) : TBridgeResult\l}", fillcolor=lightcyan];
+
+    // Configuration types
+    Config [label="{TWriteSideEnvelopePlacementPortConfig\n(Configuration Input)|• is_valid() : bool\l• handle_family : string_view\l• first_handle_value : uint64_t\l• supported_payload_kinds : array\l• supported_destination_families : array\l+ defaults() : TWriteSideEnvelopePlacementPortConfig\l}", fillcolor=lavender];
+
+    Target [label="{TWriteSidePlacementTargetDescriptor\n(Target Input)|• is_valid() : bool\l• handle_family : string_view\l• supports_ordered_placement : bool\l• capacity_hint : uint64_t\l+ defaults() : TWriteSidePlacementTargetDescriptor\l}", fillcolor=lavender];
+
+    // Relationships
+    Factory -> Port [label="creates", arrowhead=normal];
+    Factory -> Config [label="accepts", style=dashed];
+    Factory -> Target [label="accepts", style=dashed];
+
+    Config -> Port [label="passed to", style=dashed];
+    Target -> Port [label="passed to", style=dashed];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TWriteSideEnvelopePlacementPortFactory_class_diagram.dot

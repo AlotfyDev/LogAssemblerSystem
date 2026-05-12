@@ -1,0 +1,66 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Token creation
+    Start [label="Create TCorrelationToken", shape=ellipse, fillcolor=lightgreen];
+
+    ChooseCreation [label="Choose Creation Method", fillcolor=lightyellow, shape=diamond];
+
+    FromParts [label="from_parts(high, low)\nCreate token from uint64_t parts", fillcolor=lavender];
+
+    InvalidToken [label="invalid()\nCreate invalid token (0, 0)", fillcolor=lavender];
+
+    // Validation
+    ValidateToken [label="Validate Token", fillcolor=lightblue];
+
+    CheckValid [label="token.is_valid()\n• high != 0 OR low != 0"];
+
+    // Usage in W13
+    W13Usage [label="W13 Usage Patterns", fillcolor=pink];
+
+    BoundaryDescriptor [label="Boundary Descriptor Correlation\n• descriptor.correlation = token"];
+
+    HandoffRequest [label="Handoff Request Correlation\n• request.correlation = token"];
+
+    BoundaryView [label="Boundary View Correlation\n• view.correlation = token"];
+
+    DiagnosticRecord [label="Diagnostic Correlation\n• diagnostic.correlation = token"];
+
+    // Smoke test example
+    SmokeTest [label="Smoke Test Example", fillcolor=lightcyan];
+
+    CreateToken [label="auto token = TCorrelationToken::from_parts(13u, 1u);"];
+
+    UseInDescriptor [label="auto descriptor = TIntegrationBoundaryDescriptor::persistence(token);"];
+
+    UseInRequest [label="auto request = TBoundaryHandoffRequest::make(token, descriptor, \"kind\", size, ordered);"];
+
+    // Flow connections
+    Start -> ChooseCreation;
+
+    ChooseCreation -> FromParts [label="Create valid token"];
+    ChooseCreation -> InvalidToken [label="Create invalid token"];
+
+    FromParts -> ValidateToken;
+    InvalidToken -> ValidateToken;
+
+    ValidateToken -> CheckValid;
+
+    CheckValid -> W13Usage;
+
+    W13Usage -> BoundaryDescriptor;
+    W13Usage -> HandoffRequest;
+    W13Usage -> BoundaryView;
+    W13Usage -> DiagnosticRecord;
+
+    BoundaryDescriptor -> SmokeTest;
+    HandoffRequest -> SmokeTest;
+    BoundaryView -> SmokeTest;
+    DiagnosticRecord -> SmokeTest;
+
+    SmokeTest -> CreateToken;
+    CreateToken -> UseInDescriptor;
+    UseInDescriptor -> UseInRequest;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TCorrelationToken_behavioral_diagram.dot

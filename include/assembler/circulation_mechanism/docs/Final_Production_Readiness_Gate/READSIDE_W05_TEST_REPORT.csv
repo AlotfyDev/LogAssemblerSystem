@@ -1,0 +1,5 @@
+﻿source,status,compile_returncode,run_returncode
+tests_readside_w05/read_side_e2e_flow_test.cpp,passed,0,0
+examples/read_side_basic_flow.cpp,passed,0,0
+examples/read_side_retry_flow.cpp,passed,0,0
+examples/read_side_backpressure_flow.cpp,passed,0,0

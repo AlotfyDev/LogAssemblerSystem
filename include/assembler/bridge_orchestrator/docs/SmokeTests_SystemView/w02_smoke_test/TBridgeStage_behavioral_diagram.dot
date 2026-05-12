@@ -1,0 +1,31 @@
+digraph TBridgeStage_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CheckNonTerminal [label="Check Non-Terminal Stage\n!is_terminal_bridge_stage(idle)\nReturns false (idle is not terminal)", fillcolor=lightgreen]
+
+    CheckTerminal [label="Check Terminal Stage\nis_terminal_bridge_stage(terminal_success)\nReturns true (success is terminal)", fillcolor=lightgreen]
+
+    GetStageName [label="Get Stage Name\nto_string(terminal_success)\nReturns \"terminal_success\"", fillcolor=orange]
+
+    End [label="Stage validation completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CheckNonTerminal
+    CheckNonTerminal -> CheckTerminal
+    CheckTerminal -> GetStageName
+    GetStageName -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ValidationLegend [label="Stage Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Stage Usage", shape=rectangle, fillcolor=orange]
+    }
+}

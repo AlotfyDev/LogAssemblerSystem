@@ -1,0 +1,21 @@
+digraph TNextDestinationReason_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    ReasonSelection [label="Reason selection logic:\n- if state.has_accepted_placement_handle(): current_destination_completed\n- else: retry_requested"];
+
+    CurrentCompletedUsage [label="current_destination_completed usage:\n- indicates successful placement and load signal emission\n- context: 'continue_after_write_side_registry_delivery_material_load'\n- enables progression to boundary handoff"];
+
+    RetryRequestedUsage [label="retry_requested usage:\n- indicates missing placement handle\n- context: 'retry_after_missing_registry_delivery_placement_handle'\n- triggers placement retry workflow"];
+
+    ReasonSelection -> CurrentCompletedUsage [label="placement handle accepted"];
+    ReasonSelection -> RetryRequestedUsage [label="no placement handle"];
+
+    ReasonSelection [fillcolor=lightblue];
+    CurrentCompletedUsage [fillcolor=lightgreen];
+    RetryRequestedUsage [fillcolor=lightsalmon];
+
+    label="TNextDestinationReason Usage in W14C Smoke Test";
+    labelloc=t;
+}

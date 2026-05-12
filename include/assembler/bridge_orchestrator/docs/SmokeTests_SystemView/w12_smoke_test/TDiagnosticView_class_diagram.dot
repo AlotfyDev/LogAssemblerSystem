@@ -1,0 +1,20 @@
+digraph TDiagnosticView_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticView [label="{TDiagnosticView|diagnostic_id : TDiagnosticId\l category : TDiagnosticCategory\l severity : TDiagnosticSeverity\l code : std::string_view\l subject : std::string_view\l correlation : TCorrelationToken\l|+ is_valid() : bool\l+ failed() : bool\l+ invalid() : TDiagnosticView\l+ from_record(record) : TDiagnosticView\l}"]
+
+    TDiagnosticId [label="TDiagnosticId", shape=record, fillcolor=lightyellow]
+    TDiagnosticCategory [label="TDiagnosticCategory", shape=record, fillcolor=lightyellow]
+    TDiagnosticSeverity [label="TDiagnosticSeverity", shape=record, fillcolor=lightyellow]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    TDiagnosticView -> TDiagnosticId [label="contains", style=dashed]
+    TDiagnosticView -> TDiagnosticCategory [label="contains", style=dashed]
+    TDiagnosticView -> TDiagnosticSeverity [label="contains", style=dashed]
+    TDiagnosticView -> TCorrelationToken [label="contains", style=dashed]
+    TDiagnosticView -> std_string_view [label="uses", style=dashed]
+    TDiagnosticView -> TDiagnosticRecord [label="projects from", style=dashed]
+}

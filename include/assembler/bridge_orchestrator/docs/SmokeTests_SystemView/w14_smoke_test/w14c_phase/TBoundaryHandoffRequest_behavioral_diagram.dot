@@ -1,0 +1,30 @@
+digraph TBoundaryHandoffRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Boundary handoff request usage in W14C
+    PreparationCall [label="prepare_boundary_handoff_request() call:\n- validates descriptor.is_valid()\n- returns invalid request if descriptor invalid\n- creates TBoundaryHandoffRequest::make() if valid"];
+
+    RequestCreation [label="TBoundaryHandoffRequest::make() parameters:\n- correlation: descriptor.correlation\n- boundary: descriptor.registry_boundary\n- material_kind: descriptor.material_kind\n- material_size_hint: descriptor.material_size_hint\n- requires_ordered_delivery: descriptor.requires_ordered_delivery"];
+
+    BridgeSubmission [label="Submitted to bridge runtime:\n- bridge coordinates with registry boundary\n- registry_delivery boundary kind routes to registry\n- boundary handoff result returned"];
+
+    ResultAcceptance [label="Leads to result acceptance:\n- adapter.accept_boundary_handoff_result()\n- handles accepted/completed/failed scenarios\n- updates adapter state accordingly"];
+
+    // Flow connections
+    PreparationCall -> RequestCreation [label="descriptor valid"];
+    PreparationCall -> BridgeSubmission [label="descriptor invalid"];
+    RequestCreation -> BridgeSubmission;
+    BridgeSubmission -> ResultAcceptance;
+
+    // Styling
+    PreparationCall [fillcolor=lightblue];
+    RequestCreation [fillcolor=lightsalmon];
+    BridgeSubmission [fillcolor=lightgreen];
+    ResultAcceptance [fillcolor=lightsalmon];
+
+    // Title
+    label="TBoundaryHandoffRequest Usage in W14C Smoke Test";
+    labelloc=t;
+}

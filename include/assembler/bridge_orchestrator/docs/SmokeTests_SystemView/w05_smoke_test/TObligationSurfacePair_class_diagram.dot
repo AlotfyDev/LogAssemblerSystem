@@ -1,0 +1,5 @@
+digraph TObligationSurfacePair_Class {
+  node [shape=record];
+
+  TObligationSurfacePair [label="{TObligationSurfacePair|plugin_adapter : TPluginAdapterView\nport : TPortView|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool\n+ report_primary_placement_support() : TObligationReport\n+ make(adapter_view, port_view) : TObligationSurfacePair}"];
+}

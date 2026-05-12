@@ -1,0 +1,36 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="W03 Smoke Test Usage", shape=ellipse, fillcolor=green]
+
+    CreateToken [label="TCorrelationToken::from_parts(1u, 2u)\nCreates token with high=1, low=2", fillcolor=yellow]
+
+    ValidateToken [label="token.is_valid()\nChecks if high != 0 || low != 0\nReturns true", fillcolor=lightgreen]
+
+    UseInParticipant [label="Used in TParticipant::make()\nProvides correlation context for participant", fillcolor=orange]
+
+    UseInParticipantView [label="Used in TParticipantView::from_participant()\nCorrelation carried through to view", fillcolor=orange]
+
+    End [label="Token correlation maintained\nacross participant management", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateToken
+    CreateToken -> ValidateToken
+    ValidateToken -> UseInParticipant
+    UseInParticipant -> UseInParticipantView
+    UseInParticipantView -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Token Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        UsageLegend [label="Token Usage in W03 Components", shape=rectangle, fillcolor=orange]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TCorrelationToken_behavioral_diagram.dot

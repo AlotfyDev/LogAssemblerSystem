@@ -1,0 +1,19 @@
+digraph TIntegrationBoundaryKind_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    IntegrationBoundaryKind [label="{TIntegrationBoundaryKind (W13)|enumeration of boundary types\l+ registry_delivery\l+ other boundary kinds...\l}", fillcolor=lightgreen, style=filled];
+
+    RegistryDelivery [label="{registry_delivery|W14C target boundary kind\lused in material descriptors\lrequires accepts_handoff capability\l}", fillcolor=lightsalmon];
+
+    MaterialDescriptor [label="{TWriteSideRegistryDeliveryMaterialDescriptor|contains boundary descriptor\lvalidates boundary kind\l}", fillcolor=lightsalmon];
+    BoundaryDescriptor [label="{TIntegrationBoundaryDescriptor|contains boundary kind\lprovides boundary metadata\l}", fillcolor=lightblue];
+
+    IntegrationBoundaryKind -> RegistryDelivery [label="defines"];
+    MaterialDescriptor -> BoundaryDescriptor [label="contains"];
+    BoundaryDescriptor -> RegistryDelivery [label="uses"];
+
+    label="TIntegrationBoundaryKind (W13) Class Structure and W14C Usage";
+    labelloc=t;
+}

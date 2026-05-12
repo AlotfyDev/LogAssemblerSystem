@@ -1,0 +1,66 @@
+digraph TChannelBindingPolicy_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Policy Creation Patterns
+    strict_static_factory [label="strict_static_one_to_one()\n(canonical W04 policy)"];
+
+    // Policy characteristics
+    binding_mode [label="strict_one_to_one\n(1:1 binding)"];
+    lifecycle_mode [label="static_binding\n(no rebinding)"];
+    visibility_mode [label="cross_domain\n(default)"];
+    role_requirement [label="require_compatible_roles = true"];
+    carrier_requirement [label="require_compatible_carriers = true"];
+    rebinding_setting [label="allow_rebinding = false"];
+    max_bindings [label="max_active_bindings = 1"];
+
+    // Validation sequence
+    mode_validation [label="binding_mode != unknown"];
+    lifecycle_validation [label="lifecycle != unknown"];
+    visibility_validation [label="visibility != unknown"];
+    max_bindings_validation [label="max_active_bindings > 0"];
+    overall_validation [label="is_valid()"];
+
+    // Classification helpers
+    static_check [label="is_static()\n(lifecycle == static_binding)"];
+    strict_one_to_one_check [label="is_strict_one_to_one()\n(1:1 + max_bindings=1)"];
+
+    // Profile compatibility
+    profile_compatibility [label="is_compatible_with(profile)\n(profile.is_one_to_one() for strict_1_1)"];
+
+    // Flow
+    strict_static_factory -> binding_mode;
+    strict_static_factory -> lifecycle_mode;
+    strict_static_factory -> visibility_mode;
+    strict_static_factory -> role_requirement;
+    strict_static_factory -> carrier_requirement;
+    strict_static_factory -> rebinding_setting;
+    strict_static_factory -> max_bindings;
+
+    binding_mode -> mode_validation;
+    lifecycle_mode -> lifecycle_validation;
+    visibility_mode -> visibility_validation;
+    max_bindings -> max_bindings_validation;
+
+    mode_validation -> overall_validation;
+    lifecycle_validation -> overall_validation;
+    visibility_validation -> overall_validation;
+    max_bindings_validation -> overall_validation;
+
+    overall_validation -> static_check;
+    overall_validation -> strict_one_to_one_check;
+
+    strict_one_to_one_check -> profile_compatibility;
+
+    // Legend
+    subgraph cluster_legend {
+        label="TChannelBindingPolicy W04 Usage Pattern";
+        color=white;
+        style=filled;
+
+        legend_factory [label="Factory Usage", shape=rectangle, fillcolor=lightyellow];
+        legend_characteristics [label="Policy Characteristics", shape=rectangle, fillcolor=lightblue];
+        legend_validation [label="Validation Chain", shape=rectangle, fillcolor=lightgreen];
+        legend_compatibility [label="Profile Compatibility", shape=rectangle, fillcolor=orange];
+    }
+}

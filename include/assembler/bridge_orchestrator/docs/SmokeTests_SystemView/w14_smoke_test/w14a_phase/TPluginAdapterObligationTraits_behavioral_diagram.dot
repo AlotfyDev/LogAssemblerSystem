@@ -1,0 +1,59 @@
+digraph TPluginAdapterObligationTraits_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightyellow];
+
+    // Usage in W14a smoke test
+    smoke_test_include [label="Smoke Test Includes:\n#include \"TPluginAdapterObligationTraits.hpp\""];
+
+    static_assertion [label="Static Assert:\nis_plugin_adapter_obligation_surface<\nTLogLevelAPIEnvelopePluginAdapter>::value"];
+
+    trait_evaluation [label="TPluginAdapterObligationTraits<\nTLogLevelAPIEnvelopePluginAdapter>\nEvaluation"];
+
+    // Individual method checks
+    check_readiness [label="Check has_readiness:\nreadiness() -> TReadinessView"];
+    check_prepare_request [label="Check has_prepare_placement_request:\nprepare_placement_request() -> TPlacementRequest"];
+    check_accept_handle [label="Check has_accept_placement_handle:\naccept_placement_handle(TPlacementHandle) -> TBridgeResult"];
+    check_emit_signal [label="Check has_emit_load_signal:\nemit_load_signal() -> TLoadSignal"];
+    check_next_destination [label="Check has_next_destination_request:\nnext_destination_request() -> TNextDestinationRequest"];
+
+    surface_satisfied [label="satisfies_primary_placement_surface =\nall method checks pass"];
+
+    assertion_success [label="Static Assertion Passes", shape=ellipse, fillcolor=lightgreen];
+
+    // Flow
+    smoke_test_include -> static_assertion;
+    static_assertion -> trait_evaluation;
+
+    trait_evaluation -> check_readiness;
+    trait_evaluation -> check_prepare_request;
+    trait_evaluation -> check_accept_handle;
+    trait_evaluation -> check_emit_signal;
+    trait_evaluation -> check_next_destination;
+
+    check_readiness -> surface_satisfied [label="true"];
+    check_prepare_request -> surface_satisfied [label="true"];
+    check_accept_handle -> surface_satisfied [label="true"];
+    check_emit_signal -> surface_satisfied [label="true"];
+    check_next_destination -> surface_satisfied [label="true"];
+
+    surface_satisfied -> assertion_success;
+
+    // Method verification details
+    adapter_methods [label="TLogLevelAPIEnvelopePluginAdapter Methods:\n- readiness() noexcept -> TReadinessView\n- prepare_placement_request() noexcept -> TPlacementRequest\n- accept_placement_handle(const TPlacementHandle&) noexcept -> TBridgeResult\n- emit_load_signal() noexcept -> TLoadSignal\n- next_destination_request() noexcept -> TNextDestinationRequest", shape=note];
+
+    check_readiness -> adapter_methods [style=dotted];
+    check_prepare_request -> adapter_methods [style=dotted];
+    check_accept_handle -> adapter_methods [style=dotted];
+    check_emit_signal -> adapter_methods [style=dotted];
+    check_next_destination -> adapter_methods [style=dotted];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        compile_time [label="Compile-time Check", fillcolor=lightyellow];
+        method_check [label="Method Signature Check"];
+        success_state [label="Success State", shape=ellipse, fillcolor=lightgreen];
+        method_note [label="Method Implementation", shape=note];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TPluginAdapterObligationTraits_behavioral_diagram.dot

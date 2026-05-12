@@ -1,0 +1,22 @@
+{
+  "catalog_wave": "EG-POL-CAT-CW03_Gaps_And_Addons",
+  "scope": "EG-POL policy subsystem only",
+  "docs": [
+    "docs/EG-POL-CAT-004_Gap_Matrix.md",
+    "docs/EG-POL-CAT-005_Policy_Addons_Catalog.md"
+  ],
+  "diagrams": [
+    "diagrams/EG-POL-CAT-004_gap_heatmap.mmd",
+    "diagrams/EG-POL-CAT-005_policy_addons_map.mmd"
+  ],
+  "non_goals": [
+    "add-on implementation",
+    "runtime execution",
+    "target invocation",
+    "target mutation",
+    "persistence engine",
+    "audit exporter",
+    "telemetry exporter",
+    "CI/CD runner"
+  ]
+}

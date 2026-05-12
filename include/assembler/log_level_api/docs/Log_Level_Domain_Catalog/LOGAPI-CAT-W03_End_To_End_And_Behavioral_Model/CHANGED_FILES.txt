@@ -1,0 +1,10 @@
+WAVE_MANIFEST.json
+diagrams/LOGAPI-CAT-004_e2e_cstruct_flow.mmd
+diagrams/LOGAPI-CAT-004_e2e_json_flow.mmd
+diagrams/LOGAPI-CAT-004_e2e_mt5_batch_flow.mmd
+diagrams/LOGAPI-CAT-004_e2e_mt5_single_flow.mmd
+diagrams/LOGAPI-CAT-004_e2e_opaque_flow.mmd
+diagrams/LOGAPI-CAT-005_failure_boundary_flow.mmd
+diagrams/LOGAPI-CAT-005_readiness_state_machine.mmd
+docs/LOGAPI-CAT-004_End_To_End_Flow_Model.md
+docs/LOGAPI-CAT-005_Behavioral_State_And_Readiness_Model.md

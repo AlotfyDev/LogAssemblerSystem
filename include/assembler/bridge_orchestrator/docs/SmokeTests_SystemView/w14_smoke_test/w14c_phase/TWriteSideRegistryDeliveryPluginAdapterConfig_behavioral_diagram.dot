@@ -1,0 +1,29 @@
+digraph TWriteSideRegistryDeliveryPluginAdapterConfig_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Config usage in smoke test
+    DefaultUsage [label="Use defaults() in factory creation:\n- TWriteSideRegistryDeliveryPluginAdapterFactory::from_fields()\n- passes config parameter (optional, uses defaults if not provided)\n- provides standard W14C configuration"];
+
+    ValidationInReadiness [label="Validation in readiness() check:\n- TWriteSideRegistryDeliveryReadinessPolicy::readiness()\n- calls config.is_valid()\n- returns not_ready if config invalid\n- allows ordered delivery based on allow_ordered_delivery flag"];
+
+    ViewConstruction [label="Used in view construction:\n- TWriteSideRegistryDeliveryPluginAdapterViewBuilder::view()\n- provides adapter_id, participant info, display names\n- used to build participant and adapter identity"];
+
+    AdapterStorage [label="Stored in adapter instance:\n- passed to TWriteSideRegistryDeliveryPluginAdapter constructor\n- stored as const member\n- accessible via adapter.config()"];
+
+    // Flow connections
+    DefaultUsage -> AdapterStorage;
+    AdapterStorage -> ValidationInReadiness;
+    AdapterStorage -> ViewConstruction;
+
+    // Styling
+    DefaultUsage [fillcolor=lightblue];
+    ValidationInReadiness [fillcolor=lightyellow];
+    ViewConstruction [fillcolor=lightgreen];
+    AdapterStorage [fillcolor=lightsalmon];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapterConfig Usage in W14C Smoke Test";
+    labelloc=t;
+}

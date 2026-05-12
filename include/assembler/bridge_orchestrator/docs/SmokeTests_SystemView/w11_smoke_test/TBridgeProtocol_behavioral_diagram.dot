@@ -1,0 +1,25 @@
+digraph TBridgeProtocol_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TBridgeProtocol Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateProtocol [label="Create Bridge Protocol\nTBridgeProtocol<12>::make(protocol_id, plan)\nCreates protocol with execution plan", fillcolor=yellow]
+
+    ValidateProtocol [label="Validate Protocol\nprotocol.is_valid()\nChecks id, plan validity\nReturns true", fillcolor=lightgreen]
+
+    RegisterInRegistry [label="Register in Protocol Registry\nprotocol_registry.register_protocol(protocol)\nProtocol stored with plan capacity\nReturns true", fillcolor=orange]
+
+    UseInBridgeCreation [label="Use in Bridge Creation\nPassed to TBridge::make() as protocol\nEstablishes bridge execution logic", fillcolor=orange]
+
+    LookupOperations [label="Registry Lookup Operations\nprotocol_registry.contains(protocol.protocol_id)\nReturns true for registered protocols", fillcolor=lightcyan]
+
+    End [label="Bridge protocol established\nand registered", shape=ellipse, fillcolor=red]
+
+    Start -> CreateProtocol
+    CreateProtocol -> ValidateProtocol
+    ValidateProtocol -> RegisterInRegistry
+    RegisterInRegistry -> UseInBridgeCreation
+    UseInBridgeCreation -> LookupOperations
+    LookupOperations -> End
+}

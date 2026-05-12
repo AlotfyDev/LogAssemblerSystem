@@ -1,0 +1,22 @@
+{
+  "catalog_wave": "EG-POL-CAT-CW02_Component_And_Interaction_Catalog",
+  "scope": "EG-POL policy system catalog",
+  "files": [
+    "docs/EG-POL-CAT-002_Component_And_Type_Catalog.md",
+    "docs/EG-POL-CAT-003_Policy_System_Interaction_Catalog.md",
+    "diagrams/EG-POL-CAT-002_component_type_map.mmd",
+    "diagrams/EG-POL-CAT-003_interaction_map.mmd",
+    "CATALOG_MANIFEST.json",
+    "CATALOG_README.md",
+    "DEFERRED_DECISIONS.md",
+    "TREE.txt"
+  ],
+  "does_not_include": [
+    "runtime execution",
+    "target invocation",
+    "registry implementation",
+    "storage engine",
+    "diagram rendering exports"
+  ],
+  "next_recommended_wave": "EG-POL-CAT-CW03_Gaps_And_Addons"
+}

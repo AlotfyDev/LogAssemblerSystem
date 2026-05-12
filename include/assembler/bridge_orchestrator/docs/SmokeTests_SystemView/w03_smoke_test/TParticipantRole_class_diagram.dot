@@ -1,0 +1,37 @@
+digraph TParticipantRole_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main enum
+    TParticipantRole [label="{TParticipantRole\n(enum class)|unknown\l content_provider\l host_provider\l receiver_provider\l registry_provider\l persistence_provider\l telemetry_provider\l abi_boundary_provider\l diagnostic_observer\l bridge_orchestrator\l governance_provider\l}"]
+
+    // Free functions
+    is_provider_role [label="{is_provider_role|\l+ operator(role: TParticipantRole) : bool\l}", shape=record, fillcolor=lightyellow]
+    is_boundary_role [label="{is_boundary_role|\l+ operator(role: TParticipantRole) : bool\l}", shape=record, fillcolor=lightyellow]
+    is_observer_role [label="{is_observer_role|\l+ operator(role: TParticipantRole) : bool\l}", shape=record, fillcolor=lightyellow]
+    participates_in_primary_exchange [label="{participates_in_primary_exchange|\l+ operator(role: TParticipantRole) : bool\l}", shape=record, fillcolor=lightyellow]
+    to_string [label="{to_string|\l+ operator(role: TParticipantRole) : string_view\l}", shape=record, fillcolor=lightyellow]
+
+    // Dependencies
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    is_provider_role -> TParticipantRole [label="operates on", style=dashed]
+    is_boundary_role -> TParticipantRole [label="operates on", style=dashed]
+    is_observer_role -> TParticipantRole [label="operates on", style=dashed]
+    participates_in_primary_exchange -> TParticipantRole [label="operates on", style=dashed]
+    to_string -> TParticipantRole [label="operates on", style=dashed]
+    to_string -> std_string_view [label="returns", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        EnumLegend [label="Enum Class", shape=record, fillcolor=lightblue]
+        FunctionLegend [label="Free Function", shape=record, fillcolor=lightyellow]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w03_smoke_test\TParticipantRole_class_diagram.dot

@@ -1,0 +1,48 @@
+digraph TBoundedRegistry_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TBoundedRegistry Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateRegistry [label="Create Bounded Registry\nTBoundedRegistry<TId, TValue, 4> registry{};\nGeneric template-based registry with fixed capacity", fillcolor=yellow]
+
+    ValidateRegistry [label="Validate Registry\nregistry.is_valid()\nChecks capacity > 0 and name not empty\nReturns true", fillcolor=lightgreen]
+
+    CheckState [label="Check Registry State\nregistry.empty() - true initially\nregistry.full() - false initially\nregistry.count - 0", fillcolor=lightcyan]
+
+    RegisterValue [label="Register Value\nregistry.register_value(id, value, label)\nValidates inputs, prevents duplicates\nReturns true", fillcolor=orange]
+
+    LookupValue [label="Lookup Operations\nregistry.contains(id) - true\nregistry.find(id) - returns entry pointer\nregistry.lookup_result(id) - returns result enum", fillcolor=lightcyan]
+
+    AttemptDuplicate [label="Attempt Duplicate Registration\nregistry.register_value(id, value2, label)\nDetects duplicate id\nReturns false, increments rejected_insertions", fillcolor=red]
+
+    GenerateSnapshot [label="Generate Snapshot\nregistry.snapshot()\nReturns TRegistrySnapshot with count, capacity, rejected stats", fillcolor=purple]
+
+    End [label="Bounded registry operations\ncompleted with duplicate prevention and statistics", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateRegistry
+    CreateRegistry -> ValidateRegistry
+    ValidateRegistry -> CheckState
+    CheckState -> RegisterValue
+    RegisterValue -> LookupValue
+    LookupValue -> AttemptDuplicate
+    AttemptDuplicate -> GenerateSnapshot
+    GenerateSnapshot -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Registry Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="State Checking", shape=rectangle, fillcolor=lightcyan]
+        RegistrationLegend [label="Registration", shape=rectangle, fillcolor=orange]
+        LookupLegend [label="Lookup Operations", shape=rectangle, fillcolor=lightcyan]
+        DuplicateLegend [label="Duplicate Prevention", shape=rectangle, fillcolor=red]
+        SnapshotLegend [label="Snapshot Generation", shape=rectangle, fillcolor=purple]
+    }
+}

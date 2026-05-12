@@ -1,0 +1,36 @@
+digraph TOptionalRegistries_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TOptionalRegistries Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    IncludeHeader [label="#include \"TOptionalRegistries.hpp\"\nIncludes all W11 optional registry headers", fillcolor=yellow]
+
+    CheckAvailability [label="Check Registry Availability\nASCC_W11_OPTIONAL_REGISTRIES_AVAILABLE\nStatic constexpr bool = true", fillcolor=lightgreen]
+
+    AccessRegistries [label="Access Registry Components\nTCommunicationContextRegistrySet\nTChannelRegistry, TBindingRegistry, etc.\nAll available through single include", fillcolor=orange]
+
+    UseInSmokeTest [label="Use in Complete Registry Workflow\nCreate registry set, register components,\nvalidate lookups, generate snapshots", fillcolor=lightcyan]
+
+    End [label="Registry aggregate include\nprovides unified access to W11 registries", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> IncludeHeader
+    IncludeHeader -> CheckAvailability
+    CheckAvailability -> AccessRegistries
+    AccessRegistries -> UseInSmokeTest
+    UseInSmokeTest -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        IncludeLegend [label="Header Inclusion", shape=rectangle, fillcolor=yellow]
+        AvailabilityLegend [label="Availability Check", shape=rectangle, fillcolor=lightgreen]
+        AccessLegend [label="Component Access", shape=rectangle, fillcolor=orange]
+        UsageLegend [label="Smoke Test Usage", shape=rectangle, fillcolor=lightcyan]
+    }
+}

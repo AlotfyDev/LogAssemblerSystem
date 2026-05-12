@@ -1,0 +1,25 @@
+digraph TPluginAdapterObligationFamily_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Obligation family usage in W14C
+    ProfileCreation [label="Used in obligation profile creation:\n- TWriteSideRegistryDeliveryPluginAdapterViewBuilder::delivery_content_provider_profile()\n- specifies DELIVERY_CONTENT_PROVIDER family\n- defines adapter capability category"];
+
+    ViewBuilding [label="Included in adapter view:\n- TPluginAdapterObligationProfile contains family\n- used in TPluginAdapterView construction\n- identifies adapter as content delivery type"];
+
+    BridgeRuntimeIntegration [label="Bridge runtime capability matching:\n- bridge matches adapters by obligation family\n- enables placement and boundary handoff workflows\n- ensures adapter compatibility"];
+
+    // Flow connections
+    ProfileCreation -> ViewBuilding;
+    ViewBuilding -> BridgeRuntimeIntegration;
+
+    // Styling
+    ProfileCreation [fillcolor=lightblue];
+    ViewBuilding [fillcolor=lightsalmon];
+    BridgeRuntimeIntegration [fillcolor=lightgreen];
+
+    // Title
+    label="TPluginAdapterObligationFamily Usage in W14C Smoke Test";
+    labelloc=t;
+}

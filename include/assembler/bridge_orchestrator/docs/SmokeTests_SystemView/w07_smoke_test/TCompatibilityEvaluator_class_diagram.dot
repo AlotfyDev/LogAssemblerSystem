@@ -1,0 +1,33 @@
+digraph TCompatibilityEvaluator_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    TCompatibilityEvaluator [label="{TCompatibilityEvaluator (W07)|+ strict_binding_rules() : TCompatibilityRuleSet<7>\n+ evaluate_strict_binding(binding) : TCompatibilityMatrix<8>\n+ is_strictly_compatible(binding) : bool\n+ view_strict_binding(binding) : TCompatibilityView|+ Compatibility evaluation facade\n+ No instance state\n+ Static methods only}"];
+
+    TCompatibilityRuleSet [label="{TCompatibilityRuleSet<7>|+ strict_binding_rules() : TCompatibilityRuleSet<7>\n+ evaluate<N>(binding) : TCompatibilityMatrix<N>|Rule collection for evaluation}" shape=record, fillcolor=lightyellow];
+
+    TCompatibilityMatrix [label="{TCompatibilityMatrix<8>|issues : array<TCompatibilityIssue,8>\nissue_count : size_t|+ add(issue) : bool\n+ compatible() : bool\n+ blocking_count() : size_t\n+ has_blocking_issues() : bool\n+ warning_count() : size_t|Fixed-capacity issue matrix}" shape=record, fillcolor=lightgreen];
+
+    TCompatibilityView [label="{TCompatibilityView|binding : TBindingView\ncompatible : bool\nissue_count : size_t\nblocking_issue_count : size_t\nwarning_issue_count : size_t\nsummary : string_view|+ passed() : bool\n+ needs_review() : bool\n+ from_matrix(...) : TCompatibilityView|Read-only evaluation projection}" shape=record, fillcolor=lightcyan];
+
+    TBinding [label="{TBinding (W06)|...|+ is_compatible() : bool\n+ view() : TBindingView|Binding declaration}" shape=record, fillcolor=white];
+
+    // Relationships
+    TCompatibilityEvaluator -> TCompatibilityRuleSet [label="uses for rules"];
+    TCompatibilityEvaluator -> TCompatibilityMatrix [label="generates matrix"];
+    TCompatibilityEvaluator -> TCompatibilityView [label="creates view"];
+    TCompatibilityEvaluator -> TBinding [label="evaluates binding"];
+
+    TCompatibilityRuleSet -> TCompatibilityMatrix [label="produces"];
+    TCompatibilityMatrix -> TCompatibilityView [label="aggregated into"];
+
+    TCompatibilityView -> TBinding [label="references"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        New [label="New in W07", fillcolor=lightblue];
+        Dependency [label="Dependency", fillcolor=white];
+        Operation [label="Key Operation", shape=ellipse, fillcolor=yellow];
+    }
+}

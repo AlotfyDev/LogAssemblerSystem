@@ -1,0 +1,82 @@
+digraph TBoundaryHandoffRequest_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    // Creation
+    Start [label="Create TBoundaryHandoffRequest", shape=ellipse, fillcolor=lightgreen];
+
+    UseFactory [label="Use Factory Method", fillcolor=lightyellow];
+
+    FactoryCall [label="TBoundaryHandoffRequest::make(\n    token,           // TCorrelationToken\n    descriptor,      // TIntegrationBoundaryDescriptor\n    \"material_kind\", // string_view\n    size_hint,       // uint64_t (optional)\n    ordered          // bool (optional)\n)", fillcolor=lavender];
+
+    // Validation
+    ValidateRequest [label="Validate Request", fillcolor=lightblue];
+
+    CheckCorrelation [label="correlation.is_valid()\n→ Must have valid correlation token"];
+
+    CheckTarget [label="target.is_valid()\n→ Target descriptor must be valid"];
+
+    CheckCapability [label="target.has(TIntegrationBoundaryCapability::accepts_handoff)\n→ Target must accept handoffs"];
+
+    CheckMaterial [label="!material_kind.empty()\n→ Material kind must not be empty"];
+
+    CheckOrdering [label="If requires_ordered_handoff:\n    target.has(TIntegrationBoundaryCapability::supports_ordering)\n→ Target must support ordering if required"];
+
+    // Usage patterns
+    UsagePatterns [label="Usage Patterns in W13", fillcolor=pink];
+
+    UnorderedRequest [label="Unordered Request (default)\n• requires_ordered_handoff = false\n• Immediate processing allowed\n• Used for persistence, telemetry"];
+
+    OrderedRequest [label="Ordered Request\n• requires_ordered_handoff = true\n• Must be processed in order\n• Deferred if not supported\n• Used for read_side boundaries"];
+
+    // Smoke test examples
+    SmokeTestExamples [label="Smoke Test Examples", fillcolor=lightcyan];
+
+    PersistenceRequest [label="auto request = TBoundaryHandoffRequest::make(\n    token,\n    descriptor, // persistence descriptor\n    \"log_level_envelope\",\n    256u,\n    false // unordered\n);"];
+
+    OrderedRequestExample [label="auto ordered_request = TBoundaryHandoffRequest::make(\n    token,\n    ordered_descriptor, // read_side descriptor\n    \"log_level_envelope\",\n    128u,\n    true // ordered\n);"];
+
+    // Flow connections
+    Start -> UseFactory;
+    UseFactory -> FactoryCall;
+
+    FactoryCall -> ValidateRequest;
+
+    ValidateRequest -> CheckCorrelation;
+    ValidateRequest -> CheckTarget;
+    ValidateRequest -> CheckCapability;
+    ValidateRequest -> CheckMaterial;
+    ValidateRequest -> CheckOrdering;
+
+    CheckCorrelation -> UsagePatterns;
+    CheckTarget -> UsagePatterns;
+    CheckCapability -> UsagePatterns;
+    CheckMaterial -> UsagePatterns;
+    CheckOrdering -> UsagePatterns;
+
+    UsagePatterns -> UnorderedRequest;
+    UsagePatterns -> OrderedRequest;
+
+    UnorderedRequest -> SmokeTestExamples;
+    OrderedRequest -> SmokeTestExamples;
+
+    SmokeTestExamples -> PersistenceRequest;
+    SmokeTestExamples -> OrderedRequestExample;
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendStart [label="Start", shape=ellipse, fillcolor=lightgreen];
+        LegendFactory [label="Factory Method", fillcolor=lightyellow];
+        LegendCall [label="Factory Call", fillcolor=lavender];
+        LegendValidation [label="Validation", fillcolor=lightblue];
+        LegendCheck [label="Validation Check"];
+        LegendUsage [label="Usage Patterns", fillcolor=pink];
+        LegendType [label="Request Type"];
+        LegendExample [label="Smoke Test Examples", fillcolor=lightcyan];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffRequest_behavioral_diagram.dot

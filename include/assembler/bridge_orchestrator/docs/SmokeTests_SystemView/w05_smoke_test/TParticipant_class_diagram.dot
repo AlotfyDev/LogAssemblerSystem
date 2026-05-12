@@ -1,0 +1,5 @@
+digraph TParticipant_Class {
+  node [shape=record];
+
+  TParticipant [label="{TParticipant|participant_id : uint64_t\nrole : TParticipantRole\ndomain : string_view\nfamily : string_view\ndisplay_name : string_view\ncorrelation : TCorrelationToken|+ is_valid() : bool\n+ is_provider() : bool\n+ is_boundary() : bool\n+ is_observer() : bool\n+ participates_in_exchange() : bool\n+ invalid() : TParticipant\n+ make(...) : TParticipant\n+ operator==\n+ operator!=}"];
+}

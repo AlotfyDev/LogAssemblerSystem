@@ -1,0 +1,16 @@
+digraph TPlacementHandle_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    PlacementHandle [label="{TPlacementHandle (W01)|placement acceptance handle\l+ correlation : TCorrelationToken\l+ is_valid() const\l+ invalid() static\l}", fillcolor=lightgreen, style=filled];
+
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|accepts and stores placement handle\lused in state management\l}", fillcolor=lightsalmon];
+    State [label="{TWriteSideRegistryDeliveryPluginAdapterState|stores accepted placement handle\ltracks placement lifecycle\l}", fillcolor=lightsalmon];
+
+    Adapter -> PlacementHandle [label="accepts"];
+    State -> PlacementHandle [label="stores"];
+
+    label="TPlacementHandle (W01) Class Structure and W14C Usage";
+    labelloc=t;
+}

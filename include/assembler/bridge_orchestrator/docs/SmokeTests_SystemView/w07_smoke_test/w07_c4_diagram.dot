@@ -1,0 +1,108 @@
+digraph W07_C4_Architecture_Diagram {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+
+    // System Context
+    subgraph cluster_system_context {
+        label="W07 Compatibility Evaluation System Context";
+        style=filled;
+        fillcolor=lightgrey;
+
+        W07_CompatibilityEvaluator [label="W07: Compatibility Evaluation\n(TCompatibilityEvaluator)", fillcolor=palegreen];
+
+        // External Systems
+        W06_BindingModel [label="W06: Binding Model\n(TBinding, TBindingId, TBindingProfile)"];
+        W05_ObligationSurfaces [label="W05: Obligation Surfaces\n(TObligationSurfacePair, TPluginAdapterView, TPortView)"];
+        W04_ChannelTopology [label="W04: Channel Topology\n(TChannel, TSingleAdapterSinglePortProfile, TChannelBindingPolicy)"];
+        W03_Participants [label="W03: Participants\n(TParticipant, TParticipantRole)"];
+        W01_Correlation [label="W01: Correlation\n(TCorrelationToken)"];
+    }
+
+    // Container Level
+    subgraph cluster_containers {
+        label="Container View - Compatibility Evaluation Components";
+        style=filled;
+        fillcolor=lightyellow;
+
+        CompatibilityEvaluator [label="TCompatibilityEvaluator\nMain facade for compatibility evaluation"];
+        CompatibilityMatrix [label="TCompatibilityMatrix<N>\nFixed-capacity diagnostic matrix"];
+        CompatibilityView [label="TCompatibilityView\nRead-only evaluation projection"];
+
+        // Dependencies
+        CompatibilityEvaluator -> CompatibilityMatrix [label="evaluates"];
+        CompatibilityEvaluator -> CompatibilityView [label="generates"];
+
+        CompatibilityView -> CompatibilityMatrix [label="aggregates issues"];
+        CompatibilityView -> W06_BindingModel [label="references binding view"];
+    }
+
+    // Component Level
+    subgraph cluster_components {
+        label="Component View - Key Compatibility Operations";
+        style=filled;
+        fillcolor=lightcyan;
+
+        // Core Operations
+        StrictBindingEvaluation [label="evaluate_strict_binding()\nMatrix generation from binding"];
+        CompatibilityCheck [label="is_strictly_compatible()\nBoolean compatibility check"];
+        ViewGeneration [label="view_strict_binding()\nCompatibility view creation"];
+
+        // Matrix Operations
+        IssueAggregation [label="TCompatibilityMatrix::add()\nIssue collection and counting"];
+        BlockingDetection [label="has_blocking_issues()\nBlocking issue detection"];
+        CompatibilityDetermination [label="compatible()\nOverall compatibility status"];
+
+        // View Operations
+        StatusProjection [label="passed() / needs_review()\nCompatibility status helpers"];
+
+        // Relationships
+        StrictBindingEvaluation -> IssueAggregation [label="uses"];
+        StrictBindingEvaluation -> CompatibilityDetermination [label="determines"];
+
+        ViewGeneration -> StrictBindingEvaluation [label="builds on"];
+        ViewGeneration -> StatusProjection [label="provides"];
+
+        CompatibilityCheck -> StrictBindingEvaluation [label="validates"];
+    }
+
+    // Technology Stack
+    subgraph cluster_technology {
+        label="Technology - Header-Only C++ Templates";
+        style=filled;
+        fillcolor=white;
+
+        ConstexprEvaluation [label="constexpr Evaluation\nCompile-time compatibility checking"];
+        TemplateMetaprogramming [label="Template Metaprogramming\n<TCompatibilityMatrix<8>>"];
+        NoRuntimeAllocation [label="No Runtime Allocation\nZero-overhead evaluation"];
+
+        ConstexprEvaluation -> TemplateMetaprogramming [label="enables"];
+        NoRuntimeAllocation -> ConstexprEvaluation [label="requires"];
+    }
+
+    // Relationships between layers
+    W07_CompatibilityEvaluator -> CompatibilityEvaluator [style=invis];
+    CompatibilityEvaluator -> StrictBindingEvaluation [style=invis];
+    TemplateMetaprogramming -> CompatibilityMatrix [style=invis];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        NewComponent [label="New in W07", fillcolor=palegreen];
+        ReusedComponent [label="Reused from W01-W06", fillcolor=lightblue];
+        Operation [label="Key Operation", fillcolor=lightcyan];
+        Technology [label="Technology Constraint", fillcolor=white];
+
+        NewComponent -> ReusedComponent [style=invis];
+        Operation -> Technology [style=invis];
+    }
+
+    // Key Relationships
+    CompatibilityEvaluator -> W06_BindingModel [label="evaluates W06 bindings", style=dashed, color=blue];
+    CompatibilityEvaluator -> W05_ObligationSurfaces [label="validates W05 surfaces", style=dashed, color=green];
+    CompatibilityEvaluator -> W04_ChannelTopology [label="checks W04 channels", style=dashed, color=red];
+    CompatibilityEvaluator -> W03_Participants [label="validates W03 roles", style=dashed, color=orange];
+    CompatibilityEvaluator -> W01_Correlation [label="uses W01 tokens", style=dashed, color=purple];
+}

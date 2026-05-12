@@ -1,0 +1,144 @@
+digraph W15_C4_Architecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial"];
+
+    // External Systems
+    subgraph cluster_external {
+        label="External Systems";
+        color=lightgray;
+        style=filled;
+
+        LogLevelAPI [label="Log Level API", fillcolor=lightblue];
+        WriteSide [label="Write Side System", fillcolor=lightgreen];
+    }
+
+    // Communication Context Boundary
+    subgraph cluster_communication_context {
+        label="Communication Context";
+        color=lightblue;
+        style=filled;
+
+        // Bridge Core
+        subgraph cluster_bridge_core {
+            label="Bridge Core (W01-W10)";
+            color=lightyellow;
+            style=filled;
+
+            Bridge [label="TBridge", fillcolor=lightcyan];
+            BridgeProtocol [label="TBridgeProtocol", fillcolor=lightcyan];
+            Channel [label="TChannel", fillcolor=lightcyan];
+            Binding [label="TBinding", fillcolor=lightcyan];
+            Session [label="TSession", fillcolor=lightcyan];
+        }
+
+        // W15 First Integration Skeleton
+        subgraph cluster_w15_skeleton {
+            label="W15 First Integration Skeleton";
+            color=lightcoral;
+            style=filled;
+
+            // Main Components
+            W15Binding [label="TFirstIntegrationSkeleton\nBinding", fillcolor=lightsalmon];
+            W15Skeleton [label="TFirstIntegrationSkeleton", fillcolor=lightsalmon];
+            W15Factory [label="TFirstIntegrationSkeleton\nFactory", fillcolor=lightsalmon];
+            W15Config [label="TFirstIntegrationSkeleton\nConfig", fillcolor=lightsalmon];
+            W15Report [label="TFirstIntegrationSkeleton\nReport", fillcolor=lightsalmon];
+            W15ModelPlan [label="TFirstIntegrationSkeleton\nModelPlan", fillcolor=lightsalmon];
+            W15IdSet [label="TFirstIntegrationSkeleton\nIdSet", fillcolor=lightsalmon];
+        }
+
+        // W14A Log Level API Adapter
+        subgraph cluster_w14a_adapter {
+            label="W14A Log Level API Envelope PluginAdapter";
+            color=lightgreen;
+            style=filled;
+
+            W14AAdapter [label="TLogLevelAPIEnvelope\nPluginAdapter", fillcolor=palegreen];
+            W14AFactory [label="TLogLevelAPIEnvelope\nPluginAdapterFactory", fillcolor=palegreen];
+            W14ABinding [label="TLogLevelAPIEnvelope\nPluginAdapterBinding", fillcolor=palegreen];
+        }
+
+        // W14B Write Side Port
+        subgraph cluster_w14b_port {
+            label="W14B Write Side Envelope Placement Port";
+            color=lightblue;
+            style=filled;
+
+            W14BPort [label="TWriteSideEnvelope\nPlacementPort", fillcolor=lightcyan];
+            W14BBinding [label="TWriteSideEnvelope\nPlacementPortBinding", fillcolor=lightcyan];
+        }
+
+        // Reused Components from Previous Waves
+        subgraph cluster_reused_components {
+            label="Reused Components (W01-W10)";
+            color=lightgray;
+            style=filled;
+
+            CorrelationToken [label="TCorrelationToken\n(W01)", fillcolor=lightgray];
+            ObligationSurfacePair [label="TObligationSurfacePair\n(W01)", fillcolor=lightgray];
+            AdmissionResult [label="TAdmissionResult\n(W01)", fillcolor=lightgray];
+            PlacementHandle [label="TPlacementHandle\n(W01)", fillcolor=lightgray];
+            BridgeResult [label="TBridgeResult\n(W01)", fillcolor=lightgray];
+            BridgeCoreResult [label="TBridgeCoreResult\n(W01)", fillcolor=lightgray];
+        }
+    }
+
+    // Relationships
+    // W15 Skeleton Creation
+    W15Binding -> W15Skeleton [label="aggregates"];
+    W15Factory -> W15Skeleton [label="creates"];
+    W15Skeleton -> W15Config [label="uses"];
+    W15Skeleton -> W15Report [label="produces"];
+
+    // W15 Model Declaration
+    W15Skeleton -> W15ModelPlan [label="uses"];
+    W15ModelPlan -> W15IdSet [label="uses"];
+    W15ModelPlan -> Channel [label="declares"];
+    W15ModelPlan -> Binding [label="declares"];
+    W15ModelPlan -> Session [label="opens"];
+    W15ModelPlan -> BridgeProtocol [label="declares"];
+    W15ModelPlan -> Bridge [label="declares"];
+
+    // W15 Integration with W14A/W14B
+    W15Skeleton -> W14AAdapter [label="creates"];
+    W15Skeleton -> W14BPort [label="creates"];
+    W15Skeleton -> W14AFactory [label="uses"];
+    W15Skeleton -> ObligationSurfacePair [label="makes"];
+
+    // Bridge Model Execution
+    W15Skeleton -> Bridge [label="runs to terminal"];
+
+    // Carrier Flow Exchange
+    W15Skeleton -> W14AAdapter [label="placement request"];
+    W15Skeleton -> W14BPort [label="admission"];
+    W15Skeleton -> W14BPort [label="placement handle"];
+    W15Skeleton -> W14AAdapter [label="accept handle"];
+    W15Skeleton -> W14AAdapter [label="emit load signal"];
+    W15Skeleton -> W14BPort [label="receive load signal"];
+    W15Skeleton -> W14AAdapter [label="next destination"];
+    W15Skeleton -> W14BPort [label="next destination response"];
+
+    // External System Integration
+    W14AAdapter -> LogLevelAPI [label="extracts envelopes"];
+    W14BPort -> WriteSide [label="places envelopes"];
+
+    // Component Results
+    W15Skeleton -> AdmissionResult [label="checks"];
+    W15Skeleton -> PlacementHandle [label="validates"];
+    W15Skeleton -> BridgeResult [label="validates"];
+    W15Skeleton -> BridgeCoreResult [label="validates"];
+
+    // Correlation Tracking
+    W15Skeleton -> CorrelationToken [label="uses"];
+    W14AAdapter -> CorrelationToken [label="uses"];
+    W14BPort -> CorrelationToken [label="uses"];
+
+    // Layout hints
+    {rank=same; W15Binding; W15Skeleton; W15Factory;}
+    {rank=same; W15Config; W15Report; W15ModelPlan; W15IdSet;}
+    {rank=same; W14AAdapter; W14BPort;}
+    {rank=same; W14AFactory; W14ABinding; W14BBinding;}
+    {rank=same; Channel; Binding; Session;}
+    {rank=same; BridgeProtocol; Bridge;}
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\w15_c4_diagram.dot

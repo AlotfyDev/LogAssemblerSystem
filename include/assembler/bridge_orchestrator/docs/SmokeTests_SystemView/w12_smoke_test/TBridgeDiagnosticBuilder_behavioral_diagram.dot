@@ -1,0 +1,19 @@
+digraph TBridgeDiagnosticBuilder_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TBridgeDiagnosticBuilder Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    BuildFromCompletedResult [label="Build from Completed Result\nTBridgeDiagnosticBuilder::from_result(id1, completed_bridge)\nCreates info severity diagnostic record", fillcolor=orange]
+
+    BuildFromExhaustedResult [label="Build from Exhausted Result\nTBridgeDiagnosticBuilder::from_result(id2, exhausted_bridge)\nCreates warning severity diagnostic record", fillcolor=orange]
+
+    ValidateRecords [label="Validate Built Records\nCheck is_valid(), severity levels, and failure status\nVerify appropriate severity mapping from bridge result status", fillcolor=lightgreen]
+
+    End [label="Builder usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> BuildFromCompletedResult
+    BuildFromCompletedResult -> BuildFromExhaustedResult
+    BuildFromExhaustedResult -> ValidateRecords
+    ValidateRecords -> End
+}

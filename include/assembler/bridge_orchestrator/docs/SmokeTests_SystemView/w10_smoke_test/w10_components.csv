@@ -1,0 +1,42 @@
+Component Name,Type,Origin Wave,Category,Key Role in W10
+TBridge,Template Class,W10,Bridge Core,Main bridge orchestrator template
+TBridgeCore,Aggregate Include,W10,Bridge Core,Aggregate include for all bridge core components
+TBridgeId,Value Type,W10,Bridge Core,Bridge identity and validation
+TBridgeConfig,Configuration,W10,Bridge Core,Bridge execution configuration and budget
+TBridgeStatus,Status Enum,W10,Bridge Core,Bridge lifecycle status taxonomy
+TBridgeView,View,W10,Bridge Core,Read-only bridge state view
+TBridgeSnapshot,Snapshot,W10,Bridge Core,Complete bridge state snapshot
+TSingleAdapterSinglePortProfile,Profile,W04,Channel Profiles,Reused adapter-port profile for channels
+TChannelBindingPolicy,Policy,W04,Channel Policies,Reused binding policy for channels
+TCorrelationToken,Value Type,W01,Foundation,Correlation token for tracing
+TParticipant,Value Type,W03,Session Model,Session participant definition
+TParticipantRole,Enum,W03,Session Model,Participant role taxonomy
+TChannel,Value Type,W04,Channel Model,Communication channel definition
+TPluginAdapterView,View,W05,Plugin Model,Adapter-side view for bindings
+TPortView,View,W05,Plugin Model,Port-side view for bindings
+TPluginAdapterObligationProfile,Obligation Profile,W05,Plugin Model,Adapter-side obligation contract
+TPortObligationProfile,Obligation Profile,W05,Plugin Model,Port-side obligation contract
+TObligationSurfacePair,Pair,W05,Plugin Model,Adapter-port obligation pairing
+TBinding,Value Type,W06,Binding Model,Channel binding definition
+TBindingId,Value Type,W06,Binding Model,Binding identity
+TBindingProfile,Profile,W06,Binding Model,Binding execution profile
+TSession,Value Type,W08,Session Model,Communication session orchestrator
+TSessionOpenRequest,Request,W08,Session Model,Session creation request
+TSessionId,Value Type,W08,Session Model,Session identity
+TSessionPolicy,Policy,W08,Session Model,Session execution policy
+TBridgeProtocol,Template Class,W09,Protocol Model,Protocol orchestrator template
+TBridgeProtocolId,Value Type,W09,Protocol Model,Protocol identity
+TBridgeProtocolPlan,Plan,W09,Protocol Model,Protocol execution plan
+TBridgeCoreResult,Result,W10,Bridge Core,Bridge operation result
+TBridgeCoreView,View,W10,Bridge Core,Bridge core state view
+TBridgeCoreSnapshot,Snapshot,W10,Bridge Core,Bridge core complete snapshot
+TBridgeCoreStepReport,Report,W10,Bridge Core,Step execution report
+TBridgeCoreTrace,Trace,W10,Bridge Core,Bridge execution trace
+TBridgeCoreFrame,Frame,W10,Bridge Core,Bridge state frame
+TBridgeCoreIssue,Issue,W10,Bridge Core,Bridge issue/error reporting
+TBridgeCorePolicy,Policy,W10,Bridge Core,Bridge validation policy
+TBridgeStepBudget,Budget,W10,Bridge Core,Step execution budget management
+TBridgeRunMode,Mode,W10,Bridge Core,Bridge execution mode
+TBridgeError,Error,W10,Bridge Core,Bridge error types
+TBridgeResult,Result,W10,Bridge Core,Bridge result types</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\w10_components.csv

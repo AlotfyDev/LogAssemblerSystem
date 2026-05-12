@@ -1,0 +1,28 @@
+digraph TDiagnosticRecord_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticRecord Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateFromBuilders [label="Create Records from Builders\nTBridgeDiagnosticBuilder::from_result() creates info/warning records\nTRegistryDiagnosticBuilder::from_snapshot() creates info record\nBuilders create appropriately typed diagnostic records", fillcolor=orange]
+
+    CreateExplicitError [label="Create Explicit Error Record\nTDiagnosticRecord::error(id4, protocol, \"protocol.synthetic_error\", ...)\nCreates error severity record with explicit details", fillcolor=yellow]
+
+    ValidateRecords [label="Validate All Records\nCheck is_valid(), severity levels, and correlation tokens\nVerify record structure and data integrity", fillcolor=lightgreen]
+
+    CheckFailureStatus [label="Check Failure Status\nerror_record.failed() returns true\ninfo_record.failed() returns false\nVerify failure detection logic", fillcolor=lightgreen]
+
+    UseInCollection [label="Use in Collection\nRecords added to TDiagnosticCollector\nForm basis of diagnostic snapshots and aggregation", fillcolor=cyan]
+
+    CreateView [label="Create Diagnostic View\nTDiagnosticView::from_record(error_record)\nWraps record for additional operations", fillcolor=yellow]
+
+    End [label="Record usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateFromBuilders
+    CreateFromBuilders -> CreateExplicitError
+    CreateExplicitError -> ValidateRecords
+    ValidateRecords -> CheckFailureStatus
+    CheckFailureStatus -> UseInCollection
+    UseInCollection -> CreateView
+    CreateView -> End
+}

@@ -1,0 +1,13 @@
+Component Name,Include Path,Category,Description
+TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,Correlation,Handles correlation tokens for tracking requests across the system
+TBridgeError,bridge_core/errors/TBridgeError.hpp,Core Errors,Defines error types for bridge core operations
+TBridgeResult,bridge_core/results/TBridgeResult.hpp,Core Results,Defines result types for bridge core operations
+TBridgeCarrierResult,bridge_carriers/results/TBridgeCarrierResult.hpp,Carrier Results,Defines result types for bridge carrier operations
+TBridgeCarrierError,bridge_carriers/errors/TBridgeCarrierError.hpp,Carrier Errors,Defines error types for bridge carrier operations
+TReadinessView,bridge_carriers/readiness/TReadinessView.hpp,Readiness,Manages readiness states for carriers
+TAdmissionResult,bridge_carriers/admission/TAdmissionResult.hpp,Admission,Handles admission control decisions
+TLoadSignal,bridge_carriers/signals/TLoadSignal.hpp,Signals,Manages load completion signals
+TPlacementRequest,bridge_carriers/requests/TPlacementRequest.hpp,Requests,Handles placement requests for data
+TPlacementHandle,bridge_carriers/handles/TPlacementHandle.hpp,Handles,Manages placement handles for allocated resources
+TNextDestinationRequest,bridge_carriers/destination/TNextDestinationRequest.hpp,Destination,Manages next destination routing requests
+TCarrierView,bridge_carriers/views/TCarrierView.hpp,Views,Provides abstract views of carrier states

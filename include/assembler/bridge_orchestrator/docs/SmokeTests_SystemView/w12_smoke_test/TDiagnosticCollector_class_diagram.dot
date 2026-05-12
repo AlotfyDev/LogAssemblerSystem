@@ -1,0 +1,16 @@
+digraph TDiagnosticCollector_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticCollector [label="{TDiagnosticCollector<Capacity>|report : TDiagnosticReport<Capacity>\l|+ is_valid() : bool\l+ add(record) : bool\l+ add_if_included(record, policy) : bool\l+ snapshot() : TDiagnosticSnapshot\l+ reset(name, token) : void\l+ make(name, token) : TDiagnosticCollector\l}"]
+
+    TDiagnosticReport [label="TDiagnosticReport<Capacity>", shape=record, fillcolor=lightyellow]
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+    TDiagnosticPolicy [label="TDiagnosticPolicy", shape=record, fillcolor=lightyellow]
+    TDiagnosticSnapshot [label="TDiagnosticSnapshot", shape=record, fillcolor=lightyellow]
+
+    TDiagnosticCollector -> TDiagnosticReport [label="contains", style=dashed]
+    TDiagnosticCollector -> TDiagnosticRecord [label="collects", style=dashed]
+    TDiagnosticCollector -> TDiagnosticPolicy [label="filters with", style=dashed]
+    TDiagnosticCollector -> TDiagnosticSnapshot [label="generates", style=dashed]
+}

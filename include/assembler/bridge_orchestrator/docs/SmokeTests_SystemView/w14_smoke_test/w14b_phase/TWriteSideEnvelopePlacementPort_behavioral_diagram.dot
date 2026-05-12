@@ -1,0 +1,135 @@
+digraph TWriteSideEnvelopePlacementPort_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Construction
+    Construction [label="TWriteSideEnvelopePlacementPort::TWriteSideEnvelopePlacementPort(config, target)\nInitialize with config and target descriptor", fillcolor=orange];
+
+    // Readiness evaluation
+    Readiness_Call [label="readiness(const TPlacementRequest& request)", fillcolor=orange];
+    Config_Validation [label="Validate config.is_valid() && target.is_valid()", fillcolor=lavender];
+    Request_Validation [label="Validate request.is_valid()", fillcolor=lavender];
+    Payload_Support_Check [label="TWriteSideEnvelopePlacementAdmissionPolicy::payload_kind_is_supported(request, config)", fillcolor=lavender];
+    Destination_Support_Check [label="TWriteSideEnvelopePlacementAdmissionPolicy::destination_is_supported(request, config)", fillcolor=lavender];
+    Ordered_Placement_Check [label="Check request.requires_ordered_placement && target.supports_ordered_placement", fillcolor=lavender];
+    Readiness_Capacity [label="TWriteSideEnvelopePlacementAdmissionPolicy::readiness_capacity_hint(config)", fillcolor=lavender];
+
+    // Readiness outcomes
+    Ready_Result [label="return TReadinessView::ready(request.correlation, capacity_hint)", fillcolor=lightgreen];
+    Not_Ready_Config [label="return TReadinessView::not_ready(\"write_side_envelope_placement_port_config_or_target_invalid\", request.correlation)", fillcolor=red];
+    Not_Ready_Request [label="return TReadinessView::not_ready(\"placement_request_invalid\", request.correlation)", fillcolor=red];
+    Not_Ready_Payload [label="return TReadinessView::not_ready(\"unsupported_payload_kind\", request.correlation)", fillcolor=red];
+    Deferred_Destination [label="return TReadinessView::deferred(\"unsupported_destination_family\", request.correlation)", fillcolor=red];
+    Deferred_Ordered [label="return TReadinessView::deferred(\"ordered_placement_not_supported_by_target\", request.correlation)", fillcolor=red];
+
+    // Admission process
+    Admit_Call [label="admit(const TPlacementRequest& request)", fillcolor=orange];
+    Get_Readiness [label="auto readiness_view = readiness(request)", fillcolor=lavender];
+    Check_Ready [label="if (readiness_view.is_ready())", fillcolor=lavender];
+    Record_Admission [label="state_.record_admission()", fillcolor=lavender];
+    Accept_Admission [label="return TAdmissionResult::accept(request.correlation)", fillcolor=lightgreen];
+    Check_Deferred [label="else if (readiness_view.is_deferred())", fillcolor=lavender];
+    Defer_Admission [label="return TAdmissionResult::defer(readiness_view.reason, request.correlation)", fillcolor=red];
+    Reject_Admission [label="return TAdmissionResult::reject(readiness_view.reason ?: \"placement_request_not_admissible\", request.correlation)", fillcolor=red];
+
+    // Handle production
+    Handle_Call [label="placement_handle(const TPlacementRequest& request)", fillcolor=orange];
+    Admissible_Check [label="if (!TWriteSideEnvelopePlacementAdmissionPolicy::request_is_admissible(request, config))", fillcolor=lavender];
+    Invalid_Handle [label="return TPlacementHandle::invalid()", fillcolor=red];
+    Allocate_Value [label="auto value = state_.allocate_handle_value()", fillcolor=lavender];
+    Check_Value [label="if (value == 0u)", fillcolor=lavender];
+    Create_Handle [label="auto handle = TPlacementHandle::make(value, request.correlation, target.handle_family.empty() ? config.handle_family : target.handle_family)", fillcolor=lavender];
+    Record_Handle [label="state_.record_handle(handle)", fillcolor=lavender];
+    Return_Handle [label="return handle", fillcolor=lightgreen];
+
+    // Load signal reception
+    Signal_Call [label="receive_load_signal(const TLoadSignal& signal)", fillcolor=orange];
+    Validate_Handle [label="if (!signal.placement.is_valid())", fillcolor=lavender];
+    Invalid_Signal_Handle [label="return TBridgeResult::reject(TBridgeError::make(TBridgeErrorCode::handle_unavailable, \"load signal carries invalid placement handle\"), signal.correlation)", fillcolor=red];
+    Check_Last_Handle [label="if (state_.has_last_handle() && signal.placement != state_.last_handle)", fillcolor=lavender];
+    Handle_Mismatch [label="return TBridgeResult::reject(TBridgeError::make(TBridgeErrorCode::invalid_correlation, \"load signal placement does not match last produced handle\"), signal.correlation)", fillcolor=red];
+    Check_Failed [label="if (signal.failed())", fillcolor=lavender];
+    Record_Failed_Signal [label="state_.record_signal(signal)", fillcolor=lavender];
+    Failed_Result [label="return TBridgeResult::fail(TBridgeError::make(TBridgeErrorCode::endpoint_error, signal.note ?: \"load signal failed\"), signal.correlation)", fillcolor=red];
+    Check_Completed [label="else if (!signal.completed())", fillcolor=lavender];
+    Record_Incomplete_Signal [label="state_.record_signal(signal)", fillcolor=lavender];
+    Defer_Result [label="return TBridgeResult::defer(TBridgeError::make(TBridgeErrorCode::admission_deferred, \"load signal is not completed\"), signal.correlation)", fillcolor=red];
+    Record_Complete_Signal [label="state_.record_signal(signal)", fillcolor=lavender];
+    Success_Result [label="return TBridgeResult::success(signal.correlation)", fillcolor=lightgreen];
+
+    // Next destination
+    NextDest_Call [label="next_destination(const TNextDestinationRequest& request)", fillcolor=orange];
+    Validate_Request [label="if (!request.is_valid())", fillcolor=lavender];
+    Invalid_Request [label="return TBridgeResult::reject(TBridgeError::make(TBridgeErrorCode::protocol_violation, \"next destination request is invalid\"), request.correlation)", fillcolor=red];
+    Check_Request_Handle [label="if (state_.has_last_handle() && request.current_handle != state_.last_handle)", fillcolor=lavender];
+    Handle_Mismatch_Request [label="return TBridgeResult::reject(TBridgeError::make(TBridgeErrorCode::invalid_correlation, \"next destination request placement does not match last produced handle\"), request.correlation)", fillcolor=red];
+    NextDest_Success [label="return TBridgeResult::success(request.correlation)", fillcolor=lightgreen];
+
+    // Flow connections
+    Construction -> Readiness_Call [style=dashed, label="port ready"];
+
+    Readiness_Call -> Config_Validation;
+    Config_Validation -> Request_Validation [label="config valid"];
+    Config_Validation -> Not_Ready_Config [label="config invalid"];
+
+    Request_Validation -> Payload_Support_Check [label="request valid"];
+    Request_Validation -> Not_Ready_Request [label="request invalid"];
+
+    Payload_Support_Check -> Destination_Support_Check [label="payload supported"];
+    Payload_Support_Check -> Not_Ready_Payload [label="payload unsupported"];
+
+    Destination_Support_Check -> Ordered_Placement_Check [label="destination supported"];
+    Destination_Support_Check -> Deferred_Destination [label="destination unsupported"];
+
+    Ordered_Placement_Check -> Readiness_Capacity [label="ordered OK"];
+    Ordered_Placement_Check -> Deferred_Ordered [label="ordered not supported"];
+
+    Readiness_Capacity -> Ready_Result;
+
+    Admit_Call -> Get_Readiness;
+    Get_Readiness -> Check_Ready;
+    Check_Ready -> Record_Admission [label="ready"];
+    Check_Ready -> Check_Deferred [label="not ready"];
+
+    Record_Admission -> Accept_Admission;
+    Check_Deferred -> Defer_Admission [label="deferred"];
+    Check_Deferred -> Reject_Admission [label="not ready"];
+
+    Handle_Call -> Admissible_Check;
+    Admissible_Check -> Invalid_Handle [label="not admissible"];
+    Admissible_Check -> Allocate_Value [label="admissible"];
+
+    Allocate_Value -> Check_Value;
+    Check_Value -> Invalid_Handle [label="allocation failed"];
+    Check_Value -> Create_Handle [label="value allocated"];
+
+    Create_Handle -> Record_Handle;
+    Record_Handle -> Return_Handle;
+
+    Signal_Call -> Validate_Handle;
+    Validate_Handle -> Invalid_Signal_Handle [label="invalid handle"];
+    Validate_Handle -> Check_Last_Handle [label="valid handle"];
+
+    Check_Last_Handle -> Handle_Mismatch [label="mismatch"];
+    Check_Last_Handle -> Check_Failed [label="matches"];
+
+    Check_Failed -> Record_Failed_Signal [label="failed"];
+    Record_Failed_Signal -> Failed_Result;
+
+    Check_Failed -> Check_Completed [label="not failed"];
+
+    Check_Completed -> Record_Incomplete_Signal [label="not completed"];
+    Record_Incomplete_Signal -> Defer_Result;
+
+    Check_Completed -> Record_Complete_Signal [label="completed"];
+    Record_Complete_Signal -> Success_Result;
+
+    NextDest_Call -> Validate_Request;
+    Validate_Request -> Invalid_Request [label="invalid"];
+    Validate_Request -> Check_Request_Handle [label="valid"];
+
+    Check_Request_Handle -> Handle_Mismatch_Request [label="mismatch"];
+    Check_Request_Handle -> NextDest_Success [label="matches"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TWriteSideEnvelopePlacementPort_behavioral_diagram.dot

@@ -1,0 +1,22 @@
+{
+  "catalog_wave": "EG-POL-CAT-CW01_Catalog_Foundation",
+  "catalog_pack": "EG-POL-CAT",
+  "scope": "Policy System only",
+  "covered_waves": "EG-POL-W01 through EG-POL-W34",
+  "documents": [
+    "docs/EG-POL-CAT-000_Catalog_Roadmap_And_Doctrine.md",
+    "docs/EG-POL-CAT-001_Policy_System_Layer_Map.md"
+  ],
+  "diagrams": [
+    "diagrams/EG-POL-CAT-000_catalog_position.mmd",
+    "diagrams/EG-POL-CAT-001_layer_map.mmd"
+  ],
+  "non_goals": [
+    "runtime registry",
+    "service locator",
+    "dependency injection container",
+    "persistence layer",
+    "compliance engine",
+    "whole Assembler System catalog"
+  ]
+}

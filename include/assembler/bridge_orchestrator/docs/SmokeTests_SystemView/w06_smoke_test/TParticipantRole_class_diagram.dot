@@ -1,0 +1,13 @@
+digraph TParticipantRole_Class_Diagram {
+    rankdir=TB;
+    node [shape=Mrecord, fontname="Arial"];
+
+    // Enum (reused from W03)
+    TParticipantRole [label="{TParticipantRole (W03)|unknown\ncontent_provider\nhost_provider\nreceiver_provider\nregistry_provider\npersistence_provider\ntelemetry_provider\nabi_boundary_provider\ndiagnostic_observer}"];
+
+    // Used by TParticipant
+    TParticipant_uses [label="{TParticipant|role : TParticipantRole|...}" shape=record];
+
+    // Relationships
+    TParticipant_uses -> TParticipantRole [label="uses"];
+}

@@ -1,0 +1,37 @@
+digraph TChannel_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Channel setup
+    create_profile [label="Create TChannelProfile\nTSingleAdapterSinglePortProfile::make()"];
+    create_policy [label="Create TChannelBindingPolicy\nTChannelBindingPolicy::strict_static_one_to_one()"];
+    prepare_participants [label="Prepare source and target TParticipant"];
+
+    // Declaration
+    call_declare [label="Call TChannel::declare()\n(id, source, target, profile, policy, name, token)"];
+
+    // Validation in W06 context
+    check_is_valid [label="Call channel.is_valid()\nComprehensive validation"];
+    check_is_declared [label="Call channel.is_declared()\nCheck status == declared"];
+
+    // Usage in binding
+    pass_to_binding_proposal [label="Pass to TBinding::propose()"];
+    used_in_compatibility_eval [label="Used in TBindingCompatibilityReport::evaluate()"];
+
+    // End
+    channel_ready [label="Channel Ready for Binding", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> create_profile;
+    create_profile -> create_policy;
+    create_policy -> prepare_participants;
+    prepare_participants -> call_declare;
+    call_declare -> check_is_valid;
+    check_is_valid -> check_is_declared;
+    check_is_declared -> pass_to_binding_proposal;
+    pass_to_binding_proposal -> used_in_compatibility_eval;
+    used_in_compatibility_eval -> channel_ready;
+}

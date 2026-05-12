@@ -1,0 +1,79 @@
+digraph TIntegrationBoundaryAbstractPorts_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    AggregateInclude [label="{TIntegrationBoundaryAbstractPorts\n(Aggregate Include)|• #include various W13 headers\n• Availability marker\n• No runtime behavior|+ ASCC_W13_INTEGRATION_BOUNDARY_ABSTRACT_PORTS_AVAILABLE : bool constexpr\l}", fillcolor=lightcyan];
+
+    // Included components
+    Capabilities [label="{TIntegrationBoundaryCapability\n(Enum)|• accepts_handoff\n• supports_ordering\n• emits_acknowledgement\n• supports_batch\l• supports_backpressure\l• supports_diagnostics\l}", fillcolor=lavender];
+
+    Carriers [label="{Boundary Carriers|• TBoundaryHandoffRequest\n• TBoundaryHandoffHandle\n• TBoundaryHandoffResult\l}", fillcolor=lavender];
+
+    Descriptors [label="{Boundary Descriptors|• TIntegrationBoundaryDescriptor\n• TIntegrationBoundaryDirection\n• TIntegrationBoundaryKind\l}", fillcolor=lavender];
+
+    Directions [label="{TIntegrationBoundaryDirection\n(Enum)|• unknown\n• inbound\n• outbound\n• bidirectional\l}", fillcolor=lavender];
+
+    Kinds [label="{TIntegrationBoundaryKind\n(Enum)|• unknown\n• registry_delivery\n• persistence\n• telemetry\l• thin_c_abi\n• read_side\n• in_process_receiver\n• custom\l}", fillcolor=lavender];
+
+    Policies [label="{TIntegrationBoundaryPolicy\n(Static Class)|• request_readiness()\n• supports_outbound_handoff()\n• supports_inbound_handoff()\l}", fillcolor=lightyellow];
+
+    Ports [label="{Boundary Ports|• TIntegrationBoundaryPort (CRTP)\n• TIntegrationBoundaryPortView\n• TIntegrationBoundaryPortTraits\l}", fillcolor=lavender];
+
+    Reports [label="{TIntegrationBoundaryReport\n(Value Type)|• boundary : TIntegrationBoundaryPortView\n• result : TBoundaryHandoffResult\n• diagnostic : TDiagnosticRecord\n• note : string_view\l}", fillcolor=lightgreen];
+
+    Results [label="{TBoundaryHandoffResult\n(Value Type)|• status : TBoundaryHandoffStatus\n• handle : TBoundaryHandoffHandle\n• bridge_result : TBridgeResult\n• note : string_view\l}", fillcolor=pink];
+
+    Statuses [label="{TBoundaryHandoffStatus\n(Enum)|• unknown\n• accepted\n• completed\n• rejected\n• deferred\n• failed\n• unsupported\l}", fillcolor=pink];
+
+    Traits [label="{TIntegrationBoundaryPortTraits\n(Meta)|• has_view : bool\n• has_descriptor : bool\n• has_readiness : bool\n• has_accept_handoff : bool\n• has_complete_handoff : bool\n• has_reject_handoff : bool\l• satisfies_required_surface : bool\l}", fillcolor=orange];
+
+    Views [label="{TIntegrationBoundaryPortView\n(Value Type)|• descriptor : TIntegrationBoundaryDescriptor\n• port_name : string_view\n• readiness_label : string_view\n• correlation : TCorrelationToken\l}", fillcolor=lightcyan];
+
+    // Relationships
+    AggregateInclude -> Capabilities [label="includes"];
+    AggregateInclude -> Carriers [label="includes"];
+    AggregateInclude -> Descriptors [label="includes"];
+    AggregateInclude -> Directions [label="includes"];
+    AggregateInclude -> Kinds [label="includes"];
+    AggregateInclude -> Policies [label="includes"];
+    AggregateInclude -> Ports [label="includes"];
+    AggregateInclude -> Reports [label="includes"];
+    AggregateInclude -> Results [label="includes"];
+    AggregateInclude -> Statuses [label="includes"];
+    AggregateInclude -> Traits [label="includes"];
+    AggregateInclude -> Views [label="includes"];
+
+    // Internal component relationships
+    Descriptors -> Directions [label="uses"];
+    Descriptors -> Kinds [label="uses"];
+    Descriptors -> Capabilities [label="uses"];
+
+    Policies -> Views [label="produces"];
+    Policies -> Carriers [label="validates"];
+
+    Ports -> Traits [label="validated by"];
+    Ports -> Views [label="exposes"];
+    Ports -> Descriptors [label="describes"];
+
+    Reports -> Views [label="includes"];
+    Reports -> Results [label="includes"];
+
+    Results -> Statuses [label="uses"];
+    Results -> Carriers [label="contains"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendAggregate [label="Aggregate Include", fillcolor=lightcyan];
+        LegendEnum [label="Enumeration", fillcolor=lavender];
+        LegendValue [label="Value Type", fillcolor=lightgreen];
+        LegendStatic [label="Static Class", fillcolor=lightyellow];
+        LegendMeta [label="Meta Type", fillcolor=orange];
+        LegendResult [label="Result Type", fillcolor=pink];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TIntegrationBoundaryAbstractPorts_class_diagram.dot

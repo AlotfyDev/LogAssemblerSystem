@@ -1,0 +1,9 @@
+CATALOG_MANIFEST.json
+CATALOG_README.md
+DEFERRED_DECISIONS.md
+diagrams/
+diagrams/EG-POL-CAT-002_component_type_map.mmd
+diagrams/EG-POL-CAT-003_interaction_map.mmd
+docs/
+docs/EG-POL-CAT-002_Component_And_Type_Catalog.md
+docs/EG-POL-CAT-003_Policy_System_Interaction_Catalog.md

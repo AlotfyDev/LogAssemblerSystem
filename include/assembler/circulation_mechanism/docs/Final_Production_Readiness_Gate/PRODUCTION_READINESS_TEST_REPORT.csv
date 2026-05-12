@@ -1,0 +1,7 @@
+﻿test,status,compile_returncode,run_returncode
+tests/cme_anti_collapse_boundary_compliance_test.cpp,passed,0,0
+tests/cme_end_to_end_circulation_flow_test.cpp,passed,0,0
+tests/cme_full_system_all_aggregates_compile_test.cpp,passed,0,0
+tests/cme_full_system_minimal_circulation_composition_test.cpp,passed,0,0
+tests/cme_production_readiness_gate_negative_test.cpp,passed,0,0
+tests/cme_production_readiness_gate_pass_test.cpp,passed,0,0

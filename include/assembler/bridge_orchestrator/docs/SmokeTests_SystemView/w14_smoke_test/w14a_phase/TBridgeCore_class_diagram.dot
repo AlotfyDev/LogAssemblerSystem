@@ -1,0 +1,60 @@
+digraph TBridgeCore_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main aggregate class
+    TBridgeCore [label="{TBridgeCore|Aggregate include for W10 Bridge Core|ASCC_W10_BRIDGE_CORE_AVAILABLE = true|+ includes all W10 bridge core headers}"];
+
+    // Included components
+    TBridge [label="{TBridge|Main bridge class}"];
+
+    TBridgeStepBudget [label="{TBridgeStepBudget|Step budget management}"];
+
+    TBridgeConfig [label="{TBridgeConfig|Bridge configuration}"];
+
+    TBridgeRunMode [label="{TBridgeRunMode|Run mode enum}"];
+
+    TBridgeCoreFrame [label="{TBridgeCoreFrame|Bridge frame}"];
+
+    TBridgeId [label="{TBridgeId|Bridge identifier}"];
+
+    TBridgeCoreIssue [label="{TBridgeCoreIssue|Bridge issue}"];
+
+    TBridgeCorePolicy [label="{TBridgeCorePolicy|Bridge policy}"];
+
+    TBridgeCoreStepReport [label="{TBridgeCoreStepReport|Step report}"];
+
+    TBridgeCoreResult [label="{TBridgeCoreResult|Bridge result}"];
+
+    TBridgeCoreSnapshot [label="{TBridgeCoreSnapshot|Bridge snapshot}"];
+
+    TBridgeStatus [label="{TBridgeStatus|Bridge status}"];
+
+    TBridgeCoreTrace [label="{TBridgeCoreTrace|Bridge trace}"];
+
+    TBridgeCoreView [label="{TBridgeCoreView|Bridge view}"];
+
+    // Relationships
+    TBridgeCore -> TBridge [label="includes"];
+    TBridgeCore -> TBridgeStepBudget [label="includes"];
+    TBridgeCore -> TBridgeConfig [label="includes"];
+    TBridgeCore -> TBridgeRunMode [label="includes"];
+    TBridgeCore -> TBridgeCoreFrame [label="includes"];
+    TBridgeCore -> TBridgeId [label="includes"];
+    TBridgeCore -> TBridgeCoreIssue [label="includes"];
+    TBridgeCore -> TBridgeCorePolicy [label="includes"];
+    TBridgeCore -> TBridgeCoreStepReport [label="includes"];
+    TBridgeCore -> TBridgeCoreResult [label="includes"];
+    TBridgeCore -> TBridgeCoreSnapshot [label="includes"];
+    TBridgeCore -> TBridgeStatus [label="includes"];
+    TBridgeCore -> TBridgeCoreTrace [label="includes"];
+    TBridgeCore -> TBridgeCoreView [label="includes"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        aggregate_include [label="Aggregate Include", fillcolor=lightyellow];
+        included_component [label="Included Component"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TBridgeCore_class_diagram.dot

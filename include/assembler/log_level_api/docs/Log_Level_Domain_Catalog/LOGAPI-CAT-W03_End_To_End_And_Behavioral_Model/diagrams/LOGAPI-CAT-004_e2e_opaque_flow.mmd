@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant Config
+    participant API
+    participant Parser as OpaqueNoParse
+    participant Meta
+    participant Time
+    participant Env
+    participant Exposure
+    participant Handoff
+
+    Config->>Config: Resolve opaque profile + OpaqueNoParse binding
+    API->>Parser: Opaque content only
+    Parser-->>Env: Opaque parsed content ref
+    Meta-->>Env: Prepared metadata block
+    Time-->>Env: Stabilized timestamp
+    Env->>Exposure: Final envelope readiness
+    Exposure->>Handoff: Ready exposure

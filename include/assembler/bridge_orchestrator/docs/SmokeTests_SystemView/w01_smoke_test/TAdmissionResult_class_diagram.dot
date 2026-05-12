@@ -1,0 +1,40 @@
+digraph TAdmissionResult_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TAdmissionResult [label="{TAdmissionResult|status : TAdmissionStatus\l correlation : TCorrelationToken\l error : TBridgeError\l reason : std::string_view\l|+ accepted() : bool\l+ rejected() : bool\l+ deferred() : bool\l+ failed() : bool\l+ accept(token) : TAdmissionResult\l+ reject(why, token) : TAdmissionResult\l+ defer(why, token) : TAdmissionResult\l}"]
+
+    // Enums and dependencies
+    TAdmissionStatus [label="{TAdmissionStatus|accepted\l rejected\l deferred\l failed\l}", shape=record, fillcolor=lightyellow]
+
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=orange]
+
+    TBridgeError [label="{TBridgeError|code : TBridgeErrorCode\l message : std::string_view\l|+ has_error() : bool\l+ none() : TBridgeError\l+ make(error_code, message) : TBridgeError\l}", shape=record, fillcolor=lightgreen]
+
+    TBridgeErrorCode [label="{TBridgeErrorCode|none\l invalid_correlation\l incompatible_carrier\l incompatible_binding\l protocol_violation\l admission_rejected\l admission_deferred\l handle_unavailable\l endpoint_error\l timeout\l internal_error\l}", shape=record, fillcolor=lightcyan]
+
+    // Primitive types
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey, style=invis]
+
+    // Relationships
+    TAdmissionResult -> TAdmissionStatus [label="uses"]
+    TAdmissionResult -> TCorrelationToken [label="contains"]
+    TAdmissionResult -> TBridgeError [label="contains"]
+    TAdmissionResult -> std_string_view [label="uses", style=dashed]
+    TBridgeError -> TBridgeErrorCode [label="uses"]
+    TBridgeError -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        EnumLegend [label="Enum", shape=record, fillcolor=lightyellow]
+        DepClassLegend [label="Dependency Class", shape=record, fillcolor=lightgreen]
+        ErrorEnumLegend [label="Error Enum", shape=record, fillcolor=lightcyan]
+        CorrTokenLegend [label="Correlation Token", shape=record, fillcolor=orange]
+    }
+}

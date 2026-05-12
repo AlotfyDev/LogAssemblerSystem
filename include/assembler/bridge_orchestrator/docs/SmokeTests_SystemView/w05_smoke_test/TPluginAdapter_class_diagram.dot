@@ -1,0 +1,5 @@
+digraph TPluginAdapter_Class {
+  node [shape=record];
+
+  TPluginAdapter [label="{TPluginAdapter&lt;Derived&gt;|derived_type = Derived|+ view() : TPluginAdapterView\n+ readiness() : TReadinessView\n+ prepare_placement_request() : TPlacementRequest\n+ accept_placement_handle(handle) : TBridgeResult\n+ emit_load_signal() : TLoadSignal\n+ next_destination_request() : TNextDestinationRequest}"];
+}

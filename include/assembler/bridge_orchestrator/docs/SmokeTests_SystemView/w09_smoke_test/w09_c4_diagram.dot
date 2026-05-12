@@ -1,0 +1,80 @@
+digraph W09_C4_Diagram {
+    // C4 Diagram for W09 Bridge Protocol Execution System
+    // Focus: Bridge protocol execution with 12-step envelope placement plan
+
+    graph [fontname="Arial", fontsize=10, bgcolor=lightblue]
+    node [fontname="Arial", fontsize=10, shape=box, style=filled]
+    edge [fontname="Arial", fontsize=9]
+
+    // System Context
+    subgraph cluster_system {
+        label="System Context"
+        bgcolor=white
+
+        User [label="Trading System\n(Client)", fillcolor=lightgreen]
+        BridgeProtocolSystem [label="Bridge Protocol\nExecution System", fillcolor=lightyellow]
+        EnvelopeSystem [label="Envelope\nPlacement System", fillcolor=lightcyan]
+        SessionManager [label="Session\nManager", fillcolor=lightcyan]
+
+        User -> BridgeProtocolSystem [label="Execute Bridge\nProtocol"]
+        BridgeProtocolSystem -> EnvelopeSystem [label="Place Envelopes"]
+        BridgeProtocolSystem -> SessionManager [label="Get Session Context"]
+    }
+
+    // Container View
+    subgraph cluster_containers {
+        label="Container View"
+        bgcolor=white
+
+        subgraph cluster_protocol_core {
+            label="Protocol Core"
+            bgcolor=lightgray
+
+            ProtocolManager [label="TBridgeProtocolManager\n(Layer 4)", fillcolor=yellow]
+            ProtocolFactory [label="TBridgeProtocolFactory\n(Layer 1)", fillcolor=yellow]
+            ProtocolValidator [label="TProtocolValidator\n(Layer 1)", fillcolor=yellow]
+        }
+
+        subgraph cluster_stateful {
+            label="Stateful Components"
+            bgcolor=lightgray
+
+            BridgeProtocol [label="TBridgeProtocol\n(Layer 3)", fillcolor=orange]
+            Session [label="TBridgeSession\n(Layer 3)", fillcolor=orange]
+            EnvelopePlacement [label="TEnvelopePlacement\n(Layer 3)", fillcolor=orange]
+            StepExecutor [label="TProtocolStepExecutor\n(Layer 3)", fillcolor=orange]
+        }
+
+        subgraph cluster_data {
+            label="Data Structures"
+            bgcolor=lightgray
+
+            ProtocolId [label="TBridgeProtocolId\n(Layer 2)", fillcolor=lightblue]
+            ProtocolKind [label="TBridgeProtocolKind\n(Layer 2)", fillcolor=lightblue]
+            ProtocolPlan [label="TBridgeProtocolPlan\n(Layer 2)", fillcolor=lightblue]
+            ProtocolStatus [label="TBridgeProtocolStatus\n(Layer 2)", fillcolor=lightblue]
+        }
+
+        ProtocolManager -> BridgeProtocol [label="Creates/Managages"]
+        ProtocolFactory -> BridgeProtocol [label="Instantiates"]
+        BridgeProtocol -> StepExecutor [label="Uses"]
+        BridgeProtocol -> EnvelopePlacement [label="Coordinates"]
+        BridgeProtocol -> Session [label="References"]
+        ProtocolValidator -> BridgeProtocol [label="Validates"]
+        BridgeProtocol -> ProtocolStatus [label="Updates"]
+    }
+
+    // Component Relationships
+    BridgeProtocolSystem -> ProtocolManager [label="Contains"]
+    ProtocolManager -> ProtocolFactory [label="Uses"]
+    ProtocolManager -> ProtocolValidator [label="Uses"]
+
+    // Data Flow
+    ProtocolPlan -> BridgeProtocol [label="Configures"]
+    ProtocolId -> BridgeProtocol [label="Identifies"]
+    ProtocolKind -> BridgeProtocol [label="Types"]
+
+    // Execution Flow
+    BridgeProtocol -> StepExecutor [label="Step 1-12\nExecution"]
+    StepExecutor -> EnvelopePlacement [label="Envelope\nOperations"]
+}

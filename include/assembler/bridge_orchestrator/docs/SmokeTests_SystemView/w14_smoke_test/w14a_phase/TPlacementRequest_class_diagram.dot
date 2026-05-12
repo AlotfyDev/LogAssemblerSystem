@@ -1,0 +1,21 @@
+digraph TPlacementRequest_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main struct
+    TPlacementRequest [label="{TPlacementRequest\nBridge-visible placement request carrier|+ correlation: TCorrelationToken\n+ payload_kind: string_view\n+ payload_size_hint: uint64_t\n+ requires_ordered_placement: bool\n+ requested_destination_family: string_view|+ is_valid() const noexcept -> bool\n+ make(TCorrelationToken, string_view, uint64_t, bool, string_view) static constexpr -> TPlacementRequest}"];
+
+    // Dependencies
+    TCorrelationToken [label="{TCorrelationToken\nCorrelation token}", fillcolor=lightyellow];
+
+    // Relationships
+    TPlacementRequest -> TCorrelationToken [label="contains"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        carrier_struct [label="Carrier Struct", fillcolor=lightyellow];
+        member [label="Member Object"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TPlacementRequest_class_diagram.dot

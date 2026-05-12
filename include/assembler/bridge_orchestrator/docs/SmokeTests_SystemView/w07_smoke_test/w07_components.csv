@@ -1,0 +1,16 @@
+Component,Category,Wave,Status,Purpose,Dependencies,Key Methods
+TCompatibilityEvaluator,Compatibility,W07,New,Compatibility evaluator facade for binding setup,TBinding, TCompatibilityMatrix, TCompatibilityView,evaluate_strict_binding, is_strictly_compatible, view_strict_binding
+TCompatibilityMatrix,Compatibility,W07,New,Fixed-capacity compatibility diagnostic matrix,TCompatibilityIssue,add, blocking_count, compatible, has_blocking_issues
+TCompatibilityView,Compatibility,W07,New,Read-only compatibility evaluation projection,TBindingView, TCompatibilityMatrix,from_matrix, passed, needs_review
+TBinding,Binding,W06,Reused,Binding declaration between channel topology and obligation surfaces,TBindingId, TChannel, TObligationSurfacePair, TBindingProfile, TBindingCompatibilityReport, TCorrelationToken,propose, is_compatible, view, result
+TBindingId,Binding,W06,Reused,Opaque binding identity primitive,None,is_valid, from_value
+TBindingProfile,Binding,W06,Reused,Binding profile and binding-kind declaration model,None,is_strict_one_to_one, strict_static_one_to_one
+TObligationSurfacePair,Obligation,W05,Reused,Bridge-visible pair of compatible obligation surface views,TPluginAdapterView, TPortView,is_valid, supports_primary_placement_flow, report_primary_placement_support
+TPluginAdapterView,Obligation,W05,Reused,Read-only bridge-visible content-side plugin-adapter view,TPluginAdapterObligationProfile, TParticipantView, TCorrelationToken,is_valid, supports_primary_placement_flow
+TPortView,Obligation,W05,Reused,Read-only bridge-visible host-side port view,TPortObligationProfile, TParticipantView, TCorrelationToken,is_valid, supports_primary_placement_flow
+TChannel,Channel,W04,Reused,Bridge-visible channel topology descriptor,TParticipant, TChannelProfile, TChannelBindingPolicy, TCorrelationToken,declare, is_valid, has_valid_participants, has_compatible_roles
+TSingleAdapterSinglePortProfile,Channel,W04,Reused,Canonical one-adapter/one-port channel profile preset,TChannelProfile,make, matches
+TChannelBindingPolicy,Channel,W04,Reused,Bridge-visible channel binding policy value,None,is_valid, is_strict_one_to_one, is_compatible_with
+TCorrelationToken,Correlation,W01,Reused,Bridge-visible correlation token primitive,None,is_valid, from_parts
+TParticipant,Participant,W03,Reused,Bridge-visible participant descriptor,TParticipantRole, TCorrelationToken,make, is_valid, is_provider
+TParticipantRole,Participant,W03,Reused,Bridge-visible participant-role vocabulary,None,to_string, is_provider_role, participates_in_primary_exchange

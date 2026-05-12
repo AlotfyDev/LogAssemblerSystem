@@ -1,0 +1,28 @@
+digraph TDiagnosticCollector_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TDiagnosticCollector Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateCollector [label="Create Collector\nTDiagnosticCollector<8>::make(\"w12_smoke_collector\", token)\nCreates bounded collector with capacity 8", fillcolor=yellow]
+
+    ValidateCollector [label="Validate Collector\ncollector.is_valid()\nChecks internal report validity", fillcolor=lightgreen]
+
+    AddRecords [label="Add Diagnostic Records\ncollector.add(bridge_record)\ncollector.add(exhausted_record)\ncollector.add(registry_record)\nCollects multiple diagnostic observations", fillcolor=cyan]
+
+    GenerateFirstSnapshot [label="Generate First Snapshot\ncollector.snapshot()\nCreates snapshot with count=3, failure_count=0, highest_severity=warning", fillcolor=purple]
+
+    AddFilteredRecord [label="Add Filtered Record\ncollector.add_if_included(error_record, warnings_and_above_policy)\nAdds error record due to policy allowing warnings and above", fillcolor=cyan]
+
+    GenerateSecondSnapshot [label="Generate Second Snapshot\ncollector.snapshot()\nCreates snapshot with count=4, failure_count=1, highest_severity=error", fillcolor=purple]
+
+    End [label="Collector usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> CreateCollector
+    CreateCollector -> ValidateCollector
+    ValidateCollector -> AddRecords
+    AddRecords -> GenerateFirstSnapshot
+    GenerateFirstSnapshot -> AddFilteredRecord
+    AddFilteredRecord -> GenerateSecondSnapshot
+    GenerateSecondSnapshot -> End
+}

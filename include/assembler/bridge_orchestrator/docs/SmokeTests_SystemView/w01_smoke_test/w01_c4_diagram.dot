@@ -1,0 +1,86 @@
+digraph C4_W01_CommunicationContext {
+    rankdir=TB
+    node [shape=box, style=filled, fillcolor=lightblue]
+
+    // System Context
+    subgraph cluster_SystemContext {
+        label="System Context"
+        style=filled
+        fillcolor=lightgrey
+
+        ExternalSystems [label="External Systems\n(Log Producers/Consumers)", shape=ellipse, fillcolor=lightgreen]
+        CommunicationContext [label="Communication Context System", shape=box, fillcolor=lightblue]
+    }
+
+    // Containers
+    subgraph cluster_Containers {
+        label="Containers"
+        style=filled
+        fillcolor=lightyellow
+
+        BridgeCore [label="Bridge Core\n(Error/Result Handling)", fillcolor=orange]
+        BridgeCarriers [label="Bridge Carriers\n(Data Transport Layer)", fillcolor=orange]
+
+        CommunicationContext -> BridgeCore [label="uses"]
+        CommunicationContext -> BridgeCarriers [label="uses"]
+    }
+
+    // Components within Bridge Carriers
+    subgraph cluster_BridgeCarriers {
+        label="Bridge Carriers Components"
+        style=filled
+        fillcolor=lightcyan
+
+        Correlation [label="Correlation\n(TCorrelationToken)", fillcolor=pink]
+        Readiness [label="Readiness\n(TReadinessView)", fillcolor=pink]
+        Admission [label="Admission\n(TAdmissionResult)", fillcolor=pink]
+        Signals [label="Signals\n(TLoadSignal)", fillcolor=pink]
+        Requests [label="Requests\n(TPlacementRequest)", fillcolor=pink]
+        Handles [label="Handles\n(TPlacementHandle)", fillcolor=pink]
+        Destination [label="Destination\n(TNextDestinationRequest)", fillcolor=pink]
+        Views [label="Views\n(TCarrierView)", fillcolor=pink]
+
+        BridgeCarriers -> Correlation
+        BridgeCarriers -> Readiness
+        BridgeCarriers -> Admission
+        BridgeCarriers -> Signals
+        BridgeCarriers -> Requests
+        BridgeCarriers -> Handles
+        BridgeCarriers -> Destination
+        BridgeCarriers -> Views
+    }
+
+    // Components within Bridge Core
+    subgraph cluster_BridgeCore {
+        label="Bridge Core Components"
+        style=filled
+        fillcolor=lightcyan
+
+        CoreErrors [label="Core Errors\n(TBridgeError)", fillcolor=pink]
+        CoreResults [label="Core Results\n(TBridgeResult)", fillcolor=pink]
+
+        BridgeCore -> CoreErrors
+        BridgeCore -> CoreResults
+    }
+
+    // Relationships
+    ExternalSystems -> CommunicationContext [label="sends/receives data"]
+    BridgeCore -> BridgeCarriers [label="coordinates"]
+    Correlation -> Requests [label="correlates"]
+    Requests -> Handles [label="produces"]
+    Handles -> Signals [label="completes"]
+    Signals -> Destination [label="triggers"]
+    Readiness -> Admission [label="enables"]
+    Views -> {Correlation Readiness Admission Signals Requests Handles Destination} [label="observes"]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        SystemLegend [label="System", shape=box, fillcolor=lightblue]
+        ContainerLegend [label="Container", shape=box, fillcolor=orange]
+        ComponentLegend [label="Component", shape=box, fillcolor=pink]
+    }
+}

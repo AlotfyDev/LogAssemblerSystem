@@ -1,0 +1,30 @@
+digraph TPlacementRequest_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TPlacementRequest [label="{TPlacementRequest|correlation : TCorrelationToken\l payload_kind : std::string_view\l payload_size_hint : std::uint64_t\l requires_ordered_placement : bool\l requested_destination_family : std::string_view\l|+ is_valid() : bool\l+ make(token, kind, size_hint, ordered, destination_family) : TPlacementRequest\l}"]
+
+    // Dependencies
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightgreen]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    bool_type [label="bool", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    TPlacementRequest -> TCorrelationToken [label="contains"]
+    TPlacementRequest -> std_string_view [label="uses", style=dashed]
+    TPlacementRequest -> std_uint64_t [label="uses", style=dashed]
+    TPlacementRequest -> bool_type [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        DepClassLegend [label="Dependency Class", shape=record, fillcolor=lightgreen]
+        TypeLegend [label="Data Type", shape=ellipse, fillcolor=lightgrey]
+    }
+}

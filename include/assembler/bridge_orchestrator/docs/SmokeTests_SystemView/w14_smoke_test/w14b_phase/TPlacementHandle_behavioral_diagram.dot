@@ -1,0 +1,64 @@
+digraph TPlacementHandle_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // Handle creation
+    Port_Handle_Creation [label="port.placement_handle(request)\nPort creates placement handle", fillcolor=orange];
+    Check_Admissible [label="if (!TWriteSideEnvelopePlacementAdmissionPolicy::request_is_admissible(request, config_))", fillcolor=lavender];
+    Invalid_Handle [label="return TPlacementHandle::invalid()", fillcolor=red];
+    Allocate_Value [label="auto value = state_.allocate_handle_value()", fillcolor=lavender];
+    Check_Value_Zero [label="if (value == 0u)", fillcolor=lavender];
+    Create_Handle [label="auto handle = TPlacementHandle::make(value, request.correlation, handle_family)", fillcolor=lavender];
+    Record_Handle [label="state_.record_handle(handle)", fillcolor=lavender];
+    Return_Handle [label="return handle", fillcolor=lightgreen];
+
+    // Handle validation
+    Handle_Validation [label="handle.is_valid()\nValidate handle", fillcolor=lavender];
+    Check_Value_NonZero [label="value != 0", fillcolor=lavender];
+    Check_Correlation_Valid [label="correlation.is_valid()", fillcolor=lavender];
+    Valid_Handle [label="Return true - handle is valid", fillcolor=lightgreen];
+    Invalid_Handle_Result [label="Return false - handle is invalid", fillcolor=red];
+
+    // Adapter acceptance
+    Adapter_Accept [label="adapter.accept_placement_handle(handle)\nAdapter accepts handle", fillcolor=lightblue];
+    Handle_Validity_Check [label="if (!handle.is_valid())", fillcolor=lavender];
+    Correlation_Match_Check [label="if (handle.correlation != descriptor_.correlation)", fillcolor=lavender];
+    Accept_Handle [label="state_.accept_handle(handle)", fillcolor=lavender];
+    Accept_Success [label="return TBridgeResult::success(descriptor_.correlation)", fillcolor=lightgreen];
+
+    // Flow connections
+    Port_Handle_Creation -> Check_Admissible;
+    Check_Admissible -> Invalid_Handle [label="not admissible"];
+    Check_Admissible -> Allocate_Value [label="admissible"];
+
+    Allocate_Value -> Check_Value_Zero;
+    Check_Value_Zero -> Invalid_Handle [label="allocation failed"];
+    Check_Value_Zero -> Create_Handle [label="value allocated"];
+
+    Create_Handle -> Record_Handle;
+    Record_Handle -> Return_Handle;
+
+    Return_Handle -> Handle_Validation;
+    Invalid_Handle -> Handle_Validation;
+
+    Handle_Validation -> Check_Value_NonZero;
+    Check_Value_NonZero -> Check_Correlation_Valid [label="value != 0"];
+    Check_Value_NonZero -> Invalid_Handle_Result [label="value == 0"];
+
+    Check_Correlation_Valid -> Valid_Handle [label="correlation valid"];
+    Check_Correlation_Valid -> Invalid_Handle_Result [label="correlation invalid"];
+
+    Valid_Handle -> Adapter_Accept;
+    Invalid_Handle_Result -> Adapter_Accept [style=dashed];
+
+    Adapter_Accept -> Handle_Validity_Check;
+    Handle_Validity_Check -> Invalid_Handle_Result [style=dashed, label="handle invalid"];
+    Handle_Validity_Check -> Correlation_Match_Check [label="handle valid"];
+
+    Correlation_Match_Check -> Invalid_Handle_Result [style=dashed, label="correlation mismatch"];
+    Correlation_Match_Check -> Accept_Handle [label="correlation matches"];
+
+    Accept_Handle -> Accept_Success;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TPlacementHandle_behavioral_diagram.dot

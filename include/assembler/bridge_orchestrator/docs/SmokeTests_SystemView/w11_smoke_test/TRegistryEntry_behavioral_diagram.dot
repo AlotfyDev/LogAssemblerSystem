@@ -1,0 +1,40 @@
+digraph TRegistryEntry_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage in smoke test
+    Start [label="TRegistryEntry Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateEntry [label="Create Registry Entry\nTRegistryEntry<TId, TValue>::make(id, value, ordinal, label, token)\nFactory method validates inputs and sets appropriate status", fillcolor=yellow]
+
+    ValidateEntry [label="Validate Entry Components\nentry.has_valid_id() - checks id.is_valid()\nentry.has_valid_value() - checks value.is_valid()\nentry.is_valid() - checks id, value, and status", fillcolor=lightgreen]
+
+    CheckUsability [label="Check Entry Usability\nentry.is_usable() - checks validity and usable status\nDepends on status being active, suspended, etc.", fillcolor=lightcyan]
+
+    StatusTransitions [label="Status Transitions\nentry.activate() - sets status to active\nentry.suspend() - sets status to suspended\nentry.retire() - sets status to retired", fillcolor=orange]
+
+    UseInRegistry [label="Use in Registry Operations\nEntry stored in TBoundedRegistry arrays\nUsed for lookup results and validation\nOrdinal provides insertion order", fillcolor=lightcyan]
+
+    End [label="Registry entry lifecycle\nmanagement completed", shape=ellipse, fillcolor=red]
+
+    // Flow
+    Start -> CreateEntry
+    CreateEntry -> ValidateEntry
+    ValidateEntry -> CheckUsability
+    CheckUsability -> StatusTransitions
+    StatusTransitions -> UseInRegistry
+    UseInRegistry -> End
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Entry Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Validation", shape=rectangle, fillcolor=lightgreen]
+        UsabilityLegend [label="Usability Check", shape=rectangle, fillcolor=lightcyan]
+        StatusLegend [label="Status Transitions", shape=rectangle, fillcolor=orange]
+        UsageLegend [label="Registry Usage", shape=rectangle, fillcolor=lightcyan]
+    }
+}

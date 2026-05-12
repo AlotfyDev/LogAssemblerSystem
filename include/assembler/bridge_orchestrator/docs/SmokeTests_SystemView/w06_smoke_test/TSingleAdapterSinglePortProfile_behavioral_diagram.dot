@@ -1,0 +1,31 @@
+digraph TSingleAdapterSinglePortProfile_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Arial"];
+
+    // Usage in W06 smoke test
+    smoke_test [label="W06 Smoke Test", shape=ellipse, color=green];
+
+    // Profile creation
+    call_make [label="Call TSingleAdapterSinglePortProfile::make()\nCreate canonical profile"];
+
+    // Profile configuration
+    set_single_adapter [label="Set adapter_count = 1"];
+    set_single_port [label="Set port_count = 1"];
+    set_unidirectional [label="Set direction = unidirectional"];
+
+    // Usage in channel
+    assign_to_channel [label="Assign to TChannel.profile"];
+    validate_matches [label="Call matches() for validation"];
+
+    // End
+    profile_configured [label="Profile Ready for Channel", shape=ellipse, color=red];
+
+    // Edges
+    smoke_test -> call_make;
+    call_make -> set_single_adapter;
+    set_single_adapter -> set_single_port;
+    set_single_port -> set_unidirectional;
+    set_unidirectional -> assign_to_channel;
+    assign_to_channel -> validate_matches;
+    validate_matches -> profile_configured;
+}

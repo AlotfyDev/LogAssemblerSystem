@@ -1,0 +1,24 @@
+{
+  "wave": "LOGAPI-CAT-W04_Schema_Parser_And_MT5_Catalog",
+  "project": "Assembler System",
+  "domain": "log_level_api",
+  "catalog_pack": "LOGAPI-CAT",
+  "scope": "schema/parser catalog and MT5 content/container catalog",
+  "documents": [
+    "docs/LOGAPI-CAT-006_Content_Schema_And_Parser_Catalog.md",
+    "docs/LOGAPI-CAT-007_MT5_Content_And_Container_Catalog.md"
+  ],
+  "diagrams": [
+    "diagrams/LOGAPI-CAT-006_schema_parser_binding.mmd",
+    "diagrams/LOGAPI-CAT-006_parser_family_map.mmd",
+    "diagrams/LOGAPI-CAT-007_mt5_structure_map.mmd",
+    "diagrams/LOGAPI-CAT-007_mt5_container_loop_model.mmd"
+  ],
+  "boundaries": [
+    "catalog only",
+    "no implementation code",
+    "no circulation internals",
+    "no policy assignment runtime",
+    "no bridge orchestration"
+  ]
+}

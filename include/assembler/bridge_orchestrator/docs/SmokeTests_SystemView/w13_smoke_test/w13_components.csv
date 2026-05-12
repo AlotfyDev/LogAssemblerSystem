@@ -1,0 +1,24 @@
+ComponentName,WaveIntroduced,WaveReused,ComponentType,PrimaryRole,KeyDependencies,SmokeTestUsage,ArchitectureNotes
+TIntegrationBoundaryAbstractPorts,W13,New,AggregateInclude,AvailabilityMarker,W13 components,W13 aggregate include,Marker for W13 availability
+TCorrelationToken,W01,W13,ValueType,CorrelationIdentity,none,Correlation for all boundary operations,Reused from W01 bridge carriers
+TIntegrationBoundaryDescriptor,W13,New,ValueType,BoundaryIdentity,TCorrelationToken,Boundary descriptor creation and validation,Factory methods for common boundaries
+TIntegrationBoundaryPortView,W13,New,ValueType,BoundaryView,TIntegrationBoundaryDescriptor,Boundary view creation and validation,Read-only boundary representation
+TReadinessView,W01,W13,ValueType,ReadinessState,TCorrelationToken,Boundary readiness evaluation,Reused from W01 bridge carriers
+TBoundaryHandoffRequest,W13,New,ValueType,HandoffRequest,TCorrelationToken,TIntegrationBoundaryDescriptor,Handoff request creation and validation,Material kind and ordering specification
+TIntegrationBoundaryPolicy,W13,New,PolicyType,BoundaryPolicy,TReadinessView,TBoundaryHandoffRequest,Request readiness evaluation and boundary direction checks,Static policy helpers
+TBoundaryHandoffResult,W13,New,ValueType,HandoffResult,TBoundaryHandoffHandle,TBridgeResult,Operation result with status and optional handle,Factory methods for all outcomes
+TBridgeError,W01,W13,ValueType,ErrorCarrier,TBridgeErrorCode,Error handling in results and rejections,Reused from W01 bridge core
+TBridgeErrorCode,W01,W13,EnumType,ErrorCodes,none,Error classification in boundary operations,Reused from W01 bridge core
+TBoundaryHandoffHandle,W13,New,ValueType,HandoffHandle,TCorrelationToken,Handle creation and validation in accept operations,Identifies accepted handoff
+TBoundaryHandoffStatus,W13,New,EnumType,HandoffStatus,none,Status classification in results,Accepted/Completed/Rejected/Deferred/Failed
+TDiagnosticRecord,W12,W13,ValueType,DiagnosticInfo,TDiagnosticId,TDiagnosticCategory,Report diagnostic information,Reused from W12 diagnostics
+TDiagnosticId,W12,W13,ValueType,DiagnosticID,none,Diagnostic identification,Reused from W12 diagnostics
+TDiagnosticCategory,W12,W13,EnumType,DiagnosticCategory,none,Diagnostic categorization,Reused from W12 diagnostics
+TIntegrationBoundaryReport,W13,New,ValueType,OperationReport,TIntegrationBoundaryPortView,TBoundaryHandoffResult,Report creation with view and result,Combines boundary view, result, and diagnostics
+TIntegrationBoundaryCapability,W13,New,EnumType,BoundaryCapabilities,none,Capability bitmask in descriptors,AcceptsHandoff, SupportsOrdering, etc.
+TIntegrationBoundaryDirection,W13,New,EnumType,BoundaryDirection,none,Direction classification in descriptors,Inbound/Outbound/Bidirectional
+TIntegrationBoundaryKind,W13,New,EnumType,BoundaryKind,none,Kind classification in descriptors,Persistence/Telemetry/ABI/etc.
+TIntegrationBoundaryPort,W13,New,CRTPBase,PortInterface,Various traits,CRTP base class for boundary ports,Compile-time interface enforcement
+TIntegrationBoundaryPortTraits,W13,New,TraitType,PortTraits,none,CRTP trait validation for derived ports,Static assertions for required methods
+TMockPersistenceBoundaryPort,W13,New,ConcreteType,MockImplementation,TIntegrationBoundaryPort,Smoke test concrete implementation,CRTP implementation example</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\w13_components.csv

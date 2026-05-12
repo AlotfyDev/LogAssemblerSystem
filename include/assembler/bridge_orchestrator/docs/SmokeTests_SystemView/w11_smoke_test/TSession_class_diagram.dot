@@ -1,0 +1,18 @@
+digraph TSession_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TSession [label="{TSession|session_id : TSessionId\l binding : TBinding\l policy : TSessionPolicy\l state : TSessionState\l metadata : TSessionMetadata\l|+ is_valid() : bool\l+ make(id, binding, policy, metadata) : TSession\l}"]
+
+    TSessionId [label="TSessionId", shape=record, fillcolor=lightyellow]
+    TBinding [label="TBinding", shape=record, fillcolor=lightyellow]
+    TSessionPolicy [label="TSessionPolicy", shape=record, fillcolor=lightyellow]
+    TSessionState [label="TSessionState", shape=record, fillcolor=lightyellow]
+    TSessionMetadata [label="TSessionMetadata", shape=record, fillcolor=lightyellow]
+
+    TSession -> TSessionId [label="uses", style=dashed]
+    TSession -> TBinding [label="references", style=dashed]
+    TSession -> TSessionPolicy [label="uses", style=dashed]
+    TSession -> TSessionState [label="uses", style=dashed]
+    TSession -> TSessionMetadata [label="uses", style=dashed]
+}

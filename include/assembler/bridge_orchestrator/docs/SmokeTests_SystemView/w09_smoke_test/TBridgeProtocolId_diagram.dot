@@ -1,0 +1,77 @@
+digraph TBridgeProtocolId_Component_Diagram {
+    // Component Diagram for TBridgeProtocolId (Layer 2 - POD)
+    // Unique identifier for bridge protocols
+
+    graph [fontname="Arial", fontsize=10, rankdir=TB]
+    node [fontname="Arial", fontsize=9, shape=box, style=filled]
+
+    // Core Component
+    TBridgeProtocolId [label="TBridgeProtocolId\n(Layer 2 - POD)", fillcolor=lightblue]
+
+    // Data Members (POD Structure)
+    subgraph cluster_data_members {
+        label="Data Members"
+        bgcolor=white
+
+        sessionId [label="sessionId\n(uint64_t)", fillcolor=lightcyan]
+        protocolSequence [label="protocolSequence\n(uint32_t)", fillcolor=lightcyan]
+        timestamp [label="timestamp\n(uint64_t)", fillcolor=lightcyan]
+        hash [label="hash\n(uint32_t)", fillcolor=lightcyan]
+    }
+
+    // Utility Functions
+    subgraph cluster_utility_functions {
+        label="Utility Functions"
+        bgcolor=lightyellow
+
+        Create [label="Create(sessionId, sequence)\nFactory method"]
+        IsValid [label="IsValid()\nValidation check"]
+        ToString [label="ToString()\nString representation"]
+        Compare [label="operator==()\nEquality comparison"]
+        Hash [label="Hash()\nHash computation"]
+        Serialize [label="Serialize()\nBinary serialization"]
+    }
+
+    // Usage Contexts
+    subgraph cluster_usage {
+        label="Usage Contexts"
+        bgcolor=lightgray
+
+        TBridgeProtocol [label="TBridgeProtocol\n(Protocol identity)"]
+        TBridgeProtocolManager [label="TBridgeProtocolManager\n(Protocol lookup)"]
+        TProtocolValidator [label="TProtocolValidator\n(Identity validation)"]
+        SessionManager [label="SessionManager\n(ID generation)"]
+    }
+
+    // Relationships
+    TBridgeProtocolId -> sessionId
+    TBridgeProtocolId -> protocolSequence
+    TBridgeProtocolId -> timestamp
+    TBridgeProtocolId -> hash
+
+    Create -> sessionId [label="initializes"]
+    Create -> protocolSequence [label="initializes"]
+    Create -> timestamp [label="initializes"]
+    Create -> hash [label="computes"]
+
+    IsValid -> sessionId [label="validates"]
+    IsValid -> protocolSequence [label="validates"]
+    ToString -> sessionId [label="formats"]
+    ToString -> protocolSequence [label="formats"]
+    Compare -> hash [label="compares"]
+    Hash -> sessionId [label="uses"]
+    Hash -> protocolSequence [label="uses"]
+    Hash -> timestamp [label="uses"]
+    Serialize -> sessionId [label="serializes"]
+    Serialize -> protocolSequence [label="serializes"]
+    Serialize -> timestamp [label="serializes"]
+    Serialize -> hash [label="serializes"]
+
+    TBridgeProtocol -> TBridgeProtocolId [label="contains", style=dashed]
+    TBridgeProtocolManager -> TBridgeProtocolId [label="uses for lookup", style=dashed]
+    TProtocolValidator -> TBridgeProtocolId [label="validates", style=dashed]
+    SessionManager -> TBridgeProtocolId [label="generates", style=dashed]
+
+    // Size and Alignment Info
+    SizeInfo [label="Size: 24 bytes\nAlignment: 8 bytes\n#pragma pack(1)", fillcolor=lightgreen]
+}

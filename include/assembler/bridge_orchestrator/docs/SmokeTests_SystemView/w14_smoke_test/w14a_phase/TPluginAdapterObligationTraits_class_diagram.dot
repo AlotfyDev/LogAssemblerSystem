@@ -1,0 +1,59 @@
+digraph TPluginAdapterObligationTraits_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightyellow];
+
+    // Main traits class
+    TPluginAdapterObligationTraits [label="{TPluginAdapterObligationTraits<T>\nSFINAE detection traits for plugin adapter obligations|+ has_readiness: bool\n+ has_prepare_placement_request: bool\n+ has_accept_placement_handle: bool\n+ has_emit_load_signal: bool\n+ has_next_destination_request: bool\n+ satisfies_primary_placement_surface: bool}"];
+
+    // Helper traits in detail namespace
+    has_adapter_readiness_method [label="{has_adapter_readiness_method<T>\nDetects readiness() method}"];
+
+    has_prepare_placement_request_method [label="{has_prepare_placement_request_method<T>\nDetects prepare_placement_request() method}"];
+
+    has_accept_placement_handle_method [label="{has_accept_placement_handle_method<T>\nDetects accept_placement_handle() method}"];
+
+    has_emit_load_signal_method [label="{has_emit_load_signal_method<T>\nDetects emit_load_signal() method}"];
+
+    has_next_destination_request_method [label="{has_next_destination_request_method<T>\nDetects next_destination_request() method}"];
+
+    // Aggregate trait
+    is_plugin_adapter_obligation_surface [label="{is_plugin_adapter_obligation_surface<T>\nAggregate trait for obligation surface compliance}"];
+
+    // Dependencies
+    TReadinessView [label="{TReadinessView|Readiness view type}"];
+
+    TPlacementRequest [label="{TPlacementRequest|Placement request type}"];
+
+    TPlacementHandle [label="{TPlacementHandle|Placement handle type}"];
+
+    TBridgeResult [label="{TBridgeResult|Bridge result type}"];
+
+    TLoadSignal [label="{TLoadSignal|Load signal type}"];
+
+    TNextDestinationRequest [label="{TNextDestinationRequest|Next destination request type}"];
+
+    // Relationships
+    TPluginAdapterObligationTraits -> has_adapter_readiness_method [label="uses"];
+    TPluginAdapterObligationTraits -> has_prepare_placement_request_method [label="uses"];
+    TPluginAdapterObligationTraits -> has_accept_placement_handle_method [label="uses"];
+    TPluginAdapterObligationTraits -> has_emit_load_signal_method [label="uses"];
+    TPluginAdapterObligationTraits -> has_next_destination_request_method [label="uses"];
+
+    is_plugin_adapter_obligation_surface -> TPluginAdapterObligationTraits [label="wraps"];
+
+    has_adapter_readiness_method -> TReadinessView [label="checks return type"];
+    has_prepare_placement_request_method -> TPlacementRequest [label="checks return type"];
+    has_accept_placement_handle_method -> TPlacementHandle [label="checks parameter"];
+    has_accept_placement_handle_method -> TBridgeResult [label="checks return type"];
+    has_emit_load_signal_method -> TLoadSignal [label="checks return type"];
+    has_next_destination_request_method -> TNextDestinationRequest [label="checks return type"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        trait_class [label="Trait Class", fillcolor=lightyellow];
+        helper_trait [label="Helper Trait"];
+        type_dep [label="Type Dependency"];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TPluginAdapterObligationTraits_class_diagram.dot

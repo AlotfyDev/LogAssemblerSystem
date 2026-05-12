@@ -1,0 +1,185 @@
+digraph BridgeOrchestratorLayerRelationships {
+    // Graph settings for relationship focus
+    rankdir=BT;  // Bottom to top to show foundation layers at bottom
+    nodesep=0.8;
+    ranksep=1.2;
+    bgcolor="#ffffff";
+    fontname="Arial";
+    fontsize=10;
+
+    // Node settings
+    node [
+        fontname="Arial",
+        fontsize=10,
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#f8f9fa",
+        color="#333333",
+        penwidth=2
+    ];
+
+    // Edge settings for different relationship types
+    edge [
+        fontname="Arial",
+        fontsize=9,
+        penwidth=2
+    ];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Relationship Types";
+        style="filled";
+        fillcolor="#e8f4f8";
+        color="#0066cc";
+
+        dep_edge [label="Dependency\n(uses)", color="#666666", style="solid"];
+        data_edge [label="Data Flow\n(runtime)", color="#0066cc", style="solid"];
+        config_edge [label="Configuration\n(setup)", color="#28a745", style="dashed"];
+        monitor_edge [label="Monitoring\n(observes)", color="#dc3545", style="dotted"];
+    }
+
+    // Layer nodes with layer numbers
+    W01 [label="W01: Carrier Layer\nData Transport Primitives\n(TCorrelationToken, TPlacementHandle)", fillcolor="#e3f2fd", color="#1976d2"];
+    W02 [label="W02: Protocol State Layer\nLifecycle Management\n(TBridgeStage, TBridgeTerminalState)", fillcolor="#f3e5f5", color="#7b1fa2"];
+    W03 [label="W03: Participant Layer\nActor Identity\n(TParticipant, TParticipantRole)", fillcolor="#e8f5e8", color="#388e3c"];
+    W04 [label="W04: Channel Layer\nTopology Management\n(TChannel, TChannelProfile)", fillcolor="#fff3e0", color="#f57c00"];
+    W05 [label="W05: Obligation Layer\nContract Enforcement\n(TPort, TPluginAdapter)", fillcolor="#fce4ec", color="#c2185b"];
+    W06 [label="W06: Binding Layer\nIntegration Points\n(TBinding, TBindingProfile)", fillcolor="#f1f8e9", color="#689f38"];
+    W07 [label="W07: Compatibility Layer\nValidation Logic\n(TCompatibilityEvaluator, TCompatibilityMatrix)", fillcolor="#e0f2f1", color="#00695c"];
+    W08 [label="W08: Session Layer\nRuntime Contexts\n(TSession, TSessionPolicy)", fillcolor="#f9fbe7", color="#afb42b"];
+    W09 [label="W09: Protocol Layer\nStep Execution\n(TBridgeProtocol, TBridgeProtocolPlan)", fillcolor="#efebe9", color="#5d4037"];
+    W10 [label="W10: Bridge Core Layer\nOrchestration Engine\n(TBridge, TBridgeConfig)", fillcolor="#ffebee", color="#d32f2f"];
+    W11 [label="W11: Registry Layer\nComponent Coordination\n(TRegistrySet, TBoundedRegistry)", fillcolor="#f3e5f5", color="#7b1fa2"];
+    W12 [label="W12: Diagnostics Layer\nObservability\n(TDiagnostics, TDiagnosticCollector)", fillcolor="#e8eaf6", color="#303f9f"];
+    W13 [label="W13: Integration Boundary Layer\nExternal Interfaces\n(TIntegrationBoundaryPort)", fillcolor="#fff8e1", color="#f9a825"];
+    W14 [label="W14: Concrete Bindings Layer\nActual Implementations\n(TLogLevelAPIEnvelopePluginAdapter)", fillcolor="#e0f7fa", color="#0097a7"];
+    W15 [label="W15: Integration Skeleton Layer\nEnd-to-End Testing\n(TFirstIntegrationSkeleton)", fillcolor="#f8bbd9", color="#ad1457"];
+
+    // Bridge Orchestrator as central orchestrator
+    BridgeOrchestrator [label="Bridge\nOrchestrator\n(Central Hub)", fillcolor="#ff6b35", shape=ellipse, fontsize=12, penwidth=3];
+
+    // Layer Dependency Relationships (Bottom-Up Architecture)
+    // Each layer depends on the layers below it
+
+    // W01 dependencies (foundation)
+    // W01 has no dependencies - it's the foundation
+
+    // W02 depends on W01
+    W01 -> W02 [label="Data Transport", color="#666666", style="solid", constraint=false];
+
+    // W03 depends on W01, W02
+    W01 -> W03 [label="Identity Tokens", color="#666666", style="solid"];
+    W02 -> W03 [label="State Management", color="#666666", style="solid"];
+
+    // W04 depends on W01, W02, W03
+    W01 -> W04 [label="Data Carriers", color="#666666", style="solid"];
+    W02 -> W04 [label="Topology State", color="#666666", style="solid"];
+    W03 -> W04 [label="Participant Identity", color="#666666", style="solid"];
+
+    // W05 depends on W03, W04
+    W03 -> W05 [label="Participant Contracts", color="#666666", style="solid"];
+    W04 -> W05 [label="Channel Topology", color="#666666", style="solid"];
+
+    // W06 depends on W05
+    W05 -> W06 [label="Obligation Contracts", color="#666666", style="solid"];
+
+    // W07 depends on W04, W05, W06
+    W04 -> W07 [label="Channel Profiles", color="#666666", style="solid"];
+    W05 -> W07 [label="Contract Rules", color="#666666", style="solid"];
+    W06 -> W07 [label="Binding Requirements", color="#666666", style="solid"];
+
+    // W08 depends on W06, W07
+    W06 -> W08 [label="Binding Context", color="#666666", style="solid"];
+    W07 -> W08 [label="Compatibility Validation", color="#666666", style="solid"];
+
+    // W09 depends on W07, W08
+    W07 -> W09 [label="Validation Rules", color="#666666", style="solid"];
+    W08 -> W09 [label="Session Context", color="#666666", style="solid"];
+
+    // W10 depends on W09
+    W09 -> W10 [label="Protocol Execution", color="#666666", style="solid"];
+
+    // W11 depends on W03, W04, W06, W08, W10
+    W03 -> W11 [label="Participant Registry", color="#666666", style="solid"];
+    W04 -> W11 [label="Channel Registry", color="#666666", style="solid"];
+    W06 -> W11 [label="Binding Registry", color="#666666", style="solid"];
+    W08 -> W11 [label="Session Registry", color="#666666", style="solid"];
+    W10 -> W11 [label="Bridge Registry", color="#666666", style="solid"];
+
+    // W12 depends on W10, W11
+    W10 -> W12 [label="Bridge Monitoring", color="#666666", style="solid"];
+    W11 -> W12 [label="Component Health", color="#666666", style="solid"];
+
+    // W13 depends on W11, W12
+    W11 -> W13 [label="Component Exposure", color="#666666", style="solid"];
+    W12 -> W13 [label="Health Status", color="#666666", style="solid"];
+
+    // W14 depends on W13
+    W13 -> W14 [label="Boundary Interfaces", color="#666666", style="solid"];
+
+    // W15 depends on W14
+    W14 -> W15 [label="Concrete Implementations", color="#666666", style="solid"];
+
+    // Bridge Orchestrator coordination (bi-directional with core layers)
+    BridgeOrchestrator -> W10 [label="Core Engine Control", color="#ff6b35", penwidth=3, dir=both];
+    BridgeOrchestrator -> W09 [label="Protocol Orchestration", color="#ff6b35", penwidth=2, dir=both];
+    BridgeOrchestrator -> W11 [label="Component Coordination", color="#ff6b35", penwidth=2, dir=both];
+    BridgeOrchestrator -> W12 [label="System Monitoring", color="#ff6b35", penwidth=2, dir=both];
+
+    // Runtime Data Flow (showing execution path)
+    W14 -> W13 [label="API Calls", color="#0066cc", style="solid"];
+    W13 -> W11 [label="Component Lookup", color="#0066cc", style="solid"];
+    W11 -> W10 [label="Bridge Execution", color="#0066cc", style="solid"];
+    W10 -> W09 [label="Protocol Steps", color="#0066cc", style="solid"];
+    W09 -> W08 [label="Session Context", color="#0066cc", style="solid"];
+    W08 -> W07 [label="Compatibility Check", color="#0066cc", style="solid"];
+    W07 -> W06 [label="Binding Resolution", color="#0066cc", style="solid"];
+    W06 -> W05 [label="Contract Enforcement", color="#0066cc", style="solid"];
+    W05 -> W04 [label="Channel Transport", color="#0066cc", style="solid"];
+    W04 -> W03 [label="Participant Routing", color="#0066cc", style="solid"];
+    W03 -> W02 [label="State Updates", color="#0066cc", style="solid"];
+    W02 -> W01 [label="Data Transport", color="#0066cc", style="solid"];
+
+    // Configuration Flow (setup/initialization)
+    W15 -> W14 [label="Test Configuration", color="#28a745", style="dashed"];
+    W14 -> W13 [label="Interface Setup", color="#28a745", style="dashed"];
+    W13 -> W12 [label="Monitoring Config", color="#28a745", style="dashed"];
+    W12 -> W11 [label="Registry Setup", color="#28a745", style="dashed"];
+    W11 -> W10 [label="Bridge Config", color="#28a745", style="dashed"];
+    W10 -> W09 [label="Protocol Config", color="#28a745", style="dashed"];
+    W09 -> W08 [label="Session Config", color="#28a745", style="dashed"];
+    W08 -> W07 [label="Validation Config", color="#28a745", style="dashed"];
+    W07 -> W06 [label="Binding Config", color="#28a745", style="dashed"];
+    W06 -> W05 [label="Contract Config", color="#28a745", style="dashed"];
+    W05 -> W04 [label="Topology Config", color="#28a745", style="dashed"];
+    W04 -> W03 [label="Identity Config", color="#28a745", style="dashed"];
+    W03 -> W02 [label="State Config", color="#28a745", style="dashed"];
+    W02 -> W01 [label="Transport Config", color="#28a745", style="dashed"];
+
+    // Monitoring Flow (cross-cutting)
+    W12 -> W11 [label="Component Health", color="#dc3545", style="dotted"];
+    W12 -> W10 [label="Bridge Health", color="#dc3545", style="dotted"];
+    W12 -> W09 [label="Protocol Health", color="#dc3545", style="dotted"];
+    W12 -> W08 [label="Session Health", color="#dc3545", style="dotted"];
+    W12 -> W07 [label="Validation Health", color="#dc3545", style="dotted"];
+
+    // Ranking for proper layer ordering
+    {rank=same; W01}
+    {rank=same; W02}
+    {rank=same; W03}
+    {rank=same; W04}
+    {rank=same; W05}
+    {rank=same; W06}
+    {rank=same; W07}
+    {rank=same; W08}
+    {rank=same; W09}
+    {rank=same; W10}
+    {rank=same; W11}
+    {rank=same; W12}
+    {rank=same; W13}
+    {rank=same; W14}
+    {rank=same; W15}
+
+    // Invisible edges to enforce proper ordering
+    W01 -> W02 -> W03 -> W04 -> W05 -> W06 -> W07 -> W08 -> W09 -> W10 -> W11 -> W12 -> W13 -> W14 -> W15 [style=invis];
+}

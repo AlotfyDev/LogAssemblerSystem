@@ -1,0 +1,21 @@
+flowchart TB
+    MT5["MT5 Extended Schema Pack W12"]
+
+    MT5 --> Market["Market Data"]
+    MT5 --> Trade["Trade Structures"]
+    MT5 --> Calendar["Calendar / Utility"]
+
+    Market --> Tick["MqlTick"]
+    Market --> Rates["MqlRates"]
+    Market --> Book["MqlBookInfo"]
+
+    Trade --> Req["MqlTradeRequest"]
+    Trade --> Check["MqlTradeCheckResult"]
+    Trade --> Result["MqlTradeResult"]
+    Trade --> Tx["MqlTradeTransaction"]
+
+    Calendar --> DT["MqlDateTime"]
+    Calendar --> Param["MqlParam"]
+    Calendar --> Country["MqlCalendarCountry"]
+    Calendar --> Event["MqlCalendarEvent"]
+    Calendar --> Value["MqlCalendarValue"]

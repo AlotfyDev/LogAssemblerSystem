@@ -1,0 +1,16 @@
+digraph TRegistryDiagnosticBuilder_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TRegistryDiagnosticBuilder Usage\nin W12 Smoke Test", shape=ellipse, fillcolor=green]
+
+    BuildFromSnapshot [label="Build from Registry Snapshot\nTRegistryDiagnosticBuilder::from_snapshot(id3, registry_snapshot)\nCreates info severity diagnostic record for valid registry", fillcolor=orange]
+
+    ValidateRecord [label="Validate Built Record\nCheck is_valid() and appropriate severity\nVerify registry state is properly diagnosed", fillcolor=lightgreen]
+
+    End [label="Builder usage\ncompleted", shape=ellipse, fillcolor=red]
+
+    Start -> BuildFromSnapshot
+    BuildFromSnapshot -> ValidateRecord
+    ValidateRecord -> End
+}

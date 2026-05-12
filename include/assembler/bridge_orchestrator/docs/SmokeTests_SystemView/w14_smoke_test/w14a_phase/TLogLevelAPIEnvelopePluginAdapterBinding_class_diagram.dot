@@ -1,0 +1,47 @@
+digraph TLogLevelAPIEnvelopePluginAdapterBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main aggregate class
+    TLogLevelAPIEnvelopePluginAdapterBinding [label="{TLogLevelAPIEnvelopePluginAdapterBinding|Aggregate include for W14A components|ASCC_W14A_LOG_LEVEL_API_ENVELOPE_PLUGIN_ADAPTER_AVAILABLE = true|+ includes all W14A concrete adapter headers}"];
+
+    // Included components
+    TLogLevelAPIEnvelopePluginAdapter [label="{TLogLevelAPIEnvelopePluginAdapter|Concrete plugin adapter class}"];
+
+    TLogLevelAPIEnvelopePluginAdapterFactory [label="{TLogLevelAPIEnvelopePluginAdapterFactory|Factory helper struct}"];
+
+    TLogLevelEnvelopeDescriptor [label="{TLogLevelEnvelopeDescriptor|Envelope descriptor carrier}"];
+
+    TLogLevelAPIEnvelopePluginAdapterConfig [label="{TLogLevelAPIEnvelopePluginAdapterConfig|Configuration struct}"];
+
+    TLogLevelAPIEnvelopePluginAdapterReadinessPolicy [label="{TLogLevelAPIEnvelopePluginAdapterReadinessPolicy|Readiness policy}"];
+
+    TLogLevelAPIEnvelopePluginAdapterState [label="{TLogLevelAPIEnvelopePluginAdapterState|State management}"];
+
+    TLogLevelAPIEnvelopePluginAdapterViewBuilder [label="{TLogLevelAPIEnvelopePluginAdapterViewBuilder|View builder}"];
+
+    // Dependencies
+    TPluginAdapterObligationTraits [label="{TPluginAdapterObligationTraits|W05 obligation traits (reused)}", fillcolor=lightyellow];
+
+    TBridgeCore [label="{TBridgeCore|W10 bridge core (reused)}", fillcolor=lightyellow];
+
+    // Relationships
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapter [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapterFactory [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelEnvelopeDescriptor [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapterConfig [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapterReadinessPolicy [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapterState [label="includes"];
+    TLogLevelAPIEnvelopePluginAdapterBinding -> TLogLevelAPIEnvelopePluginAdapterViewBuilder [label="includes"];
+
+    TLogLevelAPIEnvelopePluginAdapter -> TPluginAdapterObligationTraits [label="satisfies obligations"];
+    TLogLevelAPIEnvelopePluginAdapter -> TBridgeCore [label="compatible with"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        new_component [label="New W14A Component", fillcolor=lightblue];
+        reused_component [label="Reused Component", fillcolor=lightyellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14a_phase\TLogLevelAPIEnvelopePluginAdapterBinding_class_diagram.dot

@@ -1,0 +1,43 @@
+digraph TBridgeCarrierError_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    // Usage pattern (not directly in smoke test)
+    Start [label="Carrier Error Handling Pattern", shape=ellipse, fillcolor=green]
+
+    CreateNoError [label="TBridgeCarrierError::none()\nCreates error with NONE code and empty message\n(used internally by other components)", fillcolor=yellow]
+
+    CheckNoError [label="error.has_error()\nChecks code != none\nReturns false (no error)", fillcolor=lightgreen]
+
+    NoErrorState [label="No carrier error condition", shape=diamond, fillcolor=lightcyan]
+
+    End [label="Carrier error handling completed", shape=ellipse, fillcolor=red]
+
+    // Alternative paths (error creation - not taken in smoke test)
+    CreateError [label="TBridgeCarrierError::make(error_code, message)\nCreates error with specific code and message", fillcolor=lightgrey]
+    CheckHasError [label="error.has_error()\nReturns true (error present)", fillcolor=lightgrey]
+    ErrorState [label="Carrier error condition detected", shape=diamond, fillcolor=lightgrey]
+
+    // Flow (success path used in smoke test)
+    Start -> CreateNoError
+    CreateNoError -> CheckNoError
+    CheckNoError -> NoErrorState
+    NoErrorState -> End
+
+    // Alternative flows (error paths not taken in smoke test)
+    Start -> CreateError [style=dashed, color=grey]
+    CreateError -> CheckHasError [style=dashed, color=grey]
+    CheckHasError -> ErrorState [style=dashed, color=grey]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        CreationLegend [label="Error Object Creation", shape=rectangle, fillcolor=yellow]
+        ValidationLegend [label="Error Check", shape=rectangle, fillcolor=lightgreen]
+        StateLegend [label="Error State", shape=diamond, fillcolor=lightcyan]
+        AltPathLegend [label="Alternative Paths\n(Not taken in smoke test)", shape=rectangle, fillcolor=lightgrey, style=dashed]
+    }
+}

@@ -1,0 +1,153 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgreen];
+
+    // Layer 2: Protocol State Components
+    subgraph cluster_w02 {
+        label="W02 Protocol State Layer\n(Lifecycle Management)";
+        style=filled;
+        fillcolor=lightgreen;
+
+        TBridgeStage [label="{TBridgeStage|Protocol stage enumeration\n(idle, session_opening, etc.)}"];
+        TBridgeTerminalState [label="{TBridgeTerminalState|Terminal state definitions\n(success, failed, deferred)}"];
+        TBridgeTransition [label="{TBridgeTransition|Stage transition records\nwith validation}"];
+        TBridgeProtocolState [label="{TBridgeProtocolState|Mutable protocol state\nwith lifecycle management}"];
+        TBridgeProtocolSnapshot [label="{TBridgeProtocolSnapshot|Immutable state snapshots\nfor diagnostics}"];
+
+        // Protocol State Relationships
+        TBridgeStage -> TBridgeTransition [label="from/to"];
+        TBridgeTerminalState -> TBridgeProtocolState [label="terminal state"];
+        TBridgeTransition -> TBridgeProtocolState [label="applies to"];
+
+        TBridgeProtocolState -> TBridgeProtocolSnapshot [label="generates"];
+        TBridgeProtocolState -> TBridgeStage [label="current/previous"];
+        TBridgeProtocolState -> TBridgeTerminalState [label="terminal state"];
+
+        TBridgeTransition -> TBridgeStage [label="validates"];
+    }
+
+    // Stage Progression
+    subgraph cluster_progression {
+        label="Stage Progression Flow";
+        style=filled;
+        fillcolor=lightblue;
+
+        Idle [label="idle"];
+        SessionOpening [label="session_opening"];
+        ChannelResolution [label="channel_resolution"];
+        BindingResolution [label="binding_resolution"];
+        CompatibilityCheck [label="compatibility_check"];
+        AdapterReadiness [label="adapter_readiness"];
+        RequestPreparation [label="request_preparation"];
+        PortReadiness [label="port_readiness"];
+        AdmissionRequest [label="admission_request"];
+        AdmissionResult [label="admission_result"];
+        HandleExchange [label="handle_exchange"];
+        AdapterHandleAcceptance [label="adapter_handle_acceptance"];
+        LoadSignal [label="load_or_delivery_signal"];
+        NextDestination [label="next_destination"];
+        ResultConsolidation [label="result_consolidation"];
+        SessionClosure [label="session_closure"];
+
+        TerminalSuccess [label="terminal_success", fillcolor=red];
+        TerminalRejected [label="terminal_rejected", fillcolor=red];
+        TerminalFailed [label="terminal_failed", fillcolor=red];
+        TerminalDeferred [label="terminal_deferred", fillcolor=red];
+
+        // Stage flow arrows
+        Idle -> SessionOpening;
+        SessionOpening -> ChannelResolution;
+        ChannelResolution -> BindingResolution;
+        BindingResolution -> CompatibilityCheck;
+        CompatibilityCheck -> AdapterReadiness;
+        AdapterReadiness -> RequestPreparation;
+        RequestPreparation -> PortReadiness;
+        PortReadiness -> AdmissionRequest;
+        AdmissionRequest -> AdmissionResult;
+        AdmissionResult -> HandleExchange;
+        HandleExchange -> AdapterHandleAcceptance;
+        AdapterHandleAcceptance -> LoadSignal;
+        LoadSignal -> NextDestination;
+        NextDestination -> ResultConsolidation;
+        ResultConsolidation -> SessionClosure;
+
+        // Terminal states
+        edge [color=red];
+        SessionClosure -> TerminalSuccess;
+        AdmissionResult -> TerminalRejected [label="rejected"];
+        ResultConsolidation -> TerminalFailed [label="failed"];
+        NextDestination -> TerminalDeferred [label="deferred"];
+    }
+
+    // W02 Dependencies
+    subgraph cluster_dependencies {
+        label="W02 Dependencies";
+        style=filled;
+        fillcolor=lightyellow;
+
+        TCorrelationToken [label="{TCorrelationToken|W01 Carrier Layer}"];
+        TBridgeResult [label="{TBridgeResult|W01 Carrier Layer}"];
+        TBridgeError [label="{TBridgeError|Bridge Core}"];
+
+        TCorrelationToken -> TBridgeProtocolState [label="correlation"];
+        TBridgeResult -> TBridgeProtocolState [label="result"];
+        TBridgeError -> TBridgeProtocolState [label="error"];
+    }
+
+    // Usage from Smoke Tests
+    subgraph cluster_usage {
+        label="W02 Smoke Test Usage Patterns";
+        style=filled;
+        fillcolor=lightcoral;
+
+        StateCreation [label="{State Creation|start(token)}"];
+        TransitionApplication [label="{Transition Application|apply_transition(transition)}"];
+        SnapshotGeneration [label="{Snapshot Generation|snapshot(\"envelope_placement\")}"];
+        CompletionHandling [label="{Completion Handling|complete(result)}"];
+        TerminalCheck [label="{Terminal Check|is_terminal()}"];
+
+        StateCreation -> TBridgeProtocolState;
+        TransitionApplication -> TBridgeTransition;
+        SnapshotGeneration -> TBridgeProtocolSnapshot;
+        CompletionHandling -> TBridgeProtocolState;
+        TerminalCheck -> TBridgeStage;
+    }
+
+    // Lifecycle Management
+    subgraph cluster_lifecycle {
+        label="Lifecycle Management";
+        style=filled;
+        fillcolor=gold;
+
+        StageValidation [label="{Stage Validation|is_terminal_bridge_stage()}"];
+        TransitionValidation [label="{Transition Validation|is_valid()}"];
+        StateMutation [label="{State Mutation|apply_transition()\ncomplete()}"];
+        SnapshotCreation [label="{Snapshot Creation|snapshot()}"];
+        ErrorHandling [label="{Error Handling|has_error()\ncan_transition()}"];
+
+        StageValidation -> TBridgeStage;
+        TransitionValidation -> TBridgeTransition;
+        StateMutation -> TBridgeProtocolState;
+        SnapshotCreation -> TBridgeProtocolSnapshot;
+        ErrorHandling -> TBridgeProtocolState;
+    }
+
+    // Layer Boundaries
+    edge [style=dashed, color=blue, constraint=false];
+    TBridgeProtocolState -> TBridgeProtocolSnapshot [label="diagnostics"];
+    TBridgeProtocolState -> TerminalSuccess [label="terminal states"];
+
+    // Cross-layer integration
+    edge [style=dashed, color=red];
+    TCorrelationToken -> StateCreation [label="correlation"];
+    TBridgeResult -> CompletionHandling [label="result"];
+
+    // Stage progression legend
+    subgraph cluster_legend {
+        label="Legend";
+        NormalFlow [label="Normal progression", shape=box, fillcolor=white];
+        TerminalFlow [label="Terminal states", shape=box, fillcolor=red];
+        ValidationFlow [label="Validation checks", shape=box, fillcolor=yellow];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\holistic_docs\layers\holistic_protocol_state_layer.dot

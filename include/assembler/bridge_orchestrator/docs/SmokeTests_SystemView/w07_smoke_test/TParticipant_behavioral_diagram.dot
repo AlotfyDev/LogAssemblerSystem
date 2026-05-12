@@ -1,0 +1,40 @@
+digraph TParticipant_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightgreen];
+
+    // Key operations
+    create_participant [label="make(uint64_t, TParticipantRole, string_view, string_view, string_view, TCorrelationToken)\nCreate participant with all parameters", fillcolor=white];
+
+    validate_participant [label="is_valid()\nCheck id != 0 && role != unknown && !domain.empty()", fillcolor=white];
+
+    check_provider [label="is_provider()\nCheck role classification", fillcolor=white];
+
+    check_boundary [label="is_boundary()\nCheck role classification", fillcolor=white];
+
+    check_exchange [label="participates_in_exchange()\nCheck role classification", fillcolor=white];
+
+    create_invalid [label="invalid()\nReturn invalid participant", fillcolor=white];
+
+    // W07 usage
+    channel_topology [label="Used in TChannel::declare()\nas source and target participants", fillcolor=palegreen];
+
+    participant_views [label="Used to create TParticipantView\nfor adapter and port views", fillcolor=lightcyan];
+
+    // Flow
+    create_participant -> validate_participant [label="enables"];
+    create_participant -> check_provider [label="enables"];
+    create_participant -> check_boundary [label="enables"];
+    create_participant -> check_exchange [label="enables"];
+
+    create_participant -> channel_topology [label="used in"];
+    validate_participant -> participant_views [label="used in"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Creation [label="Participant Creation", fillcolor=white];
+        Validation [label="Validation/Classification", fillcolor=white];
+        Channel [label="Channel Usage", fillcolor=palegreen];
+        View [label="View Creation", fillcolor=lightcyan];
+    }
+}

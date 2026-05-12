@@ -1,0 +1,42 @@
+digraph TBridgeStage_behavioral_diagram {
+    rankdir=LR;
+    node [shape=rectangle, style=rounded, fontname="Arial"];
+
+    // W04 Channel Management Protocol Flow
+    idle [label="idle\n(Initial state)"];
+    channel_resolution [label="channel_resolution\n(Validate TChannel identity)"];
+    binding_resolution [label="binding_resolution\n(Validate TChannelBindingPolicy)"];
+    compatibility_check [label="compatibility_check\n(Profile-policy compatibility)"];
+
+    // Stage transitions
+    idle -> channel_resolution [label="channel declared"];
+    channel_resolution -> binding_resolution [label="identity valid"];
+    binding_resolution -> compatibility_check [label="policy resolved"];
+
+    // Terminal states
+    terminal_success [label="terminal_success\n(Channel ready)", shape=circle, fillcolor=lightgreen];
+    terminal_failed [label="terminal_failed\n(Validation failed)", shape=circle, fillcolor=red];
+
+    compatibility_check -> terminal_success [label="all validations pass"];
+    compatibility_check -> terminal_failed [label="validation failure"];
+
+    // W04 component integration
+    channel_resolution -> TChannel [label="has_valid_identity()"];
+    binding_resolution -> TChannelBindingPolicy [label="is_valid()"];
+    compatibility_check -> TChannel [label="is_valid()"];
+
+    // Invisible positioning
+    TChannel [shape=plaintext, label="TChannel"];
+    TChannelBindingPolicy [shape=plaintext, label="TChannelBindingPolicy"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TBridgeStage W04 Protocol Flow";
+        color=white;
+        style=filled;
+
+        legend_stages [label="Channel Management Stages", shape=rectangle, fillcolor=lightyellow];
+        legend_terminal [label="Terminal States", shape=circle];
+        legend_integration [label="Component Validation", shape=plaintext];
+    }
+}

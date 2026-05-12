@@ -1,0 +1,20 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    BRIDGE_VIEW [label="TBridge::view()"];
+    VALIDATE_BRIDGE [label="Check bridge validity"];
+    CREATE_VIEW [label="Create TBridgeCoreView\n- bridge_id\n- protocol_id\n- status\n- consumed_steps\n- max_steps\n- correlation\n- bridge_name"];
+    VALIDATE_VIEW [label="view.is_valid()"];
+    USE_VIEW [label="Use view for monitoring\n- Status checks\n- Progress tracking\n- Diagnostics"];
+
+    BRIDGE_VIEW -> VALIDATE_BRIDGE;
+    VALIDATE_BRIDGE -> CREATE_VIEW [label="valid bridge"];
+    CREATE_VIEW -> VALIDATE_VIEW;
+    VALIDATE_VIEW -> USE_VIEW [label="valid view"];
+
+    INVALID_VIEW [label="TBridgeCoreView::invalid()", fillcolor=red];
+    VALIDATE_BRIDGE -> INVALID_VIEW [label="invalid bridge", style=dashed];
+    CREATE_VIEW -> INVALID_VIEW [label="creation failed", style=dashed];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreView_behavioral_diagram.dot

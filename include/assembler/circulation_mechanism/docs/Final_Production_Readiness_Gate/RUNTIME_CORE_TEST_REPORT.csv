@@ -1,0 +1,4 @@
+﻿test,status,compile_returncode,run_returncode
+tests_hardening_w02/cme_runtime_core_configuration_lifecycle_test.cpp,passed,0,0
+tests_hardening_w02/cme_runtime_core_full_aggregate_probe.cpp,passed,0,0
+tests_hardening_w02/cme_runtime_core_negative_compliance_test.cpp,passed,0,0

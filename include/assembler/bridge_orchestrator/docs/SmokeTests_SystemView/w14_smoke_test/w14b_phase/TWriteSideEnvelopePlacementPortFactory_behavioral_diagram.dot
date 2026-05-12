@@ -1,0 +1,36 @@
+digraph TWriteSideEnvelopePlacementPortFactory_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rect, style=rounded, fontsize=10];
+    edge [fontsize=9];
+
+    // make_default
+    MakeDefault_Call [label="TWriteSideEnvelopePlacementPortFactory::make_default()", fillcolor=orange];
+    Get_Default_Config [label="TWriteSideEnvelopePlacementPortConfig::defaults()", fillcolor=lavender];
+    Get_Default_Target [label="TWriteSidePlacementTargetDescriptor::defaults()", fillcolor=lavender];
+    Construct_Port_Default [label="return TWriteSideEnvelopePlacementPort{default_config, default_target}", fillcolor=lightgreen];
+
+    // from_config
+    FromConfig_Call [label="TWriteSideEnvelopePlacementPortFactory::from_config(config, target)", fillcolor=orange];
+    Accept_Config [label="Accept TWriteSideEnvelopePlacementPortConfig config", fillcolor=lavender];
+    Accept_Target [label="Accept TWriteSidePlacementTargetDescriptor target (optional, defaults if empty)", fillcolor=lavender];
+    Check_Target_Provided [label="if (target provided)", fillcolor=lavender];
+    Use_Provided_Target [label="use provided target", fillcolor=lightcyan];
+    Use_Default_Target [label="use TWriteSidePlacementTargetDescriptor::defaults()", fillcolor=lightcyan];
+    Construct_Port_Config [label="return TWriteSideEnvelopePlacementPort{config, resolved_target}", fillcolor=lightgreen];
+
+    // Flow
+    MakeDefault_Call -> Get_Default_Config;
+    MakeDefault_Call -> Get_Default_Target;
+    Get_Default_Config -> Construct_Port_Default;
+    Get_Default_Target -> Construct_Port_Default;
+
+    FromConfig_Call -> Accept_Config;
+    FromConfig_Call -> Accept_Target;
+    Accept_Config -> Check_Target_Provided;
+    Accept_Target -> Check_Target_Provided;
+    Check_Target_Provided -> Use_Provided_Target [label="target provided"];
+    Check_Target_Provided -> Use_Default_Target [label="no target"];
+    Use_Provided_Target -> Construct_Port_Config;
+    Use_Default_Target -> Construct_Port_Config;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w14_smoke_test\w14b_phase\TWriteSideEnvelopePlacementPortFactory_behavioral_diagram.dot

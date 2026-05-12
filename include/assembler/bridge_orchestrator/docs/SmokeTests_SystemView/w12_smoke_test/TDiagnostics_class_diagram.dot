@@ -1,0 +1,31 @@
+digraph TDiagnostics_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnostics [label="{TDiagnostics|ASCC_W12_DIAGNOSTICS_AVAILABLE : bool\l|+ aggregate include for diagnostics\l}"]
+
+    // Dependencies
+    TBridgeDiagnosticBuilder [label="TBridgeDiagnosticBuilder", shape=record, fillcolor=lightyellow]
+    TRegistryDiagnosticBuilder [label="TRegistryDiagnosticBuilder", shape=record, fillcolor=lightyellow]
+    TDiagnosticCategory [label="TDiagnosticCategory", shape=record, fillcolor=lightyellow]
+    TDiagnosticCollector [label="TDiagnosticCollector", shape=record, fillcolor=lightyellow]
+    TDiagnosticId [label="TDiagnosticId", shape=record, fillcolor=lightyellow]
+    TDiagnosticPolicy [label="TDiagnosticPolicy", shape=record, fillcolor=lightyellow]
+    TDiagnosticRecord [label="TDiagnosticRecord", shape=record, fillcolor=lightyellow]
+    TDiagnosticReport [label="TDiagnosticReport", shape=record, fillcolor=lightyellow]
+    TDiagnosticSeverity [label="TDiagnosticSeverity", shape=record, fillcolor=lightyellow]
+    TDiagnosticSnapshot [label="TDiagnosticSnapshot", shape=record, fillcolor=lightyellow]
+    TDiagnosticView [label="TDiagnosticView", shape=record, fillcolor=lightyellow]
+
+    TDiagnostics -> TBridgeDiagnosticBuilder [label="aggregates", style=dashed]
+    TDiagnostics -> TRegistryDiagnosticBuilder [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticCategory [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticCollector [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticId [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticPolicy [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticRecord [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticReport [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticSeverity [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticSnapshot [label="aggregates", style=dashed]
+    TDiagnostics -> TDiagnosticView [label="aggregates", style=dashed]
+}

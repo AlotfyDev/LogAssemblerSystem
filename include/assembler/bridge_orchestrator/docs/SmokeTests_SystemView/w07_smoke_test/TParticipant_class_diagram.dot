@@ -1,0 +1,23 @@
+digraph TParticipant_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightgreen];
+
+    TParticipant [label="{TParticipant (W03 - Reused)|participant_id : uint64_t\nrole : TParticipantRole\ndomain : string_view\nfamily : string_view\ndisplay_name : string_view\ncorrelation : TCorrelationToken|+ is_valid() : bool\n+ is_provider() : bool\n+ is_boundary() : bool\n+ is_observer() : bool\n+ participates_in_exchange() : bool\n+ invalid() : TParticipant\n+ make(id, role, domain, family, display_name, token) : TParticipant|Bridge-visible participant descriptor}"];
+
+    // Dependencies
+    TParticipantRole [label="{TParticipantRole (W03)|...|Role enum}" shape=record, fillcolor=white];
+
+    TCorrelationToken [label="{TCorrelationToken (W01)|...|Correlation token}" shape=record, fillcolor=lightcyan];
+
+    // Relationships
+    TParticipant -> TParticipantRole [label="has"];
+    TParticipant -> TCorrelationToken [label="has"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        Reused [label="Reused from W03", fillcolor=lightgreen];
+        W03 [label="W03 Component", fillcolor=white];
+        W01 [label="W01 Component", fillcolor=lightcyan];
+    }
+}

@@ -1,0 +1,41 @@
+digraph TChannelProfile_class_diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main struct
+    TChannelProfile [label="{TChannelProfile|TChannelProfileKind kind;\nTChannelDirection direction;\nstd::uint32_t min_adapters;\nstd::uint32_t max_adapters;\nstd::uint32_t min_ports;\nstd::uint32_t max_ports;\nstd::string_view profile_name;|+ is_valid() const noexcept\n+ is_single_adapter() const noexcept\n+ is_single_port() const noexcept\n+ is_one_to_one() const noexcept\n+ allows_multiple_adapters() const noexcept\n+ allows_multiple_ports() const noexcept\n+ make(...) static constexpr}"];
+
+    // Enums
+    TChannelProfileKind [label="{TChannelProfileKind|unknown\nsingle_adapter_single_port\nsingle_adapter_many_ports\nmany_adapters_single_port\nmany_adapters_many_ports\nfan_out\nfan_in\nbroadcast\nstaged_pipeline}"];
+    TChannelDirection [label="{TChannelDirection|unknown\nunidirectional\nbidirectional\nobserver_only}"];
+
+    // String conversion helpers
+    to_string_kind [label="{to_string(TChannelProfileKind)|constexpr std::string_view}"];
+    to_string_direction [label="{to_string(TChannelDirection)|constexpr std::string_view}"];
+
+    // Dependencies
+    TChannelProfile -> TChannelProfileKind [label="kind field"];
+    TChannelProfile -> TChannelDirection [label="direction field"];
+    to_string_kind -> TChannelProfileKind [label="converts"];
+    to_string_direction -> TChannelDirection [label="converts"];
+
+    // Usage in W04
+    TChannelProfile -> TChannel [label="profile field"];
+    TChannelProfile -> TChannelBindingPolicy [label="compatibility check"];
+
+    // Invisible positioning
+    TChannel [shape=plaintext, label="TChannel"];
+    TChannelBindingPolicy [shape=plaintext, label="TChannelBindingPolicy"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="TChannelProfile Structure";
+        color=white;
+        style=filled;
+
+        legend_data [label="Data Members", shape=rectangle, fillcolor=lightblue];
+        legend_enums [label="Enumerations", shape=rectangle, fillcolor=lightyellow];
+        legend_helpers [label="String Helpers", shape=rectangle, fillcolor=lightgreen];
+        legend_w04 [label="W04 Usage", shape=plaintext];
+    }
+}

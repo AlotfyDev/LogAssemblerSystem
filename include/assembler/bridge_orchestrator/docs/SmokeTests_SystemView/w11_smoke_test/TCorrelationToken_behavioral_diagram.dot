@@ -1,0 +1,22 @@
+digraph TCorrelationToken_Behavioral_Diagram {
+    rankdir=TB
+    node [shape=rectangle, style=filled, fillcolor=lightblue]
+
+    Start [label="TCorrelationToken Usage\nin W11 Smoke Test", shape=ellipse, fillcolor=green]
+
+    CreateToken [label="Create Correlation Token\nTCorrelationToken::from_parts(1u, 2u)\nCreates token with high=1, low=2", fillcolor=yellow]
+
+    ValidateToken [label="Validate Token\ntoken.is_valid() - checks high != 0 || low != 0\nReturns true", fillcolor=lightgreen]
+
+    UseInRegistries [label="Use in Registry Operations\nPassed to registry constructors\nUsed in snapshots and lookup results\nCorrelates registry operations", fillcolor=orange]
+
+    HashOperations [label="Hash Operations\nstd::hash<TCorrelationToken> supports unordered containers\nUsed for registry indexing if needed", fillcolor=lightcyan]
+
+    End [label="Token correlation maintained\nacross registry operations", shape=ellipse, fillcolor=red]
+
+    Start -> CreateToken
+    CreateToken -> ValidateToken
+    ValidateToken -> UseInRegistries
+    UseInRegistries -> HashOperations
+    HashOperations -> End
+}

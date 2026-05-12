@@ -1,0 +1,8 @@
+digraph TDiagnosticCategory_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    TDiagnosticCategory [label="{TDiagnosticCategory|unknown\lcarrier\lchannel\lbinding\lcompatibility\lsession\lprotocol\lbridge_core\lregistry\lconcrete_binding\lintegration_skeleton\lpolicy\lboundary|+ is_core_model_diagnostic_category(category) : bool\l+ to_string(category) : std::string_view\l}"]
+
+    // No dependencies - enum class with free functions
+}

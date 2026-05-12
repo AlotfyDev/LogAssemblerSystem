@@ -1,0 +1,28 @@
+digraph TBindingCompatibilityReport_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TBindingCompatibilityReport [label="{TBindingCompatibilityReport|status : TBindingCompatibilityStatus\ncorrelation : TCorrelationToken\nreason : string_view\nchannel_valid : bool\nchannel_declared : bool\nsurface_pair_valid : bool\nprimary_placement_supported : bool|+ is_compatible() : bool\n+ as_bridge_result() : TBridgeResult|+ compatible() : TBindingCompatibilityReport\n+ incompatible() : TBindingCompatibilityReport\n+ evaluate() : TBindingCompatibilityReport}"];
+
+    // Enum
+    TBindingCompatibilityStatus [label="{TBindingCompatibilityStatus|unknown\ncompatible\nincompatible\nincomplete\ndeferred}" shape=Mrecord];
+
+    // Dependencies
+    TCorrelationToken [label="{TCorrelationToken|token_id : uint64_t\nsequence : uint32_t|+ is_valid() : bool}"];
+    TBridgeResult [label="{TBridgeResult|...|+ success() : TBridgeResult\n+ reject() : TBridgeResult\n+ defer() : TBridgeResult}"];
+
+    // Evaluated types (parameters)
+    TChannel_param [label="{TChannel (parameter)|...}" shape=note];
+    TObligationSurfacePair_param [label="{TObligationSurfacePair (parameter)|...}" shape=note];
+
+    // Relationships
+    TBindingCompatibilityReport -> TBindingCompatibilityStatus [label="has"];
+    TBindingCompatibilityReport -> TCorrelationToken [label="has"];
+
+    TBindingCompatibilityReport -> TBridgeResult [label="converts to"];
+
+    // Evaluation dependencies
+    TBindingCompatibilityReport -> TChannel_param [label="evaluates", style=dashed];
+    TBindingCompatibilityReport -> TObligationSurfacePair_param [label="evaluates", style=dashed];
+}

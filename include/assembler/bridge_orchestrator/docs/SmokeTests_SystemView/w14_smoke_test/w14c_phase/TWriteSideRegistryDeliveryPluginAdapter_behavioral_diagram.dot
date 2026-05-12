@@ -1,0 +1,37 @@
+digraph TWriteSideRegistryDeliveryPluginAdapter_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W14C smoke test usage sequence
+    CreateAdapter [label="Create TWriteSideRegistryDeliveryPluginAdapter\n- constructed via factory with descriptor and config\n- initializes with material descriptor, config, empty state"];
+
+    ViewReadinessPhase [label="View & Readiness Phase:\n1. adapter.view() - builds adapter identity\n2. adapter.readiness() - validates material and config\n3. checks boundary handoff support"];
+
+    PlacementPhase [label="Placement Phase:\n1. adapter.prepare_placement_request() - creates placement request\n2. adapter.accept_placement_handle() - accepts and stores handle\n3. adapter.emit_load_signal() - signals load completion"];
+
+    RoutingPhase [label="Routing Phase:\n1. adapter.next_destination_request() - requests next destination\n   with completion reason 'current_destination_completed'"];
+
+    BoundaryHandoffPhase [label="Boundary Handoff Phase:\n1. adapter.prepare_boundary_handoff_request() - prepares handoff\n2. adapter.accept_boundary_handoff_result() - handles result:\n   • accepted: stores boundary handle\n   • completed: marks handoff completed\n   • deferred: returns defer result\n   • failed: returns failure"];
+
+    StateManagement [label="State Management:\n- adapter.reset_state() - clears all handles and flags\n- maintains state across placement and boundary lifecycles"];
+
+    // Flow connections
+    CreateAdapter -> ViewReadinessPhase;
+    ViewReadinessPhase -> PlacementPhase [label="ready"];
+    PlacementPhase -> RoutingPhase;
+    RoutingPhase -> BoundaryHandoffPhase;
+    BoundaryHandoffPhase -> StateManagement [label="accepted/completed"];
+
+    // Styling by lifecycle phase
+    CreateAdapter [fillcolor=lightblue];
+    ViewReadinessPhase [fillcolor=lightyellow];
+    PlacementPhase [fillcolor=lightgreen];
+    RoutingPhase [fillcolor=lightcyan];
+    BoundaryHandoffPhase [fillcolor=lightsalmon];
+    StateManagement [fillcolor=lightgray];
+
+    // Title
+    label="TWriteSideRegistryDeliveryPluginAdapter Usage in W14C Smoke Test";
+    labelloc=t;
+}

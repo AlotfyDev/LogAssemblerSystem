@@ -1,0 +1,29 @@
+digraph TBinding_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // W15 smoke test usage
+    BindingDeclaration [label="Binding Declaration:\n- TFirstIntegrationSkeletonModelPlan::declare_binding()\n- proposes binding between channel and surface pair\n- uses strict static one-to-one profile\n- binding_id and binding_name from config"];
+
+    CompatibilityCheck [label="Compatibility Validation:\n- binding.is_compatible() called in skeleton\n- validates binding proposal is compatible\n- failure returns early with incompatible binding note"];
+
+    SessionUsage [label="Session Opening Input:\n- binding passed to TFirstIntegrationSkeletonModelPlan::open_session()\n- used as foundation for session establishment\n- enables communication session on binding"];
+
+    // Flow connections
+    BindingDeclaration -> CompatibilityCheck;
+    CompatibilityCheck -> SessionUsage [label="compatible"];
+    CompatibilityCheck -> End [label="incompatible"];
+
+    End [label="Binding Incompatible", shape=ellipse, fillcolor=lightcoral];
+
+    // Styling
+    BindingDeclaration [fillcolor=lightblue];
+    CompatibilityCheck [fillcolor=lightyellow];
+    SessionUsage [fillcolor=lightsalmon];
+
+    // Title
+    label="TBinding Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBinding_behavioral_diagram.dot

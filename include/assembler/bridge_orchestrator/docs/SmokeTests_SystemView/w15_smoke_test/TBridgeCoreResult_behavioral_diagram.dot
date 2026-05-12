@@ -1,0 +1,29 @@
+digraph TBridgeCoreResult_Behavioral_Diagram {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    ModelExecutionResult [label="Model Execution Result:\n- bridge.run_model_to_terminal() returns TBridgeCoreResult\n- contains result of complete bridge model execution\n- includes completion status and any error information"];
+
+    CompletionValidation [label="Completion Validation:\n- bridge_model_result.completed() called in skeleton\n- validates bridge model executed to terminal successfully\n- failure returns early with bridge model not completed note"];
+
+    CarrierFlowEnablement [label="Carrier Flow Enablement:\n- successful model completion enables carrier flow phase\n- adapter and port can now perform placement operations\n- bridge model completion is required before carrier exchange"];
+
+    ReportStorage [label="Report Storage:\n- bridge_core_result stored in TFirstIntegrationSkeletonReport\n- provides bridge model execution details\n- used for integration success determination"];
+
+    ModelExecutionResult -> CompletionValidation;
+    CompletionValidation -> CarrierFlowEnablement [label="completed"];
+    CompletionValidation -> End [label="not completed"];
+    CarrierFlowEnablement -> ReportStorage;
+
+    End [label="Bridge Model Not Completed", shape=ellipse, fillcolor=lightcoral];
+
+    ModelExecutionResult [fillcolor=lightblue];
+    CompletionValidation [fillcolor=lightyellow];
+    CarrierFlowEnablement [fillcolor=lightsalmon];
+    ReportStorage [fillcolor=lightgreen];
+
+    label="TBridgeCoreResult Usage in W15 Smoke Test (W01 Reused)";
+    labelloc=t;
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w15_smoke_test\TBridgeCoreResult_behavioral_diagram.dot

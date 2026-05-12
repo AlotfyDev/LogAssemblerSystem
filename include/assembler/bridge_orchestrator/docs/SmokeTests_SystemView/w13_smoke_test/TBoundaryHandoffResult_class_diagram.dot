@@ -1,0 +1,70 @@
+digraph TBoundaryHandoffResult_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, style=filled, fillcolor=lightblue];
+
+    // Main component
+    Result [label="{TBoundaryHandoffResult\n(Value Type)|• status : TBoundaryHandoffStatus\n• handle : TBoundaryHandoffHandle\n• bridge_result : TBridgeResult\n• note : string_view|+ accepted() : bool\l+ completed() : bool\l+ failed() : bool\l+ deferred() : bool\l+ accepted(handle, note) : TBoundaryHandoffResult\l+ completed(handle, note) : TBoundaryHandoffResult\l+ rejected(error, token) : TBoundaryHandoffResult\l+ deferred(error, token) : TBoundaryHandoffResult\l+ failed(error, token) : TBoundaryHandoffResult\l+ unsupported(text, token) : TBoundaryHandoffResult\l}", fillcolor=lightcyan];
+
+    // Status enum
+    Status [label="{TBoundaryHandoffStatus\n(Enum)|• unknown\n• accepted\n• completed\n• rejected\n• deferred\n• failed\n• unsupported\l}", fillcolor=lavender];
+
+    // Handle type
+    Handle [label="{TBoundaryHandoffHandle\n(Handle)|• id : uint64_t\n• material_kind : string_view\n• correlation : TCorrelationToken\n• note : string_view|+ is_valid() : bool\l+ invalid() : TBoundaryHandoffHandle\l+ make(id, kind, token, note) : TBoundaryHandoffHandle\l}", fillcolor=lightgreen];
+
+    // Bridge result (W01 reused)
+    BridgeResult [label="{TBridgeResult\n(W01 Reused)|• status : TBridgeStatus\n• correlation : TCorrelationToken\n• error : TBridgeError\n• data : variant|+ succeeded() : bool\l+ failed() : bool\l+ deferred() : bool\l+ success(token) : TBridgeResult\l+ fail(error, token) : TBridgeResult\l+ defer(error, token) : TBridgeResult\l+ reject(error, token) : TBridgeResult\l}", fillcolor=lightgray];
+
+    // Bridge error (W01 reused)
+    BridgeError [label="{TBridgeError\n(W01 Reused)|• code : TBridgeErrorCode\n• message : string_view|+ make(code, message) : TBridgeError\l}", fillcolor=lightgray];
+
+    // Factory methods
+    AcceptedFactory [label="{accepted(handle, note)\nCreates accepted result with valid handle}", shape=note, fillcolor=lightyellow];
+
+    CompletedFactory [label="{completed(handle, note)\nCreates completed result - handoff finished}", shape=note, fillcolor=lightyellow];
+
+    RejectedFactory [label="{rejected(error, token)\nCreates rejected result with error}", shape=note, fillcolor=pink];
+
+    DeferredFactory [label="{deferred(error, token)\nCreates deferred result - try again later}", shape=note, fillcolor=orange];
+
+    FailedFactory [label="{failed(error, token)\nCreates failed result - unrecoverable error}", shape=note, fillcolor=red];
+
+    UnsupportedFactory [label="{unsupported(text, token)\nCreates unsupported result - incompatible}", shape=note, fillcolor=purple];
+
+    // Relationships
+    Result -> Status [label="uses"];
+    Result -> Handle [label="contains"];
+    Result -> BridgeResult [label="contains"];
+    Result -> BridgeError [label="uses"];
+
+    Result -> AcceptedFactory [label="creates", style=dashed];
+    Result -> CompletedFactory [label="creates", style=dashed];
+    Result -> RejectedFactory [label="creates", style=dashed];
+    Result -> DeferredFactory [label="creates", style=dashed];
+    Result -> FailedFactory [label="creates", style=dashed];
+    Result -> UnsupportedFactory [label="creates", style=dashed];
+
+    AcceptedFactory -> Handle [label="requires"];
+    CompletedFactory -> Handle [label="requires"];
+    RejectedFactory -> BridgeError [label="uses"];
+    DeferredFactory -> BridgeError [label="uses"];
+    FailedFactory -> BridgeError [label="uses"];
+    UnsupportedFactory -> BridgeError [label="uses"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendMain [label="Main Component", fillcolor=lightcyan];
+        LegendEnum [label="Enumeration", fillcolor=lavender];
+        LegendHandle [label="Handle Type", fillcolor=lightgreen];
+        LegendReused [label="W01 Reused", fillcolor=lightgray];
+        LegendAccepted [label="Success Factory", shape=note, fillcolor=lightyellow];
+        LegendRejected [label="Error Factories", shape=note, fillcolor=pink];
+        LegendDeferred [label="Deferral Factory", shape=note, fillcolor=orange];
+        LegendFailed [label="Failure Factory", shape=note, fillcolor=red];
+        LegendUnsupported [label="Unsupported Factory", shape=note, fillcolor=purple];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\TBoundaryHandoffResult_class_diagram.dot

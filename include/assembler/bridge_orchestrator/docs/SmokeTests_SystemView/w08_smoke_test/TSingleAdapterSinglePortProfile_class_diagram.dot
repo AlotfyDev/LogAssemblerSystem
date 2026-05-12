@@ -1,0 +1,37 @@
+digraph TSingleAdapterSinglePortProfile_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=8];
+
+    // Main class
+    TSingleAdapterSinglePortProfile [label="{TSingleAdapterSinglePortProfile|+ adapter_view_: TPluginAdapterView\l+ port_view_: TPortView\l+ binding_policy_: TChannelBindingPolicy\l+ surface_pair_: TObligationSurfacePair\l|+ create(adapter: TPluginAdapterView, port: TPortView): TSingleAdapterSinglePortProfile\l+ is_valid(): bool\l+ get_binding_policy(): TChannelBindingPolicy\l+ get_surface_pair(): TObligationSurfacePair\l- validate_adapter_port_compatibility(): bool}", fillcolor=lightcyan, style=filled];
+
+    // Dependencies
+    TPluginAdapterView [label="{TPluginAdapterView|+ plugin_id_: std::string\l+ adapter_type_: AdapterType\l+ capabilities_: vector<std::string>\l|+ supports_port(port: TPortView): bool\l+ get_obligation_surface(): TObligation}", fillcolor=lightblue, style=filled];
+
+    TPortView [label="{TPortView|+ port_id_: std::string\l+ port_type_: PortType\l+ direction_: PortDirection\l+ data_type_: std::string\l|+ is_compatible_with(adapter: TPluginAdapterView): bool\l+ get_surface_requirements(): TSurface}", fillcolor=lightblue, style=filled];
+
+    TChannelBindingPolicy [label="{TChannelBindingPolicy|+ allow_multiple_adapters_: bool\l+ require_explicit_binding_: bool\l+ validate_surface_compatibility_: bool\l|+ can_bind(channel: TChannel, adapter: TPluginAdapterView): bool\l+ validate_surface_pair(pair: TObligationSurfacePair): bool}", fillcolor=lightcyan, style=filled];
+
+    TObligationSurfacePair [label="{TObligationSurfacePair|+ obligation_: TObligation\l+ surface_: TSurface\l+ compatibility_score_: double\l|+ create(obligation: TObligation, surface: TSurface): TObligationSurfacePair\l+ is_compatible(): bool\l+ get_compatibility_score(): double}", fillcolor=lightblue, style=filled];
+
+    // Relationships
+    TSingleAdapterSinglePortProfile -> TPluginAdapterView [label="contains"];
+    TSingleAdapterSinglePortProfile -> TPortView [label="contains"];
+    TSingleAdapterSinglePortProfile -> TChannelBindingPolicy [label="contains"];
+    TSingleAdapterSinglePortProfile -> TObligationSurfacePair [label="creates"];
+
+    TPluginAdapterView -> TObligationSurfacePair [label="provides obligation"];
+    TPortView -> TObligationSurfacePair [label="provides surface"];
+
+    TChannelBindingPolicy -> TObligationSurfacePair [label="validates"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        bgcolor=white;
+
+        ReusedClass [label="Reused W04 Component", fillcolor=lightcyan];
+        SupportClass [label="Supporting Component", fillcolor=lightblue];
+    }
+}

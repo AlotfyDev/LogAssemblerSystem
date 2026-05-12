@@ -1,0 +1,14 @@
+digraph G {
+    rankdir=TB;
+    node [shape=rectangle, style=rounded];
+
+    BRIDGE_SNAPSHOT [label="TBridge::snapshot()"];
+    CAPTURE_STATE [label="Capture complete state\n- bridge_id, status, config\n- protocol_view, frame\n- last_issue, correlation, name"];
+    VALIDATE_SNAPSHOT [label="snapshot.is_valid()"];
+    USE_DIAGNOSTICS [label="Use for diagnostics\n- Error analysis\n- State inspection\n- Debug information"];
+
+    BRIDGE_SNAPSHOT -> CAPTURE_STATE;
+    CAPTURE_STATE -> VALIDATE_SNAPSHOT;
+    VALIDATE_SNAPSHOT -> USE_DIAGNOSTICS [label="valid"];
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w10_smoke_test\TBridgeCoreSnapshot_behavioral_diagram.dot

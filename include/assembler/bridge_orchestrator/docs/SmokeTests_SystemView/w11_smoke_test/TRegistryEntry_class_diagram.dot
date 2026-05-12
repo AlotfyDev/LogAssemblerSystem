@@ -1,0 +1,36 @@
+digraph TRegistryEntry_Class_Diagram {
+    rankdir=TB
+    node [shape=record, style=filled, fillcolor=lightblue]
+
+    // Main class
+    TRegistryEntry [label="{TRegistryEntry<TId, TValue>|id : TId\l value : TValue\l status : TRegistryEntryStatus\l ordinal : std::uint64_t\l correlation : TCorrelationToken\l label : std::string_view\l|+ has_valid_id() : bool\l+ has_valid_value() : bool\l+ is_valid() : bool\l+ is_usable() : bool\l+ activate() : bool\l+ suspend() : bool\l+ retire() : bool\l+ make(entry_id, entry_value, ordinal, label, token) : TRegistryEntry\l}"]
+
+    // Template Parameters
+    TId [label="TId", shape=ellipse, fillcolor=lightgrey]
+    TValue [label="TValue", shape=ellipse, fillcolor=lightgrey]
+
+    // Member Types
+    TRegistryEntryStatus [label="TRegistryEntryStatus", shape=record, fillcolor=lightyellow]
+    std_uint64_t [label="std::uint64_t", shape=ellipse, fillcolor=lightgrey]
+    TCorrelationToken [label="TCorrelationToken", shape=record, fillcolor=lightyellow]
+    std_string_view [label="std::string_view", shape=ellipse, fillcolor=lightgrey]
+
+    // Relationships
+    TRegistryEntry -> TId [label="parameterized by", style=dashed]
+    TRegistryEntry -> TValue [label="parameterized by", style=dashed]
+    TRegistryEntry -> TRegistryEntryStatus [label="uses", style=dashed]
+    TRegistryEntry -> std_uint64_t [label="uses", style=dashed]
+    TRegistryEntry -> TCorrelationToken [label="uses", style=dashed]
+    TRegistryEntry -> std_string_view [label="uses", style=dashed]
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend"
+        style=filled
+        fillcolor=white
+
+        ClassLegend [label="Class/Struct", shape=record, fillcolor=lightblue]
+        TypeLegend [label="Template Parameter", shape=ellipse, fillcolor=lightgrey]
+        ComponentLegend [label="Component Type", shape=record, fillcolor=lightyellow]
+    }
+}

@@ -1,0 +1,14 @@
+digraph TLoadSignal_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    LoadSignal [label="{TLoadSignal (W01)|material load completion signal\l+ correlation : TCorrelationToken\l+ placement_handle : TPlacementHandle\l+ material_size : std::uint64_t\l+ completed() static\l+ failed() static\l}", fillcolor=lightgreen, style=filled];
+
+    Adapter [label="{TWriteSideRegistryDeliveryPluginAdapter|emits load signal after placement\lprovides completion notification\l}", fillcolor=lightsalmon];
+
+    Adapter -> LoadSignal [label="creates"];
+
+    label="TLoadSignal (W01) Class Structure and W14C Usage";
+    labelloc=t;
+}

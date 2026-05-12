@@ -1,0 +1,45 @@
+flowchart LR
+    sc([Sequence Channel<br/>(smallest traversal-bearing unit)])
+
+    linear["Linear Sequence Channel"]
+    ring["Ring Sequence Channel"]
+
+    singleslot["Single-Slot Channel"]
+    multislot["Multi-Slot Channel<br/>(conjunction/composite allowance)"]
+
+    entry["Entry Surface"]
+    exitn["Exit Surface"]
+
+    transition["Transition<br/>(successive movement between channels)"]
+    relation["Relation<br/>(edge connector passes through relation)"]
+
+    merge["Merge / Join Possibility"]
+    readiness["Channel Eligibility / Readiness"]
+    cursor["Position / Cursor Awareness"]
+
+    sc -->|channel kind| linear
+    sc -->|channel kind| ring
+    sc -->|slot cardinality| singleslot
+    sc -->|slot cardinality| multislot
+
+    sc -->|has| entry
+    sc -->|has| exitn
+
+    sc -->|participates in| transition
+    transition -->|mediated by| relation
+    relation -.->|to target channel| sc
+
+    multislot -->|preserves| merge
+    sc -->|may possess| readiness
+    sc -->|admits| cursor
+
+    subgraph minimum["Minimum Foundational Set"]
+      m1["Sequence Channel"]
+      m2["Linear / Ring"]
+      m3["Single / Multi-slot"]
+      m4["Entry / Exit"]
+      m5["Transition + Relation"]
+      m6["Merge / Join possibility"]
+      m7["Eligibility / Readiness"]
+      m8["Position / Cursor awareness"]
+    end

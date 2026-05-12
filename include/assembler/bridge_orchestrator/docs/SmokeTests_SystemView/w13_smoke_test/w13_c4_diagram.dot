@@ -1,0 +1,127 @@
+digraph W13_C4_Architecture {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+
+    // Context Level - Integration Boundary System
+    subgraph cluster_Context {
+        label="Context: W13 Integration Boundary System";
+        style=filled;
+        fillcolor=lightcyan;
+
+        // External Systems
+        ExternalSystems [label="External Systems\n(Persistence, Telemetry, ABI, etc.)", shape=ellipse, fillcolor=lightgray];
+
+        // Communication Context Core
+        CommunicationContext [label="Communication Context\n(W01-W12 Foundations)", shape=component, fillcolor=lightgreen];
+    }
+
+    // Container Level - Integration Boundary Abstraction
+    subgraph cluster_Container {
+        label="Container: Integration Boundary Abstraction Layer";
+        style=filled;
+        fillcolor=lightyellow;
+
+        // Boundary Ports (Abstract)
+        BoundaryPorts [label="Boundary Ports\n(CRTP Interfaces)", shape=component];
+
+        // Boundary Descriptors
+        BoundaryDescriptors [label="Boundary Descriptors\n(Identity & Capabilities)", shape=component];
+
+        // Handoff Operations
+        HandoffOperations [label="Handoff Operations\n(Request/Accept/Complete)", shape=component];
+
+        // Boundary Policies
+        BoundaryPolicies [label="Boundary Policies\n(Readiness & Validation)", shape=component];
+    }
+
+    // Component Level - Key Components
+    subgraph cluster_Components {
+        label="Components: W13 Integration Boundary Components";
+        style=filled;
+        fillcolor=lavender;
+
+        // Abstract Ports
+        IntegrationBoundaryPort [label="TIntegrationBoundaryPort\n(CRTP Base)", shape=component];
+        IntegrationBoundaryPortView [label="TIntegrationBoundaryPortView\n(Read-only View)", shape=component];
+
+        // Descriptors & Metadata
+        IntegrationBoundaryDescriptor [label="TIntegrationBoundaryDescriptor\n(Boundary Identity)", shape=component];
+        IntegrationBoundaryCapability [label="TIntegrationBoundaryCapability\n(Capability Flags)", shape=component];
+
+        // Handoff Carriers
+        BoundaryHandoffRequest [label="TBoundaryHandoffRequest\n(Handoff Request)", shape=component];
+        BoundaryHandoffHandle [label="TBoundaryHandoffHandle\n(Handoff Handle)", shape=component];
+        BoundaryHandoffResult [label="TBoundaryHandoffResult\n(Operation Result)", shape=component];
+
+        // Policies & Validation
+        IntegrationBoundaryPolicy [label="TIntegrationBoundaryPolicy\n(Boundary Policies)", shape=component];
+
+        // Reports & Diagnostics
+        IntegrationBoundaryReport [label="TIntegrationBoundaryReport\n(Operation Report)", shape=component];
+    }
+
+    // Code Level - Implementation Details
+    subgraph cluster_Code {
+        label="Code: W13 Implementation Structure";
+        style=filled;
+        fillcolor=lightcoral;
+
+        // CRTP Implementation
+        MockPersistenceBoundaryPort [label="TMockPersistenceBoundaryPort\n(CRTP Implementation)", shape=note];
+
+        // Value Types
+        CorrelationToken [label="TCorrelationToken\n(Correlation Identity)", shape=note];
+        ReadinessView [label="TReadinessView\n(Readiness State)", shape=note];
+        BridgeError [label="TBridgeError\n(Error Handling)", shape=note];
+
+        // Enums
+        BoundaryDirection [label="TIntegrationBoundaryDirection\n(Inbound/Outbound)", shape=note];
+        BoundaryKind [label="TIntegrationBoundaryKind\n(Persistence/Telemetry)", shape=note];
+        BoundaryStatus [label="TBoundaryHandoffStatus\n(Accepted/Completed)", shape=note];
+    }
+
+    // Relationships - Context Level
+    ExternalSystems -> CommunicationContext [label="uses", style=dashed];
+    CommunicationContext -> BoundaryPorts [label="provides abstractions"];
+
+    // Relationships - Container Level
+    BoundaryPorts -> BoundaryDescriptors [label="identifies via"];
+    BoundaryPorts -> HandoffOperations [label="performs"];
+    HandoffOperations -> BoundaryPolicies [label="validates with"];
+
+    // Relationships - Component Level
+    IntegrationBoundaryPort -> IntegrationBoundaryPortView [label="exposes"];
+    IntegrationBoundaryPort -> IntegrationBoundaryDescriptor [label="describes"];
+    IntegrationBoundaryDescriptor -> IntegrationBoundaryCapability [label="has"];
+
+    BoundaryHandoffRequest -> BoundaryHandoffResult [label="produces"];
+    BoundaryHandoffResult -> BoundaryHandoffHandle [label="contains"];
+
+    IntegrationBoundaryPolicy -> BoundaryHandoffRequest [label="validates"];
+
+    IntegrationBoundaryReport -> IntegrationBoundaryPortView [label="includes"];
+    IntegrationBoundaryReport -> BoundaryHandoffResult [label="includes"];
+
+    // Relationships - Code Level
+    MockPersistenceBoundaryPort -> IntegrationBoundaryPort [label="implements", arrowhead=diamond];
+    CorrelationToken -> IntegrationBoundaryDescriptor [label="correlates"];
+    ReadinessView -> IntegrationBoundaryPolicy [label="uses"];
+    BridgeError -> BoundaryHandoffResult [label="handles"];
+
+    BoundaryDirection -> IntegrationBoundaryDescriptor [label="classifies"];
+    BoundaryKind -> IntegrationBoundaryDescriptor [label="types"];
+    BoundaryStatus -> BoundaryHandoffResult [label="statuses"];
+
+    // Legend
+    subgraph cluster_Legend {
+        label="Legend";
+        style=filled;
+        fillcolor=white;
+
+        LegendContext [label="Context Level\n(System boundaries)", shape=ellipse, fillcolor=lightcyan];
+        LegendContainer [label="Container Level\n(Major abstractions)", shape=component, fillcolor=lightyellow];
+        LegendComponent [label="Component Level\n(Key components)", shape=box, fillcolor=lavender];
+        LegendCode [label="Code Level\n(Implementation details)", shape=note, fillcolor=lightcoral];
+    }
+}</content>
+<parameter name="filePath">D:\CppBridgeVSC\Kilo-LogAssembler\include\assembler\communication_context\docs\SmokeTests_SystemView\w13_smoke_test\w13_c4_diagram.dot

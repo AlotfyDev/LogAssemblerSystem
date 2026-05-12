@@ -1,0 +1,104 @@
+digraph TBridgeProtocolPlan_Component_Diagram {
+    // Component Diagram for TBridgeProtocolPlan (Layer 2 - POD)
+    // 12-step envelope placement execution plan
+
+    graph [fontname="Arial", fontsize=10, rankdir=TB]
+    node [fontname="Arial", fontsize=9, shape=box, style=filled]
+
+    // Core Component
+    TBridgeProtocolPlan [label="TBridgeProtocolPlan\n(Layer 2 - POD)", fillcolor=lightblue]
+
+    // Plan Metadata
+    subgraph cluster_metadata {
+        label="Plan Metadata"
+        bgcolor=lightgray
+
+        protocolKind [label="protocolKind\n(TBridgeProtocolKind)", fillcolor=white]
+        totalSteps [label="totalSteps\n(uint8_t = 12)", fillcolor=white]
+        version [label="version\n(uint16_t)", fillcolor=white]
+        flags [label="flags\n(uint32_t)", fillcolor=white]
+    }
+
+    // Step Definitions (12 Steps)
+    subgraph cluster_steps {
+        label="Execution Steps (12-step Plan)"
+        bgcolor=white
+
+        Step1 [label="Step 1: Initialize\nEnvelope Context", fillcolor=lightcyan]
+        Step2 [label="Step 2: Position\nEnvelope Headers", fillcolor=lightcyan]
+        Step3 [label="Step 3: Align\nEnvelope Boundaries", fillcolor=lightcyan]
+        Step4 [label="Step 4: Validate\nEnvelope Integrity", fillcolor=lightcyan]
+        Step5 [label="Step 5: Establish\nEnvelope Links", fillcolor=lightcyan]
+        Step6 [label="Step 6: Configure\nEnvelope Metadata", fillcolor=lightcyan]
+        Step7 [label="Step 7: Synchronize\nEnvelope Timestamps", fillcolor=lightcyan]
+        Step8 [label="Step 8: Finalize\nEnvelope Structure", fillcolor=lightcyan]
+        Step9 [label="Step 9: Validate\nComplete Structure", fillcolor=lightcyan]
+        Step10 [label="Step 10: Register\nEnvelope with Session", fillcolor=lightcyan]
+        Step11 [label="Step 11: Commit\nEnvelope Changes", fillcolor=lightcyan]
+        Step12 [label="Step 12: Cleanup\nTemporary Resources", fillcolor=lightcyan]
+    }
+
+    // Step Dependencies
+    subgraph cluster_dependencies {
+        label="Step Dependencies"
+        bgcolor=lightyellow
+
+        SequentialDeps [label="Sequential Dependencies:\n1→2→3→4→5→6→7→8→9→10→11→12", fillcolor=white]
+        ValidationDeps [label="Validation Points:\nSteps 4, 9 require validation", fillcolor=white]
+        ResourceDeps [label="Resource Dependencies:\nSession context, Envelope buffers", fillcolor=white]
+    }
+
+    // Utility Functions
+    subgraph cluster_utilities {
+        label="Utility Functions"
+        bgcolor=lightgreen
+
+        GetTotalSteps [label="GetTotalSteps()\nReturn 12"]
+        GetStepDescription [label="GetStepDescription(step)\nStep details"]
+        ValidatePlan [label="ValidatePlan()\nPlan integrity"]
+        GetNextStep [label="GetNextStep(current)\nNext step logic"]
+        IsStepValid [label="IsStepValid(step)\nStep range check"]
+        Serialize [label="Serialize()\nPlan serialization"]
+    }
+
+    // Relationships
+    TBridgeProtocolPlan -> protocolKind
+    TBridgeProtocolPlan -> totalSteps
+    TBridgeProtocolPlan -> version
+    TBridgeProtocolPlan -> flags
+
+    GetTotalSteps -> totalSteps [label="returns"]
+    GetStepDescription -> Step1 [label="maps"]
+    GetStepDescription -> Step2 [label="maps"]
+    GetStepDescription -> Step12 [label="maps"]
+    ValidatePlan -> SequentialDeps [label="validates"]
+    GetNextStep -> SequentialDeps [label="uses"]
+    IsStepValid -> totalSteps [label="validates against"]
+    Serialize -> protocolKind [label="serializes"]
+    Serialize -> totalSteps [label="serializes"]
+
+    // Execution Flow
+    Step1 -> Step2 [label="→"]
+    Step2 -> Step3 [label="→"]
+    Step3 -> Step4 [label="→"]
+    Step4 -> Step5 [label="→"]
+    Step5 -> Step6 [label="→"]
+    Step6 -> Step7 [label="→"]
+    Step7 -> Step8 [label="→"]
+    Step8 -> Step9 [label="→"]
+    Step9 -> Step10 [label="→"]
+    Step10 -> Step11 [label="→"]
+    Step11 -> Step12 [label="→"]
+
+    // Usage in Components
+    TBridgeProtocol [label="TBridgeProtocol\n(Executes plan)", fillcolor=orange]
+    TProtocolStepExecutor [label="TProtocolStepExecutor\n(Uses steps)", fillcolor=orange]
+    TStepAdvancementLogic [label="TStepAdvancementLogic\n(Advances steps)", fillcolor=yellow]
+
+    TBridgeProtocol -> TBridgeProtocolPlan [label="contains", style=dashed]
+    TProtocolStepExecutor -> TBridgeProtocolPlan [label="reads", style=dashed]
+    TStepAdvancementLogic -> TBridgeProtocolPlan [label="uses", style=dashed]
+
+    // Size and Alignment Info
+    SizeInfo [label="Size: 8 bytes\nAlignment: 4 bytes\n#pragma pack(1)", fillcolor=lightgreen]
+}

@@ -1,0 +1,47 @@
+digraph TBinding_Class_Diagram {
+    rankdir=TB;
+    node [shape=record, fontname="Arial"];
+
+    // Main class
+    TBinding [label="{TBinding|binding_id : TBindingId\nchannel : TChannel\nsurface_pair : TObligationSurfacePair\nprofile : TBindingProfile\ncompatibility : TBindingCompatibilityReport\nstatus : TBindingStatus\ncorrelation : TCorrelationToken\nbinding_name : string_view|+ is_valid() : bool\n+ is_compatible() : bool\n+ is_materialized() : bool\n+ may_materialize_session() : bool\n+ view() : TBindingView\n+ result() : TBindingResult|+ propose() : TBinding\n+ materialize_declaration_only() : TBinding}"];
+
+    // Member types
+    TBindingId [label="{TBindingId|value : uint64_t|+ is_valid() : bool|+ invalid() : TBindingId\n+ from_value() : TBindingId}"];
+    TChannel [label="{TChannel|channel_id : uint64_t\nsource : TParticipant\ntarget : TParticipant\nprofile : TChannelProfile\nbinding_policy : TChannelBindingPolicy\nstatus : TChannelStatus\ncorrelation : TCorrelationToken\nchannel_name : string_view|+ is_valid() : bool\n+ is_declared() : bool\n+ is_active() : bool|+ declare() : TChannel}"];
+    TObligationSurfacePair [label="{TObligationSurfacePair|plugin_adapter : TPluginAdapterView\nport : TPortView|+ is_valid() : bool\n+ supports_primary_placement_flow() : bool|+ make() : TObligationSurfacePair}"];
+    TBindingProfile [label="{TBindingProfile|kind : TBindingKind\nrequire_channel_valid : bool\nrequire_channel_declared : bool\nrequire_surface_pair_valid : bool\nrequire_primary_placement_flow : bool\nallow_session_materialization : bool\nallow_rebinding : bool\nprofile_version : uint32_t\nprofile_name : string_view|+ is_valid() : bool\n+ is_strict_one_to_one() : bool|+ strict_static_one_to_one() : TBindingProfile}"];
+    TBindingCompatibilityReport [label="{TBindingCompatibilityReport|status : TBindingCompatibilityStatus\ncorrelation : TCorrelationToken\nreason : string_view\nchannel_valid : bool\nchannel_declared : bool\nsurface_pair_valid : bool\nprimary_placement_supported : bool|+ is_compatible() : bool\n+ as_bridge_result() : TBridgeResult|+ compatible() : TBindingCompatibilityReport\n+ incompatible() : TBindingCompatibilityReport\n+ evaluate() : TBindingCompatibilityReport}"];
+    TBindingStatus [label="{TBindingStatus|unknown\ncompatible\nincompatible\nmaterialized}" shape=Mrecord];
+    TCorrelationToken [label="{TCorrelationToken|token_id : uint64_t\nsequence : uint32_t|+ is_valid() : bool|+ invalid() : TCorrelationToken\n+ generate() : TCorrelationToken}"];
+    TBindingView [label="{TBindingView|binding_id : TBindingId\nchannel_id : uint64_t\nplugin_adapter : TPluginAdapterView\nport : TPortView\nprofile : TBindingProfile\ncompatibility : TBindingCompatibilityReport\nstatus : TBindingStatus\ncorrelation : TCorrelationToken\nbinding_name : string_view|+ is_valid() : bool\n+ is_usable() : bool\n+ is_accepted() : bool}"];
+    TBindingResult [label="{TBindingResult|binding_id : TBindingId\ncompatibility : TBindingCompatibilityReport|+ is_success() : bool|+ accept() : TBindingResult\n+ reject() : TBindingResult}"];
+
+    // Relationships
+    TBinding -> TBindingId [label="has"];
+    TBinding -> TChannel [label="has"];
+    TBinding -> TObligationSurfacePair [label="has"];
+    TBinding -> TBindingProfile [label="has"];
+    TBinding -> TBindingCompatibilityReport [label="has"];
+    TBinding -> TBindingStatus [label="has"];
+    TBinding -> TCorrelationToken [label="has"];
+
+    TBinding -> TBindingView [label="creates"];
+    TBinding -> TBindingResult [label="creates"];
+
+    // Dependencies on other components
+    TBindingCompatibilityReport -> TChannel [label="evaluates"];
+    TBindingCompatibilityReport -> TObligationSurfacePair [label="evaluates"];
+    TBindingCompatibilityReport -> TCorrelationToken [label="uses"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        color=white;
+
+        main_class [label="Main Class", shape=record, color=blue];
+        member_type [label="Member Type", shape=record, color=green];
+        enum_type [label="Enum Type", shape=Mrecord, color=orange];
+        relationship [label="Relationship", color=red];
+    }
+}
