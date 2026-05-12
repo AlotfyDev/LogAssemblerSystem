@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:04:35Z",
-  "file_count": 3586,
+  "last_updated": "2026-05-12T17:11:29Z",
+  "file_count": 3587,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5823,6 +5823,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Local_Tree_Delta_Analysis.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Local_Tree_Delta_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Zip_Header_Reality_Summary.md",
+      "filename": "ASCC-COMP-W01B_Zip_Header_Reality_Summary.md",
+      "extension": "md",
+      "size_bytes": 3022,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Zip_Header_Reality_Summary.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01B_Zip_Header_Reality_Summary.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/README.md",
