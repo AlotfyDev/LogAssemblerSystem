@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T16:37:23Z",
-  "file_count": 3579,
+  "last_updated": "2026-05-12T16:37:45Z",
+  "file_count": 3580,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -12513,6 +12513,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/views/TSessionView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/views/TSessionView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w01_header_reality_audit_smoke_test.cpp",
+      "filename": "ascc_comp_w01_header_reality_audit_smoke_test.cpp",
+      "extension": "cpp",
+      "size_bytes": 582,
+      "top_level_dir": "include",
+      "category": "test",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w01_header_reality_audit_smoke_test.cpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w01_header_reality_audit_smoke_test.cpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/tests/smoke-tests/w01_smoke_test.cpp",
