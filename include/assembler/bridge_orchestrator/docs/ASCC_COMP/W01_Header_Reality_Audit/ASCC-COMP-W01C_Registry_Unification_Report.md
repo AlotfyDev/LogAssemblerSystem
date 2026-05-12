@@ -11,6 +11,8 @@ registries = core ASCC composability/evidence surface
 optional_registries = historical compatibility path
 ```
 
+Registries remain bounded catalog/evidence structures. They are not service locators, brokers, schedulers, endpoint invokers, or pipeline composers.
+
 ## 3. Canonical Files Added Or Filled
 
 ### Shared primitives
@@ -23,7 +25,7 @@ registries/snapshots/TRegistrySnapshot.hpp
 registries/status/TRegistryEntryStatus.hpp
 ```
 
-### Typed registries
+### Typed model registries
 
 ```text
 registries/channel_registry/TChannelRegistry.hpp
@@ -33,6 +35,38 @@ registries/bridge_protocol_registry/TBridgeProtocolRegistry.hpp
 registries/bridge_registry/TBridgeRegistry.hpp
 registries/sets/TCommunicationContextRegistrySet.hpp
 ```
+
+### View / descriptor registries added in REG-02
+
+```text
+registries/participant_registry/TParticipantRegistry.hpp
+registries/plugin_adapter_registry/TPluginAdapterRegistry.hpp
+registries/port_registry/TPortRegistry.hpp
+```
+
+These are intentionally registries of bridge-visible descriptors/views:
+
+```text
+TParticipantRegistry        -> TParticipant descriptors
+TPluginAdapterRegistry     -> TPluginAdapterView values
+TPortRegistry              -> TPortView values
+```
+
+They do not own endpoint instances.
+
+### Protocol registry alias added in REG-03
+
+```text
+registries/protocol_registry/TProtocolRegistry.hpp
+```
+
+`TProtocolRegistry<Capacity, PlanCapacity>` is an alias to:
+
+```text
+TBridgeProtocolRegistry<Capacity, PlanCapacity>
+```
+
+This preserves the generic historical/public path while keeping the precise canonical implementation name.
 
 ## 4. Compatibility Paths Converted
 
@@ -67,31 +101,34 @@ non-broker / non-scheduler / non-service-locator boundary
 
 ## 6. Remaining Registry Decisions
 
-The following first-level registry paths remain unresolved because no implemented typed counterpart exists in the previous optional layer:
+No first-level registry header remains intentionally empty in the completed REG-02/REG-03 registry scope.
+
+Open future work belongs outside W01C registry unification:
 
 ```text
-registries/participant_registry/TParticipantRegistry.hpp
-registries/plugin_adapter_registry/TPluginAdapterRegistry.hpp
-registries/port_registry/TPortRegistry.hpp
+- richer participant capability indexing belongs to ASCC-COMP-W03;
+- binding-composition-aware lookup belongs to ASCC-COMP-W04;
+- protocol-requirement-aware lookup belongs to ASCC-COMP-W05;
+- readiness/evidence aggregation belongs to ASCC-COMP-W06/W07.
 ```
-
-The following naming mismatch remains a manual decision:
-
-```text
-registries/protocol_registry/TProtocolRegistry.hpp
-```
-
-It may map to `TBridgeProtocolRegistry`, but the name mismatch should not be hidden by an automatic alias without an architecture decision.
 
 ## 7. Smoke Test
 
-Added:
+Updated:
 
 ```text
 tests/smoke-tests/ascc_comp_w01_registry_unification_smoke_test.cpp
 ```
 
-The smoke test includes both canonical registry paths and historical optional paths to verify compatibility includes expose the canonical types.
+The smoke test includes:
+
+```text
+- canonical shared registry primitives;
+- canonical channel/binding/session/bridge-protocol/bridge registries;
+- participant/plugin-adapter-view/port-view registries;
+- TProtocolRegistry alias;
+- historical optional_registries compatibility paths.
+```
 
 ## 8. Non-Goals
 
@@ -107,6 +144,12 @@ policy execution
 persistence / telemetry / ABI behavior
 ```
 
-## 9. Next Step
+## 9. CI Follow-Up
 
-Run the ASCC header audit GitHub Action and compile the registry unification smoke test.  If compile passes, update the W01C backlog statuses for the completed registry items.
+The ASCC smoke-test workflow should compile and run:
+
+```text
+tests/smoke-tests/ascc_comp_w01_registry_unification_smoke_test.cpp
+```
+
+If the workflow fails, the failure should be treated as an include-graph or migration issue before proceeding to ASCC-COMP-W02.
