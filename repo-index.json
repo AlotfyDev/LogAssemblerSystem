@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T22:43:25Z",
-  "file_count": 3616,
+  "last_updated": "2026-05-12T22:44:26Z",
+  "file_count": 3617,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5473,6 +5473,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilityKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilityKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilitySet.hpp",
+      "filename": "TAsccComposableCapabilitySet.hpp",
+      "extension": "hpp",
+      "size_bytes": 2335,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilitySet.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/capabilities/TAsccComposableCapabilitySet.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/diagnostics/binding_views/.keep",
