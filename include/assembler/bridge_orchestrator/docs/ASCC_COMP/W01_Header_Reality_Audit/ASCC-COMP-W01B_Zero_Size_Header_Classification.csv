@@ -1,0 +1,43 @@
+HeaderPath,Classification,DecisionBeforeCodeChange,SuggestedWave
+bindings/binding_policies/TBindingPolicy.hpp,binding_policy_legacy_or_empty_surface,compare with TBindingProfile and future binding composition metadata before filling,W04
+bridge_core/orchestration/TBridge.hpp,safe_forwarder_candidate_already_fixed_in_remote_slice,keep/verify forwarder in current working tree; no new concept,W01C-safe-cleanup
+bridge_core/traits/TBridgeTraits.hpp,unclassified_empty_header,manual review,W01B
+compatibility/binding_compatibility/TBindingCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/carrier_compatibility/TCarrierCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/channel_compatibility/TChannelCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/ownership_compatibility/TOwnershipCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/performance_compatibility/TPerformanceCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/protocol_compatibility/TProtocolCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/traits/TCompatibilityTraits.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+compatibility/visibility_compatibility/TVisibilityCompatibility.hpp,compatibility_dimension_placeholder,defer to capability/gap/composition model; decide minimal type vs alias later,W02/W04/W05
+diagnostics/binding_views/TBindingDiagnosticView.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+diagnostics/carrier_snapshots/TCarrierSnapshot.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+diagnostics/channel_views/TChannelDiagnosticView.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+diagnostics/error_views/TErrorDiagnosticView.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+diagnostics/protocol_snapshots/TProtocolSnapshot.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+diagnostics/session_views/TSessionDiagnosticView.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+diagnostics/timing_views/TTimingDiagnosticView.hpp,diagnostic_view_or_snapshot_placeholder,defer to generic readiness/evidence and diagnostic hardening,W06/W07
+integration_boundaries/in_process_receivers/TInProcessReceiverPort.hpp,integration_boundary_port_placeholder,defer to integration-boundary binding packs unless core abstract port gap is proven,ASCC-INT or W06/W07
+integration_boundaries/open_telemetry_ports/TOpenTelemetryPort.hpp,integration_boundary_port_placeholder,defer to integration-boundary binding packs unless core abstract port gap is proven,ASCC-INT or W06/W07
+integration_boundaries/persistence_ports/TPersistencePort.hpp,integration_boundary_port_placeholder,defer to integration-boundary binding packs unless core abstract port gap is proven,ASCC-INT or W06/W07
+integration_boundaries/registry_delivery/TRegistryDeliveryPort.hpp,integration_boundary_port_placeholder,defer to integration-boundary binding packs unless core abstract port gap is proven,ASCC-INT or W06/W07
+integration_boundaries/thin_c_abi_ports/TThinCAbiPort.hpp,integration_boundary_port_placeholder,defer to integration-boundary binding packs unless core abstract port gap is proven,ASCC-INT or W06/W07
+obligations/plugin_adapters/traits/TPluginAdapterTraits.hpp,obligation_traits_placeholder,review against obligation traits already in obligations/*/obligations; likely alias/deprecate,W01C-decision/W02
+obligations/ports/contracts/TPort.hpp,safe_forwarder_candidate_already_fixed_in_remote_slice,keep/verify forwarder in current working tree; no new concept,W01C-safe-cleanup
+obligations/ports/traits/TPortTraits.hpp,obligation_traits_placeholder,review against obligation traits already in obligations/*/obligations; likely alias/deprecate,W01C-decision/W02
+protocols/common/TBridgeProtocolTraits.hpp,protocol_trait_placeholder,classify against existing TBridgeProtocol and future protocol requirements; do not implement runtime logic in W01,W05
+protocols/diagnostic_exchange/TDiagnosticExchangeProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+protocols/envelope_placement/TEnvelopePlacementProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+protocols/persistence_delivery/TPersistenceDeliveryProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+protocols/receiver_delivery/TReceiverDeliveryProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+protocols/registry_delivery/TRegistryDeliveryProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+protocols/telemetry_export/TTelemetryExportProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+protocols/thin_c_abi/TThinCAbiProtocol.hpp,specialized_protocol_placeholder,classify as deferred protocol specialization; do not implement in W01,W05-protocol-requirements-or-ASCC-INT
+registries/binding_registry/TBindingRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+registries/channel_registry/TChannelRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+registries/participant_registry/TParticipantRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+registries/plugin_adapter_registry/TPluginAdapterRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+registries/port_registry/TPortRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+registries/protocol_registry/TProtocolRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+registries/session_registry/TSessionRegistry.hpp,alternate_registry_path_empty,compare with optional_registries/typed counterpart; likely forwarder or deprecate,W01C-decision
+sessions/correlation/TSessionCorrelation.hpp,session_correlation_placeholder,compare with TCorrelationToken usage; likely lightweight view/type or deferred alias,W02/W06
