@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:44:30Z",
-  "file_count": 3597,
+  "last_updated": "2026-05-12T17:45:13Z",
+  "file_count": 3598,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -12183,6 +12183,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/binding_registry/TBindingRegistry.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/binding_registry/TBindingRegistry.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/registries/bridge_protocol_registry/TBridgeProtocolRegistry.hpp",
+      "filename": "TBridgeProtocolRegistry.hpp",
+      "extension": "hpp",
+      "size_bytes": 2547,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/bridge_protocol_registry/TBridgeProtocolRegistry.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/bridge_protocol_registry/TBridgeProtocolRegistry.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/registries/channel_registry/.keep",
