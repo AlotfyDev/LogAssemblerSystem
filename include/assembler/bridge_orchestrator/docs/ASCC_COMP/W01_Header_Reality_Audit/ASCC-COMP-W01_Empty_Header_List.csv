@@ -1,0 +1,3 @@
+GapId,HeaderPath,PreviousState,Action,CurrentStatus,Notes
+ASCC-COMP-W01-GAP-001,include/assembler/bridge_orchestrator/obligations/ports/contracts/TPort.hpp,empty,forward_to_canonical_header,closed,Forwards to assembler/communication_context/obligations/ports/TPort.hpp
+ASCC-COMP-W01-GAP-002,include/assembler/bridge_orchestrator/bridge_core/orchestration/TBridge.hpp,empty,forward_to_canonical_header,closed,Forwards to assembler/communication_context/bridge_core/TBridge.hpp
