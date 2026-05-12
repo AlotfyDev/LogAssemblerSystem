@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T18:52:43Z",
-  "file_count": 3603,
+  "last_updated": "2026-05-12T18:59:13Z",
+  "file_count": 3604,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11693,6 +11693,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/docs/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/docs/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/ids/TParticipantId.hpp",
+      "filename": "TParticipantId.hpp",
+      "extension": "hpp",
+      "size_bytes": 1494,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/ids/TParticipantId.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/ids/TParticipantId.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/participants/roles/.keep",
