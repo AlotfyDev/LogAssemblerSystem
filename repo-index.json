@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:52:24Z",
-  "file_count": 3602,
+  "last_updated": "2026-05-12T18:04:32Z",
+  "file_count": 3603,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -3513,6 +3513,16 @@
       "category": "repo_meta",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/.github/workflows/ascc-header-audit.yml",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/.github/workflows/ascc-header-audit.yml"
+    },
+    {
+      "path": ".github/workflows/ascc-smoke-tests.yml",
+      "filename": "ascc-smoke-tests.yml",
+      "extension": "yml",
+      "size_bytes": 2171,
+      "top_level_dir": ".github",
+      "category": "repo_meta",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/.github/workflows/ascc-smoke-tests.yml",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/.github/workflows/ascc-smoke-tests.yml"
     },
     {
       "path": ".github/workflows/create-repo-index.yml",
