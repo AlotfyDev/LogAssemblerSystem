@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T16:36:37Z",
-  "file_count": 3577,
+  "last_updated": "2026-05-12T16:37:03Z",
+  "file_count": 3578,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5743,6 +5743,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Header_Reality_Audit.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Header_Reality_Audit.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Path_Drift_Map.csv",
+      "filename": "ASCC-COMP-W01_Path_Drift_Map.csv",
+      "extension": "csv",
+      "size_bytes": 758,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Path_Drift_Map.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Path_Drift_Map.csv"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/README.md",
