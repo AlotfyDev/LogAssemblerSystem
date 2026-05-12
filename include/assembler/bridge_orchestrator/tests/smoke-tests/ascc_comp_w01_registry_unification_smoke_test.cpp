@@ -1,3 +1,9 @@
+#include "assembler/communication_context/participants/ids/TParticipantId.hpp"
+#include "assembler/communication_context/obligations/plugin_adapters/ids/TPluginAdapterId.hpp"
+#include "assembler/communication_context/obligations/plugin_adapters/descriptors/TPluginAdapterDescriptor.hpp"
+#include "assembler/communication_context/obligations/ports/ids/TPortId.hpp"
+#include "assembler/communication_context/obligations/ports/descriptors/TPortDescriptor.hpp"
+
 #include "assembler/communication_context/registries/base/TBoundedRegistry.hpp"
 #include "assembler/communication_context/registries/entries/TRegistryEntry.hpp"
 #include "assembler/communication_context/registries/lookups/TRegistryLookupResult.hpp"
@@ -28,6 +34,21 @@ int main()
 {
     using namespace assembler::communication_context;
 
+    static_assert(std::is_class<TParticipantId>::value,
+                  "participant id must be a first-class ASCC id type");
+
+    static_assert(std::is_class<TPluginAdapterId>::value,
+                  "plugin adapter id must be a first-class ASCC id type");
+
+    static_assert(std::is_class<TPortId>::value,
+                  "port id must be a first-class ASCC id type");
+
+    static_assert(std::is_class<TPluginAdapterDescriptor>::value,
+                  "plugin adapter descriptor must be available as registry subject");
+
+    static_assert(std::is_class<TPortDescriptor>::value,
+                  "port descriptor must be available as registry subject");
+
     static_assert(std::is_class<TRegistrySnapshot>::value,
                   "canonical registry snapshot must be available");
 
@@ -50,10 +71,10 @@ int main()
                   "canonical participant descriptor registry must be available");
 
     static_assert(std::is_class<TPluginAdapterRegistry<4>>::value,
-                  "canonical plugin-adapter view registry must be available");
+                  "canonical plugin-adapter descriptor registry must be available");
 
     static_assert(std::is_class<TPortRegistry<4>>::value,
-                  "canonical port view registry must be available");
+                  "canonical port descriptor registry must be available");
 
     static_assert(std::is_same<TProtocolRegistry<4, 12>, TBridgeProtocolRegistry<4, 12>>::value,
                   "TProtocolRegistry must remain an alias of TBridgeProtocolRegistry");
