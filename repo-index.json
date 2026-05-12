@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T19:09:33Z",
+  "last_updated": "2026-05-12T19:42:29Z",
   "file_count": 3610,
   "files": [
     {
@@ -12698,7 +12698,7 @@
       "path": "include/assembler/bridge_orchestrator/sessions/lifecycle/TSession.hpp",
       "filename": "TSession.hpp",
       "extension": "hpp",
-      "size_bytes": 10192,
+      "size_bytes": 10379,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/lifecycle/TSession.hpp",
