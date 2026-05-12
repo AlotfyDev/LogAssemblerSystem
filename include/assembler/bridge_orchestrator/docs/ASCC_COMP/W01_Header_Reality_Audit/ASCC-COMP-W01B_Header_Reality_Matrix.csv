@@ -1,0 +1,11 @@
+MatrixId,Component,Wave,HeaderOrSource,RealityStatus,RequiredAction,Notes
+ASCC-COMP-W01B-001,TPort,W05,obligations/ports/contracts/TPort.hpp,forwarder_closed,none,Converted from empty to local forwarding include
+ASCC-COMP-W01B-002,TBridge,W10,bridge_core/orchestration/TBridge.hpp,forwarder_closed,none,Converted from empty to local forwarding include
+ASCC-COMP-W01B-003,TBridgeProtocolManager,W09,w09_components.csv,analysis_only_pending_decision,no_header_action_now,CSV concept may map to existing TBridgeProtocol plus TBridge model flow
+ASCC-COMP-W01B-004,TProtocolStepExecutor,W09,w09_components.csv,analysis_only_pending_decision,no_header_action_now,Do not invent runtime executor in W01
+ASCC-COMP-W01B-005,TBridgeProtocolFactory,W09,w09_components.csv,analysis_only_pending_decision,no_header_action_now,May become future helper if W05 protocol requirements show need
+ASCC-COMP-W01B-006,TProtocolValidator,W09,w09_components.csv,analysis_only_pending_decision,no_header_action_now,May map to protocol state guards already embedded in TBridgeProtocol
+ASCC-COMP-W01B-007,TStepAdvancementLogic,W09,w09_components.csv,analysis_only_pending_decision,no_header_action_now,May map to TBridgeProtocol::advance_model_step
+ASCC-COMP-W01B-008,TBridgeSession,W09,w09_components.csv,alias_to_existing_header,none,Implemented concept appears to be W08 TSession
+ASCC-COMP-W01B-009,TEnvelopePlacement,W09,protocols/envelope_placement/TEnvelopePlacementProtocol.hpp,path_backed_needs_content_check,verify_header_non_empty,W01B later slice should fetch and classify this specialized protocol header
+ASCC-COMP-W01B-010,RootPath,W01-W15,bridge_orchestrator vs communication_context,path_drift_open,defer_root_decision,Use local relative forwarders where possible until canonical root decision
