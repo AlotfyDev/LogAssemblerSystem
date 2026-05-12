@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T17:48:30Z",
+  "last_updated": "2026-05-12T17:48:46Z",
   "file_count": 3600,
   "files": [
     {
@@ -12308,7 +12308,7 @@
       "path": "include/assembler/bridge_orchestrator/registries/optional_registries/snapshots/TRegistrySnapshot.hpp",
       "filename": "TRegistrySnapshot.hpp",
       "extension": "hpp",
-      "size_bytes": 3132,
+      "size_bytes": 249,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/optional_registries/snapshots/TRegistrySnapshot.hpp",
