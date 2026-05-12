@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-12T19:02:19Z",
-  "file_count": 3606,
+  "last_updated": "2026-05-12T19:02:59Z",
+  "file_count": 3607,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11363,6 +11363,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/plugin_adapters/contracts/TPluginAdapter.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/plugin_adapters/contracts/TPluginAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/plugin_adapters/descriptors/TPluginAdapterDescriptor.hpp",
+      "filename": "TPluginAdapterDescriptor.hpp",
+      "extension": "hpp",
+      "size_bytes": 2201,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/plugin_adapters/descriptors/TPluginAdapterDescriptor.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/plugin_adapters/descriptors/TPluginAdapterDescriptor.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/obligations/plugin_adapters/detail/.keep",
