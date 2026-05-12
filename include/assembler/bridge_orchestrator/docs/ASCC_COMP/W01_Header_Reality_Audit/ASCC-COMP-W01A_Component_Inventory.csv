@@ -1,0 +1,132 @@
+Wave,Component,DeclaredPathOrSource,InventoryClass,Notes
+W01,TCorrelationToken,bridge_carriers/correlation/TCorrelationToken.hpp,path_backed,W01 primitive carrier
+W01,TBridgeError,bridge_core/errors/TBridgeError.hpp,path_backed,W01 core error
+W01,TBridgeResult,bridge_core/results/TBridgeResult.hpp,path_backed,W01 core result
+W01,TBridgeCarrierResult,bridge_carriers/results/TBridgeCarrierResult.hpp,path_backed,W01 carrier result
+W01,TBridgeCarrierError,bridge_carriers/errors/TBridgeCarrierError.hpp,path_backed,W01 carrier error
+W01,TReadinessView,bridge_carriers/readiness/TReadinessView.hpp,path_backed,W01 carrier readiness
+W01,TAdmissionResult,bridge_carriers/admission/TAdmissionResult.hpp,path_backed,W01 admission carrier
+W01,TLoadSignal,bridge_carriers/signals/TLoadSignal.hpp,path_backed,W01 signal carrier
+W01,TPlacementRequest,bridge_carriers/requests/TPlacementRequest.hpp,path_backed,W01 request carrier
+W01,TPlacementHandle,bridge_carriers/handles/TPlacementHandle.hpp,path_backed,W01 handle carrier
+W01,TNextDestinationRequest,bridge_carriers/destination/TNextDestinationRequest.hpp,path_backed,W01 destination carrier
+W01,TCarrierView,bridge_carriers/views/TCarrierView.hpp,path_backed,W01 carrier view
+W02,TBridgeStage,protocol_state/stages/TBridgeStage.hpp,path_backed,W02 protocol stage
+W02,TBridgeTerminalState,protocol_state/terminal_states/TBridgeTerminalState.hpp,path_backed,W02 terminal state
+W02,TBridgeTransition,protocol_state/transitions/TBridgeTransition.hpp,path_backed,W02 transition
+W02,TBridgeProtocolSnapshot,protocol_state/snapshots/TBridgeProtocolSnapshot.hpp,path_backed,W02 protocol snapshot
+W02,TBridgeProtocolState,protocol_state/lifecycle/TBridgeProtocolState.hpp,path_backed,W02 protocol state lifecycle
+W03,TParticipantRole,participants/roles/TParticipantRole.hpp,path_backed,W03 participant role vocabulary
+W03,TParticipant,participants/descriptors/TParticipant.hpp,path_backed,W03 participant descriptor
+W03,TParticipantView,participants/views/TParticipantView.hpp,path_backed,W03 participant view
+W04,TChannelProfile,channels/profiles/TChannelProfile.hpp,path_backed,W04 channel profile
+W04,TSingleAdapterSinglePortProfile,channels/profiles/TSingleAdapterSinglePortProfile.hpp,path_backed,W04 profile preset
+W04,TChannelBindingPolicy,channels/policies/TChannelBindingPolicy.hpp,path_backed,W04 channel binding policy
+W04,TChannel,channels/topology/TChannel.hpp,path_backed,W04 channel topology
+W05,TPort,obligations/ports/TPort.hpp,path_backed,W05 port facade canonical implementation
+W05,TPort,obligations/ports/contracts/TPort.hpp,forwarder_applied,W01 cleanup converted empty contract path into forwarding include
+W05,TPluginAdapter,obligations/plugin_adapters/contracts/TPluginAdapter.hpp,path_backed,W05 plugin adapter facade
+W05,TObligationSurfacePair,obligations/surface_pairs/TObligationSurfacePair.hpp,path_backed,W05 obligation surface pair
+W05,TPortView,obligations/ports/views/TPortView.hpp,path_backed,W05 port view
+W05,TPluginAdapterView,obligations/plugin_adapters/views/TPluginAdapterView.hpp,path_backed,W05 adapter view
+W05,TPortObligationProfile,obligations/ports/obligations/TPortObligationProfile.hpp,path_backed,W05 port obligation profile
+W05,TPluginAdapterObligationProfile,obligations/plugin_adapters/obligations/TPluginAdapterObligationProfile.hpp,path_backed,W05 adapter obligation profile
+W05,TPortObligationTraits,obligations/ports/obligations/TPortObligationTraits.hpp,path_backed,W05 port obligation traits
+W05,TPluginAdapterObligationTraits,obligations/plugin_adapters/obligations/TPluginAdapterObligationTraits.hpp,path_backed,W05 adapter obligation traits
+W06,TBinding,bindings/TBinding.hpp,path_backed,W06 binding declaration
+W06,TBindingCompatibilityReport,bindings/compatibility/TBindingCompatibilityReport.hpp,path_backed,W06 binding compatibility report
+W06,TBindingId,bindings/ids/TBindingId.hpp,path_backed,W06 binding id
+W06,TBindingProfile,bindings/profiles/TBindingProfile.hpp,path_backed,W06 binding profile
+W06,TBindingResult,bindings/results/TBindingResult.hpp,path_backed,W06 binding result
+W06,TBindingStatus,bindings/status/TBindingStatus.hpp,path_backed,W06 binding status
+W06,TBindingView,bindings/binding_views/TBindingView.hpp,path_backed,W06 binding view
+W07,TCompatibilityEvaluator,compatibility/TCompatibilityEvaluator.hpp,path_backed,W07 compatibility evaluator
+W07,TCompatibilityMatrix,compatibility/matrix/TCompatibilityMatrix.hpp,path_backed,W07 compatibility matrix
+W07,TCompatibilityView,compatibility/views/TCompatibilityView.hpp,path_backed,W07 compatibility view
+W08,TSession,sessions/lifecycle/TSession.hpp,path_backed,W08 session lifecycle
+W08,TSessionOpenRequest,sessions/requests/TSessionOpenRequest.hpp,path_backed,W08 session open request
+W08,TSessionId,sessions/ids/TSessionId.hpp,path_backed,W08 session id
+W08,TSessionPolicy,sessions/policies/TSessionPolicy.hpp,path_backed,W08 session policy
+W08,TSessionStatus,sessions/status/TSessionStatus.hpp,path_backed,W08 session status
+W08,TSessionView,sessions/views/TSessionView.hpp,path_backed,W08 session view
+W08,TSessionSnapshot,sessions/snapshots/TSessionSnapshot.hpp,path_backed,W08 session snapshot
+W08,TSessionResult,sessions/results/TSessionResult.hpp,path_backed,W08 session result
+W09,TBridgeProtocol,protocols/common/TBridgeProtocol.hpp,path_backed,W09 protocol model
+W09,TBridgeProtocolId,protocols/ids/TBridgeProtocolId.hpp,path_backed,W09 protocol id
+W09,TBridgeProtocolKind,protocols/kinds/TBridgeProtocolKind.hpp,path_backed,W09 protocol kind
+W09,TBridgeProtocolPlan,protocols/plans/TBridgeProtocolPlan.hpp,path_backed,W09 protocol plan
+W09,TBridgeProtocolStatus,protocols/status/TBridgeProtocolStatus.hpp,path_backed,W09 protocol status
+W09,TBridgeSession,w09_components.csv,analysis_only_or_alias,W09 CSV names this as session context; implemented concept appears to be TSession
+W09,TEnvelopePlacement,protocols/envelope_placement/TEnvelopePlacementProtocol.hpp,path_backed_or_specialized_protocol,Needs reality check against protocol file naming
+W09,TBridgeProtocolManager,w09_components.csv,analysis_only_needs_decision,May be conceptual decomposition rather than required public header
+W09,TProtocolStepExecutor,w09_components.csv,analysis_only_needs_decision,May be conceptual decomposition rather than required public header
+W09,TBridgeProtocolFactory,w09_components.csv,analysis_only_needs_decision,May be conceptual decomposition rather than required public header
+W09,TProtocolValidator,w09_components.csv,analysis_only_needs_decision,May be conceptual decomposition rather than required public header
+W09,TStepAdvancementLogic,w09_components.csv,analysis_only_needs_decision,May be conceptual decomposition rather than required public header
+W10,TBridge,bridge_core/TBridge.hpp,path_backed,W10 bridge core canonical implementation
+W10,TBridge,bridge_core/orchestration/TBridge.hpp,forwarder_applied,W01 cleanup converted empty orchestration path into forwarding include
+W10,TBridgeCore,bridge_core/TBridgeCore.hpp,path_backed,W10 aggregate include
+W10,TBridgeId,bridge_core/ids/TBridgeId.hpp,path_backed,W10 bridge id
+W10,TBridgeConfig,bridge_core/config/TBridgeConfig.hpp,path_backed,W10 bridge config
+W10,TBridgeStatus,bridge_core/status/TBridgeStatus.hpp,path_backed,W10 bridge status
+W10,TBridgeCoreView,bridge_core/views/TBridgeCoreView.hpp,path_backed,W10 bridge core view
+W10,TBridgeCoreSnapshot,bridge_core/snapshots/TBridgeCoreSnapshot.hpp,path_backed,W10 bridge core snapshot
+W10,TBridgeCoreResult,bridge_core/results/TBridgeCoreResult.hpp,path_backed,W10 bridge core result
+W10,TBridgeCoreStepReport,bridge_core/reports/TBridgeCoreStepReport.hpp,path_backed,W10 bridge core step report
+W10,TBridgeCoreTrace,bridge_core/traces/TBridgeCoreTrace.hpp,path_backed,W10 bridge core trace
+W10,TBridgeCoreFrame,bridge_core/frames/TBridgeCoreFrame.hpp,path_backed,W10 bridge core frame
+W10,TBridgeCoreIssue,bridge_core/issues/TBridgeCoreIssue.hpp,path_backed,W10 bridge core issue
+W10,TBridgeCorePolicy,bridge_core/policies/TBridgeCorePolicy.hpp,path_backed,W10 bridge core policy
+W10,TBridgeStepBudget,bridge_core/budget/TBridgeStepBudget.hpp,path_backed,W10 bridge step budget
+W10,TBridgeRunMode,bridge_core/config/TBridgeRunMode.hpp,path_backed,W10 bridge run mode
+W11,TCommunicationContextRegistrySet,registries/optional_registries/sets/TCommunicationContextRegistrySet.hpp,path_backed,W11 registry set
+W11,TOptionalRegistries,registries/TOptionalRegistries.hpp,path_backed,W11 aggregate include
+W11,TChannelRegistry,registries/optional_registries/typed/TChannelRegistry.hpp,path_backed,W11 typed channel registry
+W11,TBindingRegistry,registries/optional_registries/typed/TBindingRegistry.hpp,path_backed,W11 typed binding registry
+W11,TSessionRegistry,registries/optional_registries/typed/TSessionRegistry.hpp,path_backed,W11 typed session registry
+W11,TBridgeProtocolRegistry,registries/optional_registries/typed/TBridgeProtocolRegistry.hpp,path_backed,W11 typed protocol registry
+W11,TBridgeRegistry,registries/optional_registries/typed/TBridgeRegistry.hpp,path_backed,W11 typed bridge registry
+W11,TBoundedRegistry,registries/optional_registries/base/TBoundedRegistry.hpp,path_backed,W11 bounded registry base
+W11,TRegistryEntry,registries/optional_registries/entries/TRegistryEntry.hpp,path_backed,W11 registry entry
+W11,TRegistryLookupResult,registries/optional_registries/lookups/TRegistryLookupResult.hpp,path_backed,W11 registry lookup result
+W11,TRegistrySnapshot,registries/optional_registries/snapshots/TRegistrySnapshot.hpp,path_backed,W11 registry snapshot
+W11,TRegistryEntryStatus,registries/optional_registries/status/TRegistryEntryStatus.hpp,path_backed,W11 registry entry status
+W12,TDiagnostics,diagnostics/TDiagnostics.hpp,path_backed,W12 aggregate include
+W12,TDiagnosticId,diagnostics/ids/TDiagnosticId.hpp,path_backed,W12 diagnostic id
+W12,TBridgeDiagnosticBuilder,diagnostics/builders/TBridgeDiagnosticBuilder.hpp,path_backed,W12 bridge diagnostic builder
+W12,TRegistryDiagnosticBuilder,diagnostics/builders/TRegistryDiagnosticBuilder.hpp,path_backed,W12 registry diagnostic builder
+W12,TDiagnosticSeverity,diagnostics/severity/TDiagnosticSeverity.hpp,path_backed,W12 diagnostic severity
+W12,TDiagnosticCollector,diagnostics/collectors/TDiagnosticCollector.hpp,path_backed,W12 diagnostic collector
+W12,TDiagnosticRecord,diagnostics/records/TDiagnosticRecord.hpp,path_backed,W12 diagnostic record
+W12,TDiagnosticCategory,diagnostics/categories/TDiagnosticCategory.hpp,path_backed,W12 diagnostic category
+W12,TDiagnosticPolicy,diagnostics/policies/TDiagnosticPolicy.hpp,path_backed,W12 diagnostic policy
+W12,TDiagnosticView,diagnostics/views/TDiagnosticView.hpp,path_backed,W12 diagnostic view
+W12,TDiagnosticReport,diagnostics/reports/TDiagnosticReport.hpp,path_backed,W12 diagnostic report
+W12,TDiagnosticSnapshot,diagnostics/snapshots/TDiagnosticSnapshot.hpp,path_backed,W12 diagnostic snapshot
+W13,TIntegrationBoundaryAbstractPorts,integration_boundaries/TIntegrationBoundaryAbstractPorts.hpp,path_backed,W13 aggregate include
+W13,TIntegrationBoundaryDescriptor,integration_boundaries/descriptors/TIntegrationBoundaryDescriptor.hpp,path_backed,W13 boundary descriptor
+W13,TIntegrationBoundaryPortView,integration_boundaries/views/TIntegrationBoundaryPortView.hpp,path_backed,W13 boundary view
+W13,TBoundaryHandoffRequest,integration_boundaries/carriers/TBoundaryHandoffRequest.hpp,path_backed,W13 handoff request
+W13,TIntegrationBoundaryPolicy,integration_boundaries/policies/TIntegrationBoundaryPolicy.hpp,path_backed,W13 boundary policy
+W13,TBoundaryHandoffResult,integration_boundaries/results/TBoundaryHandoffResult.hpp,path_backed,W13 handoff result
+W13,TBoundaryHandoffHandle,integration_boundaries/carriers/TBoundaryHandoffHandle.hpp,path_backed,W13 handoff handle
+W13,TBoundaryHandoffStatus,integration_boundaries/statuses/TBoundaryHandoffStatus.hpp,path_backed,W13 handoff status
+W13,TIntegrationBoundaryReport,integration_boundaries/reports/TIntegrationBoundaryReport.hpp,path_backed,W13 boundary report
+W13,TIntegrationBoundaryCapability,integration_boundaries/capabilities/TIntegrationBoundaryCapability.hpp,path_backed,W13 boundary capability
+W13,TIntegrationBoundaryDirection,integration_boundaries/directions/TIntegrationBoundaryDirection.hpp,path_backed,W13 boundary direction
+W13,TIntegrationBoundaryKind,integration_boundaries/kinds/TIntegrationBoundaryKind.hpp,path_backed,W13 boundary kind
+W13,TIntegrationBoundaryPort,integration_boundaries/ports/TIntegrationBoundaryPort.hpp,path_backed,W13 CRTP boundary port
+W13,TIntegrationBoundaryPortTraits,integration_boundaries/traits/TIntegrationBoundaryPortTraits.hpp,path_backed,W13 boundary port traits
+W14A,TLogLevelAPIEnvelopePluginAdapterBinding,bindings/concrete_bindings/log_level_api/envelope_plugin_adapter/TLogLevelAPIEnvelopePluginAdapterBinding.hpp,path_backed,W14A aggregate include
+W14A,TLogLevelAPIEnvelopePluginAdapterFactory,bindings/concrete_bindings/log_level_api/envelope_plugin_adapter/factory/TLogLevelAPIEnvelopePluginAdapterFactory.hpp,path_backed,W14A adapter factory
+W14A,TLogLevelAPIEnvelopePluginAdapter,bindings/concrete_bindings/log_level_api/envelope_plugin_adapter/TLogLevelAPIEnvelopePluginAdapter.hpp,path_backed,W14A concrete adapter skeleton
+W14B,TWriteSideEnvelopePlacementPortBinding,bindings/concrete_bindings/write_side/envelope_placement_port/TWriteSideEnvelopePlacementPortBinding.hpp,path_backed,W14B aggregate include
+W14B,TWriteSideEnvelopePlacementPortFactory,bindings/concrete_bindings/write_side/envelope_placement_port/factory/TWriteSideEnvelopePlacementPortFactory.hpp,path_backed,W14B port factory
+W14B,TWriteSideEnvelopePlacementPort,bindings/concrete_bindings/write_side/envelope_placement_port/TWriteSideEnvelopePlacementPort.hpp,path_backed,W14B concrete port skeleton
+W15,TFirstIntegrationSkeletonBinding,integration_boundaries/integration_skeleton/TFirstIntegrationSkeletonBinding.hpp,path_backed,W15 aggregate include
+W15,TFirstIntegrationSkeleton,integration_boundaries/integration_skeleton/TFirstIntegrationSkeleton.hpp,path_backed,W15 executable integration skeleton
+W15,TFirstIntegrationSkeletonConfig,integration_boundaries/integration_skeleton/config/TFirstIntegrationSkeletonConfig.hpp,path_backed,W15 config
+W15,TFirstIntegrationSkeletonFactory,integration_boundaries/integration_skeleton/factory/TFirstIntegrationSkeletonFactory.hpp,path_backed,W15 factory
+W15,TFirstIntegrationSkeletonReport,integration_boundaries/integration_skeleton/reports/TFirstIntegrationSkeletonReport.hpp,path_backed,W15 report
+W15,TFirstIntegrationSkeletonModelPlan,integration_boundaries/integration_skeleton/plans/TFirstIntegrationSkeletonModelPlan.hpp,path_backed,W15 model plan
+W15,TFirstIntegrationSkeletonIdSet,integration_boundaries/integration_skeleton/ids/TFirstIntegrationSkeletonIdSet.hpp,path_backed,W15 id set
