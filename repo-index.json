@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T04:01:32Z",
-  "file_count": 3660,
+  "last_updated": "2026-05-13T12:16:21Z",
+  "file_count": 3661,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -12613,6 +12613,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/registry_delivery/TRegistryDeliveryProtocol.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/registry_delivery/TRegistryDeliveryProtocol.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocols/requirements/TProtocolCapabilityKind.hpp",
+      "filename": "TProtocolCapabilityKind.hpp",
+      "extension": "hpp",
+      "size_bytes": 3783,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolCapabilityKind.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolCapabilityKind.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocols/results/TBridgeProtocolResult.hpp",
