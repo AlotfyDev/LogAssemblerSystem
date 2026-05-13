@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T23:58:56Z",
-  "file_count": 3712,
+  "last_updated": "2026-05-13T23:59:34Z",
+  "file_count": 3713,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6463,6 +6463,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Facade_Impact.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Facade_Impact.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W10_Bridge_Core_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 4677,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Facade_Impact_Matrix.csv"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Operational_Analysis.md",
