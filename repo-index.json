@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T02:59:57Z",
-  "file_count": 3651,
+  "last_updated": "2026-05-13T03:03:05Z",
+  "file_count": 3652,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -4193,6 +4193,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingHandoffStyle.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingHandoffStyle.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingOwnershipBoundary.hpp",
+      "filename": "TBindingOwnershipBoundary.hpp",
+      "extension": "hpp",
+      "size_bytes": 2047,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingOwnershipBoundary.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingOwnershipBoundary.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bindings/concrete_bindings/log_level_api/envelope_plugin_adapter/carriers/TLogLevelEnvelopeDescriptor.hpp",
