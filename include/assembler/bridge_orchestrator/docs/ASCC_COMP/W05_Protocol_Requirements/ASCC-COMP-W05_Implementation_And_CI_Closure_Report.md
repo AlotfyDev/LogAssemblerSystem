@@ -5,7 +5,7 @@
 ```text
 Wave: ASCC-COMP-W05
 Canonical Name: Protocol Capability And Carrier Requirement Model
-Status: Implemented, pending external CI confirmation
+Status: Closed — CI Confirmed
 ```
 
 ## 2. Purpose
@@ -88,9 +88,24 @@ carrier_flow_supported
 composition readiness
 ```
 
-## 7. Closure Decision
+## 7. CI Evidence
+
+Manual GitHub Actions smoke workflow confirmed success:
 
 ```text
-ASCC-COMP-W05 implementation is now complete in the repository.
-External GitHub Actions smoke test confirmation is still required.
+Branch: master
+Commit: 3ef54dd
+Status: Success
+Total duration: 35s
+Artifacts: 1
+```
+
+This CI run confirms that the W05 protocol requirements smoke test compiles and passes as part of the ASCC smoke workflow.
+
+## 8. Closure Decision
+
+```text
+ASCC-COMP-W05 is closed.
+Implementation is complete in the repository.
+GitHub Actions smoke workflow confirmed success on commit 3ef54dd.
 ```
