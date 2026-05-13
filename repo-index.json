@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T21:28:06Z",
-  "file_count": 3681,
+  "last_updated": "2026-05-13T21:30:24Z",
+  "file_count": 3682,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -12803,6 +12803,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolRequirementKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolRequirementKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocols/requirements/TProtocolRequirementMatchResult.hpp",
+      "filename": "TProtocolRequirementMatchResult.hpp",
+      "extension": "hpp",
+      "size_bytes": 4113,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolRequirementMatchResult.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolRequirementMatchResult.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocols/requirements/TProtocolRequirementSet.hpp",
