@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T20:28:36Z",
-  "file_count": 3671,
+  "last_updated": "2026-05-13T20:34:34Z",
+  "file_count": 3672,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5703,6 +5703,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessStatus.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessStatus.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/readiness/TAsccSessionReadinessView.hpp",
+      "filename": "TAsccSessionReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 2196,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccSessionReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccSessionReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/composability/reports/TAsccComposabilityIssue.hpp",
