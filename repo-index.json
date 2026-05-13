@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T01:21:18Z",
-  "file_count": 3640,
+  "last_updated": "2026-05-13T01:23:55Z",
+  "file_count": 3641,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11973,6 +11973,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityMatchResult.hpp",
+      "filename": "TParticipantCapabilityMatchResult.hpp",
+      "extension": "hpp",
+      "size_bytes": 3494,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityMatchResult.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityMatchResult.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityRequirement.hpp",
