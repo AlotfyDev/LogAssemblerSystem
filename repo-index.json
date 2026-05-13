@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T01:03:23Z",
-  "file_count": 3634,
+  "last_updated": "2026-05-13T01:05:56Z",
+  "file_count": 3635,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11923,6 +11923,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/tests/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/tests/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityDirection.hpp",
+      "filename": "TParticipantCapabilityDirection.hpp",
+      "extension": "hpp",
+      "size_bytes": 1698,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityDirection.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityDirection.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/participants/capabilities/TParticipantCapabilityId.hpp",
