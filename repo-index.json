@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T21:32:34Z",
-  "file_count": 3684,
+  "last_updated": "2026-05-13T21:33:40Z",
+  "file_count": 3685,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -13543,6 +13543,16 @@
       "category": "test",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w04_binding_composition_smoke_test.cpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w04_binding_composition_smoke_test.cpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w05_protocol_requirements_smoke_test.cpp",
+      "filename": "ascc_comp_w05_protocol_requirements_smoke_test.cpp",
+      "extension": "cpp",
+      "size_bytes": 2132,
+      "top_level_dir": "include",
+      "category": "test",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w05_protocol_requirements_smoke_test.cpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w05_protocol_requirements_smoke_test.cpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w06_readiness_evidence_smoke_test.cpp",
