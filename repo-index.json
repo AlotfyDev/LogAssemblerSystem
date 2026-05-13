@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T20:48:53Z",
-  "file_count": 3674,
+  "last_updated": "2026-05-13T20:57:55Z",
+  "file_count": 3675,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5713,6 +5713,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessIssue.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessIssue.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessReport.hpp",
+      "filename": "TAsccReadinessReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 5176,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/composability/readiness/TAsccReadinessStatus.hpp",
