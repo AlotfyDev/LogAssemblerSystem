@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T22:32:15Z",
-  "file_count": 3687,
+  "last_updated": "2026-05-13T23:20:05Z",
+  "file_count": 3688,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6433,6 +6433,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Readiness_And_Evidence_View/README.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Readiness_And_Evidence_View/README.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/README.md",
+      "filename": "README.md",
+      "extension": "md",
+      "size_bytes": 1977,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/README.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/README.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/holistic_docs/architecture/holistic_bridge_orchestrator_overview.md",
