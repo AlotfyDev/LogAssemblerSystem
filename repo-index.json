@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T21:33:40Z",
-  "file_count": 3685,
+  "last_updated": "2026-05-13T21:34:39Z",
+  "file_count": 3686,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6393,6 +6393,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Binding_Profile_And_Composition_Metadata/README.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Binding_Profile_And_Composition_Metadata/README.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Protocol_Requirements/README.md",
+      "filename": "README.md",
+      "extension": "md",
+      "size_bytes": 2586,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Protocol_Requirements/README.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Protocol_Requirements/README.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Readiness_And_Evidence_View/ASCC-COMP-W06_Implementation_And_CI_Closure_Report.md",
