@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T20:34:34Z",
-  "file_count": 3672,
+  "last_updated": "2026-05-13T20:39:37Z",
+  "file_count": 3673,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5643,6 +5643,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccBindingReadinessView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccBindingReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/composability/readiness/TAsccBridgeReadinessView.hpp",
+      "filename": "TAsccBridgeReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 2553,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccBridgeReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/composability/readiness/TAsccBridgeReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/composability/readiness/TAsccEvidenceDimension.hpp",
