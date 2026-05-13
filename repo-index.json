@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T03:40:43Z",
+  "last_updated": "2026-05-13T03:54:36Z",
   "file_count": 3659,
   "files": [
     {
@@ -4178,7 +4178,7 @@
       "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp",
       "filename": "TBindingCompositionMetadata.hpp",
       "extension": "hpp",
-      "size_bytes": 5941,
+      "size_bytes": 5975,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp",
