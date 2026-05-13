@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T03:14:41Z",
-  "file_count": 3653,
+  "last_updated": "2026-05-13T03:31:12Z",
+  "file_count": 3654,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -4183,6 +4183,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionRequirement.hpp",
+      "filename": "TBindingCompositionRequirement.hpp",
+      "extension": "hpp",
+      "size_bytes": 3727,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionRequirement.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionRequirement.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingExecutionAssumption.hpp",
