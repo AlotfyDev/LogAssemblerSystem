@@ -81,7 +81,7 @@ namespace assembler::communication_context
         [[nodiscard]] constexpr bool can_claim_payload_delivery() const noexcept
         {
             return allows_payload_delivery_claim
-                && can_claim_payload_delivery(handoff_style)
+                && assembler::communication_context::can_claim_payload_delivery(handoff_style)
                 && !is_diagnostic_only();
         }
 
