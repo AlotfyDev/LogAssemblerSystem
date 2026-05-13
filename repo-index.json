@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T01:29:44Z",
-  "file_count": 3645,
+  "last_updated": "2026-05-13T01:31:30Z",
+  "file_count": 3646,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -13163,6 +13163,16 @@
       "category": "test",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w02_composability_coverage_smoke_test.cpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w02_composability_coverage_smoke_test.cpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w03_participant_capability_smoke_test.cpp",
+      "filename": "ascc_comp_w03_participant_capability_smoke_test.cpp",
+      "extension": "cpp",
+      "size_bytes": 5649,
+      "top_level_dir": "include",
+      "category": "test",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w03_participant_capability_smoke_test.cpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/tests/smoke-tests/ascc_comp_w03_participant_capability_smoke_test.cpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/tests/smoke-tests/w01_smoke_test.cpp",
