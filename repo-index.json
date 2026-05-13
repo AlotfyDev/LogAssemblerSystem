@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T23:51:43Z",
-  "file_count": 3697,
+  "last_updated": "2026-05-13T23:52:03Z",
+  "file_count": 3698,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11593,6 +11593,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentId.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentId.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentVersion.hpp",
+      "filename": "TAsccComponentVersion.hpp",
+      "extension": "hpp",
+      "size_bytes": 611,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentVersion.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentVersion.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp",
