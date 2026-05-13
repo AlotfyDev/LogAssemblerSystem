@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T23:35:26Z",
-  "file_count": 3691,
+  "last_updated": "2026-05-13T23:40:18Z",
+  "file_count": 3692,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6463,6 +6463,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Operational_Matrix.csv",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Bridge_Core_Operational_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Policy_Relationship_As_Composition_Capability.md",
+      "filename": "ASCC-COMP-W10_Policy_Relationship_As_Composition_Capability.md",
+      "extension": "md",
+      "size_bytes": 6300,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Policy_Relationship_As_Composition_Capability.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_Policy_Relationship_As_Composition_Capability.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/README.md",
