@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T21:22:54Z",
+  "last_updated": "2026-05-13T21:25:44Z",
   "file_count": 3681,
   "files": [
     {
@@ -12758,7 +12758,7 @@
       "path": "include/assembler/bridge_orchestrator/protocols/requirements/TProtocolBindingRequirement.hpp",
       "filename": "TProtocolBindingRequirement.hpp",
       "extension": "hpp",
-      "size_bytes": 1499,
+      "size_bytes": 3386,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/requirements/TProtocolBindingRequirement.hpp",
