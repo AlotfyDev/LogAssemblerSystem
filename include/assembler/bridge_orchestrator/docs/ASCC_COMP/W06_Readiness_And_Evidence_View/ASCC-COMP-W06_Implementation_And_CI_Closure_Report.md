@@ -5,7 +5,7 @@
 ```text
 Wave: ASCC-COMP-W06
 Canonical Name: Generic Readiness And Evidence View
-Status: Implemented, pending external CI confirmation
+Status: Closed — CI Confirmed
 ```
 
 ## 2. Purpose
@@ -85,9 +85,24 @@ ASCC-COMP-W07_Core_Composable_Component_Readiness_Gate
 
 W07 may use W06 readiness reports as the final ASCC-core composability evidence bundle.
 
-## 7. Closure Decision
+## 7. CI Evidence
+
+Manual GitHub Actions smoke workflow confirmed success:
 
 ```text
-ASCC-COMP-W06 implementation is complete.
-External GitHub Actions smoke test confirmation is still required.
+Branch: master
+Commit: 3ef54dd
+Status: Success
+Total duration: 35s
+Artifacts: 1
+```
+
+This CI run confirms that the W06 readiness/evidence smoke test compiles and passes as part of the ASCC smoke workflow.
+
+## 8. Closure Decision
+
+```text
+ASCC-COMP-W06 is closed.
+Implementation is complete in the repository.
+GitHub Actions smoke workflow confirmed success on commit 3ef54dd.
 ```
