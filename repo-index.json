@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T23:50:04Z",
-  "file_count": 3696,
+  "last_updated": "2026-05-13T23:51:43Z",
+  "file_count": 3697,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11583,6 +11583,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/SmokeTests_SystemView/w15_smoke_test/w15_holistic_behavioral_diagram.dot",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/SmokeTests_SystemView/w15_smoke_test/w15_holistic_behavioral_diagram.dot"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentId.hpp",
+      "filename": "TAsccComponentId.hpp",
+      "extension": "hpp",
+      "size_bytes": 966,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentId.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentId.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp",
