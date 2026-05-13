@@ -42,7 +42,7 @@ Therefore, this document classifies each Bridge Core header by actual operationa
 This document covers:
 
 1. the operational role of `bridge_core/`,
-2. the distinction between endpoint-neutral model runtime and endpoint runtime,
+2. the distinction between Bridge Core model execution and concrete endpoint invocation/composition,
 3. the operational classification of Bridge Core headers,
 4. current model execution flow,
 5. operational gaps,
@@ -52,14 +52,25 @@ This document covers:
 
 This document does not implement or design:
 
-1. concrete adapter invocation,
-2. concrete port invocation,
-3. endpoint runtime executor,
-4. scheduler/thread/async runtime,
+1. concrete adapter invocation path,
+2. concrete port invocation path,
+3. endpoint invocation/composition component,
+4. scheduler/thread/async execution policy,
 5. Log Level API internals,
 6. Circulation Mechanism Engine internals,
 7. read-side receiver lifecycle,
 8. persistence or telemetry exporters.
+
+Important clarification:
+
+```text
+Out of scope does not mean this logic must live outside headers.
+In a header-only system, concrete endpoint invocation could also be implemented
+as headers/templates/traits.
+
+The current finding is only that this concrete invocation path is not present
+inside bridge_core/ today.
+```
 
 ---
 
@@ -67,7 +78,7 @@ This document does not implement or design:
 
 `bridge_core/` is not a descriptor-only directory.
 
-It contains a real header-only endpoint-neutral model runtime centered on:
+It contains a real header-only Bridge Core model runtime centered on:
 
 ```text
 bridge_core/TBridge.hpp
@@ -86,24 +97,35 @@ step reports
 frames / views / snapshots / traces
 ```
 
-The current Bridge Core does not own:
+The current Bridge Core does not currently contain:
 
 ```text
-endpoint invocation
-adapter calls
-port calls
+concrete adapter invocation path
+concrete port invocation path
+binding-to-endpoint invocation composition
 payload movement inside CME
 LogAPI content preparation
 read-side dispatch retry
-scheduler / worker pool / async loop
+scheduler / worker pool / async policy
 IO / persistence / telemetry
 ```
 
 The precise architectural statement is:
 
 ```text
-Bridge Core currently owns endpoint-neutral bridge model execution.
-Bridge Core does not currently own concrete endpoint runtime execution.
+Bridge Core currently owns header-only Bridge Core model execution.
+Bridge Core does not currently contain the header-level concrete endpoint
+invocation/composition path that would connect model steps to concrete
+adapter/port calls.
+```
+
+This is not a distinction between `.hpp` and `.cpp`.
+
+It is a distinction between:
+
+```text
+A) model-step advancement already implemented in headers
+B) endpoint adapter/port invocation path not yet represented as headers/types
 ```
 
 ---
@@ -147,7 +169,18 @@ TBridge::declare()
 
 This flow is operational because it mutates bridge model state and consumes bounded steps.
 
-It is not full endpoint runtime because it never invokes concrete endpoints, ports, plugin adapters, or external IO.
+It is not merely descriptive.
+
+The missing layer is not a non-header runtime. The missing layer is a header-level invocation/composition path such as:
+
+```text
+TBridgeStepExecutor
+TBridgeEndpointInvocation
+TBridgeAdapterPortCall
+TBridgeConcreteInvocationPolicy
+```
+
+Such a layer would be responsible for connecting a bridge/protocol step to concrete adapter/port calls while preserving ASCC boundaries.
 
 ---
 
@@ -155,7 +188,7 @@ It is not full endpoint runtime because it never invokes concrete endpoints, por
 
 | File | Operational Judgment |
 |---|---|
-| `bridge_core/TBridge.hpp` | Core endpoint-neutral operational model orchestrator |
+| `bridge_core/TBridge.hpp` | Core operational model orchestrator |
 | `bridge_core/budget/TBridgeStepBudget.hpp` | Execution guard logic; consumes bounded model steps |
 | `bridge_core/policies/TBridgeCorePolicy.hpp` | Declaration preflight guard logic |
 | `bridge_core/results/TBridgeCoreResult.hpp` | Operational outcome/result logic |
@@ -179,32 +212,38 @@ ASCC-COMP-W10_Bridge_Core_Operational_Matrix.csv
 
 ## 8. Operational Gaps
 
-### 8.1 Endpoint Executor Gap
+### 8.1 Concrete Endpoint Invocation Path Gap
 
 Current state:
 
 ```text
-TBridge advances the protocol model.
-TBridge does not invoke endpoints.
+TBridge advances the bridge/protocol model.
+TBridge does not call concrete adapters or ports.
 ```
 
 Gap:
 
 ```text
-No concrete endpoint call executor exists in Bridge Core.
+No header-level concrete endpoint invocation/composition path exists in Bridge Core.
 ```
+
+This gap does not imply that an implementation must be placed in a `.cpp` file or external runtime.
+
+In this project, the missing component would likely also be header-only and static/profile-driven.
 
 Recommended action:
 
 ```text
-Add an explicit Bridge Executor boundary only if ASCC is later authorized to execute concrete endpoint steps.
+Add an explicit bridge endpoint invocation boundary only if ASCC is confirmed to own
+concrete adapter/port step execution.
 ```
 
 Candidate component:
 
 ```text
-TBridgeExecutor
-TBridgeEndpointInvocationBoundary
+TBridgeStepExecutor
+TBridgeEndpointInvocation
+TBridgeAdapterPortInvocationPolicy
 TBridgeExecutionReport
 ```
 
@@ -261,7 +300,7 @@ No formal compatibility matrix maps run modes to allowed operations and evidence
 Recommended action:
 
 ```text
-Add run-mode compatibility only when bounded run, diagnostic dry run, or executor modes require formal gating.
+Add run-mode compatibility only when bounded run, diagnostic dry run, or endpoint invocation modes require formal gating.
 ```
 
 Candidate component:
@@ -350,7 +389,7 @@ TBridgeTraits.hpp is deferred by W01 as a bridge runtime/contract decision.
 Gap:
 
 ```text
-No static customization trait contract exists for protocol capacity, diagnostics profile, executor/no-executor profile, or evidence policy.
+No static customization trait contract exists for protocol capacity, diagnostics profile, endpoint invocation profile, or evidence policy.
 ```
 
 Recommended action:
@@ -414,11 +453,11 @@ final consumer acknowledgement
 
 These belong to read-side circulation or receiver-side profiles.
 
-### 9.4 Bridge Core Must Not Become Scheduler
+### 9.4 Bridge Core Must Not Become Scheduler By Accident
 
 Bridge Core model execution is bounded by step budget.
 
-It must not silently become:
+If scheduling, threading, or async policy is required later, it must be represented explicitly as a profile/contract, not smuggled into `TBridge`.
 
 ```text
 thread owner
@@ -448,7 +487,7 @@ TBridgeProtocol<PlanCapacity>::advance_model_step().
 Therefore, the next analytical question is:
 
 ```text
-How much operational logic is inside the protocol model, and what protocol-runtime gaps remain?
+How much operational logic is inside the protocol model, and what protocol invocation/composition gaps remain?
 ```
 
 ---
@@ -458,11 +497,18 @@ How much operational logic is inside the protocol model, and what protocol-runti
 `bridge_core/` is officially classified as:
 
 ```text
-Header-only endpoint-neutral Bridge Core model runtime.
+Header-only Bridge Core model runtime.
 ```
 
 It is not merely descriptive.
 
-It is also not yet a concrete endpoint runtime.
+The missing production layer is not “runtime outside headers”.
 
-The correct production path is to preserve the current model/runtime boundary while adding missing readiness, diagnostics, and optional executor boundaries only through explicit later waves.
+The missing production layer is:
+
+```text
+header-level concrete endpoint invocation/composition machinery,
+if ASCC is supposed to own that machinery.
+```
+
+The correct production path is to preserve the current model execution while adding missing readiness, diagnostics, and optional endpoint invocation boundaries only through explicit later waves.
