@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-13T23:53:18Z",
-  "file_count": 3701,
+  "last_updated": "2026-05-13T23:53:44Z",
+  "file_count": 3703,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11585,6 +11585,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/SmokeTests_SystemView/w15_smoke_test/w15_holistic_behavioral_diagram.dot"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccAdministrativeFacade.hpp",
+      "filename": "TAsccAdministrativeFacade.hpp",
+      "extension": "hpp",
+      "size_bytes": 1110,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccAdministrativeFacade.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccAdministrativeFacade.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccComponentCapabilityCatalog.hpp",
       "filename": "TAsccComponentCapabilityCatalog.hpp",
       "extension": "hpp",
@@ -11643,6 +11653,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccComponentReadinessStatus.hpp",
+      "filename": "TAsccComponentReadinessStatus.hpp",
+      "extension": "hpp",
+      "size_bytes": 1328,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccComponentReadinessStatus.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccComponentReadinessStatus.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/README.md",
