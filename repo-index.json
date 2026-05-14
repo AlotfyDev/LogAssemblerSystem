@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T01:18:50Z",
-  "file_count": 3733,
+  "last_updated": "2026-05-14T03:12:11Z",
+  "file_count": 3740,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -3538,7 +3538,7 @@
       "path": ".gitignore",
       "filename": ".gitignore",
       "extension": "",
-      "size_bytes": 80,
+      "size_bytes": 111,
       "top_level_dir": ".gitignore",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/.gitignore",
@@ -11805,6 +11805,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionEvidenceAdapter.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateEvidenceAdapter.hpp",
+      "filename": "TBridgeProtocolStateEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 3567,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateFacadeProjection.hpp",
+      "filename": "TBridgeProtocolStateFacadeProjection.hpp",
+      "extension": "hpp",
+      "size_bytes": 5272,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateFacadeProjection.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateFacadeProjection.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/consuming/TAsccConsumingFacade.hpp",
       "filename": "TAsccConsumingFacade.hpp",
       "extension": "hpp",
@@ -11933,6 +11953,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionReadinessView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TBridgeProtocolStateReadinessView.hpp",
+      "filename": "TBridgeProtocolStateReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 4459,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TBridgeProtocolStateReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TBridgeProtocolStateReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/README.md",
@@ -12935,6 +12965,36 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/lifecycle/TBridgeProtocolState.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/protocol_state/reasons/TBridgeTransitionReasonKind.hpp",
+      "filename": "TBridgeTransitionReasonKind.hpp",
+      "extension": "hpp",
+      "size_bytes": 3437,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/reasons/TBridgeTransitionReasonKind.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/reasons/TBridgeTransitionReasonKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocol_state/reports/TBridgeProtocolStateInvariantReport.hpp",
+      "filename": "TBridgeProtocolStateInvariantReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 2968,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/reports/TBridgeProtocolStateInvariantReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/reports/TBridgeProtocolStateInvariantReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocol_state/reports/TBridgeProtocolStateTransitionReport.hpp",
+      "filename": "TBridgeProtocolStateTransitionReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 2369,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/reports/TBridgeProtocolStateTransitionReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/reports/TBridgeProtocolStateTransitionReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/protocol_state/snapshots/.keep",
       "filename": ".keep",
       "extension": "",
@@ -13013,6 +13073,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/transitions/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/transitions/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocol_state/transitions/TBridgeStageTransitionMatrix.hpp",
+      "filename": "TBridgeStageTransitionMatrix.hpp",
+      "extension": "hpp",
+      "size_bytes": 4620,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/transitions/TBridgeStageTransitionMatrix.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/transitions/TBridgeStageTransitionMatrix.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocol_state/transitions/TBridgeTransition.hpp",
