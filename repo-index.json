@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T00:48:19Z",
-  "file_count": 3729,
+  "last_updated": "2026-05-14T00:48:40Z",
+  "file_count": 3730,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -13753,6 +13753,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/views/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/views/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/sessions/bootstrap/TSessionProtocolBootstrapPolicy.hpp",
+      "filename": "TSessionProtocolBootstrapPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 3102,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/bootstrap/TSessionProtocolBootstrapPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/bootstrap/TSessionProtocolBootstrapPolicy.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/sessions/correlation/.keep",
