@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T00:43:39Z",
-  "file_count": 3726,
+  "last_updated": "2026-05-14T00:47:17Z",
+  "file_count": 3727,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11863,6 +11863,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccProtocolReadinessView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccProtocolReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionAdmissionPolicy.hpp",
+      "filename": "TAsccSessionAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 3637,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionAdmissionPolicy.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionOpenRequestAdapter.hpp",
