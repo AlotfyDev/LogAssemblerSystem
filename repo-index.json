@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T00:09:33Z",
-  "file_count": 3714,
+  "last_updated": "2026-05-14T00:10:23Z",
+  "file_count": 3715,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6443,6 +6443,16 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_Model_Operational_Analysis.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_Model_Operational_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_Operational_Matrix.csv",
+      "filename": "ASCC-COMP-W09_Protocol_Operational_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 17723,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_Operational_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_Operational_Matrix.csv"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_ASCC_Facade_Obligation_Gap_Matrix.csv",
