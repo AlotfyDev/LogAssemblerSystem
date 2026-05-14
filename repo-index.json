@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T03:12:11Z",
-  "file_count": 3740,
+  "last_updated": "2026-05-14T04:41:58Z",
+  "file_count": 3751,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -6625,6 +6625,46 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/README.md"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W11_Registry_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2807,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Model_Operational_Analysis.md",
+      "filename": "ASCC-COMP-W11_Registry_Model_Operational_Analysis.md",
+      "extension": "md",
+      "size_bytes": 3766,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Model_Operational_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Model_Operational_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Operational_Matrix.csv",
+      "filename": "ASCC-COMP-W11_Registry_Operational_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 9089,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Operational_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Operational_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_To_Facade_Component_Relationship.md",
+      "filename": "ASCC-COMP-W11_Registry_To_Facade_Component_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1300,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_To_Facade_Component_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_To_Facade_Component_Relationship.md"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/docs/holistic_docs/architecture/holistic_bridge_orchestrator_overview.md",
       "filename": "holistic_bridge_orchestrator_overview.md",
       "extension": "md",
@@ -11755,6 +11795,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccProtocolCatalogView.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccRegistryCatalogView.hpp",
+      "filename": "TAsccRegistryCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 986,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccRegistryCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccRegistryCatalogView.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccSessionPolicyCatalogView.hpp",
       "filename": "TAsccSessionPolicyCatalogView.hpp",
       "extension": "hpp",
@@ -11793,6 +11843,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccRegistryEvidenceAdapter.hpp",
+      "filename": "TAsccRegistryEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 1548,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccRegistryEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccRegistryEvidenceAdapter.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionEvidenceAdapter.hpp",
@@ -11923,6 +11983,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccProtocolReadinessView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccProtocolReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccRegistryAdmissionPolicy.hpp",
+      "filename": "TAsccRegistryAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 759,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccRegistryAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccRegistryAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccRegistryReadinessView.hpp",
+      "filename": "TAsccRegistryReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1579,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccRegistryReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccRegistryReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccSessionAdmissionPolicy.hpp",
@@ -13735,6 +13815,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/plugin_adapter_registry/TPluginAdapterRegistry.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/registries/policies/TRegistryAdmissionPolicy.hpp",
+      "filename": "TRegistryAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 657,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/policies/TRegistryAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/policies/TRegistryAdmissionPolicy.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/registries/port_registry/.keep",
       "filename": ".keep",
       "extension": "",
@@ -13773,6 +13863,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/protocol_registry/TProtocolRegistry.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/protocol_registry/TProtocolRegistry.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/registries/reports/TRegistryReadinessReport.hpp",
+      "filename": "TRegistryReadinessReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 1623,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/reports/TRegistryReadinessReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/reports/TRegistryReadinessReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/registries/reports/TRegistrySetReadinessReport.hpp",
+      "filename": "TRegistrySetReadinessReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 1049,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/registries/reports/TRegistrySetReadinessReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/registries/reports/TRegistrySetReadinessReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/registries/session_registry/.keep",
