@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T00:47:17Z",
-  "file_count": 3727,
+  "last_updated": "2026-05-14T00:47:42Z",
+  "file_count": 3728,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -11763,6 +11763,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccFacadeSurfaceKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionEvidenceAdapter.hpp",
+      "filename": "TAsccSessionEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 2871,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionEvidenceAdapter.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/consuming/TAsccConsumingFacade.hpp",
