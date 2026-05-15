@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T22:36:58Z",
-  "file_count": 3939,
+  "last_updated": "2026-05-15T22:41:47Z",
+  "file_count": 3940,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -14853,6 +14853,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/TBridgeStage.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/TBridgeStage.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocol_state/TBridgeStageTransitionMatrix.hpp",
+      "filename": "TBridgeStageTransitionMatrix.hpp",
+      "extension": "hpp",
+      "size_bytes": 4145,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/TBridgeStageTransitionMatrix.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/TBridgeStageTransitionMatrix.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocol_state/TBridgeTerminalState.hpp",
