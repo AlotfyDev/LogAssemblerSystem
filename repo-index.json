@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T04:47:49Z",
-  "file_count": 3765,
+  "last_updated": "2026-05-15T06:52:28Z",
+  "file_count": 3929,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -4725,6 +4725,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/admission/TAdmissionResult.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/bindings/TCarrierProtocolBindingMap.hpp",
+      "filename": "TCarrierProtocolBindingMap.hpp",
+      "extension": "hpp",
+      "size_bytes": 969,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/bindings/TCarrierProtocolBindingMap.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/bindings/TCarrierProtocolBindingMap.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/correlation/.keep",
       "filename": ".keep",
       "extension": "",
@@ -4805,6 +4815,46 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/errors/TBridgeCarrierError.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowDirection.hpp",
+      "filename": "TCarrierFlowDirection.hpp",
+      "extension": "hpp",
+      "size_bytes": 695,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowDirection.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowDirection.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowLedger.hpp",
+      "filename": "TCarrierFlowLedger.hpp",
+      "extension": "hpp",
+      "size_bytes": 812,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowLedger.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowLedger.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowRecord.hpp",
+      "filename": "TCarrierFlowRecord.hpp",
+      "extension": "hpp",
+      "size_bytes": 817,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowRecord.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowRecord.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowReport.hpp",
+      "filename": "TCarrierFlowReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 662,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/flow/TCarrierFlowReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/handles/.keep",
       "filename": ".keep",
       "extension": "",
@@ -4828,11 +4878,21 @@
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/kinds/TAsccCarrierKind.hpp",
       "filename": "TAsccCarrierKind.hpp",
       "extension": "hpp",
-      "size_bytes": 2942,
+      "size_bytes": 4307,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/kinds/TAsccCarrierKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/kinds/TAsccCarrierKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/obligations/TCarrierObligationResolver.hpp",
+      "filename": "TCarrierObligationResolver.hpp",
+      "extension": "hpp",
+      "size_bytes": 1648,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/obligations/TCarrierObligationResolver.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/obligations/TCarrierObligationResolver.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/readiness/.keep",
@@ -4875,6 +4935,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/requests/TPlacementRequest.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionEngine.hpp",
+      "filename": "TCarrierRequirementSatisfactionEngine.hpp",
+      "extension": "hpp",
+      "size_bytes": 719,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionEngine.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionEngine.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionReport.hpp",
+      "filename": "TCarrierRequirementSatisfactionReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 759,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/results/.keep",
       "filename": ".keep",
       "extension": "",
@@ -4893,6 +4973,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/results/TBridgeCarrierResult.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/results/TBridgeCarrierResult.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/runtime/TCarrierFlowRuntime.hpp",
+      "filename": "TCarrierFlowRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1271,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/runtime/TCarrierFlowRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/runtime/TCarrierFlowRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/runtime/TCarrierFlowRuntimeStatus.hpp",
+      "filename": "TCarrierFlowRuntimeStatus.hpp",
+      "extension": "hpp",
+      "size_bytes": 963,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/runtime/TCarrierFlowRuntimeStatus.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/runtime/TCarrierFlowRuntimeStatus.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/signals/.keep",
@@ -4925,6 +5025,36 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/tests/.keep"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationEngine.hpp",
+      "filename": "TCarrierValidationEngine.hpp",
+      "extension": "hpp",
+      "size_bytes": 1129,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationEngine.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationEngine.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationReport.hpp",
+      "filename": "TCarrierValidationReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 693,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationResult.hpp",
+      "filename": "TCarrierValidationResult.hpp",
+      "extension": "hpp",
+      "size_bytes": 952,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationResult.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/validation/TCarrierValidationResult.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/views/.keep",
       "filename": ".keep",
       "extension": "",
@@ -4943,6 +5073,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/views/TCarrierView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/views/TCarrierView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeBudgetPolicy.hpp",
+      "filename": "TBridgeBudgetPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 677,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeBudgetPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeBudgetPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeBudgetReport.hpp",
+      "filename": "TBridgeBudgetReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 402,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeBudgetReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeBudgetReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_core/budget/TBridgeStepBudget.hpp",
@@ -4975,6 +5125,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/config/TBridgeRunMode.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/config/TBridgeRunModeCompatibilityMatrix.hpp",
+      "filename": "TBridgeRunModeCompatibilityMatrix.hpp",
+      "extension": "hpp",
+      "size_bytes": 924,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/config/TBridgeRunModeCompatibilityMatrix.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/config/TBridgeRunModeCompatibilityMatrix.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_core/detail/.keep",
       "filename": ".keep",
       "extension": "",
@@ -4983,6 +5143,36 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/detail/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/detail/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeCoreIssueCatalog.hpp",
+      "filename": "TBridgeCoreIssueCatalog.hpp",
+      "extension": "hpp",
+      "size_bytes": 741,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeCoreIssueCatalog.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeCoreIssueCatalog.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeFrameCollector.hpp",
+      "filename": "TBridgeFrameCollector.hpp",
+      "extension": "hpp",
+      "size_bytes": 692,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeFrameCollector.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeFrameCollector.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeTraceCollector.hpp",
+      "filename": "TBridgeTraceCollector.hpp",
+      "extension": "hpp",
+      "size_bytes": 692,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeTraceCollector.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/diagnostics/TBridgeTraceCollector.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_core/docs/.keep",
@@ -5023,6 +5213,46 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/execution/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/execution/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeAdapterPortInvocationPolicy.hpp",
+      "filename": "TBridgeAdapterPortInvocationPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 1306,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeAdapterPortInvocationPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeAdapterPortInvocationPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeEndpointInvocation.hpp",
+      "filename": "TBridgeEndpointInvocation.hpp",
+      "extension": "hpp",
+      "size_bytes": 1843,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeEndpointInvocation.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeEndpointInvocation.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeEndpointInvocationProfile.hpp",
+      "filename": "TBridgeEndpointInvocationProfile.hpp",
+      "extension": "hpp",
+      "size_bytes": 1405,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeEndpointInvocationProfile.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeEndpointInvocationProfile.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeStepExecutor.hpp",
+      "filename": "TBridgeStepExecutor.hpp",
+      "extension": "hpp",
+      "size_bytes": 1076,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeStepExecutor.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/execution/TBridgeStepExecutor.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_core/frames/TBridgeCoreFrame.hpp",
@@ -5075,6 +5305,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/policies/TBridgeCorePolicy.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/readiness/TBridgeCoreReadinessPolicy.hpp",
+      "filename": "TBridgeCoreReadinessPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 1369,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/readiness/TBridgeCoreReadinessPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/readiness/TBridgeCoreReadinessPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeCoreRunReport.hpp",
+      "filename": "TBridgeCoreRunReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 711,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeCoreRunReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeCoreRunReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeCoreStepReport.hpp",
       "filename": "TBridgeCoreStepReport.hpp",
       "extension": "hpp",
@@ -5083,6 +5333,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeCoreStepReport.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeCoreStepReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeExecutionReport.hpp",
+      "filename": "TBridgeExecutionReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 787,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeExecutionReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/reports/TBridgeExecutionReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_core/results/.keep",
@@ -5135,6 +5395,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/status/TBridgeStatus.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/status/TBridgeStatusTransitionMatrix.hpp",
+      "filename": "TBridgeStatusTransitionMatrix.hpp",
+      "extension": "hpp",
+      "size_bytes": 1707,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/status/TBridgeStatusTransitionMatrix.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/status/TBridgeStatusTransitionMatrix.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bridge_core/TBridge.hpp",
       "filename": "TBridge.hpp",
       "extension": "hpp",
@@ -5183,6 +5453,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/traits/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/traits/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_core/traits/TBridgeStaticProfile.hpp",
+      "filename": "TBridgeStaticProfile.hpp",
+      "extension": "hpp",
+      "size_bytes": 612,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_core/traits/TBridgeStaticProfile.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_core/traits/TBridgeStaticProfile.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_core/traits/TBridgeTraits.hpp",
@@ -5273,6 +5553,86 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/profiles/TSingleAdapterSinglePortProfile.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/profiles/TSingleAdapterSinglePortProfile.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/reports/TChannelRuntimeReport.hpp",
+      "filename": "TChannelRuntimeReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 818,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/reports/TChannelRuntimeReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/reports/TChannelRuntimeReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/reports/TChannelTransitionReport.hpp",
+      "filename": "TChannelTransitionReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 897,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/reports/TChannelTransitionReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/reports/TChannelTransitionReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/runtime/TChannelAdmissionPolicy.hpp",
+      "filename": "TChannelAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 708,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/runtime/TChannelBindingReadinessBridge.hpp",
+      "filename": "TChannelBindingReadinessBridge.hpp",
+      "extension": "hpp",
+      "size_bytes": 579,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelBindingReadinessBridge.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelBindingReadinessBridge.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/runtime/TChannelLifecycleController.hpp",
+      "filename": "TChannelLifecycleController.hpp",
+      "extension": "hpp",
+      "size_bytes": 1470,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelLifecycleController.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelLifecycleController.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/runtime/TChannelReadinessView.hpp",
+      "filename": "TChannelReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 767,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/runtime/TChannelRuntimeContext.hpp",
+      "filename": "TChannelRuntimeContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 605,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelRuntimeContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelRuntimeContext.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/channels/runtime/TChannelSessionPreparationPolicy.hpp",
+      "filename": "TChannelSessionPreparationPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 496,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelSessionPreparationPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/channels/runtime/TChannelSessionPreparationPolicy.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/channels/tests/.keep",
@@ -5485,6 +5845,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/performance_compatibility/TPerformanceCompatibility.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/compatibility/profiles/TCompatibilityProfile.hpp",
+      "filename": "TCompatibilityProfile.hpp",
+      "extension": "hpp",
+      "size_bytes": 1163,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/profiles/TCompatibilityProfile.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/profiles/TCompatibilityProfile.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/compatibility/protocol_compatibility/.keep",
       "filename": ".keep",
       "extension": "",
@@ -5505,6 +5875,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/protocol_compatibility/TProtocolCompatibility.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/compatibility/reports/TCompatibilityDimensionCoverageReport.hpp",
+      "filename": "TCompatibilityDimensionCoverageReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 962,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/reports/TCompatibilityDimensionCoverageReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/reports/TCompatibilityDimensionCoverageReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/compatibility/reports/TCompatibilityRuntimeReport.hpp",
+      "filename": "TCompatibilityRuntimeReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 982,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/reports/TCompatibilityRuntimeReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/reports/TCompatibilityRuntimeReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRule.hpp",
       "filename": "TCompatibilityRule.hpp",
       "extension": "hpp",
@@ -5515,6 +5905,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRule.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRulePackCatalog.hpp",
+      "filename": "TCompatibilityRulePackCatalog.hpp",
+      "extension": "hpp",
+      "size_bytes": 612,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRulePackCatalog.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRulePackCatalog.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRuleSet.hpp",
       "filename": "TCompatibilityRuleSet.hpp",
       "extension": "hpp",
@@ -5523,6 +5923,46 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRuleSet.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/rules/TCompatibilityRuleSet.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityAdmissionPolicy.hpp",
+      "filename": "TCompatibilityAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 566,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityEvidenceAdapter.hpp",
+      "filename": "TCompatibilityEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 535,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityRuntime.hpp",
+      "filename": "TCompatibilityRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1275,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityRuntimeContext.hpp",
+      "filename": "TCompatibilityRuntimeContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 829,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityRuntimeContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/compatibility/runtime/TCompatibilityRuntimeContext.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/compatibility/severity/TCompatibilitySeverity.hpp",
@@ -6025,6 +6465,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/error_views/TErrorDiagnosticView.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/export/TDiagnosticExportBoundary.hpp",
+      "filename": "TDiagnosticExportBoundary.hpp",
+      "extension": "hpp",
+      "size_bytes": 898,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/export/TDiagnosticExportBoundary.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/export/TDiagnosticExportBoundary.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/export/TDiagnosticExportReport.hpp",
+      "filename": "TDiagnosticExportReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 513,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/export/TDiagnosticExportReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/export/TDiagnosticExportReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/diagnostics/ids/TDiagnosticId.hpp",
       "filename": "TDiagnosticId.hpp",
       "extension": "hpp",
@@ -6083,6 +6543,96 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/reports/TDiagnosticReport.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/reports/TDiagnosticReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticBuilderRegistry.hpp",
+      "filename": "TDiagnosticBuilderRegistry.hpp",
+      "extension": "hpp",
+      "size_bytes": 634,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticBuilderRegistry.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticBuilderRegistry.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticComponentReportAssembler.hpp",
+      "filename": "TDiagnosticComponentReportAssembler.hpp",
+      "extension": "hpp",
+      "size_bytes": 556,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticComponentReportAssembler.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticComponentReportAssembler.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticReadinessView.hpp",
+      "filename": "TDiagnosticReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 620,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRoutingPolicy.hpp",
+      "filename": "TDiagnosticRoutingPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 977,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRoutingPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRoutingPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntime.hpp",
+      "filename": "TDiagnosticRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1524,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntimeContext.hpp",
+      "filename": "TDiagnosticRuntimeContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 859,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntimeContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntimeContext.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntimeReport.hpp",
+      "filename": "TDiagnosticRuntimeReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 742,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntimeReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticRuntimeReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticSourceKind.hpp",
+      "filename": "TDiagnosticSourceKind.hpp",
+      "extension": "hpp",
+      "size_bytes": 1490,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticSourceKind.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticSourceKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticSourceRegistry.hpp",
+      "filename": "TDiagnosticSourceRegistry.hpp",
+      "extension": "hpp",
+      "size_bytes": 1058,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticSourceRegistry.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/runtime/TDiagnosticSourceRegistry.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/diagnostics/session_views/.keep",
@@ -6173,6 +6723,46 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/diagnostics/views/TDiagnosticView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/diagnostics/views/TDiagnosticView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W01_Bridge_Carriers_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2640,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W01_Bridge_Carriers_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 4533,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W01_Bridge_Carriers_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 9832,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_To_Protocol_Binding_Facade_Relationship.md",
+      "filename": "ASCC-COMP-W01_Bridge_Carriers_To_Protocol_Binding_Facade_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1784,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_To_Protocol_Binding_Facade_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Bridge_Carriers_Runtime_Analysis/ASCC-COMP-W01_Bridge_Carriers_To_Protocol_Binding_Facade_Relationship.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W01_Header_Reality_Audit/ASCC-COMP-W01_Canonical_Path_Decisions.md",
@@ -6465,6 +7055,46 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Capability_Set/ASCC-COMP-W03_Implementation_And_CI_Closure_Report.md"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W03_Participant_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2846,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Model_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W03_Participant_Model_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 1773,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Model_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Model_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W03_Participant_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 10185,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_To_Protocol_Binding_Carrier_Relationship.md",
+      "filename": "ASCC-COMP-W03_Participant_To_Protocol_Binding_Carrier_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1008,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_To_Protocol_Binding_Carrier_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W03_Participant_Model_Runtime_Analysis/ASCC-COMP-W03_Participant_To_Protocol_Binding_Carrier_Relationship.md"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Binding_Profile_And_Composition_Metadata/ASCC-COMP-W04_Implementation_And_CI_Closure_Report.md",
       "filename": "ASCC-COMP-W04_Implementation_And_CI_Closure_Report.md",
       "extension": "md",
@@ -6483,6 +7113,86 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Binding_Profile_And_Composition_Metadata/README.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Binding_Profile_And_Composition_Metadata/README.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W04_Channel_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2567,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Model_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W04_Channel_Model_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 2295,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Model_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Model_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W04_Channel_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 7528,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_To_Participant_Binding_Session_Relationship.md",
+      "filename": "ASCC-COMP-W04_Channel_To_Participant_Binding_Session_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1181,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_To_Participant_Binding_Session_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W04_Channel_Model_Runtime_Analysis/ASCC-COMP-W04_Channel_To_Participant_Binding_Session_Relationship.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W05_Obligation_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2096,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Model_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W05_Obligation_Model_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 2116,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Model_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Model_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W05_Obligation_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 9062,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_To_Participant_Binding_Carrier_Relationship.md",
+      "filename": "ASCC-COMP-W05_Obligation_To_Participant_Binding_Carrier_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1537,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_To_Participant_Binding_Carrier_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Obligation_Model_Runtime_Analysis/ASCC-COMP-W05_Obligation_To_Participant_Binding_Carrier_Relationship.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Protocol_Requirements/ASCC-COMP-W05_Implementation_And_CI_Closure_Report.md",
@@ -6565,6 +7275,46 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Readiness_And_Evidence_View/README.md"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W07_Compatibility_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2366,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Model_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W07_Compatibility_Model_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 1711,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Model_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Model_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W07_Compatibility_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 8604,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_To_Binding_Session_Protocol_Relationship.md",
+      "filename": "ASCC-COMP-W07_Compatibility_To_Binding_Session_Protocol_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1132,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_To_Binding_Session_Protocol_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W07_Compatibility_Model_Runtime_Analysis/ASCC-COMP-W07_Compatibility_To_Binding_Session_Protocol_Relationship.md"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Operational_Analysis/ASCC-COMP-W08_Session_Facade_Impact_Matrix.csv",
       "filename": "ASCC-COMP-W08_Session_Facade_Impact_Matrix.csv",
       "extension": "csv",
@@ -6593,6 +7343,76 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Operational_Analysis/ASCC-COMP-W08_Session_Operational_Matrix.csv",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Operational_Analysis/ASCC-COMP-W08_Session_Operational_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W08_Session_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 906,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Model_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W08_Session_Model_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 596,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Model_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Model_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W08_Session_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2073,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_To_Protocol_Bridge_Facade_Relationship.md",
+      "filename": "ASCC-COMP-W08_Session_To_Protocol_Bridge_Facade_Relationship.md",
+      "extension": "md",
+      "size_bytes": 622,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_To_Protocol_Bridge_Facade_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W08_Session_Model_Runtime_Analysis/ASCC-COMP-W08_Session_To_Protocol_Bridge_Facade_Relationship.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_Execution_Matrix.csv",
+      "filename": "ASCC-COMP-W09_Protocol_Execution_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 5004,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_Execution_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_Execution_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_Model_Execution_Entities.md",
+      "filename": "ASCC-COMP-W09_Protocol_Model_Execution_Entities.md",
+      "extension": "md",
+      "size_bytes": 1813,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_Model_Execution_Entities.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_Model_Execution_Entities.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_To_BridgeCore_Execution_Relationship.md",
+      "filename": "ASCC-COMP-W09_Protocol_To_BridgeCore_Execution_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1082,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_To_BridgeCore_Execution_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Execution_Entities/ASCC-COMP-W09_Protocol_To_BridgeCore_Execution_Relationship.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_Facade_Impact_Matrix.csv",
@@ -6633,6 +7453,26 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_To_BridgeCore_Relationship.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W09_Protocol_Model_Operational_Analysis/ASCC-COMP-W09_Protocol_To_BridgeCore_Relationship.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Entities.md",
+      "filename": "ASCC-COMP-W10_Bridge_Core_Execution_Entities.md",
+      "extension": "md",
+      "size_bytes": 904,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Entities.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Entities.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv",
+      "filename": "ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2533,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/ASCC-COMP-W10_ASCC_Facade_Obligation_Gap_Matrix.csv",
@@ -6725,6 +7565,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/README.md"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Entities.md",
+      "filename": "ASCC-COMP-W10_Bridge_Core_Execution_Entities.md",
+      "extension": "md",
+      "size_bytes": 904,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Entities.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Entities.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv",
+      "filename": "ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2533,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W10_Bridge_Core_Operational_Analysis/W10_Bridge_Core_Execution_Entities/ASCC-COMP-W10_Bridge_Core_Execution_Matrix.csv"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_Facade_Impact_Matrix.csv",
       "filename": "ASCC-COMP-W11_Registry_Facade_Impact_Matrix.csv",
       "extension": "csv",
@@ -6763,6 +7623,86 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_To_Facade_Component_Relationship.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W11_Registry_Model_Operational_Analysis/ASCC-COMP-W11_Registry_To_Facade_Component_Relationship.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W12_Diagnostics_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2090,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W12_Diagnostics_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 2056,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W12_Diagnostics_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 9018,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_To_Component_Runtime_Relationship.md",
+      "filename": "ASCC-COMP-W12_Diagnostics_To_Component_Runtime_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1256,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_To_Component_Runtime_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W12_Diagnostics_Runtime_Analysis/ASCC-COMP-W12_Diagnostics_To_Component_Runtime_Relationship.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W13_Integration_Boundary_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 1926,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Runtime_Analysis.md",
+      "filename": "ASCC-COMP-W13_Integration_Boundary_Runtime_Analysis.md",
+      "extension": "md",
+      "size_bytes": 2378,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Runtime_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Runtime_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Runtime_Matrix.csv",
+      "filename": "ASCC-COMP-W13_Integration_Boundary_Runtime_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 8886,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Runtime_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_Runtime_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_To_Facade_Component_Relationship.md",
+      "filename": "ASCC-COMP-W13_Integration_Boundary_To_Facade_Component_Relationship.md",
+      "extension": "md",
+      "size_bytes": 1143,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_To_Facade_Component_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W13_Integration_Boundary_Runtime_Analysis/ASCC-COMP-W13_Integration_Boundary_To_Facade_Component_Relationship.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/holistic_docs/architecture/holistic_bridge_orchestrator_overview.md",
@@ -11865,6 +12805,36 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccBindingProfileCatalogView.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccCarrierCatalogView.hpp",
+      "filename": "TAsccCarrierCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1045,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccCarrierCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccCarrierCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccChannelCatalogView.hpp",
+      "filename": "TAsccChannelCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1274,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccChannelCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccChannelCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccCompatibilityCatalogView.hpp",
+      "filename": "TAsccCompatibilityCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 550,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccCompatibilityCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccCompatibilityCatalogView.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccComponentCapabilityCatalog.hpp",
       "filename": "TAsccComponentCapabilityCatalog.hpp",
       "extension": "hpp",
@@ -11893,6 +12863,46 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccComponentProfileId.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccComponentProfileId.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccDiagnosticCatalogView.hpp",
+      "filename": "TAsccDiagnosticCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 635,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccDiagnosticCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccDiagnosticCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccIntegrationBoundaryCatalogView.hpp",
+      "filename": "TAsccIntegrationBoundaryCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 591,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccIntegrationBoundaryCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccIntegrationBoundaryCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccObligationCatalogView.hpp",
+      "filename": "TAsccObligationCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 574,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccObligationCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccObligationCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccParticipantCatalogView.hpp",
+      "filename": "TAsccParticipantCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1374,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccParticipantCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccParticipantCatalogView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccProtocolCatalogView.hpp",
@@ -11985,6 +12995,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionEvidenceAdapter.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionPolicyCatalogView.hpp",
+      "filename": "TAsccSessionPolicyCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1343,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionPolicyCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccSessionPolicyCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TBridgeCoreFacadeEvidenceAdapter.hpp",
+      "filename": "TBridgeCoreFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 884,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeCoreFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeCoreFacadeEvidenceAdapter.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateEvidenceAdapter.hpp",
       "filename": "TBridgeProtocolStateEvidenceAdapter.hpp",
       "extension": "hpp",
@@ -12003,6 +13033,76 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateFacadeProjection.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TBridgeProtocolStateFacadeProjection.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TCarrierFacadeEvidenceAdapter.hpp",
+      "filename": "TCarrierFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 715,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TCarrierFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TCarrierFacadeEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TChannelFacadeEvidenceAdapter.hpp",
+      "filename": "TChannelFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 619,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TChannelFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TChannelFacadeEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TCompatibilityFacadeEvidenceAdapter.hpp",
+      "filename": "TCompatibilityFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 829,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TCompatibilityFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TCompatibilityFacadeEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TDiagnosticFacadeEvidenceAdapter.hpp",
+      "filename": "TDiagnosticFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 1109,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TDiagnosticFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TDiagnosticFacadeEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TIntegrationBoundaryFacadeEvidenceAdapter.hpp",
+      "filename": "TIntegrationBoundaryFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 842,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TIntegrationBoundaryFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TIntegrationBoundaryFacadeEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TObligationFacadeEvidenceAdapter.hpp",
+      "filename": "TObligationFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 916,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TObligationFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TObligationFacadeEvidenceAdapter.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TParticipantFacadeEvidenceAdapter.hpp",
+      "filename": "TParticipantFacadeEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 650,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TParticipantFacadeEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TParticipantFacadeEvidenceAdapter.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/consuming/TAsccConsumingFacade.hpp",
@@ -12065,6 +13165,56 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingReadinessView.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCarrierReadinessView.hpp",
+      "filename": "TAsccCarrierReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1488,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCarrierReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCarrierReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccChannelAdmissionPolicy.hpp",
+      "filename": "TAsccChannelAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 609,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccChannelAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccChannelAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccChannelReadinessView.hpp",
+      "filename": "TAsccChannelReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1214,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccChannelReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccChannelReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCompatibilityAdmissionPolicy.hpp",
+      "filename": "TAsccCompatibilityAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 643,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCompatibilityAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCompatibilityAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCompatibilityReadinessView.hpp",
+      "filename": "TAsccCompatibilityReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1018,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCompatibilityReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccCompatibilityReadinessView.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccComponentAdmission.hpp",
       "filename": "TAsccComponentAdmission.hpp",
       "extension": "hpp",
@@ -12085,6 +13235,46 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccComponentReadinessStatus.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccDiagnosticAdmissionPolicy.hpp",
+      "filename": "TAsccDiagnosticAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 793,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccDiagnosticAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccDiagnosticAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccDiagnosticReadinessView.hpp",
+      "filename": "TAsccDiagnosticReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1148,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccDiagnosticReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccDiagnosticReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccIntegrationBoundaryAdmissionPolicy.hpp",
+      "filename": "TAsccIntegrationBoundaryAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 676,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccIntegrationBoundaryAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccIntegrationBoundaryAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccIntegrationBoundaryReadinessView.hpp",
+      "filename": "TAsccIntegrationBoundaryReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1154,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccIntegrationBoundaryReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccIntegrationBoundaryReadinessView.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccManagerialFacade.hpp",
       "filename": "TAsccManagerialFacade.hpp",
       "extension": "hpp",
@@ -12103,6 +13293,46 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccManagerialReadinessView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccManagerialReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccObligationAdmissionPolicy.hpp",
+      "filename": "TAsccObligationAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 704,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccObligationAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccObligationAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccObligationReadinessView.hpp",
+      "filename": "TAsccObligationReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1064,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccObligationReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccObligationReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccParticipantAdmissionPolicy.hpp",
+      "filename": "TAsccParticipantAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 1136,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccParticipantAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccParticipantAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccParticipantReadinessView.hpp",
+      "filename": "TAsccParticipantReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1240,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccParticipantReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccParticipantReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccProtocolAdmissionPolicy.hpp",
@@ -12183,6 +13413,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TBridgeProtocolStateReadinessView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TBridgeProtocolStateReadinessView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TProtocolRequirementFacadeAdapter.hpp",
+      "filename": "TProtocolRequirementFacadeAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 1223,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TProtocolRequirementFacadeAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TProtocolRequirementFacadeAdapter.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/README.md",
@@ -12483,6 +13723,106 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/results/TBoundaryHandoffResult.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/results/TBoundaryHandoffResult.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffLedger.hpp",
+      "filename": "TBoundaryHandoffLedger.hpp",
+      "extension": "hpp",
+      "size_bytes": 891,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffLedger.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffLedger.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffLifecycleController.hpp",
+      "filename": "TBoundaryHandoffLifecycleController.hpp",
+      "extension": "hpp",
+      "size_bytes": 643,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffLifecycleController.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffLifecycleController.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffRuntime.hpp",
+      "filename": "TBoundaryHandoffRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1209,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffRuntimeReport.hpp",
+      "filename": "TBoundaryHandoffRuntimeReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 978,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffRuntimeReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TBoundaryHandoffRuntimeReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryAdmissionPolicy.hpp",
+      "filename": "TIntegrationBoundaryAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 708,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryExportContract.hpp",
+      "filename": "TIntegrationBoundaryExportContract.hpp",
+      "extension": "hpp",
+      "size_bytes": 563,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryExportContract.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryExportContract.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryMaterialClassifier.hpp",
+      "filename": "TIntegrationBoundaryMaterialClassifier.hpp",
+      "extension": "hpp",
+      "size_bytes": 634,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryMaterialClassifier.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryMaterialClassifier.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRetryPolicy.hpp",
+      "filename": "TIntegrationBoundaryRetryPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 588,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRetryPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRetryPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRuntimeContext.hpp",
+      "filename": "TIntegrationBoundaryRuntimeContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 990,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRuntimeContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRuntimeContext.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRuntimeView.hpp",
+      "filename": "TIntegrationBoundaryRuntimeView.hpp",
+      "extension": "hpp",
+      "size_bytes": 713,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRuntimeView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/integration_boundaries/runtime/TIntegrationBoundaryRuntimeView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/integration_boundaries/statuses/TBoundaryHandoffStatus.hpp",
@@ -12885,6 +14225,106 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/reports/TObligationReport.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationCarrierFlowBridge.hpp",
+      "filename": "TObligationCarrierFlowBridge.hpp",
+      "extension": "hpp",
+      "size_bytes": 772,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationCarrierFlowBridge.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationCarrierFlowBridge.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationContext.hpp",
+      "filename": "TObligationInvocationContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 1254,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationContext.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationPolicy.hpp",
+      "filename": "TObligationInvocationPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 818,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationReport.hpp",
+      "filename": "TObligationInvocationReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 876,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationResult.hpp",
+      "filename": "TObligationInvocationResult.hpp",
+      "extension": "hpp",
+      "size_bytes": 1223,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationResult.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationResult.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationSequencer.hpp",
+      "filename": "TObligationInvocationSequencer.hpp",
+      "extension": "hpp",
+      "size_bytes": 1725,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationSequencer.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationInvocationSequencer.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationRuntime.hpp",
+      "filename": "TObligationRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1023,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationRuntimeView.hpp",
+      "filename": "TObligationRuntimeView.hpp",
+      "extension": "hpp",
+      "size_bytes": 647,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationRuntimeView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationRuntimeView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationSurfaceReadinessEvaluator.hpp",
+      "filename": "TObligationSurfaceReadinessEvaluator.hpp",
+      "extension": "hpp",
+      "size_bytes": 612,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationSurfaceReadinessEvaluator.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationSurfaceReadinessEvaluator.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/obligations/runtime/TObligationTraitAudit.hpp",
+      "filename": "TObligationTraitAudit.hpp",
+      "extension": "hpp",
+      "size_bytes": 720,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationTraitAudit.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/obligations/runtime/TObligationTraitAudit.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/obligations/SFINAE_Traits_Dysfunctionality_Report.md",
       "filename": "SFINAE_Traits_Dysfunctionality_Report.md",
       "extension": "md",
@@ -13085,6 +14525,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/ids/TParticipantId.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/participants/reports/TParticipantCapabilityMatchReport.hpp",
+      "filename": "TParticipantCapabilityMatchReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 787,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/reports/TParticipantCapabilityMatchReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/reports/TParticipantCapabilityMatchReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/reports/TParticipantRuntimeReport.hpp",
+      "filename": "TParticipantRuntimeReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 954,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/reports/TParticipantRuntimeReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/reports/TParticipantRuntimeReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/participants/roles/.keep",
       "filename": ".keep",
       "extension": "",
@@ -13103,6 +14563,76 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/roles/TParticipantRole.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/roles/TParticipantRole.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantAdmissionPolicy.hpp",
+      "filename": "TParticipantAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 960,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantCapabilityMatcher.hpp",
+      "filename": "TParticipantCapabilityMatcher.hpp",
+      "extension": "hpp",
+      "size_bytes": 2194,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantCapabilityMatcher.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantCapabilityMatcher.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantCarrierParticipationRuntime.hpp",
+      "filename": "TParticipantCarrierParticipationRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1042,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantCarrierParticipationRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantCarrierParticipationRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantObligationSurfaceBinding.hpp",
+      "filename": "TParticipantObligationSurfaceBinding.hpp",
+      "extension": "hpp",
+      "size_bytes": 631,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantObligationSurfaceBinding.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantObligationSurfaceBinding.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantRegistryAdmissionPolicy.hpp",
+      "filename": "TParticipantRegistryAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 456,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantRegistryAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantRegistryAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantRoleBindingMap.hpp",
+      "filename": "TParticipantRoleBindingMap.hpp",
+      "extension": "hpp",
+      "size_bytes": 928,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantRoleBindingMap.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantRoleBindingMap.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/participants/runtime/TParticipantRuntimeContext.hpp",
+      "filename": "TParticipantRuntimeContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 1050,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantRuntimeContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/participants/runtime/TParticipantRuntimeContext.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/participants/tests/.keep",
@@ -13315,6 +14845,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/transitions/TBridgeTransition.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/protocols/bindings/TProtocolStepObligationBinding.hpp",
+      "filename": "TProtocolStepObligationBinding.hpp",
+      "extension": "hpp",
+      "size_bytes": 1571,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/bindings/TProtocolStepObligationBinding.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/bindings/TProtocolStepObligationBinding.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocols/bindings/TProtocolStepRequirementBinding.hpp",
+      "filename": "TProtocolStepRequirementBinding.hpp",
+      "extension": "hpp",
+      "size_bytes": 1197,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/bindings/TProtocolStepRequirementBinding.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/bindings/TProtocolStepRequirementBinding.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/protocols/common/.keep",
       "filename": ".keep",
       "extension": "",
@@ -13405,6 +14955,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/envelope_placement/TEnvelopePlacementProtocol.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/protocols/evidence/TProtocolStepEvidenceRequirement.hpp",
+      "filename": "TProtocolStepEvidenceRequirement.hpp",
+      "extension": "hpp",
+      "size_bytes": 908,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/evidence/TProtocolStepEvidenceRequirement.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/evidence/TProtocolStepEvidenceRequirement.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/protocols/frames/TBridgeProtocolFrame.hpp",
       "filename": "TBridgeProtocolFrame.hpp",
       "extension": "hpp",
@@ -13425,6 +14985,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/ids/TBridgeProtocolId.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/protocols/invocation/TProtocolStepInvocationDescriptor.hpp",
+      "filename": "TProtocolStepInvocationDescriptor.hpp",
+      "extension": "hpp",
+      "size_bytes": 1206,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/invocation/TProtocolStepInvocationDescriptor.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/invocation/TProtocolStepInvocationDescriptor.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/protocols/kinds/TBridgeProtocolKind.hpp",
       "filename": "TBridgeProtocolKind.hpp",
       "extension": "hpp",
@@ -13433,6 +15003,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/kinds/TBridgeProtocolKind.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/kinds/TBridgeProtocolKind.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocols/matching/TProtocolRequirementMatcher.hpp",
+      "filename": "TProtocolRequirementMatcher.hpp",
+      "extension": "hpp",
+      "size_bytes": 1826,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/matching/TProtocolRequirementMatcher.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/matching/TProtocolRequirementMatcher.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocols/persistence_delivery/.keep",
@@ -13463,6 +15043,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/plans/TBridgeProtocolPlan.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/plans/TBridgeProtocolPlan.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocols/policies/TProtocolStepExecutionPolicy.hpp",
+      "filename": "TProtocolStepExecutionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 926,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/policies/TProtocolStepExecutionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/policies/TProtocolStepExecutionPolicy.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocols/receiver_delivery/.keep",
@@ -13503,6 +15093,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/registry_delivery/TRegistryDeliveryProtocol.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/registry_delivery/TRegistryDeliveryProtocol.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocols/reports/TProtocolPlanReadinessReport.hpp",
+      "filename": "TProtocolPlanReadinessReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 866,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocols/reports/TProtocolPlanReadinessReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocols/reports/TProtocolPlanReadinessReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocols/requirements/TProtocolBindingRequirement.hpp",
@@ -14205,6 +15805,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/policies/TSessionPolicy.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/sessions/reports/TSessionLifecycleTransitionReport.hpp",
+      "filename": "TSessionLifecycleTransitionReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 898,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/reports/TSessionLifecycleTransitionReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/reports/TSessionLifecycleTransitionReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/sessions/reports/TSessionRuntimeReport.hpp",
+      "filename": "TSessionRuntimeReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 840,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/reports/TSessionRuntimeReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/reports/TSessionRuntimeReport.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/sessions/requests/TSessionOpenRequest.hpp",
       "filename": "TSessionOpenRequest.hpp",
       "extension": "hpp",
@@ -14223,6 +15843,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/results/TSessionResult.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/results/TSessionResult.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/sessions/runtime/TSessionLifecycleRuntime.hpp",
+      "filename": "TSessionLifecycleRuntime.hpp",
+      "extension": "hpp",
+      "size_bytes": 1320,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/runtime/TSessionLifecycleRuntime.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/runtime/TSessionLifecycleRuntime.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/sessions/runtime/TSessionRuntimeContext.hpp",
+      "filename": "TSessionRuntimeContext.hpp",
+      "extension": "hpp",
+      "size_bytes": 860,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/sessions/runtime/TSessionRuntimeContext.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/sessions/runtime/TSessionRuntimeContext.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/sessions/snapshots/TSessionSnapshot.hpp",
