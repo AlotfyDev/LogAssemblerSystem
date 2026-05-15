@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T08:35:48Z",
-  "file_count": 3932,
+  "last_updated": "2026-05-15T16:29:12Z",
+  "file_count": 3933,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -5043,6 +5043,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/signals/TLoadSignal.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/signals/TLoadSignal.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/TBridgeCarriers.hpp",
+      "filename": "TBridgeCarriers.hpp",
+      "extension": "hpp",
+      "size_bytes": 3047,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/TBridgeCarriers.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/TBridgeCarriers.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/tests/.keep",
