@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T16:39:52Z",
-  "file_count": 3935,
+  "last_updated": "2026-05-15T21:51:51Z",
+  "file_count": 3936,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -14743,6 +14743,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/docs/.keep",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/docs/.keep"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/protocol_state/docs/TProtocolState_RuntimeDependencyOrder.md",
+      "filename": "TProtocolState_RuntimeDependencyOrder.md",
+      "extension": "md",
+      "size_bytes": 7638,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/protocol_state/docs/TProtocolState_RuntimeDependencyOrder.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/protocol_state/docs/TProtocolState_RuntimeDependencyOrder.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/protocol_state/lifecycle/.keep",
