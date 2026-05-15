@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T08:17:05Z",
-  "file_count": 3930,
+  "last_updated": "2026-05-15T08:21:16Z",
+  "file_count": 3931,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -4913,6 +4913,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/readiness/TCarrierReadinessReport.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/readiness/TCarrierReadinessReport.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bridge_carriers/readiness/TCarrierRuntimeReadinessView.hpp",
+      "filename": "TCarrierRuntimeReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 2773,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/readiness/TCarrierRuntimeReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bridge_carriers/readiness/TCarrierRuntimeReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/readiness/TReadinessView.hpp",
