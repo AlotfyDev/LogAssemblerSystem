@@ -9,6 +9,30 @@
 
 namespace assembler::communication_context
 {
+	// the recent enum : 
+	enum class TAsccCarrierKind { unknown, correlation_token, placement_request, placement_handle, admission_result, readiness_view, load_signal, next_destination_request, bridge_result, bridge_error, carrier_result, carrier_error };
+    [[nodiscard]] constexpr std::string_view to_string(TAsccCarrierKind kind) noexcept
+    {
+        switch (kind)
+        {
+            case TAsccCarrierKind::unknown: return "unknown";
+            case TAsccCarrierKind::correlation_token: return "correlation_token";
+            case TAsccCarrierKind::placement_request: return "placement_request";
+            case TAsccCarrierKind::placement_handle: return "placement_handle";
+            case TAsccCarrierKind::admission_result: return "admission_result";
+            case TAsccCarrierKind::readiness_view: return "readiness_view";
+            case TAsccCarrierKind::load_signal: return "load_signal";
+            case TAsccCarrierKind::next_destination_request: return "next_destination_request";
+            case TAsccCarrierKind::bridge_result: return "bridge_result";
+            case TAsccCarrierKind::bridge_error: return "bridge_error";
+            case TAsccCarrierKind::carrier_result: return "carrier_result";
+            case TAsccCarrierKind::carrier_error: return "carrier_error";
+        }
+        return "unknown";
+    }
+	
+	
+	// old enum : 
     enum class TAsccCarrierKind
     {
         unknown,
