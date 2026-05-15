@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T07:35:06Z",
+  "last_updated": "2026-05-15T07:35:55Z",
   "file_count": 3929,
   "files": [
     {
@@ -4948,7 +4948,7 @@
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionReport.hpp",
       "filename": "TCarrierRequirementSatisfactionReport.hpp",
       "extension": "hpp",
-      "size_bytes": 759,
+      "size_bytes": 2113,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/requirements/TCarrierRequirementSatisfactionReport.hpp",
