@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T16:32:29Z",
-  "file_count": 3933,
+  "last_updated": "2026-05-15T16:37:02Z",
+  "file_count": 3934,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -39323,6 +39323,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/log_level_api/validator/TLogApiValidatorSurface.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/log_level_api/validator/TLogApiValidatorSurface.hpp"
+    },
+    {
+      "path": "tests/bridge_carriers/TBridgeCarriersSmokeTests.cpp",
+      "filename": "TBridgeCarriersSmokeTests.cpp",
+      "extension": "cpp",
+      "size_bytes": 4493,
+      "top_level_dir": "tests",
+      "category": "test",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/tests/bridge_carriers/TBridgeCarriersSmokeTests.cpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/tests/bridge_carriers/TBridgeCarriersSmokeTests.cpp"
     },
     {
       "path": "tools/ascc_header_audit.py",
