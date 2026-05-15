@@ -1,0 +1,4 @@
+MatrixId,SessionEntity,OriginalClassification,FacadeImpact,AdministrativeSurfaceRole,ManagerialSurfaceRole,ConsumingSurfaceRole,RequiredFacadeBindingEntity,Priority,Notes
+ASCC-COMP-W08-SES-FI-001,TSession,SESSION_LIFECYCLE_MODEL_RUNTIME,Internal model runtime behind facade,None directly,Primary readiness/admission source,Consumed indirectly through protocol/bridge operation,TAsccSessionReadinessView,High,Do not expose mutable session internals
+ASCC-COMP-W08-SES-FI-002,TSessionOpenRequest,REQUEST_WITH_COMPATIBILITY_LOGIC,Request built by facade adapter,None directly,Input to session admission,Not consumed directly,TAsccSessionOpenRequestAdapter,High,Protects request construction
+ASCC-COMP-W08-SES-FI-003,TAsccSessionReadinessView,FACADE_READINESS_VIEW,Facade session readiness,None directly,Primary readiness view,May explain operation failure,facade_layer/managerial,High,Pipeline Composer-facing
