@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "assembler/communication_context/bridge_carriers/kinds/TAsccCarrierKind.hpp"
 #include "assembler/communication_context/bridge_carriers/validation/TCarrierValidationReport.hpp"
 #include "assembler/communication_context/bridge_carriers/validation/TCarrierValidationResult.hpp"
@@ -9,6 +11,20 @@
 /**
  * @file TCarrierValidationEngine.hpp
  * @brief Runtime validation policy for ASCC carrier views.
+ *
+ * This engine validates canonical carrier views against the expected ASCC
+ * carrier taxonomy. Validation here is semantic validation, not merely
+ * structural validation.
+ *
+ * Responsibilities:
+ * - Reject unknown expected carrier kinds.
+ * - Reject invalid carrier views.
+ * - Reject invalid correlations.
+ * - Reject carrier kind mismatches.
+ * - Produce reusable validation reports for facade/runtime layers.
+ *
+ * This component intentionally validates against the canonical
+ * `TAsccCarrierKind` vocabulary to avoid duplicated runtime taxonomies.
  */
 
 namespace assembler::communication_context
@@ -29,14 +45,24 @@ namespace assembler::communication_context
                         "expected carrier kind is unknown"));
             }
 
-            if (!view.is_valid())
+            if (!view.valid)
             {
                 return TCarrierValidationResult::fail(
                     expected,
                     TCarrierValidationStatus::invalid_shape,
                     TBridgeError::make(
                         TBridgeErrorCode::protocol_violation,
-                        "carrier view is invalid"));
+                        "carrier view is marked invalid"));
+            }
+
+            if (view.kind == TAsccCarrierKind::unknown)
+            {
+                return TCarrierValidationResult::fail(
+                    expected,
+                    TCarrierValidationStatus::invalid_kind,
+                    TBridgeError::make(
+                        TBridgeErrorCode::protocol_violation,
+                        "carrier view kind is unknown"));
             }
 
             if (!view.correlation.is_valid())
@@ -49,7 +75,19 @@ namespace assembler::communication_context
                         "carrier correlation is invalid"));
             }
 
-            return TCarrierValidationResult::pass(expected);
+            if (view.kind != expected)
+            {
+                return TCarrierValidationResult::fail(
+                    expected,
+                    TCarrierValidationStatus::wrong_kind,
+                    TBridgeError::make(
+                        TBridgeErrorCode::protocol_violation,
+                        "carrier kind does not match expected kind"));
+            }
+
+            return TCarrierValidationResult::pass(
+                expected,
+                "carrier validation passed");
         }
 
         [[nodiscard]] static constexpr TCarrierValidationReport report_view(
@@ -60,7 +98,9 @@ namespace assembler::communication_context
             return TCarrierValidationReport::make(
                 view,
                 validate_view(view, expected),
-                note);
+                note.empty()
+                    ? "carrier validation report generated"
+                    : note);
         }
     };
 }
