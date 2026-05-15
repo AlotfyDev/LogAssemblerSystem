@@ -1,8 +1,8 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-14T04:41:58Z",
-  "file_count": 3751,
+  "last_updated": "2026-05-14T04:47:49Z",
+  "file_count": 3765,
   "files": [
     {
       "path": ".Assembler_Skills/00_PACKAGE_MANIFEST.json",
@@ -4175,6 +4175,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCardinality.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMatcher.hpp",
+      "filename": "TBindingCompositionMatcher.hpp",
+      "extension": "hpp",
+      "size_bytes": 1530,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMatcher.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMatcher.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp",
       "filename": "TBindingCompositionMetadata.hpp",
       "extension": "hpp",
@@ -4183,6 +4193,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionMetadata.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionReadinessReport.hpp",
+      "filename": "TBindingCompositionReadinessReport.hpp",
+      "extension": "hpp",
+      "size_bytes": 1688,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionReadinessReport.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionReadinessReport.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bindings/composition/TBindingCompositionReport.hpp",
@@ -4585,6 +4605,26 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/ids/TBindingId.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/bindings/invocation/TConcreteBindingInvocationDescriptor.hpp",
+      "filename": "TConcreteBindingInvocationDescriptor.hpp",
+      "extension": "hpp",
+      "size_bytes": 1370,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/invocation/TConcreteBindingInvocationDescriptor.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/invocation/TConcreteBindingInvocationDescriptor.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bindings/obligations/TBindingObligationSurfaceMap.hpp",
+      "filename": "TBindingObligationSurfaceMap.hpp",
+      "extension": "hpp",
+      "size_bytes": 935,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/obligations/TBindingObligationSurfaceMap.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/obligations/TBindingObligationSurfaceMap.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/bindings/profiles/TBindingProfile.hpp",
       "filename": "TBindingProfile.hpp",
       "extension": "hpp",
@@ -4613,6 +4653,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/results/TBindingResult.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/results/TBindingResult.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bindings/roles/TBindingParticipantRoleMap.hpp",
+      "filename": "TBindingParticipantRoleMap.hpp",
+      "extension": "hpp",
+      "size_bytes": 1199,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/roles/TBindingParticipantRoleMap.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/roles/TBindingParticipantRoleMap.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/bindings/session/TBindingSessionOpenProfile.hpp",
+      "filename": "TBindingSessionOpenProfile.hpp",
+      "extension": "hpp",
+      "size_bytes": 1306,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bindings/session/TBindingSessionOpenProfile.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/bindings/session/TBindingSessionOpenProfile.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/bindings/status/TBindingStatus.hpp",
@@ -6443,6 +6503,46 @@
       "category": "documentation",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Protocol_Requirements/README.md",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W05_Protocol_Requirements/README.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Facade_Impact_Matrix.csv",
+      "filename": "ASCC-COMP-W06_Binding_Facade_Impact_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 2413,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Facade_Impact_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Facade_Impact_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Model_Operational_Analysis.md",
+      "filename": "ASCC-COMP-W06_Binding_Model_Operational_Analysis.md",
+      "extension": "md",
+      "size_bytes": 1659,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Model_Operational_Analysis.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Model_Operational_Analysis.md"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Operational_Matrix.csv",
+      "filename": "ASCC-COMP-W06_Binding_Operational_Matrix.csv",
+      "extension": "csv",
+      "size_bytes": 6952,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Operational_Matrix.csv",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_Operational_Matrix.csv"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_To_Session_Protocol_Relationship.md",
+      "filename": "ASCC-COMP-W06_Binding_To_Session_Protocol_Relationship.md",
+      "extension": "md",
+      "size_bytes": 941,
+      "top_level_dir": "include",
+      "category": "documentation",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_To_Session_Protocol_Relationship.md",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Binding_Model_Operational_Analysis/ASCC-COMP-W06_Binding_To_Session_Protocol_Relationship.md"
     },
     {
       "path": "include/assembler/bridge_orchestrator/docs/ASCC_COMP/W06_Readiness_And_Evidence_View/ASCC-COMP-W06_Implementation_And_CI_Closure_Report.md",
@@ -11755,6 +11855,16 @@
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccAdministrativeFacade.hpp"
     },
     {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccBindingProfileCatalogView.hpp",
+      "filename": "TAsccBindingProfileCatalogView.hpp",
+      "extension": "hpp",
+      "size_bytes": 2506,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccBindingProfileCatalogView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccBindingProfileCatalogView.hpp"
+    },
+    {
       "path": "include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccComponentCapabilityCatalog.hpp",
       "filename": "TAsccComponentCapabilityCatalog.hpp",
       "extension": "hpp",
@@ -11813,6 +11923,16 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccSessionPolicyCatalogView.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/administrative/TAsccSessionPolicyCatalogView.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccBindingEvidenceAdapter.hpp",
+      "filename": "TAsccBindingEvidenceAdapter.hpp",
+      "extension": "hpp",
+      "size_bytes": 1180,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccBindingEvidenceAdapter.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/common/TAsccBindingEvidenceAdapter.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/common/TAsccComponentId.hpp",
@@ -11923,6 +12043,26 @@
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/consuming/TAsccOperationMode.hpp",
       "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/consuming/TAsccOperationMode.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingAdmissionPolicy.hpp",
+      "filename": "TAsccBindingAdmissionPolicy.hpp",
+      "extension": "hpp",
+      "size_bytes": 2043,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingAdmissionPolicy.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingAdmissionPolicy.hpp"
+    },
+    {
+      "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingReadinessView.hpp",
+      "filename": "TAsccBindingReadinessView.hpp",
+      "extension": "hpp",
+      "size_bytes": 1469,
+      "top_level_dir": "include",
+      "category": "code_or_asset",
+      "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingReadinessView.hpp",
+      "github_url": "https://github.com/AlotfyDev/LogAssemblerSystem/blob/master/include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccBindingReadinessView.hpp"
     },
     {
       "path": "include/assembler/bridge_orchestrator/facade_layer/managerial/TAsccComponentAdmission.hpp",
