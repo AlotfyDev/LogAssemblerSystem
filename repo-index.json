@@ -1,7 +1,7 @@
 {
   "repo": "AlotfyDev/LogAssemblerSystem",
   "branch": "master",
-  "last_updated": "2026-05-15T08:30:38Z",
+  "last_updated": "2026-05-15T08:35:48Z",
   "file_count": 3932,
   "files": [
     {
@@ -4888,7 +4888,7 @@
       "path": "include/assembler/bridge_orchestrator/bridge_carriers/obligations/TCarrierObligationResolver.hpp",
       "filename": "TCarrierObligationResolver.hpp",
       "extension": "hpp",
-      "size_bytes": 1648,
+      "size_bytes": 5016,
       "top_level_dir": "include",
       "category": "code_or_asset",
       "raw_url": "https://raw.githubusercontent.com/AlotfyDev/LogAssemblerSystem/master/include/assembler/bridge_orchestrator/bridge_carriers/obligations/TCarrierObligationResolver.hpp",
