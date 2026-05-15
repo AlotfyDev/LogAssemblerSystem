@@ -10,6 +10,7 @@
 #include "assembler/communication_context/bridge_carriers/handles/TPlacementHandle.hpp"
 #include "assembler/communication_context/bridge_carriers/destination/TNextDestinationRequest.hpp"
 #include "assembler/communication_context/bridge_carriers/views/TCarrierView.hpp"
+#include "assembler/communication_context/bridge_carriers/kinds/TAsccCarrierKind.hpp"
 
 int main()
 {
@@ -43,8 +44,16 @@ int main()
     constexpr auto result = TBridgeResult::success(token);
     static_assert(result.succeeded(), "bridge result should succeed");
 
-    constexpr auto carrier_view = TCarrierView::make(TCarrierKind::placement_request, token, true, "request");
+    constexpr auto carrier_view = TCarrierView::make(
+        TAsccCarrierKind::placement_request,
+        token,
+        true,
+        "request");
+
     static_assert(carrier_view.is_valid(), "carrier view should be valid");
+    static_assert(
+        carrier_view.is_kind(TAsccCarrierKind::placement_request),
+        "carrier view should expose canonical ASCC kind");
 
     return 0;
 }
